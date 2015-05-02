@@ -1,0 +1,472 @@
+{
+  "categories": [
+    {
+      "name": "General",
+      "configs": [
+        {
+          "id": "TLP_ENABLE",
+          "type": "bselect",
+          "values": "0,1",
+          "description": "Set to 0 to disable/1 to enable TLP"
+        }
+      ]
+    },
+    {
+      "name": "Disk",
+      "configs": [
+        {
+          "id": "DISK_IDLE_SECS_ON_AC",
+          "type": "entry",
+          "values": "",
+          "description": "Seconds laptop mode has to to wait after the disk goes idle before doing a sync.\nNon-zero value enables, zero disables laptop mode."
+        },
+        {
+          "id": "DISK_IDLE_SECS_ON_BAT",
+          "type": "entry",
+          "values": "",
+          "description": "Seconds laptop mode has to to wait after the disk goes idle before doing a sync.\nNon-zero value enables, zero disables laptop mode."
+        },
+        {
+          "id": "MAX_LOST_WORK_SECS_ON_AC",
+          "type": "entry",
+          "values": "",
+          "description": "Dirty page values (timeouts in secs)."
+        },
+        {
+          "id": "MAX_LOST_WORK_SECS_ON_BAT",
+          "type": "entry",
+          "values": "",
+          "description": "Dirty page values (timeouts in secs)."
+        },
+        {
+          "id": "DISK_DEVICES",
+          "type": "entry",
+          "values": "",
+          "description": "Hard disk devices, separate multiple devices with spaces (default: sda).\nDevices can be specified by disk id too (lookup with: tlp diskid)."
+        },
+        {
+          "id": "DISK_APM_LEVEL_ON_AC",
+          "type": "entry",
+          "values": "",
+          "description": "Hard disk advanced power management level: 1(max saving)..254(off)\nLevels 1..127 may spin down the disk.\nSeparate values for multiple devices with spaces."
+        },
+        {
+          "id": "DISK_APM_LEVEL_ON_BAT",
+          "type": "entry",
+          "values": "",
+          "description": "Hard disk advanced power management level: 1(max saving)..254(off)\nLevels 1..127 may spin down the disk.\nSeparate values for multiple devices with spaces."
+        },
+        {
+          "id": "DISK_SPINDOWN_TIMEOUT_ON_AC",
+          "type": "entry",
+          "values": "",
+          "description": "Hard disk spin down timeout:\n0:\t\tspin down disabled\n1..240:\ttimeouts from 5s to 20min (in units of 5s)\n241..251:\ttimeouts from 30min to 5.5 hours (in units of 30min)\n(see 'man hdparm' for details)"
+        },
+        {
+          "id": "DISK_SPINDOWN_TIMEOUT_ON_BAT",
+          "type": "entry",
+          "values": "",
+          "description": "Hard disk spin down timeout:\n0:\t\tspin down disabled\n1..240:\ttimeouts from 5s to 20min (in units of 5s)\n241..251:\ttimeouts from 30min to 5.5 hours (in units of 30min)\n(see 'man hdparm' for details)"
+        },
+        {
+          "id": "DISK_IOSCHED",
+          "type": "entry",
+          "values": "",
+          "description": "Select io scheduler for the disk devices: noop/deadline/cfq (Default: cfq)\nSeparate values for multiple devices with spaces."
+        },
+        {
+          "id": "SATA_LINKPWR_ON_AC",
+          "type": "select",
+          "values": "min_power,medium_power,max_performance",
+          "description": "SATA aggressive link power management (ALPM):\nmin_power/medium_power/max_performance"
+        },
+        {
+          "id": "SATA_LINKPWR_ON_BAT",
+          "type": "select",
+          "values": "min_power,medium_power,max_performance",
+          "description": "SATA aggressive link power management (ALPM):\nmin_power/medium_power/max_performance"
+        }
+      ]
+    },
+    {
+      "name": "Processor",
+      "configs": [
+        {
+          "id": "CPU_SCALING_GOVERNOR_ON_AC",
+          "type": "select",
+          "values": "ondemand,powersave,performance,conservative",
+          "description": "Select a cpu frequency scaling governor: ondemand/powersave/performance/conservative\nIntel Core i processor with intel_pstate driver: powersave/performance\nImportant:\n- You *must* disable your distribution's governor settings or conflicts will occur\n- ondemand is sufficient for *almost all* workloads, you should know what you're doing!"
+        },
+        {
+          "id": "CPU_SCALING_GOVERNOR_ON_BAT",
+          "type": "select",
+          "values": "ondemand,powersave,performance,conservative",
+          "description": "Select a cpu frequency scaling governor: ondemand/powersave/performance/conservative\nIntel Core i processor with intel_pstate driver: powersave/performance\nImportant:\n- You *must* disable your distribution's governor settings or conflicts will occur\n- ondemand is sufficient for *almost all* workloads, you should know what you're doing!"
+        },
+        {
+          "id": "CPU_SCALING_MIN_FREQ_ON_AC",
+          "type": "entry",
+          "values": "",
+          "description": "Set the min/max frequency available for the scaling governor.\nPossible values strongly depend on your cpu.\nFor available frequencies see tlp-stat output, Section \"+++ Processor\".\nHint: Parameters are disabled by default, remove the leading # to enable them,\notherwise kernel default values are used."
+        },
+        {
+          "id": "CPU_SCALING_MAX_FREQ_ON_AC",
+          "type": "entry",
+          "values": "",
+          "description": "Set the min/max frequency available for the scaling governor.\nPossible values strongly depend on your cpu.\nFor available frequencies see tlp-stat output, Section \"+++ Processor\".\nHint: Parameters are disabled by default, remove the leading # to enable them,\notherwise kernel default values are used."
+        },
+        {
+          "id": "CPU_SCALING_MIN_FREQ_ON_BAT",
+          "type": "entry",
+          "values": "",
+          "description": "Set the min/max frequency available for the scaling governor.\nPossible values strongly depend on your cpu.\nFor available frequencies see tlp-stat output, Section \"+++ Processor\".\nHint: Parameters are disabled by default, remove the leading # to enable them,\notherwise kernel default values are used."
+        },
+        {
+          "id": "CPU_SCALING_MAX_FREQ_ON_BAT",
+          "type": "entry",
+          "values": "",
+          "description": "Set the min/max frequency available for the scaling governor.\nPossible values strongly depend on your cpu.\nFor available frequencies see tlp-stat output, Section \"+++ Processor\".\nHint: Parameters are disabled by default, remove the leading # to enable them,\notherwise kernel default values are used."
+        },
+        {
+          "id": "CPU_BOOST_ON_AC",
+          "type": "bselect",
+          "values": "0,1",
+          "description": "Set the cpu \"turbo boost\" feature: 0=disable / 1=allow\nRequires an Intel Core i processor and kernel 3.7 or later.\nImportant:\n- This may conflict with your distribution's governor settings\n- A value of 1 does *not* activate boosting, it just allows it"
+        },
+        {
+          "id": "CPU_BOOST_ON_BAT",
+          "type": "bselect",
+          "values": "0,1",
+          "description": "Set the cpu \"turbo boost\" feature: 0=disable / 1=allow\nRequires an Intel Core i processor and kernel 3.7 or later.\nImportant:\n- This may conflict with your distribution's governor settings\n- A value of 1 does *not* activate boosting, it just allows it"
+        },
+        {
+          "id": "SCHED_POWERSAVE_ON_AC",
+          "type": "bselect",
+          "values": "0,1",
+          "description": "Minimize number of used cpu cores/hyper-threads under light load conditions"
+        },
+        {
+          "id": "SCHED_POWERSAVE_ON_BAT",
+          "type": "bselect",
+          "values": "0,1",
+          "description": "Minimize number of used cpu cores/hyper-threads under light load conditions"
+        },
+        {
+          "id": "NMI_WATCHDOG",
+          "type": "bselect",
+          "values": "0,1",
+          "description": "Kernel NMI Watchdog\n0=disable (default, saves power) / 1=enable (for kernel debugging only)"
+        },
+        {
+          "id": "PHC_CONTROLS",
+          "type": "entry",
+          "values": "",
+          "description": "Change CPU voltages aka \"undervolting\" - Kernel with PHC patch required\nFreq:voltage pairs are written to /sys/devices/system/cpu/cpu0/cpufreq/phc_controls\nCAUTION: only use this, if you thoroughly understand what you are doing!"
+        }
+      ]
+    },
+    {
+      "name": "Dock",
+      "configs": [
+        {
+          "id": "BAY_POWEROFF_ON_BAT",
+          "type": "bselect",
+          "values": "0,1",
+          "description": "Set to 1 to power off optical drive in UltraBay/MediaBay when running on battery.\nA value of 0 disables this Feature (Default).\nDrive can be powered on again by releasing (and reinserting) the\neject lever or by pressing the disc eject button on newer models.\nNote: an UltraBay/MediaBay hard disk is never powered off."
+        },
+        {
+          "id": "BAY_DEVICE",
+          "type": "entry",
+          "values": "",
+          "description": "Optical drive device to power off (default sr0)"
+        }
+      ]
+    },
+    {
+      "name": "Devices",
+      "configs": [
+        {
+          "id": "PCIE_ASPM_ON_AC",
+          "type": "select",
+          "values": "default,performance,powersave",
+          "description": "PCI Express Active State Power Management (PCIe ASPM):\ndefault/performance/powersave"
+        },
+        {
+          "id": "PCIE_ASPM_ON_BAT",
+          "type": "select",
+          "values": "default,performance,powersave",
+          "description": "PCI Express Active State Power Management (PCIe ASPM):\ndefault/performance/powersave"
+        },
+        {
+          "id": "RUNTIME_PM_ON_AC",
+          "type": "select",
+          "values": "on,auto,ondemand",
+          "description": "Runtime Power Management for pci(e) bus devices\n(Kernel ,>= 2.6.35 only): on=disable/auto=enable"
+        },
+        {
+          "id": "RUNTIME_PM_ON_BAT",
+          "type": "select",
+          "values": "on,auto,ondemand",
+          "description": "Runtime Power Management for pci(e) bus devices\n(Kernel ,>= 2.6.35 only): on=disable/auto=enable"
+        },
+        {
+          "id": "RUNTIME_PM_ALL",
+          "type": "bselect",
+          "values": "0,1",
+          "description": "Runtime PM for *all* pci(e) bus devices, except blacklisted ones:\n0=disable / 1=enable"
+        },
+        {
+          "id": "RUNTIME_PM_BLACKLIST",
+          "type": "entry",
+          "values": "",
+          "description": "Exclude pci(e) device adresses the following list from Runtime PM\n(separate with spaces). Use lspci to get the adresses (1st column)."
+        }
+      ]
+    },
+    {
+      "name": "USB",
+      "configs": [
+        {
+          "id": "USB_AUTOSUSPEND",
+          "type": "bselect",
+          "values": "0,1",
+          "description": "Set to 0 to disable/1 to enable usb autosuspend feature"
+        },
+        {
+          "id": "USB_BLACKLIST",
+          "type": "entry",
+          "values": "",
+          "description": "Devices from the following list are excluded from usb autosuspend\n(separate with spaces). Use lsusb to get the ids.\nNote: input devices (usbhid) are excluded automatically"
+        },
+        {
+          "id": "USB_BLACKLIST_WWAN",
+          "type": "bselect",
+          "values": "0,1",
+          "description": "WWAN devices are excluded from usb autosuspend:\n0=do not exclude / 1=exclude\nNote: works for ids 05c6:* 0bdb:* 1199:* only"
+        },
+        {
+          "id": "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN",
+          "type": "bselect",
+          "values": "0,1",
+          "description": "Set to 1 to disable autosuspend before shutdown/0 to do nothing\n(workaround for usb devices that cause shutdown problems)"
+        }
+      ]
+    },
+    {
+      "name": "Graphics",
+      "configs": [
+        {
+          "id": "RADEON_POWER_PROFILE_ON_AC",
+          "type": "select",
+          "values": "low,mid,high,auto,default",
+          "description": "Radeon graphics clock speed (profile method): low/mid/high/auto/default\nauto = mid on BAT, high on AC; default = use hardware defaults\n(Kernel ,>= 2.6.35 only, not with fglrx driver!)"
+        },
+        {
+          "id": "RADEON_POWER_PROFILE_ON_BAT",
+          "type": "select",
+          "values": "low,mid,high,auto,default",
+          "description": "Radeon graphics clock speed (profile method): low/mid/high/auto/default\nauto = mid on BAT, high on AC; default = use hardware defaults\n(Kernel ,>=2.6.35 only, not with fglrx driver!)"
+        },
+        {
+          "id": "RADEON_DPM_STATE_ON_AC",
+          "type": "select",
+          "values": "battery,performance",
+          "description": "New radeon dynamic power management method (dpm): battery/performance\n(Kernel ,>= 3.11 only, requires boot option radeon.dpm=1)"
+        },
+        {
+          "id": "RADEON_DPM_STATE_ON_BAT",
+          "type": "select",
+          "values": "battery,performance",
+          "description": "New radeon dynamic power management method (dpm): battery/performance\n(Kernel ,>= 3.11 only, requires boot option radeon.dpm=1)"
+        },
+        {
+          "id": "RADEON_DPM_PERF_LEVEL_ON_AC",
+          "type": "select",
+          "values": "auto,low,high",
+          "description": "New radeon dpm performance level: auto/low/high (auto is recommended)"
+        },
+        {
+          "id": "RADEON_DPM_PERF_LEVEL_ON_BAT",
+          "type": "select",
+          "values": "auto,low,high",
+          "description": "New radeon dpm performance level: auto/low/high (auto is recommended)"
+        }
+      ]
+    },
+    {
+      "name": "Network",
+      "configs": [
+        {
+          "id": "WIFI_PWR_ON_AC",
+          "type": "bselect",
+          "values": "0,5",
+          "description": "WiFi power saving mode: 0=disable/5=enable\n(Linux 2.6.32 and later, some adapters only!)"
+        },
+        {
+          "id": "WIFI_PWR_ON_BAT",
+          "type": "bselect",
+          "values": "0,5",
+          "description": "WiFi power saving mode: 0=disable/5=enable\n(Linux 2.6.32 and later, some adapters only!)"
+        },
+        {
+          "id": "WOL_DISABLE",
+          "type": "bselect",
+          "values": "Y,N",
+          "description": "Disable wake on lan: Y/N"
+        }
+      ]
+    },
+    {
+      "name": "Audio",
+      "configs": [
+        {
+          "id": "SOUND_POWER_SAVE_ON_AC",
+          "type": "select",
+          "values": "0,1",
+          "description": "Enable audio power saving for Intel HDA, AC97 devices (timeout in secs).\nA value of 0 disables / ,>=1 enables power save."
+        },
+        {
+          "id": "SOUND_POWER_SAVE_ON_BAT",
+          "type": "select",
+          "values": "0,1",
+          "description": "Enable audio power saving for Intel HDA, AC97 devices (timeout in secs).\nA value of 0 disables / ,>=1 enables power save."
+        },
+        {
+          "id": "SOUND_POWER_SAVE_CONTROLLER",
+          "type": "select",
+          "values": "Y,N",
+          "description": "Disable controller too (HDA only): Y/N"
+        }
+      ]
+    },
+    {
+      "name": "Radio",
+      "configs": [
+        {
+          "id": "RESTORE_DEVICE_STATE_ON_STARTUP",
+          "type": "select",
+          "values": "0,1",
+          "description": "Restore radio device state (bluetooth, wifi, wwan) from previous shutdown\non system startup: 0=disable/1=enable\nHint: the parameters DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN below\nare ignored when this is enabled!"
+        },
+        {
+          "id": "DEVICES_TO_DISABLE_ON_STARTUP",
+          "type": "check",
+          "values": "bluetooth,wifi,wwan",
+          "description": "Radio devices to disable on startup: bluetooth wifi wwan"
+        },
+        {
+          "id": "DEVICES_TO_ENABLE_ON_STARTUP",
+          "type": "check",
+          "values": "bluetooth,wifi,wwan",
+          "description": "Radio devices to enable on startup: bluetooth wifi wwan"
+        },
+        {
+          "id": "DEVICES_TO_DISABLE_ON_SHUTDOWN",
+          "type": "check",
+          "values": "bluetooth,wifi,wwan",
+          "description": "Radio devices to disable on shutdown: bluetooth wifi wwan\n(workaround for devices that are blocking shutdown)"
+        },
+        {
+          "id": "DEVICES_TO_ENABLE_ON_SHUTDOWN",
+          "type": "check",
+          "values": "bluetooth,wifi,wwan",
+          "description": "Radio devices to enable on shutdown: bluetooth wifi wwan\n(to prevent other operating systems from missing radios)"
+        }
+      ]
+    },
+    {
+      "name": "Radio Device Wizard",
+      "configs": [
+        {
+          "id": "DEVICES_TO_DISABLE_ON_LAN_CONNECT",
+          "type": "check",
+          "values": "bluetooth,wifi,wwan",
+          "description": "Radio devices to disable on connect"
+        },
+        {
+          "id": "DEVICES_TO_DISABLE_ON_WIFI_CONNECT",
+          "type": "check",
+          "values": "bluetooth,wifi,wwan",
+          "description": "Radio devices to disable on connect"
+        },
+        {
+          "id": "DEVICES_TO_DISABLE_ON_WWAN_CONNECT",
+          "type": "check",
+          "values": "bluetooth,wifi,wwan",
+          "description": "Radio devices to disable on connect"
+        },
+        {
+          "id": "DEVICES_TO_ENABLE_ON_LAN_DISCONNECT",
+          "type": "check",
+          "values": "bluetooth,wifi,wwan",
+          "description": "Radio devices to enable on disconnect"
+        },
+        {
+          "id": "DEVICES_TO_ENABLE_ON_WIFI_DISCONNECT",
+          "type": "check",
+          "values": "bluetooth,wifi,wwan",
+          "description": "Radio devices to enable on disconnect"
+        },
+        {
+          "id": "DEVICES_TO_ENABLE_ON_WWAN_DISCONNECT",
+          "type": "check",
+          "values": "bluetooth,wifi,wwan",
+          "description": "Radio devices to enable on disconnect"
+        },
+        {
+          "id": "DEVICES_TO_ENABLE_ON_DOCK",
+          "type": "check",
+          "values": "bluetooth,wifi,wwan",
+          "description": "Radio devices to enable/disable when docked"
+        },
+        {
+          "id": "DEVICES_TO_DISABLE_ON_DOCK",
+          "type": "check",
+          "values": "bluetooth,wifi,wwan",
+          "description": "Radio devices to enable/disable when docked"
+        },
+        {
+          "id": "DEVICES_TO_ENABLE_ON_UNDOCK",
+          "type": "check",
+          "values": "bluetooth,wifi,wwan",
+          "description": "Radio devices to enable/disable when undocked"
+        },
+        {
+          "id": "DEVICES_TO_DISABLE_ON_UNDOCK",
+          "type": "check",
+          "values": "bluetooth,wifi,wwan",
+          "description": "Radio devices to enable/disable when undocked"
+        }
+      ]
+    },
+    {
+      "name": "Battery",
+      "configs": [
+        {
+          "id": "START_CHARGE_THRESH_BAT0",
+          "type": "numeric",
+          "values": "1-96",
+          "description": "Battery charge thresholds (ThinkPad only, tp-smapi or acpi-call kernel module required)\nCharging starts when the remaining capacity falls below the START_CHARGE_TRESH\nvalue and stops when exceeding the STOP_CHARGE_TRESH value. Main battery (values in %)"
+        },
+        {
+          "id": "STOP_CHARGE_THRESH_BAT0",
+          "type": "numeric",
+          "values": "5-100",
+          "description": "Battery charge thresholds (ThinkPad only, tp-smapi or acpi-call kernel module required)\nCharging starts when the remaining capacity falls below the START_CHARGE_TRESH\nvalue and stops when exceeding the STOP_CHARGE_TRESH value. Main battery (values in %)"
+        },
+        {
+          "id": "START_CHARGE_THRESH_BAT1",
+          "type": "numeric",
+          "values": "1-96",
+          "description": "Ultrabay or slice battery (values in %)"
+        },
+        {
+          "id": "STOP_CHARGE_THRESH_BAT1",
+          "type": "numeric",
+          "values": "5-100",
+          "description": "Ultrabay or slice battery (values in %)"
+        }
+      ]
+    }
+  ]
+}
