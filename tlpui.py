@@ -18,7 +18,5 @@ window.set_default_size(800, 600)
 window.add(create_content_box(window, defaultconfigpath, tlpconfig))
 window.connect('delete-event', Gtk.main_quit)
 window.connect('key-press-event', close_window)
-
-
 window.show_all()
 Gtk.main()
