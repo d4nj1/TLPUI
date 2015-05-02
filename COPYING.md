@@ -1,7 +1,8 @@
 Author:
+    
     Daniel Christophis - <code at devmind.org>
 
-Copyright:
+Copyrights:
 
     Copyright (c) 2015 Daniel Christophis
 
@@ -13,6 +14,3 @@ License:
 
     This software is licensed under the GPL v2 or later,
     see '/usr/share/common-licenses/GPL-2'
-
-    tpacpi-bat is licensed under the GPL v3 or later,
-    see '/usr/share/common-licenses/GPL-3'
