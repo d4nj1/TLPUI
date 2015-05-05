@@ -32,7 +32,9 @@ def create_config_ui_box(tlpobject, objecttype, objectvalues, doc) -> Gtk.Frame:
 
     # on/off state
     toggle = gtktoggle.create_toggle_button(tlpobject, tlpconfigbox)
-    tlpswitchbox.pack_start(toggle, False, False, 10)
+    tlpswitchbox.pack_start(toggle, False, False, 0)
+    tlpswitchbox.set_halign(Gtk.Align.CENTER)
+    tlpswitchbox.set_valign(Gtk.Align.CENTER)
 
     # vertical separator
     separator = Gtk.VSeparator()
@@ -60,14 +62,14 @@ def create_config_ui_box(tlpobject, objecttype, objectvalues, doc) -> Gtk.Frame:
     doclabel = Gtk.Label('<i><small>' + doc + '</small></i>', xalign=0)
     doclabel.set_line_wrap(True)
     doclabel.set_use_markup(True)
-    doclabel.set_margin_bottom(5)
+    doclabel.set_margin_bottom(10)
 
     tlpconfigbox.pack_start(configuiobject, True, True, 0)
     tlpconfigbox.pack_start(doclabel, True, True, 0)
 
-    tlpuiobject.pack_start(tlpswitchbox, False, False, 10)
-    tlpuiobject.pack_start(separator, False, False, 10)
-    tlpuiobject.pack_start(tlpconfigbox, True, True, 10)
+    tlpuiobject.pack_start(tlpswitchbox, False, False, 20)
+    tlpuiobject.pack_start(separator, False, False, 0)
+    tlpuiobject.pack_start(tlpconfigbox, True, True, 20)
     tlpconfigframe.add(tlpuiobject)
 
     return tlpconfigframe
@@ -93,20 +95,16 @@ def create_tlp_ui_categories(tlpconfig) -> OrderedDict:
 
             for item in tlpconfig:
                 configid = item.get_name()
-                if  configid == id:
+                if configid == id:
                     configbox = create_config_ui_box(item, type, values, description)
-                    categorybox.pack_start(configbox, True, True, 5)
+                    configbox.set_margin_left(15)
+                    configbox.set_margin_right(15)
+                    configbox.set_margin_top(15)
+                    categorybox.pack_start(configbox, False, False, 0)
 
         propertyobjects[label] = categorybox
 
     return propertyobjects
-
-
-def scroll_to_category(self, scroll, widget):
-    position = scroll.get_vadjustment()
-    widget_positions = widget.translate_coordinates(scroll, 0, 0)
-    position.set_value(position.get_value() + widget_positions[1])
-    scroll.set_vadjustment(position)
 
 
 def open_file_chooser(self, fileentry):
@@ -158,7 +156,6 @@ def save_tlp_config(self, filenamepointer, tlpconfig, window):
     dialog.destroy()
 
 
-
 def create_settings_box(window, configpath, tlp_config_items):
     fileentry = Gtk.Entry()
     fileentry.set_editable(False)
@@ -183,36 +180,27 @@ def create_settings_box(window, configpath, tlp_config_items):
 
 
 def create_config_box(tlp_config_items) -> Gtk.Box:
-    scroll = Gtk.ScrolledWindow()
-    anchorbuttonbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=4)
-    anchorbuttonbox.set_halign(Gtk.Align.CENTER)
-    configbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+    notebook = Gtk.Notebook()
+    notebook.set_tab_pos(Gtk.PositionType.TOP)
 
     ui_categories = create_tlp_ui_categories(tlp_config_items)
-    for key,value in ui_categories.items():
-        label = key
+    for label, configitem in ui_categories.items():
         categorylabel = Gtk.Label('<small>' + label + '</small>')
         categorylabel.set_use_markup(True)
         categorylabel.set_margin_left(10)
         categorylabel.set_margin_right(10)
 
-        button = Gtk.Button(label)
-        button.set_name('anchorButton')
-        button.connect('clicked', scroll_to_category, scroll, categorylabel)
+        viewport = Gtk.Viewport()
+        viewport.set_name('categoryViewport')
+        viewport.add(configitem)
 
-        notebook = Gtk.Notebook()
-        notebook.set_name('categoriesNotebook')
-        notebook.set_tab_pos(Gtk.PositionType.TOP)
-        notebook.append_page(value, categorylabel)
+        scroll = Gtk.ScrolledWindow()
+        scroll.add(viewport)
 
-        anchorbuttonbox.pack_start(button, False, False, 2)
-        configbox.pack_start(notebook, False, False, 2)
-
-    scroll.add(configbox)
+        notebook.append_page(scroll, categorylabel)
 
     containerbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
-    containerbox.pack_start(anchorbuttonbox, False, False, 8)
-    containerbox.pack_start(scroll, True, True, 2)
+    containerbox.pack_start(notebook, True, True, 2)
 
     return containerbox
 

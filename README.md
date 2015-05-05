@@ -30,10 +30,11 @@ To be done:
 * Get sudo/root permission on demand (e.g. zenity dialog)
 * Add/optimize value definitions
 * Localization
-* Jump to latest position after reload/save
+* Jump to last active tab after reload/save
 * Refactor Python code
 * UI improvements for better usability
 * Add tlp-stat output
+* Add debian package build script
 
 
 ![Screenshot 02.05.2015](https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshot.png)

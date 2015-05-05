@@ -1,16 +1,7 @@
-#anchorButton {
-    font-size: 85%;
-    border-radius: 0px;
-}
-
 .frame {
     border-radius: 0px;
-    padding: 20px;
 }
 
-#categoriesNotebook {
-    padding-top: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 10px;
+#categoryViewport {
+    background-color: @theme_bg_color;
 }
