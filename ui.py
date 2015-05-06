@@ -17,62 +17,68 @@ def close_window(self, event):
             self.destroy()
 
 
-def create_config_ui_box(tlpobject, objecttype, objectvalues, doc) -> Gtk.Frame:
-    tlpconfigframe = Gtk.Frame()
+def create_config_ui_box(tlpobject, objecttype, objectvalues, doc) -> Gtk.Box:
     tlpuiobject = Gtk.Box()
 
-    framelabel = Gtk.Label(' <b>' + tlpobject.get_name() + '</b> ')
-    framelabel.set_use_markup(True)
-
-    tlpconfigframe.set_label_widget(framelabel)
-    tlpconfigframe.set_label_align(0, 0.5)
-
-    tlpswitchbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
+    configuibox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
+    statetogglebox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
     tlpconfigbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
 
     # on/off state
     toggle = gtktoggle.create_toggle_button(tlpobject, tlpconfigbox)
-    tlpswitchbox.pack_start(toggle, False, False, 0)
-    tlpswitchbox.set_halign(Gtk.Align.CENTER)
-    tlpswitchbox.set_valign(Gtk.Align.CENTER)
+    statetogglebox.pack_start(toggle, False, False, 0)
+    statetogglebox.set_halign(Gtk.Align.CENTER)
+    statetogglebox.set_valign(Gtk.Align.CENTER)
 
     # vertical separator
-    separator = Gtk.VSeparator()
+    vseparator = Gtk.VSeparator()
+
+    # horizontal separator
+    hseparator = Gtk.HSeparator()
 
     # specific config gtk object
-    configuiobject = Gtk.Widget
+    configwidget = Gtk.Widget
 
     if (objecttype == 'entry'):
-        configuiobject = gtkentry.create_entry(tlpobject)
+        configwidget = gtkentry.create_entry(tlpobject)
     elif (objecttype == 'bselect'):
-        configuiobject = gtkswitch.create_state_switch(objectvalues, tlpobject)
+        configwidget = gtkswitch.create_state_switch(objectvalues, tlpobject)
     elif (objecttype == 'select'):
-        configuiobject = gtkselection.create_selection_box(objectvalues, tlpobject)
+        configwidget = gtkselection.create_selection_box(objectvalues, tlpobject)
     elif (objecttype == 'check'):
-        configuiobject = gtkcheckbutton.create_checkbutton_box(objectvalues, tlpobject)
+        configwidget = gtkcheckbutton.create_checkbutton_box(objectvalues, tlpobject)
     elif (objecttype == 'numeric'):
-        configuiobject = gtkspinbutton.create_numeric_spinbutton(objectvalues, tlpobject)
+        configwidget = gtkspinbutton.create_numeric_spinbutton(objectvalues, tlpobject)
 
-    configuiobject.set_margin_top(10)
-    configuiobject.set_margin_bottom(5)
-    configuiobject.set_halign(Gtk.Align.START)
-    configuiobject.set_valign(Gtk.Align.START)
+    configwidget.set_margin_top(10)
+    configwidget.set_margin_bottom(5)
+    configwidget.set_halign(Gtk.Align.START)
+    configwidget.set_valign(Gtk.Align.START)
 
-    # object label and description
-    doclabel = Gtk.Label('<i><small>' + doc + '</small></i>', xalign=0)
-    doclabel.set_line_wrap(True)
-    doclabel.set_use_markup(True)
-    doclabel.set_margin_bottom(10)
+    # object label
+    configlabel = Gtk.Label(' <b>' + tlpobject.get_name() + '</b> ', xalign=0)
+    configlabel.set_use_markup(True)
+    configlabel.set_margin_bottom(5)
 
-    tlpconfigbox.pack_start(configuiobject, True, True, 0)
-    tlpconfigbox.pack_start(doclabel, True, True, 0)
+    # object description
+    configdescriptionlabel = Gtk.Label('<i><small>' + doc + '</small></i>', xalign=0)
+    configdescriptionlabel.set_line_wrap(True)
+    configdescriptionlabel.set_use_markup(True)
+    configdescriptionlabel.set_margin_bottom(10)
 
-    tlpuiobject.pack_start(tlpswitchbox, False, False, 20)
-    tlpuiobject.pack_start(separator, False, False, 0)
+    # combine boxes
+    tlpconfigbox.pack_start(configwidget, True, True, 0)
+    tlpconfigbox.pack_start(configdescriptionlabel, True, True, 0)
+
+    tlpuiobject.pack_start(statetogglebox, False, False, 20)
+    tlpuiobject.pack_start(vseparator, False, False, 0)
     tlpuiobject.pack_start(tlpconfigbox, True, True, 20)
-    tlpconfigframe.add(tlpuiobject)
 
-    return tlpconfigframe
+    configuibox.pack_start(configlabel, False, False, 0)
+    configuibox.pack_start(tlpuiobject, True, True, 0)
+    configuibox.pack_start(hseparator, True, True, 0)
+
+    return configuibox
 
 
 def create_tlp_ui_categories(tlpconfig) -> OrderedDict:
@@ -181,14 +187,17 @@ def create_settings_box(window, configpath, tlp_config_items):
 
 def create_config_box(tlp_config_items) -> Gtk.Box:
     notebook = Gtk.Notebook()
-    notebook.set_tab_pos(Gtk.PositionType.TOP)
+    notebook.set_name('configNotebook')
+    notebook.set_tab_pos(Gtk.PositionType.LEFT)
 
     ui_categories = create_tlp_ui_categories(tlp_config_items)
     for label, configitem in ui_categories.items():
-        categorylabel = Gtk.Label('<small>' + label + '</small>')
-        categorylabel.set_use_markup(True)
-        categorylabel.set_margin_left(10)
-        categorylabel.set_margin_right(10)
+        categorylabel = Gtk.Label(label)
+        categorylabel.set_alignment(0, 0.5)
+        categorylabel.set_margin_top(5)
+        categorylabel.set_margin_bottom(5)
+        categorylabel.set_margin_left(5)
+        categorylabel.set_margin_right(5)
 
         viewport = Gtk.Viewport()
         viewport.set_name('categoryViewport')

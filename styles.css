@@ -2,6 +2,15 @@
     border-radius: 0px;
 }
 
+#configNotebook tab {
+    border-radius: 0px;
+    background-color: shade(@theme_bg_color, 0.95);
+}
+
+#configNotebook tab:active {
+    background-color: @theme_bg_color;
+}
+
 #categoryViewport {
     background-color: @theme_bg_color;
 }
