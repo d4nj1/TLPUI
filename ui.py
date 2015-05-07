@@ -162,11 +162,13 @@ def save_tlp_config(self, filenamepointer, tlpconfig, window):
     dialog.destroy()
 
 
+def fetch_tlp_stat(self, textbuffer):
+    textbuffer.set_text('button clicked, further implementation needed')
+
+
 def create_settings_box(window, configpath, tlp_config_items):
-    fileentry = Gtk.Entry()
-    fileentry.set_editable(False)
-    fileentry.set_text(configpath)
-    fileentry.connect('changed', load_tlp_config, fileentry.get_text, window)
+    fileentry = Gtk.Label(configpath)
+    fileentry.set_alignment(0, 0.5)
 
     filebutton = Gtk.Button(label=' Open', image=Gtk.Image(stock=Gtk.STOCK_OPEN))
     filebutton.connect('clicked', open_file_chooser, fileentry)
@@ -177,8 +179,8 @@ def create_settings_box(window, configpath, tlp_config_items):
     savebutton.connect('clicked', save_tlp_config, fileentry.get_text, tlp_config_items, window)
 
     settingsbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
-    settingsbox.pack_start(filebutton, False, False, 2)
     settingsbox.pack_start(fileentry, True, True, 2)
+    settingsbox.pack_start(filebutton, False, False, 2)
     settingsbox.pack_start(reloadbutton, False, False, 2)
     settingsbox.pack_start(savebutton, False, False, 2)
 
@@ -214,12 +216,60 @@ def create_config_box(tlp_config_items) -> Gtk.Box:
     return containerbox
 
 
+def create_stat_box() -> Gtk.Box:
+    textbuffer = Gtk.TextBuffer()
+    textbuffer.set_text('Click button to receive results')
+
+    textview = Gtk.TextView()
+    textview.set_buffer(textbuffer)
+
+    emptylabel = Gtk.Label()
+
+    fetchbutton = Gtk.Button(label=' Fetch stats', image=Gtk.Image(stock=Gtk.STOCK_REFRESH))
+    fetchbutton.connect('clicked', fetch_tlp_stat, textbuffer)
+
+    buttonbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
+    buttonbox.pack_start(emptylabel, True, True, 2)
+    buttonbox.pack_start(fetchbutton, False, False, 2)
+
+    statbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
+    statbox.set_margin_top(10)
+    statbox.set_margin_bottom(10)
+    statbox.set_margin_left(10)
+    statbox.set_margin_right(10)
+    statbox.pack_start(buttonbox, False, False, 5)
+    statbox.pack_start(textview, True, True, 0)
+
+    return statbox
+
+
 def create_content_box(window, configpath, tlp_config_items) -> Gtk.Box:
+    notebook = Gtk.Notebook()
+    notebook.set_tab_pos(Gtk.PositionType.TOP)
+
     settingsbox = create_settings_box(window, configpath, tlp_config_items)
     configbox = create_config_box(tlp_config_items)
 
     contentbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
-    contentbox.pack_start(settingsbox, False, False, 2)
-    contentbox.pack_start(configbox, True, True, 2)
+    contentbox.set_margin_top(10)
+    contentbox.set_margin_bottom(10)
+    contentbox.set_margin_left(10)
+    contentbox.set_margin_right(10)
+    contentbox.pack_start(settingsbox, False, False, 5)
+    contentbox.pack_start(configbox, True, True, 0)
 
-    return contentbox
+    configlabel = Gtk.Label('TLP config')
+    configlabel.set_hexpand(True)
+
+    statlabel = Gtk.Label('TLP stat')
+    statlabel.set_hexpand(True)
+
+    statbox = create_stat_box()
+
+    notebook.append_page(contentbox, configlabel)
+    notebook.append_page(statbox, statlabel)
+
+    mainbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
+    mainbox.pack_start(notebook, True, True, 0)
+
+    return mainbox
