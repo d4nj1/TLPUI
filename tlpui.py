@@ -14,7 +14,7 @@ defaultconfigpath = '/etc/default/tlp'
 tlpconfig = read_tlp_file_config(defaultconfigpath)
 
 window = Gtk.Window()
-window.set_default_size(800, 600)
+window.set_default_size(900, 600)
 window.add(create_content_box(window, defaultconfigpath, tlpconfig))
 window.connect('delete-event', Gtk.main_quit)
 window.connect('key-press-event', close_window)
