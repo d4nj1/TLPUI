@@ -1,4 +1,4 @@
-TLPUI - 07.05.2015
+TLPUI - 21.12.2015
 
 The Python scripts in this projects generate a GTK-UI to change TLP configuration files easily.
 It has the aim to protect users from setting bad configuration and to deliver a basic overview of all the valid configuration values.
@@ -27,13 +27,11 @@ What works:
 
 To be done:
 
-* Get sudo/root permission on demand (e.g. zenity dialog)
 * Add/optimize value definitions
 * Localization
 * Jump to last active tab after reload/save
 * Refactor Python code
 * UI improvements for better usability
-* Add tlp-stat output
 * Add debian package build script
 
 

@@ -1,8 +1,8 @@
-from os import remove, close
 import re
-from collections import OrderedDict
-from tempfile import mkstemp
+from os import remove, close
 from shutil import move
+from tempfile import mkstemp
+
 from config import TlpConfig
 
 
@@ -70,4 +70,4 @@ def write_tlp_file_config(changedproperties, filename):
     remove(filename)
     move(tmpfilename, filename)
 
-    #print('Config file written.')
+    # print('Config file written.')

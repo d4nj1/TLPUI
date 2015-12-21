@@ -7,7 +7,13 @@
           "id": "TLP_ENABLE",
           "type": "bselect",
           "values": "0,1",
-          "description": "Set to 0 to disable/1 to enable TLP"
+          "description": "Set to 0 to disable, 1 to enable TLP."
+        },
+        {
+          "id": "TLP_DEFAULT_MODE",
+          "type": "bselect",
+          "values": "BAT,AC",
+          "description": "Operation mode when no power supply can be detected: AC, BAT\nConcerns some desktop and embedded hardware only."
         }
       ]
     },
@@ -107,37 +113,61 @@
           "id": "CPU_SCALING_MIN_FREQ_ON_AC",
           "type": "entry",
           "values": "",
-          "description": "Set the min/max frequency available for the scaling governor.\nPossible values strongly depend on your cpu.\nFor available frequencies see tlp-stat output, Section \"+++ Processor\".\nHint: Parameters are disabled by default, remove the leading # to enable them,\notherwise kernel default values are used."
+          "description": "Set the min/max frequency available for the scaling governor.\nPossible values strongly depend on your cpu.\nFor available frequencies see tlp-stat output, Section \"+++ Processor\"."
         },
         {
           "id": "CPU_SCALING_MAX_FREQ_ON_AC",
           "type": "entry",
           "values": "",
-          "description": "Set the min/max frequency available for the scaling governor.\nPossible values strongly depend on your cpu.\nFor available frequencies see tlp-stat output, Section \"+++ Processor\".\nHint: Parameters are disabled by default, remove the leading # to enable them,\notherwise kernel default values are used."
+          "description": "Set the min/max frequency available for the scaling governor.\nPossible values strongly depend on your cpu.\nFor available frequencies see tlp-stat output, Section \"+++ Processor\"."
         },
         {
           "id": "CPU_SCALING_MIN_FREQ_ON_BAT",
           "type": "entry",
           "values": "",
-          "description": "Set the min/max frequency available for the scaling governor.\nPossible values strongly depend on your cpu.\nFor available frequencies see tlp-stat output, Section \"+++ Processor\".\nHint: Parameters are disabled by default, remove the leading # to enable them,\notherwise kernel default values are used."
+          "description": "Set the min/max frequency available for the scaling governor.\nPossible values strongly depend on your cpu.\nFor available frequencies see tlp-stat output, Section \"+++ Processor\"."
         },
         {
           "id": "CPU_SCALING_MAX_FREQ_ON_BAT",
           "type": "entry",
           "values": "",
-          "description": "Set the min/max frequency available for the scaling governor.\nPossible values strongly depend on your cpu.\nFor available frequencies see tlp-stat output, Section \"+++ Processor\".\nHint: Parameters are disabled by default, remove the leading # to enable them,\notherwise kernel default values are used."
+          "description": "Set the min/max frequency available for the scaling governor.\nPossible values strongly depend on your cpu.\nFor available frequencies see tlp-stat output, Section \"+++ Processor\"."
+        },
+        {
+          "id": "CPU_MIN_PERF_ON_AC",
+          "type": "entry",
+          "values": "",
+          "description": "Set Intel P-state performance: 0..100 (%)\nLimit the max/min P-state to control the power dissipation of the CPU.\nValues are stated as a percentage of the available performance.\nRequires an Intel Core i processor with intel_pstate driver."
+        },
+        {
+          "id": "CPU_MAX_PERF_ON_AC",
+          "type": "entry",
+          "values": "",
+          "description": "Set Intel P-state performance: 0..100 (%)\nLimit the max/min P-state to control the power dissipation of the CPU.\nValues are stated as a percentage of the available performance.\nRequires an Intel Core i processor with intel_pstate driver."
+        },
+        {
+          "id": "CPU_MIN_PERF_ON_BAT",
+          "type": "entry",
+          "values": "",
+          "description": "Set Intel P-state performance: 0..100 (%)\nLimit the max/min P-state to control the power dissipation of the CPU.\nValues are stated as a percentage of the available performance.\nRequires an Intel Core i processor with intel_pstate driver."
+        },
+        {
+          "id": "CPU_MAX_PERF_ON_BAT",
+          "type": "entry",
+          "values": "",
+          "description": "Set Intel P-state performance: 0..100 (%)\nLimit the max/min P-state to control the power dissipation of the CPU.\nValues are stated as a percentage of the available performance.\nRequires an Intel Core i processor with intel_pstate driver."
         },
         {
           "id": "CPU_BOOST_ON_AC",
           "type": "bselect",
           "values": "0,1",
-          "description": "Set the cpu \"turbo boost\" feature: 0=disable / 1=allow\nRequires an Intel Core i processor and kernel 3.7 or later.\nImportant:\n- This may conflict with your distribution's governor settings\n- A value of 1 does *not* activate boosting, it just allows it"
+          "description": "Set the cpu \"turbo boost\" feature: 0=disable / 1=allow\nRequires an Intel Core i processor.\nImportant:\n- This may conflict with your distribution's governor settings\n- A value of 1 does *not* activate boosting, it just allows it"
         },
         {
           "id": "CPU_BOOST_ON_BAT",
           "type": "bselect",
           "values": "0,1",
-          "description": "Set the cpu \"turbo boost\" feature: 0=disable / 1=allow\nRequires an Intel Core i processor and kernel 3.7 or later.\nImportant:\n- This may conflict with your distribution's governor settings\n- A value of 1 does *not* activate boosting, it just allows it"
+          "description": "Set the cpu \"turbo boost\" feature: 0=disable / 1=allow\nRequires an Intel Core i processor.\nImportant:\n- This may conflict with your distribution's governor settings\n- A value of 1 does *not* activate boosting, it just allows it"
         },
         {
           "id": "SCHED_POWERSAVE_ON_AC",
@@ -162,6 +192,18 @@
           "type": "entry",
           "values": "",
           "description": "Change CPU voltages aka \"undervolting\" - Kernel with PHC patch required\nFreq:voltage pairs are written to /sys/devices/system/cpu/cpu0/cpufreq/phc_controls\nCAUTION: only use this, if you thoroughly understand what you are doing!"
+        },
+        {
+          "id": "ENERGY_PERF_POLICY_ON_AC",
+          "type": "select",
+          "values": "performance,normal,powersave",
+          "description": "Set CPU performance versus energy savings policy:\nperformance, normal, powersave\nRequires kernel module msr and x86_energy_perf_policy from linux-tools"
+        },
+        {
+          "id": "ENERGY_PERF_POLICY_ON_BAT",
+          "type": "select",
+          "values": "performance,normal,powersave",
+          "description": "Set CPU performance versus energy savings policy:\nperformance, normal, powersave\nRequires kernel module msr and x86_energy_perf_policy from linux-tools"
         }
       ]
     },
@@ -220,6 +262,12 @@
           "type": "entry",
           "values": "",
           "description": "Exclude pci(e) device adresses the following list from Runtime PM\n(separate with spaces). Use lspci to get the adresses (1st column)."
+        },
+        {
+          "id": "RUNTIME_PM_DRIVER_BLACKLIST",
+          "type": "entry",
+          "values": "",
+          "description": "Exclude PCI(e) devices assigned to the listed drivers from Runtime PM\n(should prevent accidential power on of hybrid graphics' discrete part).\nDefault is \"radeon nouveau\"; use \"\" to disable the feature completely.\nSeparate multiple drivers with spaces."
         }
       ]
     },
@@ -243,6 +291,12 @@
           "type": "bselect",
           "values": "0,1",
           "description": "WWAN devices are excluded from usb autosuspend:\n0=do not exclude / 1=exclude\nNote: works for ids 05c6:* 0bdb:* 1199:* only"
+        },
+        {
+          "id": "USB_WHITELIST",
+          "type": "entry",
+          "values": "",
+          "description": "Include listed devices into USB autosuspend even if already excluded\nby the driver or WWAN blacklists above (separate with spaces).\nUse lsusb to get the ids."
         },
         {
           "id": "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN",
@@ -371,6 +425,24 @@
           "type": "check",
           "values": "bluetooth,wifi,wwan",
           "description": "Radio devices to enable on shutdown: bluetooth wifi wwan\n(to prevent other operating systems from missing radios)"
+        },
+        {
+          "id": "DEVICES_TO_ENABLE_ON_AC",
+          "type": "check",
+          "values": "bluetooth,wifi,wwan",
+          "description": "Radio devices to enable on AC: bluetooth, wifi, wwan"
+        },
+        {
+          "id": "DEVICES_TO_DISABLE_ON_BAT",
+          "type": "check",
+          "values": "bluetooth,wifi,wwan",
+          "description": "Radio devices to disable on battery: bluetooth, wifi, wwan"
+        },
+        {
+          "id": "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE",
+          "type": "check",
+          "values": "bluetooth,wifi,wwan",
+          "description": "Radio devices to disable on battery when not in use (not connected):\nbluetooth, wifi, wwan"
         }
       ]
     },
