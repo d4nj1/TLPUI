@@ -1,11 +1,13 @@
-from gi.repository import Gtk, Gdk
 from collections import OrderedDict
 from io import open
 from json import load
 
-from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkcheckbutton, gtkspinbutton, gtktoggle
-from file import read_tlp_file_config, write_tlp_file_config
+from gi.repository import Gtk, Gdk
+
 from config import get_changed_properties
+from file import read_tlp_file_config, write_tlp_file_config
+from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkcheckbutton, gtkspinbutton, gtktoggle
+from statui import create_stat_box
 
 
 def close_window(self, event):
@@ -166,10 +168,6 @@ def save_tlp_config(self, filenamepointer, tlpconfig, window):
     dialog.destroy()
 
 
-def fetch_tlp_stat(self, textbuffer):
-    textbuffer.set_text('button clicked, further implementation needed')
-
-
 def create_settings_box(window, configpath, tlp_config_items):
     fileentry = Gtk.Label(configpath)
     fileentry.set_alignment(0, 0.5)
@@ -218,33 +216,6 @@ def create_config_box(tlp_config_items) -> Gtk.Box:
     containerbox.pack_start(notebook, True, True, 0)
 
     return containerbox
-
-
-def create_stat_box() -> Gtk.Box:
-    textbuffer = Gtk.TextBuffer()
-    textbuffer.set_text('Click button to receive results')
-
-    textview = Gtk.TextView()
-    textview.set_buffer(textbuffer)
-
-    emptylabel = Gtk.Label()
-
-    fetchbutton = Gtk.Button(label=' Fetch stats', image=Gtk.Image(stock=Gtk.STOCK_CONVERT))
-    fetchbutton.connect('clicked', fetch_tlp_stat, textbuffer)
-
-    buttonbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
-    buttonbox.pack_start(emptylabel, True, True, 0)
-    buttonbox.pack_start(fetchbutton, False, False, 0)
-
-    statbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
-    statbox.set_margin_top(18)
-    statbox.set_margin_bottom(18)
-    statbox.set_margin_left(18)
-    statbox.set_margin_right(18)
-    statbox.pack_start(buttonbox, False, False, 0)
-    statbox.pack_start(textview, True, True, 0)
-
-    return statbox
 
 
 def create_content_box(window, configpath, tlp_config_items) -> Gtk.Box:
