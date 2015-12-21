@@ -7,13 +7,13 @@
           "id": "TLP_ENABLE",
           "type": "bselect",
           "values": "0,1",
-          "description": "Set to 0 to disable, 1 to enable TLP."
+          "description": "Set to disable/enable TLP."
         },
         {
           "id": "TLP_DEFAULT_MODE",
-          "type": "bselect",
+          "type": "select",
           "values": "BAT,AC",
-          "description": "Operation mode when no power supply can be detected: AC, BAT\nConcerns some desktop and embedded hardware only."
+          "description": "Operation mode when no power supply can be detected.\nConcerns some desktop and embedded hardware only."
         }
       ]
     },
@@ -84,13 +84,13 @@
           "id": "SATA_LINKPWR_ON_AC",
           "type": "select",
           "values": "min_power,medium_power,max_performance",
-          "description": "SATA aggressive link power management (ALPM):\nmin_power/medium_power/max_performance"
+          "description": "SATA aggressive link power management (ALPM)."
         },
         {
           "id": "SATA_LINKPWR_ON_BAT",
           "type": "select",
           "values": "min_power,medium_power,max_performance",
-          "description": "SATA aggressive link power management (ALPM):\nmin_power/medium_power/max_performance"
+          "description": "SATA aggressive link power management (ALPM)."
         }
       ]
     },
@@ -161,13 +161,13 @@
           "id": "CPU_BOOST_ON_AC",
           "type": "bselect",
           "values": "0,1",
-          "description": "Set the cpu \"turbo boost\" feature: 0=disable / 1=allow\nRequires an Intel Core i processor.\nImportant:\n- This may conflict with your distribution's governor settings\n- A value of 1 does *not* activate boosting, it just allows it"
+          "description": "Set the cpu \"turbo boost\" feature.\nRequires an Intel Core i processor.\nImportant:\n- This may conflict with your distribution's governor settings\n- A value of 1 does *not* activate boosting, it just allows it"
         },
         {
           "id": "CPU_BOOST_ON_BAT",
           "type": "bselect",
           "values": "0,1",
-          "description": "Set the cpu \"turbo boost\" feature: 0=disable / 1=allow\nRequires an Intel Core i processor.\nImportant:\n- This may conflict with your distribution's governor settings\n- A value of 1 does *not* activate boosting, it just allows it"
+          "description": "Set the cpu \"turbo boost\" feature.\nRequires an Intel Core i processor.\nImportant:\n- This may conflict with your distribution's governor settings\n- A value of 1 does *not* activate boosting, it just allows it"
         },
         {
           "id": "SCHED_POWERSAVE_ON_AC",
@@ -185,7 +185,7 @@
           "id": "NMI_WATCHDOG",
           "type": "bselect",
           "values": "0,1",
-          "description": "Kernel NMI Watchdog\n0=disable (default, saves power) / 1=enable (for kernel debugging only)"
+          "description": "Kernel NMI Watchdog\ndisable (default, saves power) / enable (for kernel debugging only)"
         },
         {
           "id": "PHC_CONTROLS",
@@ -197,13 +197,13 @@
           "id": "ENERGY_PERF_POLICY_ON_AC",
           "type": "select",
           "values": "performance,normal,powersave",
-          "description": "Set CPU performance versus energy savings policy:\nperformance, normal, powersave\nRequires kernel module msr and x86_energy_perf_policy from linux-tools"
+          "description": "Set CPU performance versus energy savings policy.\nRequires kernel module msr and x86_energy_perf_policy from linux-tools"
         },
         {
           "id": "ENERGY_PERF_POLICY_ON_BAT",
           "type": "select",
           "values": "performance,normal,powersave",
-          "description": "Set CPU performance versus energy savings policy:\nperformance, normal, powersave\nRequires kernel module msr and x86_energy_perf_policy from linux-tools"
+          "description": "Set CPU performance versus energy savings policy.\nRequires kernel module msr and x86_energy_perf_policy from linux-tools"
         }
       ]
     },
@@ -214,7 +214,7 @@
           "id": "BAY_POWEROFF_ON_BAT",
           "type": "bselect",
           "values": "0,1",
-          "description": "Set to 1 to power off optical drive in UltraBay/MediaBay when running on battery.\nA value of 0 disables this Feature (Default).\nDrive can be powered on again by releasing (and reinserting) the\neject lever or by pressing the disc eject button on newer models.\nNote: an UltraBay/MediaBay hard disk is never powered off."
+          "description": "Set to power off optical drive in UltraBay/MediaBay when running on battery.\nOtherwise this feature is disabled (Default).\nDrive can be powered on again by releasing (and reinserting) the\neject lever or by pressing the disc eject button on newer models.\nNote: an UltraBay/MediaBay hard disk is never powered off."
         },
         {
           "id": "BAY_DEVICE",
@@ -231,31 +231,31 @@
           "id": "PCIE_ASPM_ON_AC",
           "type": "select",
           "values": "default,performance,powersave",
-          "description": "PCI Express Active State Power Management (PCIe ASPM):\ndefault/performance/powersave"
+          "description": "PCI Express Active State Power Management (PCIe ASPM)."
         },
         {
           "id": "PCIE_ASPM_ON_BAT",
           "type": "select",
           "values": "default,performance,powersave",
-          "description": "PCI Express Active State Power Management (PCIe ASPM):\ndefault/performance/powersave"
+          "description": "PCI Express Active State Power Management (PCIe ASPM)."
         },
         {
           "id": "RUNTIME_PM_ON_AC",
           "type": "select",
-          "values": "on,auto,ondemand",
-          "description": "Runtime Power Management for pci(e) bus devices\n(Kernel ,>= 2.6.35 only): on=disable/auto=enable"
+          "values": "on,auto",
+          "description": "Runtime Power Management for PCI(e) bus devices: on=disable, auto=enable"
         },
         {
           "id": "RUNTIME_PM_ON_BAT",
           "type": "select",
-          "values": "on,auto,ondemand",
-          "description": "Runtime Power Management for pci(e) bus devices\n(Kernel ,>= 2.6.35 only): on=disable/auto=enable"
+          "values": "on,auto",
+          "description": "Runtime Power Management for PCI(e) bus devices: on=disable, auto=enable"
         },
         {
           "id": "RUNTIME_PM_ALL",
           "type": "bselect",
           "values": "0,1",
-          "description": "Runtime PM for *all* pci(e) bus devices, except blacklisted ones:\n0=disable / 1=enable"
+          "description": "Runtime PM for *all* pci(e) bus devices, except blacklisted ones."
         },
         {
           "id": "RUNTIME_PM_BLACKLIST",
@@ -278,7 +278,7 @@
           "id": "USB_AUTOSUSPEND",
           "type": "bselect",
           "values": "0,1",
-          "description": "Set to 0 to disable/1 to enable usb autosuspend feature"
+          "description": "Disable/enable usb autosuspend feature"
         },
         {
           "id": "USB_BLACKLIST",
@@ -290,7 +290,7 @@
           "id": "USB_BLACKLIST_WWAN",
           "type": "bselect",
           "values": "0,1",
-          "description": "WWAN devices are excluded from usb autosuspend:\n0=do not exclude / 1=exclude\nNote: works for ids 05c6:* 0bdb:* 1199:* only"
+          "description": "WWAN devices are excluded from usb autosuspend:\nexclude / do not exclude\nNote: works for ids 05c6:* 0bdb:* 1199:* only"
         },
         {
           "id": "USB_WHITELIST",
@@ -302,7 +302,7 @@
           "id": "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN",
           "type": "bselect",
           "values": "0,1",
-          "description": "Set to 1 to disable autosuspend before shutdown/0 to do nothing\n(workaround for usb devices that cause shutdown problems)"
+          "description": "Set to disable autosuspend before shutdown / otherwise to do nothing\n(workaround for usb devices that cause shutdown problems)"
         }
       ]
     },
@@ -313,37 +313,37 @@
           "id": "RADEON_POWER_PROFILE_ON_AC",
           "type": "select",
           "values": "low,mid,high,auto,default",
-          "description": "Radeon graphics clock speed (profile method): low/mid/high/auto/default\nauto = mid on BAT, high on AC; default = use hardware defaults\n(Kernel ,>= 2.6.35 only, not with fglrx driver!)"
+          "description": "Radeon graphics clock speed (profile method).\nauto = mid on BAT, high on AC; default = use hardware defaults\n(Kernel ,>= 2.6.35 only, not with fglrx driver!)"
         },
         {
           "id": "RADEON_POWER_PROFILE_ON_BAT",
           "type": "select",
           "values": "low,mid,high,auto,default",
-          "description": "Radeon graphics clock speed (profile method): low/mid/high/auto/default\nauto = mid on BAT, high on AC; default = use hardware defaults\n(Kernel ,>=2.6.35 only, not with fglrx driver!)"
+          "description": "Radeon graphics clock speed (profile method).\nauto = mid on BAT, high on AC; default = use hardware defaults\n(Kernel ,>=2.6.35 only, not with fglrx driver!)"
         },
         {
           "id": "RADEON_DPM_STATE_ON_AC",
           "type": "select",
           "values": "battery,performance",
-          "description": "New radeon dynamic power management method (dpm): battery/performance\n(Kernel ,>= 3.11 only, requires boot option radeon.dpm=1)"
+          "description": "New radeon dynamic power management method (dpm).\n(Kernel ,>= 3.11 only, requires boot option radeon.dpm=1)"
         },
         {
           "id": "RADEON_DPM_STATE_ON_BAT",
           "type": "select",
           "values": "battery,performance",
-          "description": "New radeon dynamic power management method (dpm): battery/performance\n(Kernel ,>= 3.11 only, requires boot option radeon.dpm=1)"
+          "description": "New radeon dynamic power management method (dpm).\n(Kernel ,>= 3.11 only, requires boot option radeon.dpm=1)"
         },
         {
           "id": "RADEON_DPM_PERF_LEVEL_ON_AC",
           "type": "select",
           "values": "auto,low,high",
-          "description": "New radeon dpm performance level: auto/low/high (auto is recommended)"
+          "description": "New radeon dpm performance level. (auto is recommended)"
         },
         {
           "id": "RADEON_DPM_PERF_LEVEL_ON_BAT",
           "type": "select",
           "values": "auto,low,high",
-          "description": "New radeon dpm performance level: auto/low/high (auto is recommended)"
+          "description": "New radeon dpm performance level. (auto is recommended)"
         }
       ]
     },
@@ -354,19 +354,19 @@
           "id": "WIFI_PWR_ON_AC",
           "type": "bselect",
           "values": "0,5",
-          "description": "WiFi power saving mode: 0=disable/5=enable\n(Linux 2.6.32 and later, some adapters only!)"
+          "description": "WiFi power saving mode.\n(Linux 2.6.32 and later, some adapters only!)"
         },
         {
           "id": "WIFI_PWR_ON_BAT",
           "type": "bselect",
           "values": "0,5",
-          "description": "WiFi power saving mode: 0=disable/5=enable\n(Linux 2.6.32 and later, some adapters only!)"
+          "description": "WiFi power saving mode.\n(Linux 2.6.32 and later, some adapters only!)"
         },
         {
           "id": "WOL_DISABLE",
           "type": "bselect",
           "values": "Y,N",
-          "description": "Disable wake on lan: Y/N"
+          "description": "Disable wake on lan."
         }
       ]
     },
@@ -375,21 +375,21 @@
       "configs": [
         {
           "id": "SOUND_POWER_SAVE_ON_AC",
-          "type": "select",
+          "type": "bselect",
           "values": "0,1",
-          "description": "Enable audio power saving for Intel HDA, AC97 devices (timeout in secs).\nA value of 0 disables / ,>=1 enables power save."
+          "description": "Enable audio power saving for Intel HDA, AC97 devices (timeout in secs)."
         },
         {
           "id": "SOUND_POWER_SAVE_ON_BAT",
-          "type": "select",
+          "type": "bselect",
           "values": "0,1",
-          "description": "Enable audio power saving for Intel HDA, AC97 devices (timeout in secs).\nA value of 0 disables / ,>=1 enables power save."
+          "description": "Enable audio power saving for Intel HDA, AC97 devices (timeout in secs)."
         },
         {
           "id": "SOUND_POWER_SAVE_CONTROLLER",
-          "type": "select",
+          "type": "bselect",
           "values": "Y,N",
-          "description": "Disable controller too (HDA only): Y/N"
+          "description": "Disable controller too (HDA only)."
         }
       ]
     },
@@ -398,9 +398,9 @@
       "configs": [
         {
           "id": "RESTORE_DEVICE_STATE_ON_STARTUP",
-          "type": "select",
+          "type": "bselect",
           "values": "0,1",
-          "description": "Restore radio device state (bluetooth, wifi, wwan) from previous shutdown\non system startup: 0=disable/1=enable\nHint: the parameters DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN below\nare ignored when this is enabled!"
+          "description": "Restore radio device state (bluetooth, wifi, wwan) from previous shutdown\non system startup.\nHint: the parameters DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN below\nare ignored when this is enabled!"
         },
         {
           "id": "DEVICES_TO_DISABLE_ON_STARTUP",
