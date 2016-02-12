@@ -1,8 +1,8 @@
 import unittest
 from json import load
 
+from configui import get_tlp_categories
 from file import read_tlp_file_config
-from ui import create_tlp_ui_categories
 
 
 def get_config_count(categories):
@@ -16,7 +16,7 @@ def get_config_count(categories):
 class MyTestCase(unittest.TestCase):
     def test_config_categories(self):
         configfilelist = read_tlp_file_config("/etc/default/tlp")
-        configfilecategories = create_tlp_ui_categories(configfilelist)
+        configfilecategories = get_tlp_categories(configfilelist)
 
         self.assertEqual(len(configfilecategories), 12)
 
