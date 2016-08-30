@@ -39,6 +39,7 @@ def create_stat_box() -> Gtk.Box:
 
     textview = Gtk.TextView()
     textview.set_buffer(textbuffer)
+    textview.set_editable(False)
 
     scrolledwindow.add(textview)
 

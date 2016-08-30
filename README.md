@@ -24,16 +24,17 @@ What works:
 * Configuration can be read and displayed
 * Changes can be saved with user permissions
 * Must be run with sudo to save system configuration (/etc/default/tlp)
-* tlp-stat can be load to ui
+* tlp-stat can be load in ui
 
 To be done:
 
-* Add/optimize value definitions
-* Localization
-* Jump to last active tab after reload/save
+* Add/optimize value definitions -> Extract disk configuration for all disks found
+* Localization -> Create language po/mo files with library
+* Jump to last active tab after reload/save -> Use singleton to store last clicked tab-category (notebook_get_current_page)
 * Refactor Python code
 * UI improvements for better usability
 * Add debian package build script
+* Light/dark themed icons
 
 
 ![Screenshot 07.05.2015](https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshot.png)

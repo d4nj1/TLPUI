@@ -13,7 +13,7 @@ def create_config_box(tlp_config_items) -> Gtk.Box:
     notebook.set_tab_pos(Gtk.PositionType.LEFT)
 
     tlp_categories = get_tlp_categories(tlp_config_items)
-    for label, configitem in tlp_categories.items():
+    for label, category in tlp_categories.items():
         categorylabel = Gtk.Label(label)
         categorylabel.set_alignment(1, 0.5)
         categorylabel.set_margin_top(6)
@@ -23,12 +23,18 @@ def create_config_box(tlp_config_items) -> Gtk.Box:
 
         viewport = Gtk.Viewport()
         viewport.set_name('categoryViewport')
-        viewport.add(configitem)
+        viewport.add(category)
 
         scroll = Gtk.ScrolledWindow()
         scroll.add(viewport)
+        image = Gtk.Image.new_from_file('icons/' + label + '.svg')
 
-        notebook.append_page(scroll, categorylabel)
+        labelbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
+        labelbox.pack_start(image, False, False, 0)
+        labelbox.pack_start(categorylabel, True, True, 0)
+        labelbox.show_all()
+
+        notebook.append_page(scroll, labelbox)
 
     containerbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
     containerbox.pack_start(notebook, True, True, 0)
