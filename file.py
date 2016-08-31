@@ -1,9 +1,25 @@
 import re
-from os import remove, close
+from io import open
+from json import load
+from os import remove, close, path
 from shutil import move
 from tempfile import mkstemp
 
 from config import TlpConfig
+
+
+def get_json_schema_object(objectname) -> dict:
+    tlpprovidedschema = '/usr/share/tlp-pm/configschema.json'
+    if path.exists(tlpprovidedschema):
+        return get_json_schema_object_from_file(objectname, tlpprovidedschema)
+    else:
+        return get_json_schema_object_from_file(objectname, 'configschema.json')
+
+
+def get_json_schema_object_from_file(objectname, filename) -> dict:
+    jsonfile = open(filename)
+    jsonobject = load(jsonfile)
+    return jsonobject[objectname]
 
 
 def read_tlp_file_config(filename) -> list:
@@ -69,5 +85,3 @@ def write_tlp_file_config(changedproperties, filename):
 
     remove(filename)
     move(tmpfilename, filename)
-
-    # print('Config file written.')

@@ -2,7 +2,7 @@ import unittest
 from json import load
 
 from configui import get_tlp_categories
-from file import read_tlp_file_config
+from file import read_tlp_file_config, get_json_schema_object_from_file
 
 
 def get_config_count(categories):
@@ -25,9 +25,7 @@ class MyTestCase(unittest.TestCase):
         configfilelist = read_tlp_file_config("/etc/default/tlp")
 
         # json config
-        jsonfile = open('configcategories.json')
-        jsonobject = load(jsonfile)
-        jsoncategories = jsonobject['categories']
+        jsoncategories = get_json_schema_object_from_file('categories', 'configschema.json')
         jsonconfigcount = get_config_count(jsoncategories)
 
         self.assertEqual(len(configfilelist), 80)

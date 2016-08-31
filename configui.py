@@ -1,10 +1,12 @@
-from collections import OrderedDict
-from io import open
-from json import load
+import gi
 
+gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
+from collections import OrderedDict
+
 from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkcheckbutton, gtkspinbutton, gtktoggle
+from file import get_json_schema_object
 
 
 def create_config_box(tlp_config_items) -> Gtk.Box:
@@ -110,10 +112,7 @@ def create_item_box(tlpobject, objecttype, objectvalues, doc) -> Gtk.Box:
 
 def get_tlp_categories(tlpconfig) -> OrderedDict:
     propertyobjects = OrderedDict()
-    jsonfile = open('configcategories.json')
-    jsonobject = load(jsonfile)
-
-    categories = jsonobject['categories']
+    categories = get_json_schema_object('categories')
 
     for category in categories:
         label = category['name']
