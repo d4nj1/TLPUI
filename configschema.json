@@ -397,14 +397,14 @@
               "id": "CPU_SCALING_GOVERNOR_ON_AC",
               "type": "select",
               "values": "ondemand,schedutil,powersave,performance,conservative",
-              "default_value": "ondemand",
+              "default_value": "powersave",
               "default_state": false
             },
             {
               "id": "CPU_SCALING_GOVERNOR_ON_BAT",
               "type": "select",
               "values": "ondemand,schedutil,powersave,performance,conservative",
-              "default_value": "ondemand",
+              "default_value": "powersave",
               "default_state": false
             }
           ]
