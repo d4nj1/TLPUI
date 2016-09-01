@@ -1,4 +1,4 @@
-TLPUI - 12.02.2016
+TLPUI - 01.09.2016
 
 The Python scripts in this projects generate a GTK-UI to change TLP configuration files easily.
 It has the aim to protect users from setting bad configuration and to deliver a basic overview of all the valid configuration values.
@@ -37,4 +37,4 @@ To be done:
 * Light/dark themed icons
 
 
-![Screenshot 07.05.2015](https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshot.png)
+![Screenshot 01.09.2016](https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshot.png)
