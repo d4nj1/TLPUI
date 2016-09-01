@@ -9,7 +9,7 @@
           "values": "0,1",
           "default_value": "1",
           "default_state": true,
-          "description": "Set to disable/enable TLP."
+          "description": "Enable/disable TLP."
         },
         {
           "id": "TLP_DEFAULT_MODE",
@@ -17,12 +17,45 @@
           "values": "AC,BAT",
           "default_value": "AC",
           "default_state": true,
-          "description": "Operation mode when no power supply can be detected.\nConcerns some desktop and embedded hardware only."
+          "description": "Operation mode when no power supply can be detected: AC, BAT.\nConcerns some desktop and embedded hardware only."
         }
       ]
     },
     {
-      "name": "Disk",
+      "name": "Audio",
+      "configs": [
+        {
+          "group": "SOUND_POWER_SAVE",
+          "description": "Enable audio power saving for Intel HDA, AC97 devices.",
+          "ids": [
+            {
+              "id": "SOUND_POWER_SAVE_ON_AC",
+              "type": "bselect",
+              "values": "0,1",
+              "default_value": "0",
+              "default_state": true
+            },
+            {
+              "id": "SOUND_POWER_SAVE_ON_BAT",
+              "type": "bselect",
+              "values": "0,1",
+              "default_value": "1",
+              "default_state": true
+            }
+          ]
+        },
+        {
+          "id": "SOUND_POWER_SAVE_CONTROLLER",
+          "type": "bselect",
+          "values": "N,Y",
+          "default_value": "Y",
+          "default_state": true,
+          "description": "Disable controller too (HDA only)."
+        }
+      ]
+    },
+    {
+      "name": "Disks",
       "configs": [
         {
           "group": "DISK_IDLE_SECS",
@@ -30,15 +63,15 @@
           "ids": [
             {
               "id": "DISK_IDLE_SECS_ON_AC",
-              "type": "entry",
-              "values": "",
+              "type": "numeric",
+              "values": "0-1000",
               "default_value": 0,
               "default_state": true
             },
             {
               "id": "DISK_IDLE_SECS_ON_BAT",
-              "type": "entry",
-              "values": "",
+              "type": "numeric",
+              "values": "0-1000",
               "default_value": 2,
               "default_state": true
             }
@@ -50,15 +83,15 @@
           "ids": [
               {
               "id": "MAX_LOST_WORK_SECS_ON_AC",
-              "type": "entry",
-              "values": "",
+              "type": "numeric",
+              "values": "0-10000",
               "default_value": 15,
               "default_state": true
             },
             {
               "id": "MAX_LOST_WORK_SECS_ON_BAT",
-              "type": "entry",
-              "values": "",
+              "type": "numeric",
+              "values": "0-10000",
               "default_value": 60,
               "default_state": true
             }
@@ -74,7 +107,7 @@
         },
         {
           "group": "DISK_APM_LEVEL",
-          "description": "Hard disk advanced power management level: 1(max saving)..254(off)\nLevels 1..127 may spin down the disk.\nSeparate values for multiple devices with spaces.",
+          "description": "Hard disk advanced power management level: 1..254, 255 (max saving, min, off)\nLevels 1..127 may spin down the disk; 255 allowable on most drives.\nSeparate values for multiple disks with spaces. Use the special value 'keep'\nto keep the hardware default for the particular disk.",
           "ids": [
             {
               "id": "DISK_APM_LEVEL_ON_AC",
@@ -122,7 +155,7 @@
         },
         {
           "group": "SATA_LINKPWR",
-          "description": "SATA aggressive link power management (ALPM).",
+          "description": "SATA aggressive link power management (ALPM): min_power, medium_power, max_performance.",
           "ids": [
             {
               "id": "SATA_LINKPWR_ON_AC",
@@ -139,6 +172,217 @@
               "default_state": true
             }
           ]
+        },
+        {
+          "id": "SATA_LINKPWR_BLACKLIST",
+          "type": "entry",
+          "values": "",
+          "default_value": "host1",
+          "default_state": false,
+          "description": "Exclude SATA host devices from link power management.\n Separate multiple hosts with spaces."
+        },
+        {
+          "group": "AHCI_RUNTIME_PM",
+          "description": "Runtime Power Management for AHCI controllers and disks: on=disable, auto=enable.\n\n** EXPERIMENTAL ** WARNING: auto will most likely cause system lockups/data loss",
+          "ids": [
+            {
+              "id": "AHCI_RUNTIME_PM_ON_AC",
+              "type": "bselect",
+              "values": "on,auto",
+              "default_value": "on",
+              "default_state": false
+            },
+            {
+              "id": "AHCI_RUNTIME_PM_ON_BAT",
+              "type": "bselect",
+              "values": "on,auto",
+              "default_value": "on",
+              "default_state": false
+            }
+          ]
+        },
+        {
+          "id": "BAY_POWEROFF_ON_BAT",
+          "type": "bselect",
+          "values": "0,1",
+          "default_value": "0",
+          "default_state": true,
+          "description": "Set to power off optical drive in UltraBay/MediaBay when running on battery.\nOtherwise this feature is disabled (Default).\nDrive can be powered on again by releasing (and reinserting) the\neject lever or by pressing the disc eject button on newer models.\nNote: an UltraBay/MediaBay hard disk is never powered off."
+        },
+        {
+          "id": "BAY_DEVICE",
+          "type": "entry",
+          "values": "",
+          "default_value": "sr0",
+          "default_state": true,
+          "description": "Optical drive device to power off (default sr0)"
+        }
+      ]
+    },
+    {
+      "name": "Graphics",
+      "configs": [
+        {
+          "group": "RADEON_POWER_PROFILE",
+          "description": "Radeon graphics clock speed (profile method): low, mid, high, auto, default;\nauto = mid on BAT, high on AC; default = use hardware defaults.\nRequires open-source driver 'radeon'.",
+          "ids": [
+            {
+              "id": "RADEON_POWER_PROFILE_ON_AC",
+              "type": "select",
+              "values": "low,mid,high,auto,default",
+              "default_value": "high",
+              "default_state": true
+            },
+            {
+              "id": "RADEON_POWER_PROFILE_ON_BAT",
+              "type": "select",
+              "values": "low,mid,high,auto,default",
+              "default_value": "low",
+              "default_state": true
+            }
+          ]
+        },
+        {
+          "group": "RADEON_DPM_STATE",
+          "description": "Radeon dynamic power management method (DPM): battery, performance\nWorks with open-source driver 'radeon' only,\nrequires kernel >= 3.11 and boot 'option radeon.dpm=1'.",
+          "ids": [
+            {
+              "id": "RADEON_DPM_STATE_ON_AC",
+              "type": "select",
+              "values": "battery,performance",
+              "default_value": "performance",
+              "default_state": true
+            },
+            {
+              "id": "RADEON_DPM_STATE_ON_BAT",
+              "type": "select",
+              "values": "battery,performance",
+              "default_value": "battery",
+              "default_state": true
+            }
+          ]
+        },
+        {
+          "group": "RADEON_DPM_PERF_LEVEL",
+          "description": "Radeon DPM performance level: auto, low, high; auto is recommended.",
+          "ids": [
+            {
+              "id": "RADEON_DPM_PERF_LEVEL_ON_AC",
+              "type": "select",
+              "values": "auto,low,high",
+              "default_value": "auto",
+              "default_state": true
+            },
+            {
+              "id": "RADEON_DPM_PERF_LEVEL_ON_BAT",
+              "type": "select",
+              "values": "auto,low,high",
+              "default_value": "auto",
+              "default_state": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Network",
+      "configs": [
+        {
+          "group": "WIFI_PWR",
+          "description": "WiFi power saving mode. Not supported by all adapters.",
+          "ids": [
+            {
+              "id": "WIFI_PWR_ON_AC",
+              "type": "bselect",
+              "values": "off,on",
+              "default_value": "1",
+              "default_state": true
+            },
+            {
+              "id": "WIFI_PWR_ON_BAT",
+              "type": "bselect",
+              "values": "off,on",
+              "default_value": "5",
+              "default_state": true
+            }
+          ]
+        },
+        {
+          "id": "WOL_DISABLE",
+          "type": "bselect",
+          "values": "Y,N",
+          "default_value": "Y",
+          "default_state": true,
+          "description": "Disable wake on LAN."
+        }
+      ]
+    },
+    {
+      "name": "PCIe",
+      "configs": [
+        {
+          "group": "PCIE_ASPM",
+          "description": "PCI Express Active State Power Management (PCIe ASPM).",
+          "ids": [
+            {
+              "id": "PCIE_ASPM_ON_AC",
+              "type": "select",
+              "values": "default,performance,powersave",
+              "default_value": "performance",
+              "default_state": true
+            },
+            {
+              "id": "PCIE_ASPM_ON_BAT",
+              "type": "select",
+              "values": "default,performance,powersave",
+              "default_value": "powersave",
+              "default_state": true
+            }
+          ]
+        },
+        {
+          "group": "RUNTIME_PM",
+          "description": "Runtime Power Management for PCI(e) bus devices.",
+          "ids": [
+            {
+              "id": "RUNTIME_PM_ON_AC",
+              "type": "bselect",
+              "values": "on,auto",
+              "default_value": "on",
+              "default_state": true
+            },
+            {
+              "id": "RUNTIME_PM_ON_BAT",
+              "type": "bselect",
+              "values": "on,auto",
+              "default_value": "auto",
+              "default_state": true
+            }
+          ]
+        },
+        {
+          "id": "RUNTIME_PM_ALL",
+          "type": "bselect",
+          "values": "0,1",
+          "default_value": "1",
+          "default_state": true,
+          "description": "Runtime PM for *all* PCI(e) bus devices, except blacklisted ones."
+        },
+        {
+          "id": "RUNTIME_PM_BLACKLIST",
+          "type": "entry",
+          "values": "",
+          "default_value": "bb:dd.f 11:22.3 44:55.6",
+          "default_state": false,
+          "description": "Exclude PCI(e) device adresses the following list from Runtime PM\n(separate with spaces). Use lspci to get the adresses (1st column)."
+        },
+        {
+          "id": "RUNTIME_PM_DRIVER_BLACKLIST",
+          "type": "entry",
+          "values": "",
+          "default_value": "radeon nouveau",
+          "default_state": true,
+          "description": "Exclude PCI(e) devices assigned to the listed drivers from Runtime PM\n(should prevent accidential power on of hybrid graphics' discrete part).\nDefault is \"radeon nouveau\"; use \"\" to disable the feature completely.\nSeparate multiple drivers with spaces."
         }
       ]
     },
@@ -152,14 +396,14 @@
             {
               "id": "CPU_SCALING_GOVERNOR_ON_AC",
               "type": "select",
-              "values": "ondemand,powersave,performance,conservative",
+              "values": "ondemand,schedutil,powersave,performance,conservative",
               "default_value": "ondemand",
               "default_state": false
             },
             {
               "id": "CPU_SCALING_GOVERNOR_ON_BAT",
               "type": "select",
-              "values": "ondemand,powersave,performance,conservative",
+              "values": "ondemand,schedutil,powersave,performance,conservative",
               "default_value": "ondemand",
               "default_state": false
             }
@@ -167,7 +411,7 @@
         },
         {
           "group": "CPU_SCALING_FREQ",
-          "description": "Set the min/max frequency available for the scaling governor.\nPossible values strongly depend on your cpu.\nFor available frequencies see tlp-stat output, Section \"+++ Processor\".",
+          "description": "Set the min/max frequency available for the scaling governor.\nPossible values strongly depend on your cpu.\nFor available frequencies see tlp-stat output, Section \"Processor\".",
           "ids": [
             {
               "id": "CPU_SCALING_MIN_FREQ_ON_AC",
@@ -235,7 +479,7 @@
         },
         {
           "group": "CPU_BOOST",
-          "description": "Set the cpu \"turbo boost\" feature.\nRequires an Intel Core i processor.\nImportant:\n- This may conflict with your distribution's governor settings\n- A value of 1 does *not* activate boosting, it just allows it",
+          "description": "Set the cpu \"turbo boost\" feature.\nRequires an Intel Core i processor.\nImportant:\n- This may conflict with your distribution's governor settings\n- A value of 1 does not activate boosting, it just allows it",
           "ids": [
             {
               "id": "CPU_BOOST_ON_AC",
@@ -279,7 +523,7 @@
           "values": "0,1",
           "default_value": "0",
           "default_state": true,
-          "description": "Kernel NMI Watchdog\ndisable (default, saves power) / enable (for kernel debugging only)"
+          "description": "Kernel NMI Watchdog\noff: saves power, on: for kernel debugging only"
         },
         {
           "id": "PHC_CONTROLS",
@@ -287,7 +531,7 @@
           "values": "",
           "default_value": "F:V F:V F:V F:V",
           "default_state": false,
-          "description": "Change CPU voltages aka \"undervolting\" - Kernel with PHC patch required\nFreq:voltage pairs are written to /sys/devices/system/cpu/cpu0/cpufreq/phc_controls\nCAUTION: only use this, if you thoroughly understand what you are doing!"
+          "description": "Change CPU voltages aka \"undervolting\"\nKernel with PHC patch required\nFreq:voltage pairs are written to /sys/devices/system/cpu/cpu0/cpufreq/phc_controls\nCAUTION: only use this, if you thoroughly understand what you are doing!"
         },
         {
           "group": "ENERGY_PERF_POLICY",
@@ -308,272 +552,6 @@
               "default_state": true
             }
           ]
-        }
-      ]
-    },
-    {
-      "name": "Dock",
-      "configs": [
-        {
-          "id": "BAY_POWEROFF_ON_BAT",
-          "type": "bselect",
-          "values": "0,1",
-          "default_value": "0",
-          "default_state": true,
-          "description": "Set to power off optical drive in UltraBay/MediaBay when running on battery.\nOtherwise this feature is disabled (Default).\nDrive can be powered on again by releasing (and reinserting) the\neject lever or by pressing the disc eject button on newer models.\nNote: an UltraBay/MediaBay hard disk is never powered off."
-        },
-        {
-          "id": "BAY_DEVICE",
-          "type": "entry",
-          "values": "",
-          "default_value": "sr0",
-          "default_state": true,
-          "description": "Optical drive device to power off (default sr0)"
-        }
-      ]
-    },
-    {
-      "name": "Devices",
-      "configs": [
-        {
-          "group": "PCIE_ASPM",
-          "description": "PCI Express Active State Power Management (PCIe ASPM).",
-          "ids": [
-            {
-              "id": "PCIE_ASPM_ON_AC",
-              "type": "select",
-              "values": "default,performance,powersave",
-              "default_value": "performance",
-              "default_state": true
-            },
-            {
-              "id": "PCIE_ASPM_ON_BAT",
-              "type": "select",
-              "values": "default,performance,powersave",
-              "default_value": "powersave",
-              "default_state": true
-            }
-          ]
-        },
-        {
-          "group": "RUNTIME_PM",
-          "description": "Runtime Power Management for PCI(e) bus devices: on=disable, auto=enable",
-          "ids": [
-            {
-              "id": "RUNTIME_PM_ON_AC",
-              "type": "select",
-              "values": "on,auto",
-              "default_value": "on",
-              "default_state": true
-            },
-            {
-              "id": "RUNTIME_PM_ON_BAT",
-              "type": "select",
-              "values": "on,auto",
-              "default_value": "auto",
-              "default_state": true
-            }
-          ]
-        },
-        {
-          "id": "RUNTIME_PM_ALL",
-          "type": "bselect",
-          "values": "0,1",
-          "default_value": "1",
-          "default_state": true,
-          "description": "Runtime PM for *all* pci(e) bus devices, except blacklisted ones."
-        },
-        {
-          "id": "RUNTIME_PM_BLACKLIST",
-          "type": "entry",
-          "values": "",
-          "default_value": "bb:dd.f 11:22.3 44:55.6",
-          "default_state": false,
-          "description": "Exclude pci(e) device adresses the following list from Runtime PM\n(separate with spaces). Use lspci to get the adresses (1st column)."
-        },
-        {
-          "id": "RUNTIME_PM_DRIVER_BLACKLIST",
-          "type": "entry",
-          "values": "",
-          "default_value": "radeon nouveau",
-          "default_state": true,
-          "description": "Exclude PCI(e) devices assigned to the listed drivers from Runtime PM\n(should prevent accidential power on of hybrid graphics' discrete part).\nDefault is \"radeon nouveau\"; use \"\" to disable the feature completely.\nSeparate multiple drivers with spaces."
-        }
-      ]
-    },
-    {
-      "name": "USB",
-      "configs": [
-        {
-          "id": "USB_AUTOSUSPEND",
-          "type": "bselect",
-          "values": "0,1",
-          "default_value": "1",
-          "default_state": true,
-          "description": "Disable/enable usb autosuspend feature"
-        },
-        {
-          "id": "USB_BLACKLIST",
-          "type": "entry",
-          "values": "",
-          "default_value": "1111:2222 3333:4444",
-          "default_state": false,
-          "description": "Devices from the following list are excluded from usb autosuspend\n(separate with spaces). Use lsusb to get the ids.\nNote: input devices (usbhid) are excluded automatically"
-        },
-        {
-          "id": "USB_BLACKLIST_WWAN",
-          "type": "bselect",
-          "values": "0,1",
-          "default_value": "1",
-          "default_state": true,
-          "description": "WWAN devices are excluded from usb autosuspend:\nexclude / do not exclude\nNote: works for ids 05c6:* 0bdb:* 1199:* only"
-        },
-        {
-          "id": "USB_WHITELIST",
-          "type": "entry",
-          "values": "",
-          "default_value": "1111:2222 3333:4444",
-          "default_state": false,
-          "description": "Include listed devices into USB autosuspend even if already excluded\nby the driver or WWAN blacklists above (separate with spaces).\nUse lsusb to get the ids."
-        },
-        {
-          "id": "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN",
-          "type": "bselect",
-          "values": "0,1",
-          "default_value": "1",
-          "default_state": false,
-          "description": "Set to disable autosuspend before shutdown / otherwise to do nothing\n(workaround for usb devices that cause shutdown problems)"
-        }
-      ]
-    },
-    {
-      "name": "Graphics",
-      "configs": [
-        {
-          "group": "RADEON_POWER_PROFILE",
-          "description": "Radeon graphics clock speed (profile method): low, mid, high, auto, default;\nauto = mid on BAT, high on AC; default = use hardware defaults.\n(Kernel >= 2.6.35 only, open-source radeon driver explicitly)",
-          "ids": [
-            {
-              "id": "RADEON_POWER_PROFILE_ON_AC",
-              "type": "select",
-              "values": "low,mid,high,auto,default",
-              "default_value": "high",
-              "default_state": true
-            },
-            {
-              "id": "RADEON_POWER_PROFILE_ON_BAT",
-              "type": "select",
-              "values": "low,mid,high,auto,default",
-              "default_value": "low",
-              "default_state": true
-            }
-          ]
-        },
-        {
-          "group": "RADEON_DPM_STATE",
-          "description": "Radeon dynamic power management method (DPM): battery, performance\n(Kernel >= 3.11 only, requires boot option radeon.dpm=1)",
-          "ids": [
-            {
-              "id": "RADEON_DPM_STATE_ON_AC",
-              "type": "select",
-              "values": "battery,performance",
-              "default_value": "performance",
-              "default_state": true
-            },
-            {
-              "id": "RADEON_DPM_STATE_ON_BAT",
-              "type": "select",
-              "values": "battery,performance",
-              "default_value": "battery",
-              "default_state": true
-            }
-          ]
-        },
-        {
-          "group": "RADEON_DPM_PERF_LEVEL",
-          "description": "Radeon DPM performance level: auto, low, high; auto is recommended.",
-          "ids": [
-            {
-              "id": "RADEON_DPM_PERF_LEVEL_ON_AC",
-              "type": "select",
-              "values": "auto,low,high",
-              "default_value": "auto",
-              "default_state": true
-            },
-            {
-              "id": "RADEON_DPM_PERF_LEVEL_ON_BAT",
-              "type": "select",
-              "values": "auto,low,high",
-              "default_value": "auto",
-              "default_state": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Network",
-      "configs": [
-        {
-          "group": "WIFI_PWR",
-          "description": "WiFi power saving mode. not supported by all adapters.",
-          "ids": [
-            {
-              "id": "WIFI_PWR_ON_AC",
-              "type": "bselect",
-              "values": "1,5",
-              "default_value": "1",
-              "default_state": true
-            },
-            {
-              "id": "WIFI_PWR_ON_BAT",
-              "type": "bselect",
-              "values": "1,5",
-              "default_value": "5",
-              "default_state": true
-            }
-          ]
-        },
-        {
-          "id": "WOL_DISABLE",
-          "type": "bselect",
-          "values": "Y,N",
-          "default_value": "Y",
-          "default_state": true,
-          "description": "Disable wake on LAN."
-        }
-      ]
-    },
-    {
-      "name": "Audio",
-      "configs": [
-        {
-          "group": "SOUND_POWER_SAVE",
-          "description": "Enable audio power saving for Intel HDA, AC97 devices (timeout in secs).",
-          "ids": [
-            {
-              "id": "SOUND_POWER_SAVE_ON_AC",
-              "type": "bselect",
-              "values": "0,1",
-              "default_value": "0",
-              "default_state": true
-            },
-            {
-              "id": "SOUND_POWER_SAVE_ON_BAT",
-              "type": "bselect",
-              "values": "0,1",
-              "default_value": "1",
-              "default_state": true
-            }
-          ]
-        },
-        {
-          "id": "SOUND_POWER_SAVE_CONTROLLER",
-          "type": "bselect",
-          "values": "Y,N",
-          "default_value": "Y",
-          "default_state": true,
-          "description": "Disable controller too (HDA only)."
         }
       ]
     },
@@ -746,7 +724,52 @@
       ]
     },
     {
-      "name": "Battery",
+      "name": "USB",
+      "configs": [
+        {
+          "id": "USB_AUTOSUSPEND",
+          "type": "bselect",
+          "values": "0,1",
+          "default_value": "1",
+          "default_state": true,
+          "description": "USB autosuspend feature."
+        },
+        {
+          "id": "USB_BLACKLIST",
+          "type": "entry",
+          "values": "",
+          "default_value": "1111:2222 3333:4444",
+          "default_state": false,
+          "description": "Devices from the following list are excluded from autosuspend\n(separate with spaces). Use lsusb to get the ids.\nNote: input devices (usbhid) are excluded automatically."
+        },
+        {
+          "id": "USB_BLACKLIST_WWAN",
+          "type": "bselect",
+          "values": "0,1",
+          "default_value": "1",
+          "default_state": true,
+          "description": "WWAN devices are excluded from autosuspend.\nNote: works for ids 05c6:* 0bdb:* 1199:* only."
+        },
+        {
+          "id": "USB_WHITELIST",
+          "type": "entry",
+          "values": "",
+          "default_value": "1111:2222 3333:4444",
+          "default_state": false,
+          "description": "Include listed devices into autosuspend even if already excluded\nby the driver or WWAN blacklists above (separate with spaces).\nUse lsusb to get the ids."
+        },
+        {
+          "id": "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN",
+          "type": "bselect",
+          "values": "0,1",
+          "default_value": "1",
+          "default_state": false,
+          "description": "Set to disable autosuspend before shutdown / otherwise to do nothing\n(workaround for USB devices that cause shutdown problems)"
+        }
+      ]
+    },
+    {
+      "name": "ThinkPad Battery",
       "configs": [
         {
           "group": "CHARGE_THRESH_BAT0",
