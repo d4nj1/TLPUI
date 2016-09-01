@@ -22,9 +22,9 @@ def get_json_schema_object_from_file(objectname, filename) -> dict:
     return jsonobject[objectname]
 
 
-def read_tlp_file_config(filename) -> list:
+def read_tlp_file_config(filename) -> dict:
     propertypattern = re.compile('^#?[A-Z_\d]+=')
-    fileproperties = list()
+    fileproperties = dict()
     fileopener = open(filename)
     lines = fileopener.readlines()
     fileopener.close()
@@ -51,7 +51,7 @@ def read_tlp_file_config(filename) -> list:
             else:
                 isquoted = False
 
-            fileproperties.append(TlpConfig(line, linenumber, enabled, propertyname, propertyvalue, isquoted))
+            fileproperties[propertyname] = TlpConfig(line, linenumber, enabled, propertyname, propertyvalue, isquoted)
 
     return fileproperties
 

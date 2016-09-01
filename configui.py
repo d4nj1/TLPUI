@@ -44,28 +44,7 @@ def create_config_box(tlp_config_items) -> Gtk.Box:
     return containerbox
 
 
-def create_item_box(tlpobject, objecttype, objectvalues, doc) -> Gtk.Box:
-    tlpuiobject = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=18)
-    tlpuiobject.set_margin_left(18)
-    tlpuiobject.set_margin_right(18)
-
-    configuibox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
-    statetogglebox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
-    tlpconfigbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
-
-    # on/off state
-    toggle = gtktoggle.create_toggle_button(tlpobject, tlpconfigbox)
-    statetogglebox.pack_start(toggle, False, False, 0)
-    statetogglebox.set_halign(Gtk.Align.CENTER)
-    statetogglebox.set_valign(Gtk.Align.CENTER)
-
-    # vertical separator
-    vseparator = Gtk.VSeparator()
-
-    # horizontal separator
-    hseparator = Gtk.HSeparator()
-
-    # specific config gtk object
+def create_config_widget(objecttype, objectvalues, tlpobject) -> Gtk.Widget:
     configwidget = Gtk.Widget
 
     if (objecttype == 'entry'):
@@ -79,32 +58,73 @@ def create_item_box(tlpobject, objecttype, objectvalues, doc) -> Gtk.Box:
     elif (objecttype == 'numeric'):
         configwidget = gtkspinbutton.create_numeric_spinbutton(objectvalues, tlpobject)
 
-    configwidget.set_margin_top(6)
-    configwidget.set_margin_bottom(6)
-    configwidget.set_halign(Gtk.Align.START)
-    configwidget.set_valign(Gtk.Align.START)
+    return configwidget
 
-    # object label
-    configlabel = Gtk.Label(' <b>' + tlpobject.get_name() + '</b> ', xalign=0)
-    configlabel.set_use_markup(True)
-    configlabel.set_margin_bottom(12)
+
+def create_item_box(configobjects, doc, grouptitle) -> Gtk.Box:
+    configuibox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
+
+    if len(configobjects) > 1:
+        grouplabel = Gtk.Label()
+        grouplabel.set_markup(' <b>' + grouptitle + '</b> ')
+        grouplabel.set_use_markup(True)
+        grouplabel.set_margin_bottom(12)
+        grouplabel.set_halign(Gtk.Align.START)
+        grouplabel.set_valign(Gtk.Align.START)
+
+        configuibox.pack_start(grouplabel, False, False, 0)
+
+    for configobject in configobjects:
+        tlpobject = configobject[0]
+
+        tlpuiobject = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=18)
+        tlpuiobject.set_margin_left(18)
+        tlpuiobject.set_margin_right(18)
+
+        statetogglebox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
+        tlpconfigbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
+
+        # on/off state
+        toggle = gtktoggle.create_toggle_button(tlpobject, tlpconfigbox)
+        statetogglebox.pack_start(toggle, False, False, 0)
+        statetogglebox.set_halign(Gtk.Align.CENTER)
+        statetogglebox.set_valign(Gtk.Align.CENTER)
+
+        # horizontal separator
+        hseparator = Gtk.HSeparator()
+
+        # specific config gtk object
+        configwidget = create_config_widget(configobject[1], configobject[2], tlpobject)
+        configwidget.set_margin_top(6)
+        configwidget.set_margin_bottom(6)
+        configwidget.set_margin_left(6)
+
+        # object label
+        configlabel = Gtk.Label(xalign=0)
+        configlabel.set_markup(' <b>' + tlpobject.get_name() + '</b> ')
+        configlabel.set_use_markup(True)
+        configlabel.set_size_request(250, 0)
+
+        # combine boxes
+        tlpconfigbox.pack_start(configlabel, False, False, 0)
+        tlpconfigbox.pack_start(configwidget, True, True, 0)
+
+        tlpuiobject.pack_start(statetogglebox, False, False, 0)
+        tlpuiobject.pack_start(tlpconfigbox, False, False, 0)
+
+        configuibox.pack_start(tlpuiobject, True, True, 0)
 
     # object description
-    configdescriptionlabel = Gtk.Label('<i><small>' + doc + '</small></i>', xalign=0)
+    configdescriptionlabel = Gtk.Label()
+    configdescriptionlabel.set_markup('<i><small>' + doc + '</small></i>')
     configdescriptionlabel.set_line_wrap(True)
-    configdescriptionlabel.set_use_markup(True)
+    configdescriptionlabel.set_margin_top(6)
     configdescriptionlabel.set_margin_bottom(12)
+    configdescriptionlabel.set_margin_left(48)
+    configdescriptionlabel.set_halign(Gtk.Align.START)
+    configdescriptionlabel.set_valign(Gtk.Align.START)
 
-    # combine boxes
-    tlpconfigbox.pack_start(configwidget, True, True, 0)
-    tlpconfigbox.pack_start(configdescriptionlabel, True, True, 0)
-
-    tlpuiobject.pack_start(statetogglebox, False, False, 0)
-    tlpuiobject.pack_start(vseparator, False, False, 0)
-    tlpuiobject.pack_start(tlpconfigbox, True, True, 0)
-
-    configuibox.pack_start(configlabel, False, False, 0)
-    configuibox.pack_start(tlpuiobject, True, True, 0)
+    configuibox.pack_start(configdescriptionlabel, True, True, 0)
     configuibox.pack_start(hseparator, True, True, 0)
 
     return configuibox
@@ -120,19 +140,33 @@ def get_tlp_categories(tlpconfig) -> OrderedDict:
 
         configs = category['configs']
         for config in configs:
-            id = config['id']
-            type = config['type']
-            values = config['values']
+            grouptitle = ""
             description = config['description']
+            configobjects = list()
 
-            for item in tlpconfig:
-                configid = item.get_name()
-                if configid == id:
-                    configbox = create_item_box(item, type, values, description)
-                    configbox.set_margin_left(12)
-                    configbox.set_margin_right(12)
-                    configbox.set_margin_top(12)
-                    categorybox.pack_start(configbox, False, False, 0)
+            if 'group' in config:
+                grouptitle = config['group']
+                groupitems = config['ids']
+                for groupitem in groupitems:
+                    id = groupitem['id']
+                    type = groupitem['type']
+                    values = groupitem['values']
+
+                    tlpitem = tlpconfig[id]
+                    configobjects.append([tlpitem, type, values])
+            else:
+                id = config['id']
+                type = config['type']
+                values = config['values']
+
+                tlpitem = tlpconfig[id]
+                configobjects.append([tlpitem, type, values])
+
+            configbox = create_item_box(configobjects, description, grouptitle)
+            configbox.set_margin_left(12)
+            configbox.set_margin_right(12)
+            configbox.set_margin_top(12)
+            categorybox.pack_start(configbox, False, False, 0)
 
         propertyobjects[label] = categorybox
 
