@@ -16,6 +16,7 @@ Gtk.StyleContext.add_provider_for_screen(
 defaultconfigpath = '/etc/default/tlp'
 
 window = Gtk.Window()
+window.set_title('TLP-UI')
 window.set_default_size(900, 600)
 
 if path.exists(defaultconfigpath):
