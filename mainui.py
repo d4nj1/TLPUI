@@ -68,6 +68,27 @@ def save_tlp_config(self, filenamepointer, tlpconfig, window):
     dialog.destroy()
 
 
+def quit_tlp_config(self, window):
+    dialog = Gtk.Dialog("Confirm dialog", window, 0, (
+        Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+        Gtk.STOCK_OK, Gtk.ResponseType.OK
+    ))
+    dialog.set_default_size(150, 100)
+
+    label = Gtk.Label("Do you really want to quit?\nNo changes will be saved.")
+    label.set_valign(Gtk.Align.CENTER)
+    box = dialog.get_content_area()
+    box.pack_start(label, True, True, 0)
+
+    dialog.show_all()
+    response = dialog.run()
+
+    if response == Gtk.ResponseType.OK:
+        Gtk.main_quit()
+
+    dialog.destroy()
+
+
 def create_settings_box(window, configpath, tlp_config_items):
     fileentry = Gtk.Label(configpath)
     fileentry.set_alignment(0, 0.5)
@@ -79,12 +100,15 @@ def create_settings_box(window, configpath, tlp_config_items):
     reloadbutton.connect('clicked', load_tlp_config, fileentry.get_text, window)
     savebutton = Gtk.Button(label=' Save', image=Gtk.Image(stock=Gtk.STOCK_SAVE))
     savebutton.connect('clicked', save_tlp_config, fileentry.get_text, tlp_config_items, window)
+    quitbutton = Gtk.Button(label=' Quit', image=Gtk.Image(stock=Gtk.STOCK_QUIT))
+    quitbutton.connect('clicked', quit_tlp_config, window)
 
     settingsbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
     settingsbox.pack_start(fileentry, True, True, 0)
     settingsbox.pack_start(reloadbutton, False, False, 0)
     settingsbox.pack_start(filebutton, False, False, 0)
     settingsbox.pack_start(savebutton, False, False, 0)
+    settingsbox.pack_start(quitbutton, False, False, 0)
 
     return settingsbox
 
