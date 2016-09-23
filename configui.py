@@ -104,19 +104,18 @@ def create_item_box(configobjects, doc, grouptitle) -> Gtk.Box:
         configlabel = Gtk.Label(xalign=0)
         configlabel.set_markup(' <b>' + configname + '</b> ')
         configlabel.set_use_markup(True)
-        configlabel.set_size_request(250, 0)
+        configlabel.set_size_request(300, 0)
 
         # combine boxes
         tlpconfigbox.pack_start(configlabel, False, False, 0)
+        tlpconfigbox.pack_start(configwidget, True, True, 0)
 
         if configname.endswith('_BAT'):
             image = Gtk.Image.new_from_file('icons/OnBAT.svg')
-            tlpconfigbox.pack_start(image, False, False, 0)
+            tlpconfigbox.pack_start(image, False, False, 12)
         elif configname.endswith('_AC'):
             image = Gtk.Image.new_from_file('icons/OnAC.svg')
-            tlpconfigbox.pack_start(image, False, False, 0)
-
-        tlpconfigbox.pack_start(configwidget, True, True, 0)
+            tlpconfigbox.pack_start(image, False, False, 12)
 
         tlpuiobject.pack_start(statetogglebox, False, False, 0)
         tlpuiobject.pack_start(tlpconfigbox, False, False, 0)

@@ -49,7 +49,8 @@ class TlpConfig:
 def get_changed_properties(tlpconfig) -> list:
     changedproperties = list()
 
-    for config in tlpconfig:
+    for configid in tlpconfig:
+        config = tlpconfig[configid]
         newstate = config.get_new_state()
         newvalue = config.get_new_value()
 

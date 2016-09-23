@@ -68,7 +68,12 @@ def save_tlp_config(self, filenamepointer, tlpconfig, window):
     dialog.destroy()
 
 
-def quit_tlp_config(self, window):
+def quit_tlp_config(self, tlpconfig, window):
+    changedproperties = get_changed_properties(tlpconfig)
+    if len(changedproperties) == 0:
+        Gtk.main_quit()
+        return
+
     dialog = Gtk.Dialog("Confirm dialog", window, 0, (
         Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
         Gtk.STOCK_OK, Gtk.ResponseType.OK
@@ -101,7 +106,7 @@ def create_settings_box(window, configpath, tlp_config_items):
     savebutton = Gtk.Button(label=' Save', image=Gtk.Image(stock=Gtk.STOCK_SAVE))
     savebutton.connect('clicked', save_tlp_config, fileentry.get_text, tlp_config_items, window)
     quitbutton = Gtk.Button(label=' Quit', image=Gtk.Image(stock=Gtk.STOCK_QUIT))
-    quitbutton.connect('clicked', quit_tlp_config, window)
+    quitbutton.connect('clicked', quit_tlp_config, tlp_config_items, window)
 
     settingsbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
     settingsbox.pack_start(fileentry, True, True, 0)

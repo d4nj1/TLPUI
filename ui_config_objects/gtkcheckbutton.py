@@ -12,9 +12,14 @@ def create_checkbutton_box(values, tlpobject) -> Gtk.Box:
             checkbutton.set_active(True)
         checkbuttons.append(checkbutton)
 
+    checkbuttonitem = 0
     for checkbutton in checkbuttons:
         checkbutton.connect('toggled', change_check_state, checkbuttons, tlpobject)
-        checkbox.pack_start(checkbutton, False, False, 5)
+        if checkbuttonitem%2 == 0:
+            checkbox.pack_start(checkbutton, False, False, 0)
+        else:
+            checkbox.pack_start(checkbutton, False, False, 12)
+        checkbuttonitem+=1
 
     return checkbox
 
