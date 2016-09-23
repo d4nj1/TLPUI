@@ -74,13 +74,18 @@ def quit_tlp_config(self, tlpconfig, window):
         Gtk.main_quit()
         return
 
-    dialog = Gtk.Dialog("Confirm dialog", window, 0, (
+    dialog = Gtk.Dialog("Confirm quit", window, 0, (
         Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
         Gtk.STOCK_OK, Gtk.ResponseType.OK
     ))
     dialog.set_default_size(150, 100)
 
-    label = Gtk.Label("Do you really want to quit?\nNo changes will be saved.")
+    changeditemstext = "Do you really want to quit?\nFollowing items have changed:\n\n"
+    for property in changedproperties:
+        changeditemstext += (property[0] + " -> " + property[2] + "\n")
+    changeditemstext += "\nNo changes will be saved."
+
+    label = Gtk.Label(changeditemstext)
     label.set_valign(Gtk.Align.CENTER)
     box = dialog.get_content_area()
     box.pack_start(label, True, True, 0)
