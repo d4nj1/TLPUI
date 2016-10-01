@@ -1,3 +1,5 @@
+import gettext
+
 from gi.repository import Gtk, Gdk
 
 from config import get_changed_properties
@@ -5,6 +7,8 @@ from configui import create_config_box
 from file import read_tlp_file_config, write_tlp_file_config
 from statui import create_stat_box
 
+trans = gettext.translation('mainui', 'lang/', languages=['en_EN'])
+T_ = trans.gettext
 
 def close_window(self, event):
     # ctrl+q or ctrl+w
@@ -16,7 +20,7 @@ def close_window(self, event):
 
 
 def open_file_chooser(self, fileentry, window):
-    filechooser = Gtk.FileChooserDialog('Choose config file', None, Gtk.FileChooserAction.OPEN, (
+    filechooser = Gtk.FileChooserDialog(T_('Choose config file'), None, Gtk.FileChooserAction.OPEN, (
         Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
     filechooser.set_local_only(True)
 
@@ -49,9 +53,9 @@ def save_tlp_config(self, filenamepointer, tlpconfig, window):
     dialog.connect('key-press-event', close_window)
 
     if len(changedproperties) == 0:
-        dialog.format_secondary_markup('<b>No changes</b>')
+        dialog.format_secondary_markup('<b>' + T_('No changes') + '</b>')
     else:
-        infotext = '<b>Changed values:</b>\n'
+        infotext = '<b>' + T_('Changed values:') + '</b>\n'
         for property in changedproperties:
             infotext += '<small>' + property[0] + ' -> ' + property[2] + '</small>\n'
 
@@ -74,16 +78,16 @@ def quit_tlp_config(self, tlpconfig, window):
         Gtk.main_quit()
         return
 
-    dialog = Gtk.Dialog("Confirm quit", window, 0, (
+    dialog = Gtk.Dialog(T_('Confirm quit'), window, 0, (
         Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
         Gtk.STOCK_OK, Gtk.ResponseType.OK
     ))
     dialog.set_default_size(150, 100)
 
-    changeditemstext = "Do you really want to quit?\nFollowing items have changed:\n\n"
+    changeditemstext = T_('Do you really want to quit?\nFollowing items have changed:') + '\n\n'
     for property in changedproperties:
-        changeditemstext += (property[0] + " -> " + property[2] + "\n")
-    changeditemstext += "\nNo changes will be saved."
+        changeditemstext += (property[0] + " -> " + property[2] + "\n\n")
+    changeditemstext += T_('No changes will be saved.')
 
     label = Gtk.Label(changeditemstext)
     label.set_valign(Gtk.Align.CENTER)
@@ -103,14 +107,14 @@ def create_settings_box(window, configpath, tlp_config_items):
     fileentry = Gtk.Label(configpath)
     fileentry.set_alignment(0, 0.5)
 
-    filebutton = Gtk.Button(label=' Open', image=Gtk.Image(stock=Gtk.STOCK_OPEN))
+    filebutton = Gtk.Button(label=' ' + T_('Open'), image=Gtk.Image(stock=Gtk.STOCK_OPEN))
     filebutton.connect('clicked', open_file_chooser, fileentry, window)
 
-    reloadbutton = Gtk.Button(label=' Reload', image=Gtk.Image(stock=Gtk.STOCK_REFRESH))
+    reloadbutton = Gtk.Button(label=' ' +T_('Reload'), image=Gtk.Image(stock=Gtk.STOCK_REFRESH))
     reloadbutton.connect('clicked', load_tlp_config, fileentry.get_text, window)
-    savebutton = Gtk.Button(label=' Save', image=Gtk.Image(stock=Gtk.STOCK_SAVE))
+    savebutton = Gtk.Button(label=' ' + T_('Save'), image=Gtk.Image(stock=Gtk.STOCK_SAVE))
     savebutton.connect('clicked', save_tlp_config, fileentry.get_text, tlp_config_items, window)
-    quitbutton = Gtk.Button(label=' Quit', image=Gtk.Image(stock=Gtk.STOCK_QUIT))
+    quitbutton = Gtk.Button(label=' ' + T_('Quit'), image=Gtk.Image(stock=Gtk.STOCK_QUIT))
     quitbutton.connect('clicked', quit_tlp_config, tlp_config_items, window)
 
     settingsbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)

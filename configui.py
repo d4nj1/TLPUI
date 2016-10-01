@@ -1,3 +1,5 @@
+import gettext
+
 import gi
 
 gi.require_version('Gtk', '3.0')
@@ -7,6 +9,9 @@ from collections import OrderedDict
 
 from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkcheckbutton, gtkspinbutton, gtktoggle
 from file import get_json_schema_object
+
+trans = gettext.translation('configdescriptions', 'lang/', languages=['en_EN'])
+T_ = trans.gettext
 
 
 def create_config_box(tlp_config_items) -> Gtk.Box:
@@ -124,7 +129,7 @@ def create_item_box(configobjects, doc, grouptitle) -> Gtk.Box:
 
     # object description
     configdescriptionlabel = Gtk.Label()
-    configdescriptionlabel.set_markup('<i><small>' + doc + '</small></i>')
+    configdescriptionlabel.set_markup(doc)
     configdescriptionlabel.set_line_wrap(True)
     configdescriptionlabel.set_margin_top(6)
     configdescriptionlabel.set_margin_bottom(12)
@@ -143,17 +148,17 @@ def get_tlp_categories(tlpconfig) -> OrderedDict:
     categories = get_json_schema_object('categories')
 
     for category in categories:
-        label = category['name']
+        label = T_(category['name'])
         categorybox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
 
         configs = category['configs']
         for config in configs:
             grouptitle = ""
-            description = config['description']
             configobjects = list()
 
             if 'group' in config:
                 grouptitle = config['group']
+                translationtag = grouptitle + "_GROUP"
                 groupitems = config['ids']
                 for groupitem in groupitems:
                     id = groupitem['id']
@@ -164,11 +169,14 @@ def get_tlp_categories(tlpconfig) -> OrderedDict:
                     configobjects.append([tlpitem, type, values])
             else:
                 id = config['id']
+                translationtag = id + "_ID"
                 type = config['type']
                 values = config['values']
 
                 tlpitem = tlpconfig[id]
                 configobjects.append([tlpitem, type, values])
+
+            description = T_(translationtag)
 
             configbox = create_item_box(configobjects, description, grouptitle)
             configbox.set_margin_left(12)

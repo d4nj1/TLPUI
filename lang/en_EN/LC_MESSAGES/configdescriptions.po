@@ -1,0 +1,639 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TLPUI\n"
+"POT-Creation-Date: 2016-10-01 18:15+0200\n"
+"PO-Revision-Date: 2016-10-01 18:18+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _\n"
+"X-Poedit-SearchPath-0: configschema.json.h\n"
+
+#: configschema.json.h:1
+msgid "General_CATEGORY"
+msgstr "General"
+
+#: configschema.json.h:2
+msgid "TLP_ENABLE_ID"
+msgstr "Enable/disable TLP."
+
+#: configschema.json.h:3
+msgid "TLP_DEFAULT_MODE_ID"
+msgstr ""
+"Operation mode when no power supply can be detected: AC, BAT.\n"
+"Concerns some desktop and embedded hardware only."
+
+#: configschema.json.h:4
+msgid "Audio_CATEGORY"
+msgstr "Audio"
+
+#: configschema.json.h:5
+msgid "SOUND_POWER_SAVE_GROUP"
+msgstr "Enable audio power saving for Intel HDA, AC97 devices."
+
+#: configschema.json.h:6
+msgid "SOUND_POWER_SAVE_CONTROLLER_ID"
+msgstr "Disable controller too (HDA only)."
+
+#: configschema.json.h:7
+msgid "Disks_CATEGORY"
+msgstr "Disks"
+
+#: configschema.json.h:8
+msgid "DISK_IDLE_SECS_GROUP"
+msgstr ""
+"Seconds laptop mode has to to wait after the disk goes idle before doing a "
+"sync.\n"
+"Non-zero value enables, zero disables laptop mode."
+
+#: configschema.json.h:9
+msgid "MAX_LOST_WORK_SECS_GROUP"
+msgstr "Dirty page values (timeouts in secs)."
+
+#: configschema.json.h:10
+msgid "DISK_DEVICES_ID"
+msgstr ""
+"Hard disk devices, separate multiple devices with spaces (default: sda).\n"
+"Devices can be specified by disk id too (lookup with: tlp diskid)."
+
+#: configschema.json.h:11
+msgid "DISK_APM_LEVEL_GROUP"
+msgstr ""
+"Hard disk advanced power management level: 1..254, 255 (max saving, min, "
+"off)\n"
+"Levels 1..127 may spin down the disk; 255 allowable on most drives.\n"
+"Separate values for multiple disks with spaces. Use the special value "
+"'keep'\n"
+"to keep the hardware default for the particular disk."
+
+#: configschema.json.h:12
+msgid "DISK_SPINDOWN_TIMEOUT_GROUP"
+msgstr ""
+"Hard disk spin down timeout:\n"
+"0:\t\t\tspin down disabled\n"
+"1..240:\t\ttimeouts from 5s to 20min (in units of 5s)\n"
+"241..251:\ttimeouts from 30min to 5.5 hours (in units of 30min)\n"
+"(see 'man hdparm' for details)"
+
+#: configschema.json.h:13
+msgid "DISK_IOSCHED_ID"
+msgstr ""
+"Select io scheduler for the disk devices: noop/deadline/cfq (Default: cfq)\n"
+"Separate values for multiple devices with spaces."
+
+#: configschema.json.h:14
+msgid "SATA_LINKPWR_GROUP"
+msgstr ""
+"SATA aggressive link power management (ALPM): min_power, medium_power, "
+"max_performance."
+
+#: configschema.json.h:15
+msgid "SATA_LINKPWR_BLACKLIST_ID"
+msgstr ""
+"Exclude SATA host devices from link power management.\n"
+"Separate multiple hosts with spaces."
+
+#: configschema.json.h:16
+msgid "AHCI_RUNTIME_PM_GROUP"
+msgstr ""
+"Runtime Power Management for AHCI controllers and disks: on=disable, "
+"auto=enable.\n"
+"\n"
+"** EXPERIMENTAL ** WARNING: auto will most likely cause system lockups/data "
+"loss"
+
+#: configschema.json.h:17
+msgid "BAY_POWEROFF_ON_BAT_ID"
+msgstr ""
+"Set to power off optical drive in UltraBay/MediaBay when running on "
+"battery.\n"
+"Otherwise this feature is disabled (Default).\n"
+"Drive can be powered on again by releasing (and reinserting) the\n"
+"eject lever or by pressing the disc eject button on newer models.\n"
+"Note: an UltraBay/MediaBay hard disk is never powered off."
+
+#: configschema.json.h:18
+msgid "BAY_DEVICE_ID"
+msgstr "Optical drive device to power off (default sr0)"
+
+#: configschema.json.h:19
+msgid "Graphics_CATEGORY"
+msgstr "Graphics"
+
+#: configschema.json.h:20
+msgid "RADEON_POWER_PROFILE_GROUP"
+msgstr ""
+"Radeon graphics clock speed (profile method): low, mid, high, auto, "
+"default;\n"
+"auto = mid on BAT, high on AC; default = use hardware defaults.\n"
+"Requires open-source driver 'radeon'."
+
+#: configschema.json.h:21
+msgid "RADEON_DPM_STATE_GROUP"
+msgstr ""
+"Radeon dynamic power management method (DPM): battery, performance\n"
+"Works with open-source driver 'radeon' only,\n"
+"requires kernel >= 3.11 and boot 'option radeon.dpm=1'."
+
+#: configschema.json.h:22
+msgid "RADEON_DPM_PERF_LEVEL_GROUP"
+msgstr "Radeon DPM performance level: auto, low, high; auto is recommended."
+
+#: configschema.json.h:23
+msgid "Network_CATEGORY"
+msgstr "Network"
+
+#: configschema.json.h:24
+msgid "WIFI_PWR_GROUP"
+msgstr "WiFi power saving mode. Not supported by all adapters."
+
+#: configschema.json.h:25
+msgid "WOL_DISABLE_ID"
+msgstr "Disable wake on LAN."
+
+#: configschema.json.h:26
+msgid "PCIe_CATEGORY"
+msgstr "PCIe"
+
+#: configschema.json.h:27
+msgid "PCIE_ASPM_GROUP"
+msgstr "PCI Express Active State Power Management (PCIe ASPM)."
+
+#: configschema.json.h:28
+msgid "RUNTIME_PM_GROUP"
+msgstr "Runtime Power Management for PCI(e) bus devices."
+
+#: configschema.json.h:29
+msgid "RUNTIME_PM_ALL_ID"
+msgstr "Runtime PM for *all* PCI(e) bus devices, except blacklisted ones."
+
+#: configschema.json.h:30
+msgid "RUNTIME_PM_BLACKLIST_ID"
+msgstr ""
+"Exclude PCI(e) device adresses the following list from Runtime PM\n"
+"(separate with spaces). Use lspci to get the adresses (1st column)."
+
+#: configschema.json.h:31
+msgid "RUNTIME_PM_DRIVER_BLACKLIST_ID"
+msgstr ""
+"Exclude PCI(e) devices assigned to the listed drivers from Runtime PM\n"
+"(should prevent accidential power on of hybrid graphics' discrete part).\n"
+"Default is \"radeon nouveau\"; use \"\" to disable the feature completely.\n"
+"Separate multiple drivers with spaces."
+
+#: configschema.json.h:32
+msgid "Processor_CATEGORY"
+msgstr "Processor"
+
+#: configschema.json.h:33
+msgid "CPU_SCALING_GOVERNOR_GROUP"
+msgstr ""
+"Select a cpu frequency scaling governor: ondemand/powersave/performance/"
+"conservative\n"
+"Intel Core i processor with intel_pstate driver: powersave/performance\n"
+"Important:\n"
+"- You *must* disable your distribution's governor settings or conflicts will "
+"occur\n"
+"- ondemand is sufficient for *almost all* workloads, you should know what "
+"you're doing!"
+
+#: configschema.json.h:34
+msgid "CPU_SCALING_FREQ_GROUP"
+msgstr ""
+"Set the min/max frequency available for the scaling governor.\n"
+"Possible values strongly depend on your cpu.\n"
+"For available frequencies see tlp-stat output, Section \"Processor\"."
+
+#: configschema.json.h:35
+msgid "CPU_PERF_GROUP"
+msgstr ""
+"Set Intel P-state performance: 0..100 (%)\n"
+"Limit the max/min P-state to control the power dissipation of the CPU.\n"
+"Values are stated as a percentage of the available performance.\n"
+"Requires an Intel Core i processor with intel_pstate driver."
+
+#: configschema.json.h:36
+msgid "CPU_BOOST_GROUP"
+msgstr ""
+"Set the cpu \"turbo boost\" feature.\n"
+"Requires an Intel Core i processor.\n"
+"Important:\n"
+"- This may conflict with your distribution's governor settings\n"
+"- A value of 1 does not activate boosting, it just allows it"
+
+#: configschema.json.h:37
+msgid "SCHED_POWERSAVE_GROUP"
+msgstr ""
+"Minimize number of used cpu cores/hyper-threads under light load conditions"
+
+#: configschema.json.h:38
+msgid "NMI_WATCHDOG_ID"
+msgstr ""
+"Kernel NMI Watchdog\n"
+"off: saves power, on: for kernel debugging only"
+
+#: configschema.json.h:39
+msgid "PHC_CONTROLS_ID"
+msgstr ""
+"Change CPU voltages aka \"undervolting\"\n"
+"Kernel with PHC patch required\n"
+"Freq:voltage pairs are written to /sys/devices/system/cpu/cpu0/cpufreq/"
+"phc_controls\n"
+"CAUTION: only use this, if you thoroughly understand what you are doing!"
+
+#: configschema.json.h:40
+msgid "ENERGY_PERF_POLICY_GROUP"
+msgstr ""
+"Set CPU performance versus energy savings policy.\n"
+"Requires kernel module msr and x86_energy_perf_policy from linux-tools"
+
+#: configschema.json.h:41
+msgid "Radio_CATEGORY"
+msgstr "Radio"
+
+#: configschema.json.h:42
+msgid "RESTORE_DEVICE_STATE_ON_STARTUP_ID"
+msgstr ""
+"Restore radio device state (Bluetooth, WiFi, WWAN) from previous shutdown on "
+"system startup.\n"
+"Hint: the parameters DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN below are "
+"ignored when this is enabled!"
+
+#: configschema.json.h:43
+msgid "DEVICES_TO_DISABLE_ON_STARTUP_ID"
+msgstr "Radio devices to disable on startup: bluetooth wifi wwan"
+
+#: configschema.json.h:44
+msgid "DEVICES_TO_ENABLE_ON_STARTUP_ID"
+msgstr "Radio devices to enable on startup: bluetooth wifi wwan"
+
+#: configschema.json.h:45
+msgid "DEVICES_TO_DISABLE_ON_SHUTDOWN_ID"
+msgstr ""
+"Radio devices to disable on shutdown: bluetooth wifi wwan\n"
+"(workaround for devices that are blocking shutdown)"
+
+#: configschema.json.h:46
+msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN_ID"
+msgstr ""
+"Radio devices to enable on shutdown: bluetooth wifi wwan\n"
+"(to prevent other operating systems from missing radios)"
+
+#: configschema.json.h:47
+msgid "DEVICES_TO_ENABLE_ON_AC_ID"
+msgstr "Radio devices to enable on AC: bluetooth, wifi, wwan"
+
+#: configschema.json.h:48
+msgid "DEVICES_TO_DISABLE_ON_BAT_ID"
+msgstr "Radio devices to disable on battery: bluetooth, wifi, wwan"
+
+#: configschema.json.h:49
+msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE_ID"
+msgstr ""
+"Radio devices to disable on battery when not in use (not connected):\n"
+"bluetooth, wifi, wwan"
+
+#: configschema.json.h:50
+msgid "Radio Device Wizard_CATEGORY"
+msgstr "Radio Device Wizard"
+
+#: configschema.json.h:51
+msgid "DEVICES_TO_DISABLE_ON_CONNECT_GROUP"
+msgstr "Radio devices to disable on connect"
+
+#: configschema.json.h:52
+msgid "DEVICES_TO_ENABLE_ON_DISCONNECT_GROUP"
+msgstr "Radio devices to enable on disconnect"
+
+#: configschema.json.h:53
+msgid "DEVICES_ON_DOCK_GROUP"
+msgstr "Radio devices to enable/disable when docked"
+
+#: configschema.json.h:54
+msgid "DEVICES_ON_UNDOCK_GROUP"
+msgstr "Radio devices to enable/disable when undocked"
+
+#: configschema.json.h:55
+msgid "USB_CATEGORY"
+msgstr "USB"
+
+#: configschema.json.h:56
+msgid "USB_AUTOSUSPEND_ID"
+msgstr "USB autosuspend feature."
+
+#: configschema.json.h:57
+msgid "USB_BLACKLIST_ID"
+msgstr ""
+"Devices from the following list are excluded from autosuspend\n"
+"(separate with spaces). Use lsusb to get the ids.\n"
+"Note: input devices (usbhid) are excluded automatically."
+
+#: configschema.json.h:58
+msgid "USB_BLACKLIST_WWAN_ID"
+msgstr ""
+"WWAN devices are excluded from autosuspend.\n"
+"Note: works for ids 05c6:* 0bdb:* 1199:* only."
+
+#: configschema.json.h:59
+msgid "USB_WHITELIST_ID"
+msgstr ""
+"Include listed devices into autosuspend even if already excluded\n"
+"by the driver or WWAN blacklists above (separate with spaces).\n"
+"Use lsusb to get the ids."
+
+#: configschema.json.h:60
+msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN_ID"
+msgstr ""
+"Set to disable autosuspend before shutdown / otherwise to do nothing\n"
+"(workaround for USB devices that cause shutdown problems)"
+
+#: configschema.json.h:61
+msgid "ThinkPad Battery_CATEGORY"
+msgstr "ThinkPad Battery"
+
+#: configschema.json.h:62
+msgid "CHARGE_THRESH_BAT0_GROUP"
+msgstr ""
+"Battery charge thresholds (ThinkPad only, tp-smapi or acpi-call kernel "
+"module required)\n"
+"Charging starts when the remaining capacity falls below the "
+"START_CHARGE_TRESH\n"
+"value and stops when exceeding the STOP_CHARGE_TRESH value.\n"
+"Main / Internal battery (values in %)"
+
+#: configschema.json.h:63
+msgid "CHARGE_THRESH_BAT1_GROUP"
+msgstr "Ultrabay / Slice / Replaceable battery (values in %)"
+
+#~ msgid "TLP_ENABLE_TRANSLATION"
+#~ msgstr "Enable/disable TLP."
+
+#~ msgid "TLP_DEFAULT_MODE_TRANSLATION"
+#~ msgstr ""
+#~ "Operation mode when no power supply can be detected: AC, BAT.\n"
+#~ "Concerns some desktop and embedded hardware only."
+
+#~ msgid "SOUND_POWER_SAVE_TRANSLATION"
+#~ msgstr "Enable audio power saving for Intel HDA, AC97 devices."
+
+#~ msgid "SOUND_POWER_SAVE_CONTROLLER_TRANSLATION"
+#~ msgstr "Disable controller too (HDA only)."
+
+#~ msgid "DISK_IDLE_SECS_TRANSLATION"
+#~ msgstr ""
+#~ "Seconds laptop mode has to to wait after the disk goes idle before doing "
+#~ "a sync.\n"
+#~ "Non-zero value enables, zero disables laptop mode."
+
+#~ msgid "MAX_LOST_WORK_SECS_TRANSLATION"
+#~ msgstr "Dirty page values (timeouts in secs)."
+
+#~ msgid "DISK_DEVICES_TRANSLATION"
+#~ msgstr ""
+#~ "Hard disk devices, separate multiple devices with spaces (default: sda).\n"
+#~ "Devices can be specified by disk id too (lookup with: tlp diskid)."
+
+#~ msgid "DISK_APM_LEVEL_TRANSLATION"
+#~ msgstr ""
+#~ "Hard disk advanced power management level: 1..254, 255 (max saving, min, "
+#~ "off)\n"
+#~ "Levels 1..127 may spin down the disk; 255 allowable on most drives.\n"
+#~ "Separate values for multiple disks with spaces. Use the special value "
+#~ "'keep'\n"
+#~ "to keep the hardware default for the particular disk."
+
+#~ msgid "DISK_SPINDOWN_TIMEOUT_TRANSLATION"
+#~ msgstr ""
+#~ "Hard disk spin down timeout:\n"
+#~ "0:\t\tspin down disabled\n"
+#~ "1..240:\ttimeouts from 5s to 20min (in units of 5s)\n"
+#~ "241..251:\ttimeouts from 30min to 5.5 hours (in units of 30min)\n"
+#~ "(see 'man hdparm' for details)"
+
+#~ msgid "DISK_IOSCHED_TRANSLATION"
+#~ msgstr ""
+#~ "Select io scheduler for the disk devices: noop/deadline/cfq (Default: "
+#~ "cfq)\n"
+#~ "Separate values for multiple devices with spaces."
+
+#~ msgid "SATA_LINKPWR_TRANSLATION"
+#~ msgstr ""
+#~ "SATA aggressive link power management (ALPM): min_power, medium_power, "
+#~ "max_performance."
+
+#~ msgid "SATA_LINKPWR_BLACKLIST_TRANSLATION"
+#~ msgstr ""
+#~ "Exclude SATA host devices from link power management.\n"
+#~ "Separate multiple hosts with spaces."
+
+#~ msgid "AHCI_RUNTIME_PM_TRANSLATION"
+#~ msgstr ""
+#~ "Runtime Power Management for AHCI controllers and disks: on=disable, "
+#~ "auto=enable.\n"
+#~ "\n"
+#~ "** EXPERIMENTAL ** WARNING: auto will most likely cause system lockups/"
+#~ "data loss"
+
+#~ msgid "BAY_POWEROFF_ON_BAT_TRANSLATION"
+#~ msgstr ""
+#~ "Set to power off optical drive in UltraBay/MediaBay when running on "
+#~ "battery.\n"
+#~ "Otherwise this feature is disabled (Default).\n"
+#~ "Drive can be powered on again by releasing (and reinserting) the\n"
+#~ "eject lever or by pressing the disc eject button on newer models.\n"
+#~ "Note: an UltraBay/MediaBay hard disk is never powered off."
+
+#~ msgid "BAY_DEVICE_TRANSLATION"
+#~ msgstr "Optical drive device to power off (default sr0)"
+
+#~ msgid "RADEON_POWER_PROFILE_TRANSLATION"
+#~ msgstr ""
+#~ "Radeon graphics clock speed (profile method): low, mid, high, auto, "
+#~ "default;\n"
+#~ "auto = mid on BAT, high on AC; default = use hardware defaults.\n"
+#~ "Requires open-source driver 'radeon'."
+
+#~ msgid "RADEON_DPM_STATE_TRANSLATION"
+#~ msgstr ""
+#~ "Radeon dynamic power management method (DPM): battery, performance\n"
+#~ "Works with open-source driver 'radeon' only,\n"
+#~ "requires kernel >= 3.11 and boot 'option radeon.dpm=1'."
+
+#~ msgid "RADEON_DPM_PERF_LEVEL_TRANSLATION"
+#~ msgstr "Radeon DPM performance level: auto, low, high; auto is recommended."
+
+#~ msgid "WIFI_PWR_TRANSLATION"
+#~ msgstr "WiFi power saving mode. Not supported by all adapters."
+
+#~ msgid "WOL_DISABLE_TRANSLATION"
+#~ msgstr "Disable wake on LAN."
+
+#~ msgid "PCIE_ASPM_TRANSLATION"
+#~ msgstr "PCI Express Active State Power Management (PCIe ASPM)."
+
+#~ msgid "RUNTIME_PM_TRANSLATION"
+#~ msgstr "Runtime Power Management for PCI(e) bus devices."
+
+#~ msgid "RUNTIME_PM_ALL_TRANSLATION"
+#~ msgstr "Runtime PM for *all* PCI(e) bus devices, except blacklisted ones."
+
+#~ msgid "RUNTIME_PM_BLACKLIST_TRANSLATION"
+#~ msgstr ""
+#~ "Exclude PCI(e) device adresses the following list from Runtime PM\n"
+#~ "(separate with spaces). Use lspci to get the adresses (1st column)."
+
+#~ msgid "RUNTIME_PM_DRIVER_BLACKLIST_TRANSLATION"
+#~ msgstr ""
+#~ "Exclude PCI(e) devices assigned to the listed drivers from Runtime PM\n"
+#~ "(should prevent accidential power on of hybrid graphics' discrete part).\n"
+#~ "Default is \"radeon nouveau\"; use \"\" to disable the feature "
+#~ "completely.\n"
+#~ "Separate multiple drivers with spaces."
+
+#~ msgid "CPU_SCALING_GOVERNOR_TRANSLATION"
+#~ msgstr ""
+#~ "Select a cpu frequency scaling governor: ondemand/powersave/performance/"
+#~ "conservative\n"
+#~ "Intel Core i processor with intel_pstate driver: powersave/performance\n"
+#~ "Important:\n"
+#~ "- You *must* disable your distribution's governor settings or conflicts "
+#~ "will occur\n"
+#~ "- ondemand is sufficient for *almost all* workloads, you should know what "
+#~ "you're doing!"
+
+#~ msgid "CPU_SCALING_FREQ_TRANSLATION"
+#~ msgstr ""
+#~ "Set the min/max frequency available for the scaling governor.\n"
+#~ "Possible values strongly depend on your cpu.\n"
+#~ "For available frequencies see tlp-stat output, Section \"Processor\"."
+
+#~ msgid "CPU_PERF_TRANSLATION"
+#~ msgstr ""
+#~ "Set Intel P-state performance: 0..100 (%)\n"
+#~ "Limit the max/min P-state to control the power dissipation of the CPU.\n"
+#~ "Values are stated as a percentage of the available performance.\n"
+#~ "Requires an Intel Core i processor with intel_pstate driver."
+
+#~ msgid "CPU_BOOST_TRANSLATION"
+#~ msgstr ""
+#~ "Set the cpu \"turbo boost\" feature.\n"
+#~ "Requires an Intel Core i processor.\n"
+#~ "Important:\n"
+#~ "- This may conflict with your distribution's governor settings\n"
+#~ "- A value of 1 does not activate boosting, it just allows it"
+
+#~ msgid "SCHED_POWERSAVE_TRANSLATION"
+#~ msgstr ""
+#~ "Minimize number of used cpu cores/hyper-threads under light load "
+#~ "conditions"
+
+#~ msgid "NMI_WATCHDOG_TRANSLATION"
+#~ msgstr ""
+#~ "Kernel NMI Watchdog\n"
+#~ "off: saves power, on: for kernel debugging only"
+
+#~ msgid "PHC_CONTROLS_TRANSLATION"
+#~ msgstr ""
+#~ "Change CPU voltages aka \"undervolting\"\n"
+#~ "Kernel with PHC patch required\n"
+#~ "Freq:voltage pairs are written to /sys/devices/system/cpu/cpu0/cpufreq/"
+#~ "phc_controls\n"
+#~ "CAUTION: only use this, if you thoroughly understand what you are doing!"
+
+#~ msgid "ENERGY_PERF_POLICY_TRANSLATION"
+#~ msgstr ""
+#~ "Set CPU performance versus energy savings policy.\n"
+#~ "Requires kernel module msr and x86_energy_perf_policy from linux-tools"
+
+#~ msgid "RESTORE_DEVICE_STATE_ON_STARTUP_TRANSLATION"
+#~ msgstr ""
+#~ "Restore radio device state (Bluetooth, WiFi, WWAN) from previous shutdown "
+#~ "on system startup.\n"
+#~ "Hint: the parameters DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN below "
+#~ "are ignored when this is enabled!"
+
+#~ msgid "DEVICES_TO_DISABLE_ON_STARTUP_TRANSLATION"
+#~ msgstr "Radio devices to disable on startup: bluetooth wifi wwan"
+
+#~ msgid "DEVICES_TO_ENABLE_ON_STARTUP_TRANSLATION"
+#~ msgstr "Radio devices to enable on startup: bluetooth wifi wwan"
+
+#~ msgid "DEVICES_TO_DISABLE_ON_SHUTDOWN_TRANSLATION"
+#~ msgstr ""
+#~ "Radio devices to disable on shutdown: bluetooth wifi wwan\n"
+#~ "(workaround for devices that are blocking shutdown)"
+
+#~ msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN_TRANSLATION"
+#~ msgstr ""
+#~ "Radio devices to enable on shutdown: bluetooth wifi wwan\n"
+#~ "(to prevent other operating systems from missing radios)"
+
+#~ msgid "DEVICES_TO_ENABLE_ON_AC_TRANSLATION"
+#~ msgstr "Radio devices to enable on AC: bluetooth, wifi, wwan"
+
+#~ msgid "DEVICES_TO_DISABLE_ON_BAT_TRANSLATION"
+#~ msgstr "Radio devices to disable on battery: bluetooth, wifi, wwan"
+
+#~ msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE_TRANSLATION"
+#~ msgstr ""
+#~ "Radio devices to disable on battery when not in use (not connected):\n"
+#~ "bluetooth, wifi, wwan"
+
+#~ msgid "DEVICES_TO_DISABLE_ON_CONNECT_TRANSLATION"
+#~ msgstr "Radio devices to disable on connect"
+
+#~ msgid "DEVICES_TO_ENABLE_ON_DISCONNECT_TRANSLATION"
+#~ msgstr "Radio devices to enable on disconnect"
+
+#~ msgid "DEVICES_ON_DOCK_TRANSLATION"
+#~ msgstr "Radio devices to enable/disable when docked"
+
+#~ msgid "DEVICES_ON_UNDOCK_TRANSLATION"
+#~ msgstr "Radio devices to enable/disable when undocked"
+
+#~ msgid "USB_AUTOSUSPEND_TRANSLATION"
+#~ msgstr "USB autosuspend feature."
+
+#~ msgid "USB_BLACKLIST_TRANSLATION"
+#~ msgstr ""
+#~ "Devices from the following list are excluded from autosuspend\n"
+#~ "(separate with spaces). Use lsusb to get the ids.\n"
+#~ "Note: input devices (usbhid) are excluded automatically."
+
+#~ msgid "USB_BLACKLIST_WWAN_TRANSLATION"
+#~ msgstr ""
+#~ "WWAN devices are excluded from autosuspend.\n"
+#~ "Note: works for ids 05c6:* 0bdb:* 1199:* only."
+
+#~ msgid "USB_WHITELIST_TRANSLATION"
+#~ msgstr ""
+#~ "Include listed devices into autosuspend even if already excluded\n"
+#~ "by the driver or WWAN blacklists above (separate with spaces).\n"
+#~ "Use lsusb to get the ids."
+
+#~ msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN_TRANSLATION"
+#~ msgstr ""
+#~ "Set to disable autosuspend before shutdown / otherwise to do nothing\n"
+#~ "(workaround for USB devices that cause shutdown problems)"
+
+#~ msgid "CHARGE_THRESH_BAT0_TRANSLATION"
+#~ msgstr ""
+#~ "Battery charge thresholds (ThinkPad only, tp-smapi or acpi-call kernel "
+#~ "module required)\n"
+#~ "Charging starts when the remaining capacity falls below the "
+#~ "START_CHARGE_TRESH\n"
+#~ "value and stops when exceeding the STOP_CHARGE_TRESH value.\n"
+#~ "Main / Internal battery (values in %)"
+
+#~ msgid "CHARGE_THRESH_BAT1_TRANSLATION"
+#~ msgstr "Ultrabay / Slice / Replaceable battery (values in %)"
+
+#~ msgid " Save"
+#~ msgstr " Save"
