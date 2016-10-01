@@ -1,4 +1,4 @@
-TLPUI - 24.09.2016
+TLPUI - 01.10.2016
 
 The Python scripts in this projects generate a GTK-UI to change TLP configuration files easily.
 It has the aim to protect users from setting bad configuration and to deliver a basic overview of all the valid configuration values.
@@ -29,7 +29,6 @@ What works:
 To be done:
 
 * Add/optimize value definitions -> Extract disk configuration for all disks found
-* Localization -> Create language po/mo files with library
 * Jump to last active tab after reload/save -> Use singleton to store last clicked tab-category (notebook_get_current_page)
 * Refactor Python code
 * UI improvements for better usability

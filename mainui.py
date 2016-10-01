@@ -7,7 +7,7 @@ from configui import create_config_box
 from file import read_tlp_file_config, write_tlp_file_config
 from statui import create_stat_box
 
-trans = gettext.translation('mainui', 'lang/', languages=['en_EN'])
+trans = gettext.translation('mainui', 'lang/', languages=['de_DE', 'en_EN'])
 T_ = trans.gettext
 
 def close_window(self, event):
