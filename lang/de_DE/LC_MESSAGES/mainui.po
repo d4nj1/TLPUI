@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2016-10-01 18:10+0200\n"
-"PO-Revision-Date: 2016-10-01 18:32+0200\n"
+"POT-Creation-Date: 2016-10-02 10:02+0200\n"
+"PO-Revision-Date: 2016-10-02 10:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -24,13 +24,9 @@ msgstr "Wähle Konfigurationsdatei"
 msgid "No changes"
 msgstr "Keine Änderungen"
 
-#: mainui.py:58
-msgid "Changed values:"
-msgstr "Geänderte Werte:"
-
-#: mainui.py:81
-msgid "Confirm quit"
-msgstr "Bestätige schließen"
+#: mainui.py:58 mainui.py:81
+msgid "Changed values"
+msgstr "Geänderte Werte"
 
 #: mainui.py:87
 msgid ""
@@ -42,20 +38,20 @@ msgstr ""
 
 #: mainui.py:90
 msgid "No changes will be saved."
-msgstr "Änderungen werden nicht gespeichert."
+msgstr "Änderungen werden <b>nicht</b> gespeichert."
 
-#: mainui.py:110
+#: mainui.py:111
 msgid "Open"
 msgstr "Öffnen"
 
-#: mainui.py:113
+#: mainui.py:114
 msgid "Reload"
 msgstr "Neu laden"
 
-#: mainui.py:115
+#: mainui.py:116
 msgid "Save"
 msgstr "Speichern"
 
-#: mainui.py:117
+#: mainui.py:118
 msgid "Quit"
-msgstr "Schließen"
+msgstr "Beenden"

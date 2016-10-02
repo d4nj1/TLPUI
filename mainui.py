@@ -55,7 +55,7 @@ def save_tlp_config(self, filenamepointer, tlpconfig, window):
     if len(changedproperties) == 0:
         dialog.format_secondary_markup('<b>' + T_('No changes') + '</b>')
     else:
-        infotext = '<b>' + T_('Changed values:') + '</b>\n'
+        infotext = '<b>' + T_('Changed values') + ':</b>\n'
         for property in changedproperties:
             infotext += '<small>' + property[0] + ' -> ' + property[2] + '</small>\n'
 
@@ -78,7 +78,7 @@ def quit_tlp_config(self, tlpconfig, window):
         Gtk.main_quit()
         return
 
-    dialog = Gtk.Dialog(T_('Confirm quit'), window, 0, (
+    dialog = Gtk.Dialog(T_('Changed values'), window, 0, (
         Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
         Gtk.STOCK_OK, Gtk.ResponseType.OK
     ))
@@ -89,7 +89,8 @@ def quit_tlp_config(self, tlpconfig, window):
         changeditemstext += (property[0] + " -> " + property[2] + "\n\n")
     changeditemstext += T_('No changes will be saved.')
 
-    label = Gtk.Label(changeditemstext)
+    label = Gtk.Label()
+    label.set_markup(changeditemstext)
     label.set_valign(Gtk.Align.CENTER)
     box = dialog.get_content_area()
     box.pack_start(label, True, True, 0)
