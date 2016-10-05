@@ -8,16 +8,14 @@
           "type": "bselect",
           "values": "0,1",
           "default_value": "1",
-          "default_state": true,
-          "description": "Enable/disable TLP."
+          "default_state": true
         },
         {
           "id": "TLP_DEFAULT_MODE",
           "type": "select",
           "values": "AC,BAT",
           "default_value": "AC",
-          "default_state": true,
-          "description": "Operation mode when no power supply can be detected: AC, BAT.\nConcerns some desktop and embedded hardware only."
+          "default_state": true
         }
       ]
     },
@@ -26,7 +24,6 @@
       "configs": [
         {
           "group": "SOUND_POWER_SAVE",
-          "description": "Enable audio power saving for Intel HDA, AC97 devices.",
           "ids": [
             {
               "id": "SOUND_POWER_SAVE_ON_AC",
@@ -49,8 +46,7 @@
           "type": "bselect",
           "values": "N,Y",
           "default_value": "Y",
-          "default_state": true,
-          "description": "Disable controller too (HDA only)."
+          "default_state": true
         }
       ]
     },
@@ -59,7 +55,6 @@
       "configs": [
         {
           "group": "DISK_IDLE_SECS",
-          "description": "Seconds laptop mode has to to wait after the disk goes idle before doing a sync.\nNon-zero value enables, zero disables laptop mode.",
           "ids": [
             {
               "id": "DISK_IDLE_SECS_ON_AC",
@@ -79,7 +74,6 @@
         },
         {
           "group": "MAX_LOST_WORK_SECS",
-          "description": "Dirty page values (timeouts in secs).",
           "ids": [
               {
               "id": "MAX_LOST_WORK_SECS_ON_AC",
@@ -102,12 +96,10 @@
           "type": "entry",
           "values": "",
           "default_value": "sda sdb",
-          "default_state": true,
-          "description": "Hard disk devices, separate multiple devices with spaces (default: sda).\nDevices can be specified by disk id too (lookup with: tlp diskid)."
+          "default_state": true
         },
         {
           "group": "DISK_APM_LEVEL",
-          "description": "Hard disk advanced power management level: 1..254, 255 (max saving, min, off)\nLevels 1..127 may spin down the disk; 255 allowable on most drives.\nSeparate values for multiple disks with spaces. Use the special value 'keep'\nto keep the hardware default for the particular disk.",
           "ids": [
             {
               "id": "DISK_APM_LEVEL_ON_AC",
@@ -127,7 +119,6 @@
         },
         {
           "group": "DISK_SPINDOWN_TIMEOUT",
-          "description": "Hard disk spin down timeout:\n0:\t\tspin down disabled\n1..240:\ttimeouts from 5s to 20min (in units of 5s)\n241..251:\ttimeouts from 30min to 5.5 hours (in units of 30min)\n(see 'man hdparm' for details)",
           "ids": [
             {
               "id": "DISK_SPINDOWN_TIMEOUT_ON_AC",
@@ -150,12 +141,10 @@
           "type": "entry",
           "values": "",
           "default_value": "cfq cfq",
-          "default_state": false,
-          "description": "Select io scheduler for the disk devices: noop/deadline/cfq (Default: cfq)\nSeparate values for multiple devices with spaces."
+          "default_state": false
         },
         {
           "group": "SATA_LINKPWR",
-          "description": "SATA aggressive link power management (ALPM): min_power, medium_power, max_performance.",
           "ids": [
             {
               "id": "SATA_LINKPWR_ON_AC",
@@ -178,12 +167,10 @@
           "type": "entry",
           "values": "",
           "default_value": "host1",
-          "default_state": false,
-          "description": "Exclude SATA host devices from link power management.\n Separate multiple hosts with spaces."
+          "default_state": false
         },
         {
           "group": "AHCI_RUNTIME_PM",
-          "description": "Runtime Power Management for AHCI controllers and disks: on=disable, auto=enable.\n\n** EXPERIMENTAL ** WARNING: auto will most likely cause system lockups/data loss",
           "ids": [
             {
               "id": "AHCI_RUNTIME_PM_ON_AC",
@@ -206,16 +193,14 @@
           "type": "bselect",
           "values": "0,1",
           "default_value": "0",
-          "default_state": true,
-          "description": "Set to power off optical drive in UltraBay/MediaBay when running on battery.\nOtherwise this feature is disabled (Default).\nDrive can be powered on again by releasing (and reinserting) the\neject lever or by pressing the disc eject button on newer models.\nNote: an UltraBay/MediaBay hard disk is never powered off."
+          "default_state": true
         },
         {
           "id": "BAY_DEVICE",
           "type": "entry",
           "values": "",
           "default_value": "sr0",
-          "default_state": true,
-          "description": "Optical drive device to power off (default sr0)"
+          "default_state": true
         }
       ]
     },
@@ -224,7 +209,6 @@
       "configs": [
         {
           "group": "RADEON_POWER_PROFILE",
-          "description": "Radeon graphics clock speed (profile method): low, mid, high, auto, default;\nauto = mid on BAT, high on AC; default = use hardware defaults.\nRequires open-source driver 'radeon'.",
           "ids": [
             {
               "id": "RADEON_POWER_PROFILE_ON_AC",
@@ -244,7 +228,6 @@
         },
         {
           "group": "RADEON_DPM_STATE",
-          "description": "Radeon dynamic power management method (DPM): battery, performance\nWorks with open-source driver 'radeon' only,\nrequires kernel >= 3.11 and boot 'option radeon.dpm=1'.",
           "ids": [
             {
               "id": "RADEON_DPM_STATE_ON_AC",
@@ -264,7 +247,6 @@
         },
         {
           "group": "RADEON_DPM_PERF_LEVEL",
-          "description": "Radeon DPM performance level: auto, low, high; auto is recommended.",
           "ids": [
             {
               "id": "RADEON_DPM_PERF_LEVEL_ON_AC",
@@ -289,7 +271,6 @@
       "configs": [
         {
           "group": "WIFI_PWR",
-          "description": "WiFi power saving mode. Not supported by all adapters.",
           "ids": [
             {
               "id": "WIFI_PWR_ON_AC",
@@ -312,8 +293,7 @@
           "type": "bselect",
           "values": "Y,N",
           "default_value": "Y",
-          "default_state": true,
-          "description": "Disable wake on LAN."
+          "default_state": true
         }
       ]
     },
@@ -322,7 +302,6 @@
       "configs": [
         {
           "group": "PCIE_ASPM",
-          "description": "PCI Express Active State Power Management (PCIe ASPM).",
           "ids": [
             {
               "id": "PCIE_ASPM_ON_AC",
@@ -342,7 +321,6 @@
         },
         {
           "group": "RUNTIME_PM",
-          "description": "Runtime Power Management for PCI(e) bus devices.",
           "ids": [
             {
               "id": "RUNTIME_PM_ON_AC",
@@ -365,24 +343,21 @@
           "type": "bselect",
           "values": "0,1",
           "default_value": "1",
-          "default_state": true,
-          "description": "Runtime PM for *all* PCI(e) bus devices, except blacklisted ones."
+          "default_state": true
         },
         {
           "id": "RUNTIME_PM_BLACKLIST",
           "type": "entry",
           "values": "",
           "default_value": "bb:dd.f 11:22.3 44:55.6",
-          "default_state": false,
-          "description": "Exclude PCI(e) device adresses the following list from Runtime PM\n(separate with spaces). Use lspci to get the adresses (1st column)."
+          "default_state": false
         },
         {
           "id": "RUNTIME_PM_DRIVER_BLACKLIST",
           "type": "entry",
           "values": "",
           "default_value": "radeon nouveau",
-          "default_state": true,
-          "description": "Exclude PCI(e) devices assigned to the listed drivers from Runtime PM\n(should prevent accidential power on of hybrid graphics' discrete part).\nDefault is \"radeon nouveau\"; use \"\" to disable the feature completely.\nSeparate multiple drivers with spaces."
+          "default_state": true
         }
       ]
     },
@@ -391,7 +366,6 @@
       "configs": [
         {
           "group": "CPU_SCALING_GOVERNOR",
-          "description": "Select a cpu frequency scaling governor: ondemand/powersave/performance/conservative\nIntel Core i processor with intel_pstate driver: powersave/performance\nImportant:\n- You *must* disable your distribution's governor settings or conflicts will occur\n- ondemand is sufficient for *almost all* workloads, you should know what you're doing!",
           "ids": [
             {
               "id": "CPU_SCALING_GOVERNOR_ON_AC",
@@ -411,7 +385,6 @@
         },
         {
           "group": "CPU_SCALING_FREQ",
-          "description": "Set the min/max frequency available for the scaling governor.\nPossible values strongly depend on your cpu.\nFor available frequencies see tlp-stat output, Section \"Processor\".",
           "ids": [
             {
               "id": "CPU_SCALING_MIN_FREQ_ON_AC",
@@ -445,7 +418,6 @@
         },
         {
           "group": "CPU_PERF",
-          "description": "Set Intel P-state performance: 0..100 (%)\nLimit the max/min P-state to control the power dissipation of the CPU.\nValues are stated as a percentage of the available performance.\nRequires an Intel Core i processor with intel_pstate driver.",
           "ids": [
             {
               "id": "CPU_MIN_PERF_ON_AC",
@@ -479,7 +451,6 @@
         },
         {
           "group": "CPU_BOOST",
-          "description": "Set the cpu \"turbo boost\" feature.\nRequires an Intel Core i processor.\nImportant:\n- This may conflict with your distribution's governor settings\n- A value of 1 does not activate boosting, it just allows it",
           "ids": [
             {
               "id": "CPU_BOOST_ON_AC",
@@ -499,7 +470,6 @@
         },
         {
           "group": "SCHED_POWERSAVE",
-          "description": "Minimize number of used cpu cores/hyper-threads under light load conditions",
           "ids": [
             {
               "id": "SCHED_POWERSAVE_ON_AC",
@@ -522,20 +492,17 @@
           "type": "bselect",
           "values": "0,1",
           "default_value": "0",
-          "default_state": true,
-          "description": "Kernel NMI Watchdog\noff: saves power, on: for kernel debugging only"
+          "default_state": true
         },
         {
           "id": "PHC_CONTROLS",
           "type": "entry",
           "values": "",
           "default_value": "F:V F:V F:V F:V",
-          "default_state": false,
-          "description": "Change CPU voltages aka \"undervolting\"\nKernel with PHC patch required\nFreq:voltage pairs are written to /sys/devices/system/cpu/cpu0/cpufreq/phc_controls\nCAUTION: only use this, if you thoroughly understand what you are doing!"
+          "default_state": false
         },
         {
           "group": "ENERGY_PERF_POLICY",
-          "description": "Set CPU performance versus energy savings policy.\nRequires kernel module msr and x86_energy_perf_policy from linux-tools",
           "ids": [
             {
               "id": "ENERGY_PERF_POLICY_ON_AC",
@@ -563,64 +530,56 @@
           "type": "bselect",
           "values": "0,1",
           "default_value": "0",
-          "default_state": true,
-          "description": "Restore radio device state (Bluetooth, WiFi, WWAN) from previous shutdown on system startup.\nHint: the parameters DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN below are ignored when this is enabled!"
+          "default_state": true
         },
         {
           "id": "DEVICES_TO_DISABLE_ON_STARTUP",
           "type": "check",
           "values": "bluetooth,wifi,wwan",
           "default_value": "bluetooth wifi wwan",
-          "default_state": false,
-          "description": "Radio devices to disable on startup: bluetooth wifi wwan"
+          "default_state": false
         },
         {
           "id": "DEVICES_TO_ENABLE_ON_STARTUP",
           "type": "check",
           "values": "bluetooth,wifi,wwan",
           "default_value": "wifi",
-          "default_state": false,
-          "description": "Radio devices to enable on startup: bluetooth wifi wwan"
+          "default_state": false
         },
         {
           "id": "DEVICES_TO_DISABLE_ON_SHUTDOWN",
           "type": "check",
           "values": "bluetooth,wifi,wwan",
           "default_value": "bluetooth wifi wwan",
-          "default_state": false,
-          "description": "Radio devices to disable on shutdown: bluetooth wifi wwan\n(workaround for devices that are blocking shutdown)"
+          "default_state": false
         },
         {
           "id": "DEVICES_TO_ENABLE_ON_SHUTDOWN",
           "type": "check",
           "values": "bluetooth,wifi,wwan",
           "default_value": "wwan",
-          "default_state": false,
-          "description": "Radio devices to enable on shutdown: bluetooth wifi wwan\n(to prevent other operating systems from missing radios)"
+          "default_state": false
         },
         {
           "id": "DEVICES_TO_ENABLE_ON_AC",
           "type": "check",
           "values": "bluetooth,wifi,wwan",
           "default_value": "bluetooth wifi wwan",
-          "default_state": false,
-          "description": "Radio devices to enable on AC: bluetooth, wifi, wwan"
+          "default_state": false
         },
         {
           "id": "DEVICES_TO_DISABLE_ON_BAT",
           "type": "check",
           "values": "bluetooth,wifi,wwan",
           "default_value": "bluetooth wifi wwan",
-          "default_state": false,
-          "description": "Radio devices to disable on battery: bluetooth, wifi, wwan"
+          "default_state": false
         },
         {
           "id": "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE",
           "type": "check",
           "values": "bluetooth,wifi,wwan",
           "default_value": "bluetooth wifi wwan",
-          "default_state": false,
-          "description": "Radio devices to disable on battery when not in use (not connected):\nbluetooth, wifi, wwan"
+          "default_state": false
         }
       ]
     },
@@ -629,7 +588,6 @@
       "configs": [
         {
           "group": "DEVICES_TO_DISABLE_ON_CONNECT",
-          "description": "Radio devices to disable on connect",
           "ids": [
             {
               "id": "DEVICES_TO_DISABLE_ON_LAN_CONNECT",
@@ -656,7 +614,6 @@
         },
         {
           "group": "DEVICES_TO_ENABLE_ON_DISCONNECT",
-          "description": "Radio devices to enable on disconnect",
           "ids": [
             {
               "id": "DEVICES_TO_ENABLE_ON_LAN_DISCONNECT",
@@ -683,7 +640,6 @@
         },
         {
           "group": "DEVICES_ON_DOCK",
-          "description": "Radio devices to enable/disable when docked",
           "ids": [
             {
               "id": "DEVICES_TO_ENABLE_ON_DOCK",
@@ -703,7 +659,6 @@
         },
         {
           "group": "DEVICES_ON_UNDOCK",
-          "description": "Radio devices to enable/disable when undocked",
           "ids": [
             {
               "id": "DEVICES_TO_ENABLE_ON_UNDOCK",
@@ -731,40 +686,35 @@
           "type": "bselect",
           "values": "0,1",
           "default_value": "1",
-          "default_state": true,
-          "description": "USB autosuspend feature."
+          "default_state": true
         },
         {
           "id": "USB_BLACKLIST",
           "type": "entry",
           "values": "",
           "default_value": "1111:2222 3333:4444",
-          "default_state": false,
-          "description": "Devices from the following list are excluded from autosuspend\n(separate with spaces). Use lsusb to get the ids.\nNote: input devices (usbhid) are excluded automatically."
+          "default_state": false
         },
         {
           "id": "USB_BLACKLIST_WWAN",
           "type": "bselect",
           "values": "0,1",
           "default_value": "1",
-          "default_state": true,
-          "description": "WWAN devices are excluded from autosuspend.\nNote: works for ids 05c6:* 0bdb:* 1199:* only."
+          "default_state": true
         },
         {
           "id": "USB_WHITELIST",
           "type": "entry",
           "values": "",
           "default_value": "1111:2222 3333:4444",
-          "default_state": false,
-          "description": "Include listed devices into autosuspend even if already excluded\nby the driver or WWAN blacklists above (separate with spaces).\nUse lsusb to get the ids."
+          "default_state": false
         },
         {
           "id": "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN",
           "type": "bselect",
           "values": "0,1",
           "default_value": "1",
-          "default_state": false,
-          "description": "Set to disable autosuspend before shutdown / otherwise to do nothing\n(workaround for USB devices that cause shutdown problems)"
+          "default_state": false
         }
       ]
     },
@@ -773,7 +723,6 @@
       "configs": [
         {
           "group": "CHARGE_THRESH_BAT0",
-          "description": "Battery charge thresholds (ThinkPad only, tp-smapi or acpi-call kernel module required)\nCharging starts when the remaining capacity falls below the START_CHARGE_TRESH\nvalue and stops when exceeding the STOP_CHARGE_TRESH value.\nMain / Internal battery (values in %)",
           "ids": [
             {
               "id": "START_CHARGE_THRESH_BAT0",
@@ -793,7 +742,6 @@
         },
         {
           "group": "CHARGE_THRESH_BAT1",
-          "description": "Ultrabay / Slice / Replaceable battery (values in %)",
           "ids": [
             {
               "id": "START_CHARGE_THRESH_BAT1",
