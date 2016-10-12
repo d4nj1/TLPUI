@@ -70,8 +70,9 @@ def create_item_box(configobjects, doc, grouptitle) -> Gtk.Box:
     configuibox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
 
     if len(configobjects) > 1:
+        transgrouptitle = grouptitle + "__GROUP_TITLE"
         grouplabel = Gtk.Label()
-        grouplabel.set_markup(' <b>' + grouptitle + '</b> ')
+        grouplabel.set_markup(' <b>' + T_(transgrouptitle) + '</b> ')
         grouplabel.set_use_markup(True)
         grouplabel.set_margin_bottom(12)
         grouplabel.set_halign(Gtk.Align.START)
@@ -106,8 +107,9 @@ def create_item_box(configobjects, doc, grouptitle) -> Gtk.Box:
 
         # object label
         configname = tlpobject.get_name()
+        transconfigtitle = configname + "__ID_TITLE"
         configlabel = Gtk.Label(xalign=0)
-        configlabel.set_markup(' <b>' + configname + '</b> ')
+        configlabel.set_markup(' <b>' + T_(transconfigtitle) + '</b> ')
         configlabel.set_use_markup(True)
         configlabel.set_size_request(300, 0)
 
@@ -148,7 +150,6 @@ def get_tlp_categories(tlpconfig) -> OrderedDict:
     categories = get_json_schema_object('categories')
 
     for category in categories:
-        label = T_(category['name'])
         categorybox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
 
         configs = category['configs']
@@ -158,7 +159,7 @@ def get_tlp_categories(tlpconfig) -> OrderedDict:
 
             if 'group' in config:
                 grouptitle = config['group']
-                translationtag = grouptitle + "_GROUP"
+                transdescription = grouptitle + "__GROUP_DESCRIPTION"
                 groupitems = config['ids']
                 for groupitem in groupitems:
                     id = groupitem['id']
@@ -169,14 +170,14 @@ def get_tlp_categories(tlpconfig) -> OrderedDict:
                     configobjects.append([tlpitem, type, values])
             else:
                 id = config['id']
-                translationtag = id + "_ID"
+                transdescription = id + "__ID_DESCRIPTION"
                 type = config['type']
                 values = config['values']
 
                 tlpitem = tlpconfig[id]
                 configobjects.append([tlpitem, type, values])
 
-            description = T_(translationtag)
+            description = T_(transdescription)
 
             configbox = create_item_box(configobjects, description, grouptitle)
             configbox.set_margin_left(12)
@@ -184,6 +185,8 @@ def get_tlp_categories(tlpconfig) -> OrderedDict:
             configbox.set_margin_top(12)
             categorybox.pack_start(configbox, False, False, 0)
 
-        propertyobjects[label] = categorybox
+        transcategory = category['name'] + "__CATEGORY_TITLE"
+        categorylabel = T_(transcategory)
+        propertyobjects[categorylabel] = categorybox
 
     return propertyobjects

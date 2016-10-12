@@ -13,14 +13,18 @@ def create_translateable_strings_header_file():
     newfile = open('configschema.json.h', 'w+')
 
     for category in categories:
-        newfile.write('_(\"' + category['name'] + '_CATEGORY\");\n')
+        newfile.write('_(\"' + category['name'] + '__CATEGORY_TITLE\");\n')
         configs = category['configs']
         for config in configs:
             if 'group' in config:
-                descriptiontag = config['group'] + '_GROUP'
+                newfile.write('_(\"' + config['group'] + '__GROUP_TITLE\");\n')
+                newfile.write('_(\"' + config['group'] + '__GROUP_DESCRIPTION' + '\");\n')
+                configitems = config['ids']
+                for configitem in configitems:
+                    newfile.write('_(\"' + configitem['id'] + '__ID_TITLE\");\n')
             else:
-                descriptiontag = config['id'] + '_ID'
-            newfile.write('_(\"' + descriptiontag + '\");\n')
+                newfile.write('_(\"' + config['id'] + '__ID_TITLE\");\n')
+                newfile.write('_(\"' + config['id'] + '__ID_DESCRIPTION\");\n')
 
     newfile.close()
 
