@@ -13,7 +13,7 @@ from mainui import create_main_box, close_window
 from lang import available_locales
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-l', '--lang', nargs='?', default='en', choices=list(available_locales.keys()))
+parser.add_argument('-l', '--lang', nargs='?', default='', choices=list(available_locales.keys()))
 
 args = parser.parse_args()
 lang = available_locales.get(args.lang)
@@ -21,14 +21,16 @@ lang = available_locales.get(args.lang)
 config = configparser.ConfigParser()
 config.read('app.ini')
 try:
-    if config['locale']['lang'] == lang:
+    if lang == '':
+        lang = config['locale']['lang']
+    elif config['locale']['lang'] == lang:
         pass
     else:
         config['locale']['lang'] = lang
         with open('app.ini', 'w') as configfile:
             config.write(configfile)
-except:
-    print('e')
+except ValueError as e:
+    print(e)
 
 Gtk.StyleContext.add_provider_for_screen(
     Gdk.Screen.get_default(),
