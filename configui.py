@@ -1,5 +1,5 @@
 import gettext
-
+import configparser 
 import gi
 
 gi.require_version('Gtk', '3.0')
@@ -10,7 +10,12 @@ from collections import OrderedDict
 from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkcheckbutton, gtkspinbutton, gtktoggle
 from file import get_json_schema_object
 
-trans = gettext.translation('configdescriptions', 'lang/', languages=['de_DE', 'en_EN'])
+config = configparser.ConfigParser()
+config.read('app.ini')
+lang = []
+lang.append(config['locale']['lang'])
+
+trans = gettext.translation('configdescriptions', 'lang/', languages=lang)
 T_ = trans.gettext
 
 
