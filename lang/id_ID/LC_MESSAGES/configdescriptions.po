@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
 "POT-Creation-Date: 2016-10-12 21:15+0200\n"
-"PO-Revision-Date: 2016-11-09 19:33+0700\n"
+"PO-Revision-Date: 2016-11-12 19:28+0700\n"
 "Last-Translator: Sahri Riza Umami <riza@openmailbox.org>\n"
 "Language-Team: Bahasa Indonesia <riza@openmailbox.org>\n"
 "Language: id_ID\n"
@@ -64,7 +64,7 @@ msgstr "SOUND_POWER_SAVE_CONTROLLER"
 
 #: configschema.json.h:12
 msgid "SOUND_POWER_SAVE_CONTROLLER__ID_DESCRIPTION"
-msgstr "Matikan pengendali (hanya untuk HDA controller)."
+msgstr "Matikan juga pengendali (hanya untuk HDA controller)."
 
 #: configschema.json.h:13
 msgid "Disks__CATEGORY_TITLE"
@@ -207,7 +207,7 @@ msgstr "AHCI_RUNTIME_PM"
 #: configschema.json.h:41
 msgid "AHCI_RUNTIME_PM__GROUP_DESCRIPTION"
 msgstr ""
-"Runtime Power Management untuk pengenadli AHCI dan diska: on=dimatikan, "
+"Runtime Power Management untuk pengendali AHCI dan diska: on=dimatikan, "
 "auto=dihidupkan.\n"
 "** UJI COBA ** PERINGATAN: auto kemungkinan besar akan mengakibatkan sistem "
 "terkunci/kehilangan data"
