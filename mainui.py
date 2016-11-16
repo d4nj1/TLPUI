@@ -13,7 +13,7 @@ config.read('app.ini')
 lang = []
 lang.append(config['locale']['lang'])
 
-trans = gettext.translation('configdescriptions', 'lang/', languages=lang)
+trans = gettext.translation('mainui', 'lang', languages=lang)
 T_ = trans.gettext
 
 def close_window(self, event):
