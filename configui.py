@@ -18,6 +18,8 @@ lang.append(config['locale']['lang'])
 trans = gettext.translation('configdescriptions', 'lang/', languages=lang)
 T_ = trans.gettext
 
+trans2 = gettext.translation('configdescriptions', 'lang/', languages=['en_EN'])
+T2_ = trans2.gettext
 
 def create_config_box(tlp_config_items) -> Gtk.Box:
     notebook = Gtk.Notebook()
@@ -26,7 +28,7 @@ def create_config_box(tlp_config_items) -> Gtk.Box:
 
     tlp_categories = get_tlp_categories(tlp_config_items)
     for label, category in tlp_categories.items():
-        categorylabel = Gtk.Label(label)
+        categorylabel = Gtk.Label(T_(label))
         categorylabel.set_alignment(1, 0.5)
         categorylabel.set_margin_top(6)
         categorylabel.set_margin_bottom(6)
@@ -39,7 +41,7 @@ def create_config_box(tlp_config_items) -> Gtk.Box:
 
         scroll = Gtk.ScrolledWindow()
         scroll.add(viewport)
-        image = Gtk.Image.new_from_file('icons/' + label + '.svg')
+        image = Gtk.Image.new_from_file('icons/' + T2_(label) + '.svg')
 
         labelbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         labelbox.pack_start(image, False, False, 0)
@@ -190,8 +192,7 @@ def get_tlp_categories(tlpconfig) -> OrderedDict:
             configbox.set_margin_top(12)
             categorybox.pack_start(configbox, False, False, 0)
 
-        transcategory = category['name'] + "__CATEGORY_TITLE"
-        categorylabel = T_(transcategory)
+        categorylabel = category['name'] + "__CATEGORY_TITLE"
         propertyobjects[categorylabel] = categorybox
 
     return propertyobjects
