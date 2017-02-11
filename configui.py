@@ -3,7 +3,7 @@ import gettext
 import gi
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
+from gi.repository import Gtk, Gdk
 
 from collections import OrderedDict
 
@@ -81,11 +81,33 @@ def create_item_box(configobjects, doc, grouptitle) -> Gtk.Box:
         configuibox.pack_start(grouplabel, False, False, 0)
 
     for configobject in configobjects:
-        tlpobject = configobject[0]
+        configname = configobject[0]
+        tlpobject = configobject[1]
 
         tlpuiobject = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=18)
         tlpuiobject.set_margin_left(18)
         tlpuiobject.set_margin_right(18)
+
+        if tlpobject == None:
+            missingbgcolor = Gdk.color_parse('lightyellow')
+            missingrgba = Gdk.RGBA.from_color(missingbgcolor)
+
+            missingcheckbox = Gtk.CheckButton()
+            missingcheckbox.set_child_visible(False)
+            missingstatetogglebox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
+            missingstatetogglebox.pack_start(missingcheckbox, False, False, 0)
+            missingstatetogglebox.set_halign(Gtk.Align.CENTER)
+            missingstatetogglebox.set_valign(Gtk.Align.CENTER)
+
+            missingconfiglabel = Gtk.Label(xalign=0)
+            missingconfiglabel.set_markup(' <b>' + configname + '</b> - <i>Expected item missing in config file</i> ')
+            missingconfiglabel.set_use_markup(True)
+            missingconfiglabel.override_background_color(0, missingrgba)
+
+            tlpuiobject.pack_start(missingstatetogglebox, False, False, 0)
+            tlpuiobject.pack_start(missingconfiglabel, False, False, 0)
+            configuibox.pack_start(tlpuiobject, True, True, 0)
+            continue
 
         statetogglebox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
         tlpconfigbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
@@ -96,17 +118,13 @@ def create_item_box(configobjects, doc, grouptitle) -> Gtk.Box:
         statetogglebox.set_halign(Gtk.Align.CENTER)
         statetogglebox.set_valign(Gtk.Align.CENTER)
 
-        # horizontal separator
-        hseparator = Gtk.HSeparator()
-
         # specific config gtk object
-        configwidget = create_config_widget(configobject[1], configobject[2], tlpobject)
+        configwidget = create_config_widget(configobject[2], configobject[3], tlpobject)
         configwidget.set_margin_top(6)
         configwidget.set_margin_bottom(6)
         configwidget.set_margin_left(6)
 
         # object label
-        configname = tlpobject.get_name()
         transconfigtitle = configname + "__ID_TITLE"
         configlabel = Gtk.Label(xalign=0)
         configlabel.set_markup(' <b>' + T_(transconfigtitle) + '</b> ')
@@ -139,6 +157,9 @@ def create_item_box(configobjects, doc, grouptitle) -> Gtk.Box:
     configdescriptionlabel.set_halign(Gtk.Align.START)
     configdescriptionlabel.set_valign(Gtk.Align.START)
 
+    # horizontal separator
+    hseparator = Gtk.HSeparator()
+
     configuibox.pack_start(configdescriptionlabel, True, True, 0)
     configuibox.pack_start(hseparator, True, True, 0)
 
@@ -166,16 +187,22 @@ def get_tlp_categories(tlpconfig) -> OrderedDict:
                     type = groupitem['type']
                     values = groupitem['values']
 
-                    tlpitem = tlpconfig[id]
-                    configobjects.append([tlpitem, type, values])
+                    if id in tlpconfig:
+                        tlpitem = tlpconfig[id]
+                    else:
+                        tlpitem = None
+                    configobjects.append([id, tlpitem, type, values])
             else:
                 id = config['id']
                 transdescription = id + "__ID_DESCRIPTION"
                 type = config['type']
                 values = config['values']
 
-                tlpitem = tlpconfig[id]
-                configobjects.append([tlpitem, type, values])
+                if id in tlpconfig:
+                    tlpitem = tlpconfig[id]
+                else:
+                    tlpitem = None
+                configobjects.append([id, tlpitem, type, values])
 
             description = T_(transdescription)
 
