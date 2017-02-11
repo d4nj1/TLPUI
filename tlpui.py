@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import gi
+import parser
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
 

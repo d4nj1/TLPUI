@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
 "POT-Creation-Date: 2016-10-12 21:15+0200\n"
-"PO-Revision-Date: 2016-11-16 19:17+0900\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: en\n"
+"PO-Revision-Date: 2016-11-12 19:28+0700\n"
+"Last-Translator: Sahri Riza Umami <riza@openmailbox.org>\n"
+"Language-Team: Bahasa Indonesia <riza@openmailbox.org>\n"
+"Language: id_ID\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: ../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: configschema.json.h:1
 msgid "General__CATEGORY_TITLE"
-msgstr "General"
+msgstr "Umum"
 
 #: configschema.json.h:2
 msgid "TLP_ENABLE__ID_TITLE"
@@ -26,7 +26,7 @@ msgstr "TLP_ENABLE"
 
 #: configschema.json.h:3
 msgid "TLP_ENABLE__ID_DESCRIPTION"
-msgstr "Enable/disable TLP."
+msgstr "Hidupkan/matikan TLP."
 
 #: configschema.json.h:4
 msgid "TLP_DEFAULT_MODE__ID_TITLE"
@@ -35,8 +35,8 @@ msgstr "TLP_DEFAULT_MODE"
 #: configschema.json.h:5
 msgid "TLP_DEFAULT_MODE__ID_DESCRIPTION"
 msgstr ""
-"Operation mode when no power supply can be detected: AC, BAT.\n"
-"Concerns some desktop and embedded hardware only."
+"Moda operasi ketika tiada catu daya terdeteksi: AC, BAT.\n"
+"Mungkin hanya untuk beberapa komputer desktop dan perangkat keras embedded."
 
 #: configschema.json.h:6
 msgid "Audio__CATEGORY_TITLE"
@@ -48,7 +48,7 @@ msgstr "SOUND_POWER_SAVE"
 
 #: configschema.json.h:8
 msgid "SOUND_POWER_SAVE__GROUP_DESCRIPTION"
-msgstr "Enable audio power saving for Intel HDA, AC97 devices."
+msgstr "Hidupkan penghematan daya untuk perangkat Intel HDA, AC97."
 
 #: configschema.json.h:9
 msgid "SOUND_POWER_SAVE_ON_AC__ID_TITLE"
@@ -64,11 +64,11 @@ msgstr "SOUND_POWER_SAVE_CONTROLLER"
 
 #: configschema.json.h:12
 msgid "SOUND_POWER_SAVE_CONTROLLER__ID_DESCRIPTION"
-msgstr "Disable controller too (HDA only)."
+msgstr "Matikan juga pengendali (hanya untuk HDA controller)."
 
 #: configschema.json.h:13
 msgid "Disks__CATEGORY_TITLE"
-msgstr "Disks"
+msgstr "Diska"
 
 #: configschema.json.h:14
 msgid "DISK_IDLE_SECS__GROUP_TITLE"
@@ -77,9 +77,10 @@ msgstr "DISK_IDLE_SECS"
 #: configschema.json.h:15
 msgid "DISK_IDLE_SECS__GROUP_DESCRIPTION"
 msgstr ""
-"Seconds laptop mode has to to wait after the disk goes idle before doing a "
-"sync.\n"
-"Non-zero value enables, zero disables laptop mode."
+"Moda laptop yang kedua harus menunggu hingga diska menjadi diam sebelum "
+"melakukan sinkronisasi.\n"
+"Nilai selain nol akan menghidupkan moda laptop, sementara nilai nol "
+"mematikan moda laptop."
 
 #: configschema.json.h:16
 msgid "DISK_IDLE_SECS_ON_AC__ID_TITLE"
@@ -95,7 +96,7 @@ msgstr "MAX_LOST_WORK_SECS"
 
 #: configschema.json.h:19
 msgid "MAX_LOST_WORK_SECS__GROUP_DESCRIPTION"
-msgstr "Dirty page values (timeouts in secs)."
+msgstr "Nilai dirty page (tenggat dalam detik)."
 
 #: configschema.json.h:20
 msgid "MAX_LOST_WORK_SECS_ON_AC__ID_TITLE"
@@ -112,8 +113,10 @@ msgstr "DISK_DEVICES_ID"
 #: configschema.json.h:23
 msgid "DISK_DEVICES__ID_DESCRIPTION"
 msgstr ""
-"Hard disk devices, separate multiple devices with spaces (default: sda).\n"
-"Devices can be specified by disk id too (lookup with: tlp diskid)."
+"Perangkat hard disk, pisahkan banyak perangkat menggunakan spasi (asali: "
+"sda).\n"
+"Perangkat juga dapat ditentukan menggunakan disk id (cari menggunakan "
+"perintah: tlp diskid)."
 
 #: configschema.json.h:24
 msgid "DISK_APM_LEVEL__GROUP_TITLE"
@@ -122,12 +125,12 @@ msgstr "DISK_APM_LEVEL"
 #: configschema.json.h:25
 msgid "DISK_APM_LEVEL__GROUP_DESCRIPTION"
 msgstr ""
-"Hard disk advanced power management level: 1..254, 255 (max saving, min, "
-"off)\n"
-"Levels 1..127 may spin down the disk; 255 allowable on most drives.\n"
-"Separate values for multiple disks with spaces. Use the special value "
-"'keep'\n"
-"to keep the hardware default for the particular disk."
+"Tingkat penataan daya hard disk tingkat lanjut: 1..254, 255 (penghematan "
+"maksimum, minimum, off/mati)\n"
+"Tingkat 1..127 mungkin akan melambatkan perputaran diska; 255 diizinkan pada "
+"kebanyakan kandar.\n"
+"Pisahkan nilai untuk banyak diska menggunakan spasi. Gunakan nilai istimewa "
+"'keep' untuk menjaga perangkat keras asali untuk diska tertentu."
 
 #: configschema.json.h:26
 msgid "DISK_APM_LEVEL_ON_AC__ID_TITLE"
@@ -144,11 +147,12 @@ msgstr "DISK_SPINDOWN_TIMEOUT"
 #: configschema.json.h:29
 msgid "DISK_SPINDOWN_TIMEOUT__GROUP_DESCRIPTION"
 msgstr ""
-"Hard disk spin down timeout:\n"
-"0:\t\t\tspin down disabled\n"
-"1..240:\t\ttimeouts from 5s to 20min (in units of 5s)\n"
-"241..251:\ttimeouts from 30min to 5.5 hours (in units of 30min)\n"
-"(see 'man hdparm' for details)"
+"Tenggat pelambatan putaran hard disk:\n"
+"0:\t\t\tpelambatan putaran dimatikan\n"
+"1..240:\t\ttenggat dari 5 detik sampai 20 menit (dalam satuan tiap 5 detik)\n"
+"241..251:\ttenggat dari 30 menit sampai 5.5 jam (dalam satuan tiap 30 "
+"menit)\n"
+"(lihat 'man hdparm' untuk rinciannya)"
 
 #: configschema.json.h:30
 msgid "DISK_SPINDOWN_TIMEOUT_ON_AC__ID_TITLE"
@@ -165,8 +169,8 @@ msgstr "DISK_IOSCHED"
 #: configschema.json.h:33
 msgid "DISK_IOSCHED__ID_DESCRIPTION"
 msgstr ""
-"Select io scheduler for the disk devices: noop/deadline/cfq (Default: cfq)\n"
-"Separate values for multiple devices with spaces."
+"Pilih io scheduler untuk perangkat diska: noop/deadline/cfq (asali: cfq)\n"
+"Pisahkan nilai untuk banyak perangkat menggunakan spasi."
 
 #: configschema.json.h:34
 msgid "SATA_LINKPWR__GROUP_TITLE"
@@ -193,8 +197,8 @@ msgstr "SATA_LINKPWR_BLACKLIST"
 #: configschema.json.h:39
 msgid "SATA_LINKPWR_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
-"Exclude SATA host devices from link power management.\n"
-"Separate multiple hosts with spaces."
+"Kecualikan perangkat SATA host dari link power management.\n"
+"Pisahkan banyak hosts menggunakan spasi."
 
 #: configschema.json.h:40
 msgid "AHCI_RUNTIME_PM__GROUP_TITLE"
@@ -203,11 +207,10 @@ msgstr "AHCI_RUNTIME_PM"
 #: configschema.json.h:41
 msgid "AHCI_RUNTIME_PM__GROUP_DESCRIPTION"
 msgstr ""
-"Runtime Power Management for AHCI controllers and disks: on=disable, "
-"auto=enable.\n"
-"\n"
-"** EXPERIMENTAL ** WARNING: auto will most likely cause system lockups/data "
-"loss"
+"Runtime Power Management untuk pengendali AHCI dan diska: on=dimatikan, "
+"auto=dihidupkan.\n"
+"** UJI COBA ** PERINGATAN: auto kemungkinan besar akan mengakibatkan sistem "
+"terkunci/kehilangan data"
 
 #: configschema.json.h:42
 msgid "AHCI_RUNTIME_PM_ON_AC__ID_TITLE"
@@ -224,12 +227,12 @@ msgstr "BAY_POWEROFF_ON_BAT"
 #: configschema.json.h:45
 msgid "BAY_POWEROFF_ON_BAT__ID_DESCRIPTION"
 msgstr ""
-"Set to power off optical drive in UltraBay/MediaBay when running on "
-"battery.\n"
-"Otherwise this feature is disabled (Default).\n"
-"Drive can be powered on again by releasing (and reinserting) the\n"
-"eject lever or by pressing the disc eject button on newer models.\n"
-"Note: an UltraBay/MediaBay hard disk is never powered off."
+"Atur untuk mematikan kandar optik di UltraBay/MediaBay ketika sedang "
+"menggunakan baterai.\n"
+"Jika tidak, fitur ini akan dimatikan (asali).\n"
+"Kandar dapat ditenagai kembali dengan mengeluarkan (dan memasukkan kembali) "
+"tuas eject atau dengan menekan tombol eject pada model-model terbaru.\n"
+"Catatan: Hard disk UltraBay/MediaBay tidak akan pernah dimatikan dayanya."
 
 #: configschema.json.h:46
 msgid "BAY_DEVICE__ID_TITLE"
@@ -237,11 +240,11 @@ msgstr "BAY_DEVICE"
 
 #: configschema.json.h:47
 msgid "BAY_DEVICE__ID_DESCRIPTION"
-msgstr "Optical drive device to power off (default sr0)"
+msgstr "Perangkat kandar optik yang akan diputus daya (asali sr0)"
 
 #: configschema.json.h:48
 msgid "Graphics__CATEGORY_TITLE"
-msgstr "Graphics"
+msgstr "Grafik"
 
 #: configschema.json.h:49
 msgid "RADEON_POWER_PROFILE__GROUP_TITLE"
@@ -250,10 +253,10 @@ msgstr "RADEON_POWER_PROFILE"
 #: configschema.json.h:50
 msgid "RADEON_POWER_PROFILE__GROUP_DESCRIPTION"
 msgstr ""
-"Radeon graphics clock speed (profile method): low, mid, high, auto, "
-"default;\n"
-"auto = mid on BAT, high on AC; default = use hardware defaults.\n"
-"Requires open-source driver 'radeon'."
+"Kecepatan jam grafik Radeon (metoda profil): low, mid, high, auto, default;\n"
+"auto = mid pada BAT, high pada AC; default = gunakan pengaturan asali "
+"perangkat keras.\n"
+"Membutuhkan driver sumber terbuka 'radeon'."
 
 #: configschema.json.h:51
 msgid "RADEON_POWER_PROFILE_ON_AC__ID_TITLE"
@@ -270,9 +273,9 @@ msgstr "RADEON_DPM_STATE"
 #: configschema.json.h:54
 msgid "RADEON_DPM_STATE__GROUP_DESCRIPTION"
 msgstr ""
-"Radeon dynamic power management method (DPM): battery, performance\n"
-"Works with open-source driver 'radeon' only,\n"
-"requires kernel >= 3.11 and boot 'option radeon.dpm=1'."
+"Metoda Radeon dynamic power management (DPM): battery, performance\n"
+"Hanya bekerja dengan menggunakan driver sumber terbuka 'radeon', membutuhkan "
+"kernel >= 3.11 dan parameter boot 'option radeon.dpm=1'."
 
 #: configschema.json.h:55
 msgid "RADEON_DPM_STATE_ON_AC__ID_TITLE"
@@ -288,7 +291,8 @@ msgstr "RADEON_DPM_PERF_LEVEL"
 
 #: configschema.json.h:58
 msgid "RADEON_DPM_PERF_LEVEL__GROUP_DESCRIPTION"
-msgstr "Radeon DPM performance level: auto, low, high; auto is recommended."
+msgstr ""
+"Tingkat kinerja Radeon DPM: auto, low, high; disarankan untuk memakai auto."
 
 #: configschema.json.h:59
 msgid "RADEON_DPM_PERF_LEVEL_ON_AC__ID_TITLE"
@@ -300,7 +304,7 @@ msgstr "RADEON_DPM_PERF_LEVEL_ON_BAT"
 
 #: configschema.json.h:61
 msgid "Network__CATEGORY_TITLE"
-msgstr "Network"
+msgstr "Jaringan"
 
 #: configschema.json.h:62
 msgid "WIFI_PWR__GROUP_TITLE"
@@ -308,7 +312,7 @@ msgstr "WIFI_PWR"
 
 #: configschema.json.h:63
 msgid "WIFI_PWR__GROUP_DESCRIPTION"
-msgstr "WiFi power saving mode. Not supported by all adapters."
+msgstr "Moda penghematan daya WiFi. Tidak didukung oleh semua perangkat WiFi."
 
 #: configschema.json.h:64
 msgid "WIFI_PWR_ON_AC__ID_TITLE"
@@ -324,7 +328,7 @@ msgstr "WOL_DISABLE"
 
 #: configschema.json.h:67
 msgid "WOL_DISABLE__ID_DESCRIPTION"
-msgstr "Disable wake on LAN."
+msgstr "Matikan wake on LAN."
 
 #: configschema.json.h:68
 msgid "PCIe__CATEGORY_TITLE"
@@ -352,7 +356,7 @@ msgstr "RUNTIME_PM"
 
 #: configschema.json.h:74
 msgid "RUNTIME_PM__GROUP_DESCRIPTION"
-msgstr "Runtime Power Management for PCI(e) bus devices."
+msgstr "Runtime Power Management untuk perangkat bus PCI(e)."
 
 #: configschema.json.h:75
 msgid "RUNTIME_PM_ON_AC__ID_TITLE"
@@ -368,7 +372,9 @@ msgstr "RUNTIME_PM_ALL"
 
 #: configschema.json.h:78
 msgid "RUNTIME_PM_ALL__ID_DESCRIPTION"
-msgstr "Runtime PM for *all* PCI(e) bus devices, except blacklisted ones."
+msgstr ""
+"Runtime PM untuk *semua* perangkat bus PCI(e), kecuali yang telah masuk "
+"daftar hitam."
 
 #: configschema.json.h:79
 msgid "RUNTIME_PM_BLACKLIST__ID_TITLE"
@@ -377,8 +383,9 @@ msgstr "RUNTIME_PM_BLACKLIST"
 #: configschema.json.h:80
 msgid "RUNTIME_PM_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
-"Exclude PCI(e) device adresses the following list from Runtime PM\n"
-"(separate with spaces). Use lspci to get the adresses (1st column)."
+"Kecualikan perangkat PCI(e) memanggil daftar berikut dari Runtime PM "
+"(pisahkan menggunakan spasi).\n"
+"Gunakan lspci untuk mendapatkan alamatnya (kolom pertama)."
 
 #: configschema.json.h:81
 msgid "RUNTIME_PM_DRIVER_BLACKLIST__ID_TITLE"
@@ -387,14 +394,16 @@ msgstr "RUNTIME_PM_DRIVER_BLACKLIST"
 #: configschema.json.h:82
 msgid "RUNTIME_PM_DRIVER_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
-"Exclude PCI(e) devices assigned to the listed drivers from Runtime PM\n"
-"(should prevent accidential power on of hybrid graphics' discrete part).\n"
-"Default is \"radeon nouveau\"; use \"\" to disable the feature completely.\n"
-"Separate multiple drivers with spaces."
+"Kecualikan perangkat PCI(e) untuk didaftarkan pada driver terdaftar dari "
+"Runtime PM (mencegah bagian discrete dari hybrid graphic agar tidak "
+"ditenagai secara tidak sengaja).\n"
+"Asalinya adalah \"radeon nouveau\"; gunakan \"\" untuk mematikan fitur ini "
+"secara menyeluruh.\n"
+"Pisahkan banyak driver menggunakan spasi."
 
 #: configschema.json.h:83
 msgid "Processor__CATEGORY_TITLE"
-msgstr "Processor"
+msgstr "Prosesor"
 
 #: configschema.json.h:84
 msgid "CPU_SCALING_GOVERNOR__GROUP_TITLE"
@@ -403,14 +412,15 @@ msgstr "CPU_SCALING_GOVERNOR"
 #: configschema.json.h:85
 msgid "CPU_SCALING_GOVERNOR__GROUP_DESCRIPTION"
 msgstr ""
-"Select a cpu frequency scaling governor: ondemand/powersave/performance/"
+"Pilih frekuensi alat pengatur scaling CPU: ondemand/powersave/performance/"
 "conservative\n"
-"Intel Core i processor with intel_pstate driver: powersave/performance\n"
-"Important:\n"
-"- You *must* disable your distribution's governor settings or conflicts will "
-"occur\n"
-"- ondemand is sufficient for *almost all* workloads, you should know what "
-"you're doing!"
+"Prosesor Intel Core i menggunakan driver intel_pstate: powersave/"
+"performance\n"
+"Penting:\n"
+"- Anda *harus* mematikan pengaturan governor dari distribusi Linux yang Anda "
+"gunakan atau akan terjadi konflik\n"
+"- ondemand cukup memadai untuk *hampir semua* beban kerja, Anda harus paham "
+"apa yang Anda lakukan!"
 
 #: configschema.json.h:86
 msgid "CPU_SCALING_GOVERNOR_ON_AC__ID_TITLE"
@@ -427,9 +437,10 @@ msgstr "CPU_SCALING_FREQ"
 #: configschema.json.h:89
 msgid "CPU_SCALING_FREQ__GROUP_DESCRIPTION"
 msgstr ""
-"Set the min/max frequency available for the scaling governor.\n"
-"Possible values strongly depend on your cpu.\n"
-"For available frequencies see tlp-stat output, Section \"Processor\"."
+"Tetapkan frekuensi min/max yang tersedia untuk alat pengatur scaling.\n"
+"Kemungkinan nilai sangat bergantung pada jenis CPU Anda.\n"
+"Untuk pilihan frekuensi yang tersedia lihat keluaran dari tlp-stat, pada "
+"bagian \"Processor\"."
 
 #: configschema.json.h:90
 msgid "CPU_SCALING_MIN_FREQ_ON_AC__ID_TITLE"
@@ -454,10 +465,10 @@ msgstr "CPU_PERF"
 #: configschema.json.h:95
 msgid "CPU_PERF__GROUP_DESCRIPTION"
 msgstr ""
-"Set Intel P-state performance: 0..100 (%)\n"
-"Limit the max/min P-state to control the power dissipation of the CPU.\n"
-"Values are stated as a percentage of the available performance.\n"
-"Requires an Intel Core i processor with intel_pstate driver."
+"Tetapkan kinerja Intel P-state: 0..100 (%)\n"
+"Batas max/min P-state untuk mengendalikan pelepasan daya dari CPU.\n"
+"Nilai ditetapkan sebagai persentase dari kinerja yang tersedia.\n"
+"Membutuhkan prosesor Intel Core i dengan driver intel_pstate."
 
 #: configschema.json.h:96
 msgid "CPU_MIN_PERF_ON_AC__ID_TITLE"
@@ -482,11 +493,12 @@ msgstr "CPU_BOOST"
 #: configschema.json.h:101
 msgid "CPU_BOOST__GROUP_DESCRIPTION"
 msgstr ""
-"Set the cpu \"turbo boost\" feature.\n"
-"Requires an Intel Core i processor.\n"
-"Important:\n"
-"- This may conflict with your distribution's governor settings\n"
-"- A value of 1 does not activate boosting, it just allows it"
+"Tetapkan fitur \"turbo boost\" CPU.\n"
+"Membutuhkan prosesor Intel Core i.\n"
+"Penting:\n"
+"- Ini mungkin akan konflik dengan pengaturan governor distribusi Linux Anda\n"
+"- Sebuah nilai berupa angka 1 tidak akan mengaktifkan boosting, hanya "
+"mengizinkannya saja"
 
 #: configschema.json.h:102
 msgid "CPU_BOOST_ON_AC__ID_TITLE"
@@ -503,7 +515,7 @@ msgstr "SCHED_POWERSAVE"
 #: configschema.json.h:105
 msgid "SCHED_POWERSAVE__GROUP_DESCRIPTION"
 msgstr ""
-"Minimize number of used cpu cores/hyper-threads under light load conditions"
+"Tekan jumlah penggunaan inti/hyper-threads CPU pada keadaan beban ringan"
 
 #: configschema.json.h:106
 msgid "SCHED_POWERSAVE_ON_AC__ID_TITLE"
@@ -520,8 +532,8 @@ msgstr "NMI_WATCHDOG"
 #: configschema.json.h:109
 msgid "NMI_WATCHDOG__ID_DESCRIPTION"
 msgstr ""
-"Kernel NMI Watchdog\n"
-"off: saves power, on: for kernel debugging only"
+"NMI Watchdog kernel\n"
+"off: menghemat daya, on: hanya untuk kernel debugging"
 
 #: configschema.json.h:110
 msgid "PHC_CONTROLS__ID_TITLE"
@@ -530,11 +542,12 @@ msgstr "PHC_CONTROLS"
 #: configschema.json.h:111
 msgid "PHC_CONTROLS__ID_DESCRIPTION"
 msgstr ""
-"Change CPU voltages aka \"undervolting\"\n"
-"Kernel with PHC patch required\n"
-"Freq:voltage pairs are written to /sys/devices/system/cpu/cpu0/cpufreq/"
-"phc_controls\n"
-"CAUTION: only use this, if you thoroughly understand what you are doing!"
+"Ubah tegangan CPU atau dikenal juga sebagai \"undervolting\"\n"
+"Dibutuhkan kernel dengan PHC patch\n"
+"Pasangan frekuensi:tegangan akan ditulis ke /sys/devices/system/cpu/cpu0/"
+"cpufreq/phc_controls\n"
+"PERHATIAN: hanya gunakan ini jika Anda benar-benar mengerti apa yang Anda "
+"lakukan!"
 
 #: configschema.json.h:112
 msgid "ENERGY_PERF_POLICY__GROUP_TITLE"
@@ -543,8 +556,8 @@ msgstr "ENERGY_PERF_POLICY"
 #: configschema.json.h:113
 msgid "ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
 msgstr ""
-"Set CPU performance versus energy savings policy.\n"
-"Requires kernel module msr and x86_energy_perf_policy from linux-tools"
+"Tetapkan kinerja CPU versus kebijakan penghematan energi.\n"
+"Membutuhkan modul kernel msr dan x86_energy_perf_policy dari linux-tools"
 
 #: configschema.json.h:114
 msgid "ENERGY_PERF_POLICY_ON_AC__ID_TITLE"
@@ -565,10 +578,10 @@ msgstr "RESTORE_DEVICE_STATE_ON_STARTUP"
 #: configschema.json.h:118
 msgid "RESTORE_DEVICE_STATE_ON_STARTUP__ID_DESCRIPTION"
 msgstr ""
-"Restore radio device state (Bluetooth, WiFi, WWAN) from previous shutdown on "
-"system startup.\n"
-"Hint: the parameters DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN below are "
-"ignored when this is enabled!"
+"Pulihkan keadaan perangkat radio (Bluetooth, WiFi, WWAN) pada saat sistem "
+"dihidupkan ke keadaan sebelum dimatikan.\n"
+"Petunjuk: parameter DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN di bawah "
+"ini akan diabaikan ketika pilihan ini dihidupkan!"
 
 #: configschema.json.h:119
 msgid "DEVICES_TO_DISABLE_ON_STARTUP__ID_TITLE"
@@ -576,7 +589,9 @@ msgstr "DEVICES_TO_DISABLE_ON_STARTUP"
 
 #: configschema.json.h:120
 msgid "DEVICES_TO_DISABLE_ON_STARTUP__ID_DESCRIPTION"
-msgstr "Radio devices to disable on startup: bluetooth wifi wwan"
+msgstr ""
+"Perangkat radio yang akan dimatikan saat komputer dihidupkan: bluetooth wifi "
+"wwan"
 
 #: configschema.json.h:121
 msgid "DEVICES_TO_ENABLE_ON_STARTUP__ID_TITLE"
@@ -584,7 +599,9 @@ msgstr "DEVICES_TO_ENABLE_ON_STARTUP"
 
 #: configschema.json.h:122
 msgid "DEVICES_TO_ENABLE_ON_STARTUP__ID_DESCRIPTION"
-msgstr "Radio devices to enable on startup: bluetooth wifi wwan"
+msgstr ""
+"Perangkat radio yang akan dihidupkan saat komputer dihidupkan: bluetooth "
+"wifi wwan"
 
 #: configschema.json.h:123
 msgid "DEVICES_TO_DISABLE_ON_SHUTDOWN__ID_TITLE"
@@ -593,8 +610,8 @@ msgstr "DEVICES_TO_DISABLE_ON_SHUTDOWN"
 #: configschema.json.h:124
 msgid "DEVICES_TO_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
-"Radio devices to disable on shutdown: bluetooth wifi wwan\n"
-"(workaround for devices that are blocking shutdown)"
+"Perangkat radio yang akan dimatikan saat komputer dimatikan: bluetooth wifi "
+"wwan (jalan keluar bagi perangkat yang menghalangi proses mematikan komputer)"
 
 #: configschema.json.h:125
 msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN__ID_TITLE"
@@ -603,8 +620,8 @@ msgstr "DEVICES_TO_ENABLE_ON_SHUTDOWN"
 #: configschema.json.h:126
 msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
-"Radio devices to enable on shutdown: bluetooth wifi wwan\n"
-"(to prevent other operating systems from missing radios)"
+"Perangkat radio yang akan dihidupkan saat komputer dimatikan: bluetooth wifi "
+"wwan (untuk mencegah sistem operasi lain tidak mengenali perangkat radio)"
 
 #: configschema.json.h:127
 msgid "DEVICES_TO_ENABLE_ON_AC__ID_TITLE"
@@ -612,7 +629,9 @@ msgstr "DEVICES_TO_ENABLE_ON_AC"
 
 #: configschema.json.h:128
 msgid "DEVICES_TO_ENABLE_ON_AC__ID_DESCRIPTION"
-msgstr "Radio devices to enable on AC: bluetooth, wifi, wwan"
+msgstr ""
+"Perangkat radio yang akan dihidupkan pada penggunaan daya AC: bluetooth, "
+"wifi, wwan"
 
 #: configschema.json.h:129
 msgid "DEVICES_TO_DISABLE_ON_BAT__ID_TITLE"
@@ -620,7 +639,9 @@ msgstr "DEVICES_TO_DISABLE_ON_BAT"
 
 #: configschema.json.h:130
 msgid "DEVICES_TO_DISABLE_ON_BAT__ID_DESCRIPTION"
-msgstr "Radio devices to disable on battery: bluetooth, wifi, wwan"
+msgstr ""
+"Perangkat radio yang akan dimatikan pada saat penggunaan daya baterai: "
+"bluetooth, wifi, wwan"
 
 #: configschema.json.h:131
 msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE__ID_TITLE"
@@ -629,12 +650,13 @@ msgstr "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE"
 #: configschema.json.h:132
 msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE__ID_DESCRIPTION"
 msgstr ""
-"Radio devices to disable on battery when not in use (not connected):\n"
+"Perangkat radio yang akan dimatikan ketika perangkat tersebut tidak "
+"digunakan (tidak terhubung) sementara sistem menggunakan daya baterai: "
 "bluetooth, wifi, wwan"
 
 #: configschema.json.h:133
 msgid "Radio Device Wizard__CATEGORY_TITLE"
-msgstr "Radio Device Wizard"
+msgstr "Wisaya perangkat radio"
 
 #: configschema.json.h:134
 msgid "DEVICES_TO_DISABLE_ON_CONNECT__GROUP_TITLE"
@@ -642,7 +664,8 @@ msgstr "DEVICES_TO_DISABLE_ON_CONNECT"
 
 #: configschema.json.h:135
 msgid "DEVICES_TO_DISABLE_ON_CONNECT__GROUP_DESCRIPTION"
-msgstr "Radio devices to disable on connect"
+msgstr ""
+"Perangkat radio yang akan dimatikan pada saat menggunakan sambungan internet"
 
 #: configschema.json.h:136
 msgid "DEVICES_TO_DISABLE_ON_LAN_CONNECT__ID_TITLE"
@@ -662,7 +685,7 @@ msgstr "DEVICES_TO_ENABLE_ON_DISCONNECT"
 
 #: configschema.json.h:140
 msgid "DEVICES_TO_ENABLE_ON_DISCONNECT__GROUP_DESCRIPTION"
-msgstr "Radio devices to enable on disconnect"
+msgstr "Perangkat radio yang akan dimatikan ketika sambungan internet terputus"
 
 #: configschema.json.h:141
 msgid "DEVICES_TO_ENABLE_ON_LAN_DISCONNECT__ID_TITLE"
@@ -682,7 +705,8 @@ msgstr "DEVICES_ON_DOCK"
 
 #: configschema.json.h:145
 msgid "DEVICES_ON_DOCK__GROUP_DESCRIPTION"
-msgstr "Radio devices to enable/disable when docked"
+msgstr ""
+"Perangkat radio untuk dihidupkan/dimatikan ketika laptop dipasang pada dock."
 
 #: configschema.json.h:146
 msgid "DEVICES_TO_ENABLE_ON_DOCK__ID_TITLE"
@@ -698,7 +722,9 @@ msgstr "DEVICES_ON_UNDOCK"
 
 #: configschema.json.h:149
 msgid "DEVICES_ON_UNDOCK__GROUP_DESCRIPTION"
-msgstr "Radio devices to enable/disable when undocked"
+msgstr ""
+"Perangkat radio untuk dihidupkan/dimatikan ketika laptop dilepaskan dari "
+"dock."
 
 #: configschema.json.h:150
 msgid "DEVICES_TO_ENABLE_ON_UNDOCK__ID_TITLE"
@@ -718,7 +744,7 @@ msgstr "USB_AUTOSUSPEND"
 
 #: configschema.json.h:154
 msgid "USB_AUTOSUSPEND__ID_DESCRIPTION"
-msgstr "USB autosuspend feature."
+msgstr "Fitur autosuspend USB."
 
 #: configschema.json.h:155
 msgid "USB_BLACKLIST__ID_TITLE"
@@ -727,9 +753,11 @@ msgstr "USB_BLACKLIST"
 #: configschema.json.h:156
 msgid "USB_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
-"Devices from the following list are excluded from autosuspend\n"
-"(separate with spaces). Use lsusb to get the ids.\n"
-"Note: input devices (usbhid) are excluded automatically."
+"Perangkat pada daftar berikut dikecualikan dari autosuspend (pisahkan "
+"menggunakan spasi).\n"
+"Gunakan lsusb untuk mendapatkan nomor id perangkat.\n"
+"Catatan: perangkat masukan (usbhid, misal mouse dan keyboard) dikecualikan "
+"secara otomatis."
 
 #: configschema.json.h:157
 msgid "USB_BLACKLIST_WWAN__ID_TITLE"
@@ -738,8 +766,8 @@ msgstr "USB_BLACKLIST_WWAN"
 #: configschema.json.h:158
 msgid "USB_BLACKLIST_WWAN__ID_DESCRIPTION"
 msgstr ""
-"WWAN devices are excluded from autosuspend.\n"
-"Note: works for ids 05c6:* 0bdb:* 1199:* only."
+"Perangkat WWAN dikecualikan dari autosuspend.\n"
+"Catatan: hanya bekerja untuk perangkat dengan id 05c6:* 0bdb:* 1199:*."
 
 #: configschema.json.h:159
 msgid "USB_WHITELIST__ID_TITLE"
@@ -748,9 +776,9 @@ msgstr "USB_WHITELIST"
 #: configschema.json.h:160
 msgid "USB_WHITELIST__ID_DESCRIPTION"
 msgstr ""
-"Include listed devices into autosuspend even if already excluded\n"
-"by the driver or WWAN blacklists above (separate with spaces).\n"
-"Use lsusb to get the ids."
+"Sertakan perangkat ke dalam autosuspend meskipun telah dikecualikan oleh "
+"driver atau daftar hitam WWAN di atas (pisahkan menggunakan spasi).\n"
+"Gunakan lsusb untuk mendapatkan nomor id perangkat."
 
 #: configschema.json.h:161
 msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_TITLE"
@@ -759,12 +787,14 @@ msgstr "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN"
 #: configschema.json.h:162
 msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
-"Set to disable autosuspend before shutdown / otherwise to do nothing\n"
-"(workaround for USB devices that cause shutdown problems)"
+"Tetapkan untuk mematikan autosuspend sebelum komputer dimatikan / jika "
+"tidak, tidak melakukan apa-apa\n"
+"(jalan keluar bagi perangkat USB yang menyebabkan masalah berkaitan dengan "
+"proses mematikan komputer)."
 
 #: configschema.json.h:163
 msgid "ThinkPad Battery__CATEGORY_TITLE"
-msgstr "ThinkPad Battery"
+msgstr "Baterai ThinkPad"
 
 #: configschema.json.h:164
 msgid "CHARGE_THRESH_BAT0__GROUP_TITLE"
@@ -773,12 +803,11 @@ msgstr "CHARGE_THRESH_BAT0"
 #: configschema.json.h:165
 msgid "CHARGE_THRESH_BAT0__GROUP_DESCRIPTION"
 msgstr ""
-"Battery charge thresholds (ThinkPad only, tp-smapi or acpi-call kernel "
-"module required)\n"
-"Charging starts when the remaining capacity falls below the "
-"START_CHARGE_TRESH\n"
-"value and stops when exceeding the STOP_CHARGE_TRESH value.\n"
-"Main / Internal battery (values in %)"
+"Ambang pengisian daya baterai (hanya untuk ThinkPad, membutuhkan modul "
+"kernel tp-smapi atau acpi-call).\n"
+"Mulai pengisian daya ketika kapasitas baterai jatuh di bawah nilai "
+"START_CHARGE_TRESH dan hentikan ketika melewati nilai STOP_CHARGE_TRESH.\n"
+"Baterai utama  / baterai internal (nilai dalam %)"
 
 #: configschema.json.h:166
 msgid "START_CHARGE_THRESH_BAT0__ID_TITLE"
@@ -794,7 +823,7 @@ msgstr "CHARGE_THRESH_BAT1"
 
 #: configschema.json.h:169
 msgid "CHARGE_THRESH_BAT1__GROUP_DESCRIPTION"
-msgstr "Ultrabay / Slice / Replaceable battery (values in %)"
+msgstr "Ultrabay / Slice / Baterai yang bisa diganti (nilai dalam %)"
 
 #: configschema.json.h:170
 msgid "START_CHARGE_THRESH_BAT1__ID_TITLE"

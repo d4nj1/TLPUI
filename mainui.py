@@ -1,4 +1,5 @@
 import gettext
+import configparser
 
 from gi.repository import Gtk, Gdk
 
@@ -7,7 +8,12 @@ from configui import create_config_box
 from file import read_tlp_file_config, write_tlp_file_config
 from statui import create_stat_box
 
-trans = gettext.translation('mainui', 'lang/', languages=['de_DE', 'en_EN'])
+config = configparser.ConfigParser()
+config.read('app.ini')
+lang = []
+lang.append(config['locale']['lang'])
+
+trans = gettext.translation('mainui', 'lang', languages=lang)
 T_ = trans.gettext
 
 def close_window(self, event):
