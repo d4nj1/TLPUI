@@ -10,7 +10,7 @@ from collections import OrderedDict
 from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkcheckbutton, gtkspinbutton, gtktoggle
 from file import get_json_schema_object
 
-trans = gettext.translation('configdescriptions', 'lang/', languages=['de_DE', 'en_EN'])
+trans = gettext.translation('configdescriptions', 'lang/', languages=['de_DE', 'en_EN', 'id_ID'])
 T_ = trans.gettext
 
 
