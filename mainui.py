@@ -1,4 +1,4 @@
-from os import getcwd
+from os import path
 import gettext
 
 from gi.repository import Gtk, Gdk
@@ -8,7 +8,7 @@ from configui import create_config_box
 from file import read_tlp_file_config, write_tlp_file_config
 from statui import create_stat_box
 
-cwd = getcwd() + '/'
+cwd = path.dirname(__file__) + '/'
 trans = gettext.translation('mainui', cwd + 'lang/', languages=['en_EN', 'de_DE'])
 T_ = trans.gettext
 
