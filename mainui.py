@@ -1,3 +1,4 @@
+from os import getcwd
 import gettext
 
 from gi.repository import Gtk, Gdk
@@ -7,7 +8,8 @@ from configui import create_config_box
 from file import read_tlp_file_config, write_tlp_file_config
 from statui import create_stat_box
 
-trans = gettext.translation('mainui', 'lang/', languages=['de_DE', 'en_EN'])
+cwd = getcwd() + '/'
+trans = gettext.translation('mainui', cwd + 'lang/', languages=['en_EN', 'de_DE'])
 T_ = trans.gettext
 
 def close_window(self, event):
@@ -111,7 +113,7 @@ def create_settings_box(window, configpath, tlp_config_items):
     filebutton = Gtk.Button(label=' ' + T_('Open'), image=Gtk.Image(stock=Gtk.STOCK_OPEN))
     filebutton.connect('clicked', open_file_chooser, fileentry, window)
 
-    reloadbutton = Gtk.Button(label=' ' +T_('Reload'), image=Gtk.Image(stock=Gtk.STOCK_REFRESH))
+    reloadbutton = Gtk.Button(label=' ' + T_('Reload'), image=Gtk.Image(stock=Gtk.STOCK_REFRESH))
     reloadbutton.connect('clicked', load_tlp_config, fileentry.get_text, window)
     savebutton = Gtk.Button(label=' ' + T_('Save'), image=Gtk.Image(stock=Gtk.STOCK_SAVE))
     savebutton.connect('clicked', save_tlp_config, fileentry.get_text, tlp_config_items, window)

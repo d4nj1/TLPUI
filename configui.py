@@ -1,3 +1,4 @@
+from os import getcwd
 import gettext
 
 import gi
@@ -10,7 +11,9 @@ from collections import OrderedDict
 from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkcheckbutton, gtkspinbutton, gtktoggle
 from file import get_json_schema_object
 
-trans = gettext.translation('configdescriptions', 'lang/', languages=['de_DE', 'en_EN'])
+cwd = getcwd() + '/'
+
+trans = gettext.translation('configdescriptions', cwd + 'lang/', languages=['en_EN', 'de_DE'])
 T_ = trans.gettext
 
 
