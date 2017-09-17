@@ -5,7 +5,11 @@ from subprocess import check_output
 
 
 def get_graphical_sudo():
-    sudo = which("gksudo")
+    sudo = which("pkexec")
+    if sudo == None:
+        sudo = which("gksudo")
+    if sudo == None:
+        sudo = which("kdesu")
     if sudo == None:
         sudo = which("kdesudo")
     if sudo == None:
