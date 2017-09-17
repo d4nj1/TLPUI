@@ -29,7 +29,7 @@ What works:
 To be done:
 
 * Language detection and stored config
-* Jump to last active tab after reload/save -> Use singleton to store last clicked tab-category (notebook_get_current_page)
+* Jump to last active tab after reload/save
 * Add/optimize value definitions -> Extract disk configuration for all disks found
 * UI improvements for better usability
 * Add debian package build script
