@@ -1,3 +1,4 @@
+from os import path
 import gettext
 
 import gi
@@ -9,8 +10,10 @@ from collections import OrderedDict
 
 from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkcheckbutton, gtkspinbutton, gtktoggle
 from file import get_json_schema_object
+from os import path
+cwd = path.dirname(__file__) + '/'
 
-trans = gettext.translation('configdescriptions', 'lang/', languages=['de_DE', 'en_EN'])
+trans = gettext.translation('configdescriptions', cwd + 'lang/', languages=['en_EN', 'de_DE'])
 T_ = trans.gettext
 
 
@@ -34,7 +37,7 @@ def create_config_box(tlp_config_items) -> Gtk.Box:
 
         scroll = Gtk.ScrolledWindow()
         scroll.add(viewport)
-        image = Gtk.Image.new_from_file('icons/' + label + '.svg')
+        image = Gtk.Image.new_from_file(cwd + 'icons/' + label + '.svg')
 
         labelbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         labelbox.pack_start(image, False, False, 0)

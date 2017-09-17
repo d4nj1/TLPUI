@@ -1,4 +1,5 @@
 import re
+from os import path
 from io import open
 from json import load
 from os import remove, close, path
@@ -8,12 +9,14 @@ from tempfile import mkstemp
 from config import TlpConfig
 
 
+cwd = path.dirname(__file__) + '/'
+
 def get_json_schema_object(objectname) -> dict:
     tlpprovidedschema = '/usr/share/tlp-pm/configschema.json'
     if path.exists(tlpprovidedschema):
         return get_json_schema_object_from_file(objectname, tlpprovidedschema)
     else:
-        return get_json_schema_object_from_file(objectname, 'configschema.json')
+        return get_json_schema_object_from_file(objectname, cwd + 'configschema.json')
 
 
 def get_json_schema_object_from_file(objectname, filename) -> dict:
