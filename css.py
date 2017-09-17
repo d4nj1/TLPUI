@@ -1,7 +1,7 @@
 from gi.repository import Gtk
 from os import path
 
-cwd = path.dirname(__file__) + '/'
+cwd = path.dirname(path.abspath(__file__)) + '/'
 
 def get_css_provider() -> Gtk.CssProvider:
     cssfile = open(cwd + 'styles.css', 'rb')

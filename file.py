@@ -9,7 +9,7 @@ from tempfile import mkstemp
 from config import TlpConfig
 
 
-cwd = path.dirname(__file__) + '/'
+cwd = path.dirname(path.abspath(__file__)) + '/'
 
 def get_json_schema_object(objectname) -> dict:
     tlpprovidedschema = '/usr/share/tlp-pm/configschema.json'

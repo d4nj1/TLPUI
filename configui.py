@@ -11,7 +11,7 @@ from collections import OrderedDict
 from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkcheckbutton, gtkspinbutton, gtktoggle
 from file import get_json_schema_object
 from os import path
-cwd = path.dirname(__file__) + '/'
+cwd = path.dirname(path.abspath(__file__)) + '/'
 
 trans = gettext.translation('configdescriptions', cwd + 'lang/', languages=['en_EN', 'de_DE'])
 T_ = trans.gettext
