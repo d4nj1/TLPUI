@@ -17,12 +17,23 @@ def get_graphical_sudo():
     return sudo
 
 
-def fetch_tlp_stat(self, textbuffer):
+def fetch_simple_stats(self, textbuffer):
+    tlpstat_cmd = which("tlp-stat")
+
+    if tlpstat_cmd == None:
+        textbuffer.set_text('tlp-stat executable not found.')
+        return
+
+    tlpstat = check_output(["tlp-stat", "-g", "-r", "-t", "-c", "-s", "-u"]).decode(sys.stdout.encoding)
+    textbuffer.set_text(tlpstat)
+
+
+def fetch_complete_stats(self, textbuffer):
     sudo_cmd = get_graphical_sudo()
     tlpstat_cmd = which("tlp-stat")
 
     if sudo_cmd == None:
-        textbuffer.set_text('Install gksudo, kdesudo or gksu first.')
+        textbuffer.set_text('Install pkexec, gksu, gksudo, kdesu or kdesudo first.')
         return
 
     if tlpstat_cmd == None:
@@ -49,12 +60,16 @@ def create_stat_box() -> Gtk.Box:
 
     emptylabel = Gtk.Label()
 
-    fetchbutton = Gtk.Button(label=' Fetch stats', image=Gtk.Image(stock=Gtk.STOCK_CONVERT))
-    fetchbutton.connect('clicked', fetch_tlp_stat, textbuffer)
+    fetchsimplebutton = Gtk.Button(label=' Simple', image=Gtk.Image(stock=Gtk.STOCK_INFO))
+    fetchsimplebutton.connect('clicked', fetch_simple_stats, textbuffer)
 
-    buttonbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
+    fetchcompletebutton = Gtk.Button(label=' Complete', image=Gtk.Image(stock=Gtk.STOCK_INDEX))
+    fetchcompletebutton.connect('clicked', fetch_complete_stats, textbuffer)
+
+    buttonbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
     buttonbox.pack_start(emptylabel, True, True, 0)
-    buttonbox.pack_start(fetchbutton, False, False, 0)
+    buttonbox.pack_start(fetchsimplebutton, False, False, 0)
+    buttonbox.pack_start(fetchcompletebutton, False, False, 0)
 
     statbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
     statbox.set_margin_top(18)
