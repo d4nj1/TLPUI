@@ -1,82 +1,57 @@
 class TlpConfig:
-    def __init__(self, raw, linenumber, state, name, value, quote):
+    def __init__(self, raw: str, linenumber: int, enabled: bool, name: str, value: str, quoted: bool):
         self.raw = raw
         self.linenumber = linenumber
-        self.state = state
+        self.enabled = enabled
         self.name = name
         self.value = value
-        self.quote = quote
-        self.newvalue = None
-        self.newstate = None
+        self.quoted = quoted
 
-    def get_raw(self):
+    def get_raw(self) -> str:
         return self.raw
 
-    def get_linenumber(self):
+    def get_linenumber(self) -> int:
         return self.linenumber
 
-    def get_state(self):
-        return self.state
-
-    def get_name(self):
+    def get_name(self) -> str:
         return self.name
 
-    def get_value(self):
+    def get_value(self) -> str:
         return self.value
 
-    def get_quote(self):
-        return self.quote
+    def set_value(self, newvalue: str):
+        self.value = newvalue
 
-    def get_new_value(self):
-        return self.newvalue
+    def set_enabled(self, newstate: bool):
+        self.enabled = newstate
 
-    def set_new_value(self, newvalue):
-        if newvalue != self.value:
-            self.newvalue = newvalue
-        else:
-            self.newvalue = None
+    def is_enabled(self) -> bool:
+        return self.enabled
 
-    def get_new_state(self):
-        return self.newstate
-
-    def set_new_state(self, newstate):
-        if newstate != self.state:
-            self.newstate = newstate
-        else:
-            self.newstate = None
+    def is_quoted(self) -> bool:
+        return self.quoted
 
 
-def get_changed_properties(tlpconfig) -> list:
+def get_changed_properties(changed: dict, original: dict) -> list:
     changedproperties = list()
 
-    for configid in tlpconfig:
-        config = tlpconfig[configid]
-        newstate = config.get_new_state()
-        newvalue = config.get_new_value()
+    for configid in changed:
+        config = changed[configid]              # type: TlpConfig
+        config_original = original[configid]    # type: TlpConfig
 
-        if newstate == None and newvalue == None:
-            continue
+        statechange = config.is_enabled() != config_original.is_enabled()
+        configchange = config.get_value() != config_original.get_value()
 
-        newconfigvalue = ''
+        if statechange or configchange:
+            state = '#'
+            if config.is_enabled():
+                state = ''
 
-        if newstate != None:
-            if newstate == False:
-                newconfigvalue = '#'
-        else:
-            if config.get_state() == False:
-                newconfigvalue = '#'
-
-        newconfigvalue = newconfigvalue + config.get_name() + '='
-
-        if newvalue != None:
-            value = config.get_new_value()
-        else:
             value = config.get_value()
+            if config.is_quoted():
+                value = '\"' + value + '\"'
 
-        if config.get_quote():
-            value = '\"' + value + '\"'
-
-        newconfigvalue += value
-        changedproperties.append([config.get_raw(), config.get_linenumber(), newconfigvalue])
+            newconfigvalue = state + config.get_name() + '=' + value
+            changedproperties.append([config.get_raw(), config.get_linenumber(), newconfigvalue])
 
     return changedproperties

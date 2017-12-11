@@ -37,4 +37,4 @@ def change_check_state(self, checkbuttons, tlpobject):
                 newvalue = newvalue + ' ' + checkvalue
 
     # print(newvalue)
-    tlpobject.set_new_value(newvalue)
+    tlpobject.set_value(newvalue)

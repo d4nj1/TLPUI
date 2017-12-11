@@ -15,5 +15,4 @@ def create_numeric_spinbutton(values, tlpobject) -> Gtk.SpinButton:
 
 def change_numeric_spin_value(self, tlpobject):
     newvalue = str(int(self.get_value()))
-    # print(newvalue)
-    tlpobject.set_new_value(newvalue)
+    tlpobject.set_value(newvalue)

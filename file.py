@@ -1,5 +1,4 @@
 import re
-from os import path
 from io import open
 from json import load
 from os import remove, close, path

@@ -22,4 +22,4 @@ def create_selection_box(values, tlpobject) -> Gtk.ComboBox:
 def change_selection_state(self, tlpobject):
     newvalue = self.get_active_text()
     # print(newvalue)
-    tlpobject.set_new_value(newvalue)
+    tlpobject.set_value(newvalue)

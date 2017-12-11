@@ -16,4 +16,4 @@ def create_entry(tlpobject) -> Gtk.Entry:
 def change_entry_text(self, tlpobject):
     newvalue = self.get_text()
     # print(newvalue)
-    tlpobject.set_new_value(newvalue)
+    tlpobject.set_value(newvalue)

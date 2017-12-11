@@ -18,9 +18,6 @@ def create_state_switch(values, tlpobject) -> Gtk.Switch:
 def change_switch_state(self, notify, tlpobject, falseitem, trueitem):
 
     if self.get_active():
-        tlpobject.set_new_value(trueitem)
+        tlpobject.set_value(trueitem)
     else:
-        tlpobject.set_new_value(falseitem)
-
-    #print(tlpobject.get_value())
-    #print(tlpobject.get_new_value())
+        tlpobject.set_value(falseitem)

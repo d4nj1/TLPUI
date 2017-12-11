@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2016-10-02 10:02+0200\n"
-"PO-Revision-Date: 2016-10-02 10:05+0200\n"
+"POT-Creation-Date: 2017-11-29 20:48+0100\n"
+"PO-Revision-Date: 2017-12-11 12:25+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -13,22 +13,22 @@ msgstr ""
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: T_\n"
+"X-Poedit-KeywordsList: MT_\n"
 "X-Poedit-SearchPath-0: mainui.py\n"
 
-#: mainui.py:23
+#: mainui.py:25
 msgid "Choose config file"
 msgstr "Wähle Konfigurationsdatei"
 
-#: mainui.py:56
+#: mainui.py:65
 msgid "No changes"
 msgstr "Keine Änderungen"
 
-#: mainui.py:58 mainui.py:81
+#: mainui.py:67 mainui.py:91
 msgid "Changed values"
 msgstr "Geänderte Werte"
 
-#: mainui.py:87
+#: mainui.py:97
 msgid ""
 "Do you really want to quit?\n"
 "Following items have changed:"
@@ -36,22 +36,38 @@ msgstr ""
 "Wollen Sie das Programm wirklich beenden?\n"
 "Folgende Werte haben sich geändert:"
 
-#: mainui.py:90
+#: mainui.py:100
 msgid "No changes will be saved."
 msgstr "Änderungen werden <b>nicht</b> gespeichert."
 
-#: mainui.py:111
+#: mainui.py:152 mainui.py:175
 msgid "Open"
 msgstr "Öffnen"
 
-#: mainui.py:114
+#: mainui.py:154 mainui.py:181
 msgid "Reload"
 msgstr "Neu laden"
 
-#: mainui.py:116
+#: mainui.py:156 mainui.py:178
 msgid "Save"
 msgstr "Speichern"
 
-#: mainui.py:118
+#: mainui.py:158 mainui.py:184
 msgid "Quit"
 msgstr "Beenden"
+
+#: mainui.py:172
+msgid "File"
+msgstr "Datei"
+
+#: mainui.py:188
+msgid "Language"
+msgstr "Sprache"
+
+#: mainui.py:224
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#: mainui.py:227
+msgid "Statistics"
+msgstr "Statistiken"

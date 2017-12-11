@@ -1,4 +1,4 @@
-TLPUI - 17.09.2017
+TLPUI - 11.12.2017
 
 The Python scripts in this projects generate a GTK-UI to change TLP configuration files easily.
 It has the aim to protect users from setting bad configuration and to deliver a basic overview of all the valid configuration values.
@@ -28,8 +28,6 @@ What works:
 
 To be done:
 
-* Language detection and stored config
-* Jump to last active tab after reload/save
 * Add/optimize value definitions -> Extract disk configuration for all disks found
 * UI improvements for better usability
 * Add debian package build script

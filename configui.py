@@ -1,6 +1,3 @@
-from os import path
-import gettext
-
 import gi
 
 gi.require_version('Gtk', '3.0')
@@ -10,19 +7,20 @@ from collections import OrderedDict
 
 from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkcheckbutton, gtkspinbutton, gtktoggle
 from file import get_json_schema_object
-
-cwd = path.dirname(path.abspath(__file__)) + '/'
-
-trans = gettext.translation('configdescriptions', cwd + 'lang/', languages=['en_EN', 'de_DE'])
-T_ = trans.gettext
+import settings
+import language
 
 
-def create_config_box(tlp_config_items) -> Gtk.Box:
+def store_page_num(self, page, page_num):
+    settings.activecategorie = page_num
+
+
+def create_config_box() -> Gtk.Box:
     notebook = Gtk.Notebook()
     notebook.set_name('configNotebook')
     notebook.set_tab_pos(Gtk.PositionType.LEFT)
 
-    tlp_categories = get_tlp_categories(tlp_config_items)
+    tlp_categories = get_tlp_categories()
     for label, category in tlp_categories.items():
         categorylabel = Gtk.Label(label)
         categorylabel.set_alignment(1, 0.5)
@@ -37,7 +35,8 @@ def create_config_box(tlp_config_items) -> Gtk.Box:
 
         scroll = Gtk.ScrolledWindow()
         scroll.add(viewport)
-        image = Gtk.Image.new_from_file(cwd + 'icons/' + label + '.svg')
+
+        image = Gtk.Image.new_from_file(settings.icondir + label + '.svg')
 
         labelbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         labelbox.pack_start(image, False, False, 0)
@@ -46,8 +45,13 @@ def create_config_box(tlp_config_items) -> Gtk.Box:
 
         notebook.append_page(scroll, labelbox)
 
+    notebook.connect('switch-page', store_page_num)
+
     containerbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
     containerbox.pack_start(notebook, True, True, 0)
+
+    notebook.show_all()
+    notebook.set_current_page(settings.activecategorie)
 
     return containerbox
 
@@ -75,7 +79,7 @@ def create_item_box(configobjects, doc, grouptitle) -> Gtk.Box:
     if len(configobjects) > 1:
         transgrouptitle = grouptitle + "__GROUP_TITLE"
         grouplabel = Gtk.Label()
-        grouplabel.set_markup(' <b>' + T_(transgrouptitle) + '</b> ')
+        grouplabel.set_markup(' <b>' + language.CDT_(transgrouptitle) + '</b> ')
         grouplabel.set_use_markup(True)
         grouplabel.set_margin_bottom(12)
         grouplabel.set_halign(Gtk.Align.START)
@@ -103,7 +107,7 @@ def create_item_box(configobjects, doc, grouptitle) -> Gtk.Box:
             missingstatetogglebox.set_valign(Gtk.Align.CENTER)
 
             missingconfiglabel = Gtk.Label(xalign=0)
-            missingconfiglabel.set_markup(' <b>' + configname + '</b> - <i>Expected item missing in config file</i> ')
+            missingconfiglabel.set_markup(' <b>' + configname + '</b> - <i>' + language.CT_('Expected item missing in config file') + '</i> ')
             missingconfiglabel.set_use_markup(True)
             missingconfiglabel.override_background_color(0, missingrgba)
 
@@ -130,7 +134,7 @@ def create_item_box(configobjects, doc, grouptitle) -> Gtk.Box:
         # object label
         transconfigtitle = configname + "__ID_TITLE"
         configlabel = Gtk.Label(xalign=0)
-        configlabel.set_markup(' <b>' + T_(transconfigtitle) + '</b> ')
+        configlabel.set_markup(' <b>' + language.CDT_(transconfigtitle) + '</b> ')
         configlabel.set_use_markup(True)
         configlabel.set_size_request(300, 0)
 
@@ -139,10 +143,10 @@ def create_item_box(configobjects, doc, grouptitle) -> Gtk.Box:
         tlpconfigbox.pack_start(configwidget, True, True, 0)
 
         if configname.endswith('_BAT'):
-            image = Gtk.Image.new_from_file('icons/OnBAT.svg')
+            image = Gtk.Image.new_from_file(settings.icondir + 'OnBAT.svg')
             tlpconfigbox.pack_start(image, False, False, 12)
         elif configname.endswith('_AC'):
-            image = Gtk.Image.new_from_file('icons/OnAC.svg')
+            image = Gtk.Image.new_from_file(settings.icondir + 'OnAC.svg')
             tlpconfigbox.pack_start(image, False, False, 12)
 
         tlpuiobject.pack_start(statetogglebox, False, False, 0)
@@ -169,7 +173,7 @@ def create_item_box(configobjects, doc, grouptitle) -> Gtk.Box:
     return configuibox
 
 
-def get_tlp_categories(tlpconfig) -> OrderedDict:
+def get_tlp_categories() -> OrderedDict:
     propertyobjects = OrderedDict()
     categories = get_json_schema_object('categories')
 
@@ -190,8 +194,8 @@ def get_tlp_categories(tlpconfig) -> OrderedDict:
                     type = groupitem['type']
                     values = groupitem['values']
 
-                    if id in tlpconfig:
-                        tlpitem = tlpconfig[id]
+                    if id in settings.tlpconfig:
+                        tlpitem = settings.tlpconfig[id]
                     else:
                         tlpitem = None
                     configobjects.append([id, tlpitem, type, values])
@@ -201,13 +205,13 @@ def get_tlp_categories(tlpconfig) -> OrderedDict:
                 type = config['type']
                 values = config['values']
 
-                if id in tlpconfig:
-                    tlpitem = tlpconfig[id]
+                if id in settings.tlpconfig:
+                    tlpitem = settings.tlpconfig[id]
                 else:
                     tlpitem = None
                 configobjects.append([id, tlpitem, type, values])
 
-            description = T_(transdescription)
+            description = language.CDT_(transdescription)
 
             configbox = create_item_box(configobjects, description, grouptitle)
             configbox.set_margin_left(12)
@@ -216,7 +220,7 @@ def get_tlp_categories(tlpconfig) -> OrderedDict:
             categorybox.pack_start(configbox, False, False, 0)
 
         transcategory = category['name'] + "__CATEGORY_TITLE"
-        categorylabel = T_(transcategory)
+        categorylabel = language.CDT_(transcategory)
         propertyobjects[categorylabel] = categorybox
 
     return propertyobjects
