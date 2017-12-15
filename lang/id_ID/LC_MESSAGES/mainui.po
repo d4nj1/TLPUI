@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TLPUI\n"
+"POT-Creation-Date: 2017-12-15 21:21+0100\n"
+"PO-Revision-Date: 2017-12-15 21:21+0100\n"
+"Last-Translator: Sahri Riza Umami <riza@openmailbox.org>\n"
+"Language-Team: Bahasa Indonesia <riza@openmailbox.org>\n"
+"Language: id_ID\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: MT_\n"
+"X-Poedit-SearchPath-0: mainui.py\n"
+
+#: mainui.py:38
+msgid "Choose config file"
+msgstr "Pilih berkas pengaturan"
+
+#: mainui.py:76
+msgid "No changes"
+msgstr "Tidak ada perubahan"
+
+#: mainui.py:78 mainui.py:102
+msgid "Changed values"
+msgstr "Nilai yang telah diubah"
+
+#: mainui.py:108
+msgid ""
+"Do you really want to quit?\n"
+"Following items have changed:"
+msgstr ""
+"Yakin ingin berhenti?\n"
+"Item berikut telah berubah:"
+
+#: mainui.py:111
+msgid "No changes will be saved."
+msgstr "Tidak ada perubahan yang akan disimpan."
+
+#: mainui.py:162 mainui.py:185
+msgid "Open"
+msgstr "Buka"
+
+#: mainui.py:164
+msgid "Reload"
+msgstr "Muat ulang"
+
+#: mainui.py:166 mainui.py:188
+msgid "Save"
+msgstr "Simpan"
+
+#: mainui.py:168 mainui.py:194
+msgid "Quit"
+msgstr "Berhenti"
+
+#: mainui.py:182
+msgid "File"
+msgstr "File"
+
+#: mainui.py:198
+msgid "Language"
+msgstr "Language"
+
+#: mainui.py:243
+msgid "Configuration"
+msgstr "Configuration"
+
+#: mainui.py:246
+msgid "Statistics"
+msgstr "Statistics"

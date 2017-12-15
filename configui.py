@@ -21,8 +21,8 @@ def create_config_box() -> Gtk.Box:
     notebook.set_tab_pos(Gtk.PositionType.LEFT)
 
     tlp_categories = get_tlp_categories()
-    for label, category in tlp_categories.items():
-        categorylabel = Gtk.Label(label)
+    for name, categorydata in tlp_categories.items():
+        categorylabel = Gtk.Label(categorydata[0])
         categorylabel.set_alignment(1, 0.5)
         categorylabel.set_margin_top(6)
         categorylabel.set_margin_bottom(6)
@@ -31,12 +31,12 @@ def create_config_box() -> Gtk.Box:
 
         viewport = Gtk.Viewport()
         viewport.set_name('categoryViewport')
-        viewport.add(category)
+        viewport.add(categorydata[1])
 
         scroll = Gtk.ScrolledWindow()
         scroll.add(viewport)
 
-        image = Gtk.Image.new_from_file(settings.icondir + label + '.svg')
+        image = Gtk.Image.new_from_file(settings.icondir + name + '.svg')
 
         labelbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         labelbox.pack_start(image, False, False, 0)
@@ -219,8 +219,9 @@ def get_tlp_categories() -> OrderedDict:
             configbox.set_margin_top(12)
             categorybox.pack_start(configbox, False, False, 0)
 
-        transcategory = category['name'] + "__CATEGORY_TITLE"
+        categoryname = category['name']
+        transcategory = categoryname + "__CATEGORY_TITLE"
         categorylabel = language.CDT_(transcategory)
-        propertyobjects[categorylabel] = categorybox
+        propertyobjects[categoryname] = [categorylabel, categorybox]
 
     return propertyobjects
