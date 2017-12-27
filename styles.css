@@ -10,3 +10,13 @@
 #categoryViewport {
     background-color: @theme_bg_color;
 }
+
+#validEntry {
+    color: white;
+    background: green;
+}
+
+#invalidEntry {
+    color: white;
+    background: red;
+}

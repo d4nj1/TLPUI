@@ -5,7 +5,7 @@ from gi.repository import Gtk, Gdk
 
 from collections import OrderedDict
 
-from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkcheckbutton, gtkspinbutton, gtktoggle
+from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusbentry
 from file import get_json_schema_object
 import settings
 import language
@@ -61,6 +61,8 @@ def create_config_widget(objecttype, objectvalues, tlpobject) -> Gtk.Widget:
 
     if (objecttype == 'entry'):
         configwidget = gtkentry.create_entry(tlpobject)
+    elif (objecttype == 'usbentry'):
+        configwidget = gtkusbentry.create_entry(tlpobject)
     elif (objecttype == 'bselect'):
         configwidget = gtkswitch.create_state_switch(objectvalues, tlpobject)
     elif (objecttype == 'select'):

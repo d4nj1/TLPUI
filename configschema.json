@@ -690,7 +690,7 @@
         },
         {
           "id": "USB_BLACKLIST",
-          "type": "entry",
+          "type": "usbentry",
           "values": "",
           "default_value": "1111:2222 3333:4444",
           "default_state": false
@@ -704,7 +704,7 @@
         },
         {
           "id": "USB_WHITELIST",
-          "type": "entry",
+          "type": "usbentry",
           "values": "",
           "default_value": "1111:2222 3333:4444",
           "default_state": false
