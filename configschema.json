@@ -93,7 +93,7 @@
         },
         {
           "id": "DISK_DEVICES",
-          "type": "entry",
+          "type": "disklist",
           "values": "",
           "default_value": "sda sdb",
           "default_state": true
@@ -103,15 +103,15 @@
           "ids": [
             {
               "id": "DISK_APM_LEVEL_ON_AC",
-              "type": "entry",
-              "values": "",
+              "type": "disklistview",
+              "values": "1-255",
               "default_value": "254 254",
               "default_state": true
             },
             {
               "id": "DISK_APM_LEVEL_ON_BAT",
-              "type": "entry",
-              "values": "",
+              "type": "disklistview",
+              "values": "1-255",
               "default_value": "128 128",
               "default_state": true
             }
@@ -122,15 +122,15 @@
           "ids": [
             {
               "id": "DISK_SPINDOWN_TIMEOUT_ON_AC",
-              "type": "entry",
-              "values": "",
+              "type": "disklistview",
+              "values": "0-251",
               "default_value": "0 0",
               "default_state": false
             },
             {
               "id": "DISK_SPINDOWN_TIMEOUT_ON_BAT",
-              "type": "entry",
-              "values": "",
+              "type": "disklistview",
+              "values": "0-251",
               "default_value": "0 0",
               "default_state": false
             }
@@ -138,8 +138,8 @@
         },
         {
           "id": "DISK_IOSCHED",
-          "type": "entry",
-          "values": "",
+          "type": "disklistview",
+          "values": "noop,deadline,cfq",
           "default_value": "cfq cfq",
           "default_state": false
         },
@@ -690,7 +690,7 @@
         },
         {
           "id": "USB_BLACKLIST",
-          "type": "usbentry",
+          "type": "usblist",
           "values": "",
           "default_value": "1111:2222 3333:4444",
           "default_state": false
@@ -704,7 +704,7 @@
         },
         {
           "id": "USB_WHITELIST",
-          "type": "usbentry",
+          "type": "usblist",
           "values": "",
           "default_value": "1111:2222 3333:4444",
           "default_state": false

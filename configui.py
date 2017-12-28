@@ -5,7 +5,7 @@ from gi.repository import Gtk, Gdk
 
 from collections import OrderedDict
 
-from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusbentry
+from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusblist, gtkdisklist, gtkdisklistview
 from file import get_json_schema_object
 import settings
 import language
@@ -15,12 +15,12 @@ def store_page_num(self, page, page_num):
     settings.activecategorie = page_num
 
 
-def create_config_box() -> Gtk.Box:
+def create_config_box(window) -> Gtk.Box:
     notebook = Gtk.Notebook()
     notebook.set_name('configNotebook')
     notebook.set_tab_pos(Gtk.PositionType.LEFT)
 
-    tlp_categories = get_tlp_categories()
+    tlp_categories = get_tlp_categories(window)
     for name, categorydata in tlp_categories.items():
         categorylabel = Gtk.Label(categorydata[0])
         categorylabel.set_alignment(1, 0.5)
@@ -56,13 +56,17 @@ def create_config_box() -> Gtk.Box:
     return containerbox
 
 
-def create_config_widget(objecttype, objectvalues, tlpobject) -> Gtk.Widget:
+def create_config_widget(objecttype, objectvalues, tlpobject, window) -> Gtk.Widget:
     configwidget = Gtk.Widget
 
     if (objecttype == 'entry'):
         configwidget = gtkentry.create_entry(tlpobject)
-    elif (objecttype == 'usbentry'):
-        configwidget = gtkusbentry.create_entry(tlpobject)
+    elif (objecttype == 'usblist'):
+        configwidget = gtkusblist.create_list(tlpobject, window)
+    elif (objecttype == 'disklist'):
+        configwidget = gtkdisklist.create_list(tlpobject, window)
+    elif (objecttype == 'disklistview'):
+        configwidget = gtkdisklistview.create_view(tlpobject)
     elif (objecttype == 'bselect'):
         configwidget = gtkswitch.create_state_switch(objectvalues, tlpobject)
     elif (objecttype == 'select'):
@@ -75,7 +79,7 @@ def create_config_widget(objecttype, objectvalues, tlpobject) -> Gtk.Widget:
     return configwidget
 
 
-def create_item_box(configobjects, doc, grouptitle) -> Gtk.Box:
+def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
     configuibox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
 
     if len(configobjects) > 1:
@@ -128,7 +132,7 @@ def create_item_box(configobjects, doc, grouptitle) -> Gtk.Box:
         statetogglebox.set_valign(Gtk.Align.CENTER)
 
         # specific config gtk object
-        configwidget = create_config_widget(configobject[2], configobject[3], tlpobject)
+        configwidget = create_config_widget(configobject[2], configobject[3], tlpobject, window)
         configwidget.set_margin_top(6)
         configwidget.set_margin_bottom(6)
         configwidget.set_margin_left(6)
@@ -175,7 +179,7 @@ def create_item_box(configobjects, doc, grouptitle) -> Gtk.Box:
     return configuibox
 
 
-def get_tlp_categories() -> OrderedDict:
+def get_tlp_categories(window) -> OrderedDict:
     propertyobjects = OrderedDict()
     categories = get_json_schema_object('categories')
 
@@ -215,7 +219,7 @@ def get_tlp_categories() -> OrderedDict:
 
             description = language.CDT_(transdescription)
 
-            configbox = create_item_box(configobjects, description, grouptitle)
+            configbox = create_item_box(configobjects, description, grouptitle, window)
             configbox.set_margin_left(12)
             configbox.set_margin_right(12)
             configbox.set_margin_top(12)

@@ -28,11 +28,10 @@ What works:
 
 To be done:
 
-* Add/optimize value definitions -> Extract disk configuration for all disks found
 * UI improvements for better usability
 * Add debian package build script
 * Light/dark themed icons
 * Refactor Python code
 
 
-![Screenshot 01.09.2016](https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshot.png)
+![Screenshot 28.12.2017](https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshot.png)

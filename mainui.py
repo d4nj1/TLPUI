@@ -230,7 +230,7 @@ def create_main_box(window) -> Gtk.Box:
 
     menubox = create_menu_box(window, fileentry)
     settingsbox = create_settings_box(window, fileentry)
-    configbox = create_config_box()
+    configbox = create_config_box(window)
 
     contentbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
     contentbox.set_margin_top(18)

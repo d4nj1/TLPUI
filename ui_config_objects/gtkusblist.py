@@ -6,9 +6,7 @@ from subprocess import check_output
 
 global indexstore
 
-def create_entry(tlpobject) -> Gtk.Box:
-    window = Gtk.Window()
-
+def create_list(tlpobject, window) -> Gtk.Box:
     box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
     label = Gtk.Label(tlpobject.get_value().replace(" ", "\n"))
 
@@ -110,7 +108,6 @@ def edit_list(self, tlpobject, usblistlabel, window):
     dialog.show_all()
 
     response = dialog.run()
-
     if response == Gtk.ResponseType.OK:
         configvalue = ' '.join(str(item) for item in selecteditems)
         tlpobject.set_value(configvalue)
