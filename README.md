@@ -17,21 +17,20 @@ Start UI:
 
 Current status:
 
-* Software works but is still in Beta status
+* Software still in Beta status
 
 What works:
 
 * Configuration can be read and displayed
 * Changes can be saved with user permissions
 * Must be run with sudo to save system configuration (/etc/default/tlp)
-* tlp-stat can be load in ui
+* tlp-stat can be load in ui (simple and complete)
 
 To be done:
 
-* UI improvements for better usability
 * Add debian package build script
 * Light/dark themed icons
-* Refactor Python code
+* Code refactorings
 
 
 ![Screenshot 28.12.2017](https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshot.png)
