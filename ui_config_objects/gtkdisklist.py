@@ -26,26 +26,31 @@ def edit_list(self, window):
     notebook.set_tab_pos(Gtk.PositionType.TOP)
 
     configranges = get_disk_config_ranges()
+    existingdisks = read_existing_disk_config()
 
     disks = OrderedDict()
     disklist = check_output(["tlp", "diskid"]).decode(sys.stdout.encoding)
     for line in disklist.splitlines():
         diskid = line.split(':')[0].lstrip().rstrip()
 
+        defaultvalues = [254, 128, 0, 0, 'cfq']
+        if diskid in existingdisks.keys():
+            defaultvalues = existingdisks[diskid]
+
         notebookgrid = Gtk.Grid()
         notebookgrid.set_row_homogeneous(True)
         notebookgrid.set_column_spacing(12)
 
         apmlevelonaclabel = Gtk.Label(label='DISK_APM_LEVEL_ON_AC', halign=Gtk.Align.START)
-        apmlevelonacspiner = create_spinbutton(configranges[0], 254)
+        apmlevelonacspiner = create_spinbutton(configranges[0], defaultvalues[0])
         apmlevelonbatlabel = Gtk.Label(label='DISK_APM_LEVEL_ON_BAT', halign=Gtk.Align.START)
-        apmlevelonbatspiner = create_spinbutton(configranges[1], 128)
+        apmlevelonbatspiner = create_spinbutton(configranges[1], defaultvalues[1])
         spindowntimeoutonaclabel = Gtk.Label(label='DISK_SPINDOWN_TIMEOUT_ON_AC', halign=Gtk.Align.START)
-        spindowntimeoutonacspiner = create_spinbutton(configranges[2], 0)
+        spindowntimeoutonacspiner = create_spinbutton(configranges[2], defaultvalues[2])
         spindowntimeoutonbatlabel = Gtk.Label(label='DISK_SPINDOWN_TIMEOUT_ON_BAT', halign=Gtk.Align.START)
-        spindowntimeoutonbatspiner = create_spinbutton(configranges[3], 0)
+        spindowntimeoutonbatspiner = create_spinbutton(configranges[3], defaultvalues[3])
         ioschedlabel = Gtk.Label(label='DISK_IOSCHED', halign=Gtk.Align.START)
-        ioschedselect = create_selectbox(configranges[4], 'cfq')
+        ioschedselect = create_selectbox(configranges[4], defaultvalues[4])
 
         notebookgrid.attach(apmlevelonaclabel, 0, 0, 1, 1)
         notebookgrid.attach(apmlevelonacspiner, 1, 0, 1, 1)
@@ -132,6 +137,24 @@ def create_selectbox(values, configvalue):
 
     combobox.set_active(selectid)
     return combobox
+
+
+def read_existing_disk_config() -> OrderedDict:
+    devices = settings.tlpconfig['DISK_DEVICES'].get_value().split(' ')
+    apmlevelonac = settings.tlpconfig['DISK_APM_LEVEL_ON_AC'].get_value().split(' ')
+    apmlevelonbat = settings.tlpconfig['DISK_APM_LEVEL_ON_BAT'].get_value().split(' ')
+    spindowntimeoutonac = settings.tlpconfig['DISK_SPINDOWN_TIMEOUT_ON_AC'].get_value().split(' ')
+    spindowntimeoutonbat = settings.tlpconfig['DISK_SPINDOWN_TIMEOUT_ON_BAT'].get_value().split(' ')
+    iosched = settings.tlpconfig['DISK_IOSCHED'].get_value().split(' ')
+
+    existingdiskconfig = OrderedDict()
+    index = 0
+    for device in devices:
+        existingdiskconfig[device] = [int(apmlevelonac[index]), int(apmlevelonbat[index]), int(spindowntimeoutonac[index]), int(spindowntimeoutonbat[index]), iosched[index]]
+        index+=1
+
+    return existingdiskconfig
+
 
 def get_disk_config_ranges():
     apmlevelrangeac = ''
