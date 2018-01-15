@@ -1,4 +1,5 @@
-import configparser
+import configparser, re, sys
+from subprocess import check_output
 from os import path
 from pathlib import Path
 
@@ -31,6 +32,13 @@ def persist():
         config.write(configfile)
 
 
+def get_setting_file() -> str:
+    pattern = re.compile("Configured Settings: ([^\s]+)")
+    currentconfig = check_output(["tlp-stat", "-c"]).decode(sys.stdout.encoding)
+    matcher = pattern.search(currentconfig)
+    return matcher.group(1)
+
+
 if userconfigfile.exists():
     config = configparser.ConfigParser()
     config.read_file(open(str(userconfigfile)))
@@ -43,6 +51,7 @@ else:
     userconfigpath.mkdir(parents=True, exist_ok=True)
     userconfigfile.touch()
     userconfigfile.write_text("[default]")
+    tlpconfigfile = get_setting_file()
     persist()
 
 

@@ -20,7 +20,8 @@ def create_config_box(window) -> Gtk.Box:
     notebook.set_name('configNotebook')
     notebook.set_tab_pos(Gtk.PositionType.LEFT)
 
-    tlp_categories = get_tlp_categories(window)
+    categories = get_json_schema_object('categories')
+    tlp_categories = get_tlp_categories(window, categories)
     for name, categorydata in tlp_categories.items():
         categorylabel = Gtk.Label(categorydata[0])
         categorylabel.set_alignment(1, 0.5)
@@ -98,8 +99,8 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
         tlpobject = configobject[1]
 
         tlpuiobject = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=18)
-        tlpuiobject.set_margin_left(18)
-        tlpuiobject.set_margin_right(18)
+        tlpuiobject.set_margin_start(18)
+        tlpuiobject.set_margin_end(18)
 
         if tlpobject == None:
             missingbgcolor = Gdk.color_parse('lightyellow')
@@ -166,7 +167,7 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
     configdescriptionlabel.set_line_wrap(True)
     configdescriptionlabel.set_margin_top(6)
     configdescriptionlabel.set_margin_bottom(12)
-    configdescriptionlabel.set_margin_left(48)
+    configdescriptionlabel.set_margin_start(48)
     configdescriptionlabel.set_halign(Gtk.Align.START)
     configdescriptionlabel.set_valign(Gtk.Align.START)
 
@@ -179,9 +180,8 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
     return configuibox
 
 
-def get_tlp_categories(window) -> OrderedDict:
+def get_tlp_categories(window, categories) -> OrderedDict:
     propertyobjects = OrderedDict()
-    categories = get_json_schema_object('categories')
 
     for category in categories:
         categorybox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
@@ -220,8 +220,8 @@ def get_tlp_categories(window) -> OrderedDict:
             description = language.CDT_(transdescription)
 
             configbox = create_item_box(configobjects, description, grouptitle, window)
-            configbox.set_margin_left(12)
-            configbox.set_margin_right(12)
+            configbox.set_margin_start(12)
+            configbox.set_margin_end(12)
             configbox.set_margin_top(12)
             categorybox.pack_start(configbox, False, False, 0)
 

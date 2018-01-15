@@ -163,32 +163,6 @@
           ]
         },
         {
-          "id": "SATA_LINKPWR_BLACKLIST",
-          "type": "entry",
-          "values": "",
-          "default_value": "host1",
-          "default_state": false
-        },
-        {
-          "group": "AHCI_RUNTIME_PM",
-          "ids": [
-            {
-              "id": "AHCI_RUNTIME_PM_ON_AC",
-              "type": "bselect",
-              "values": "on,auto",
-              "default_value": "on",
-              "default_state": false
-            },
-            {
-              "id": "AHCI_RUNTIME_PM_ON_BAT",
-              "type": "bselect",
-              "values": "on,auto",
-              "default_value": "on",
-              "default_state": false
-            }
-          ]
-        },
-        {
           "id": "BAY_POWEROFF_ON_BAT",
           "type": "bselect",
           "values": "0,1",
@@ -275,14 +249,14 @@
             {
               "id": "WIFI_PWR_ON_AC",
               "type": "bselect",
-              "values": "off,on",
+              "values": "1,5",
               "default_value": "1",
               "default_state": true
             },
             {
               "id": "WIFI_PWR_ON_BAT",
               "type": "bselect",
-              "values": "off,on",
+              "values": "1,5",
               "default_value": "5",
               "default_state": true
             }
@@ -370,14 +344,14 @@
             {
               "id": "CPU_SCALING_GOVERNOR_ON_AC",
               "type": "select",
-              "values": "ondemand,schedutil,powersave,performance,conservative",
+              "values": "ondemand,powersave,performance,conservative",
               "default_value": "powersave",
               "default_state": false
             },
             {
               "id": "CPU_SCALING_GOVERNOR_ON_BAT",
               "type": "select",
-              "values": "ondemand,schedutil,powersave,performance,conservative",
+              "values": "ondemand,powersave,performance,conservative",
               "default_value": "powersave",
               "default_state": false
             }
