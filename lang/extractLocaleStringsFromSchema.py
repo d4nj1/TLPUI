@@ -4,10 +4,18 @@ import os
 from file import get_json_schema_object_from_file
 
 
+lastvalue = ''
 
 def add_to_list(listobject: list, value: str):
+    global lastvalue
     if not value in listobject:
-        listobject.append(value)
+        if lastvalue in listobject:
+            lastindex = listobject.index(lastvalue)
+            listobject.insert(lastindex+1, value)
+        else:
+            listobject.append(value)
+
+    lastvalue = value
 
 
 def create_translateable_strings_header_file():
