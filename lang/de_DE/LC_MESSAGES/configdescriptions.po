@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2018-01-15 21:58+0100\n"
-"PO-Revision-Date: 2018-01-15 22:10+0100\n"
+"POT-Creation-Date: 2018-01-26 21:28+0100\n"
+"PO-Revision-Date: 2018-01-26 21:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -804,45 +804,53 @@ msgid "USB_BLACKLIST_PHONE__ID_DESCRIPTION"
 msgstr "Phone devices are excluded from USB autosuspend"
 
 #: configschema.json.h:172
+msgid "USB_BLACKLIST_PRINTER__ID_TITLE"
+msgstr "USB_BLACKLIST_PRINTER"
+
+#: configschema.json.h:173
+msgid "USB_BLACKLIST_PRINTER__ID_DESCRIPTION"
+msgstr "Printers are excluded from USB autosuspend"
+
+#: configschema.json.h:174
 msgid "USB_BLACKLIST_WWAN__ID_TITLE"
 msgstr "USB_BLACKLIST_WWAN"
 
-#: configschema.json.h:173
+#: configschema.json.h:175
 msgid "USB_BLACKLIST_WWAN__ID_DESCRIPTION"
 msgstr ""
 "WWAN devices are excluded from autosuspend.\n"
 "Note: works for ids 05c6:* 0bdb:* 1199:* only."
 
-#: configschema.json.h:174
+#: configschema.json.h:176
 msgid "USB_WHITELIST__ID_TITLE"
 msgstr "USB_WHITELIST"
 
-#: configschema.json.h:175
+#: configschema.json.h:177
 msgid "USB_WHITELIST__ID_DESCRIPTION"
 msgstr ""
 "Include listed devices into autosuspend even if already excluded\n"
 "by the driver or WWAN blacklists above (separate with spaces).\n"
 "Use lsusb to get the ids."
 
-#: configschema.json.h:176
+#: configschema.json.h:178
 msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_TITLE"
 msgstr "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN"
 
-#: configschema.json.h:177
+#: configschema.json.h:179
 msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
 "Set to disable autosuspend before shutdown / otherwise to do nothing\n"
 "(workaround for USB devices that cause shutdown problems)"
 
-#: configschema.json.h:178
+#: configschema.json.h:180
 msgid "ThinkPad Battery__CATEGORY_TITLE"
 msgstr "ThinkPad Battery"
 
-#: configschema.json.h:179
+#: configschema.json.h:181
 msgid "CHARGE_THRESH_BAT0__GROUP_TITLE"
 msgstr "CHARGE_THRESH_BAT0"
 
-#: configschema.json.h:180
+#: configschema.json.h:182
 msgid "CHARGE_THRESH_BAT0__GROUP_DESCRIPTION"
 msgstr ""
 "Battery charge thresholds (ThinkPad only, tp-smapi or acpi-call kernel "
@@ -852,34 +860,34 @@ msgstr ""
 "value and stops when exceeding the STOP_CHARGE_TRESH value.\n"
 "Main / Internal battery (values in %)"
 
-#: configschema.json.h:181
+#: configschema.json.h:183
 msgid "START_CHARGE_THRESH_BAT0__ID_TITLE"
 msgstr "START_CHARGE_THRESH_BAT0"
 
-#: configschema.json.h:182
+#: configschema.json.h:184
 msgid "STOP_CHARGE_THRESH_BAT0__ID_TITLE"
 msgstr "STOP_CHARGE_THRESH_BAT0"
 
-#: configschema.json.h:183
+#: configschema.json.h:185
 msgid "CHARGE_THRESH_BAT1__GROUP_TITLE"
 msgstr "CHARGE_THRESH_BAT1"
 
-#: configschema.json.h:184
+#: configschema.json.h:186
 msgid "CHARGE_THRESH_BAT1__GROUP_DESCRIPTION"
 msgstr "Ultrabay / Slice / Replaceable battery (values in %)"
 
-#: configschema.json.h:185
+#: configschema.json.h:187
 msgid "START_CHARGE_THRESH_BAT1__ID_TITLE"
 msgstr "START_CHARGE_THRESH_BAT1"
 
-#: configschema.json.h:186
+#: configschema.json.h:188
 msgid "STOP_CHARGE_THRESH_BAT1__ID_TITLE"
 msgstr "STOP_CHARGE_THRESH_BAT1"
 
-#: configschema.json.h:187
+#: configschema.json.h:189
 msgid "RESTORE_THRESHOLDS_ON_BAT__ID_TITLE"
 msgstr "RESTORE_THRESHOLDS_ON_BAT"
 
-#: configschema.json.h:188
+#: configschema.json.h:190
 msgid "RESTORE_THRESHOLDS_ON_BAT__ID_DESCRIPTION"
 msgstr "Restore charge thresholds when AC is unplugged"

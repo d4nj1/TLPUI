@@ -58,6 +58,18 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(90, len(tlpconfig))
         self.assertEqual(jsonconfigcount, len(tlpconfig))
 
+    def test_tlp_version_1_1(self):
+        version = "1_1"
+        tlpconfig = read_tlp_file_config('unittests/tlp-config-{}'.format(version))
+        jsoncategories = get_json_schema_object_from_file('categories', 'configschema/{}.json'.format(version))
+
+        configfilecategories = get_tlp_categories(Gtk.Window(), jsoncategories)
+        jsonconfigcount = get_config_count(jsoncategories)
+
+        self.assertEqual(len(configfilecategories), 11)
+        self.assertEqual(91, len(tlpconfig))
+        self.assertEqual(jsonconfigcount, len(tlpconfig))
+
 
 if __name__ == '__main__':
     unittest.main()
