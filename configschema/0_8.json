@@ -93,7 +93,7 @@
         },
         {
           "id": "DISK_DEVICES",
-          "type": "disklist",
+          "type": "entry",
           "values": "",
           "default_value": "sda sdb",
           "default_state": true
@@ -103,15 +103,15 @@
           "ids": [
             {
               "id": "DISK_APM_LEVEL_ON_AC",
-              "type": "disklistview",
-              "values": "1-255",
+              "type": "entry",
+              "values": "",
               "default_value": "254 254",
               "default_state": true
             },
             {
               "id": "DISK_APM_LEVEL_ON_BAT",
-              "type": "disklistview",
-              "values": "1-255",
+              "type": "entry",
+              "values": "",
               "default_value": "128 128",
               "default_state": true
             }
@@ -122,15 +122,15 @@
           "ids": [
             {
               "id": "DISK_SPINDOWN_TIMEOUT_ON_AC",
-              "type": "disklistview",
-              "values": "0-251",
+              "type": "entry",
+              "values": "",
               "default_value": "0 0",
               "default_state": false
             },
             {
               "id": "DISK_SPINDOWN_TIMEOUT_ON_BAT",
-              "type": "disklistview",
-              "values": "0-251",
+              "type": "entry",
+              "values": "",
               "default_value": "0 0",
               "default_state": false
             }
@@ -138,8 +138,8 @@
         },
         {
           "id": "DISK_IOSCHED",
-          "type": "disklistview",
-          "values": "noop,deadline,cfq",
+          "type": "entry",
+          "values": "",
           "default_value": "cfq cfq",
           "default_state": false
         },

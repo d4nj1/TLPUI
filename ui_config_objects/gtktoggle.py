@@ -5,10 +5,9 @@ opacitylevel = 0.3
 def create_toggle_button(tlpobject, tlpconfigbox) -> Gtk.CheckButton:
     togglebutton = Gtk.CheckButton()
 
-    if tlpobject.is_enabled() == True:
+    if tlpobject.is_enabled():
         togglebutton.set_active(True)
     else:
-        togglebutton.set_active(False)
         tlpconfigbox.set_opacity(opacitylevel)
 
     togglebutton.connect('toggled', on_button_toggled, tlpobject, tlpconfigbox)
@@ -17,7 +16,7 @@ def create_toggle_button(tlpobject, tlpconfigbox) -> Gtk.CheckButton:
 
 def on_button_toggled(self, tlpobject, tlpconfigbox):
 
-    if self.get_active() == True:
+    if self.get_active():
         tlpobject.set_enabled(True)
         tlpconfigbox.set_opacity(1)
     else:

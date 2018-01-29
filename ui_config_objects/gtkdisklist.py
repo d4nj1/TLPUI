@@ -29,44 +29,72 @@ def edit_list(self, window):
     existingdisks = read_existing_disk_config()
 
     disks = OrderedDict()
+    keeps = OrderedDict()
     disklist = check_output(["tlp", "diskid"]).decode(sys.stdout.encoding)
     for line in disklist.splitlines():
         diskid = line.split(':')[0].lstrip().rstrip()
 
-        defaultvalues = [254, 128, 0, 0, 'cfq']
-        if diskid in existingdisks.keys():
-            defaultvalues = existingdisks[diskid]
+        diskvalues = get_disk_values(diskid, existingdisks)
+        defaultvalues = diskvalues[0]
+        keepvalues = diskvalues[1]
 
         notebookgrid = Gtk.Grid()
         notebookgrid.set_row_homogeneous(True)
         notebookgrid.set_column_spacing(12)
 
+        configlabel = Gtk.Label(label='Config', halign=Gtk.Align.START)
+        valuelabel = Gtk.Label(label='Value', halign=Gtk.Align.START)
+        keeplabel = Gtk.Label(label='Hardware default', halign=Gtk.Align.START)
+
         apmlevelonaclabel = Gtk.Label(label='DISK_APM_LEVEL_ON_AC', halign=Gtk.Align.START)
-        apmlevelonacspiner = create_spinbutton(configranges[0], defaultvalues[0])
+        apmlevelonacspiner = create_spinbutton(configranges[0], int(defaultvalues[0]))
+        apmlevelonackeep = create_keep(apmlevelonacspiner, keepvalues[0])
+
         apmlevelonbatlabel = Gtk.Label(label='DISK_APM_LEVEL_ON_BAT', halign=Gtk.Align.START)
-        apmlevelonbatspiner = create_spinbutton(configranges[1], defaultvalues[1])
+        apmlevelonbatspiner = create_spinbutton(configranges[1], int(defaultvalues[1]))
+        apmlevelonbatkeep = create_keep(apmlevelonbatspiner, keepvalues[1])
+
         spindowntimeoutonaclabel = Gtk.Label(label='DISK_SPINDOWN_TIMEOUT_ON_AC', halign=Gtk.Align.START)
-        spindowntimeoutonacspiner = create_spinbutton(configranges[2], defaultvalues[2])
+        spindowntimeoutonacspiner = create_spinbutton(configranges[2], int(defaultvalues[2]))
+        spindowntimeoutonackeep = create_keep(spindowntimeoutonacspiner, keepvalues[2])
+
         spindowntimeoutonbatlabel = Gtk.Label(label='DISK_SPINDOWN_TIMEOUT_ON_BAT', halign=Gtk.Align.START)
-        spindowntimeoutonbatspiner = create_spinbutton(configranges[3], defaultvalues[3])
+        spindowntimeoutonbatspiner = create_spinbutton(configranges[3], int(defaultvalues[3]))
+        spindowntimeoutonbatkeep = create_keep(spindowntimeoutonbatspiner, keepvalues[3])
+
         ioschedlabel = Gtk.Label(label='DISK_IOSCHED', halign=Gtk.Align.START)
         ioschedselect = create_selectbox(configranges[4], defaultvalues[4])
+        ioschedkeep = create_keep(ioschedselect, keepvalues[4])
 
-        notebookgrid.attach(apmlevelonaclabel, 0, 0, 1, 1)
-        notebookgrid.attach(apmlevelonacspiner, 1, 0, 1, 1)
-        notebookgrid.attach(apmlevelonbatlabel, 0, 1, 1, 1)
-        notebookgrid.attach(apmlevelonbatspiner, 1, 1, 1, 1)
-        notebookgrid.attach(spindowntimeoutonaclabel, 0, 2, 1, 1)
-        notebookgrid.attach(spindowntimeoutonacspiner, 1, 2, 1, 1)
-        notebookgrid.attach(spindowntimeoutonbatlabel, 0, 3, 1, 1)
-        notebookgrid.attach(spindowntimeoutonbatspiner, 1, 3, 1, 1)
-        notebookgrid.attach(ioschedlabel, 0, 4, 1, 1)
-        notebookgrid.attach(ioschedselect, 1, 4, 1, 1)
+        notebookgrid.attach(configlabel, 0, 0, 1, 1)
+        notebookgrid.attach(valuelabel, 1, 0, 1, 1)
+        notebookgrid.attach(keeplabel, 2, 0, 1, 1)
+
+        notebookgrid.attach(apmlevelonaclabel, 0, 1, 1, 1)
+        notebookgrid.attach(apmlevelonacspiner, 1, 1, 1, 1)
+        notebookgrid.attach(apmlevelonackeep, 2, 1, 1, 1)
+
+        notebookgrid.attach(apmlevelonbatlabel, 0, 2, 1, 1)
+        notebookgrid.attach(apmlevelonbatspiner, 1, 2, 1, 1)
+        notebookgrid.attach(apmlevelonbatkeep, 2, 2, 1, 1)
+
+        notebookgrid.attach(spindowntimeoutonaclabel, 0, 3, 1, 1)
+        notebookgrid.attach(spindowntimeoutonacspiner, 1, 3, 1, 1)
+        notebookgrid.attach(spindowntimeoutonackeep, 2, 3, 1, 1)
+
+        notebookgrid.attach(spindowntimeoutonbatlabel, 0, 4, 1, 1)
+        notebookgrid.attach(spindowntimeoutonbatspiner, 1, 4, 1, 1)
+        notebookgrid.attach(spindowntimeoutonbatkeep, 2, 4, 1, 1)
+
+        notebookgrid.attach(ioschedlabel, 0, 5, 1, 1)
+        notebookgrid.attach(ioschedselect, 1, 5, 1, 1)
+        notebookgrid.attach(ioschedkeep, 2, 5, 1, 1)
 
         notebooklabel = Gtk.Label(diskid)
         notebook.append_page(notebookgrid, notebooklabel)
 
         disks[diskid] = [apmlevelonacspiner, apmlevelonbatspiner, spindowntimeoutonacspiner, spindowntimeoutonbatspiner, ioschedselect]
+        keeps[diskid] = [apmlevelonackeep, apmlevelonbatkeep, spindowntimeoutonackeep, spindowntimeoutonbatkeep, ioschedkeep]
 
     dialog = Gtk.Dialog('Disk devices', window, 0, (
         Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
@@ -89,11 +117,12 @@ def edit_list(self, window):
 
         for key, value in disks.items():
             diskdevices = diskdevices + ' ' + key
-            apmlevelonac = apmlevelonac + ' ' + str(int(value[0].get_value()))
-            apmlevelonbat = apmlevelonbat + ' ' + str(int(value[1].get_value()))
-            spindowntimeoutonac = spindowntimeoutonac + ' ' + str(int(value[2].get_value()))
-            spindowntimeoutonbat = spindowntimeoutonbat + ' ' + str(int(value[3].get_value()))
-            iosched = value[4].get_active_text()
+            keep = keeps[key]
+            apmlevelonac = apmlevelonac + ' ' + 'keep' if keep[0].get_active() else str(int(value[0].get_value()))
+            apmlevelonbat = apmlevelonbat + ' ' + 'keep' if keep[1].get_active() else str(int(value[1].get_value()))
+            spindowntimeoutonac = spindowntimeoutonac + ' ' + 'keep' if keep[2].get_active() else str(int(value[2].get_value()))
+            spindowntimeoutonbat = spindowntimeoutonbat + ' ' + 'keep' if keep[3].get_active() else str(int(value[3].get_value()))
+            iosched = iosched + ' ' + 'keep' if keep[4].get_active() else value[4].get_active_text()
 
         set_tlp_value('DISK_DEVICES', diskdevices.lstrip())
         set_tlp_value('DISK_APM_LEVEL_ON_AC', apmlevelonac.lstrip())
@@ -109,6 +138,36 @@ def edit_list(self, window):
 
 def set_tlp_value(configname, value):
     settings.tlpconfig[configname].set_value(value)
+
+
+def get_disk_values(diskid, existingdisks):
+    defaultvalues = ['254', '128', '0', '0', 'cfq']
+    keepvalues = [False, False, False, False, False]
+    if diskid in existingdisks.keys():
+        existingvalues = existingdisks[diskid]
+        for index in range(0, 5):
+            if existingvalues[index] == 'keep':
+                keepvalues[index] = True
+            else:
+                defaultvalues[index] = existingvalues[index]
+    return defaultvalues, keepvalues
+
+
+def create_keep(gtkwidget, isactive):
+    checkbutton = Gtk.CheckButton(halign=Gtk.Align.CENTER)
+    if isactive:
+        checkbutton.set_active(True)
+        gtkwidget.set_opacity(0.3)
+
+    checkbutton.connect('toggled', on_button_toggled, gtkwidget)
+    return checkbutton
+
+
+def on_button_toggled(self, gtkwidget):
+    if self.get_active():
+        gtkwidget.set_opacity(0.3)
+    else:
+        gtkwidget.set_opacity(1)
 
 
 def create_spinbutton(values, configvalue):
@@ -150,8 +209,8 @@ def read_existing_disk_config() -> OrderedDict:
     existingdiskconfig = OrderedDict()
     index = 0
     for device in devices:
-        existingdiskconfig[device] = [int(apmlevelonac[index]), int(apmlevelonbat[index]), int(spindowntimeoutonac[index]), int(spindowntimeoutonbat[index]), iosched[index]]
-        index+=1
+        existingdiskconfig[device] = [apmlevelonac[index], apmlevelonbat[index], spindowntimeoutonac[index], spindowntimeoutonbat[index], iosched[index]]
+        index += 1
 
     return existingdiskconfig
 
