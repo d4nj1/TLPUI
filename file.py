@@ -10,7 +10,7 @@ import settings
 
 
 def get_installed_tlp_version() -> str:
-    pattern = re.compile("TLP ([^\s]+)")
+    pattern = re.compile(r"TLP ([^\s]+)")
     currentconfig = check_output(["tlp-stat", "-c"]).decode(sys.stdout.encoding)
     matcher = pattern.search(currentconfig)
     version = matcher.group(1).replace(".", "_")
@@ -33,7 +33,7 @@ def get_json_schema_object_from_file(objectname, filename) -> dict:
 
 
 def read_tlp_file_config(filename) -> dict:
-    propertypattern = re.compile('^#?[A-Z_\d]+=')
+    propertypattern = re.compile(r'^#?[A-Z_\d]+=')
     fileproperties = dict()
     fileopener = open(filename)
     lines = fileopener.readlines()

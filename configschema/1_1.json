@@ -155,14 +155,14 @@
           "ids": [
             {
               "id": "SATA_LINKPWR_ON_AC",
-              "type": "entry",
+              "type": "multiselect",
               "values": "min_power,med_power_with_dipm,medium_power,max_performance",
               "default_value": "med_power_with_dipm max_performance",
               "default_state": true
             },
             {
               "id": "SATA_LINKPWR_ON_BAT",
-              "type": "entry",
+              "type": "multiselect",
               "values": "min_power,med_power_with_dipm,medium_power,max_performance",
               "default_value": "med_power_with_dipm min_power",
               "default_state": true
@@ -373,10 +373,10 @@
         },
         {
           "id": "RUNTIME_PM_DRIVER_BLACKLIST",
-          "type": "entry",
-          "values": "",
+          "type": "multiselect",
+          "values": "amdgpu,nouveau,nvidia,radeon",
           "default_value": "amdgpu nouveau nvidia radeon",
-          "default_state": true
+          "default_state": false
         }
       ]
     },

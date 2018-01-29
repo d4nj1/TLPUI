@@ -5,7 +5,7 @@ from gi.repository import Gtk, Gdk
 
 from collections import OrderedDict
 
-from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusblist, gtkdisklist, gtkdisklistview
+from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusblist, gtkdisklist, gtkdisklistview
 from file import get_json_schema_object
 import settings
 import language
@@ -72,6 +72,8 @@ def create_config_widget(objecttype, objectvalues, tlpobject, window) -> Gtk.Wid
         configwidget = gtkswitch.create_state_switch(objectvalues, tlpobject)
     elif (objecttype == 'select'):
         configwidget = gtkselection.create_selection_box(objectvalues, tlpobject)
+    elif (objecttype == 'multiselect'):
+        configwidget = gtkmultiselection.create_multi_selection_box(objectvalues, tlpobject)
     elif (objecttype == 'check'):
         configwidget = gtkcheckbutton.create_checkbutton_box(objectvalues, tlpobject)
     elif (objecttype == 'numeric'):

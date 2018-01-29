@@ -373,10 +373,10 @@
         },
         {
           "id": "RUNTIME_PM_DRIVER_BLACKLIST",
-          "type": "entry",
-          "values": "",
+          "type": "multiselect",
+          "values": "amdgpu,nouveau,nvidia,radeon",
           "default_value": "amdgpu nouveau nvidia radeon",
-          "default_state": true
+          "default_state": false
         }
       ]
     },

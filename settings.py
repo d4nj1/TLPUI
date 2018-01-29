@@ -33,7 +33,7 @@ def persist():
 
 
 def get_setting_file() -> str:
-    pattern = re.compile("Configured Settings: ([^\s]+)")
+    pattern = re.compile(r"Configured Settings: ([^\s]+)")
     currentconfig = check_output(["tlp-stat", "-c"]).decode(sys.stdout.encoding)
     matcher = pattern.search(currentconfig)
     return matcher.group(1)

@@ -19,7 +19,7 @@ def create_list(tlpobject, window) -> Gtk.Box:
 
 
 def edit_list(self, tlpobject, usblistlabel, window):
-    usblistpattern = re.compile('^.+?([a-f\d]{4}:[a-f\d]{4})(.+?)$')
+    usblistpattern = re.compile(r'^.+?([a-f\d]{4}:[a-f\d]{4})(.+?)$')
     currentitems = OrderedDict()
     if tlpobject.get_value() != '':
         for item in tlpobject.get_value().split(' '):
@@ -124,7 +124,7 @@ def on_button_toggled(self, key, selecteditems):
 
 
 def usb_entry_check(self: Gtk.Entry, button: Gtk.Button):
-    usbpattern = re.compile('^[a-f\d]{4}:[a-f\d]{4}$')
+    usbpattern = re.compile(r'^[a-f\d]{4}:[a-f\d]{4}$')
     if usbpattern.match(self.get_text()):
         self.set_name('validEntry')
         button.set_sensitive(True)
