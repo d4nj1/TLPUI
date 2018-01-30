@@ -26,10 +26,10 @@ def edit_list(self, tlpobject, usblistlabel, window):
     pciitems = OrderedDict()
     for line in tlpusblist.splitlines():
         matcher = pcilistpattern.match(line)
-        id = matcher.group(1)
+        pciid = matcher.group(1)
         description = matcher.group(2).lstrip()
 
-        pciitems[id] = [description, (id in currentitems)]
+        pciitems[pciid] = [description, (pciid in currentitems)]
 
     grid = Gtk.Grid()
     grid.set_row_homogeneous(True)

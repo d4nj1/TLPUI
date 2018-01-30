@@ -30,19 +30,19 @@ def edit_list(self, tlpobject, usblistlabel, window):
     usbitems = OrderedDict()
     for line in tlpusblist.splitlines():
         matcher = usblistpattern.match(line)
-        id = matcher.group(1)
+        usbid = matcher.group(1)
         description = matcher.group(2)
         active = False
 
         # only add usb id once
-        if id in usbitems:
+        if usbid in usbitems:
             continue
 
         # check if item is selected
-        if id in currentitems:
+        if usbid in currentitems:
             active = True
-            del currentitems[id]
-        usbitems[id] = [description, active]
+            del currentitems[usbid]
+        usbitems[usbid] = [description, active]
 
     usbitems.update(currentitems)
 
