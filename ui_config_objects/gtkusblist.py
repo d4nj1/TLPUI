@@ -44,15 +44,8 @@ def edit_list(self, tlpobject, usblistlabel, window):
             del currentitems[id]
         usbitems[id] = [description, active]
 
-    dialog = Gtk.Dialog('Usb devices', window, 0, (
-        Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-        Gtk.STOCK_OK, Gtk.ResponseType.OK
-    ))
-
     usbitems.update(currentitems)
 
-    contentarea = dialog.get_content_area()
-    contentarea.set_spacing(12)
     grid = Gtk.Grid()
     grid.set_row_homogeneous(True)
     grid.set_column_spacing(12)
@@ -79,7 +72,7 @@ def edit_list(self, tlpobject, usblistlabel, window):
         grid.attach(toggle, 1, rowindex, 1, 1)
         grid.attach(label, 2, rowindex, 1, 1)
 
-        rowindex+=1
+        rowindex += 1
 
     addbutton = Gtk.Button(label=' Add', image=(Gtk.Image(stock=Gtk.STOCK_ADD)))
     addbutton.set_sensitive(False)
@@ -104,6 +97,13 @@ def edit_list(self, tlpobject, usblistlabel, window):
     global indexstore
     indexstore = rowindex+2
 
+    dialog = Gtk.Dialog('Usb devices', window, 0, (
+        Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+        Gtk.STOCK_OK, Gtk.ResponseType.OK
+    ))
+
+    contentarea = dialog.get_content_area()
+    contentarea.set_spacing(6)
     contentarea.add(grid)
     dialog.show_all()
 

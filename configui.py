@@ -5,7 +5,7 @@ from gi.repository import Gtk, Gdk
 
 from collections import OrderedDict
 
-from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusblist, gtkdisklist, gtkdisklistview
+from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusblist, gtkpcilist, gtkdisklist, gtkdisklistview
 from file import get_json_schema_object
 import settings
 import language
@@ -64,6 +64,8 @@ def create_config_widget(objecttype, objectvalues, tlpobject, window) -> Gtk.Wid
         configwidget = gtkentry.create_entry(tlpobject)
     elif (objecttype == 'usblist'):
         configwidget = gtkusblist.create_list(tlpobject, window)
+    elif (objecttype == 'pcilist'):
+        configwidget = gtkpcilist.create_list(tlpobject, window)
     elif (objecttype == 'disklist'):
         configwidget = gtkdisklist.create_list(tlpobject, window)
     elif (objecttype == 'disklistview'):

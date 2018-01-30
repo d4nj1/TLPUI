@@ -354,7 +354,7 @@
         },
         {
           "id": "RUNTIME_PM_BLACKLIST",
-          "type": "entry",
+          "type": "pcilist",
           "values": "",
           "default_value": "bb:dd.f 11:22.3 44:55.6",
           "default_state": false

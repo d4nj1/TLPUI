@@ -66,29 +66,31 @@ def edit_list(self, window):
         ioschedselect = create_selectbox(configranges[4], defaultvalues[4])
         ioschedkeep = create_keep(ioschedselect, keepvalues[4])
 
-        notebookgrid.attach(configlabel, 0, 0, 1, 1)
-        notebookgrid.attach(valuelabel, 1, 0, 1, 1)
-        notebookgrid.attach(keeplabel, 2, 0, 1, 1)
+        notebookgrid.attach(Gtk.Label(' '), 0, 0, 1, 1)
+        notebookgrid.attach(configlabel, 1, 0, 1, 1)
+        notebookgrid.attach(valuelabel, 2, 0, 1, 1)
+        notebookgrid.attach(keeplabel, 3, 0, 1, 1)
+        notebookgrid.attach(Gtk.Label(' '), 4, 0, 1, 1)
 
-        notebookgrid.attach(apmlevelonaclabel, 0, 1, 1, 1)
-        notebookgrid.attach(apmlevelonacspiner, 1, 1, 1, 1)
-        notebookgrid.attach(apmlevelonackeep, 2, 1, 1, 1)
+        notebookgrid.attach(apmlevelonaclabel, 1, 1, 1, 1)
+        notebookgrid.attach(apmlevelonacspiner, 2, 1, 1, 1)
+        notebookgrid.attach(apmlevelonackeep, 3, 1, 1, 1)
 
-        notebookgrid.attach(apmlevelonbatlabel, 0, 2, 1, 1)
-        notebookgrid.attach(apmlevelonbatspiner, 1, 2, 1, 1)
-        notebookgrid.attach(apmlevelonbatkeep, 2, 2, 1, 1)
+        notebookgrid.attach(apmlevelonbatlabel, 1, 2, 1, 1)
+        notebookgrid.attach(apmlevelonbatspiner, 2, 2, 1, 1)
+        notebookgrid.attach(apmlevelonbatkeep, 3, 2, 1, 1)
 
-        notebookgrid.attach(spindowntimeoutonaclabel, 0, 3, 1, 1)
-        notebookgrid.attach(spindowntimeoutonacspiner, 1, 3, 1, 1)
-        notebookgrid.attach(spindowntimeoutonackeep, 2, 3, 1, 1)
+        notebookgrid.attach(spindowntimeoutonaclabel, 1, 3, 1, 1)
+        notebookgrid.attach(spindowntimeoutonacspiner, 2, 3, 1, 1)
+        notebookgrid.attach(spindowntimeoutonackeep, 3, 3, 1, 1)
 
-        notebookgrid.attach(spindowntimeoutonbatlabel, 0, 4, 1, 1)
-        notebookgrid.attach(spindowntimeoutonbatspiner, 1, 4, 1, 1)
-        notebookgrid.attach(spindowntimeoutonbatkeep, 2, 4, 1, 1)
+        notebookgrid.attach(spindowntimeoutonbatlabel, 1, 4, 1, 1)
+        notebookgrid.attach(spindowntimeoutonbatspiner, 2, 4, 1, 1)
+        notebookgrid.attach(spindowntimeoutonbatkeep, 3, 4, 1, 1)
 
-        notebookgrid.attach(ioschedlabel, 0, 5, 1, 1)
-        notebookgrid.attach(ioschedselect, 1, 5, 1, 1)
-        notebookgrid.attach(ioschedkeep, 2, 5, 1, 1)
+        notebookgrid.attach(ioschedlabel, 1, 5, 1, 1)
+        notebookgrid.attach(ioschedselect, 2, 5, 1, 1)
+        notebookgrid.attach(ioschedkeep, 3, 5, 1, 1)
 
         notebooklabel = Gtk.Label(diskid)
         notebook.append_page(notebookgrid, notebooklabel)
@@ -102,6 +104,7 @@ def edit_list(self, window):
     ))
 
     contentarea = dialog.get_content_area()
+    contentarea.set_spacing(6)
     contentarea.add(notebook)
 
     dialog.show_all()
