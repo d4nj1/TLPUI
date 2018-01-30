@@ -27,4 +27,4 @@ def change_selection_state(self, toggles, tlpobject):
         if toggle.get_active():
             newvalue += " " + toggle.get_label()
 
-    tlpobject.set_value(newvalue.lstrip(" "))
+    tlpobject.set_value(newvalue.lstrip())

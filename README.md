@@ -1,4 +1,4 @@
-TLPUI - 29.01.2018
+TLPUI - 30.01.2018
 
 The Python scripts in this projects generate a GTK-UI to change TLP configuration files easily.
 It has the aim to protect users from setting bad configuration and to deliver a basic overview of all the valid configuration values.
@@ -10,9 +10,8 @@ Preparations:
 
 Start UI:
 
-* Download as ZIP
-* Extract ZIP
-* Open terminal and go to the extracted files
+* Download and extract ZIP or pull repository
+* Open terminal and go to specific folder
 * Type: `./tlpui.py`
 
 Current status:
