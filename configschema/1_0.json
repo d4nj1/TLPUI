@@ -494,14 +494,14 @@
               "id": "CPU_BOOST_ON_AC",
               "type": "bselect",
               "values": "0,1",
-              "default_value": "0",
+              "default_value": "1",
               "default_state": false
             },
             {
               "id": "CPU_BOOST_ON_BAT",
               "type": "bselect",
               "values": "0,1",
-              "default_value": "1",
+              "default_value": "0",
               "default_state": false
             }
           ]
