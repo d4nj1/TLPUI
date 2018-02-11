@@ -7,6 +7,7 @@ from collections import OrderedDict
 
 from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusblist, gtkpcilist, gtkdisklist, gtkdisklistview
 from file import get_json_schema_object
+from uihelper import StateImage
 import settings
 import language
 
@@ -84,6 +85,13 @@ def create_config_widget(objecttype, objectvalues, tlpobject, window) -> Gtk.Wid
     return configwidget
 
 
+def get_state_image(configname: str, defaultvalue: str, defaultstate: str):
+    image = Gtk.Image()
+    settings.imagestate[configname] = StateImage(defaultvalue, defaultstate, image)
+    settings.tlpconfig[configname].refresh_image_state()
+    return image
+
+
 def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
     configuibox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
 
@@ -101,6 +109,10 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
     for configobject in configobjects:
         configname = configobject[0]
         tlpobject = configobject[1]
+        configtype = configobject[2]
+        possiblevalues = configobject[3]
+        defaultvalue = configobject[4]
+        defaultstate = configobject[5]
 
         tlpuiobject = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=18)
         tlpuiobject.set_margin_start(18)
@@ -137,7 +149,7 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
         statetogglebox.set_valign(Gtk.Align.CENTER)
 
         # specific config gtk object
-        configwidget = create_config_widget(configobject[2], configobject[3], tlpobject, window)
+        configwidget = create_config_widget(configtype, possiblevalues, tlpobject, window)
         configwidget.set_margin_top(6)
         configwidget.set_margin_bottom(6)
         configwidget.set_margin_left(6)
@@ -162,6 +174,7 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
 
         tlpuiobject.pack_start(statetogglebox, False, False, 0)
         tlpuiobject.pack_start(tlpconfigbox, False, False, 0)
+        tlpuiobject.pack_end(get_state_image(configname, defaultvalue, defaultstate), False, False, 0)
 
         configuibox.pack_start(tlpuiobject, True, True, 0)
 
@@ -203,23 +216,27 @@ def get_tlp_categories(window, categories) -> OrderedDict:
                     id = groupitem['id']
                     type = groupitem['type']
                     values = groupitem['values']
+                    defaultvalue = groupitem['default_value']
+                    defaultstate = groupitem['default_state']
 
                     if id in settings.tlpconfig:
                         tlpitem = settings.tlpconfig[id]
                     else:
                         tlpitem = None
-                    configobjects.append([id, tlpitem, type, values])
+                    configobjects.append([id, tlpitem, type, values, defaultvalue, defaultstate])
             else:
                 id = config['id']
                 transdescription = id + "__ID_DESCRIPTION"
                 type = config['type']
                 values = config['values']
+                defaultvalue = config['default_value']
+                defaultstate = config['default_state']
 
                 if id in settings.tlpconfig:
                     tlpitem = settings.tlpconfig[id]
                 else:
                     tlpitem = None
-                configobjects.append([id, tlpitem, type, values])
+                configobjects.append([id, tlpitem, type, values, defaultvalue, defaultstate])
 
             description = language.CDT_(transdescription)
 

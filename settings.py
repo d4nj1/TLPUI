@@ -58,3 +58,4 @@ else:
 # runtime params
 tlpconfig = dict()
 tlpconfig_original = dict()
+imagestate = dict()

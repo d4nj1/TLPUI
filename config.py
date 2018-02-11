@@ -1,10 +1,14 @@
+import settings
+
 class TlpConfig:
     def __init__(self, raw: str, linenumber: int, enabled: bool, name: str, value: str, quoted: bool):
         self.raw = raw
         self.linenumber = linenumber
         self.enabled = enabled
+        self.enabledstore = enabled
         self.name = name
         self.value = value
+        self.valuestore = value
         self.quoted = quoted
 
     def get_raw(self) -> str:
@@ -21,15 +25,20 @@ class TlpConfig:
 
     def set_value(self, newvalue: str):
         self.value = newvalue
+        self.refresh_image_state()
 
     def set_enabled(self, newstate: bool):
         self.enabled = newstate
+        self.refresh_image_state()
 
     def is_enabled(self) -> bool:
         return self.enabled
 
     def is_quoted(self) -> bool:
         return self.quoted
+
+    def refresh_image_state(self):
+        settings.imagestate[self.name].refresh_image_state(self.value, self.valuestore, self.enabled, self.enabledstore)
 
 
 def get_changed_properties(changed: dict, original: dict) -> list:
