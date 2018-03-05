@@ -119,9 +119,6 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
         tlpuiobject.set_margin_end(18)
 
         if tlpobject == None:
-            missingbgcolor = Gdk.color_parse('lightyellow')
-            missingrgba = Gdk.RGBA.from_color(missingbgcolor)
-
             missingcheckbox = Gtk.CheckButton()
             missingcheckbox.set_child_visible(False)
             missingstatetogglebox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
@@ -130,9 +127,9 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
             missingstatetogglebox.set_valign(Gtk.Align.CENTER)
 
             missingconfiglabel = Gtk.Label(xalign=0)
+            missingconfiglabel.set_name('missingConfigLabel')
             missingconfiglabel.set_markup(' <b>' + configname + '</b> - <i>' + language.CT_('Expected item missing in config file') + '</i> ')
             missingconfiglabel.set_use_markup(True)
-            missingconfiglabel.override_background_color(0, missingrgba)
 
             tlpuiobject.pack_start(missingstatetogglebox, False, False, 0)
             tlpuiobject.pack_start(missingconfiglabel, False, False, 0)
