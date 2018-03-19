@@ -1,5 +1,5 @@
 from gi.repository import Gtk
-from config import TlpConfig
+from ..config import TlpConfig
 
 
 def create_entry(tlpobject: TlpConfig) -> Gtk.Entry:

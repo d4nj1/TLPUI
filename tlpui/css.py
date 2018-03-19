@@ -1,5 +1,5 @@
 from gi.repository import Gtk
-import settings
+from . import settings
 
 def get_css_provider() -> Gtk.CssProvider:
     cssfile = open(settings.workdir + '/styles.css', 'rb')

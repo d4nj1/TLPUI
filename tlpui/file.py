@@ -5,8 +5,8 @@ from json import load
 from os import remove, close, path
 from shutil import move
 from tempfile import mkstemp
-from config import TlpConfig
-import settings
+from .config import TlpConfig
+from . import settings
 
 
 def get_installed_tlp_version() -> str:

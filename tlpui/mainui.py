@@ -3,12 +3,12 @@ from pathlib import Path
 from gi.repository import Gtk, Gdk
 
 import copy
-import settings
-import language
-from config import get_changed_properties
-from configui import create_config_box
-from file import read_tlp_file_config, write_tlp_file_config
-from statui import create_stat_box
+from . import settings
+from . import language
+from .config import get_changed_properties
+from .configui import create_config_box
+from .file import read_tlp_file_config, write_tlp_file_config
+from .statui import create_stat_box
 import importlib
 
 

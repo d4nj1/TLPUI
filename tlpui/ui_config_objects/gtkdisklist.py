@@ -3,9 +3,9 @@ from gi.repository import Gtk
 
 from subprocess import check_output
 from collections import OrderedDict
-import mainui
-import file
-import settings
+from .. import mainui
+from .. import file
+from .. import settings
 
 
 def create_list(tlpobject, window) -> Gtk.Box:

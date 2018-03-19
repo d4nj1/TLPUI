@@ -1,4 +1,4 @@
-import settings
+from . import settings
 
 class TlpConfig:
     def __init__(self, raw: str, linenumber: int, enabled: bool, name: str, value: str, quoted: bool):

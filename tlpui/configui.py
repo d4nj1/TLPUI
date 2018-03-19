@@ -5,11 +5,11 @@ from gi.repository import Gtk, Gdk
 
 from collections import OrderedDict
 
-from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusblist, gtkpcilist, gtkdisklist, gtkdisklistview
-from file import get_json_schema_object
-from uihelper import StateImage
-import settings
-import language
+from . import settings
+from . import language
+from .ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusblist, gtkpcilist, gtkdisklist, gtkdisklistview
+from .file import get_json_schema_object
+from .uihelper import StateImage
 
 
 def store_page_num(self, page, page_num):
