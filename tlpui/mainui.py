@@ -52,7 +52,7 @@ def open_file_chooser(self, fileentry, window):
     load_tlp_config(self, window, True)
 
 
-def load_tlp_config(self, window, reloadtlpconfig):
+def load_tlp_config(self, window: Gtk.Window, reloadtlpconfig: bool):
 
     if reloadtlpconfig:
         settings.tlpconfig = read_tlp_file_config(settings.tlpconfigfile)
@@ -67,7 +67,7 @@ def load_tlp_config(self, window, reloadtlpconfig):
 
 
 def save_tlp_config(self, window):
-    changedproperties = get_changed_properties(settings.tlpconfig, settings.tlpconfig_original)
+    changedproperties = get_changed_properties()
 
     dialog = Gtk.MessageDialog(window)
     dialog.set_default_size(150, 100)
@@ -94,7 +94,7 @@ def save_tlp_config(self, window):
 def quit_tlp_config(self, window):
     settings.persist()
 
-    changedproperties = get_changed_properties(settings.tlpconfig, settings.tlpconfig_original)
+    changedproperties = get_changed_properties()
     if len(changedproperties) == 0:
         Gtk.main_quit()
         return
@@ -212,7 +212,7 @@ def add_menu_actions(window, fileentry, actiongroup):
             actiongroup.add_action(actionlang)
 
 
-def switch_language(self, lang, window):
+def switch_language(self, lang: str, window: Gtk.Window):
     settings.language = lang
 
     # reload language values
@@ -221,7 +221,7 @@ def switch_language(self, lang, window):
     load_tlp_config(self, window, False)
 
 
-def create_main_box(window) -> Gtk.Box:
+def create_main_box(window: Gtk.Window) -> Gtk.Box:
     notebook = Gtk.Notebook()
     notebook.set_tab_pos(Gtk.PositionType.TOP)
 

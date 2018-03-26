@@ -8,7 +8,8 @@ from .. import file
 from .. import settings
 
 
-def create_list(tlpobject, window) -> Gtk.Box:
+def create_list(configname: str, window: Gtk.Window) -> Gtk.Box:
+    tlpobject = settings.tlpconfig[configname]
     box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
     label = Gtk.Label(tlpobject.get_value())
     label.set_width_chars(len(tlpobject.get_value())+5)
@@ -21,7 +22,7 @@ def create_list(tlpobject, window) -> Gtk.Box:
     return box
 
 
-def edit_list(self, window):
+def edit_list(self: Gtk.Button, window: Gtk.Window):
     notebook = Gtk.Notebook()
     notebook.set_tab_pos(Gtk.PositionType.TOP)
 
@@ -139,11 +140,11 @@ def edit_list(self, window):
     dialog.destroy()
 
 
-def set_tlp_value(configname, value):
+def set_tlp_value(configname: str, value: str):
     settings.tlpconfig[configname].set_value(value)
 
 
-def get_disk_values(diskid, existingdisks):
+def get_disk_values(diskid: str, existingdisks: OrderedDict):
     defaultvalues = ['254', '128', '0', '0', 'cfq']
     keepvalues = [False, False, False, False, False]
     if diskid in existingdisks.keys():
@@ -156,7 +157,7 @@ def get_disk_values(diskid, existingdisks):
     return defaultvalues, keepvalues
 
 
-def create_keep(gtkwidget, isactive):
+def create_keep(gtkwidget: Gtk.Widget, isactive: bool):
     checkbutton = Gtk.CheckButton(halign=Gtk.Align.CENTER)
     if isactive:
         checkbutton.set_active(True)
@@ -166,14 +167,14 @@ def create_keep(gtkwidget, isactive):
     return checkbutton
 
 
-def on_button_toggled(self, gtkwidget):
+def on_button_toggled(self: Gtk.CheckButton, gtkwidget: Gtk.Widget):
     if self.get_active():
         gtkwidget.set_opacity(0.3)
     else:
         gtkwidget.set_opacity(1)
 
 
-def create_spinbutton(values, configvalue):
+def create_spinbutton(values: str, configvalue: str):
     range = values.split('-')
     adjustment = Gtk.Adjustment(0, float(range[0]), float(range[1]), 1, 10, 0)
 
@@ -184,7 +185,7 @@ def create_spinbutton(values, configvalue):
     return spinbutton
 
 
-def create_selectbox(values, configvalue):
+def create_selectbox(values: str, configvalue: str):
     combobox = Gtk.ComboBoxText()
     selectitems = values.split(',')
 

@@ -3,22 +3,24 @@ from gi.repository import Gtk
 
 from collections import OrderedDict
 from subprocess import check_output
+from .. import settings
 
 global indexstore
 
-def create_list(tlpobject, window) -> Gtk.Box:
+def create_list(configname: str, window: Gtk.Window) -> Gtk.Box:
     box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-    label = Gtk.Label(tlpobject.get_value().replace(" ", "\n"))
+    label = Gtk.Label(settings.tlpconfig[configname].get_value().replace(" ", "\n"))
 
     button = Gtk.Button(label=' Edit', image=(Gtk.Image(stock=Gtk.STOCK_EDIT)))
-    button.connect('clicked', edit_list, tlpobject, label, window)
+    button.connect('clicked', edit_list, configname, label, window)
 
     box.pack_start(label, False, False, 0)
     box.pack_start(button, False, False, 12)
     return box
 
 
-def edit_list(self, tlpobject, usblistlabel, window):
+def edit_list(self, configname: str, usblistlabel: Gtk.Label, window: Gtk.Window):
+    tlpobject = settings.tlpconfig[configname]
     usblistpattern = re.compile(r'^.+?([a-f\d]{4}:[a-f\d]{4})(.+?)$')
     currentitems = OrderedDict()
     if tlpobject.get_value() != '':
@@ -116,7 +118,7 @@ def edit_list(self, tlpobject, usblistlabel, window):
     dialog.destroy()
 
 
-def on_button_toggled(self, key, selecteditems):
+def on_button_toggled(self: Gtk.ToggleButton, key: str, selecteditems: list):
     if self.get_active():
         selecteditems.append(key)
     else:
@@ -133,7 +135,7 @@ def usb_entry_check(self: Gtk.Entry, button: Gtk.Button):
         button.set_sensitive(False)
 
 
-def add_usb_item(self, entry, grid, allitems, selecteditems):
+def add_usb_item(self, entry: Gtk.Entry, grid: Gtk.Grid, allitems: list, selecteditems: list):
     key = entry.get_text()
     if key in allitems:
         return
@@ -151,5 +153,5 @@ def add_usb_item(self, entry, grid, allitems, selecteditems):
     grid.attach(toggle, 1, indexstore, 1, 1)
     grid.attach(label, 2, indexstore, 1, 1)
 
-    indexstore+=1
+    indexstore += 1
     grid.show_all()

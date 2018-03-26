@@ -1,9 +1,9 @@
 from gi.repository import Gtk
-from ..config import TlpConfig
+from .. import settings
 
 
-def create_entry(tlpobject: TlpConfig) -> Gtk.Entry:
-    configvalue = tlpobject.get_value()
+def create_entry(configname: str) -> Gtk.Entry:
+    configvalue = settings.tlpconfig[configname].get_value()
     configvaluelength = len(configvalue)
     if configvaluelength >= 70:
         configvaluelength = 70
@@ -11,9 +11,9 @@ def create_entry(tlpobject: TlpConfig) -> Gtk.Entry:
     entry = Gtk.Entry()
     entry.set_text(configvalue)
     entry.set_width_chars(configvaluelength+5)
-    entry.connect('changed', change_entry_text, tlpobject)
+    entry.connect('changed', change_entry_text, configname)
     return entry
 
 
-def change_entry_text(self, tlpobject: TlpConfig):
-    tlpobject.set_value(self.get_text())
+def change_entry_text(self: Gtk.Entry, configname: str):
+    settings.tlpconfig[configname].set_value(self.get_text())

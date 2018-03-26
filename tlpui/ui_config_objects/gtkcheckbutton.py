@@ -1,40 +1,38 @@
 from gi.repository import Gtk
+from .. import settings
 
-def create_checkbutton_box(values, tlpobject) -> Gtk.Box:
+
+def create_checkbutton_box(configname: str, values: str) -> Gtk.Box:
     checkbox = Gtk.Box()
     checkitems = values.split(',')
-    configvalue = tlpobject.get_value()
-    checkbuttons = []
-
-    for item in checkitems:
-        checkbutton = Gtk.CheckButton(item)
-        if item in configvalue:
-            checkbutton.set_active(True)
-        checkbuttons.append(checkbutton)
+    configvalue = settings.tlpconfig[configname].get_value()
 
     checkbuttonitem = 0
-    for checkbutton in checkbuttons:
-        checkbutton.connect('toggled', change_check_state, checkbuttons, tlpobject)
-        if checkbuttonitem%2 == 0:
+    for checkitem in checkitems:
+        checkbutton = Gtk.CheckButton(checkitem)
+        if checkitem in configvalue:
+            checkbutton.set_active(True)
+        checkbutton.connect('toggled', change_check_state, configname, checkitems)
+
+        if checkbuttonitem % 2 == 0:
             checkbox.pack_start(checkbutton, False, False, 0)
         else:
             checkbox.pack_start(checkbutton, False, False, 12)
-        checkbuttonitem+=1
+        checkbuttonitem += 1
 
     return checkbox
 
 
-def change_check_state(self, checkbuttons, tlpobject):
+def change_check_state(self: Gtk.CheckButton, configname: str, checkitems: []):
+    currentitem = self.get_label()
+    currentstate = self.get_active()
+    currentvalue = str(settings.tlpconfig[configname].get_value())
+
     newvalue = ''
+    for checkitem in checkitems:
+        if checkitem == currentitem and currentstate is False:
+            continue
+        elif checkitem in currentvalue or checkitem == currentitem:
+            newvalue = newvalue + " " + checkitem
 
-    for checkbutton in checkbuttons:
-        if checkbutton.get_active():
-            checkvalue = checkbutton.get_label()
-
-            if (newvalue == ''):
-                newvalue = checkvalue
-            else:
-                newvalue = newvalue + ' ' + checkvalue
-
-    # print(newvalue)
-    tlpobject.set_value(newvalue)
+    settings.tlpconfig[configname].set_value(newvalue.lstrip())
