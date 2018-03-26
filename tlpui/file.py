@@ -25,7 +25,7 @@ def get_json_schema_object(objectname) -> dict:
         return get_json_schema_object_from_file(objectname, settings.workdir + '/configschema/' + get_installed_tlp_version() + '.json')
 
 
-def get_json_schema_object_from_file(objectname, filename) -> dict:
+def get_json_schema_object_from_file(objectname: str, filename: str) -> dict:
     jsonfile = open(filename)
     jsonobject = load(jsonfile)
     jsonfile.close()
