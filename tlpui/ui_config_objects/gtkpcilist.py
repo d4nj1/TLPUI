@@ -4,20 +4,23 @@ from gi.repository import Gtk
 from collections import OrderedDict
 from subprocess import check_output
 
+from .. import settings
 
-def create_list(tlpobject, window) -> Gtk.Box:
+
+def create_list(configname: str, window: Gtk.Window) -> Gtk.Box:
     box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-    label = Gtk.Label(tlpobject.get_value().replace(" ", "\n"))
+    label = Gtk.Label(settings.tlpconfig[configname].get_value().replace(" ", "\n"))
 
     button = Gtk.Button(label=' Edit', image=(Gtk.Image(stock=Gtk.STOCK_EDIT)))
-    button.connect('clicked', edit_list, tlpobject, label, window)
+    button.connect('clicked', edit_list, configname, label, window)
 
     box.pack_start(label, False, False, 0)
     box.pack_start(button, False, False, 12)
     return box
 
 
-def edit_list(self, tlpobject, usblistlabel, window):
+def edit_list(self, configname: str, usblistlabel: Gtk.Label, window: Gtk.Window):
+    tlpobject = settings.tlpconfig[configname]
     pcilistpattern = re.compile(r'^([a-f\d]{2}:[a-f\d]{2}\.[a-f\d])(.+?)$')
     currentitems = tlpobject.get_value().split(' ')
 
@@ -78,7 +81,7 @@ def edit_list(self, tlpobject, usblistlabel, window):
     dialog.destroy()
 
 
-def on_button_toggled(self, key, selecteditems):
+def on_button_toggled(self: Gtk.ToggleButton, key: str, selecteditems: list):
     if self.get_active():
         selecteditems.append(key)
     else:

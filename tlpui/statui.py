@@ -2,7 +2,7 @@ import sys
 from gi.repository import Gtk
 from shutil import which
 from subprocess import check_output
-import language
+from . import language
 
 
 def get_graphical_sudo():

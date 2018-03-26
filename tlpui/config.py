@@ -1,4 +1,4 @@
-import settings
+from . import settings
 
 class TlpConfig:
     def __init__(self, raw: str, linenumber: int, enabled: bool, name: str, value: str, quoted: bool):
@@ -41,8 +41,11 @@ class TlpConfig:
         settings.imagestate[self.name].refresh_image_state(self.value, self.valuestore, self.enabled, self.enabledstore)
 
 
-def get_changed_properties(changed: dict, original: dict) -> list:
+def get_changed_properties() -> list:
     changedproperties = list()
+
+    changed = settings.tlpconfig
+    original = settings.tlpconfig_original
 
     for configid in changed:
         config = changed[configid]              # type: TlpConfig

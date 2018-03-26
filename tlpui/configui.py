@@ -5,11 +5,11 @@ from gi.repository import Gtk, Gdk
 
 from collections import OrderedDict
 
-from ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusblist, gtkpcilist, gtkdisklist, gtkdisklistview
-from file import get_json_schema_object
-from uihelper import StateImage
-import settings
-import language
+from . import settings
+from . import language
+from .ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusblist, gtkpcilist, gtkdisklist, gtkdisklistview
+from .file import get_json_schema_object
+from .uihelper import StateImage
 
 
 def store_page_num(self, page, page_num):
@@ -58,29 +58,29 @@ def create_config_box(window) -> Gtk.Box:
     return containerbox
 
 
-def create_config_widget(objecttype, objectvalues, tlpobject, window) -> Gtk.Widget:
+def create_config_widget(configname: str, objecttype: str, objectvalues: str, window: Gtk.Window) -> Gtk.Widget:
     configwidget = Gtk.Widget
 
     if (objecttype == 'entry'):
-        configwidget = gtkentry.create_entry(tlpobject)
+        configwidget = gtkentry.create_entry(configname)
     elif (objecttype == 'usblist'):
-        configwidget = gtkusblist.create_list(tlpobject, window)
+        configwidget = gtkusblist.create_list(configname, window)
     elif (objecttype == 'pcilist'):
-        configwidget = gtkpcilist.create_list(tlpobject, window)
+        configwidget = gtkpcilist.create_list(configname, window)
     elif (objecttype == 'disklist'):
-        configwidget = gtkdisklist.create_list(tlpobject, window)
+        configwidget = gtkdisklist.create_list(configname, window)
     elif (objecttype == 'disklistview'):
-        configwidget = gtkdisklistview.create_view(tlpobject)
+        configwidget = gtkdisklistview.create_view(configname)
     elif (objecttype == 'bselect'):
-        configwidget = gtkswitch.create_state_switch(objectvalues, tlpobject)
+        configwidget = gtkswitch.create_state_switch(configname, objectvalues)
     elif (objecttype == 'select'):
-        configwidget = gtkselection.create_selection_box(objectvalues, tlpobject)
+        configwidget = gtkselection.create_selection_box(configname, objectvalues)
     elif (objecttype == 'multiselect'):
-        configwidget = gtkmultiselection.create_multi_selection_box(objectvalues, tlpobject)
+        configwidget = gtkmultiselection.create_multi_selection_box(configname, objectvalues)
     elif (objecttype == 'check'):
-        configwidget = gtkcheckbutton.create_checkbutton_box(objectvalues, tlpobject)
+        configwidget = gtkcheckbutton.create_checkbutton_box(configname, objectvalues)
     elif (objecttype == 'numeric'):
-        configwidget = gtkspinbutton.create_numeric_spinbutton(objectvalues, tlpobject)
+        configwidget = gtkspinbutton.create_numeric_spinbutton(configname, objectvalues)
 
     return configwidget
 
@@ -108,16 +108,16 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
 
     for configobject in configobjects:
         configname = configobject[0]
-        tlpobject = configobject[1]
-        configtype = configobject[2]
-        possiblevalues = configobject[3]
-        defaultvalue = configobject[4]
-        defaultstate = configobject[5]
+        configtype = configobject[1]
+        possiblevalues = configobject[2]
+        defaultvalue = configobject[3]
+        defaultstate = configobject[4]
 
         tlpuiobject = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=18)
         tlpuiobject.set_margin_start(18)
         tlpuiobject.set_margin_end(18)
 
+        tlpobject = settings.tlpconfig[configname]
         if tlpobject == None:
             missingcheckbox = Gtk.CheckButton()
             missingcheckbox.set_child_visible(False)
@@ -140,13 +140,13 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
         tlpconfigbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
 
         # on/off state
-        toggle = gtktoggle.create_toggle_button(tlpobject, tlpconfigbox)
+        toggle = gtktoggle.create_toggle_button(configname, tlpconfigbox)
         statetogglebox.pack_start(toggle, False, False, 0)
         statetogglebox.set_halign(Gtk.Align.CENTER)
         statetogglebox.set_valign(Gtk.Align.CENTER)
 
         # specific config gtk object
-        configwidget = create_config_widget(configtype, possiblevalues, tlpobject, window)
+        configwidget = create_config_widget(configname, configtype, possiblevalues, window)
         configwidget.set_margin_top(6)
         configwidget.set_margin_bottom(6)
         configwidget.set_margin_left(6)
@@ -215,12 +215,7 @@ def get_tlp_categories(window, categories) -> OrderedDict:
                     values = groupitem['values']
                     defaultvalue = groupitem['default_value']
                     defaultstate = groupitem['default_state']
-
-                    if id in settings.tlpconfig:
-                        tlpitem = settings.tlpconfig[id]
-                    else:
-                        tlpitem = None
-                    configobjects.append([id, tlpitem, type, values, defaultvalue, defaultstate])
+                    configobjects.append([id, type, values, defaultvalue, defaultstate])
             else:
                 id = config['id']
                 transdescription = id + "__ID_DESCRIPTION"
@@ -228,12 +223,7 @@ def get_tlp_categories(window, categories) -> OrderedDict:
                 values = config['values']
                 defaultvalue = config['default_value']
                 defaultstate = config['default_state']
-
-                if id in settings.tlpconfig:
-                    tlpitem = settings.tlpconfig[id]
-                else:
-                    tlpitem = None
-                configobjects.append([id, tlpitem, type, values, defaultvalue, defaultstate])
+                configobjects.append([id, type, values, defaultvalue, defaultstate])
 
             description = language.CDT_(transdescription)
 
