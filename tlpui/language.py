@@ -7,7 +7,7 @@ def load_lang(translation):
     return translation.gettext
 
 
-MT_ = load_lang('mainui')
-CT_ = load_lang('configui')
 CDT_ = load_lang('configdescriptions')
+MT_ = load_lang('mainui')
 ST_ = load_lang('statui')
+UH_ = load_lang('uihelper')

@@ -1,6 +1,28 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
+from shutil import which
+from . import language
+
+
+expecteditemmissing = language.UH_('Expected item missing in config file')  # type: str
+sudomissing = language.UH_('Install pkexec, gksu, gksudo, kdesu or kdesudo first.')  # type: str
+defaultstatetext = language.UH_('Default state:')  # type: str
+defaultvaluetext = language.UH_('Default value:')  # type: str
+changedstatetext = language.UH_('CHANGED')  # type: str
+
+
+def get_graphical_sudo():
+    sudo = which("pkexec")
+    if sudo is None:
+        sudo = which("gksu")
+    if sudo is None:
+        sudo = which("gksudo")
+    if sudo is None:
+        sudo = which("kdesu")
+    if sudo is None:
+        sudo = which("kdesudo")
+    return sudo
 
 
 class StateImage:
@@ -16,7 +38,7 @@ class StateImage:
 
         enabledtext = ''
         if enabled != self.defaultstate:
-            enabledtext += 'Default state: {}'.format(str(self.defaultstate))
+            enabledtext += '{} {}'.format(defaultstatetext, str(self.defaultstate))
 
         if value == self.defaultvalue:
             if not changed and enabledtext == '':
@@ -26,12 +48,12 @@ class StateImage:
                 self.stateimage.set_tooltip_text('{}'.format(enabledtext))
             elif changed and enabledtext == '':
                 self.stateimage.set_from_icon_name(Gtk.STOCK_UNDO, Gtk.IconSize.BUTTON)
-                self.stateimage.set_tooltip_text('CHANGED')
+                self.stateimage.set_tooltip_text('{}'.format(changedstatetext))
             elif changed and enabledtext != '':
                 self.stateimage.set_from_icon_name(Gtk.STOCK_UNDO, Gtk.IconSize.BUTTON)
-                self.stateimage.set_tooltip_text('CHANGED\n{}'.format(enabledtext))
+                self.stateimage.set_tooltip_text('{}\n{}'.format(changedstatetext, enabledtext))
         else:
-            defaulttext = 'Default value: {}'.format(self.defaultvalue)
+            defaulttext = '{} {}'.format(defaultvaluetext, self.defaultvalue)
             if not changed and enabledtext == '':
                 self.stateimage.set_from_icon_name(Gtk.STOCK_INFO, Gtk.IconSize.BUTTON)
                 self.stateimage.set_tooltip_text(defaulttext)
@@ -40,7 +62,7 @@ class StateImage:
                 self.stateimage.set_tooltip_text('{}\n{}'.format(enabledtext, defaulttext))
             elif changed and enabledtext == '':
                 self.stateimage.set_from_icon_name(Gtk.STOCK_UNDO, Gtk.IconSize.BUTTON)
-                self.stateimage.set_tooltip_text('CHANGED\n{}'.format(defaulttext))
+                self.stateimage.set_tooltip_text('{}\n{}'.format(changedstatetext, defaulttext))
             elif changed and enabledtext != '':
                 self.stateimage.set_from_icon_name(Gtk.STOCK_UNDO, Gtk.IconSize.BUTTON)
-                self.stateimage.set_tooltip_text('CHANGED\n{}\n{}'.format(enabledtext, defaulttext))
+                self.stateimage.set_tooltip_text('{}\n{}\n{}'.format(changedstatetext, enabledtext, defaulttext))

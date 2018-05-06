@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2017-11-29 20:48+0100\n"
-"PO-Revision-Date: 2017-12-11 12:25+0100\n"
+"POT-Creation-Date: 2018-05-06 09:46+0200\n"
+"PO-Revision-Date: 2018-05-06 09:51+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -16,58 +16,78 @@ msgstr ""
 "X-Poedit-KeywordsList: MT_\n"
 "X-Poedit-SearchPath-0: mainui.py\n"
 
-#: mainui.py:25
+#: mainui.py:38
 msgid "Choose config file"
 msgstr "Wähle Konfigurationsdatei"
 
-#: mainui.py:65
-msgid "No changes"
-msgstr "Keine Änderungen"
+#: mainui.py:76
+msgid "Review settings"
+msgstr "Überprüfe Einstellungen"
 
-#: mainui.py:67 mainui.py:91
-msgid "Changed values"
-msgstr "Geänderte Werte"
+#: mainui.py:77
+msgid "Save these changes?"
+msgstr "Änderungen speichern?"
 
-#: mainui.py:97
-msgid ""
-"Do you really want to quit?\n"
-"Following items have changed:"
-msgstr ""
-"Wollen Sie das Programm wirklich beenden?\n"
-"Folgende Werte haben sich geändert:"
+#: mainui.py:109
+msgid "Unsaved settings"
+msgstr "Nicht gespeicherte Einstellungen"
 
-#: mainui.py:100
-msgid "No changes will be saved."
-msgstr "Änderungen werden <b>nicht</b> gespeichert."
+#: mainui.py:110
+msgid "Do you really want to quit? No changes will be saved."
+msgstr "Wollen Sie das Programm wirklich beenden? Änderungen werden nicht gesichert."
 
-#: mainui.py:152 mainui.py:175
+#: mainui.py:124
+msgid "Current"
+msgstr "Aktuell"
+
+#: mainui.py:126
+msgid "New"
+msgstr "Neu"
+
+#: mainui.py:190 mainui.py:213
 msgid "Open"
 msgstr "Öffnen"
 
-#: mainui.py:154 mainui.py:181
+#: mainui.py:192
 msgid "Reload"
 msgstr "Neu laden"
 
-#: mainui.py:156 mainui.py:178
+#: mainui.py:194 mainui.py:216
 msgid "Save"
 msgstr "Speichern"
 
-#: mainui.py:158 mainui.py:184
+#: mainui.py:196 mainui.py:222
 msgid "Quit"
 msgstr "Beenden"
 
-#: mainui.py:172
+#: mainui.py:210
 msgid "File"
 msgstr "Datei"
 
-#: mainui.py:188
+#: mainui.py:226
 msgid "Language"
 msgstr "Sprache"
 
-#: mainui.py:224
+#: mainui.py:271
 msgid "Configuration"
 msgstr "Konfiguration"
 
-#: mainui.py:227
+#: mainui.py:274
 msgid "Statistics"
 msgstr "Statistiken"
+
+#~ msgid "No changes"
+#~ msgstr "Keine Änderungen"
+
+#~ msgid "Changed values"
+#~ msgstr "Geänderte Werte"
+
+#~ msgid ""
+#~ "Do you really want to quit?\n"
+#~ "Following items have changed:"
+#~ msgstr ""
+#~ "Wollen Sie das Programm wirklich beenden?\n"
+#~ "Folgende Werte haben sich geändert:"
+
+#~ msgid "No changes will be saved."
+#~ msgstr "Änderungen werden <b>nicht</b> gespeichert."

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2017-12-15 21:21+0100\n"
-"PO-Revision-Date: 2017-12-15 21:21+0100\n"
+"POT-Creation-Date: 2018-05-06 09:44+0200\n"
+"PO-Revision-Date: 2018-05-06 09:45+0200\n"
 "Last-Translator: Sahri Riza Umami <riza@openmailbox.org>\n"
 "Language-Team: Bahasa Indonesia <riza@openmailbox.org>\n"
 "Language: id_ID\n"
@@ -21,53 +21,73 @@ msgid "Choose config file"
 msgstr "Pilih berkas pengaturan"
 
 #: mainui.py:76
-msgid "No changes"
-msgstr "Tidak ada perubahan"
+msgid "Review settings"
+msgstr "Review settings"
 
-#: mainui.py:78 mainui.py:102
-msgid "Changed values"
-msgstr "Nilai yang telah diubah"
+#: mainui.py:77
+msgid "Save these changes?"
+msgstr "Save these changes?"
 
-#: mainui.py:108
-msgid ""
-"Do you really want to quit?\n"
-"Following items have changed:"
-msgstr ""
-"Yakin ingin berhenti?\n"
-"Item berikut telah berubah:"
+#: mainui.py:109
+msgid "Unsaved settings"
+msgstr "Unsaved settings"
 
-#: mainui.py:111
-msgid "No changes will be saved."
-msgstr "Tidak ada perubahan yang akan disimpan."
+#: mainui.py:110
+msgid "Do you really want to quit? No changes will be saved."
+msgstr "Do you really want to quit? No changes will be saved."
 
-#: mainui.py:162 mainui.py:185
+#: mainui.py:124
+msgid "Current"
+msgstr "Current"
+
+#: mainui.py:126
+msgid "New"
+msgstr "New"
+
+#: mainui.py:190 mainui.py:213
 msgid "Open"
 msgstr "Buka"
 
-#: mainui.py:164
+#: mainui.py:192
 msgid "Reload"
 msgstr "Muat ulang"
 
-#: mainui.py:166 mainui.py:188
+#: mainui.py:194 mainui.py:216
 msgid "Save"
 msgstr "Simpan"
 
-#: mainui.py:168 mainui.py:194
+#: mainui.py:196 mainui.py:222
 msgid "Quit"
 msgstr "Berhenti"
 
-#: mainui.py:182
+#: mainui.py:210
 msgid "File"
 msgstr "File"
 
-#: mainui.py:198
+#: mainui.py:226
 msgid "Language"
 msgstr "Language"
 
-#: mainui.py:243
+#: mainui.py:271
 msgid "Configuration"
 msgstr "Configuration"
 
-#: mainui.py:246
+#: mainui.py:274
 msgid "Statistics"
 msgstr "Statistics"
+
+#~ msgid "No changes"
+#~ msgstr "Tidak ada perubahan"
+
+#~ msgid "Changed values"
+#~ msgstr "Nilai yang telah diubah"
+
+#~ msgid ""
+#~ "Do you really want to quit?\n"
+#~ "Following items have changed:"
+#~ msgstr ""
+#~ "Yakin ingin berhenti?\n"
+#~ "Item berikut telah berubah:"
+
+#~ msgid "No changes will be saved."
+#~ msgstr "Tidak ada perubahan yang akan disimpan."

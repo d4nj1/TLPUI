@@ -7,7 +7,7 @@ from . import settings
 from . import language
 from .config import get_changed_properties
 from .configui import create_config_box
-from .file import read_tlp_file_config, write_tlp_file_config
+from .file import read_tlp_file_config, create_tmp_tlp_config_file, write_tlp_config, write_tlp_config_with_sudo
 from .statui import create_stat_box
 import importlib
 
@@ -68,27 +68,32 @@ def load_tlp_config(self, window: Gtk.Window, reloadtlpconfig: bool):
 
 def save_tlp_config(self, window):
     changedproperties = get_changed_properties()
-
-    dialog = Gtk.MessageDialog(window)
-    dialog.set_default_size(150, 100)
-
     if len(changedproperties) == 0:
-        dialog.format_secondary_markup('<b>' + language.MT_('No changes') + '</b>')
-    else:
-        infotext = '<b>' + language.MT_('Changed values') + ':</b>\n'
-        for property in changedproperties:
-            infotext += '<small>' + property[0] + ' -> ' + property[2] + '</small>\n'
+        return
 
-        dialog.format_secondary_markup(infotext.rstrip())
+    saveresponse = changed_items_dialog(window,
+                                    changedproperties,
+                                    language.MT_('Review settings'),
+                                    language.MT_('Save these changes?'))
+
+    if saveresponse == Gtk.ResponseType.OK:
+        tmpfilename = create_tmp_tlp_config_file(changedproperties)
+
         try:
-            write_tlp_file_config(changedproperties, settings.tlpconfigfile)
-            # reload config after file save
-            load_tlp_config(self, window, True)
-        except PermissionError as error:
-            dialog.format_secondary_markup(repr(error))
+            write_tlp_config(tmpfilename)
+        except PermissionError:
+            output = write_tlp_config_with_sudo(tmpfilename)
 
-    dialog.run()
-    dialog.destroy()
+            if not output == '':
+                dialog = Gtk.MessageDialog(window)
+                dialog.set_default_size(150, 100)
+                dialog.format_secondary_markup(output)
+                dialog.run()
+                dialog.destroy()
+                return
+
+        # reload config after file save
+        load_tlp_config(self, window, True)
 
 
 def quit_tlp_config(self, window):
@@ -99,29 +104,52 @@ def quit_tlp_config(self, window):
         Gtk.main_quit()
         return
 
-    dialog = Gtk.Dialog(language.MT_('Changed values'), window, 0, (
+    quitesresponse = changed_items_dialog(window,
+                                    changedproperties,
+                                    language.MT_('Unsaved settings'),
+                                    language.MT_('Do you really want to quit? No changes will be saved.'))
+
+    if quitesresponse == Gtk.ResponseType.OK:
+        Gtk.main_quit()
+
+
+def changed_items_dialog(window, changedproperties: list, dialogtitle: str, message: str):
+    dialog = Gtk.Dialog(dialogtitle, window, 0, (
         Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
         Gtk.STOCK_OK, Gtk.ResponseType.OK
     ))
     dialog.set_default_size(150, 100)
 
-    changeditemstext = language.MT_('Do you really want to quit?\nFollowing items have changed:') + '\n\n'
-    for property in changedproperties:
-        changeditemstext += (property[0] + " -> " + property[2] + "\n\n")
-    changeditemstext += language.MT_('No changes will be saved.')
+    currentvaluelabel = Gtk.Label()
+    currentvaluelabel.set_markup('<b>{}</b>'.format(language.MT_('Current')))
+    newvaluelabel = Gtk.Label()
+    newvaluelabel.set_markup('<b>{}</b>'.format(language.MT_('New')))
 
-    label = Gtk.Label()
-    label.set_markup(changeditemstext)
-    label.set_valign(Gtk.Align.CENTER)
+    changeditems = Gtk.Grid()
+    changeditems.set_row_homogeneous(True)
+    changeditems.set_column_spacing(12)
+    changeditems.attach(Gtk.Label(' '), 0, 0, 1, 2)
+    changeditems.attach(currentvaluelabel, 1, 0, 1, 2)
+    changeditems.attach(Gtk.Label('>'), 2, 0, 1, 2)
+    changeditems.attach(newvaluelabel, 3, 0, 1, 2)
+    changeditems.attach(Gtk.Label(' '), 4, 0, 1, 2)
+
+    index = 2
+    for property in changedproperties:
+        changeditems.attach(Gtk.Label(str(property[0]).rstrip(), halign=Gtk.Align.START), 1, index, 1, 1)
+        changeditems.attach(Gtk.Label(property[2], halign=Gtk.Align.START), 3, index, 1, 1)
+        index += 1
+
     box = dialog.get_content_area()
-    box.pack_start(label, True, True, 0)
+    box.pack_start(Gtk.Label(''), True, True, 0)
+    box.pack_start(changeditems, True, True, 0)
+    box.pack_start(Gtk.Label('\n{}\n'.format(message)), True, True, 0)
 
     dialog.show_all()
     response = dialog.run()
     dialog.destroy()
 
-    if response == Gtk.ResponseType.OK:
-        Gtk.main_quit()
+    return response
 
 
 def create_menu_box(window, fileentry):

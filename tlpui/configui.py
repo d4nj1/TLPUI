@@ -9,7 +9,7 @@ from . import settings
 from . import language
 from .ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusblist, gtkpcilist, gtkdisklist, gtkdisklistview
 from .file import get_json_schema_object
-from .uihelper import StateImage
+from .uihelper import StateImage, expecteditemmissing
 
 
 def store_page_num(self, page, page_num):
@@ -98,7 +98,7 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
     if len(configobjects) > 1:
         transgrouptitle = grouptitle + "__GROUP_TITLE"
         grouplabel = Gtk.Label()
-        grouplabel.set_markup(' <b>' + language.CDT_(transgrouptitle) + '</b> ')
+        grouplabel.set_markup(' <b>{}</b> '.format(language.CDT_(transgrouptitle)))
         grouplabel.set_use_markup(True)
         grouplabel.set_margin_bottom(12)
         grouplabel.set_halign(Gtk.Align.START)
@@ -128,7 +128,7 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
 
             missingconfiglabel = Gtk.Label(xalign=0)
             missingconfiglabel.set_name('missingConfigLabel')
-            missingconfiglabel.set_markup(' <b>' + configname + '</b> - <i>' + language.CT_('Expected item missing in config file') + '</i> ')
+            missingconfiglabel.set_markup(' <b>{}</b> - <i>{}</i> '.format(configname, expecteditemmissing))
             missingconfiglabel.set_use_markup(True)
 
             tlpuiobject.pack_start(missingstatetogglebox, False, False, 0)
@@ -154,7 +154,7 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
         # object label
         transconfigtitle = configname + "__ID_TITLE"
         configlabel = Gtk.Label(xalign=0)
-        configlabel.set_markup(' <b>' + language.CDT_(transconfigtitle) + '</b> ')
+        configlabel.set_markup(' <b>{}</b> '.format(language.CDT_(transconfigtitle)))
         configlabel.set_use_markup(True)
         configlabel.set_size_request(300, 0)
 

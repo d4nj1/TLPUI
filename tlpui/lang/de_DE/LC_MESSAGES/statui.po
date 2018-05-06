@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2017-12-10 17:37+0100\n"
-"PO-Revision-Date: 2017-12-11 12:25+0100\n"
+"POT-Creation-Date: 2018-05-04 11:10+0200\n"
+"PO-Revision-Date: 2018-05-04 11:10+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -15,22 +15,18 @@ msgstr ""
 "X-Poedit-KeywordsList: ST_\n"
 "X-Poedit-SearchPath-0: statui.py\n"
 
-#: statui.py:25 statui.py:41
+#: statui.py:9
 msgid "tlp-stat executable not found."
 msgstr "tlp-stat Binärdatei nicht gefunden."
 
-#: statui.py:37
-msgid "Install pkexec, gksu, gksudo, kdesu or kdesudo first."
-msgstr "Installiere zuerst pkexec, gksu, gksudo, kdesu oder kdesudo."
-
-#: statui.py:54
+#: statui.py:45
 msgid "Click fetch button to receive results"
 msgstr "Drücke Knopf zum laden der Statistiken"
 
-#: statui.py:64
-msgid " Simple"
+#: statui.py:55
+msgid "Simple"
 msgstr "Einfach"
 
-#: statui.py:67
-msgid " Complete"
+#: statui.py:58
+msgid "Complete"
 msgstr "Komplett"

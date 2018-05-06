@@ -2,11 +2,12 @@ import re, sys
 from subprocess import check_output
 from io import open
 from json import load
-from os import remove, close, path
+from os import close, path
 from shutil import move
 from tempfile import mkstemp
 from .config import TlpConfig
 from . import settings
+from.uihelper import get_graphical_sudo, sudomissing
 
 
 def get_installed_tlp_version() -> str:
@@ -66,11 +67,11 @@ def read_tlp_file_config(filename) -> dict:
     return fileproperties
 
 
-def write_tlp_file_config(changedproperties, filename):
+def create_tmp_tlp_config_file(changedproperties):
     fh, tmpfilename = mkstemp()
     newfile = open(tmpfilename, 'w')
 
-    oldfile = open(filename)
+    oldfile = open(settings.tlpconfigfile)
     lines = oldfile.readlines()
     oldfile.close()
 
@@ -93,5 +94,18 @@ def write_tlp_file_config(changedproperties, filename):
     close(fh)
     oldfile.close()
 
-    remove(filename)
-    move(tmpfilename, filename)
+    return tmpfilename
+
+
+def write_tlp_config(tmpconfigfile):
+    move(tmpconfigfile, settings.tlpconfigfile)
+
+
+def write_tlp_config_with_sudo(tmpconfigfile) -> str:
+    sudo_cmd = get_graphical_sudo()
+
+    if sudo_cmd is None:
+        return sudomissing
+
+    check_output([sudo_cmd, "mv", tmpconfigfile, settings.tlpconfigfile])
+    return ''
