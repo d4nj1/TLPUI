@@ -167,6 +167,7 @@ def create_menu_box(window, fileentry):
                 <menuitem name="de_DE" action='de_DE' />
                 <menuitem name="ru_RU" action='ru_RU' />
                 <menuitem name="id_ID" action='id_ID' />
+                <menuitem name="zh_CN" action='zh_CN' />
             </menu>
         </menubar>
     </ui>
