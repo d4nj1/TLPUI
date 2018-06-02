@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: TLPUI\n"
 "POT-Creation-Date: 2018-01-26 21:27+0100\n"
 "PO-Revision-Date: 2018-06-01 19:00+0800\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"Last-Translator: LIN Ruoshui\n"
+"Language-Team: LinRs@users.noreply.github.com\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,13 +45,14 @@ msgstr "TLP_PERSISTENT_DEFAULT"
 #: configschema.json.h:7
 msgid "TLP_PERSISTENT_DEFAULT__ID_DESCRIPTION"
 msgstr ""
-"Operation mode select: 0=depend on power source, 1=always use "
-"TLP_DEFAULT_MODE\n"
-"Hint: use in conjunction with TLP_DEFAULT_MODE=BAT for BAT settings on AC"
+#"Operation mode select: 0=depend on power source, 1=always use "
+"操作模式选择：0为根据供能方式选择，1为总是使用"
+"TLP默认模式\n"
+"注意: use in conjunction with TLP_DEFAULT_MODE=BAT for BAT settings on AC"
 
 #: configschema.json.h:8
 msgid "Audio__CATEGORY_TITLE"
-msgstr "Audio"
+msgstr "音频"
 
 #: configschema.json.h:9
 msgid "SOUND_POWER_SAVE__GROUP_TITLE"
@@ -59,7 +60,7 @@ msgstr "SOUND_POWER_SAVE"
 
 #: configschema.json.h:10
 msgid "SOUND_POWER_SAVE__GROUP_DESCRIPTION"
-msgstr "Enable audio power saving for Intel HDA, AC97 devices."
+msgstr "为设备Intel HDA, AC97启用音频节能模式。"
 
 #: configschema.json.h:11
 msgid "SOUND_POWER_SAVE_ON_AC__ID_TITLE"
@@ -75,11 +76,11 @@ msgstr "SOUND_POWER_SAVE_CONTROLLER"
 
 #: configschema.json.h:14
 msgid "SOUND_POWER_SAVE_CONTROLLER__ID_DESCRIPTION"
-msgstr "Disable controller too (HDA only)."
+msgstr "禁用控制器 (仅用于HDA)."
 
 #: configschema.json.h:15
 msgid "Disks__CATEGORY_TITLE"
-msgstr "Disks"
+msgstr "磁盘"
 
 #: configschema.json.h:16
 msgid "DISK_IDLE_SECS__GROUP_TITLE"
@@ -88,9 +89,9 @@ msgstr "DISK_IDLE_SECS"
 #: configschema.json.h:17
 msgid "DISK_IDLE_SECS__GROUP_DESCRIPTION"
 msgstr ""
-"Seconds laptop mode has to to wait after the disk goes idle before doing a "
-"sync.\n"
-"Non-zero value enables, zero disables laptop mode."
+"便携式计算机模式（laptop mode）下磁盘闲置和存取同步内存中的数据之间等待的时间，"
+"单位为秒\n"
+"非零值为启用, 零为禁用laptop模式."
 
 #: configschema.json.h:18
 msgid "DISK_IDLE_SECS_ON_AC__ID_TITLE"
@@ -106,7 +107,7 @@ msgstr "MAX_LOST_WORK_SECS"
 
 #: configschema.json.h:21
 msgid "MAX_LOST_WORK_SECS__GROUP_DESCRIPTION"
-msgstr "Dirty page values (timeouts in secs)."
+msgstr "Dirty page values (以秒计的超时时间)."
 
 #: configschema.json.h:22
 msgid "MAX_LOST_WORK_SECS_ON_AC__ID_TITLE"
@@ -123,8 +124,8 @@ msgstr "DISK_DEVICES_ID"
 #: configschema.json.h:25
 msgid "DISK_DEVICES__ID_DESCRIPTION"
 msgstr ""
-"Hard disk devices, separate multiple devices with spaces (default: sda).\n"
-"Devices can be specified by disk id too (lookup with: tlp diskid)."
+"硬盘设备, 多个空闲的硬盘(默认: sda).\n"
+"也可以使用与具体硬件相关的设备ID作为标志(用于查找设备ID的命令: tlp diskid)."
 
 #: configschema.json.h:26
 msgid "DISK_APM_LEVEL__GROUP_TITLE"
@@ -133,12 +134,12 @@ msgstr "DISK_APM_LEVEL"
 #: configschema.json.h:27
 msgid "DISK_APM_LEVEL__GROUP_DESCRIPTION"
 msgstr ""
-"Hard disk advanced power management level: 1..254, 255 (max saving, min, "
-"off)\n"
-"Levels 1..127 may spin down the disk; 255 allowable on most drives.\n"
-"Separate values for multiple disks with spaces. Use the special value "
+"硬盘高级电源管理: 1..254, 255 (最大节能, 最小, "
+"关闭)\n"
+"Levels 1..127 可能使硬盘自动休眠; 255 在大多数设备上是可用的值.\n"
+"物理上的多硬盘设备。 使用特殊的值： "
 "'keep'\n"
-"to keep the hardware default for the particular disk."
+"以维持在每个孤立设备上的硬件默认值."
 
 #: configschema.json.h:28
 msgid "DISK_APM_LEVEL_ON_AC__ID_TITLE"
@@ -155,11 +156,11 @@ msgstr "DISK_SPINDOWN_TIMEOUT"
 #: configschema.json.h:31
 msgid "DISK_SPINDOWN_TIMEOUT__GROUP_DESCRIPTION"
 msgstr ""
-"Hard disk spin down timeout:\n"
+"硬盘盘片自动进入休眠状态的时间:\n"
 "0:\t\t\tspin down disabled\n"
 "1..240:\t\ttimeouts from 5s to 20min (in units of 5s)\n"
 "241..251:\ttimeouts from 30min to 5.5 hours (in units of 30min)\n"
-"(see 'man hdparm' for details)"
+"(具体参考'man hdparm')"
 
 #: configschema.json.h:32
 msgid "DISK_SPINDOWN_TIMEOUT_ON_AC__ID_TITLE"
