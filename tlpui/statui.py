@@ -3,6 +3,7 @@ from gi.repository import Gtk
 from shutil import which
 from subprocess import check_output
 from . import language
+from . import settings
 from .uihelper import get_graphical_sudo, sudomissing
 
 
@@ -16,7 +17,11 @@ def fetch_simple_stats(self, textbuffer):
         textbuffer.set_text(tlpstatmissing)
         return
 
-    tlpstat = check_output(["tlp-stat", "-g", "-r", "-t", "-c", "-s", "-u"]).decode(sys.stdout.encoding)
+    simple_stat_command = ["tlp-stat", "-g", "-r", "-t", "-c", "-s", "-u"]
+    if settings.get_installed_tlp_version().startswith("0_"):
+        simple_stat_command = ["tlp-stat", "-r", "-t", "-c", "-s", "-u"]
+
+    tlpstat = check_output(simple_stat_command).decode(sys.stdout.encoding)
     textbuffer.set_text(tlpstat)
 
 

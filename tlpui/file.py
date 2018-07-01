@@ -1,4 +1,4 @@
-import re, sys
+import re
 from subprocess import check_output
 from io import open
 from json import load
@@ -7,15 +7,7 @@ from shutil import move
 from tempfile import mkstemp
 from .config import TlpConfig
 from . import settings
-from.uihelper import get_graphical_sudo, sudomissing
-
-
-def get_installed_tlp_version() -> str:
-    pattern = re.compile(r"TLP ([^\s]+)")
-    currentconfig = check_output(["tlp-stat", "-c"]).decode(sys.stdout.encoding)
-    matcher = pattern.search(currentconfig)
-    version = matcher.group(1).replace(".", "_")
-    return version
+from .uihelper import get_graphical_sudo, sudomissing
 
 
 def get_json_schema_object(objectname) -> dict:
@@ -23,7 +15,7 @@ def get_json_schema_object(objectname) -> dict:
     if path.exists(tlpprovidedschema):
         return get_json_schema_object_from_file(objectname, tlpprovidedschema)
     else:
-        return get_json_schema_object_from_file(objectname, settings.workdir + '/configschema/' + get_installed_tlp_version() + '.json')
+        return get_json_schema_object_from_file(objectname, settings.workdir + '/configschema/' + settings.get_installed_tlp_version() + '.json')
 
 
 def get_json_schema_object_from_file(objectname: str, filename: str) -> dict:

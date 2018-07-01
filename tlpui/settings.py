@@ -39,6 +39,14 @@ def get_setting_file() -> str:
     return matcher.group(1)
 
 
+def get_installed_tlp_version() -> str:
+    pattern = re.compile(r"TLP ([^\s]+)")
+    currentconfig = check_output(["tlp-stat", "-c"]).decode(sys.stdout.encoding)
+    matcher = pattern.search(currentconfig)
+    version = matcher.group(1).replace(".", "_")
+    return version
+
+
 if userconfigfile.exists():
     config = configparser.ConfigParser()
     config.read_file(open(str(userconfigfile)))
