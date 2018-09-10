@@ -317,7 +317,7 @@
         {
           "id": "WOL_DISABLE",
           "type": "bselect",
-          "values": "Y,N",
+          "values": "N,Y",
           "default_value": "Y",
           "default_state": true
         }
@@ -815,7 +815,7 @@
           "id": "RESTORE_THRESHOLDS_ON_BAT",
           "type": "bselect",
           "values": "0,1",
-          "default_value": 1,
+          "default_value": "1",
           "default_state": false
         }
       ]

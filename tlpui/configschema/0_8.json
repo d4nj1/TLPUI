@@ -265,7 +265,7 @@
         {
           "id": "WOL_DISABLE",
           "type": "bselect",
-          "values": "Y,N",
+          "values": "N,Y",
           "default_value": "Y",
           "default_state": true
         }
