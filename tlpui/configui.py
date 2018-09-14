@@ -117,8 +117,7 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
         tlpuiobject.set_margin_start(18)
         tlpuiobject.set_margin_end(18)
 
-        tlpobject = settings.tlpconfig[configname]
-        if tlpobject == None:
+        if configname not in settings.tlpconfig.keys():
             missingcheckbox = Gtk.CheckButton()
             missingcheckbox.set_child_visible(False)
             missingstatetogglebox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
