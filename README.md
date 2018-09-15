@@ -15,6 +15,8 @@ Start UI:
 * Open terminal and go to specific folder
 * Type: `python3 -m tlpui`
 
+> Note: If you run Wayland you have to use `pkexec` instead of `sudo`. Example: `pkexec cd ~/Downloads/TLPUI && python3 -m tlpui`.
+
 Current status:
 
 * Software still in Beta status
