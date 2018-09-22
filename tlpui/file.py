@@ -2,8 +2,7 @@ import re
 from subprocess import check_output
 from io import open
 from json import load
-from os import close, path
-from shutil import move
+from os import access, W_OK, close, path
 from tempfile import mkstemp
 from .config import TlpConfig
 from . import settings
@@ -89,15 +88,17 @@ def create_tmp_tlp_config_file(changedproperties):
     return tmpfilename
 
 
-def write_tlp_config(tmpconfigfile):
-    move(tmpconfigfile, settings.tlpconfigfile)
+def write_tlp_config(tmpconfigfile: str) -> str:
+    sedtlpconfigfile = "w" + settings.tlpconfigfile
 
+    if access(settings.tlpconfigfile, W_OK):
+        check_output(["sed", "-n", sedtlpconfigfile, tmpconfigfile])
+        return ''
+    else:
+        sudo_cmd = get_graphical_sudo()
 
-def write_tlp_config_with_sudo(tmpconfigfile) -> str:
-    sudo_cmd = get_graphical_sudo()
+        if sudo_cmd is None:
+            return sudomissing
 
-    if sudo_cmd is None:
-        return sudomissing
-
-    check_output([sudo_cmd, "mv", tmpconfigfile, settings.tlpconfigfile])
-    return ''
+        check_output([sudo_cmd, "sed", "-n", sedtlpconfigfile, tmpconfigfile])
+        return ''

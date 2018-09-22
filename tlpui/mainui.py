@@ -7,7 +7,7 @@ from . import settings
 from . import language
 from .config import get_changed_properties
 from .configui import create_config_box
-from .file import read_tlp_file_config, create_tmp_tlp_config_file, write_tlp_config, write_tlp_config_with_sudo
+from .file import read_tlp_file_config, create_tmp_tlp_config_file, write_tlp_config
 from .statui import create_stat_box
 import importlib
 
@@ -79,18 +79,14 @@ def save_tlp_config(self, window):
     if saveresponse == Gtk.ResponseType.OK:
         tmpfilename = create_tmp_tlp_config_file(changedproperties)
 
-        try:
-            write_tlp_config(tmpfilename)
-        except PermissionError:
-            output = write_tlp_config_with_sudo(tmpfilename)
-
-            if not output == '':
-                dialog = Gtk.MessageDialog(window)
-                dialog.set_default_size(150, 100)
-                dialog.format_secondary_markup(output)
-                dialog.run()
-                dialog.destroy()
-                return
+        output = write_tlp_config(tmpfilename)
+        if not output == '':
+            dialog = Gtk.MessageDialog(window)
+            dialog.set_default_size(150, 100)
+            dialog.format_secondary_markup(output)
+            dialog.run()
+            dialog.destroy()
+            return
 
         # reload config after file save
         load_tlp_config(self, window, True)
