@@ -1,0 +1,39 @@
+# micrococo, 2018.
+msgid ""
+msgstr ""
+"Project-Id-Version: TLPUI\n"
+"POT-Creation-Date: 2018-05-06 09:45+0200\n"
+"PO-Revision-Date: 2018-10-06 09:44+0100\n"
+"Last-Translator: micrococo\n"
+"Language-Team: Spanish\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 2.0\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: UH_\n"
+"X-Poedit-SearchPath-0: uihelper.py\n"
+
+#: uihelper.py:8
+msgid "Expected item missing in config file"
+msgstr "Un elemento esperado falta en el archivo de configuración"
+
+#: uihelper.py:9
+msgid "Install pkexec, gksu, gksudo, kdesu or kdesudo first."
+msgstr "Instale primero pkexec, gksu, gksudo, kdesu o kdesudo."
+
+#: uihelper.py:10
+msgid "Default state:"
+msgstr "Estado por defecto:"
+
+#: uihelper.py:11
+msgid "Default value:"
+msgstr "Valor por defecto:"
+
+#: uihelper.py:12
+msgid "CHANGED"
+msgstr "MODIFICADO"
+
+
