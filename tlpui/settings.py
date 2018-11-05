@@ -16,11 +16,11 @@ windowxsize = 900
 windowysize = 600
 
 # user config
-userconfighome = getenv("XDG_CONFIG_HOME")
-if userconfighome == "": 
-	userconfigpath = Path(str(Path.home()) + "/.config/tlpui")
+userconfighome = getenv("XDG_CONFIG_HOME", "")
+if userconfighome == "":
+    userconfigpath = Path(str(Path.home()) + "/.config/tlpui")
 else:
-	userconfigpath = Path(str(userconfighome) + "/tlpui")
+    userconfigpath = Path(str(userconfighome) + "/tlpui")
 userconfigfile = Path(str(userconfigpath) + "/tlpui.cfg")
 
 
