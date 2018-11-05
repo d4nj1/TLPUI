@@ -1,6 +1,6 @@
 import configparser, re, sys
 from subprocess import check_output
-from os import path
+from os import path, getenv
 from pathlib import Path
 
 # application folder settings
@@ -16,7 +16,11 @@ windowxsize = 900
 windowysize = 600
 
 # user config
-userconfigpath = Path(str(Path.home()) + "/.config/tlpui")
+userconfighome = getenv("XDG_CONFIG_HOME")
+if userconfighome == "": 
+	userconfigpath = Path(str(Path.home()) + "/.config/tlpui")
+else:
+	userconfigpath = Path(str(userconfighome) + "/tlpui")
 userconfigfile = Path(str(userconfigpath) + "/tlpui.cfg")
 
 
