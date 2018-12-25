@@ -122,11 +122,11 @@ def edit_list(self: Gtk.Button, window: Gtk.Window):
         for key, value in disks.items():
             diskdevices = diskdevices + ' ' + key
             keep = keeps[key]
-            apmlevelonac = apmlevelonac + ' ' + 'keep' if keep[0].get_active() else str(int(value[0].get_value()))
-            apmlevelonbat = apmlevelonbat + ' ' + 'keep' if keep[1].get_active() else str(int(value[1].get_value()))
-            spindowntimeoutonac = spindowntimeoutonac + ' ' + 'keep' if keep[2].get_active() else str(int(value[2].get_value()))
-            spindowntimeoutonbat = spindowntimeoutonbat + ' ' + 'keep' if keep[3].get_active() else str(int(value[3].get_value()))
-            iosched = iosched + ' ' + 'keep' if keep[4].get_active() else value[4].get_active_text()
+            apmlevelonac = apmlevelonac + ' ' + ('keep' if keep[0].get_active() else str(int(value[0].get_value())))
+            apmlevelonbat = apmlevelonbat + ' ' + ('keep' if keep[1].get_active() else str(int(value[1].get_value())))
+            spindowntimeoutonac = spindowntimeoutonac + ' ' + ('keep' if keep[2].get_active() else str(int(value[2].get_value())))
+            spindowntimeoutonbat = spindowntimeoutonbat + ' ' + ('keep' if keep[3].get_active() else str(int(value[3].get_value())))
+            iosched = iosched + ' ' + ('keep' if keep[4].get_active() else value[4].get_active_text())
 
         set_tlp_value('DISK_DEVICES', diskdevices.lstrip())
         set_tlp_value('DISK_APM_LEVEL_ON_AC', apmlevelonac.lstrip())
