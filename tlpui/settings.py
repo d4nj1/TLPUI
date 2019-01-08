@@ -1,4 +1,5 @@
 import configparser, re, sys
+from shutil import which
 from subprocess import check_output
 from os import path, getenv
 from pathlib import Path
@@ -26,7 +27,7 @@ userconfigfile = Path(str(userconfigpath) + "/tlpui.cfg")
 
 def persist():
     config = configparser.ConfigParser()
-    config.read_file(open(str(userconfigfile)))
+    config['default'] = {}
     config['default']['language'] = language
     config['default']['tlpconfigfile'] = tlpconfigfile
     config['default']['activecategorie'] = str(activecategorie)
@@ -36,11 +37,14 @@ def persist():
         config.write(configfile)
 
 
-def get_setting_file() -> str:
+def get_tlp_config_file() -> str:
+    tlpstat_cmd = which("tlp-stat")
+    if tlpstat_cmd is None:
+        return tlpconfigfile
+
     pattern = re.compile(r"Configured Settings: ([^\s]+)")
     currentconfig = check_output(["tlp-stat", "-c"]).decode(sys.stdout.encoding)
-    matcher = pattern.search(currentconfig)
-    return matcher.group(1)
+    return pattern.search(currentconfig).group(1)
 
 
 def get_installed_tlp_version() -> str:
@@ -54,16 +58,18 @@ def get_installed_tlp_version() -> str:
 if userconfigfile.exists():
     config = configparser.ConfigParser()
     config.read_file(open(str(userconfigfile)))
-    tlpconfigfile = config['default']['tlpconfigfile']
-    language = config['default']['language']
-    activecategorie = int(config['default']['activecategorie'])
-    windowxsize = int(config['default']['windowxsize'])
-    windowysize = int(config['default']['windowysize'])
+    try:
+        tlpconfigfile = config['default']['tlpconfigfile']
+        language = config['default']['language']
+        activecategorie = int(config['default']['activecategorie'])
+        windowxsize = int(config['default']['windowxsize'])
+        windowysize = int(config['default']['windowysize'])
+    except KeyError:
+        # Config key error, override with default values
+        persist()
 else:
     userconfigpath.mkdir(parents=True, exist_ok=True)
-    userconfigfile.touch()
-    userconfigfile.write_text("[default]")
-    tlpconfigfile = get_setting_file()
+    tlpconfigfile = get_tlp_config_file()
     persist()
 
 

@@ -1,9 +1,10 @@
 import unittest
 import gi
-
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
+import os
+os.environ['XDG_CONFIG_HOME'] = os.path.dirname(os.path.abspath(__file__)) + '/settings/default'
 from tlpui import settings
 from tlpui.mainui import create_config_box
 from tlpui.configui import get_tlp_categories
