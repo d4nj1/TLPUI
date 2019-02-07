@@ -161,6 +161,7 @@ def create_menu_box(window, fileentry):
             <menu action='LanguageMenu'>
                 <menuitem name="en_EN" action='en_EN' />
                 <menuitem name="de_DE" action='de_DE' />
+                <menuitem name="pt_BR" action='pt_BR' />
                 <menuitem name="ru_RU" action='ru_RU' />
                 <menuitem name="id_ID" action='id_ID' />
             </menu>
