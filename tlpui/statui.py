@@ -4,7 +4,7 @@ from shutil import which
 from subprocess import check_output
 from . import language
 from . import settings
-from .uihelper import get_graphical_sudo, sudomissing
+from .uihelper import get_graphical_sudo, SUDO_MISSING_TEXT
 
 
 tlpstatmissing = language.ST_('tlp-stat executable not found.')  # type: str
@@ -30,7 +30,7 @@ def fetch_complete_stats(self, textbuffer):
     tlpstat_cmd = which("tlp-stat")
 
     if sudo_cmd is None:
-        textbuffer.set_text(sudomissing)
+        textbuffer.set_text(SUDO_MISSING_TEXT)
         return
 
     if tlpstat_cmd is None:

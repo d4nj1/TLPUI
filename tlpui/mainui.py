@@ -1,23 +1,26 @@
-from pathlib import Path
-
-from gi.repository import Gtk, Gdk
+"""This module provides the main window parts for TLPUI"""
 
 import copy
+import importlib
+
+from pathlib import Path
+from gi.repository import Gtk, Gdk
 from . import settings
 from . import language
 from .config import get_changed_properties
 from .configui import create_config_box
 from .file import read_tlp_file_config, create_tmp_tlp_config_file, write_tlp_config
 from .statui import create_stat_box
-import importlib
 
 
-def store_windowsize(self):
+def store_window_size(self) -> None:
+    """Store current window size in settings"""
     settings.windowxsize = self.get_size()[0]
     settings.windowysize = self.get_size()[1]
 
 
-def window_key_events(self, event):
+def window_key_events(self, event) -> None:
+    """Add window key events like crtl+(q|w|s)"""
     if event.state & Gdk.ModifierType.CONTROL_MASK:
         # close window with ctrl+q or ctrl+w
         if event.keyval == 113 or event.keyval == 119:
@@ -27,16 +30,25 @@ def window_key_events(self, event):
             save_tlp_config(None, self)
 
 
-def close_main_window(self, event):
+def close_main_window(self, _) -> bool:
+    """Close main window"""
     quit_tlp_config(None, self)
 
-    # When delete-event is canceled we have to return True, otherwise application window will disappear
+    # When delete-event is cancelled we have to return True
+    # Otherwise application window will disappear
     return True
 
 
-def tlp_file_chooser(window):
-    filechooser = Gtk.FileChooserDialog(language.MT_('Choose config file'), window, Gtk.FileChooserAction.OPEN, (
-        Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
+def tlp_file_chooser(window) -> None:
+    """Dialog to choose TLP config file"""
+    filechooser = Gtk.FileChooserDialog(
+        language.MT_('Choose config file'),
+        window,
+        Gtk.FileChooserAction.OPEN,
+        (Gtk.STOCK_CANCEL,
+         Gtk.ResponseType.CANCEL,
+         Gtk.STOCK_OPEN,
+         Gtk.ResponseType.OK))
     filechooser.set_local_only(True)
 
     response = filechooser.run()
@@ -46,13 +58,15 @@ def tlp_file_chooser(window):
     filechooser.destroy()
 
 
-def open_file_chooser(self, fileentry, window):
+def open_file_chooser(self, fileentry, window) -> None:
+    """Select and load TLP configuration file"""
     tlp_file_chooser(window)
     fileentry.set_text(settings.tlpconfigfile)
     load_tlp_config(self, window, True)
 
 
-def load_tlp_config(self, window: Gtk.Window, reloadtlpconfig: bool):
+def load_tlp_config(_, window: Gtk.Window, reloadtlpconfig: bool) -> None:
+    """Load TLP configuration to UI"""
 
     if reloadtlpconfig:
         settings.tlpconfig = read_tlp_file_config(settings.tlpconfigfile)
@@ -66,21 +80,23 @@ def load_tlp_config(self, window: Gtk.Window, reloadtlpconfig: bool):
     window.show_all()
 
 
-def save_tlp_config(self, window):
+def save_tlp_config(self, window) -> None:
+    """Persists TLP configuration changes"""
     changedproperties = get_changed_properties()
     if len(changedproperties) == 0:
         return
 
-    saveresponse = changed_items_dialog(window,
-                                    changedproperties,
-                                    language.MT_('Review settings'),
-                                    language.MT_('Save these changes?'))
+    saveresponse = changed_items_dialog(
+        window,
+        changedproperties,
+        language.MT_('Review settings'),
+        language.MT_('Save these changes?'))
 
     if saveresponse == Gtk.ResponseType.OK:
         tmpfilename = create_tmp_tlp_config_file(changedproperties)
 
         output = write_tlp_config(tmpfilename)
-        if not output == '':
+        if output != '':
             dialog = Gtk.MessageDialog(window)
             dialog.set_default_size(150, 100)
             dialog.format_secondary_markup(output)
@@ -92,7 +108,8 @@ def save_tlp_config(self, window):
         load_tlp_config(self, window, True)
 
 
-def quit_tlp_config(self, window):
+def quit_tlp_config(_, window) -> None:
+    """Quit TLPUI and prompt for unsaved changes"""
     settings.persist()
 
     changedproperties = get_changed_properties()
@@ -100,16 +117,18 @@ def quit_tlp_config(self, window):
         Gtk.main_quit()
         return
 
-    quitesresponse = changed_items_dialog(window,
-                                    changedproperties,
-                                    language.MT_('Unsaved settings'),
-                                    language.MT_('Do you really want to quit? No changes will be saved.'))
+    quitresponse = changed_items_dialog(
+        window,
+        changedproperties,
+        language.MT_('Unsaved settings'),
+        language.MT_('Do you really want to quit? No changes will be saved.'))
 
-    if quitesresponse == Gtk.ResponseType.OK:
+    if quitresponse == Gtk.ResponseType.OK:
         Gtk.main_quit()
 
 
-def changed_items_dialog(window, changedproperties: list, dialogtitle: str, message: str):
+def changed_items_dialog(window, changedproperties: list, dialogtitle: str, message: str) -> Gtk.ResponseType:
+    """Dialog to show changed TLP configuration items"""
     dialog = Gtk.Dialog(dialogtitle, window, 0, (
         Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
         Gtk.STOCK_OK, Gtk.ResponseType.OK
@@ -131,9 +150,9 @@ def changed_items_dialog(window, changedproperties: list, dialogtitle: str, mess
     changeditems.attach(Gtk.Label(' '), 4, 0, 1, 2)
 
     index = 2
-    for property in changedproperties:
-        changeditems.attach(Gtk.Label(str(property[0]).rstrip(), halign=Gtk.Align.START), 1, index, 1, 1)
-        changeditems.attach(Gtk.Label(property[2], halign=Gtk.Align.START), 3, index, 1, 1)
+    for changedproperty in changedproperties:
+        changeditems.attach(Gtk.Label(str(changedproperty[0]).rstrip(), halign=Gtk.Align.START), 1, index, 1, 1)
+        changeditems.attach(Gtk.Label(changedproperty[2], halign=Gtk.Align.START), 3, index, 1, 1)
         index += 1
 
     box = dialog.get_content_area()
@@ -148,8 +167,9 @@ def changed_items_dialog(window, changedproperties: list, dialogtitle: str, mess
     return response
 
 
-def create_menu_box(window, fileentry):
-    UI_INFO = """
+def create_menu_box(window, fileentry) -> Gtk.Box:
+    """Create application menu from XML structure"""
+    xmlmenustructure = """
     <ui>
         <menubar name='MenuBar'>
             <menu action='FileMenu'>
@@ -169,7 +189,7 @@ def create_menu_box(window, fileentry):
     """
 
     uimanager = Gtk.UIManager()
-    uimanager.add_ui_from_string(UI_INFO)
+    uimanager.add_ui_from_string(xmlmenustructure)
 
     actiongroup = Gtk.ActionGroup("actions")
     add_menu_actions(window, fileentry, actiongroup)
@@ -183,7 +203,8 @@ def create_menu_box(window, fileentry):
     return menubox
 
 
-def create_settings_box(window, fileentry):
+def create_settings_box(window, fileentry) -> Gtk.Box:
+    """Buttons for direct access in UI"""
     filebutton = Gtk.Button(label=' ' + language.MT_('Open'), image=Gtk.Image(stock=Gtk.STOCK_OPEN))
     filebutton.connect('clicked', open_file_chooser, fileentry, window)
     reloadbutton = Gtk.Button(label=' ' + language.MT_('Reload'), image=Gtk.Image(stock=Gtk.STOCK_REFRESH))
@@ -203,7 +224,8 @@ def create_settings_box(window, fileentry):
     return settingsbox
 
 
-def add_menu_actions(window, fileentry, actiongroup):
+def add_menu_actions(window, fileentry, actiongroup) -> None:
+    """Add actions to application menu"""
     actionfilemenu = Gtk.Action("FileMenu", language.MT_("File"), None, None)
     actiongroup.add_action(actionfilemenu)
 
@@ -237,7 +259,8 @@ def add_menu_actions(window, fileentry, actiongroup):
             actiongroup.add_action(actionlang)
 
 
-def switch_language(self, lang: str, window: Gtk.Window):
+def switch_language(self, lang: str, window: Gtk.Window) -> None:
+    """Language switcher"""
     settings.language = lang
 
     # reload language values
@@ -247,6 +270,7 @@ def switch_language(self, lang: str, window: Gtk.Window):
 
 
 def create_main_box(window: Gtk.Window) -> Gtk.Box:
+    """Create TLP configuration items notebook view"""
     notebook = Gtk.Notebook()
     notebook.set_tab_pos(Gtk.PositionType.TOP)
 

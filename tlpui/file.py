@@ -6,7 +6,7 @@ from os import access, W_OK, close, path
 from tempfile import mkstemp
 from .config import TlpConfig
 from . import settings
-from .uihelper import get_graphical_sudo, sudomissing
+from .uihelper import get_graphical_sudo, SUDO_MISSING_TEXT
 
 
 def get_json_schema_object(objectname) -> dict:
@@ -98,7 +98,7 @@ def write_tlp_config(tmpconfigfile: str) -> str:
         sudo_cmd = get_graphical_sudo()
 
         if sudo_cmd is None:
-            return sudomissing
+            return SUDO_MISSING_TEXT
 
         check_output([sudo_cmd, "sed", "-n", sedtlpconfigfile, tmpconfigfile])
         return ''

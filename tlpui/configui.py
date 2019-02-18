@@ -9,7 +9,7 @@ from . import settings
 from . import language
 from .ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusblist, gtkpcilist, gtkdisklist, gtkdisklistview
 from .file import get_json_schema_object
-from .uihelper import StateImage, expecteditemmissing
+from .uihelper import StateImage, EXPECTED_ITEM_MISSING_TEXT
 
 
 def store_page_num(self, page, page_num):
@@ -127,7 +127,7 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
 
             missingconfiglabel = Gtk.Label(xalign=0)
             missingconfiglabel.set_name('missingConfigLabel')
-            missingconfiglabel.set_markup(' <b>{}</b> - <i>{}</i> '.format(configname, expecteditemmissing))
+            missingconfiglabel.set_markup(' <b>{}</b> - <i>{}</i> '.format(configname, EXPECTED_ITEM_MISSING_TEXT))
             missingconfiglabel.set_use_markup(True)
 
             tlpuiobject.pack_start(missingstatetogglebox, False, False, 0)
