@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, GLib
 from pathlib import Path
 import copy
 
@@ -16,6 +16,9 @@ Gtk.StyleContext.add_provider_for_screen(
     Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
 )
 
+GLib.set_prgname('tlp-ui')
+Gdk.set_program_class('Tlp-UI')
+
 
 def main() -> None:
     window = Gtk.Window()
@@ -26,7 +29,7 @@ def main() -> None:
     settings.tlpconfig = read_tlp_file_config(settings.tlpconfigfile)
     settings.tlpconfig_original = copy.deepcopy(settings.tlpconfig)
 
-    window.set_title('TLP-UI')
+    window.set_title('Tlp-UI')
     window.set_default_size(settings.windowxsize, settings.windowysize)
     window.add(create_main_box(window))
     window.connect('check-resize', store_window_size)
