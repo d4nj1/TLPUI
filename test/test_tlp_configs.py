@@ -6,8 +6,6 @@ from gi.repository import Gtk
 import os
 os.environ['XDG_CONFIG_HOME'] = os.path.dirname(os.path.abspath(__file__)) + '/settings/default'
 from tlpui import settings
-from tlpui.mainui import create_config_box
-from tlpui.configui import get_tlp_categories
 from tlpui.file import read_tlp_file_config, get_json_schema_object_from_file
 
 
@@ -29,11 +27,9 @@ class MyTestCase(unittest.TestCase):
         version = "0_8"
         settings.tlpconfig = read_tlp_file_config('test/default_tlp_config_files/tlp-config-{}'.format(version))
         jsoncategories = get_json_schema_object_from_file('categories', 'tlpui/configschema/{}.json'.format(version))
-
-        configfilecategories = get_tlp_categories(Gtk.Window(), jsoncategories)
         jsonconfigcount = get_config_count(jsoncategories)
 
-        self.assertEqual(len(configfilecategories), 11)
+        self.assertEqual(len(jsoncategories), 11)
         self.assertEqual(80, len(settings.tlpconfig))
         self.assertEqual(jsonconfigcount, len(settings.tlpconfig))
 
@@ -41,11 +37,9 @@ class MyTestCase(unittest.TestCase):
         version = "0_9"
         settings.tlpconfig = read_tlp_file_config('test/default_tlp_config_files/tlp-config-{}'.format(version))
         jsoncategories = get_json_schema_object_from_file('categories', 'tlpui/configschema/{}.json'.format(version))
-
-        configfilecategories = get_tlp_categories(Gtk.Window(), jsoncategories)
         jsonconfigcount = get_config_count(jsoncategories)
 
-        self.assertEqual(len(configfilecategories), 11)
+        self.assertEqual(len(jsoncategories), 11)
         self.assertEqual(84, len(settings.tlpconfig))
         self.assertEqual(jsonconfigcount, len(settings.tlpconfig))
 
@@ -53,11 +47,9 @@ class MyTestCase(unittest.TestCase):
         version = "1_0"
         settings.tlpconfig = read_tlp_file_config('test/default_tlp_config_files/tlp-config-{}'.format(version))
         jsoncategories = get_json_schema_object_from_file('categories', 'tlpui/configschema/{}.json'.format(version))
-
-        configfilecategories = get_tlp_categories(Gtk.Window(), jsoncategories)
         jsonconfigcount = get_config_count(jsoncategories)
 
-        self.assertEqual(len(configfilecategories), 11)
+        self.assertEqual(len(jsoncategories), 11)
         self.assertEqual(90, len(settings.tlpconfig))
         self.assertEqual(jsonconfigcount, len(settings.tlpconfig))
 
@@ -65,12 +57,20 @@ class MyTestCase(unittest.TestCase):
         version = "1_1"
         settings.tlpconfig = read_tlp_file_config('test/default_tlp_config_files/tlp-config-{}'.format(version))
         jsoncategories = get_json_schema_object_from_file('categories', 'tlpui/configschema/{}.json'.format(version))
-
-        configfilecategories = get_tlp_categories(Gtk.Window(), jsoncategories)
         jsonconfigcount = get_config_count(jsoncategories)
 
-        self.assertEqual(len(configfilecategories), 11)
+        self.assertEqual(len(jsoncategories), 11)
         self.assertEqual(91, len(settings.tlpconfig))
+        self.assertEqual(jsonconfigcount, len(settings.tlpconfig))
+
+    def test_tlp_version_1_2(self):
+        version = "1_2"
+        settings.tlpconfig = read_tlp_file_config('test/default_tlp_config_files/tlp-config-{}'.format(version))
+        jsoncategories = get_json_schema_object_from_file('categories', 'tlpui/configschema/{}.json'.format(version))
+        jsonconfigcount = get_config_count(jsoncategories)
+
+        self.assertEqual(len(jsoncategories), 11)
+        self.assertEqual(100, len(settings.tlpconfig))
         self.assertEqual(jsonconfigcount, len(settings.tlpconfig))
 
 
