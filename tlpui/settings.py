@@ -57,7 +57,8 @@ def get_installed_tlp_version() -> str:
 
 if userconfigfile.exists():
     config = configparser.ConfigParser()
-    config.read_file(open(str(userconfigfile)))
+    with open(str(userconfigfile)) as configfile:
+        config.read_file(configfile)
     try:
         tlpconfigfile = config['default']['tlpconfigfile']
         language = config['default']['language']
