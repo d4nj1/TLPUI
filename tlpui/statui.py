@@ -1,43 +1,43 @@
 import sys
 from gi.repository import Gtk
 from shutil import which
-from subprocess import check_output
+from subprocess import check_output, STDOUT
 from . import language
 from . import settings
 from .uihelper import get_graphical_sudo, SUDO_MISSING_TEXT
 
 
-tlpstatmissing = language.ST_('tlp-stat executable not found.')  # type: str
+TLP_STAT_MISSING = language.ST_('tlp-stat executable not found.')  # type: str
 
 
-def fetch_simple_stats(self, textbuffer):
-    tlpstat_cmd = which("tlp-stat")
+def fetch_simple_stats(_, textbuffer: Gtk.TextBuffer) -> None:
+    tlp_stat_cmd = which("tlp-stat")
 
-    if tlpstat_cmd is None:
-        textbuffer.set_text(tlpstatmissing)
+    if tlp_stat_cmd is None:
+        textbuffer.set_text(TLP_STAT_MISSING)
         return
 
     simple_stat_command = ["tlp-stat", "-g", "-r", "-t", "-c", "-s", "-u"]
     if settings.get_installed_tlp_version().startswith("0_"):
         simple_stat_command = ["tlp-stat", "-r", "-t", "-c", "-s", "-u"]
 
-    tlpstat = check_output(simple_stat_command).decode(sys.stdout.encoding)
+    tlpstat = check_output(simple_stat_command, stderr=STDOUT).decode(sys.stdout.encoding)
     textbuffer.set_text(tlpstat)
 
 
-def fetch_complete_stats(self, textbuffer):
+def fetch_complete_stats(_, textbuffer: Gtk.TextBuffer) -> None:
     sudo_cmd = get_graphical_sudo()
-    tlpstat_cmd = which("tlp-stat")
+    tlp_stat_cmd = which("tlp-stat")
 
     if sudo_cmd is None:
         textbuffer.set_text(SUDO_MISSING_TEXT)
         return
 
-    if tlpstat_cmd is None:
-        textbuffer.set_text(tlpstatmissing)
+    if tlp_stat_cmd is None:
+        textbuffer.set_text(TLP_STAT_MISSING)
         return
 
-    tlpstat = check_output([sudo_cmd, "tlp-stat"]).decode(sys.stdout.encoding)
+    tlpstat = check_output([sudo_cmd, "tlp-stat"], stderr=STDOUT).decode(sys.stdout.encoding)
     textbuffer.set_text(tlpstat)
 
 
