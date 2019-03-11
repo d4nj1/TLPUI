@@ -146,8 +146,8 @@
         {
           "id": "DISK_IOSCHED",
           "type": "disklistview",
-          "values": "noop,deadline,cfq,none,mq-deadline,kyber",
-          "default_value": "cfq cfq",
+          "values": "mq-deadline,none,kyber,bfq,deadline,cfq,noop",
+          "default_value": "mq-deadline mq-deadline",
           "default_state": false
         },
         {
