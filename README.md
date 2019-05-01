@@ -9,6 +9,37 @@ Preparations:
 * Gtk3 libs installed
 * Python3 installed
 
+- Ubuntu/Debian
+
+  - Install TLP
+  
+  ```
+  sudo apt install tlp tlp-rdw
+  sudo tlp start
+  ```
+  
+  - Install dependencies
+  
+  ```
+  sudo apt install python3-gi git python3-setuptools python3-stdeb
+  ```
+  
+  - Clone TLPUI and build a .deb package
+  
+  ```
+  git clone https://github.com/d4nj1/TLPUI
+  cd TLPUI
+  python3 setup.py --command-packages=stdeb.command bdist_deb
+  sudo dpkg -i deb_dist/python3-tlpui_*all.deb
+  ```
+  
+  - Run TLPUI from the terminal
+  
+  ```
+  tlpui
+  ```
+
+
 Start UI:
 
 * Download and extract ZIP or pull repository
