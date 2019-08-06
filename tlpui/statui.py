@@ -17,10 +17,7 @@ def fetch_simple_stats(_, textbuffer: Gtk.TextBuffer) -> None:
         textbuffer.set_text(TLP_STAT_MISSING)
         return
 
-    simple_stat_command = ["tlp-stat", "-g", "-r", "-t", "-c", "-s", "-u"]
-    if settings.get_installed_tlp_version().startswith("0_"):
-        simple_stat_command = ["tlp-stat", "-r", "-t", "-c", "-s", "-u"]
-
+    simple_stat_command = ["tlp-stat", "-r", "-t", "-c", "-s", "-u"]
     tlpstat = check_output(simple_stat_command, stderr=STDOUT).decode(sys.stdout.encoding)
     textbuffer.set_text(tlpstat)
 
