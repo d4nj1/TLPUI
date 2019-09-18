@@ -9,6 +9,13 @@ Preparations:
 * Gtk3 libs installed
 * Python3 installed
 
+If you are running a Debian based distribution, you can just run:
+
+```
+sudo apt install libcairo2-dev libgirepository1.0-dev
+pip install -r requirements.txt
+```
+
 Start UI:
 
 * Download and extract ZIP or pull repository

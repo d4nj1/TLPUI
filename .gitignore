@@ -1,3 +1,7 @@
 __pycache__
 .idea
 tlpui/lang/configschema*.json.h
+
+/build
+/dist
+/*.egg-info/
