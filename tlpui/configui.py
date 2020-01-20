@@ -21,6 +21,9 @@ def create_config_box(window) -> Gtk.Box:
     notebook.set_name('configNotebook')
     notebook.set_tab_pos(Gtk.PositionType.LEFT)
 
+    icontheme = Gtk.IconTheme().get_default()
+    icontheme.append_search_path(settings.icondir + '/themeable')
+
     categories = get_json_schema_object('categories')
     tlp_categories = get_tlp_categories(window, categories)
     for name, categorydata in tlp_categories.items():
@@ -38,10 +41,10 @@ def create_config_box(window) -> Gtk.Box:
         scroll = Gtk.ScrolledWindow()
         scroll.add(viewport)
 
-        image = Gtk.Image.new_from_file(settings.icondir + name + '.svg')
+        categoryimage = Gtk.Image().new_from_icon_name(name + '-tlpui-symbolic', Gtk.IconSize.MENU)
 
         labelbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
-        labelbox.pack_start(image, False, False, 0)
+        labelbox.pack_start(categoryimage, False, False, 0)
         labelbox.pack_start(categorylabel, True, True, 0)
         labelbox.show_all()
 
@@ -144,6 +147,9 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
         statetogglebox.set_halign(Gtk.Align.CENTER)
         statetogglebox.set_valign(Gtk.Align.CENTER)
 
+        # config state image
+        configstateimage = get_state_image(configname, defaultvalue, defaultstate)
+
         # specific config gtk object
         configwidget = create_config_widget(configname, configtype, possiblevalues, window)
         configwidget.set_margin_top(6)
@@ -170,7 +176,7 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
 
         tlpuiobject.pack_start(statetogglebox, False, False, 0)
         tlpuiobject.pack_start(tlpconfigbox, False, False, 0)
-        tlpuiobject.pack_end(get_state_image(configname, defaultvalue, defaultstate), False, False, 0)
+        tlpuiobject.pack_end(configstateimage, False, False, 0)
 
         configuibox.pack_start(tlpuiobject, True, True, 0)
 
