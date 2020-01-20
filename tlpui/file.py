@@ -14,7 +14,7 @@ def get_json_schema_object(objectname) -> dict:
     if path.exists(tlpprovidedschema):
         return get_json_schema_object_from_file(objectname, tlpprovidedschema)
     else:
-        majorminor = settings.get_installed_tlp_version()[0:3]
+        majorminor = settings.get_installed_major_minor_version()
         return get_json_schema_object_from_file(objectname, settings.workdir + '/configschema/' + majorminor + '.json')
 
 

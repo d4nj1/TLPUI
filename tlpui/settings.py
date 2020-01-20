@@ -55,6 +55,10 @@ def get_installed_tlp_version() -> str:
     return version
 
 
+def get_installed_major_minor_version() -> str:
+    return get_installed_tlp_version()[0:3]
+
+
 if userconfigfile.exists():
     config = configparser.ConfigParser()
     with open(str(userconfigfile)) as configfile:
