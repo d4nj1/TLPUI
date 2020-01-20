@@ -56,9 +56,11 @@ def create_stat_box() -> Gtk.Box:
 
     fetchsimplebutton = Gtk.Button(label=' {}'.format(language.ST_('Simple')), image=Gtk.Image(stock=Gtk.STOCK_INFO))
     fetchsimplebutton.connect('clicked', fetch_simple_stats, textbuffer)
+    fetchsimplebutton.set_always_show_image(True)
 
     fetchcompletebutton = Gtk.Button(label=' {}'.format(language.ST_('Complete')), image=Gtk.Image(stock=Gtk.STOCK_INDEX))
     fetchcompletebutton.connect('clicked', fetch_complete_stats, textbuffer)
+    fetchcompletebutton.set_always_show_image(True)
 
     buttonbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
     buttonbox.pack_start(emptylabel, True, True, 0)

@@ -209,6 +209,7 @@ def create_settings_box(window, fileentry) -> Gtk.Box:
     filebutton.connect('clicked', open_file_chooser, fileentry, window)
     reloadbutton = Gtk.Button(label=' ' + language.MT_('Reload'), image=Gtk.Image(stock=Gtk.STOCK_REFRESH))
     reloadbutton.connect('clicked', load_tlp_config, window, True)
+    reloadbutton.set_always_show_image(True)
     savebutton = Gtk.Button(label=' ' + language.MT_('Save'), image=Gtk.Image(stock=Gtk.STOCK_SAVE))
     savebutton.connect('clicked', save_tlp_config, window)
     quitbutton = Gtk.Button(label=' ' + language.MT_('Quit'), image=Gtk.Image(stock=Gtk.STOCK_QUIT))
