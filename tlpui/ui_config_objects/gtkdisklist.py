@@ -3,6 +3,7 @@ from gi.repository import Gtk
 
 from subprocess import check_output
 from collections import OrderedDict
+from ..uihelper import get_theme_image
 from .. import mainui
 from .. import file
 from .. import settings
@@ -14,8 +15,9 @@ def create_list(configname: str, window: Gtk.Window) -> Gtk.Box:
     label = Gtk.Label(tlpobject.get_value())
     label.set_width_chars(len(tlpobject.get_value())+5)
 
-    button = Gtk.Button(label=' Edit', image=(Gtk.Image(stock=Gtk.STOCK_EDIT)))
+    button = Gtk.Button(label=' Edit', image=get_theme_image('edit-symbolic', Gtk.IconSize.BUTTON))
     button.connect('clicked', edit_list, window)
+    button.set_always_show_image(True)
 
     box.pack_start(label, False, False, 0)
     box.pack_start(button, False, False, 12)

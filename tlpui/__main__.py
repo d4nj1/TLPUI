@@ -16,9 +16,12 @@ Gtk.StyleContext.add_provider_for_screen(
     Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
 )
 
+# Set window properties
 GLib.set_prgname('tlp-ui')
 Gdk.set_program_class('Tlp-UI')
 
+# Apply custom scalable icons to icon theme
+Gtk.IconTheme().get_default().append_search_path(settings.icondir + 'themeable')
 
 def main() -> None:
     window = Gtk.Window()

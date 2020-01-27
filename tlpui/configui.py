@@ -1,7 +1,7 @@
 import gi
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk
 
 from collections import OrderedDict
 
@@ -9,7 +9,7 @@ from . import settings
 from . import language
 from .ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusblist, gtkpcilist, gtkdisklist, gtkdisklistview
 from .file import get_json_schema_object
-from .uihelper import StateImage, EXPECTED_ITEM_MISSING_TEXT
+from .uihelper import get_theme_image, StateImage, EXPECTED_ITEM_MISSING_TEXT
 
 
 def store_page_num(self, page, page_num):
@@ -20,9 +20,6 @@ def create_config_box(window) -> Gtk.Box:
     notebook = Gtk.Notebook()
     notebook.set_name('configNotebook')
     notebook.set_tab_pos(Gtk.PositionType.LEFT)
-
-    icontheme = Gtk.IconTheme().get_default()
-    icontheme.append_search_path(settings.icondir + '/themeable')
 
     categories = get_json_schema_object('categories')
     tlp_categories = get_tlp_categories(window, categories)
@@ -41,7 +38,7 @@ def create_config_box(window) -> Gtk.Box:
         scroll = Gtk.ScrolledWindow()
         scroll.add(viewport)
 
-        categoryimage = Gtk.Image().new_from_icon_name(name + '-tlpui-symbolic', Gtk.IconSize.MENU)
+        categoryimage = get_theme_image('tlpui-{}-symbolic'.format(name), Gtk.IconSize.MENU)
 
         labelbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
         labelbox.pack_start(categoryimage, False, False, 0)

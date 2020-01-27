@@ -3,8 +3,7 @@ from gi.repository import Gtk
 from shutil import which
 from subprocess import check_output, STDOUT
 from . import language
-from . import settings
-from .uihelper import get_graphical_sudo, SUDO_MISSING_TEXT
+from .uihelper import get_theme_image, get_graphical_sudo, SUDO_MISSING_TEXT
 
 
 TLP_STAT_MISSING = language.ST_('tlp-stat executable not found.')  # type: str
@@ -54,11 +53,11 @@ def create_stat_box() -> Gtk.Box:
 
     emptylabel = Gtk.Label()
 
-    fetchsimplebutton = Gtk.Button(label=' {}'.format(language.ST_('Simple')), image=Gtk.Image(stock=Gtk.STOCK_INFO))
+    fetchsimplebutton = Gtk.Button(label=' {}'.format(language.ST_('Simple')), image=get_theme_image('dialog-information-symbolic', Gtk.IconSize.BUTTON))
     fetchsimplebutton.connect('clicked', fetch_simple_stats, textbuffer)
     fetchsimplebutton.set_always_show_image(True)
 
-    fetchcompletebutton = Gtk.Button(label=' {}'.format(language.ST_('Complete')), image=Gtk.Image(stock=Gtk.STOCK_INDEX))
+    fetchcompletebutton = Gtk.Button(label=' {}'.format(language.ST_('Complete')), image=get_theme_image('format-indent-more-symbolic', Gtk.IconSize.BUTTON))
     fetchcompletebutton.connect('clicked', fetch_complete_stats, textbuffer)
     fetchcompletebutton.set_always_show_image(True)
 

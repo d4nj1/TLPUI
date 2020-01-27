@@ -5,6 +5,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 from shutil import which
 from . import language
+from . import settings
 
 
 EXPECTED_ITEM_MISSING_TEXT = language.UH_('Expected item missing in config file')  # type: str
@@ -26,6 +27,14 @@ def get_graphical_sudo() -> str:
     if sudo is None:
         sudo = which("kdesudo")
     return sudo
+
+
+def get_theme_image(iconname: str, iconsize: Gtk.IconSize) -> Gtk.Image:
+    """Fetch image from theme or return fallback if missing"""
+    if Gtk.IconTheme.get_default().has_icon(iconname):
+        return Gtk.Image().new_from_icon_name(iconname, iconsize)
+    else:
+        return Gtk.Image().new_from_file(settings.icondir + 'themeable/hicolor/scalable/actions/' + iconname + '.svg')
 
 
 class StateImage:

@@ -11,6 +11,7 @@ from .config import get_changed_properties
 from .configui import create_config_box
 from .file import read_tlp_file_config, create_tmp_tlp_config_file, write_tlp_config
 from .statui import create_stat_box
+from .uihelper import get_theme_image
 
 
 def store_window_size(self) -> None:
@@ -207,7 +208,7 @@ def create_settings_box(window, fileentry) -> Gtk.Box:
     """Buttons for direct access in UI"""
     filebutton = Gtk.Button(label=' ' + language.MT_('Open'), image=Gtk.Image(stock=Gtk.STOCK_OPEN))
     filebutton.connect('clicked', open_file_chooser, fileentry, window)
-    reloadbutton = Gtk.Button(label=' ' + language.MT_('Reload'), image=Gtk.Image(stock=Gtk.STOCK_REFRESH))
+    reloadbutton = Gtk.Button(label=' ' + language.MT_('Reload'), image=get_theme_image('view-refresh-symbolic', Gtk.IconSize.BUTTON))
     reloadbutton.connect('clicked', load_tlp_config, window, True)
     reloadbutton.set_always_show_image(True)
     savebutton = Gtk.Button(label=' ' + language.MT_('Save'), image=Gtk.Image(stock=Gtk.STOCK_SAVE))
