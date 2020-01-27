@@ -13,6 +13,7 @@ setup(
         'styles.css',
         'configschema/*.json',
         'icons/*.svg',
+        'icons/themeable/hicolor/scalable/actions/*.svg',
         'lang/*/LC_MESSAGES/*.mo'
     ]},
     entry_points={
