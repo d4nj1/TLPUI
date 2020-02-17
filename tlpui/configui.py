@@ -8,7 +8,7 @@ from collections import OrderedDict
 from . import settings
 from . import language
 from .ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusblist, gtkpcilist, gtkdisklist, gtkdisklistview
-from .file import get_json_schema_object
+from .file import ConfType, TlpConfig, get_json_schema_object
 from .uihelper import get_theme_image, StateImage, EXPECTED_ITEM_MISSING_TEXT
 
 
@@ -52,8 +52,9 @@ def create_config_box(window) -> Gtk.Box:
     containerbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
     containerbox.pack_start(notebook, True, True, 0)
 
+    activecategorie = settings.activecategorie
     notebook.show_all()
-    notebook.set_current_page(settings.activecategorie)
+    notebook.set_current_page(activecategorie)
 
     return containerbox
 
@@ -85,11 +86,28 @@ def create_config_widget(configname: str, objecttype: str, objectvalues: str, wi
     return configwidget
 
 
-def get_state_image(configname: str, defaultvalue: str, defaultstate: str):
+def get_state_image(configname: str):
     image = Gtk.Image()
+    defaultvalue = settings.tlpconfig_defaults[configname].get_value()
+    defaultstate = settings.tlpconfig_defaults[configname].is_enabled()
     settings.imagestate[configname] = StateImage(defaultvalue, defaultstate, image)
     settings.tlpconfig[configname].refresh_image_state()
     return image
+
+
+def get_type_image(configname: str) -> Gtk.Image:
+    tlpconfig = settings.tlpconfig[configname]      # type: TlpConfig
+    conftype = tlpconfig.get_conf_type()
+    conftypeimage = Gtk.Image()
+
+    if conftype == ConfType.DROPIN:
+        conftypeimage = Gtk.Image.new_from_file(settings.icondir + 'dropin.svg')
+        conftypeimage.set_tooltip_text(tlpconfig.get_conf_path())
+    elif conftype == ConfType.USER:
+        conftypeimage = Gtk.Image.new_from_file(settings.icondir + 'user.svg')
+        conftypeimage.set_tooltip_text(tlpconfig.get_conf_path())
+
+    return conftypeimage
 
 
 def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
@@ -110,8 +128,6 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
         configname = configobject[0]
         configtype = configobject[1]
         possiblevalues = configobject[2]
-        defaultvalue = configobject[3]
-        defaultstate = configobject[4]
 
         tlpuiobject = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=18)
         tlpuiobject.set_margin_start(18)
@@ -145,7 +161,10 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
         statetogglebox.set_valign(Gtk.Align.CENTER)
 
         # config state image
-        configstateimage = get_state_image(configname, defaultvalue, defaultstate)
+        configstateimage = get_state_image(configname)
+
+        # config type image
+        configtypeimage = get_type_image(configname)
 
         # specific config gtk object
         configwidget = create_config_widget(configname, configtype, possiblevalues, window)
@@ -173,7 +192,8 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
 
         tlpuiobject.pack_start(statetogglebox, False, False, 0)
         tlpuiobject.pack_start(tlpconfigbox, False, False, 0)
-        tlpuiobject.pack_end(configstateimage, False, False, 0)
+        tlpuiobject.pack_start(configstateimage, False, False, 0)
+        tlpuiobject.pack_end(configtypeimage, False, False, 0)
 
         configuibox.pack_start(tlpuiobject, True, True, 0)
 
@@ -215,17 +235,13 @@ def get_tlp_categories(window, categories) -> OrderedDict:
                     id = groupitem['id']
                     type = groupitem['type']
                     values = groupitem['values']
-                    defaultvalue = groupitem['default_value']
-                    defaultstate = groupitem['default_state']
-                    configobjects.append([id, type, values, defaultvalue, defaultstate])
+                    configobjects.append([id, type, values])
             else:
                 id = config['id']
                 transdescription = id + "__ID_DESCRIPTION"
                 type = config['type']
                 values = config['values']
-                defaultvalue = config['default_value']
-                defaultstate = config['default_state']
-                configobjects.append([id, type, values, defaultvalue, defaultstate])
+                configobjects.append([id, type, values])
 
             description = language.CDT_(transdescription)
 

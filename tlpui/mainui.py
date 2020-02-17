@@ -1,7 +1,7 @@
 """This module provides the main window parts for TLPUI"""
 
-import copy
 import importlib
+import difflib
 
 from pathlib import Path
 from gi.repository import Gtk, Gdk
@@ -9,7 +9,7 @@ from . import settings
 from . import language
 from .config import get_changed_properties
 from .configui import create_config_box
-from .file import read_tlp_file_config, create_tmp_tlp_config_file, write_tlp_config
+from .file import init_tlp_file_config, create_tmp_tlp_config_file, write_tlp_config
 from .statui import create_stat_box
 from .uihelper import get_theme_image
 
@@ -40,38 +40,11 @@ def close_main_window(self, _) -> bool:
     return True
 
 
-def tlp_file_chooser(window) -> None:
-    """Dialog to choose TLP config file"""
-    filechooser = Gtk.FileChooserDialog(
-        language.MT_('Choose config file'),
-        window,
-        Gtk.FileChooserAction.OPEN,
-        (Gtk.STOCK_CANCEL,
-         Gtk.ResponseType.CANCEL,
-         Gtk.STOCK_OPEN,
-         Gtk.ResponseType.OK))
-    filechooser.set_local_only(True)
-
-    response = filechooser.run()
-    if response == Gtk.ResponseType.OK:
-        filepath = filechooser.get_filename()
-        settings.tlpconfigfile = filepath
-    filechooser.destroy()
-
-
-def open_file_chooser(self, fileentry, window) -> None:
-    """Select and load TLP configuration file"""
-    tlp_file_chooser(window)
-    fileentry.set_text(settings.tlpconfigfile)
-    load_tlp_config(self, window, True)
-
-
 def load_tlp_config(_, window: Gtk.Window, reloadtlpconfig: bool) -> None:
     """Load TLP configuration to UI"""
 
     if reloadtlpconfig:
-        settings.tlpconfig = read_tlp_file_config(settings.tlpconfigfile)
-        settings.tlpconfig_original = copy.deepcopy(settings.tlpconfig)
+        init_tlp_file_config()
 
     newmainbox = create_main_box(window)
     children = window.get_children()
@@ -87,14 +60,15 @@ def save_tlp_config(self, window) -> None:
     if len(changedproperties) == 0:
         return
 
+    tmpfilename = create_tmp_tlp_config_file(changedproperties)
+
     saveresponse = changed_items_dialog(
         window,
-        changedproperties,
+        tmpfilename,
         language.MT_('Review settings'),
         language.MT_('Save these changes?'))
 
     if saveresponse == Gtk.ResponseType.OK:
-        tmpfilename = create_tmp_tlp_config_file(changedproperties)
 
         output = write_tlp_config(tmpfilename)
         if output != '':
@@ -118,9 +92,11 @@ def quit_tlp_config(_, window) -> None:
         Gtk.main_quit()
         return
 
+    tmpfilename = create_tmp_tlp_config_file(changedproperties)
+
     quitresponse = changed_items_dialog(
         window,
-        changedproperties,
+        tmpfilename,
         language.MT_('Unsaved settings'),
         language.MT_('Do you really want to quit? No changes will be saved.'))
 
@@ -128,38 +104,40 @@ def quit_tlp_config(_, window) -> None:
         Gtk.main_quit()
 
 
-def changed_items_dialog(window, changedproperties: list, dialogtitle: str, message: str) -> Gtk.ResponseType:
+def changed_items_dialog(window, tmpfilename: str, dialogtitle: str, message: str) -> Gtk.ResponseType:
     """Dialog to show changed TLP configuration items"""
     dialog = Gtk.Dialog(dialogtitle, window, 0, (
         Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
         Gtk.STOCK_OK, Gtk.ResponseType.OK
     ))
-    dialog.set_default_size(150, 100)
+    dialog.set_default_size(400, 300)
 
-    currentvaluelabel = Gtk.Label()
-    currentvaluelabel.set_markup('<b>{}</b>'.format(language.MT_('Current')))
-    newvaluelabel = Gtk.Label()
-    newvaluelabel.set_markup('<b>{}</b>'.format(language.MT_('New')))
+    scrolledwindow = Gtk.ScrolledWindow()
+    scrolledwindow.set_hexpand(True)
+    scrolledwindow.set_vexpand(True)
 
-    changeditems = Gtk.Grid()
-    changeditems.set_row_homogeneous(True)
-    changeditems.set_column_spacing(12)
-    changeditems.attach(Gtk.Label(' '), 0, 0, 1, 2)
-    changeditems.attach(currentvaluelabel, 1, 0, 1, 2)
-    changeditems.attach(Gtk.Label('>'), 2, 0, 1, 2)
-    changeditems.attach(newvaluelabel, 3, 0, 1, 2)
-    changeditems.attach(Gtk.Label(' '), 4, 0, 1, 2)
+    fromfilecontent = open(settings.tlpconfigfile, 'r').readlines()
+    tofilecontent = open(tmpfilename, 'r').readlines()
+    diff = settings.tlpconfigfile + '\n\n'
+    for line in difflib.unified_diff(fromfilecontent, tofilecontent, n=0, lineterm=''):
+        if line.startswith('---') or line.startswith('+++'):
+            continue
+        postfix = '' if line.startswith('-') else '\n'
+        diff += line + postfix
 
-    index = 2
-    for changedproperty in changedproperties:
-        changeditems.attach(Gtk.Label(str(changedproperty[0]).rstrip(), halign=Gtk.Align.START), 1, index, 1, 1)
-        changeditems.attach(Gtk.Label(changedproperty[2], halign=Gtk.Align.START), 3, index, 1, 1)
-        index += 1
+    textbuffer = Gtk.TextBuffer()
+    textbuffer.set_text(diff)
+
+    textview = Gtk.TextView()
+    textview.set_buffer(textbuffer)
+    textview.set_editable(False)
+
+    scrolledwindow.add(textview)
+    scrolledwindow.set_border_width(12)
 
     box = dialog.get_content_area()
-    box.pack_start(Gtk.Label(''), True, True, 0)
-    box.pack_start(changeditems, True, True, 0)
-    box.pack_start(Gtk.Label('\n{}\n'.format(message)), True, True, 0)
+    box.pack_start(scrolledwindow, True, True, 0)
+    box.pack_start(Gtk.Label('\n{}\n'.format(message)), False, False, 0)
 
     dialog.show_all()
     response = dialog.run()
@@ -174,9 +152,7 @@ def create_menu_box(window, fileentry) -> Gtk.Box:
     <ui>
         <menubar name='MenuBar'>
             <menu action='FileMenu'>
-                <menuitem action='open' />
                 <menuitem action='save' />
-                <!--<menuitem action='reload' />-->
                 <menuitem action='quit' />
             </menu>
             <menu action='LanguageMenu'>
@@ -206,22 +182,17 @@ def create_menu_box(window, fileentry) -> Gtk.Box:
 
 def create_settings_box(window, fileentry) -> Gtk.Box:
     """Buttons for direct access in UI"""
-    filebutton = Gtk.Button(label=' ' + language.MT_('Open'), image=Gtk.Image(stock=Gtk.STOCK_OPEN))
-    filebutton.connect('clicked', open_file_chooser, fileentry, window)
     reloadbutton = Gtk.Button(label=' ' + language.MT_('Reload'), image=get_theme_image('view-refresh-symbolic', Gtk.IconSize.BUTTON))
     reloadbutton.connect('clicked', load_tlp_config, window, True)
     reloadbutton.set_always_show_image(True)
-    savebutton = Gtk.Button(label=' ' + language.MT_('Save'), image=Gtk.Image(stock=Gtk.STOCK_SAVE))
+    savebutton = Gtk.Button(label=' ' + language.MT_('Save'), image=get_theme_image('document-save-symbolic', Gtk.IconSize.BUTTON))
     savebutton.connect('clicked', save_tlp_config, window)
-    quitbutton = Gtk.Button(label=' ' + language.MT_('Quit'), image=Gtk.Image(stock=Gtk.STOCK_QUIT))
-    quitbutton.connect('clicked', quit_tlp_config, window)
+    savebutton.set_always_show_image(True)
 
     settingsbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
     settingsbox.pack_start(fileentry, True, True, 0)
     settingsbox.pack_start(reloadbutton, False, False, 0)
-    #settingsbox.pack_start(filebutton, False, False, 0)
-    #settingsbox.pack_start(savebutton, False, False, 0)
-    #settingsbox.pack_start(quitbutton, False, False, 0)
+    settingsbox.pack_start(savebutton, False, False, 0)
 
     return settingsbox
 
@@ -230,16 +201,9 @@ def add_menu_actions(window, fileentry, actiongroup) -> None:
     """Add actions to application menu"""
     actionfilemenu = Gtk.Action("FileMenu", language.MT_("File"), None, None)
     actiongroup.add_action(actionfilemenu)
-
-    actionfilemenuopen = Gtk.Action("open", language.MT_('Open'), None, Gtk.STOCK_OPEN)
-    actionfilemenuopen.connect("activate", open_file_chooser, fileentry, window)
-    actiongroup.add_action(actionfilemenuopen)
     actionfilemenusave = Gtk.Action("save", language.MT_('Save'), None, Gtk.STOCK_SAVE)
     actionfilemenusave.connect("activate", save_tlp_config, window)
     actiongroup.add_action(actionfilemenusave)
-    #actionfilemenureload = Gtk.Action("reload", language.MT_('Reload'), None, Gtk.STOCK_REFRESH)
-    #actionfilemenureload.connect("activate", load_tlp_config, window)
-    #actiongroup.add_action(actionfilemenureload)
     actionfilemenuquit = Gtk.Action("quit", language.MT_('Quit'), None, Gtk.STOCK_QUIT)
     actionfilemenuquit.connect("activate", quit_tlp_config, window)
     actiongroup.add_action(actionfilemenuquit)

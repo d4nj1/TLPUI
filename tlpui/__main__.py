@@ -2,13 +2,11 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GLib
-from pathlib import Path
-import copy
 
 from . import settings
 from .css import get_css_provider
-from .file import read_tlp_file_config
-from .mainui import create_main_box, store_window_size, window_key_events, close_main_window, tlp_file_chooser
+from .file import init_tlp_file_config
+from .mainui import create_main_box, store_window_size, window_key_events, close_main_window
 
 Gtk.StyleContext.add_provider_for_screen(
     Gdk.Screen.get_default(),
@@ -24,14 +22,11 @@ Gdk.set_program_class('Tlp-UI')
 Gtk.IconTheme().get_default().append_search_path(settings.icondir + 'themeable')
 
 def main() -> None:
+    # init configuration settings
+    init_tlp_file_config()
+
+    # init application window
     window = Gtk.Window()
-
-    if not Path(settings.tlpconfigfile).exists():
-        tlp_file_chooser(window)
-
-    settings.tlpconfig = read_tlp_file_config(settings.tlpconfigfile)
-    settings.tlpconfig_original = copy.deepcopy(settings.tlpconfig)
-
     window.set_title('Tlp-UI')
     window.set_default_size(settings.windowxsize, settings.windowysize)
     window.add(create_main_box(window))

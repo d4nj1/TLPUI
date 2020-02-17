@@ -1,24 +1,48 @@
+from enum import Enum
 from . import settings
 
+
+class ConfType(Enum):
+    DEFAULT = 1
+    DROPIN = 2
+    USER = 3
+    ERR = 4
+
+
+class TlpDefaults:
+    def __init__(self, name: str, value: str, enabled: bool):
+        self.name = name
+        self.value = value
+        self.enabled = enabled
+
+    def get_name(self) -> str:
+        return self.name
+
+    def get_value(self) -> str:
+        return self.value
+
+    def is_enabled(self) -> bool:
+        return self.enabled
+
+
 class TlpConfig:
-    def __init__(self, raw: str, linenumber: int, enabled: bool, name: str, value: str, quoted: bool):
-        self.raw = raw
-        self.linenumber = linenumber
+    def __init__(self, enabled: bool, name: str, value: str, conftype: ConfType, confpath=""):
         self.enabled = enabled
         self.enabledstore = enabled
         self.name = name
         self.value = value
         self.valuestore = value
-        self.quoted = quoted
-
-    def get_raw(self) -> str:
-        return self.raw
-
-    def get_linenumber(self) -> int:
-        return self.linenumber
+        self.conftype = conftype
+        self.confpath = confpath
 
     def get_name(self) -> str:
         return self.name
+
+    def get_conf_type(self) -> ConfType:
+        return self.conftype
+
+    def get_conf_path(self) -> str:
+        return self.confpath
 
     def get_value(self) -> str:
         return self.value
@@ -34,15 +58,12 @@ class TlpConfig:
     def is_enabled(self) -> bool:
         return self.enabled
 
-    def is_quoted(self) -> bool:
-        return self.quoted
-
     def refresh_image_state(self):
         settings.imagestate[self.name].refresh_image_state(self.value, self.valuestore, self.enabled, self.enabledstore)
 
 
-def get_changed_properties() -> list:
-    changedproperties = list()
+def get_changed_properties() -> dict:
+    changedproperties = dict()
 
     changed = settings.tlpconfig
     original = settings.tlpconfig_original
@@ -55,15 +76,16 @@ def get_changed_properties() -> list:
         configchange = config.get_value() != config_original.get_value()
 
         if statechange or configchange:
-            state = '#'
-            if config.is_enabled():
-                state = ''
+            configname = config.get_name()
 
-            value = config.get_value()
-            if config.is_quoted():
-                value = '\"' + value + '\"'
+            if not config.is_enabled() and settings.tlpconfig_defaults[configname].is_enabled():
+                enabled = ""
+                value = "* empty"
+            else:
+                enabled = "" if config.is_enabled() else "#"
+                value = config.get_value()
 
-            newconfigvalue = state + config.get_name() + '=' + value
-            changedproperties.append([config.get_raw(), config.get_linenumber(), newconfigvalue])
+            value = '\"' + value + '\"'
+            changedproperties[configname] = "{}{}={}".format(enabled, configname, value)
 
     return changedproperties

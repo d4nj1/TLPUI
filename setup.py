@@ -12,6 +12,7 @@ setup(
     package_data={'tlpui': [
         'styles.css',
         'configschema/*.json',
+        'defaults/*.conf',
         'icons/*.svg',
         'icons/themeable/hicolor/scalable/actions/*.svg',
         'lang/*/LC_MESSAGES/*.mo'

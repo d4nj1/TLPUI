@@ -1,5 +1,6 @@
-import configparser, re, sys
-from shutil import which
+import configparser
+import re
+import sys
 from subprocess import check_output
 from os import path, getenv
 from pathlib import Path
@@ -11,7 +12,6 @@ icondir = workdir + '/icons/'
 
 # default user params
 language = 'en_EN'
-tlpconfigfile = '/etc/default/tlp'
 activecategorie = 0
 windowxsize = 900
 windowysize = 600
@@ -29,7 +29,6 @@ def persist():
     config = configparser.ConfigParser()
     config['default'] = {}
     config['default']['language'] = language
-    config['default']['tlpconfigfile'] = tlpconfigfile
     config['default']['activecategorie'] = str(activecategorie)
     config['default']['windowxsize'] = str(windowxsize)
     config['default']['windowysize'] = str(windowysize)
@@ -37,14 +36,11 @@ def persist():
         config.write(configfile)
 
 
-def get_tlp_config_file() -> str:
-    tlpstat_cmd = which("tlp-stat")
-    if tlpstat_cmd is None:
-        return tlpconfigfile
+def get_tlp_config_file(version: str) -> str:
+    if version in ["0_8", "0_9", "1_0", "1_1", "1_2"]:
+        return "/etc/default/tlp"
 
-    pattern = re.compile(r"Configured Settings: ([^\s]+)")
-    currentconfig = check_output(["tlp-stat", "-c"]).decode(sys.stdout.encoding)
-    return pattern.search(currentconfig).group(1)
+    return "/etc/tlp.conf"
 
 
 def get_installed_tlp_version() -> str:
@@ -64,7 +60,6 @@ if userconfigfile.exists():
     with open(str(userconfigfile)) as configfile:
         config.read_file(configfile)
     try:
-        tlpconfigfile = config['default']['tlpconfigfile']
         language = config['default']['language']
         activecategorie = int(config['default']['activecategorie'])
         windowxsize = int(config['default']['windowxsize'])
@@ -74,11 +69,13 @@ if userconfigfile.exists():
         persist()
 else:
     userconfigpath.mkdir(parents=True, exist_ok=True)
-    tlpconfigfile = get_tlp_config_file()
     persist()
 
 
 # runtime params
+tlpbaseversion = get_installed_major_minor_version()
+tlpconfigfile = get_tlp_config_file(tlpbaseversion)
 tlpconfig = dict()
 tlpconfig_original = dict()
+tlpconfig_defaults = dict()
 imagestate = dict()

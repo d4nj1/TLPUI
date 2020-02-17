@@ -1,3 +1,4 @@
 __pycache__
 .idea
+test/settings
 tlpui/lang/configschema*.json.h
