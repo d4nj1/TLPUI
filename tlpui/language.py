@@ -2,9 +2,16 @@ from . import settings
 import gettext
 
 
-def load_lang(translation):
-    translation = gettext.translation(translation, settings.langdir, languages=[settings.language])
-    return translation.gettext
+def load_lang(langfile):
+    translation = gettext.translation(domain=langfile, localedir=settings.langdir, languages=[settings.language])
+
+    versionlangfile = "{}{}".format(langfile, settings.tlpbaseversion)
+    if gettext.find(domain=versionlangfile, localedir=settings.langdir, languages=[settings.language]) is None:
+        return translation.gettext
+    else:
+        versiontranslation = gettext.translation(domain=versionlangfile, localedir=settings.langdir, languages=[settings.language])
+        versiontranslation.add_fallback(translation)
+        return versiontranslation.gettext
 
 
 CDT_ = load_lang('configdescriptions')
