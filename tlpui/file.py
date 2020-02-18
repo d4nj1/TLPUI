@@ -85,7 +85,7 @@ def extract_tlp_settings(lines: list) -> None:
             configfile = settingsparts[0]       # type: str
             if configfile == 'defaults.conf':
                 conftype = ConfType.DEFAULT
-            elif configfile.startswith('/etc/tlp.conf.d/'):
+            elif configfile.startswith('/etc/tlp.d/'):
                 conftype = ConfType.DROPIN
             elif configfile == "/etc/tlp.conf":
                 conftype = ConfType.USER

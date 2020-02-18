@@ -12,7 +12,7 @@ def create_selection_box(configname: str, values: str) -> Gtk.ComboBox:
 
     for item in selectitems:
         combobox.append_text(item)
-        if item in configvalue:
+        if item == configvalue:
             selectid = countid
         countid += 1
 
