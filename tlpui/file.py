@@ -161,15 +161,14 @@ def create_tmp_tlp_config_file(changedproperties: dict) -> str:
 
 def write_tlp_config(tmpconfigfile: str) -> str:
     sedtlpconfigfile = "w" + settings.tlpconfigfile
+    sedcommand = ["sed", "-n", sedtlpconfigfile, tmpconfigfile]
 
-    if access(settings.tlpconfigfile, W_OK):
-        check_output(["sed", "-n", sedtlpconfigfile, tmpconfigfile])
-        return ''
-    else:
+    # check permission and apply sudo if needed
+    if not access(settings.tlpconfigfile, W_OK):
         sudo_cmd = get_graphical_sudo()
-
         if sudo_cmd is None:
             return SUDO_MISSING_TEXT
+        sedcommand.insert(0, sudo_cmd)
 
-        check_output([sudo_cmd, "sed", "-n", sedtlpconfigfile, tmpconfigfile])
-        return ''
+    check_output(sedcommand)
+    return ''
