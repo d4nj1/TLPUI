@@ -235,6 +235,10 @@ def switch_language(self, lang: str, window: Gtk.Window) -> None:
     load_tlp_config(self, window, False)
 
 
+def store_option_num(self, option, option_num: int):
+    settings.activeoption = option_num
+
+
 def create_main_box(window: Gtk.Window) -> Gtk.Box:
     """Create TLP configuration items notebook view"""
     notebook = Gtk.Notebook()
@@ -269,5 +273,11 @@ def create_main_box(window: Gtk.Window) -> Gtk.Box:
     mainbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
     mainbox.pack_start(menubox, False, False, 0)
     mainbox.pack_start(notebook, True, True, 0)
+
+    notebook.connect('switch-page', store_option_num)
+
+    activeoption = settings.activeoption
+    notebook.show_all()
+    notebook.set_current_page(activeoption)
 
     return mainbox

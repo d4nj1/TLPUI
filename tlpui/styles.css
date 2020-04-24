@@ -1,14 +1,18 @@
-#configNotebook tab {
-    border-radius: 0px;
-    background-color: shade(@theme_bg_color, 0.95);
+#configNotebook header {
+    background-color: @theme_focused_bg_color;
 }
 
-#configNotebook tab:active {
-    background-color: @theme_bg_color;
+#configNotebook tab {
+    border-radius: 0px;
+    background-color: @theme_focused_bg_color;
+}
+
+#configNotebook tab:checked {
+    background-color: @theme_unfocused_bg_color;
 }
 
 #categoryViewport {
-    background-color: @theme_bg_color;
+    background-color: @theme_unfocused_bg_color;
 }
 
 #validEntry {

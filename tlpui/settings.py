@@ -12,7 +12,8 @@ icondir = workdir + '/icons/'
 
 # default user params
 language = 'en_EN'
-activecategorie = 0
+activeoption = 0
+activecategory = 0
 windowxsize = 900
 windowysize = 600
 
@@ -29,7 +30,8 @@ def persist():
     config = configparser.ConfigParser()
     config['default'] = {}
     config['default']['language'] = language
-    config['default']['activecategorie'] = str(activecategorie)
+    config['default']['activeoption'] = str(activeoption)
+    config['default']['activecategory'] = str(activecategory)
     config['default']['windowxsize'] = str(windowxsize)
     config['default']['windowysize'] = str(windowysize)
     with open(str(userconfigfile), 'w') as configfile:
@@ -61,7 +63,8 @@ if userconfigfile.exists():
         config.read_file(configfile)
     try:
         language = config['default']['language']
-        activecategorie = int(config['default']['activecategorie'])
+        activeoption = int(config['default']['activeoption'])
+        activecategory = int(config['default']['activecategory'])
         windowxsize = int(config['default']['windowxsize'])
         windowysize = int(config['default']['windowysize'])
     except KeyError:

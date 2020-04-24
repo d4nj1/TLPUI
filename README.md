@@ -1,4 +1,4 @@
-TLPUI - 18.02.2020
+TLPUI - 24.04.2020
 
 The Python scripts in this project generate a GTK-UI to change TLP configuration files easily.
 It has the aim to protect users from setting bad configuration and to deliver a basic overview of all the valid configuration values.

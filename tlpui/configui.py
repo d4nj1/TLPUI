@@ -12,8 +12,8 @@ from .file import ConfType, TlpConfig, get_json_schema_object
 from .uihelper import get_theme_image, StateImage, EXPECTED_ITEM_MISSING_TEXT
 
 
-def store_page_num(self, page, page_num):
-    settings.activecategorie = page_num
+def store_category_num(self, cat, cat_num: int):
+    settings.activecategory = cat_num
 
 
 def create_config_box(window) -> Gtk.Box:
@@ -47,14 +47,14 @@ def create_config_box(window) -> Gtk.Box:
 
         notebook.append_page(scroll, labelbox)
 
-    notebook.connect('switch-page', store_page_num)
+    notebook.connect('switch-page', store_category_num)
 
     containerbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
     containerbox.pack_start(notebook, True, True, 0)
 
-    activecategorie = settings.activecategorie
+    activecategory = settings.activecategory
     notebook.show_all()
-    notebook.set_current_page(activecategorie)
+    notebook.set_current_page(activecategory)
 
     return containerbox
 
