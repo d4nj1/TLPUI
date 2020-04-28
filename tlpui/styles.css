@@ -8,11 +8,13 @@
 }
 
 #configNotebook tab:checked {
-    background-color: @theme_unfocused_bg_color;
+    color: @theme_fg_color;
+    background-color: @theme_bg_color;
 }
 
 #categoryViewport {
-    background-color: @theme_unfocused_bg_color;
+    color: @theme_fg_color;
+    background-color: @theme_bg_color;
 }
 
 #validEntry {
