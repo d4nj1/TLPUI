@@ -1,2 +1,2 @@
-pycairo==1.18.1
-PyGObject==3.34.0
+pycairo
+PyGObject
