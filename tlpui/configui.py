@@ -183,6 +183,11 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
         tlpconfigbox.pack_start(configlabel, False, False, 0)
         tlpconfigbox.pack_start(configwidget, True, True, 0)
 
+        if configname.startswith('CPU_SCALING_MIN_FREQ') or configname.startswith('CPU_SCALING_MAX_FREQ'):
+            khzlabel = Gtk.Label()
+            khzlabel.set_markup('<small>kHz</small>')
+            tlpconfigbox.pack_start(khzlabel, False, False, 12)
+
         if configname.endswith('_BAT'):
             image = Gtk.Image.new_from_file(settings.icondir + 'OnBAT.svg')
             tlpconfigbox.pack_start(image, False, False, 12)
