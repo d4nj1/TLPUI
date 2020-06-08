@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
 "POT-Creation-Date: 2018-05-06 09:51+0200\n"
-"PO-Revision-Date: 2018-05-06 09:52+0200\n"
+"PO-Revision-Date: 2020-06-09 01:28+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: UH_\n"
@@ -25,11 +25,11 @@ msgstr "Installiere zuerst pkexec, gksu, gksudo, kdesu oder kdesudo."
 
 #: uihelper.py:10
 msgid "Default state:"
-msgstr "Standard Status:"
+msgstr "Standardzustand:"
 
 #: uihelper.py:11
 msgid "Default value:"
-msgstr "Standard Wert:"
+msgstr "Standardwert:"
 
 #: uihelper.py:12
 msgid "CHANGED"
