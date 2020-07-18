@@ -29,7 +29,7 @@ def edit_list(self, configname: str, usblistlabel: Gtk.Label, window: Gtk.Window
         for item in tlpobject.get_value().split(' '):
             currentitems[item] = ["", True]
 
-    tlpusblist = check_output(["tlp-usblist"]).decode(sys.stdout.encoding)
+    tlpusblist = check_output(["lsusb"]).decode(sys.stdout.encoding)
 
     usbitems = OrderedDict()
     for line in tlpusblist.splitlines():
