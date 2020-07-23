@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2018-05-04 11:10+0200\n"
-"PO-Revision-Date: 2020-06-09 01:25+0200\n"
+"POT-Creation-Date: 2020-07-23 11:20+0200\n"
+"PO-Revision-Date: 2020-07-23 11:21+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -19,14 +19,14 @@ msgstr ""
 msgid "tlp-stat executable not found."
 msgstr "tlp-stat Binärdatei nicht gefunden."
 
-#: statui.py:45
+#: statui.py:46
 msgid "Click fetch button to receive results"
 msgstr "Drücke Knopf zum Laden der Statistiken"
 
-#: statui.py:55
+#: statui.py:56
 msgid "Simple"
 msgstr "Einfach"
 
-#: statui.py:58
+#: statui.py:60
 msgid "Complete"
 msgstr "Komplett"
