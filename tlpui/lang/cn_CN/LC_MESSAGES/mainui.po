@@ -1,0 +1,93 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TLPUI\n"
+"POT-Creation-Date: 2018-05-06 09:44+0200\n"
+"PO-Revision-Date: 2020-08-08 15:32+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: MT_\n"
+"X-Poedit-SearchPath-0: mainui.py\n"
+
+#: mainui.py:38
+msgid "Choose config file"
+msgstr "选择配置文件"
+
+#: mainui.py:76
+msgid "Review settings"
+msgstr "查看设置"
+
+#: mainui.py:77
+msgid "Save these changes?"
+msgstr "保存这些更改？"
+
+#: mainui.py:109
+msgid "Unsaved settings"
+msgstr "未保存的设置"
+
+#: mainui.py:110
+msgid "Do you really want to quit? No changes will be saved."
+msgstr "你真的想退出吗？ 不会保存任何更改。"
+
+#: mainui.py:124
+msgid "Current"
+msgstr "Current"
+
+#: mainui.py:126
+msgid "New"
+msgstr "New"
+
+#: mainui.py:190 mainui.py:213
+msgid "Open"
+msgstr "Open"
+
+#: mainui.py:192
+msgid "Reload"
+msgstr "Reload"
+
+#: mainui.py:194 mainui.py:216
+msgid "Save"
+msgstr "Save"
+
+#: mainui.py:196 mainui.py:222
+msgid "Quit"
+msgstr "Quit"
+
+#: mainui.py:210
+msgid "File"
+msgstr "File"
+
+#: mainui.py:226
+msgid "Language"
+msgstr "Language"
+
+#: mainui.py:271
+msgid "Configuration"
+msgstr "Configuration"
+
+#: mainui.py:274
+msgid "Statistics"
+msgstr "Statistics"
+
+#~ msgid "No changes"
+#~ msgstr "No changes"
+
+#~ msgid "Changed values"
+#~ msgstr "Changed values"
+
+#~ msgid ""
+#~ "Do you really want to quit?\n"
+#~ "Following items have changed:"
+#~ msgstr ""
+#~ "Do you really want to quit?\n"
+#~ "Following items have changed:"
+
+#~ msgid "No changes will be saved."
+#~ msgstr "No changes will be saved."

@@ -1,0 +1,32 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TLPUI\n"
+"POT-Creation-Date: 2018-05-04 10:55+0200\n"
+"PO-Revision-Date: 2020-08-08 15:32+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-KeywordsList: ST_\n"
+"X-Poedit-SearchPath-0: statui.py\n"
+
+#: statui.py:9
+msgid "tlp-stat executable not found."
+msgstr "找不到tlp-stat可执行文件。"
+
+#: statui.py:45
+msgid "Click fetch button to receive results"
+msgstr "单击fetch按钮获取结果"
+
+#: statui.py:55
+msgid "Simple"
+msgstr "Simple"
+
+#: statui.py:58
+msgid "Complete"
+msgstr "Complete"
