@@ -35,7 +35,7 @@ msgstr "TLP_DEFAULT_MODE"
 #: configschema.json.h:5
 msgid "TLP_DEFAULT_MODE__ID_DESCRIPTION"
 msgstr ""
-"检测到无电源时的工作方式：AC， BAT。\n"
+"检测不到电源时的工作方式：AC， BAT。\n"
 "只涉及一些桌面和嵌入式硬件。"
 
 #: configschema.json.h:6
