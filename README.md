@@ -1,19 +1,11 @@
-TLPUI - 28.04.2020
+TLPUI - 26.08.2020
 
 The Python scripts in this project generate a GTK-UI to change TLP configuration files easily.
 It has the aim to protect users from setting bad configuration and to deliver a basic overview of all the valid configuration values.
 
-Preparations:
-
-* TLP installed
-* Gtk3 libs installed
-* Python3 installed
-
-Start UI:
-
-* Download and extract ZIP or pull repository
-* Open terminal and go to specific folder
-* Type: `python3 -m tlpui`
+Install and run instructions:
+* [Python 3](https://github.com/d4nj1/TLPUI/wiki/Install-instructions#python-3)
+* [Ubuntu/Debian family](https://github.com/d4nj1/TLPUI/wiki/Install-instructions#ubuntudebian-family)
 
 Current status:
 
@@ -36,4 +28,4 @@ To be done:
 * Provide distribution independent package (Flatpak)
 
 
-![Screenshot 17.02.2020](https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshot.png)
+![Screenshot 24.04.2020](https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshot.png)
