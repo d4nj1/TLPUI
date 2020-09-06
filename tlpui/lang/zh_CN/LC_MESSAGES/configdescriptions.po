@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
 "POT-Creation-Date: 2020-02-17 21:30+0100\n"
-"PO-Revision-Date: 2020-09-06 12:59+0800\n"
+"PO-Revision-Date: 2020-09-06 13:32+0800\n"
 "Last-Translator: WhiredPlanck <fungdaat31@outlook.com>\n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -55,7 +55,8 @@ msgstr "TLP_PS_IGNORE"
 #: configschema.json.h:9
 msgid "TLP_PS_IGNORE__ID_DESCRIPTION"
 msgstr ""
-"确定操作模式时要忽略的电源类别：AC（交流供电），BAT（电池供电）。\n"
+"确定操作模式时要忽略的电源类别：AC（交流供电），BAT（电池供"
+"电）。\n"
 "注意：请在 AC /BAT 操作模式检测错误的笔记本电脑上尝试。"
 
 #: configschema.json.h:10
@@ -192,7 +193,8 @@ msgstr "SATA_LINKPWR"
 #: configschema.json.h:39
 msgid "SATA_LINKPWR__GROUP_DESCRIPTION"
 msgstr ""
-"SATA 主动链路电源管理（ALPM）：min_power, medium_power, max_performance。"
+"SATA 主动链路电源管理（ALPM）：min_power, medium_power, "
+"max_performance。"
 
 #: configschema.json.h:40
 msgid "SATA_LINKPWR_ON_AC__ID_TITLE"
@@ -322,8 +324,10 @@ msgstr "RADEON_POWER_PROFILE"
 #: configschema.json.h:67
 msgid "RADEON_POWER_PROFILE__GROUP_DESCRIPTION"
 msgstr ""
-"Radeon 显卡时钟速度（配置文件方法）： low, mid, high, auto, default；\n"
-"auto = BAT 模式时用 mid，AC 模式时用 high，default = 使用硬件默认值。\n"
+"Radeon 显卡时钟速度（配置文件方法）： low, mid, high, auto, "
+"default；\n"
+"auto = BAT 模式时用 mid，AC 模式时用 high，default = 使用硬件默"
+"认值。\n"
 "需要使用开源驱动程序 'radeon'。"
 
 #: configschema.json.h:68
@@ -439,7 +443,8 @@ msgstr "RUNTIME_PM_ALL"
 
 #: configschema.json.h:95
 msgid "RUNTIME_PM_ALL__ID_DESCRIPTION"
-msgstr "*所有* PCI(e) 总线设备的运行时电源管理，黑名单中的设备除外。"
+msgstr ""
+"*所有* PCI(e) 总线设备的运行时电源管理，黑名单中的设备除外。"
 
 #: configschema.json.h:96
 msgid "RUNTIME_PM_BLACKLIST__ID_TITLE"
@@ -474,13 +479,14 @@ msgstr "CPU_SCALING_GOVERNOR"
 #: configschema.json.h:102
 msgid "CPU_SCALING_GOVERNOR__GROUP_DESCRIPTION"
 msgstr ""
-"选择一个 CPU 频率缩放调节器：ondemand / powersave / performance / "
-"conservative\n"
-"使用 intel_pstate 驱动程序的 Intel Core i 系列处理器可用值：powersave / "
-"performance\n"
+"选择一个 CPU 频率缩放调节器：ondemand / powersave / "
+"performance / conservative\n"
+"使用 intel_pstate 驱动程序的 Intel Core i 系列处理器可用值："
+"powersave / performance\n"
 "重要提示：\n"
 "- *必须* 禁用发行版的调节器（governor）设置，否则会发生冲突\n"
-"- ondemand 可以满足*几乎所有*的工作负载，你应该知道自己现在在做什么再操作！"
+"- ondemand 可以满足*几乎所有*的工作负载，你应该知道自己现在在做"
+"什么再操作！"
 
 #: configschema.json.h:103
 msgid "CPU_SCALING_GOVERNOR_ON_AC__ID_TITLE"
@@ -525,7 +531,8 @@ msgstr "CPU_HWP"
 msgid "CPU_HWP__GROUP_DESCRIPTION"
 msgstr ""
 "设置 Intel P-state 调节器（governor）的能源性能提示（HWP）：\n"
-"default，performance，balance_performance，balance_power，power\n"
+"default，performance，balance_performance，balance_power，"
+"power\n"
 "上述值按“逐渐提高节电效果”的顺序给出。\n"
 "注意：需要 Intel Skylake 或更新的 CPU 并且内核版本 >= 4.10。"
 
@@ -545,7 +552,8 @@ msgstr "CPU_ENERGY_PERF_POLICY"
 msgid "CPU_ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
 msgstr ""
 "设置 Intel CPU 能源/性能策略 HWP.EPP 和 EPB：\n"
-"performance，balance_performance，default，balance_power，power\n"
+"performance，balance_performance，default，balance_power，"
+"power\n"
 "上述值以“逐渐提高节电效果”的顺序给出。\n"
 "注意：\n"
 "- 需要 Intel Core i 系列处理器\n"
@@ -646,8 +654,8 @@ msgid "PHC_CONTROLS__ID_DESCRIPTION"
 msgstr ""
 "更改 CPU 电压（也称为“欠电压”）\n"
 "需要带有 PHC 补丁的内核\n"
-"频率电压比配对子已写在了 /sys/devices/system/cpu/cpu0/cpufreq/phc_controls 文"
-"件中\n"
+"频率电压比配对子已写在了 /sys/devices/system/cpu/cpu0/cpufreq/"
+"phc_controls 文件中\n"
 "注意：仅当完全了解自己在做什么时，才可以使用此选项！"
 
 #: configschema.json.h:137
@@ -679,9 +687,10 @@ msgstr "RESTORE_DEVICE_STATE_ON_STARTUP"
 #: configschema.json.h:143
 msgid "RESTORE_DEVICE_STATE_ON_STARTUP__ID_DESCRIPTION"
 msgstr ""
-"在系统启动时恢复从上次关机时无线电设备的状态（蓝牙，WiFi，WWAN）。\n"
-"提示：启用此选项后，以下参数 DEVICES_TO_DISABLE / ENABLE_ON_STARTUP / "
-"SHUTDOWN 将被忽略！"
+"在系统启动时恢复从上次关机时无线电设备的状态（蓝牙，WiFi，"
+"WWAN）。\n"
+"提示：启用此选项后，以下参数 DEVICES_TO_DISABLE / "
+"ENABLE_ON_STARTUP / SHUTDOWN 将被忽略！"
 
 #: configschema.json.h:144
 msgid "DEVICES_TO_DISABLE_ON_STARTUP__ID_TITLE"
@@ -886,7 +895,8 @@ msgstr "USB_WHITELIST"
 msgid "USB_WHITELIST__ID_DESCRIPTION"
 msgstr ""
 "将列出的设备包括在自动挂起名单中，\n"
-"即使驱动程序或上面的 WWAN 黑名单已将其排除/列出（用空格分隔）。\n"
+"即使驱动程序或上面的 WWAN 黑名单已将其排除/列出（用空格分"
+"隔）。\n"
 "请使用 lsusb 获取设备 ID。"
 
 #: configschema.json.h:192
@@ -910,7 +920,8 @@ msgstr "CHARGE_THRESH_BAT0"
 #: configschema.json.h:196
 msgid "CHARGE_THRESH_BAT0__GROUP_DESCRIPTION"
 msgstr ""
-"电池充电阈值（仅适用于 ThinkPad，需要 tp-smapi 或 acpi-call 内核模块）\n"
+"电池充电阈值（仅适用于 ThinkPad，需要 tp-smapi 或 acpi-call 内核"
+"模块）\n"
 "当剩余电量低于 START_CHARGE_TRESH 值时开始充电，\n"
 "高于 STOP_CHARGE_TRESH 值时停止充电。\n"
 "主 / 内置电池（以 % 表示的值）"
@@ -953,7 +964,7 @@ msgstr "NATACPI_ENABLE"
 
 #: configschema.json.h:206
 msgid "NATACPI_ENABLE__ID_DESCRIPTION"
-msgstr "电池功能启动程序：0=禁用, 1=启用"
+msgstr "电池功能驱动程序：0=禁用, 1=启用"
 
 #: configschema.json.h:207
 msgid "TPACPI_ENABLE__ID_TITLE"
