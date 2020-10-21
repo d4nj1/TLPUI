@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=TLP UI
+Exec=/usr/bin/tlpui
+Terminal=false
+Type=Application
+Icon=/usr/lib/python3/dist-packages/tlpui/icons/OnAC.svg
+Comment=Tlp UI with gtk
+Categories=Utility;Python;GTK;

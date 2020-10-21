@@ -21,5 +21,6 @@ setup(
         'gui_scripts': [
             'tlpui = tlpui.__main__:main'
         ]
-    }
+    },
+    data_files=[ ('/usr/share/applications', ["tlpui.desktop"]) ]
 )
