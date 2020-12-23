@@ -16,7 +16,7 @@
    height="16"
    id="svg7384"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    width="16">
   <metadata
      id="metadata90">
@@ -61,7 +61,7 @@
      inkscape:snap-to-guides="true"
      inkscape:window-height="1391"
      inkscape:window-maximized="1"
-     inkscape:window-width="2560"
+     inkscape:window-width="3440"
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:zoom="22.627417">
@@ -70,11 +70,11 @@
        empspacing="4"
        enabled="true"
        id="grid4866"
-       originx="-371.99998px"
-       originy="-699px"
+       originx="-371.99998"
+       originy="-699"
        snapvisiblegridlinesonly="true"
-       spacingx="1px"
-       spacingy="1px"
+       spacingx="1"
+       spacingy="1"
        type="xygrid"
        visible="true" />
     <inkscape:grid
@@ -86,11 +86,11 @@
        enabled="true"
        id="grid13609"
        opacity="0.1254902"
-       originx="-371.99998px"
-       originy="-699px"
+       originx="-371.99998"
+       originy="-699"
        snapvisiblegridlinesonly="true"
-       spacingx="0.5px"
-       spacingy="0.5px"
+       spacingx="0.5"
+       spacingy="0.5"
        type="xygrid"
        visible="true" />
   </sodipodi:namedview>
@@ -122,13 +122,6 @@
      inkscape:label="status"
      style="display:inline"
      transform="translate(-613.00018,482)">
-    <path
-       inkscape:connector-curvature="0"
-       d="m 623.43768,-480 -7,7 4,0 -3,6 7,-8 -3,0 z"
-       id="path2397"
-       inkscape:label="weather-storm"
-       style="display:inline;overflow:visible;visibility:visible;fill:#bebebe;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:4;marker:none;enable-background:accumulate"
-       sodipodi:nodetypes="ccccccc" />
     <path
        style="fill:#d4aa00"
        d="m 4.5878483,14.770593 c 0,-0.0166 0.64637,-1.322806 1.4363776,-2.902674 l 1.4363777,-2.8724872 -1.9997464,0 -1.9997465,0 3.4230467,-3.4232605 C 8.766833,3.6893781 10.31541,2.1571168 10.32544,2.1671462 10.335469,2.1771756 9.9137147,3.2602502 9.388208,4.5739787 8.8627013,5.8877073 8.4327414,6.972238 8.4327414,6.9840471 c 0,0.011809 0.6643525,0.026707 1.4763391,0.033108 l 1.4763385,0.011636 -3.249171,3.7123109 c -1.7870442,2.04177 -3.3164976,3.790468 -3.3987855,3.885993 -0.082288,0.09553 -0.1496142,0.160099 -0.1496142,0.143498 z"
