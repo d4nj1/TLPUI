@@ -3,6 +3,7 @@
 import sys
 import gettext
 import difflib
+from pathlib import Path
 from tlpui import settings
 from googletrans import Translator
 
@@ -55,6 +56,11 @@ if len(sys.argv) < 2:
     sys.exit()
 
 locale = sys.argv[1]
+locale_path = Path(f"{settings.langdir}{locale}")
+if not locale_path.exists() and not locale_path.is_dir():
+    print(f"Locale folder '{locale_path}' does not exist")
+    sys.exit()
+
 print(f"Evaluating locale: {locale}")
 translator = Translator()
 validate_translation(translator, locale, 'configdescriptions')
