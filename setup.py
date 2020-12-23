@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="TLPUI",
-    version="0.1",
+    version="1.3.1",
     author="Daniel Christophis",
     author_email="code@devmind.org",
     description="GTK UI for tlp (Python 3)",
@@ -22,5 +22,7 @@ setup(
             'tlpui = tlpui.__main__:main'
         ]
     },
-    data_files=[ ('/usr/share/applications', ["tlpui.desktop"]) ]
+    data_files=[
+        ('/usr/share/applications', ["tlpui.desktop"])
+    ]
 )
