@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
 "POT-Creation-Date: 2018-05-04 11:13+0200\n"
-"PO-Revision-Date: 2019-03-12 14:35-0300\n"
+"PO-Revision-Date: 2020-12-23 16:36-0300\n"
 "Last-Translator: tioguda <guda.flavio@gmail.com>\n"
 "Language-Team: Manjariando (manjariando@gmail.com)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: ST_\n"
@@ -20,14 +20,14 @@ msgstr ""
 msgid "tlp-stat executable not found."
 msgstr "executável tlp-stat não encontrado."
 
-#: statui.py:45
+#: statui.py:46
 msgid "Click fetch button to receive results"
 msgstr "Clique no botão buscar para receber resultados"
 
-#: statui.py:55
+#: statui.py:56
 msgid "Simple"
 msgstr "Simples"
 
-#: statui.py:58
+#: statui.py:60
 msgid "Complete"
 msgstr "Completo"
