@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2020-12-23 12:24+0100\n"
-"PO-Revision-Date: 2020-12-23 12:35+0100\n"
+"POT-Creation-Date: 2020-12-23 19:51+0100\n"
+"PO-Revision-Date: 2020-12-23 19:51+0100\n"
 "Last-Translator: micrococo\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -991,7 +991,7 @@ msgstr "NATACPI_ENABLE"
 
 #: configschema.json.h:206
 msgid "NATACPI_ENABLE__ID_DESCRIPTION"
-msgstr "Enable/disable NATACPI"
+msgstr "Battery feature drivers: 0=disable, 1=enable"
 
 #: configschema.json.h:207
 msgid "TPACPI_ENABLE__ID_TITLE"
@@ -999,7 +999,7 @@ msgstr "TPACPI_ENABLE"
 
 #: configschema.json.h:208
 msgid "TPACPI_ENABLE__ID_DESCRIPTION"
-msgstr "Enable/disable TPACPI"
+msgstr "Battery feature drivers: 0=disable, 1=enable"
 
 #: configschema.json.h:209
 msgid "TPSMAPI_ENABLE__ID_TITLE"
@@ -1007,4 +1007,4 @@ msgstr "TPSMAPI_ENABLE"
 
 #: configschema.json.h:210
 msgid "TPSMAPI_ENABLE__ID_DESCRIPTION"
-msgstr "Enable/disable TPSMAPI"
+msgstr "Battery feature drivers: 0=disable, 1=enable"
