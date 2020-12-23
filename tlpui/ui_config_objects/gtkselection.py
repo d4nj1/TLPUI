@@ -7,6 +7,9 @@ def create_selection_box(configname: str, values: str) -> Gtk.ComboBox:
     selectitems = values.split(',')
     configvalue = settings.tlpconfig[configname].get_value()
 
+    if configvalue not in selectitems:
+        settings.imagestate[configname].warn_unknown_config_value(configvalue)
+
     countid = 0
     selectid = 0
 

@@ -9,6 +9,7 @@ from . import settings
 
 
 EXPECTED_ITEM_MISSING_TEXT = language.UH_('Expected item missing in config file')  # type: str
+UNKNOWN_CONFIG_VALUE_TEXT = language.UH_('Unknown config value detected')  # type: str
 SUDO_MISSING_TEXT = language.UH_('Install pkexec, gksu, gksudo, kdesu or kdesudo first.')  # type: str
 DEFAULT_STATE_TEXT = language.UH_('Default state:')  # type: str
 DEFAULT_VALUE_TEXT = language.UH_('Default value:')  # type: str
@@ -43,6 +44,10 @@ class StateImage:
         self.defaultvalue = str(defaultvalue)
         self.defaultstate = bool(defaultstate)
         self.stateimage = stateimage
+
+    def warn_unknown_config_value(self, configvalue: str) -> None:
+        self.stateimage.set_from_icon_name(Gtk.STOCK_DIALOG_WARNING, Gtk.IconSize.BUTTON)
+        self.stateimage.set_tooltip_text('{}: {}'.format(UNKNOWN_CONFIG_VALUE_TEXT, configvalue))
 
     def refresh_image_state(self, value: str, store: str, enabled: bool, enabledstore: bool) -> None:
         """Refresh image and description by changed state"""
