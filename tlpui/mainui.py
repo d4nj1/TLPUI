@@ -158,6 +158,7 @@ def create_menu_box(window, fileentry) -> Gtk.Box:
             <menu action='LanguageMenu'>
                 <menuitem name="en_EN" action='en_EN' />
                 <menuitem name="de_DE" action='de_DE' />
+                <menuitem name="es_ES" action='es_ES' />
                 <menuitem name="ru_RU" action='ru_RU' />
                 <menuitem name="id_ID" action='id_ID' />
             </menu>
