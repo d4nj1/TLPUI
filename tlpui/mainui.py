@@ -162,6 +162,10 @@ def create_menu_box(window, fileentry) -> Gtk.Box:
                 <menuitem name="pt_BR" action='pt_BR' />
                 <menuitem name="ru_RU" action='ru_RU' />
                 <menuitem name="id_ID" action='id_ID' />
+                <menu action='zhSubMenu'>
+                    <menuitem name="zh_CN" action='zh_CN' />
+                    <menuitem name="zh_TW" action='zh_TW' />
+                </menu>
             </menu>
         </menubar>
     </ui>
@@ -213,17 +217,20 @@ def add_menu_actions(window, fileentry, actiongroup) -> None:
     actionlanguagemenu = Gtk.Action("LanguageMenu", language.MT_("Language"), None, None)
     actiongroup.add_action(actionlanguagemenu)
 
+    zhlanguagesubmenu = Gtk.Action("zhSubMenu", "zh", None, None)
+    actiongroup.add_action(zhlanguagesubmenu)
+
     langdir = Path(settings.langdir)
     for langobject in langdir.iterdir():
         if langobject.is_dir():
-            lang = langobject.name
+            locale = langobject.name
 
-            if lang == settings.language:
-                actionlang = Gtk.Action(lang, lang, None, Gtk.STOCK_APPLY)
+            if locale == settings.language:
+                actionlang = Gtk.Action(locale, locale, None, Gtk.STOCK_APPLY)
             else:
-                actionlang = Gtk.Action(lang, lang, None, None)
+                actionlang = Gtk.Action(locale, locale, None, None)
 
-            actionlang.connect("activate", switch_language, lang, window)
+            actionlang.connect("activate", switch_language, locale, window)
             actiongroup.add_action(actionlang)
 
 
