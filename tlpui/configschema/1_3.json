@@ -33,13 +33,13 @@
           "ids": [
             {
               "id": "SOUND_POWER_SAVE_ON_AC",
-              "type": "bselect",
-              "values": "0,1"
+              "type": "numeric",
+              "values": "0-3600"
             },
             {
               "id": "SOUND_POWER_SAVE_ON_BAT",
-              "type": "bselect",
-              "values": "0,1"
+              "type": "numeric",
+              "values": "0-3600"
             }
           ]
         },

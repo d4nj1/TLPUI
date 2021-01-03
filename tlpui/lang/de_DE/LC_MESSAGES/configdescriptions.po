@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
 "POT-Creation-Date: 2020-12-23 19:33+0100\n"
-"PO-Revision-Date: 2020-12-23 19:33+0100\n"
+"PO-Revision-Date: 2021-01-03 20:55+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -69,7 +69,11 @@ msgstr "SOUND_POWER_SAVE"
 
 #: configschema.json.h:12
 msgid "SOUND_POWER_SAVE__GROUP_DESCRIPTION"
-msgstr "Enable audio power saving for Intel HDA, AC97 devices."
+msgstr ""
+"Timeout (in seconds) for the audio power saving mode (supports Intel HDA, "
+"AC97).\n"
+"A value of 1 is recommended for Linux desktop environments with PulseAudio.\n"
+"Systems without PulseAudio may require 10. The value 0 disables power save."
 
 #: configschema.json.h:13
 msgid "SOUND_POWER_SAVE_ON_AC__ID_TITLE"
@@ -85,7 +89,9 @@ msgstr "SOUND_POWER_SAVE_CONTROLLER"
 
 #: configschema.json.h:16
 msgid "SOUND_POWER_SAVE_CONTROLLER__ID_DESCRIPTION"
-msgstr "Disable controller too (HDA only)."
+msgstr ""
+"Y – power off the controller together with the sound chip\n"
+"N – controller remains active"
 
 #: configschema.json.h:17
 msgid "Disks__CATEGORY_TITLE"

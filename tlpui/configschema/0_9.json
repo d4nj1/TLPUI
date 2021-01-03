@@ -27,15 +27,15 @@
           "ids": [
             {
               "id": "SOUND_POWER_SAVE_ON_AC",
-              "type": "bselect",
-              "values": "0,1",
+              "type": "numeric",
+              "values": "0-3600",
               "default_value": "0",
               "default_state": true
             },
             {
               "id": "SOUND_POWER_SAVE_ON_BAT",
-              "type": "bselect",
-              "values": "0,1",
+              "type": "numeric",
+              "values": "0-3600",
               "default_value": "1",
               "default_state": true
             }
