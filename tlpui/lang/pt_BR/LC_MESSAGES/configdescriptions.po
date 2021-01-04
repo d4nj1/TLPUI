@@ -4,7 +4,7 @@ msgstr ""
 "POT-Creation-Date: 2018-01-26 21:30+0100\n"
 "PO-Revision-Date: 2020-12-24 20:41+0100\n"
 "Last-Translator: tioguda <guda.flavio@gmail.com>\n"
-"Language-Team: Manjariando (manjariando@gmail.com)\n"
+"Language-Team: \n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,7 +70,11 @@ msgstr "SOUND_POWER_SAVE"
 
 #: configschema.json.h:12
 msgid "SOUND_POWER_SAVE__GROUP_DESCRIPTION"
-msgstr "Ative a economia de energia de áudio para dispositivos Intel HDA, AC97"
+msgstr ""
+"Tempo limite (em segundos) para o modo de economia de energia de áudio (suporta Intel HDA, "
+"AC97).\n"
+"Um valor de 1 é recomendado para ambientes de desktop Linux com PulseAudio.\n"
+"Os sistemas sem PulseAudio podem exigir 10. O valor 0 desativa a economia de energia."
 
 #: configschema.json.h:13
 msgid "SOUND_POWER_SAVE_ON_AC__ID_TITLE"
@@ -86,7 +90,9 @@ msgstr "SOUND_POWER_SAVE_CONTROLLER"
 
 #: configschema.json.h:16
 msgid "SOUND_POWER_SAVE_CONTROLLER__ID_DESCRIPTION"
-msgstr "Desativar o controlador também (apenas HDA)"
+msgstr ""
+"ON - desligar o controlador junto com o chip de som\n"
+"OFF - controlador permanece ativo"
 
 #: configschema.json.h:17
 msgid "Disks__CATEGORY_TITLE"
