@@ -1,4 +1,4 @@
-TLPUI - 2021.01.03
+TLPUI - 2021.01.05
 
 The Python scripts in this project generate a GTK-UI to change TLP configuration files easily.
 It has the aim to protect users from setting bad configuration and to deliver a basic overview of all the valid configuration values.
@@ -25,7 +25,7 @@ To be done:
 * Improve/enhance test environment
 * Codestyle and docstyle refactorings
 * Implement Debian package build pipeline
-* Provide distribution independent package (Flatpak)
+* Provide distribution independent package (Flatpak #31)
 
 
 ![Screenshot 24.04.2020](https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshot.png)

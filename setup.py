@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="TLPUI",
-    version="1.3.1-3",
+    version="1.3.1-4",
     author="Daniel Christophis",
     author_email="code@devmind.org",
     description="GTK UI for tlp (Python 3)",

@@ -17,8 +17,8 @@ def fetch_simple_stats(_, textbuffer: Gtk.TextBuffer) -> None:
         return
 
     simple_stat_command = ["tlp-stat", "-r", "-t", "-c", "-s", "-u"]
-    tlpstat = check_output(simple_stat_command, stderr=STDOUT).decode(sys.stdout.encoding)
-    textbuffer.set_text(tlpstat)
+    tlp_stat_output = call_tlp_stat(simple_stat_command)
+    textbuffer.set_text(tlp_stat_output)
 
 
 def fetch_complete_stats(_, textbuffer: Gtk.TextBuffer) -> None:
@@ -33,8 +33,12 @@ def fetch_complete_stats(_, textbuffer: Gtk.TextBuffer) -> None:
         textbuffer.set_text(TLP_STAT_MISSING)
         return
 
-    tlpstat = check_output([sudo_cmd, "tlp-stat"], stderr=STDOUT).decode(sys.stdout.encoding)
-    textbuffer.set_text(tlpstat)
+    tlp_stat_output = call_tlp_stat([sudo_cmd, "tlp-stat"])
+    textbuffer.set_text(tlp_stat_output)
+
+
+def call_tlp_stat(command) -> str:
+    return check_output(command, stderr=STDOUT).decode(sys.stdout.encoding)
 
 
 def create_stat_box() -> Gtk.Box:

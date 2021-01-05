@@ -1,0 +1,46 @@
+{
+  "app-id": "org.flatpak.tlpui",
+  "command": "tlpui",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "3.38",
+  "sdk": "org.gnome.Sdk",
+  "finish-args": [
+    "--socket=fallback-x11",
+    "--talk-name=org.freedesktop.Flatpak",
+    "--filesystem=host"
+  ],
+  "modules": [
+    {
+      "name": "tlpui",
+      "buildsystem": "simple",
+      "build-commands": [
+        "install -D tlp-wrapper.sh /app/bin/tlp",
+        "install -D tlp-stat-wrapper.sh /app/bin/tlp-stat",
+        "pip3 install --prefix=/app ."
+      ],
+      "sources": [
+        {
+          "type": "file",
+          "path": "tlp-wrapper.sh"
+        },
+        {
+          "type": "file",
+          "path": "tlp-stat-wrapper.sh"
+        },
+        {
+          "type": "file",
+          "path": "../setup.py"
+        },
+        {
+          "type": "file",
+          "path": "../tlpui.desktop"
+        },
+        {
+          "type": "dir",
+          "path": "../tlpui/",
+          "dest": "tlpui/"
+        }
+      ]
+    }
+  ]
+}

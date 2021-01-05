@@ -28,12 +28,13 @@ def get_json_schema_object_from_file(objectname: str, filename: str) -> dict:
 
 
 def init_tlp_file_config() -> None:
+    settings.tlpconfig = dict()
     tlpversion = settings.tlpbaseversion
     read_default_tlp_file_config('{}/defaults/tlp-{}.conf'.format(settings.workdir, tlpversion))
 
     if tlpversion not in ["0_8", "0_9", "1_0", "1_1", "1_2"]:
         # update default values with intrinsic ones
-        intrinsic_defaults_path = "/usr/share/tlp/defaults.conf"
+        intrinsic_defaults_path = f"{settings.folder_prefix}/usr/share/tlp/defaults.conf"
         read_default_tlp_file_config(intrinsic_defaults_path)
 
     # get current settings from tlp itself

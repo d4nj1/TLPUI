@@ -40,9 +40,9 @@ def persist():
 
 def get_tlp_config_file(version: str) -> str:
     if version in ["0_8", "0_9", "1_0", "1_1", "1_2"]:
-        return "/etc/default/tlp"
+        return f"{folder_prefix}/etc/default/tlp"
 
-    return "/etc/tlp.conf"
+    return f"{folder_prefix}/etc/tlp.conf"
 
 
 def get_installed_tlp_version() -> str:
@@ -76,6 +76,8 @@ else:
 
 
 # runtime params
+
+folder_prefix = "/var/run/host" if Path("/.flatpak-info").exists() else ""
 tlpbaseversion = get_installed_major_minor_version()
 tlpconfigfile = get_tlp_config_file(tlpbaseversion)
 tlpconfig = dict()
