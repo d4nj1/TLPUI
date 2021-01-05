@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
 "POT-Creation-Date: 2018-01-26 21:30+0100\n"
-"PO-Revision-Date: 2020-12-24 20:41+0100\n"
+"PO-Revision-Date: 2021-01-05 17:18-0300\n"
 "Last-Translator: tioguda <guda.flavio@gmail.com>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-Basepath: ../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -45,8 +45,7 @@ msgstr "TLP_PERSISTENT_DEFAULT"
 #: configschema.json.h:7
 msgid "TLP_PERSISTENT_DEFAULT__ID_DESCRIPTION"
 msgstr ""
-"Seleção do modo de operação: 0=depende da fonte de energia, 1=use sempre "
-"TLP_DEFAULT_MODE\n"
+"Seleção do modo de operação: 0=depende da fonte de energia, 1=use sempre TLP_DEFAULT_MODE\n"
 "Dica: use em conjunto com TLP_DEFAULT_MODE=BAT para configurações BAT na AC"
 
 #: configschema.json.h:8
@@ -56,8 +55,7 @@ msgstr "TLP_PS_IGNORE"
 #: configschema.json.h:9
 msgid "TLP_PS_IGNORE__ID_DESCRIPTION"
 msgstr ""
-"Classe de fonte de alimentação a ser ignorada ao determinar o modo de operação: AC, "
-"BAT.\n"
+"Classe de fonte de alimentação a ser ignorada ao determinar o modo de operação: AC, BAT.\n"
 "Nota: experimente laptops em que o modo de operação AC/BAT seja detectado incorretamente"
 
 #: configschema.json.h:10
@@ -141,8 +139,7 @@ msgstr "DISK_DEVICES_ID"
 msgid "DISK_DEVICES__ID_DESCRIPTION"
 msgstr ""
 "Dispositivos de disco rígido, vários dispositivos separados com espaços (padrão: SDA).\n"
-"Os dispositivos também podem ser especificados pelo id do disco (pesquise com: tlp "
-"diskid)"
+"Os dispositivos também podem ser especificados pelo id do disco (pesquise com: tlp diskid)"
 
 #: configschema.json.h:28
 msgid "DISK_APM_LEVEL__GROUP_TITLE"
@@ -151,8 +148,8 @@ msgstr "DISK_APM_LEVEL"
 #: configschema.json.h:29
 msgid "DISK_APM_LEVEL__GROUP_DESCRIPTION"
 msgstr ""
-"Nível avançado de gerenciamento de energia do disco rígido: 1..254, 255 (economia "
-"máxima, mín., desativado)\n"
+"Nível avançado de gerenciamento de energia do disco rígido: 1..254, 255 (economia máxima, "
+"mín., desativado)\n"
 "Os níveis 1.127 podem girar o disco; 255 permitido na maioria das unidades.\n"
 "Valores separados para vários discos com espaços. Use o valor especial 'manter' para "
 "manter o padrão do hardware para o disco específico"
@@ -193,8 +190,7 @@ msgstr "DISK_IOSCHED"
 #: configschema.json.h:37
 msgid "DISK_IOSCHED__ID_DESCRIPTION"
 msgstr ""
-"Selecione o io scheduler para os dispositivos de disco: noop/deadline/cfq (Padrão: "
-"cfq).\n"
+"Selecione o io scheduler para os dispositivos de disco: noop/deadline/cfq (Padrão: cfq).\n"
 "Valores separados para vários dispositivos com espaços"
 
 #: configschema.json.h:38
@@ -336,8 +332,8 @@ msgstr "RADEON_POWER_PROFILE"
 #: configschema.json.h:67
 msgid "RADEON_POWER_PROFILE__GROUP_DESCRIPTION"
 msgstr ""
-"Velocidade de clock de gráficos Radeon (método de perfil): baixo, médio, alto, "
-"automático, padrão;\n"
+"Velocidade de clock de gráficos Radeon (método de perfil): baixo, médio, alto, automático, "
+"padrão;\n"
 "auto = médio em BAT, alta em AC; padrão = usar padrões de hardware.\n"
 "Requer o driver de código aberto 'radeon'"
 
@@ -357,8 +353,8 @@ msgstr "RADEON_DPM_STATE"
 msgid "RADEON_DPM_STATE__GROUP_DESCRIPTION"
 msgstr ""
 "Método dinâmico de gerenciamento de energia (DPM) da Radeon: bateria, desempenho\n"
-"Funciona apenas com o driver de código-fonte aberto 'radeon', requer kernel >=3.11 e "
-"opção de inicialização 'radeon.dpm=1'"
+"Funciona apenas com o driver de código-fonte aberto 'radeon', requer kernel >=3.11 e opção "
+"de inicialização 'radeon.dpm=1'"
 
 #: configschema.json.h:72
 msgid "RADEON_DPM_STATE_ON_AC__ID_TITLE"
@@ -438,8 +434,7 @@ msgstr "RUNTIME_PM"
 
 #: configschema.json.h:91
 msgid "RUNTIME_PM__GROUP_DESCRIPTION"
-msgstr ""
-"Gerenciamento de energia de tempo de execução para dispositivos de barramento PCI(e)"
+msgstr "Gerenciamento de energia de tempo de execução para dispositivos de barramento PCI(e)"
 
 #: configschema.json.h:92
 msgid "RUNTIME_PM_ON_AC__ID_TITLE"
@@ -455,8 +450,7 @@ msgstr "RUNTIME_PM_ALL"
 
 #: configschema.json.h:95
 msgid "RUNTIME_PM_ALL__ID_DESCRIPTION"
-msgstr ""
-"Tempo de execução de PM para todos os dispositivos PCI(e), exceto os da lista negra"
+msgstr "Tempo de execução de PM para todos os dispositivos PCI(e), exceto os da lista negra"
 
 #: configschema.json.h:96
 msgid "RUNTIME_PM_BLACKLIST__ID_TITLE"
@@ -476,8 +470,8 @@ msgstr "RUNTIME_PM_DRIVER_BLACKLIST"
 #: configschema.json.h:99
 msgid "RUNTIME_PM_DRIVER_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
-"Exclua dispositivos PCI (e) atribuídos aos drivers listados do Runtime PM (deve impedir "
-"a ativação acidental da parte discreta dos gráficos híbridos).\n"
+"Exclua dispositivos PCI (e) atribuídos aos drivers listados do Runtime PM (deve impedir a "
+"ativação acidental da parte discreta dos gráficos híbridos).\n"
 "O padrão é \"radeon nouveau\"; use \"\" para desativar o recurso completamente.\n"
 "Separe vários drivers com espaços"
 
@@ -496,10 +490,10 @@ msgstr ""
 "conservative\n"
 "Processador Intel Core i com driver intel_pstate: economia de energia/desempenho\n"
 "Importante:\n"
-"- Você * deve * desativar as configurações do seu governador de distribuição ou "
-"ocorrerão conflitos\n"
-"- Ondemand é suficiente para quase todas as cargas de trabalho, você deve saber o que "
-"está fazendo!"
+"- Você * deve * desativar as configurações do seu governador de distribuição ou ocorrerão "
+"conflitos\n"
+"- Ondemand é suficiente para quase todas as cargas de trabalho, você deve saber o que está "
+"fazendo!"
 
 #: configschema.json.h:103
 msgid "CPU_SCALING_GOVERNOR_ON_AC__ID_TITLE"
@@ -666,8 +660,7 @@ msgid "PHC_CONTROLS__ID_DESCRIPTION"
 msgstr ""
 "Mude as voltagens da CPU, também conhecidas como \"undervolting\"\n"
 "Kernel com patch de PHC requerido\n"
-"Freq: pares de tensão são escritos para /sys/devices/system/cpu/cpu0/cpufreq/"
-"phc_controls\n"
+"Freq: pares de tensão são escritos para /sys/devices/system/cpu/cpu0/cpufreq/phc_controls\n"
 "CUIDADO: somente use isso, se você entender completamente o que está fazendo!"
 
 #: configschema.json.h:137
@@ -699,8 +692,8 @@ msgstr "RESTORE_DEVICE_STATE_ON_STARTUP"
 #: configschema.json.h:143
 msgid "RESTORE_DEVICE_STATE_ON_STARTUP__ID_DESCRIPTION"
 msgstr ""
-"Restaure o estado do dispositivo de rádio (Bluetooth, WiFi, WWAN) do desligamento "
-"anterior na inicialização do sistema.\n"
+"Restaure o estado do dispositivo de rádio (Bluetooth, WiFi, WWAN) do desligamento anterior "
+"na inicialização do sistema.\n"
 "Dica: os parâmetros DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN abaixo são ignorados "
 "quando isso está habilitado!"
 
@@ -737,8 +730,8 @@ msgstr "DEVICES_TO_ENABLE_ON_SHUTDOWN"
 #: configschema.json.h:151
 msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
-"Dispositivos de rádio para ativar no desligamento: bluetooth, wifi, wwan (para evitar "
-"que outros sistemas operacionais faltem rádios)"
+"Dispositivos de rádio para ativar no desligamento: bluetooth, wifi, wwan (para evitar que "
+"outros sistemas operacionais faltem rádios)"
 
 #: configschema.json.h:152
 msgid "DEVICES_TO_ENABLE_ON_AC__ID_TITLE"
@@ -763,8 +756,8 @@ msgstr "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE"
 #: configschema.json.h:157
 msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE__ID_DESCRIPTION"
 msgstr ""
-"Dispositivos de rádio para desativar na bateria quando não estiver em uso (não "
-"conectado): bluetooth, wifi, wwan"
+"Dispositivos de rádio para desativar na bateria quando não estiver em uso (não conectado): "
+"bluetooth, wifi, wwan"
 
 #: configschema.json.h:158
 msgid "Radio Device Wizard__CATEGORY_TITLE"
