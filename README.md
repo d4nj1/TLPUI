@@ -25,7 +25,7 @@ To be done:
 * Improve/enhance test environment
 * Codestyle and docstyle refactorings
 * Implement Debian package build pipeline
-* Provide distribution independent package (Flatpak #31)
+* Provide distribution independent package (Flatpak see [#31](https://github.com/d4nj1/TLPUI/issues/31))
 
 
 ![Screenshot 24.04.2020](https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshot.png)
