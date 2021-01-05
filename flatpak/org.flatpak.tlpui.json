@@ -16,6 +16,12 @@
       "build-commands": [
         "install -D tlp-wrapper.sh /app/bin/tlp",
         "install -D tlp-stat-wrapper.sh /app/bin/tlp-stat",
+        "install -D which-wrapper.sh /app/bin/which",
+        "install -D sudo-wrapper.sh /app/bin/pkexec",
+        "install -D sudo-wrapper.sh /app/bin/gksu",
+        "install -D sudo-wrapper.sh /app/bin/gksudo",
+        "install -D sudo-wrapper.sh /app/bin/kdesu",
+        "install -D sudo-wrapper.sh /app/bin/kdesudo",
         "pip3 install --prefix=/app ."
       ],
       "sources": [
@@ -26,6 +32,14 @@
         {
           "type": "file",
           "path": "tlp-stat-wrapper.sh"
+        },
+        {
+          "type": "file",
+          "path": "which-wrapper.sh"
+        },
+        {
+          "type": "file",
+          "path": "sudo-wrapper.sh"
         },
         {
           "type": "file",

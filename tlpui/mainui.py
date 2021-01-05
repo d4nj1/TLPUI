@@ -118,7 +118,7 @@ def changed_items_dialog(window, tmpfilename: str, dialogtitle: str, message: st
 
     fromfilecontent = open(settings.tlpconfigfile, 'r').readlines()
     tofilecontent = open(tmpfilename, 'r').readlines()
-    diff = settings.tlpconfigfile + '\n\n'
+    diff = settings.tlpbaseconfigfile + '\n\n'
     for line in difflib.unified_diff(fromfilecontent, tofilecontent, n=0, lineterm=''):
         if line.startswith('---') or line.startswith('+++'):
             continue
@@ -253,7 +253,7 @@ def create_main_box(window: Gtk.Window) -> Gtk.Box:
     notebook = Gtk.Notebook()
     notebook.set_tab_pos(Gtk.PositionType.TOP)
 
-    fileentry = Gtk.Label(settings.tlpconfigfile)
+    fileentry = Gtk.Label(settings.tlpbaseconfigfile)
     fileentry.set_alignment(0, 0.5)
 
     menubox = create_menu_box(window, fileentry)

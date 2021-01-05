@@ -38,11 +38,11 @@ def persist():
         config.write(configfile)
 
 
-def get_tlp_config_file(version: str) -> str:
+def get_tlp_config_file(version: str, prefix: str) -> str:
     if version in ["0_8", "0_9", "1_0", "1_1", "1_2"]:
-        return f"{folder_prefix}/etc/default/tlp"
+        return f"{prefix}/etc/default/tlp"
 
-    return f"{folder_prefix}/etc/tlp.conf"
+    return f"{prefix}/etc/tlp.conf"
 
 
 def get_installed_tlp_version() -> str:
@@ -75,11 +75,15 @@ else:
     persist()
 
 
-# runtime params
+# flatpak related params
+isflatpak = Path("/.flatpak-info").exists()
+folder_prefix = "/var/run/host" if isflatpak else ""
+tmpfolder = f"{getenv('XDG_RUNTIME_DIR')}/app/{getenv('FLATPAK_ID')}" if isflatpak else None
 
-folder_prefix = "/var/run/host" if Path("/.flatpak-info").exists() else ""
+# runtime params
 tlpbaseversion = get_installed_major_minor_version()
-tlpconfigfile = get_tlp_config_file(tlpbaseversion)
+tlpbaseconfigfile = get_tlp_config_file(tlpbaseversion, "")
+tlpconfigfile = get_tlp_config_file(tlpbaseversion, folder_prefix)
 tlpconfig = dict()
 tlpconfig_original = dict()
 tlpconfig_defaults = dict()

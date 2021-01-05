@@ -1,7 +1,7 @@
 import copy
 import re
 from sys import stdout
-from subprocess import check_output, STDOUT
+from subprocess import check_output, STDOUT, CalledProcessError
 from io import open
 from json import load
 from os import access, W_OK, close, path
@@ -132,7 +132,7 @@ def read_default_tlp_file_config(filename: str) -> None:
 
 def create_tmp_tlp_config_file(changedproperties: dict) -> str:
     propertypattern = re.compile(r'^#?[A-Z_\d]+=')
-    fh, tmpfilename = mkstemp()
+    fh, tmpfilename = mkstemp(dir=settings.tmpfolder)
     newfile = open(tmpfilename, 'w')
 
     oldfile = open(settings.tlpconfigfile)
@@ -161,7 +161,7 @@ def create_tmp_tlp_config_file(changedproperties: dict) -> str:
 
 
 def write_tlp_config(tmpconfigfile: str) -> str:
-    sedtlpconfigfile = "w" + settings.tlpconfigfile
+    sedtlpconfigfile = "w" + settings.tlpbaseconfigfile
     sedcommand = ["sed", "-n", sedtlpconfigfile, tmpconfigfile]
 
     # check permission and apply sudo if needed
@@ -171,5 +171,8 @@ def write_tlp_config(tmpconfigfile: str) -> str:
             return SUDO_MISSING_TEXT
         sedcommand.insert(0, sudo_cmd)
 
-    check_output(sedcommand)
-    return ''
+    try:
+        check_output(sedcommand)
+    except CalledProcessError as error:
+        print(error)
+    return ""
