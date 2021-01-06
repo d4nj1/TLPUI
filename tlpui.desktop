@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=TLP UI
+Name[de_DE]=TLP UI
 Name[pt_BR]=TLP UI
 Name[zh_CN]=TLP 设置
 Exec=/usr/bin/tlpui
@@ -7,6 +8,7 @@ Terminal=false
 Type=Application
 Icon=/usr/lib/python3/dist-packages/tlpui/icons/OnAC.svg
 Comment=Tlp UI with gtk
+Comment[de_DE]=Tlp UI mit Gtk
 Comment[pt_BR]=Tlp UI com gtk
 Comment[zh_CN]=TLP 的 Gtk 设置界面
-Categories=Utility;Python;GTK;
+Categories=Settings;HardwareSettings;GTK;
