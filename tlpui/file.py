@@ -1,3 +1,4 @@
+
 import copy
 import re
 from sys import stdout
@@ -27,15 +28,22 @@ def get_json_schema_object_from_file(objectname: str, filename: str) -> dict:
     return jsonobject[objectname]
 
 
-def init_tlp_file_config() -> None:
-    settings.tlpconfig = dict()
-    tlpversion = settings.tlpbaseversion
-    read_default_tlp_file_config('{}/defaults/tlp-{}.conf'.format(settings.workdir, tlpversion))
+def get_tlp_config_defaults(tlpversion: str):
+    tlpconfig_defaults = dict()
+    extract_default_tlp_file_config(tlpconfig_defaults, f"{settings.workdir}/defaults/tlp-{tlpversion}.conf")
 
     if tlpversion not in ["0_8", "0_9", "1_0", "1_1", "1_2"]:
         # update default values with intrinsic ones
         intrinsic_defaults_path = f"{settings.folder_prefix}/usr/share/tlp/defaults.conf"
-        read_default_tlp_file_config(intrinsic_defaults_path)
+        extract_default_tlp_file_config(tlpconfig_defaults, intrinsic_defaults_path)
+
+    return tlpconfig_defaults
+
+
+def init_tlp_file_config() -> None:
+    settings.tlpconfig = dict()
+    tlpversion = settings.tlpbaseversion
+    settings.tlpconfig_defaults = get_tlp_config_defaults(tlpversion)
 
     # get current settings from tlp itself
     simple_stat_command = ["tlp-stat", "-c"]
@@ -104,7 +112,7 @@ def extract_tlp_settings(lines: list) -> None:
             settings.tlpconfig[propertyname] = TlpConfig(True, propertyname, propertyvalue, conftype, configfile)
 
 
-def read_default_tlp_file_config(filename: str) -> None:
+def extract_default_tlp_file_config(tlpconfig_defaults: dict, filename: str) -> None:
     propertypattern = re.compile(r'^#?[A-Z_\d]+=')
     fileopener = open(filename)
     lines = fileopener.readlines()
@@ -127,7 +135,7 @@ def read_default_tlp_file_config(filename: str) -> None:
             if propertyvalue.startswith('\"') and propertyvalue.endswith('\"'):
                 propertyvalue = propertyvalue.lstrip('\"').rstrip('\"')
 
-            settings.tlpconfig_defaults[propertyname] = TlpDefaults(propertyname, propertyvalue, enabled)
+            tlpconfig_defaults[propertyname] = TlpDefaults(propertyname, propertyvalue, enabled)
 
 
 def create_tmp_tlp_config_file(changedproperties: dict) -> str:

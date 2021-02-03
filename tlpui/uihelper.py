@@ -1,8 +1,8 @@
-"""This module provides helper functions for TLPUI"""
+"""This module provides general helper functions for the UI"""
 
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
+from gi.repository import Gtk, GdkPixbuf
 from shutil import which
 from . import language
 from . import settings
@@ -30,6 +30,12 @@ def get_graphical_sudo() -> str:
     return sudo
 
 
+def get_flag_image(locale: str) -> Gtk.Image:
+    """Fetch flag image from icons folder"""
+    flagpixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(f"{settings.icondir }flags/{locale}.png", width=16, height=16)
+    return Gtk.Image().new_from_pixbuf(flagpixbuf)
+
+
 def get_theme_image(iconname: str, iconsize: Gtk.IconSize) -> Gtk.Image:
     """Fetch image from theme or return fallback if missing"""
     if Gtk.IconTheme.get_default().has_icon(iconname):
@@ -46,6 +52,7 @@ class StateImage:
         self.stateimage = stateimage
 
     def warn_unknown_config_value(self, configvalue: str) -> None:
+        """Add image and tooltip for unknown values"""
         self.stateimage.set_from_icon_name(Gtk.STOCK_DIALOG_WARNING, Gtk.IconSize.BUTTON)
         self.stateimage.set_tooltip_text('{}: {}'.format(UNKNOWN_CONFIG_VALUE_TEXT, configvalue))
 

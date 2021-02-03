@@ -1,8 +1,9 @@
 from setuptools import setup
+from tlpui import __version__
 
 setup(
     name="TLPUI",
-    version="1.3.1-5",
+    version=__version__,
     author="Daniel Christophis",
     author_email="code@devmind.org",
     description="GTK UI for tlp (Python 3)",
@@ -14,6 +15,7 @@ setup(
         'configschema/*.json',
         'defaults/*.conf',
         'icons/*.svg',
+        'icons/flags/*.png',
         'icons/themeable/hicolor/scalable/actions/*.svg',
         'lang/*/LC_MESSAGES/*.mo'
     ]},

@@ -4,20 +4,21 @@ import importlib
 import difflib
 
 from pathlib import Path
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, GdkPixbuf
 from . import settings
 from . import language
 from .config import get_changed_properties
 from .configui import create_config_box
 from .file import init_tlp_file_config, create_tmp_tlp_config_file, write_tlp_config
 from .statui import create_stat_box
-from .uihelper import get_theme_image
+from .uihelper import get_flag_image, get_theme_image
+from . import __version__
 
 
 def store_window_size(self) -> None:
     """Store current window size in settings"""
-    settings.windowxsize = self.get_size()[0]
-    settings.windowysize = self.get_size()[1]
+    settings.userconfig.windowxsize = self.get_size()[0]
+    settings.userconfig.windowysize = self.get_size()[1]
 
 
 def window_key_events(self, event) -> None:
@@ -42,7 +43,6 @@ def close_main_window(self, _) -> bool:
 
 def load_tlp_config(_, window: Gtk.Window, reloadtlpconfig: bool) -> None:
     """Load TLP configuration to UI"""
-
     if reloadtlpconfig:
         init_tlp_file_config()
 
@@ -85,7 +85,7 @@ def save_tlp_config(self, window) -> None:
 
 def quit_tlp_config(_, window) -> None:
     """Quit TLPUI and prompt for unsaved changes"""
-    settings.persist()
+    settings.userconfig.write_user_config()
 
     changedproperties = get_changed_properties()
     if len(changedproperties) == 0:
@@ -150,22 +150,25 @@ def create_menu_box(window, fileentry) -> Gtk.Box:
     """Create application menu from XML structure"""
     xmlmenustructure = """
     <ui>
-        <menubar name='MenuBar'>
+        <menubar name='menubar'>
             <menu action='FileMenu'>
                 <menuitem action='save' />
                 <menuitem action='quit' />
             </menu>
-            <menu action='LanguageMenu'>
+            <menu name="language_menu" action='LanguageMenu'>
                 <menuitem name="en_EN" action='en_EN' />
                 <menuitem name="de_DE" action='de_DE' />
                 <menuitem name="es_ES" action='es_ES' />
                 <menuitem name="pt_BR" action='pt_BR' />
                 <menuitem name="ru_RU" action='ru_RU' />
                 <menuitem name="id_ID" action='id_ID' />
-                <menu action='zhSubMenu'>
+                <menu name="zh_CN" action='zhSubMenu'>
                     <menuitem name="zh_CN" action='zh_CN' />
                     <menuitem name="zh_TW" action='zh_TW' />
                 </menu>
+            </menu>
+            <menu name="help_menu" action='HelpMenu'>
+                <menuitem name="about_dialog" action='AboutDialog' />
             </menu>
         </menubar>
     </ui>
@@ -175,15 +178,35 @@ def create_menu_box(window, fileentry) -> Gtk.Box:
     uimanager.add_ui_from_string(xmlmenustructure)
 
     actiongroup = Gtk.ActionGroup("actions")
-    add_menu_actions(window, fileentry, actiongroup)
+    add_menu_actions(window, actiongroup)
     uimanager.insert_action_group(actiongroup)
 
-    menubar = uimanager.get_widget("/MenuBar")
+    menubar = uimanager.get_widget("/menubar")
+
+    repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/en_EN"))
+    repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/de_DE"))
+    repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/es_ES"))
+    repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/pt_BR"))
+    repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/ru_RU"))
+    repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/id_ID"))
+    repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/zh_CN"))
 
     menubox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
     menubox.pack_start(menubar, False, False, 0)
 
     return menubox
+
+
+def repack_language_menuitem(menuitem: Gtk.MenuItem):
+    """Repack language menu items for better visibility"""
+    menuitemname = menuitem.get_name()
+    langimage = get_flag_image(menuitemname)
+    langlabel = Gtk.Label(menuitemname.split("_")[0])
+    langbox = Gtk.Box()
+    langbox.pack_start(langimage, False, False, 12)
+    langbox.pack_start(langlabel, False, False, 0)
+    [menuitem.remove(child) for child in menuitem.get_children()]
+    menuitem.add(langbox)
 
 
 def create_settings_box(window, fileentry) -> Gtk.Box:
@@ -203,7 +226,7 @@ def create_settings_box(window, fileentry) -> Gtk.Box:
     return settingsbox
 
 
-def add_menu_actions(window, fileentry, actiongroup) -> None:
+def add_menu_actions(window, actiongroup) -> None:
     """Add actions to application menu"""
     actionfilemenu = Gtk.Action("FileMenu", language.MT_("File"), None, None)
     actiongroup.add_action(actionfilemenu)
@@ -220,12 +243,19 @@ def add_menu_actions(window, fileentry, actiongroup) -> None:
     zhlanguagesubmenu = Gtk.Action("zhSubMenu", "zh", None, None)
     actiongroup.add_action(zhlanguagesubmenu)
 
+    actionhelpmenu = Gtk.Action("HelpMenu", language.MT_("Help"), None, None)
+    actiongroup.add_action(actionhelpmenu)
+
+    aboutdialogmenu = Gtk.Action("AboutDialog", language.MT_("About"), None, Gtk.STOCK_INFO)
+    actiongroup.add_action(aboutdialogmenu)
+    aboutdialogmenu.connect('activate', show_about_dialog)
+
     langdir = Path(settings.langdir)
     for langobject in langdir.iterdir():
         if langobject.is_dir():
             locale = langobject.name
 
-            if locale == settings.language:
+            if locale == settings.userconfig.language:
                 actionlang = Gtk.Action(locale, locale, None, Gtk.STOCK_APPLY)
             else:
                 actionlang = Gtk.Action(locale, locale, None, None)
@@ -234,9 +264,25 @@ def add_menu_actions(window, fileentry, actiongroup) -> None:
             actiongroup.add_action(actionlang)
 
 
+def show_about_dialog(self):
+    """Applications about dialog"""
+    aboutdialog = Gtk.AboutDialog()
+    aboutdialog.set_title("TLPUI")
+    aboutdialog.set_name("name")
+    aboutdialog.set_version(__version__)
+    aboutdialog.set_comments("UI for TLP written in Python/GTK")
+    aboutdialog.set_website("https://github.com/d4nj1/TLPUI")
+    aboutdialog.set_website_label("TLPUI on GitHub")
+    aboutdialog.set_authors(["Daniel Christophis"])
+    aboutdialog.set_license_type(Gtk.License.GPL_2_0)
+    aboutdialog.set_logo(GdkPixbuf.Pixbuf.new_from_file_at_size(f"{settings.icondir}tlpui.svg", width=128, height=128))
+    aboutdialog.connect('response', lambda dialog, fata: dialog.destroy())
+    aboutdialog.show_all()
+
+
 def switch_language(self, lang: str, window: Gtk.Window) -> None:
     """Language switcher"""
-    settings.language = lang
+    settings.userconfig.language = lang
 
     # reload language values
     importlib.reload(language)
@@ -245,7 +291,7 @@ def switch_language(self, lang: str, window: Gtk.Window) -> None:
 
 
 def store_option_num(self, option, option_num: int):
-    settings.activeoption = option_num
+    settings.userconfig.activeoption = option_num
 
 
 def create_main_box(window: Gtk.Window) -> Gtk.Box:
@@ -285,7 +331,7 @@ def create_main_box(window: Gtk.Window) -> Gtk.Box:
 
     notebook.connect('switch-page', store_option_num)
 
-    activeoption = settings.activeoption
+    activeoption = settings.userconfig.activeoption
     notebook.show_all()
     notebook.set_current_page(activeoption)
 

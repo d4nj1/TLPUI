@@ -1,10 +1,9 @@
-import gi
 
+import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
 from collections import OrderedDict
-
 from . import settings
 from . import language
 from .ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusblist, gtkpcilist, gtkdisklist, gtkdisklistview
@@ -13,7 +12,7 @@ from .uihelper import get_theme_image, StateImage, EXPECTED_ITEM_MISSING_TEXT
 
 
 def store_category_num(self, cat, cat_num: int):
-    settings.activecategory = cat_num
+    settings.userconfig.activecategory = cat_num
 
 
 def create_config_box(window) -> Gtk.Box:
@@ -52,7 +51,7 @@ def create_config_box(window) -> Gtk.Box:
     containerbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
     containerbox.pack_start(notebook, True, True, 0)
 
-    activecategory = settings.activecategory
+    activecategory = settings.userconfig.activecategory
     notebook.show_all()
     notebook.set_current_page(activecategory)
 

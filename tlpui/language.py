@@ -1,15 +1,16 @@
+
 from . import settings
 import gettext
 
 
 def load_lang(langfile):
-    translation = gettext.translation(domain=langfile, localedir=settings.langdir, languages=[settings.language])
+    translation = gettext.translation(domain=langfile, localedir=settings.langdir, languages=[settings.userconfig.language])
 
     versionlangfile = "{}{}".format(langfile, settings.tlpbaseversion)
-    if gettext.find(domain=versionlangfile, localedir=settings.langdir, languages=[settings.language]) is None:
+    if gettext.find(domain=versionlangfile, localedir=settings.langdir, languages=[settings.userconfig.language]) is None:
         return translation.gettext
     else:
-        versiontranslation = gettext.translation(domain=versionlangfile, localedir=settings.langdir, languages=[settings.language])
+        versiontranslation = gettext.translation(domain=versionlangfile, localedir=settings.langdir, languages=[settings.userconfig.language])
         versiontranslation.add_fallback(translation)
         return versiontranslation.gettext
 
