@@ -4,11 +4,11 @@ import re
 from sys import stdout
 from subprocess import check_output, STDOUT, CalledProcessError
 from io import open
-from json import load
 from os import access, W_OK, close, path
 from tempfile import mkstemp
-from .config import TlpDefaults, TlpConfig, ConfType
+from .config import TlpConfig, ConfType
 from . import settings
+from .filehelper import get_json_schema_object_from_file, extract_default_tlp_configs, TlpDefaults
 from .uihelper import get_graphical_sudo, SUDO_MISSING_TEXT
 
 
@@ -18,24 +18,16 @@ def get_json_schema_object(objectname) -> dict:
         return get_json_schema_object_from_file(objectname, tlpprovidedschema)
     else:
         majorminor = settings.tlpbaseversion
-        return get_json_schema_object_from_file(objectname, settings.workdir + '/configschema/' + majorminor + '.json')
-
-
-def get_json_schema_object_from_file(objectname: str, filename: str) -> dict:
-    jsonfile = open(filename)
-    jsonobject = load(jsonfile)
-    jsonfile.close()
-    return jsonobject[objectname]
+        return get_json_schema_object_from_file(objectname, f"{settings.workdir}/configschema/{majorminor}.json")
 
 
 def get_tlp_config_defaults(tlpversion: str):
-    tlpconfig_defaults = dict()
-    extract_default_tlp_file_config(tlpconfig_defaults, f"{settings.workdir}/defaults/tlp-{tlpversion}.conf")
+    tlpconfig_defaults = extract_default_tlp_configs(f"{settings.workdir}/defaults/tlp-{tlpversion}.conf")
 
     if tlpversion not in ["0_8", "0_9", "1_0", "1_1", "1_2"]:
         # update default values with intrinsic ones
         intrinsic_defaults_path = f"{settings.folder_prefix}/usr/share/tlp/defaults.conf"
-        extract_default_tlp_file_config(tlpconfig_defaults, intrinsic_defaults_path)
+        tlpconfig_defaults.update(extract_default_tlp_configs(intrinsic_defaults_path))
 
     return tlpconfig_defaults
 
@@ -112,30 +104,33 @@ def extract_tlp_settings(lines: list) -> None:
             settings.tlpconfig[propertyname] = TlpConfig(True, propertyname, propertyvalue, conftype, configfile)
 
 
-def extract_default_tlp_file_config(tlpconfig_defaults: dict, filename: str) -> None:
-    propertypattern = re.compile(r'^#?[A-Z_\d]+=')
-    fileopener = open(filename)
-    lines = fileopener.readlines()
-    fileopener.close()
+def get_changed_properties() -> dict:
+    changedproperties = dict()
 
-    for line in lines:
-        if propertypattern.match(line):
-            cleanline = line.lstrip().rstrip()
+    changed = settings.tlpconfig
+    original = settings.tlpconfig_original
 
-            if (cleanline.startswith('#')):
-                enabled = False
-                cleanline = cleanline.lstrip('#')
+    for configid in changed:
+        config = changed[configid]              # type: TlpConfig
+        config_original = original[configid]    # type: TlpConfig
+
+        statechange = config.is_enabled() != config_original.is_enabled()
+        configchange = config.get_value() != config_original.get_value()
+
+        if statechange or configchange:
+            configname = config.get_name()
+
+            if not config.is_enabled() and settings.tlpconfig_defaults[configname].is_enabled():
+                enabled = ""
+                value = "* empty"
             else:
-                enabled = True
+                enabled = "" if config.is_enabled() else "#"
+                value = config.get_value()
 
-            property = cleanline.split('=', maxsplit=1)
-            propertyname = property[0]
-            propertyvalue = property[1]
+            value = '\"' + value + '\"'
+            changedproperties[configname] = "{}{}={}".format(enabled, configname, value)
 
-            if propertyvalue.startswith('\"') and propertyvalue.endswith('\"'):
-                propertyvalue = propertyvalue.lstrip('\"').rstrip('\"')
-
-            tlpconfig_defaults[propertyname] = TlpDefaults(propertyname, propertyvalue, enabled)
+    return changedproperties
 
 
 def create_tmp_tlp_config_file(changedproperties: dict) -> str:

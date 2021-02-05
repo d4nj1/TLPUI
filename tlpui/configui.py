@@ -89,8 +89,7 @@ def get_state_image(configname: str):
     image = Gtk.Image()
     defaultvalue = settings.tlpconfig_defaults[configname].get_value()
     defaultstate = settings.tlpconfig_defaults[configname].is_enabled()
-    settings.imagestate[configname] = StateImage(defaultvalue, defaultstate, image)
-    settings.tlpconfig[configname].refresh_image_state()
+    settings.tlpconfig[configname].add_state_image(StateImage(defaultvalue, defaultstate, image))
     return image
 
 

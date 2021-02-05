@@ -24,4 +24,3 @@ tlpconfigfile = settingshelper.get_tlp_config_file(tlpbaseversion, folder_prefix
 tlpconfig = dict()
 tlpconfig_original = dict()
 tlpconfig_defaults = dict()
-imagestate = dict()

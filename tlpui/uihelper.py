@@ -32,7 +32,7 @@ def get_graphical_sudo() -> str:
 
 def get_flag_image(locale: str) -> Gtk.Image:
     """Fetch flag image from icons folder"""
-    flagpixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(f"{settings.icondir }flags/{locale}.png", width=16, height=16)
+    flagpixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(f"{settings.icondir}flags/{locale}.png", width=16, height=16)
     return Gtk.Image().new_from_pixbuf(flagpixbuf)
 
 
@@ -41,7 +41,7 @@ def get_theme_image(iconname: str, iconsize: Gtk.IconSize) -> Gtk.Image:
     if Gtk.IconTheme.get_default().has_icon(iconname):
         return Gtk.Image().new_from_icon_name(iconname, iconsize)
     else:
-        return Gtk.Image().new_from_file(settings.icondir + 'themeable/hicolor/scalable/actions/' + iconname + '.svg')
+        return Gtk.Image().new_from_file(f"{settings.icondir}themeable/hicolor/scalable/actions/{iconname}.svg")
 
 
 class StateImage:
@@ -56,7 +56,7 @@ class StateImage:
         self.stateimage.set_from_icon_name(Gtk.STOCK_DIALOG_WARNING, Gtk.IconSize.BUTTON)
         self.stateimage.set_tooltip_text('{}: {}'.format(UNKNOWN_CONFIG_VALUE_TEXT, configvalue))
 
-    def refresh_image_state(self, value: str, store: str, enabled: bool, enabledstore: bool) -> None:
+    def refresh(self, value: str, store: str, enabled: bool, enabledstore: bool) -> None:
         """Refresh image and description by changed state"""
         changed = False
         if enabled != enabledstore or value != store:

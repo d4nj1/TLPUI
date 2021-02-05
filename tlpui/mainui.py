@@ -7,9 +7,8 @@ from pathlib import Path
 from gi.repository import Gtk, Gdk, GdkPixbuf
 from . import settings
 from . import language
-from .config import get_changed_properties
 from .configui import create_config_box
-from .file import init_tlp_file_config, create_tmp_tlp_config_file, write_tlp_config
+from .file import init_tlp_file_config, create_tmp_tlp_config_file, write_tlp_config, get_changed_properties
 from .statui import create_stat_box
 from .uihelper import get_flag_image, get_theme_image
 from . import __version__
