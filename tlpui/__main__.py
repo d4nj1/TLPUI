@@ -8,6 +8,7 @@ from .css import get_css_provider
 from .file import init_tlp_file_config
 from .mainui import create_main_box, store_window_size, window_key_events, close_main_window
 
+Gtk.init()
 Gtk.StyleContext.add_provider_for_screen(
     Gdk.Screen.get_default(),
     get_css_provider(),
