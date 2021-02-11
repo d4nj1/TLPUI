@@ -1,6 +1,8 @@
 import unittest
 from tlpui.filehelper import extract_default_tlp_configs, get_json_schema_object_from_file
+from os import path
 
+tlpuipath = f"{path.dirname(path.abspath(__file__))}/../tlpui"
 
 def get_config_count(categories):
     configcount = 0
@@ -19,8 +21,8 @@ class MyTestCase(unittest.TestCase):
 
     def test_tlp_version_0_8(self):
         version = "0_8"
-        tlpconfig_defaults = extract_default_tlp_configs('../tlpui/defaults/tlp-{}.conf'.format(version))
-        jsoncategories = get_json_schema_object_from_file('categories', '../tlpui/configschema/{}.json'.format(version))
+        tlpconfig_defaults = extract_default_tlp_configs(f'{tlpuipath}/defaults/tlp-{version}.conf')
+        jsoncategories = get_json_schema_object_from_file('categories', f'{tlpuipath}/configschema/{version}.json')
         jsonconfigcount = get_config_count(jsoncategories)
 
         assert len(jsoncategories) == 11
@@ -29,8 +31,8 @@ class MyTestCase(unittest.TestCase):
 
     def test_tlp_version_0_9(self):
         version = "0_9"
-        tlpconfig_defaults = extract_default_tlp_configs('../tlpui/defaults/tlp-{}.conf'.format(version))
-        jsoncategories = get_json_schema_object_from_file('categories', '../tlpui/configschema/{}.json'.format(version))
+        tlpconfig_defaults = extract_default_tlp_configs(f'{tlpuipath}/defaults/tlp-{version}.conf')
+        jsoncategories = get_json_schema_object_from_file('categories', f'{tlpuipath}/configschema/{version}.json')
         jsonconfigcount = get_config_count(jsoncategories)
 
         assert len(jsoncategories) == 11
@@ -39,8 +41,8 @@ class MyTestCase(unittest.TestCase):
 
     def test_tlp_version_1_0(self):
         version = "1_0"
-        tlpconfig_defaults = extract_default_tlp_configs('../tlpui/defaults/tlp-{}.conf'.format(version))
-        jsoncategories = get_json_schema_object_from_file('categories', '../tlpui/configschema/{}.json'.format(version))
+        tlpconfig_defaults = extract_default_tlp_configs(f'{tlpuipath}/defaults/tlp-{version}.conf')
+        jsoncategories = get_json_schema_object_from_file('categories', f'{tlpuipath}/configschema/{version}.json')
         jsonconfigcount = get_config_count(jsoncategories)
 
         assert len(jsoncategories) == 11
@@ -49,8 +51,8 @@ class MyTestCase(unittest.TestCase):
 
     def test_tlp_version_1_1(self):
         version = "1_1"
-        tlpconfig_defaults = extract_default_tlp_configs('../tlpui/defaults/tlp-{}.conf'.format(version))
-        jsoncategories = get_json_schema_object_from_file('categories', '../tlpui/configschema/{}.json'.format(version))
+        tlpconfig_defaults = extract_default_tlp_configs(f'{tlpuipath}/defaults/tlp-{version}.conf')
+        jsoncategories = get_json_schema_object_from_file('categories', f'{tlpuipath}/configschema/{version}.json')
         jsonconfigcount = get_config_count(jsoncategories)
 
         assert len(jsoncategories) == 11
@@ -59,8 +61,8 @@ class MyTestCase(unittest.TestCase):
 
     def test_tlp_version_1_2(self):
         version = "1_2"
-        tlpconfig_defaults = extract_default_tlp_configs('../tlpui/defaults/tlp-{}.conf'.format(version))
-        jsoncategories = get_json_schema_object_from_file('categories', '../tlpui/configschema/{}.json'.format(version))
+        tlpconfig_defaults = extract_default_tlp_configs(f'{tlpuipath}/defaults/tlp-{version}.conf')
+        jsoncategories = get_json_schema_object_from_file('categories', f'{tlpuipath}/configschema/{version}.json')
         jsonconfigcount = get_config_count(jsoncategories)
 
         assert len(jsoncategories) == 11
@@ -69,8 +71,8 @@ class MyTestCase(unittest.TestCase):
 
     def test_tlp_version_1_3(self):
         version = "1_3"
-        tlpconfig_defaults = extract_default_tlp_configs('../tlpui/defaults/tlp-{}.conf'.format(version))
-        jsoncategories = get_json_schema_object_from_file('categories', '../tlpui/configschema/{}.json'.format(version))
+        tlpconfig_defaults = extract_default_tlp_configs(f'{tlpuipath}/defaults/tlp-{version}.conf')
+        jsoncategories = get_json_schema_object_from_file('categories', f'{tlpuipath}/configschema/{version}.json')
         jsonconfigcount = get_config_count(jsoncategories)
 
         assert len(jsoncategories) == 11
