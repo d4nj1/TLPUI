@@ -3,9 +3,9 @@ from .. import settings
 
 
 def create_numeric_spinbutton(configname: str, values: str) -> Gtk.SpinButton:
-    range = values.split('-')
+    valuerange = values.split('-')
     configvalue = settings.tlpconfig[configname].get_value()
-    adjustment = Gtk.Adjustment(0, float(range[0]), float(range[1]), 1, 10, 0)
+    adjustment = Gtk.Adjustment(0, float(valuerange[0]), float(valuerange[1]), 1, 10, 0)
 
     spinbutton = Gtk.SpinButton()
     spinbutton.set_numeric(True)

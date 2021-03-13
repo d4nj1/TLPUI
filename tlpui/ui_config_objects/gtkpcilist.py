@@ -1,4 +1,5 @@
-import sys, re
+import sys
+import re
 from gi.repository import Gtk
 
 from collections import OrderedDict

@@ -10,7 +10,7 @@ def create_entry(configname: str) -> Gtk.Entry:
 
     entry = Gtk.Entry()
     entry.set_text(configvalue)
-    entry.set_width_chars(configvaluelength+5)
+    entry.set_width_chars(configvaluelength + 5)
     entry.connect('changed', change_entry_text, configname)
     return entry
 

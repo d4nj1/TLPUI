@@ -38,18 +38,18 @@ def extract_default_tlp_configs(filename: str) -> dict:
         if propertypattern.match(line):
             cleanline = line.lstrip().rstrip()
 
-            if (cleanline.startswith('#')):
+            if cleanline.startswith('#'):
                 enabled = False
                 cleanline = cleanline.lstrip('#')
             else:
                 enabled = True
 
-            property = cleanline.split('=', maxsplit=1)
-            propertyname = property[0]
-            propertyvalue = property[1]
+            configproperty = cleanline.split('=', maxsplit=1)
+            configname = configproperty[0]
+            configvalue = configproperty[1]
 
-            if propertyvalue.startswith('\"') and propertyvalue.endswith('\"'):
-                propertyvalue = propertyvalue.lstrip('\"').rstrip('\"')
+            if configvalue.startswith('\"') and configvalue.endswith('\"'):
+                configvalue = configvalue.lstrip('\"').rstrip('\"')
 
-            tlpconfig_defaults[propertyname] = TlpDefaults(propertyname, propertyvalue, enabled)
+            tlpconfig_defaults[configname] = TlpDefaults(configname, configvalue, enabled)
     return tlpconfig_defaults

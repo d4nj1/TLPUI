@@ -1,4 +1,4 @@
-"""This module provides helper functions for application settings"""
+"""This module provides helper functions for application settings."""
 
 import configparser
 import re
@@ -9,14 +9,14 @@ from pathlib import Path
 
 
 def get_tlp_config_file(version: str, prefix: str) -> str:
-    """Select tlp config file path by version"""
+    """Select tlp config file path by version."""
     if version in ["0_8", "0_9", "1_0", "1_1", "1_2"]:
         return f"{prefix}/etc/default/tlp"
     return f"{prefix}/etc/tlp.conf"
 
 
 def get_installed_tlp_version() -> str:
-    """Fetch tlp version from command"""
+    """Fetch tlp version from command."""
     pattern = re.compile(r"TLP ([^\s]+)")
     currentconfig = check_output(["tlp-stat", "-c"]).decode(sys.stdout.encoding)
     matcher = pattern.search(currentconfig)
@@ -25,32 +25,34 @@ def get_installed_tlp_version() -> str:
 
 
 def get_installed_major_minor_version() -> str:
-    """Fetch tlp major and minor version"""
+    """Fetch tlp major and minor version."""
     return get_installed_tlp_version()[0:3]
 
 
+def get_user_config_file() -> Path:
+    """Get config path for executing user."""
+    userconfighome = getenv("XDG_CONFIG_HOME", "")
+    if userconfighome == "":
+        userconfigpath = Path(str(Path.home()) + "/.config/tlpui")
+    else:
+        userconfigpath = Path(str(userconfighome) + "/tlpui")
+    return Path(str(userconfigpath) + "/tlpui.cfg")
+
+
 class UserConfig:
-    """Class to handle ui config parameters"""
+    """Class to handle ui config parameters."""
+
     def __init__(self):
         self.language = "en_EN"
         self.activeoption = 0
         self.activecategory = 0
         self.windowxsize = 900
         self.windowysize = 600
-        self.userconfigfile = self.get_user_config_file()
+        self.userconfigfile = get_user_config_file()
         self.read_user_config()
 
-    def get_user_config_file(self) -> Path:
-        """Get config path for executing user"""
-        userconfighome = getenv("XDG_CONFIG_HOME", "")
-        if userconfighome == "":
-            userconfigpath = Path(str(Path.home()) + "/.config/tlpui")
-        else:
-            userconfigpath = Path(str(userconfighome) + "/tlpui")
-        return Path(str(userconfigpath) + "/tlpui.cfg")
-
     def read_user_config(self):
-        """Read ui config parameters from user home"""
+        """Read ui config parameters from user home."""
         if self.userconfigfile.exists():
             config = configparser.ConfigParser()
             with open(str(self.userconfigfile)) as configfile:
@@ -69,7 +71,7 @@ class UserConfig:
             self.write_user_config()
 
     def write_user_config(self):
-        """Persist ui config parameters to user home"""
+        """Persist ui config parameters to user home."""
         config = configparser.ConfigParser()
         config['default'] = {}
         config['default']['language'] = self.language

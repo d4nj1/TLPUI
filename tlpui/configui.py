@@ -6,7 +6,8 @@ from gi.repository import Gtk
 from collections import OrderedDict
 from . import settings
 from . import language
-from .ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton, gtktoggle, gtkusblist, gtkpcilist, gtkdisklist, gtkdisklistview
+from .ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton,\
+    gtktoggle, gtkusblist, gtkpcilist, gtkdisklist, gtkdisklistview
 from .file import ConfType, TlpConfig, get_json_schema_object
 from .uihelper import get_theme_image, StateImage, EXPECTED_ITEM_MISSING_TEXT
 
@@ -61,25 +62,25 @@ def create_config_box(window) -> Gtk.Box:
 def create_config_widget(configname: str, objecttype: str, objectvalues: str, window: Gtk.Window) -> Gtk.Widget:
     configwidget = Gtk.Widget
 
-    if (objecttype == 'entry'):
+    if objecttype == 'entry':
         configwidget = gtkentry.create_entry(configname)
-    elif (objecttype == 'usblist'):
+    elif objecttype == 'usblist':
         configwidget = gtkusblist.create_list(configname, window)
-    elif (objecttype == 'pcilist'):
+    elif objecttype == 'pcilist':
         configwidget = gtkpcilist.create_list(configname, window)
-    elif (objecttype == 'disklist'):
+    elif objecttype == 'disklist':
         configwidget = gtkdisklist.create_list(configname, window)
-    elif (objecttype == 'disklistview'):
+    elif objecttype == 'disklistview':
         configwidget = gtkdisklistview.create_view(configname)
-    elif (objecttype == 'bselect'):
+    elif objecttype == 'bselect':
         configwidget = gtkswitch.create_state_switch(configname, objectvalues)
-    elif (objecttype == 'select'):
+    elif objecttype == 'select':
         configwidget = gtkselection.create_selection_box(configname, objectvalues)
-    elif (objecttype == 'multiselect'):
+    elif objecttype == 'multiselect':
         configwidget = gtkmultiselection.create_multi_selection_box(configname, objectvalues)
-    elif (objecttype == 'check'):
+    elif objecttype == 'check':
         configwidget = gtkcheckbutton.create_checkbutton_box(configname, objectvalues)
-    elif (objecttype == 'numeric'):
+    elif objecttype == 'numeric':
         configwidget = gtkspinbutton.create_numeric_spinbutton(configname, objectvalues)
 
     return configwidget
@@ -99,22 +100,21 @@ def get_type_image(configname: str) -> Gtk.Image:
     conftypeimage = Gtk.Image()
 
     if conftype == ConfType.DROPIN:
-        conftypeimage = Gtk.Image.new_from_file(settings.icondir + 'dropin.svg')
+        conftypeimage = Gtk.Image.new_from_file(f'{settings.icondir}dropin.svg')
         conftypeimage.set_tooltip_text(tlpconfig.get_conf_path())
     elif conftype == ConfType.USER:
-        conftypeimage = Gtk.Image.new_from_file(settings.icondir + 'user.svg')
+        conftypeimage = Gtk.Image.new_from_file(f'{settings.icondir}user.svg')
         conftypeimage.set_tooltip_text(tlpconfig.get_conf_path())
 
     return conftypeimage
 
 
-def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
+def create_item_box(configobjects: list, doc: str, grouptitle: str, window) -> Gtk.Box:
     configuibox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
 
     if len(configobjects) > 1:
-        transgrouptitle = grouptitle + "__GROUP_TITLE"
         grouplabel = Gtk.Label()
-        grouplabel.set_markup(' <b>{}</b> '.format(language.CDT_(transgrouptitle)))
+        grouplabel.set_markup(' <b>{}</b> '.format(language.CDT_(f"{grouptitle}__GROUP_TITLE")))
         grouplabel.set_use_markup(True)
         grouplabel.set_margin_bottom(12)
         grouplabel.set_halign(Gtk.Align.START)
@@ -122,11 +122,8 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
 
         configuibox.pack_start(grouplabel, False, False, 0)
 
-    for configobject in configobjects:
-        configname = configobject[0]
-        configtype = configobject[1]
-        possiblevalues = configobject[2]
-
+    for configobject in configobjects:      # type: ConfigObject
+        configname = configobject.name
         tlpuiobject = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=18)
         tlpuiobject.set_margin_start(18)
         tlpuiobject.set_margin_end(18)
@@ -141,7 +138,7 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
 
             missingconfiglabel = Gtk.Label(xalign=0)
             missingconfiglabel.set_name('missingConfigLabel')
-            missingconfiglabel.set_markup(' <b>{}</b> - <i>{}</i> '.format(configname, EXPECTED_ITEM_MISSING_TEXT))
+            missingconfiglabel.set_markup(f' <b>{configname}</b> - <i>{EXPECTED_ITEM_MISSING_TEXT}</i> ')
             missingconfiglabel.set_use_markup(True)
 
             tlpuiobject.pack_start(missingstatetogglebox, False, False, 0)
@@ -158,22 +155,15 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
         statetogglebox.set_halign(Gtk.Align.CENTER)
         statetogglebox.set_valign(Gtk.Align.CENTER)
 
-        # config state image
-        configstateimage = get_state_image(configname)
-
-        # config type image
-        configtypeimage = get_type_image(configname)
-
         # specific config gtk object
-        configwidget = create_config_widget(configname, configtype, possiblevalues, window)
+        configwidget = create_config_widget(configname, configobject.datatype, configobject.values, window)
         configwidget.set_margin_top(6)
         configwidget.set_margin_bottom(6)
         configwidget.set_margin_left(6)
 
         # object label
-        transconfigtitle = configname + "__ID_TITLE"
         configlabel = Gtk.Label(xalign=0)
-        configlabel.set_markup(' <b>{}</b> '.format(language.CDT_(transconfigtitle)))
+        configlabel.set_markup(' <b>{}</b> '.format(language.CDT_(f"{configname}__ID_TITLE")))
         configlabel.set_use_markup(True)
         configlabel.set_size_request(300, 0)
 
@@ -187,16 +177,14 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
             tlpconfigbox.pack_start(khzlabel, False, False, 12)
 
         if configname.endswith('_BAT'):
-            image = Gtk.Image.new_from_file(settings.icondir + 'OnBAT.svg')
-            tlpconfigbox.pack_start(image, False, False, 12)
+            tlpconfigbox.pack_start(Gtk.Image.new_from_file(f'{settings.icondir}OnBAT.svg'), False, False, 12)
         elif configname.endswith('_AC'):
-            image = Gtk.Image.new_from_file(settings.icondir + 'OnAC.svg')
-            tlpconfigbox.pack_start(image, False, False, 12)
+            tlpconfigbox.pack_start(Gtk.Image.new_from_file(f'{settings.icondir}OnAC.svg'), False, False, 12)
 
         tlpuiobject.pack_start(statetogglebox, False, False, 0)
         tlpuiobject.pack_start(tlpconfigbox, False, False, 0)
-        tlpuiobject.pack_start(configstateimage, False, False, 0)
-        tlpuiobject.pack_end(configtypeimage, False, False, 0)
+        tlpuiobject.pack_start(get_state_image(configname), False, False, 0)
+        tlpuiobject.pack_end(get_type_image(configname), False, False, 0)
 
         configuibox.pack_start(tlpuiobject, True, True, 0)
 
@@ -210,11 +198,9 @@ def create_item_box(configobjects, doc, grouptitle, window) -> Gtk.Box:
     configdescriptionlabel.set_halign(Gtk.Align.START)
     configdescriptionlabel.set_valign(Gtk.Align.START)
 
-    # horizontal separator
-    hseparator = Gtk.HSeparator()
-
+    # add description and horizontal separator
     configuibox.pack_start(configdescriptionlabel, True, True, 0)
-    configuibox.pack_start(hseparator, True, True, 0)
+    configuibox.pack_start(Gtk.HSeparator(), True, True, 0)
 
     return configuibox
 
@@ -232,31 +218,29 @@ def get_tlp_categories(window, categories) -> OrderedDict:
 
             if 'group' in config:
                 grouptitle = config['group']
-                transdescription = grouptitle + "__GROUP_DESCRIPTION"
+                transdescription = f"{grouptitle}__GROUP_DESCRIPTION"
                 groupitems = config['ids']
                 for groupitem in groupitems:
-                    id = groupitem['id']
-                    type = groupitem['type']
-                    values = groupitem['values']
-                    configobjects.append([id, type, values])
+                    configobjects.append(ConfigObject(groupitem['id'], groupitem['type'], groupitem['values']))
             else:
-                id = config['id']
-                transdescription = id + "__ID_DESCRIPTION"
-                type = config['type']
-                values = config['values']
-                configobjects.append([id, type, values])
+                itemid = config['id']
+                transdescription = f"{itemid}__ID_DESCRIPTION"
+                configobjects.append(ConfigObject(itemid, config['type'], config['values']))
 
-            description = language.CDT_(transdescription)
-
-            configbox = create_item_box(configobjects, description, grouptitle, window)
+            configbox = create_item_box(configobjects, language.CDT_(transdescription), grouptitle, window)
             configbox.set_margin_start(12)
             configbox.set_margin_end(12)
             configbox.set_margin_top(12)
             categorybox.pack_start(configbox, False, False, 0)
 
         categoryname = category['name']
-        transcategory = categoryname + "__CATEGORY_TITLE"
-        categorylabel = language.CDT_(transcategory)
-        propertyobjects[categoryname] = [categorylabel, categorybox]
+        propertyobjects[categoryname] = [language.CDT_(f"{categoryname}__CATEGORY_TITLE"), categorybox]
 
     return propertyobjects
+
+
+class ConfigObject:
+    def __init__(self, name: str, datatype: str, values: str):
+        self.name = name
+        self.datatype = datatype
+        self.values = values

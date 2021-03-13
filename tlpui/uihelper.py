@@ -1,4 +1,4 @@
-"""This module provides general helper functions for the UI"""
+"""This module provides general helper functions for the UI."""
 
 import gi
 gi.require_version('Gtk', '3.0')
@@ -17,7 +17,7 @@ CHANGED_STATE_TEXT = language.UH_('CHANGED')  # type: str
 
 
 def get_graphical_sudo() -> str:
-    """Fetch available graphical sudo command"""
+    """Fetch available graphical sudo command."""
     sudo = which("pkexec")
     if sudo is None:
         sudo = which("gksu")
@@ -31,33 +31,33 @@ def get_graphical_sudo() -> str:
 
 
 def get_flag_image(locale: str) -> Gtk.Image:
-    """Fetch flag image from icons folder"""
+    """Fetch flag image from icons folder."""
     flagpixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(f"{settings.icondir}flags/{locale}.png", width=16, height=16)
     return Gtk.Image().new_from_pixbuf(flagpixbuf)
 
 
 def get_theme_image(iconname: str, iconsize: Gtk.IconSize) -> Gtk.Image:
-    """Fetch image from theme or return fallback if missing"""
+    """Fetch image from theme or return fallback if missing."""
     if Gtk.IconTheme.get_default().has_icon(iconname):
         return Gtk.Image().new_from_icon_name(iconname, iconsize)
-    else:
-        return Gtk.Image().new_from_file(f"{settings.icondir}themeable/hicolor/scalable/actions/{iconname}.svg")
+    return Gtk.Image().new_from_file(f"{settings.icondir}themeable/hicolor/scalable/actions/{iconname}.svg")
 
 
 class StateImage:
-    """Class to display configuration item state"""
+    """Class to display configuration item state."""
+
     def __init__(self, defaultvalue, defaultstate, stateimage: Gtk.Image):
         self.defaultvalue = str(defaultvalue)
         self.defaultstate = bool(defaultstate)
         self.stateimage = stateimage
 
     def warn_unknown_config_value(self, configvalue: str) -> None:
-        """Add image and tooltip for unknown values"""
+        """Add image and tooltip for unknown values."""
         self.stateimage.set_from_icon_name(Gtk.STOCK_DIALOG_WARNING, Gtk.IconSize.BUTTON)
         self.stateimage.set_tooltip_text('{}: {}'.format(UNKNOWN_CONFIG_VALUE_TEXT, configvalue))
 
     def refresh(self, value: str, store: str, enabled: bool, enabledstore: bool) -> None:
-        """Refresh image and description by changed state"""
+        """Refresh image and description by changed state."""
         changed = False
         if enabled != enabledstore or value != store:
             changed = True

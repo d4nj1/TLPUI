@@ -16,9 +16,8 @@ def get_json_schema_object(objectname) -> dict:
     tlpprovidedschema = '/usr/share/tlp-pm/configschema.json'
     if path.exists(tlpprovidedschema):
         return get_json_schema_object_from_file(objectname, tlpprovidedschema)
-    else:
-        majorminor = settings.tlpbaseversion
-        return get_json_schema_object_from_file(objectname, f"{settings.workdir}/configschema/{majorminor}.json")
+    majorminor = settings.tlpbaseversion
+    return get_json_schema_object_from_file(objectname, f"{settings.workdir}/configschema/{majorminor}.json")
 
 
 def get_tlp_config_defaults(tlpversion: str):
@@ -26,7 +25,7 @@ def get_tlp_config_defaults(tlpversion: str):
 
     if tlpversion not in ["0_8", "0_9", "1_0", "1_1", "1_2"]:
         # update default values with intrinsic ones
-        intrinsic_defaults_path = f"{settings.folder_prefix}/usr/share/tlp/defaults.conf"
+        intrinsic_defaults_path = f"{settings.FOLDER_PREFIX}/usr/share/tlp/defaults.conf"
         tlpconfig_defaults.update(extract_default_tlp_configs(intrinsic_defaults_path))
 
     return tlpconfig_defaults
@@ -66,14 +65,15 @@ def extract_tlp_settings_obsolete(lines: list) -> None:
         if propertypattern.match(line):
             cleanline = line.lstrip().rstrip()
 
-            property = cleanline.split('=', maxsplit=1)
-            propertyname = property[0]
-            propertyvalue = property[1]
+            configproperty = cleanline.split('=', maxsplit=1)
+            configname = configproperty[0]
+            configvalue = configproperty[1]
 
-            if propertyvalue.startswith('\"') and propertyvalue.endswith('\"'):
-                propertyvalue = propertyvalue.lstrip('\"').rstrip('\"')
+            if configvalue.startswith('\"') and configvalue.endswith('\"'):
+                configvalue = configvalue.lstrip('\"').rstrip('\"')
 
-            settings.tlpconfig[propertyname] = TlpConfig(True, propertyname, propertyvalue, ConfType.USER, settings.tlpconfigfile)
+            settings.tlpconfig[configname] = TlpConfig(True, configname, configvalue,
+                                                       ConfType.USER, settings.tlpconfigfile)
 
 
 def extract_tlp_settings(lines: list) -> None:
@@ -94,14 +94,14 @@ def extract_tlp_settings(lines: list) -> None:
                 print('Config type not found for file: {}'.format(configfile))
                 conftype = ConfType.ERR
 
-            property = settingsparts[2].split('=', maxsplit=1)
-            propertyname = property[0]
-            propertyvalue = property[1]
+            configproperty = settingsparts[2].split('=', maxsplit=1)
+            configname = configproperty[0]
+            configvalue = configproperty[1]
 
-            if propertyvalue.startswith('\"') and propertyvalue.endswith('\"'):
-                propertyvalue = propertyvalue.lstrip('\"').rstrip('\"')
+            if configvalue.startswith('\"') and configvalue.endswith('\"'):
+                configvalue = configvalue.lstrip('\"').rstrip('\"')
 
-            settings.tlpconfig[propertyname] = TlpConfig(True, propertyname, propertyvalue, conftype, configfile)
+            settings.tlpconfig[configname] = TlpConfig(True, configname, configvalue, conftype, configfile)
 
 
 def get_changed_properties() -> dict:
@@ -135,7 +135,7 @@ def get_changed_properties() -> dict:
 
 def create_tmp_tlp_config_file(changedproperties: dict) -> str:
     propertypattern = re.compile(r'^#?[A-Z_\d]+=')
-    fh, tmpfilename = mkstemp(dir=settings.tmpfolder)
+    filehandler, tmpfilename = mkstemp(dir=settings.TMP_FOLDER)
     newfile = open(tmpfilename, 'w')
 
     oldfile = open(settings.tlpconfigfile)
@@ -146,18 +146,18 @@ def create_tmp_tlp_config_file(changedproperties: dict) -> str:
         if propertypattern.match(line):
             cleanline = line.lstrip().lstrip('#')
 
-            property = cleanline.split('=', maxsplit=1)
-            propertyname = property[0]
+            configproperty = cleanline.split('=', maxsplit=1)
+            configname = configproperty[0]
 
-            if propertyname in changedproperties.keys():
-                if cleanline.startswith(propertyname + "="):
-                    newfile.write(changedproperties[propertyname] + '\n')
+            if configname in changedproperties.keys():
+                if cleanline.startswith(configname + "="):
+                    newfile.write(changedproperties[configname] + '\n')
                     continue
 
         newfile.write(line)
 
     newfile.close()
-    close(fh)
+    close(filehandler)
     oldfile.close()
 
     return tmpfilename

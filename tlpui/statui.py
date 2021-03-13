@@ -1,4 +1,8 @@
+"""This module provides general tlp-stat functions for the UI."""
+
 import sys
+import gi
+gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 from shutil import which
 from subprocess import check_output, STDOUT
@@ -57,11 +61,13 @@ def create_stat_box() -> Gtk.Box:
 
     emptylabel = Gtk.Label()
 
-    fetchsimplebutton = Gtk.Button(label=' {}'.format(language.ST_('Simple')), image=get_theme_image('dialog-information-symbolic', Gtk.IconSize.BUTTON))
+    fetchsimplebutton = Gtk.Button(label=' {}'.format(language.ST_('Simple')),
+                                   image=get_theme_image('dialog-information-symbolic', Gtk.IconSize.BUTTON))
     fetchsimplebutton.connect('clicked', fetch_simple_stats, textbuffer)
     fetchsimplebutton.set_always_show_image(True)
 
-    fetchcompletebutton = Gtk.Button(label=' {}'.format(language.ST_('Complete')), image=get_theme_image('format-indent-more-symbolic', Gtk.IconSize.BUTTON))
+    fetchcompletebutton = Gtk.Button(label=' {}'.format(language.ST_('Complete')),
+                                     image=get_theme_image('format-indent-more-symbolic', Gtk.IconSize.BUTTON))
     fetchcompletebutton.connect('clicked', fetch_complete_stats, textbuffer)
     fetchcompletebutton.set_always_show_image(True)
 

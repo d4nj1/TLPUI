@@ -1,4 +1,5 @@
-import sys, re
+import sys
+import re
 from gi.repository import Gtk
 
 from collections import OrderedDict
@@ -7,6 +8,7 @@ from .. import settings
 from ..uihelper import get_theme_image
 
 global indexstore
+
 
 def create_list(configname: str, window: Gtk.Window) -> Gtk.Box:
     box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
@@ -97,10 +99,10 @@ def edit_list(self, configname: str, usblistlabel: Gtk.Label, window: Gtk.Window
     addbox.pack_start(Gtk.Label(''), True, True, 0)
 
     grid.attach(addlabel, 1, rowindex, 2, 1)
-    grid.attach(addbox, 1, rowindex+1, 2, 1)
+    grid.attach(addbox, 1, rowindex + 1, 2, 1)
 
     global indexstore
-    indexstore = rowindex+2
+    indexstore = rowindex + 2
 
     dialog = Gtk.Dialog('Usb devices', window, 0, (
         Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
@@ -142,8 +144,7 @@ def add_usb_item(self, entry: Gtk.Entry, grid: Gtk.Grid, allitems: list, selecte
     key = entry.get_text()
     if key in allitems:
         return
-    else:
-        allitems.append(key)
+    allitems.append(key)
 
     toggle = Gtk.ToggleButton(key)
     toggle.connect('toggled', on_button_toggled, key, selecteditems)

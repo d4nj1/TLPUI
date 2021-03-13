@@ -22,6 +22,7 @@ Gdk.set_program_class('Tlp-UI')
 # Apply custom scalable icons to icon theme
 Gtk.IconTheme().get_default().append_search_path(settings.icondir + 'themeable')
 
+
 def main() -> None:
     # init configuration settings
     init_tlp_file_config()
@@ -42,8 +43,7 @@ def main() -> None:
 def get_default_icon_name() -> str:
     if Gtk.IconTheme.get_default().has_icon('preferences-system-power-management'):
         return 'preferences-system-power-management'
-    else:
-        return 'preferences-system-power'
+    return 'preferences-system-power'
 
 
 if __name__ == '__main__':

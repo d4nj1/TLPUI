@@ -1,4 +1,4 @@
-"""This module provides the main window parts for TLPUI"""
+"""This module provides the main window parts for TLPUI."""
 
 import importlib
 import difflib
@@ -15,13 +15,13 @@ from . import __version__
 
 
 def store_window_size(self) -> None:
-    """Store current window size in settings"""
+    """Store current window size in settings."""
     settings.userconfig.windowxsize = self.get_size()[0]
     settings.userconfig.windowysize = self.get_size()[1]
 
 
 def window_key_events(self, event) -> None:
-    """Add window key events like crtl+(q|w|s)"""
+    """Add window key events like crtl+(q|w|s)."""
     if event.state & Gdk.ModifierType.CONTROL_MASK:
         # close window with ctrl+q or ctrl+w
         if event.keyval == 113 or event.keyval == 119:
@@ -32,7 +32,7 @@ def window_key_events(self, event) -> None:
 
 
 def close_main_window(self, _) -> bool:
-    """Close main window"""
+    """Close main window."""
     quit_tlp_config(None, self)
 
     # When delete-event is cancelled we have to return True
@@ -41,7 +41,7 @@ def close_main_window(self, _) -> bool:
 
 
 def load_tlp_config(_, window: Gtk.Window, reloadtlpconfig: bool) -> None:
-    """Load TLP configuration to UI"""
+    """Load TLP configuration to UI."""
     if reloadtlpconfig:
         init_tlp_file_config()
 
@@ -54,7 +54,7 @@ def load_tlp_config(_, window: Gtk.Window, reloadtlpconfig: bool) -> None:
 
 
 def save_tlp_config(self, window) -> None:
-    """Persists TLP configuration changes"""
+    """Persist TLP configuration changes."""
     changedproperties = get_changed_properties()
     if len(changedproperties) == 0:
         return
@@ -83,7 +83,7 @@ def save_tlp_config(self, window) -> None:
 
 
 def quit_tlp_config(_, window) -> None:
-    """Quit TLPUI and prompt for unsaved changes"""
+    """Quit TLPUI and prompt for unsaved changes."""
     settings.userconfig.write_user_config()
 
     changedproperties = get_changed_properties()
@@ -104,7 +104,7 @@ def quit_tlp_config(_, window) -> None:
 
 
 def changed_items_dialog(window, tmpfilename: str, dialogtitle: str, message: str) -> Gtk.ResponseType:
-    """Dialog to show changed TLP configuration items"""
+    """Dialog to show changed TLP configuration items."""
     dialog = Gtk.Dialog(dialogtitle, window, 0, (
         Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
         Gtk.STOCK_OK, Gtk.ResponseType.OK
@@ -145,8 +145,8 @@ def changed_items_dialog(window, tmpfilename: str, dialogtitle: str, message: st
     return response
 
 
-def create_menu_box(window, fileentry) -> Gtk.Box:
-    """Create application menu from XML structure"""
+def create_menu_box(window) -> Gtk.Box:
+    """Create application menu from XML structure."""
     xmlmenustructure = """
     <ui>
         <menubar name='menubar'>
@@ -197,7 +197,7 @@ def create_menu_box(window, fileentry) -> Gtk.Box:
 
 
 def repack_language_menuitem(menuitem: Gtk.MenuItem):
-    """Repack language menu items for better visibility"""
+    """Repack language menu items for better visibility."""
     menuitemname = menuitem.get_name()
     langimage = get_flag_image(menuitemname)
     langlabel = Gtk.Label(menuitemname.split("_")[0])
@@ -208,17 +208,21 @@ def repack_language_menuitem(menuitem: Gtk.MenuItem):
     menuitem.add(langbox)
 
 
-def create_settings_box(window, fileentry) -> Gtk.Box:
-    """Buttons for direct access in UI"""
-    reloadbutton = Gtk.Button(label=' ' + language.MT_('Reload'), image=get_theme_image('view-refresh-symbolic', Gtk.IconSize.BUTTON))
+def create_settings_box(window) -> Gtk.Box:
+    """Buttons for direct access in UI."""
+    fileentrylabel = Gtk.Label(settings.tlpbaseconfigfile)
+    fileentrylabel.set_alignment(0, 0.5)
+    reloadbutton = Gtk.Button(label=' ' + language.MT_('Reload'),
+                              image=get_theme_image('view-refresh-symbolic', Gtk.IconSize.BUTTON))
     reloadbutton.connect('clicked', load_tlp_config, window, True)
     reloadbutton.set_always_show_image(True)
-    savebutton = Gtk.Button(label=' ' + language.MT_('Save'), image=get_theme_image('document-save-symbolic', Gtk.IconSize.BUTTON))
+    savebutton = Gtk.Button(label=' ' + language.MT_('Save'),
+                            image=get_theme_image('document-save-symbolic', Gtk.IconSize.BUTTON))
     savebutton.connect('clicked', save_tlp_config, window)
     savebutton.set_always_show_image(True)
 
     settingsbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
-    settingsbox.pack_start(fileentry, True, True, 0)
+    settingsbox.pack_start(fileentrylabel, True, True, 0)
     settingsbox.pack_start(reloadbutton, False, False, 0)
     settingsbox.pack_start(savebutton, False, False, 0)
 
@@ -226,7 +230,7 @@ def create_settings_box(window, fileentry) -> Gtk.Box:
 
 
 def add_menu_actions(window, actiongroup) -> None:
-    """Add actions to application menu"""
+    """Add actions to application menu."""
     actionfilemenu = Gtk.Action("FileMenu", language.MT_("File"), None, None)
     actiongroup.add_action(actionfilemenu)
     actionfilemenusave = Gtk.Action("save", language.MT_('Save'), None, Gtk.STOCK_SAVE)
@@ -264,7 +268,7 @@ def add_menu_actions(window, actiongroup) -> None:
 
 
 def show_about_dialog(self):
-    """Applications about dialog"""
+    """Applications about dialog."""
     aboutdialog = Gtk.AboutDialog()
     aboutdialog.set_title("TLPUI")
     aboutdialog.set_name("name")
@@ -280,7 +284,7 @@ def show_about_dialog(self):
 
 
 def switch_language(self, lang: str, window: Gtk.Window) -> None:
-    """Language switcher"""
+    """Language switcher."""
     settings.userconfig.language = lang
 
     # reload language values
@@ -290,19 +294,17 @@ def switch_language(self, lang: str, window: Gtk.Window) -> None:
 
 
 def store_option_num(self, option, option_num: int):
+    """Store selected functionality option."""
     settings.userconfig.activeoption = option_num
 
 
 def create_main_box(window: Gtk.Window) -> Gtk.Box:
-    """Create TLP configuration items notebook view"""
+    """Create TLP configuration items notebook view."""
     notebook = Gtk.Notebook()
     notebook.set_tab_pos(Gtk.PositionType.TOP)
 
-    fileentry = Gtk.Label(settings.tlpbaseconfigfile)
-    fileentry.set_alignment(0, 0.5)
-
-    menubox = create_menu_box(window, fileentry)
-    settingsbox = create_settings_box(window, fileentry)
+    menubox = create_menu_box(window)
+    settingsbox = create_settings_box(window)
     configbox = create_config_box(window)
 
     contentbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)

@@ -4,15 +4,15 @@ import gettext
 
 
 def load_lang(langfile):
-    translation = gettext.translation(domain=langfile, localedir=settings.langdir, languages=[settings.userconfig.language])
+    translation = gettext.translation(langfile, settings.langdir, [settings.userconfig.language])
 
     versionlangfile = "{}{}".format(langfile, settings.tlpbaseversion)
-    if gettext.find(domain=versionlangfile, localedir=settings.langdir, languages=[settings.userconfig.language]) is None:
+    if gettext.find(versionlangfile, settings.langdir, [settings.userconfig.language]) is None:
         return translation.gettext
-    else:
-        versiontranslation = gettext.translation(domain=versionlangfile, localedir=settings.langdir, languages=[settings.userconfig.language])
-        versiontranslation.add_fallback(translation)
-        return versiontranslation.gettext
+
+    versiontranslation = gettext.translation(versionlangfile, settings.langdir, [settings.userconfig.language])
+    versiontranslation.add_fallback(translation)
+    return versiontranslation.gettext
 
 
 CDT_ = load_lang('configdescriptions')

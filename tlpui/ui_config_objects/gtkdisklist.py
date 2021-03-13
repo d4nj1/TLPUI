@@ -13,7 +13,7 @@ def create_list(configname: str, window: Gtk.Window) -> Gtk.Box:
     tlpobject = settings.tlpconfig[configname]
     box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
     label = Gtk.Label(tlpobject.get_value())
-    label.set_width_chars(len(tlpobject.get_value())+5)
+    label.set_width_chars(len(tlpobject.get_value()) + 5)
 
     button = Gtk.Button(label=' Edit', image=get_theme_image('edit-symbolic', Gtk.IconSize.BUTTON))
     button.connect('clicked', edit_list, window)
@@ -98,8 +98,16 @@ def edit_list(self: Gtk.Button, window: Gtk.Window):
         notebooklabel = Gtk.Label(diskid)
         notebook.append_page(notebookgrid, notebooklabel)
 
-        disks[diskid] = [apmlevelonacspiner, apmlevelonbatspiner, spindowntimeoutonacspiner, spindowntimeoutonbatspiner, ioschedselect]
-        keeps[diskid] = [apmlevelonackeep, apmlevelonbatkeep, spindowntimeoutonackeep, spindowntimeoutonbatkeep, ioschedkeep]
+        disks[diskid] = [apmlevelonacspiner,
+                         apmlevelonbatspiner,
+                         spindowntimeoutonacspiner,
+                         spindowntimeoutonbatspiner,
+                         ioschedselect]
+        keeps[diskid] = [apmlevelonackeep,
+                         apmlevelonbatkeep,
+                         spindowntimeoutonackeep,
+                         spindowntimeoutonbatkeep,
+                         ioschedkeep]
 
     dialog = Gtk.Dialog('Disk devices', window, 0, (
         Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
@@ -124,11 +132,11 @@ def edit_list(self: Gtk.Button, window: Gtk.Window):
         for key, value in disks.items():
             diskdevices = diskdevices + ' ' + key
             keep = keeps[key]
-            apmlevelonac = apmlevelonac + ' ' + ('keep' if keep[0].get_active() else str(int(value[0].get_value())))
-            apmlevelonbat = apmlevelonbat + ' ' + ('keep' if keep[1].get_active() else str(int(value[1].get_value())))
-            spindowntimeoutonac = spindowntimeoutonac + ' ' + ('keep' if keep[2].get_active() else str(int(value[2].get_value())))
-            spindowntimeoutonbat = spindowntimeoutonbat + ' ' + ('keep' if keep[3].get_active() else str(int(value[3].get_value())))
-            iosched = iosched + ' ' + ('keep' if keep[4].get_active() else value[4].get_active_text())
+            apmlevelonac = f'{apmlevelonac} {get_keep_value(keep[0], str(value[0].get_value_as_int()))}'
+            apmlevelonbat = f'{apmlevelonbat} {get_keep_value(keep[1], str(value[1].get_value_as_int()))}'
+            spindowntimeoutonac = f'{spindowntimeoutonac} {get_keep_value(keep[2], str(value[2].get_value_as_int()))}'
+            spindowntimeoutonbat = f'{spindowntimeoutonbat} {get_keep_value(keep[3], str(value[3].get_value_as_int()))}'
+            iosched = f'{iosched} {get_keep_value(keep[4], value[4].get_active_text())}'
 
         set_tlp_value('DISK_DEVICES', diskdevices.lstrip())
         set_tlp_value('DISK_APM_LEVEL_ON_AC', apmlevelonac.lstrip())
@@ -140,6 +148,10 @@ def edit_list(self: Gtk.Button, window: Gtk.Window):
         mainui.load_tlp_config(self, window, False)
 
     dialog.destroy()
+
+
+def get_keep_value(keep: Gtk.CheckButton, value: str):
+    return 'keep' if keep.get_active() else value
 
 
 def set_tlp_value(configname: str, value: str):
@@ -215,7 +227,11 @@ def read_existing_disk_config() -> OrderedDict:
     existingdiskconfig = OrderedDict()
     index = 0
     for device in devices:
-        existingdiskconfig[device] = [apmlevelonac[index], apmlevelonbat[index], spindowntimeoutonac[index], spindowntimeoutonbat[index], iosched[index]]
+        existingdiskconfig[device] = [apmlevelonac[index],
+                                      apmlevelonbat[index],
+                                      spindowntimeoutonac[index],
+                                      spindowntimeoutonbat[index],
+                                      iosched[index]]
         index += 1
 
     return existingdiskconfig
