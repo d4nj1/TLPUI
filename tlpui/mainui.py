@@ -1,4 +1,4 @@
-"""This module provides the main window parts for TLPUI."""
+"""Provide main window parts for TLPUI."""
 
 import importlib
 import difflib

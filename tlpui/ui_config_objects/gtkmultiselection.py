@@ -1,8 +1,11 @@
+"""Multiselect UI widget."""
+
 from gi.repository import Gtk
 from .. import settings
 
 
 def create_multi_selection_box(configname: str, values: str) -> Gtk.ComboBox:
+    """Create multi select box."""
     multiselectbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
     multiselectitems = values.split(',')
     configitems = settings.tlpconfig[configname].get_value().split(' ')
@@ -19,6 +22,7 @@ def create_multi_selection_box(configname: str, values: str) -> Gtk.ComboBox:
 
 
 def change_selection_state(self: Gtk.ToggleButton, configname: str, checkitems: []):
+    """Process and store state change."""
     currentitem = self.get_label()
     currentstate = self.get_active()
     currentvalue = str(settings.tlpconfig[configname].get_value())

@@ -1,3 +1,4 @@
+"""Create TLP config UI."""
 
 import gi
 gi.require_version('Gtk', '3.0')
@@ -13,16 +14,17 @@ from .uihelper import get_theme_image, StateImage, EXPECTED_ITEM_MISSING_TEXT
 
 
 def store_category_num(self, cat, cat_num: int):
+    """Set selected config category."""
     settings.userconfig.activecategory = cat_num
 
 
 def create_config_box(window) -> Gtk.Box:
+    """Create TLP config box."""
     notebook = Gtk.Notebook()
     notebook.set_name('configNotebook')
     notebook.set_tab_pos(Gtk.PositionType.LEFT)
 
-    categories = get_json_schema_object('categories')
-    tlp_categories = get_tlp_categories(window, categories)
+    tlp_categories = get_tlp_categories(window)
     for name, categorydata in tlp_categories.items():
         categorylabel = Gtk.Label(categorydata[0])
         categorylabel.set_alignment(1, 0.5)
@@ -60,6 +62,7 @@ def create_config_box(window) -> Gtk.Box:
 
 
 def create_config_widget(configname: str, objecttype: str, objectvalues: str, window: Gtk.Window) -> Gtk.Widget:
+    """Create config widget."""
     configwidget = Gtk.Widget
 
     if objecttype == 'entry':
@@ -87,6 +90,7 @@ def create_config_widget(configname: str, objecttype: str, objectvalues: str, wi
 
 
 def get_state_image(configname: str):
+    """Create and store state image."""
     image = Gtk.Image()
     defaultvalue = settings.tlpconfig_defaults[configname].get_value()
     defaultstate = settings.tlpconfig_defaults[configname].is_enabled()
@@ -95,6 +99,7 @@ def get_state_image(configname: str):
 
 
 def get_type_image(configname: str) -> Gtk.Image:
+    """Create config location image."""
     tlpconfig = settings.tlpconfig[configname]      # type: TlpConfig
     conftype = tlpconfig.get_conf_type()
     conftypeimage = Gtk.Image()
@@ -110,6 +115,7 @@ def get_type_image(configname: str) -> Gtk.Image:
 
 
 def create_item_box(configobjects: list, doc: str, grouptitle: str, window) -> Gtk.Box:
+    """Create box with config item widgets."""
     configuibox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
 
     if len(configobjects) > 1:
@@ -205,9 +211,11 @@ def create_item_box(configobjects: list, doc: str, grouptitle: str, window) -> G
     return configuibox
 
 
-def get_tlp_categories(window, categories) -> OrderedDict:
+def get_tlp_categories(window) -> OrderedDict:
+    """Get categories from TLP schema."""
     propertyobjects = OrderedDict()
 
+    categories = get_json_schema_object('categories')
     for category in categories:
         categorybox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
 
@@ -240,7 +248,10 @@ def get_tlp_categories(window, categories) -> OrderedDict:
 
 
 class ConfigObject:
+    """Config object helper class."""
+
     def __init__(self, name: str, datatype: str, values: str):
+        """Init config object helper class parameters."""
         self.name = name
         self.datatype = datatype
         self.values = values

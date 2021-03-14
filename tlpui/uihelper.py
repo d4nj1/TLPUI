@@ -47,6 +47,7 @@ class StateImage:
     """Class to display configuration item state."""
 
     def __init__(self, defaultvalue, defaultstate, stateimage: Gtk.Image):
+        """Init state image class parameters."""
         self.defaultvalue = str(defaultvalue)
         self.defaultstate = bool(defaultstate)
         self.stateimage = stateimage

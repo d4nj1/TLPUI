@@ -1,9 +1,11 @@
+"""Provide translation."""
 
 from . import settings
 import gettext
 
 
 def load_lang(langfile):
+    """Load language from file."""
     translation = gettext.translation(langfile, settings.langdir, [settings.userconfig.language])
 
     versionlangfile = "{}{}".format(langfile, settings.tlpbaseversion)

@@ -1,8 +1,11 @@
+"""Select UI widget."""
+
 from gi.repository import Gtk
 from .. import settings
 
 
 def create_selection_box(configname: str, values: str) -> Gtk.ComboBox:
+    """Create select box."""
     combobox = Gtk.ComboBoxText()
     selectitems = values.split(',')
     configvalue = settings.tlpconfig[configname].get_value()
@@ -25,5 +28,6 @@ def create_selection_box(configname: str, values: str) -> Gtk.ComboBox:
 
 
 def change_selection_state(self: Gtk.ComboBoxText, configname: str):
+    """Process and store state change."""
     newvalue = self.get_active_text()
     settings.tlpconfig[configname].set_value(newvalue)

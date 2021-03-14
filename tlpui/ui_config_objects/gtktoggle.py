@@ -1,3 +1,5 @@
+"""Toggle config state."""
+
 from gi.repository import Gtk
 from .. import settings
 
@@ -5,6 +7,7 @@ OPACITY_LEVEL = 0.3
 
 
 def create_toggle_button(configname: str, tlpconfigbox: Gtk.Box) -> Gtk.CheckButton:
+    """Create state toggle."""
     togglebutton = Gtk.CheckButton()
 
     if settings.tlpconfig[configname].is_enabled():
@@ -17,6 +20,7 @@ def create_toggle_button(configname: str, tlpconfigbox: Gtk.Box) -> Gtk.CheckBut
 
 
 def on_button_toggled(self: Gtk.CheckButton, configname: str, tlpconfigbox: Gtk.Box):
+    """Process and store config state."""
     tlpobject = settings.tlpconfig[configname]
 
     if self.get_active():

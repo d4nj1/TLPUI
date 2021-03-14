@@ -1,3 +1,5 @@
+"""Usb settings UI widget."""
+
 import sys
 import re
 from gi.repository import Gtk
@@ -11,6 +13,7 @@ global indexstore
 
 
 def create_list(configname: str, window: Gtk.Window) -> Gtk.Box:
+    """Create usb list button."""
     box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
     label = Gtk.Label(settings.tlpconfig[configname].get_value().replace(" ", "\n"))
 
@@ -24,6 +27,7 @@ def create_list(configname: str, window: Gtk.Window) -> Gtk.Box:
 
 
 def edit_list(self, configname: str, usblistlabel: Gtk.Label, window: Gtk.Window):
+    """Create usb list view."""
     tlpobject = settings.tlpconfig[configname]
     usblistpattern = re.compile(r'^.+?([a-f\d]{4}:[a-f\d]{4})(.+?)$')
     currentitems = OrderedDict()
@@ -124,6 +128,7 @@ def edit_list(self, configname: str, usblistlabel: Gtk.Label, window: Gtk.Window
 
 
 def on_button_toggled(self: Gtk.ToggleButton, key: str, selecteditems: list):
+    """Change visibility on toggle."""
     if self.get_active():
         selecteditems.append(key)
     else:
@@ -131,6 +136,7 @@ def on_button_toggled(self: Gtk.ToggleButton, key: str, selecteditems: list):
 
 
 def usb_entry_check(self: Gtk.Entry, button: Gtk.Button):
+    """Validate usb entries."""
     usbpattern = re.compile(r'^[a-f\d]{4}:[a-f\d]{4}$')
     if usbpattern.match(self.get_text()):
         self.set_name('validEntry')
@@ -141,6 +147,7 @@ def usb_entry_check(self: Gtk.Entry, button: Gtk.Button):
 
 
 def add_usb_item(self, entry: Gtk.Entry, grid: Gtk.Grid, allitems: list, selecteditems: list):
+    """Add usb config item."""
     key = entry.get_text()
     if key in allitems:
         return

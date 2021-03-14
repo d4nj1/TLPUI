@@ -1,3 +1,4 @@
+"""Provide file handling."""
 
 import copy
 import re
@@ -13,6 +14,7 @@ from .uihelper import get_graphical_sudo, SUDO_MISSING_TEXT
 
 
 def get_json_schema_object(objectname) -> dict:
+    """Get Json schema for installed TLP version."""
     tlpprovidedschema = '/usr/share/tlp-pm/configschema.json'
     if path.exists(tlpprovidedschema):
         return get_json_schema_object_from_file(objectname, tlpprovidedschema)
@@ -21,6 +23,7 @@ def get_json_schema_object(objectname) -> dict:
 
 
 def get_tlp_config_defaults(tlpversion: str):
+    """Fetch TLP default configs."""
     tlpconfig_defaults = extract_default_tlp_configs(f"{settings.workdir}/defaults/tlp-{tlpversion}.conf")
 
     if tlpversion not in ["0_8", "0_9", "1_0", "1_1", "1_2"]:
@@ -32,6 +35,7 @@ def get_tlp_config_defaults(tlpversion: str):
 
 
 def init_tlp_file_config() -> None:
+    """Load current TLP config settings."""
     settings.tlpconfig = dict()
     tlpversion = settings.tlpbaseversion
     settings.tlpconfig_defaults = get_tlp_config_defaults(tlpversion)
@@ -59,6 +63,7 @@ def init_tlp_file_config() -> None:
 
 
 def extract_tlp_settings_obsolete(lines: list) -> None:
+    """Load current TLP config settings for TLP version < 1.3."""
     propertypattern = re.compile(r'^[A-Z_\d]+=')
 
     for line in lines:
@@ -77,6 +82,7 @@ def extract_tlp_settings_obsolete(lines: list) -> None:
 
 
 def extract_tlp_settings(lines: list) -> None:
+    """Extract TLP config locations and values."""
     propertypattern = re.compile(r'^.+?\.conf\sL\d+\:\s[A-Z_\d]+=')
 
     for line in lines:
@@ -105,6 +111,7 @@ def extract_tlp_settings(lines: list) -> None:
 
 
 def get_changed_properties() -> dict:
+    """Evaluate changed settings from UI."""
     changedproperties = dict()
 
     changed = settings.tlpconfig
@@ -134,6 +141,7 @@ def get_changed_properties() -> dict:
 
 
 def create_tmp_tlp_config_file(changedproperties: dict) -> str:
+    """Create tmp file to prepare writing new config."""
     propertypattern = re.compile(r'^#?[A-Z_\d]+=')
     filehandler, tmpfilename = mkstemp(dir=settings.TMP_FOLDER)
     newfile = open(tmpfilename, 'w')
@@ -164,6 +172,7 @@ def create_tmp_tlp_config_file(changedproperties: dict) -> str:
 
 
 def write_tlp_config(tmpconfigfile: str) -> str:
+    """Write changes to config file."""
     sedtlpconfigfile = "w" + settings.tlpbaseconfigfile
     sedcommand = ["sed", "-n", sedtlpconfigfile, tmpconfigfile]
 

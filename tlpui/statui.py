@@ -14,6 +14,7 @@ TLP_STAT_MISSING = language.ST_('tlp-stat executable not found.')  # type: str
 
 
 def fetch_simple_stats(_, textbuffer: Gtk.TextBuffer) -> None:
+    """Fetch simple tlp-stat information."""
     tlp_stat_cmd = which("tlp-stat")
 
     if tlp_stat_cmd is None:
@@ -26,6 +27,7 @@ def fetch_simple_stats(_, textbuffer: Gtk.TextBuffer) -> None:
 
 
 def fetch_complete_stats(_, textbuffer: Gtk.TextBuffer) -> None:
+    """Fetch complete tlp-stat information."""
     sudo_cmd = get_graphical_sudo()
     tlp_stat_cmd = which("tlp-stat")
 
@@ -42,10 +44,12 @@ def fetch_complete_stats(_, textbuffer: Gtk.TextBuffer) -> None:
 
 
 def call_tlp_stat(command) -> str:
+    """Call tlp-stat command."""
     return check_output(command, stderr=STDOUT).decode(sys.stdout.encoding)
 
 
 def create_stat_box() -> Gtk.Box:
+    """Create box with stat widgets."""
     scrolledwindow = Gtk.ScrolledWindow()
     scrolledwindow.set_hexpand(True)
     scrolledwindow.set_vexpand(True)

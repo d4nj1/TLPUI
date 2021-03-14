@@ -1,3 +1,5 @@
+"""PCI UI widget."""
+
 import sys
 import re
 from gi.repository import Gtk
@@ -10,6 +12,7 @@ from .. import settings
 
 
 def create_list(configname: str, window: Gtk.Window) -> Gtk.Box:
+    """Create pci list button."""
     box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
     label = Gtk.Label(settings.tlpconfig[configname].get_value().replace(" ", "\n"))
 
@@ -23,6 +26,7 @@ def create_list(configname: str, window: Gtk.Window) -> Gtk.Box:
 
 
 def edit_list(self, configname: str, usblistlabel: Gtk.Label, window: Gtk.Window):
+    """Create pci list view."""
     tlpobject = settings.tlpconfig[configname]
     pcilistpattern = re.compile(r'^([a-f\d]{2}:[a-f\d]{2}\.[a-f\d])(.+?)$')
     currentitems = tlpobject.get_value().split(' ')
@@ -85,6 +89,7 @@ def edit_list(self, configname: str, usblistlabel: Gtk.Label, window: Gtk.Window
 
 
 def on_button_toggled(self: Gtk.ToggleButton, key: str, selecteditems: list):
+    """Process state change."""
     if self.get_active():
         selecteditems.append(key)
     else:

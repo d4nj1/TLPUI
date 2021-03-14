@@ -1,8 +1,11 @@
+"""Switch widget."""
+
 from gi.repository import Gtk
 from .. import settings
 
 
 def create_state_switch(configname: str, values: str) -> Gtk.Switch:
+    """Create switch."""
     switch = Gtk.Switch()
 
     toggleitems = values.split(',')
@@ -19,6 +22,7 @@ def create_state_switch(configname: str, values: str) -> Gtk.Switch:
 
 
 def change_switch_state(self: Gtk.Switch, notify, configname: str, falseitem: str, trueitem: str):
+    """Process and store state change."""
     tlpobject = settings.tlpconfig[configname]
 
     if self.get_active():

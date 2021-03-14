@@ -1,3 +1,5 @@
+"""Disk settings UI widget."""
+
 import sys
 from gi.repository import Gtk
 
@@ -10,6 +12,7 @@ from .. import settings
 
 
 def create_list(configname: str, window: Gtk.Window) -> Gtk.Box:
+    """Create disk list button."""
     tlpobject = settings.tlpconfig[configname]
     box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
     label = Gtk.Label(tlpobject.get_value())
@@ -25,6 +28,7 @@ def create_list(configname: str, window: Gtk.Window) -> Gtk.Box:
 
 
 def edit_list(self: Gtk.Button, window: Gtk.Window):
+    """Create disk list view."""
     notebook = Gtk.Notebook()
     notebook.set_tab_pos(Gtk.PositionType.TOP)
 
@@ -151,14 +155,17 @@ def edit_list(self: Gtk.Button, window: Gtk.Window):
 
 
 def get_keep_value(keep: Gtk.CheckButton, value: str):
+    """Set keep value."""
     return 'keep' if keep.get_active() else value
 
 
 def set_tlp_value(configname: str, value: str):
+    """Store applied config changes."""
     settings.tlpconfig[configname].set_value(value)
 
 
 def get_disk_values(diskid: str, existingdisks: OrderedDict):
+    """Read disk value config."""
     defaultvalues = ['254', '128', '0', '0', 'cfq']
     keepvalues = [False, False, False, False, False]
     if diskid in existingdisks.keys():
@@ -172,6 +179,7 @@ def get_disk_values(diskid: str, existingdisks: OrderedDict):
 
 
 def create_keep(gtkwidget: Gtk.Widget, isactive: bool):
+    """Create toggle for keep setting."""
     checkbutton = Gtk.CheckButton(halign=Gtk.Align.CENTER)
     if isactive:
         checkbutton.set_active(True)
@@ -182,6 +190,7 @@ def create_keep(gtkwidget: Gtk.Widget, isactive: bool):
 
 
 def on_button_toggled(self: Gtk.CheckButton, gtkwidget: Gtk.Widget):
+    """Change visibility on toggle."""
     if self.get_active():
         gtkwidget.set_opacity(0.3)
     else:
@@ -189,8 +198,9 @@ def on_button_toggled(self: Gtk.CheckButton, gtkwidget: Gtk.Widget):
 
 
 def create_spinbutton(values: str, configvalue: str):
-    range = values.split('-')
-    adjustment = Gtk.Adjustment(0, float(range[0]), float(range[1]), 1, 10, 0)
+    """Create value selector."""
+    valuerange = values.split('-')
+    adjustment = Gtk.Adjustment(0, float(valuerange[0]), float(valuerange[1]), 1, 10, 0)
 
     spinbutton = Gtk.SpinButton()
     spinbutton.set_numeric(True)
@@ -200,6 +210,7 @@ def create_spinbutton(values: str, configvalue: str):
 
 
 def create_selectbox(values: str, configvalue: str):
+    """Create select box."""
     combobox = Gtk.ComboBoxText()
     selectitems = values.split(',')
 
@@ -217,6 +228,7 @@ def create_selectbox(values: str, configvalue: str):
 
 
 def read_existing_disk_config() -> OrderedDict:
+    """Fetch disk config from TLP."""
     devices = settings.tlpconfig['DISK_DEVICES'].get_value().split(' ')
     apmlevelonac = settings.tlpconfig['DISK_APM_LEVEL_ON_AC'].get_value().split(' ')
     apmlevelonbat = settings.tlpconfig['DISK_APM_LEVEL_ON_BAT'].get_value().split(' ')
@@ -238,6 +250,7 @@ def read_existing_disk_config() -> OrderedDict:
 
 
 def get_disk_config_ranges():
+    """Get setting ranges for disk configs."""
     apmlevelrangeac = ''
     apmlevelrangebat = ''
     spindownrangetimeoutac = ''

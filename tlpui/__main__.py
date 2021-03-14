@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+"""Entrypoint for UI."""
+
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GLib
@@ -24,6 +26,7 @@ Gtk.IconTheme().get_default().append_search_path(settings.icondir + 'themeable')
 
 
 def main() -> None:
+    """Initiate main window with all sub elements."""
     # init configuration settings
     init_tlp_file_config()
 
@@ -41,6 +44,7 @@ def main() -> None:
 
 
 def get_default_icon_name() -> str:
+    """Fetch default application icon name."""
     if Gtk.IconTheme.get_default().has_icon('preferences-system-power-management'):
         return 'preferences-system-power-management'
     return 'preferences-system-power'

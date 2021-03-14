@@ -43,6 +43,7 @@ class UserConfig:
     """Class to handle ui config parameters."""
 
     def __init__(self):
+        """Init user config class parameters."""
         self.language = "en_EN"
         self.activeoption = 0
         self.activecategory = 0
