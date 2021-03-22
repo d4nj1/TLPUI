@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+HERE="$(dirname "$(readlink -f "${0}")")"
+if [ -z $APPDIR ]; then
+    APPDIR=$(readlink -f $(dirname "$0"))
+fi
+echo $HERE
+cd "$HERE/usr/lib/python3/dist-packages/tlpui/"
+python3 -m tlpui

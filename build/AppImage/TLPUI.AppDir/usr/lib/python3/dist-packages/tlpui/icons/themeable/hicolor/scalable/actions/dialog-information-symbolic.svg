@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg xmlns:cc='http://creativecommons.org/ns#' xmlns:dc='http://purl.org/dc/elements/1.1/' sodipodi:docname='dialog-information-symbolic.svg' inkscape:export-filename='/home/sam/dev/RESOURCES/gnome-icon-theme-symbolic/src/gnome-stencils.png' inkscape:export-xdpi='90' inkscape:export-ydpi='90' height='16' id='svg7384' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd' xmlns:svg='http://www.w3.org/2000/svg' version='1.1' inkscape:version='0.48.4 r9939' width='16.000002' xmlns='http://www.w3.org/2000/svg'>
+  <metadata id='metadata90'>
+    <rdf:RDF>
+      <cc:Work rdf:about=''>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource='http://purl.org/dc/dcmitype/StillImage'/>
+        <dc:title>elementary Symbolic Icon Theme</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview inkscape:bbox-nodes='true' inkscape:bbox-paths='true' bordercolor='#666666' borderopacity='1' inkscape:current-layer='layer9' inkscape:cx='52.9821' inkscape:cy='8.48904' gridtolerance='10' inkscape:guide-bbox='true' guidetolerance='10' id='namedview88' inkscape:object-nodes='true' inkscape:object-paths='false' objecttolerance='10' pagecolor='#3a3b39' inkscape:pageopacity='1' inkscape:pageshadow='2' showborder='false' showgrid='false' showguides='true' inkscape:snap-bbox='true' inkscape:snap-bbox-edge-midpoints='true' inkscape:snap-bbox-midpoints='false' inkscape:snap-global='true' inkscape:snap-grids='true' inkscape:snap-nodes='true' inkscape:snap-others='false' inkscape:snap-to-guides='true' inkscape:window-height='710' inkscape:window-maximized='1' inkscape:window-width='1366' inkscape:window-x='0' inkscape:window-y='30' inkscape:zoom='1'>
+    <inkscape:grid dotted='false' empspacing='4' enabled='true' id='grid4866' originx='-311.99992px' originy='-739px' snapvisiblegridlinesonly='true' spacingx='1px' spacingy='1px' type='xygrid' visible='true'/>
+    <inkscape:grid color='#000000' dotted='true' empcolor='#000000' empopacity='0.25098039' empspacing='4' enabled='true' id='grid13609' opacity='0.1254902' originx='-311.99992px' originy='-739px' snapvisiblegridlinesonly='true' spacingx='0.5px' spacingy='0.5px' type='xygrid' visible='true'/>
+  </sodipodi:namedview>
+  <title id='title9167'>elementary Symbolic Icon Theme</title>
+  <defs id='defs7386'/>
+  <g inkscape:groupmode='layer' id='layer9' inkscape:label='status' style='display:inline' transform='translate(-553.00012,522)'>
+    
+    <path inkscape:connector-curvature='0' d='m 561.00012,-522 c -4.42352,0 -8,3.57648 -8,8 0,4.42352 3.57648,8 8,8 4.42352,0 8,-3.57648 8,-8 0,-4.42352 -3.57648,-8 -8,-8 z m 0,1 c 3.87058,0 7,3.12942 7,7 0,3.87058 -3.12942,7 -7,7 -3.87058,0 -7,-3.12942 -7,-7 0,-3.87058 3.12942,-7 7,-7 z m 0.875,2.0625 c -0.98888,-0.0131 -1.34699,1.571 -0.40625,1.96875 0.74902,0.2769 1.49651,-0.49475 1.3125,-1.25 -0.002,-0.009 0.002,-0.0222 0,-0.0312 -0.0881,-0.41059 -0.48041,-0.71901 -0.90625,-0.6875 z m -0.1875,2.84375 c -0.17371,-0.007 -0.35599,0.0522 -0.53125,0.1875 l -2.09375,1.5 c -0.0571,0.0495 -0.0933,0.12314 -0.0625,0.21875 0.0515,0.12622 0.13609,0.25471 0.28125,0.34375 0.0726,0.0445 0.16086,0.0677 0.25,0.0312 l 0.875,-0.59375 -0.71875,3.71875 c -0.081,0.46046 -0.01,0.75048 0.25,0.96875 0.25877,0.21743 0.68098,0.27527 1.03125,0.0312 l 1.8125,-1.25 c 0.0651,-0.0521 0.10036,-0.13035 0.0625,-0.21875 -0.0397,-0.0886 -0.10849,-0.23035 -0.21875,-0.34375 -0.0551,-0.0567 -0.14359,-0.11624 -0.25,-0.0937 l -0.75,0.53125 c -0.16426,0.0948 -0.21547,0.13562 -0.1875,0.0312 l 0.84375,-3.84375 c 0.077,-0.34697 0.094,-0.55018 0,-0.78125 -0.0974,-0.23945 -0.31906,-0.42578 -0.59375,-0.4375 z' id='path2987-0' style='text-indent:0;text-transform:none;block-progression:tb;opacity:0.9;color:#bebebe;fill:#bebebe;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate'/>
+  </g>
+  <g inkscape:groupmode='layer' id='layer10' inkscape:label='devices' style='display:inline' transform='translate(-553.00012,522)'/>
+  <g inkscape:groupmode='layer' id='layer11' inkscape:label='apps' transform='translate(-553.00012,522)'/>
+  <g inkscape:groupmode='layer' id='layer13' inkscape:label='places' style='display:inline' transform='translate(-553.00012,522)'/>
+  <g inkscape:groupmode='layer' id='layer14' inkscape:label='mimetypes' transform='translate(-553.00012,522)'/>
+  <g inkscape:groupmode='layer' id='layer15' inkscape:label='emblems' style='display:inline' transform='translate(-553.00012,522)'/>
+  <g inkscape:groupmode='layer' id='g71291' inkscape:label='emotes' style='display:inline' transform='translate(-553.00012,522)'/>
+  <g inkscape:groupmode='layer' id='g4953' inkscape:label='categories' style='display:inline' transform='translate(-553.00012,522)'/>
+  <g inkscape:groupmode='layer' id='layer12' inkscape:label='actions' style='display:inline' transform='translate(-553.00012,522)'/>
+</svg>

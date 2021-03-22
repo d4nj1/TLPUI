@@ -1,0 +1,983 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TLPUI\n"
+"POT-Creation-Date: 2020-12-26 21:51+0100\n"
+"PO-Revision-Date: 2020-12-26 21:51+0100\n"
+"Last-Translator: WhiredPlanck <fungdaat31@outlook.com>\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _\n"
+"X-Poedit-SearchPath-0: configschema.json.h\n"
+
+#: configschema.json.h:1
+msgid "General__CATEGORY_TITLE"
+msgstr "一般设置"
+
+#: configschema.json.h:2
+msgid "TLP_ENABLE__ID_TITLE"
+msgstr "TLP_ENABLE"
+
+#: configschema.json.h:3
+msgid "TLP_ENABLE__ID_DESCRIPTION"
+msgstr "启用/禁用 TLP。"
+
+#: configschema.json.h:4
+msgid "TLP_DEFAULT_MODE__ID_TITLE"
+msgstr "TLP_DEFAULT_MODE"
+
+#: configschema.json.h:5
+msgid "TLP_DEFAULT_MODE__ID_DESCRIPTION"
+msgstr ""
+"无法检测到电源时的操作模式：AC（交流供电），BAT（电池供电）。\n"
+"仅部分笔记本和嵌入式硬件需要考虑。"
+
+#: configschema.json.h:6
+msgid "TLP_PERSISTENT_DEFAULT__ID_TITLE"
+msgstr "TLP_PERSISTENT_DEFAULT"
+
+#: configschema.json.h:7
+msgid "TLP_PERSISTENT_DEFAULT__ID_DESCRIPTION"
+msgstr ""
+"操作模式选择：0=取决于电源来源, 1=总是使用 TLP_DEFAULT_MODE \n"
+"提示：配合使用 TLP_DEFAULT_MODE=BAT 在交流供电时使用 BAT 设定"
+
+#: configschema.json.h:8
+msgid "TLP_PS_IGNORE__ID_TITLE"
+msgstr "TLP_PS_IGNORE"
+
+#: configschema.json.h:9
+msgid "TLP_PS_IGNORE__ID_DESCRIPTION"
+msgstr ""
+"确定操作模式时要忽略的电源类别：AC（交流供电），BAT（电池供"
+"电）。\n"
+"注意：请在 AC /BAT 操作模式检测错误的笔记本电脑上尝试。"
+
+#: configschema.json.h:10
+msgid "Audio__CATEGORY_TITLE"
+msgstr "音频"
+
+#: configschema.json.h:11
+msgid "SOUND_POWER_SAVE__GROUP_TITLE"
+msgstr "SOUND_POWER_SAVE"
+
+#: configschema.json.h:12
+msgid "SOUND_POWER_SAVE__GROUP_DESCRIPTION"
+msgstr "为 Intel HDA、AC97 设备启用音频节能。"
+
+#: configschema.json.h:13
+msgid "SOUND_POWER_SAVE_ON_AC__ID_TITLE"
+msgstr "SOUND_POWER_SAVE_ON_AC"
+
+#: configschema.json.h:14
+msgid "SOUND_POWER_SAVE_ON_BAT__ID_TITLE"
+msgstr "SOUND_POWER_SAVE_ON_BAT"
+
+#: configschema.json.h:15
+msgid "SOUND_POWER_SAVE_CONTROLLER__ID_TITLE"
+msgstr "SOUND_POWER_SAVE_CONTROLLER"
+
+#: configschema.json.h:16
+msgid "SOUND_POWER_SAVE_CONTROLLER__ID_DESCRIPTION"
+msgstr "同时禁用控制器 (仅 HDA)。"
+
+#: configschema.json.h:17
+msgid "Disks__CATEGORY_TITLE"
+msgstr "磁盘"
+
+#: configschema.json.h:18
+msgid "DISK_IDLE_SECS__GROUP_TITLE"
+msgstr "DISK_IDLE_SECS"
+
+#: configschema.json.h:19
+msgid "DISK_IDLE_SECS__GROUP_DESCRIPTION"
+msgstr ""
+"笔记本模式在同步前、必须等待磁盘空闲后多久的秒数。\n"
+"非零值表示启用，零则代表禁用笔记本模式。"
+
+#: configschema.json.h:20
+msgid "DISK_IDLE_SECS_ON_AC__ID_TITLE"
+msgstr "DISK_IDLE_SECS_ON_AC"
+
+#: configschema.json.h:21
+msgid "DISK_IDLE_SECS_ON_BAT__ID_TITLE"
+msgstr "DISK_IDLE_SECS_ON_BAT"
+
+#: configschema.json.h:22
+msgid "MAX_LOST_WORK_SECS__GROUP_TITLE"
+msgstr "MAX_LOST_WORK_SECS"
+
+#: configschema.json.h:23
+msgid "MAX_LOST_WORK_SECS__GROUP_DESCRIPTION"
+msgstr "Dirty page 值 (超时秒数)。"
+
+#: configschema.json.h:24
+msgid "MAX_LOST_WORK_SECS_ON_AC__ID_TITLE"
+msgstr "MAX_LOST_WORK_SECS_ON_AC"
+
+#: configschema.json.h:25
+msgid "MAX_LOST_WORK_SECS_ON_BAT__ID_TITLE"
+msgstr "MAX_LOST_WORK_SECS_ON_BAT"
+
+#: configschema.json.h:26
+msgid "DISK_DEVICES__ID_TITLE"
+msgstr "DISK_DEVICES_ID"
+
+#: configschema.json.h:27
+msgid "DISK_DEVICES__ID_DESCRIPTION"
+msgstr ""
+"硬盘设备，请用空格分隔多个设备（默认值：sda）。\n"
+"设备也可以通过磁盘 ID 来指定（查找时使用命令：tlp diskid）。"
+
+#: configschema.json.h:28
+msgid "DISK_APM_LEVEL__GROUP_TITLE"
+msgstr "DISK_APM_LEVEL"
+
+#: configschema.json.h:29
+msgid "DISK_APM_LEVEL__GROUP_DESCRIPTION"
+msgstr ""
+"硬盘高级电源管理等级：1..254, 255（最大节能 — 最小节能，关闭）\n"
+"等级 1..127 会降低磁盘转速；255 可允许用于大多数磁盘。\n"
+"请使用空格分隔多个设备。请使用特殊值'keep'\n"
+"来为特定磁盘保持硬件默认值。"
+
+#: configschema.json.h:30
+msgid "DISK_APM_LEVEL_ON_AC__ID_TITLE"
+msgstr "DISK_APM_LEVEL_ON_AC"
+
+#: configschema.json.h:31
+msgid "DISK_APM_LEVEL_ON_BAT__ID_TITLE"
+msgstr "DISK_APM_LEVEL_ON_BAT"
+
+#: configschema.json.h:32
+msgid "DISK_SPINDOWN_TIMEOUT__GROUP_TITLE"
+msgstr "DISK_SPINDOWN_TIMEOUT"
+
+#: configschema.json.h:33
+msgid "DISK_SPINDOWN_TIMEOUT__GROUP_DESCRIPTION"
+msgstr ""
+"硬盘降速超时时间：\n"
+"0:\t\t\t禁用降速\n"
+"1..240:\t\t超时从 5 秒到 20 分钟（以 5 秒为最小单位）\n"
+"241..251:\t超时从 30 分钟到 5.5 个小时（以 30 分钟为最小单位）\n"
+"（详情参见 'man hdparm'）"
+
+#: configschema.json.h:34
+msgid "DISK_SPINDOWN_TIMEOUT_ON_AC__ID_TITLE"
+msgstr "DISK_SPINDOWN_TIMEOUT_ON_AC"
+
+#: configschema.json.h:35
+msgid "DISK_SPINDOWN_TIMEOUT_ON_BAT__ID_TITLE"
+msgstr "DISK_SPINDOWN_TIMEOUT_ON_BAT"
+
+#: configschema.json.h:36
+msgid "DISK_IOSCHED__ID_TITLE"
+msgstr "DISK_IOSCHED"
+
+#: configschema.json.h:37
+msgid "DISK_IOSCHED__ID_DESCRIPTION"
+msgstr ""
+"为磁盘设备选择 I/O 调度器：noop/deadline/cfq（默认值：cfq）\n"
+"请使用空格分隔多个设备。"
+
+#: configschema.json.h:38
+msgid "SATA_LINKPWR__GROUP_TITLE"
+msgstr "SATA_LINKPWR"
+
+#: configschema.json.h:39
+msgid "SATA_LINKPWR__GROUP_DESCRIPTION"
+msgstr ""
+"SATA 主动链路电源管理（ALPM）：min_power, medium_power, "
+"max_performance。"
+
+#: configschema.json.h:40
+msgid "SATA_LINKPWR_ON_AC__ID_TITLE"
+msgstr "SATA_LINKPWR_ON_AC"
+
+#: configschema.json.h:41
+msgid "SATA_LINKPWR_ON_BAT__ID_TITLE"
+msgstr "SATA_LINKPWR_ON_BAT"
+
+#: configschema.json.h:42
+msgid "SATA_LINKPWR_BLACKLIST__ID_TITLE"
+msgstr "SATA_LINKPWR_BLACKLIST"
+
+#: configschema.json.h:43
+msgid "SATA_LINKPWR_BLACKLIST__ID_DESCRIPTION"
+msgstr ""
+"从链接电源管理中排除 SATA 主机设备。\n"
+"请使用空格分隔多个主机设备。"
+
+#: configschema.json.h:44
+msgid "AHCI_RUNTIME_PM__GROUP_TITLE"
+msgstr "AHCI_RUNTIME_PM"
+
+#: configschema.json.h:45
+msgid "AHCI_RUNTIME_PM__GROUP_DESCRIPTION"
+msgstr ""
+"AHCI 控制器和磁盘运行时电源管理：on=禁用，auto=启用。\n"
+"\n"
+"** 实验性 ** 警告：使用 auto 选项很有可能导致系统锁定/数据丢失"
+
+#: configschema.json.h:46
+msgid "AHCI_RUNTIME_PM_ON_AC__ID_TITLE"
+msgstr "AHCI_RUNTIME_PM_ON_AC"
+
+#: configschema.json.h:47
+msgid "AHCI_RUNTIME_PM_ON_BAT__ID_TITLE"
+msgstr "AHCI_RUNTIME_PM_ON_BAT"
+
+#: configschema.json.h:48
+msgid "AHCI_RUNTIME_PM_TIMEOUT__ID_TITLE"
+msgstr "AHCI_RUNTIME_PM_TIMEOUT"
+
+#: configschema.json.h:49
+msgid "AHCI_RUNTIME_PM_TIMEOUT__ID_DESCRIPTION"
+msgstr "磁盘挂起之前不活动的秒数"
+
+#: configschema.json.h:50
+msgid "BAY_POWEROFF__GROUP_TITLE"
+msgstr "BAY_POWEROFF"
+
+#: configschema.json.h:51
+msgid "BAY_POWEROFF__GROUP_DESCRIPTION"
+msgstr ""
+"关闭 UltraBay/MediaBay 中的光驱电源：0=禁用，1=启用。\n"
+"可以通过释放（并重新插入）弹出杆\n"
+"或按较新型号的弹出按钮来再次打开驱动器电源。\n"
+"注意：UltraBay/MediaBay 硬盘不会被断电。"
+
+#: configschema.json.h:52
+msgid "BAY_POWEROFF_ON_AC__ID_TITLE"
+msgstr "BAY_POWEROFF_ON_AC"
+
+#: configschema.json.h:53
+msgid "BAY_POWEROFF_ON_BAT__ID_TITLE"
+msgstr "BAY_POWEROFF_ON_BAT"
+
+#: configschema.json.h:54
+msgid "BAY_POWEROFF_ON_BAT__ID_DESCRIPTION"
+msgstr ""
+"设置为在电池供电时，关闭 UltraBay / MediaBay 中的光驱电源。\n"
+"否则，此功能将被禁用（默认）。\n"
+"可以通过释放（并重新插入）弹出杆\n"
+"或按下较新型号上的弹出按钮来再次打开驱动器电源。\n"
+"注意：UltraBay/MediaBay 中的硬盘不会被断电。"
+
+#: configschema.json.h:55
+msgid "BAY_DEVICE__ID_TITLE"
+msgstr "BAY_DEVICE"
+
+#: configschema.json.h:56
+msgid "BAY_DEVICE__ID_DESCRIPTION"
+msgstr "要关闭电源的光驱设备（默认为 sr0）"
+
+#: configschema.json.h:57
+msgid "Graphics__CATEGORY_TITLE"
+msgstr "显卡"
+
+#: configschema.json.h:58
+msgid "INTEL_GPU_FREQ__GROUP_TITLE"
+msgstr "INTEL_GPU_FREQ"
+
+#: configschema.json.h:59
+msgid "INTEL_GPU_FREQ__GROUP_DESCRIPTION"
+msgstr ""
+"设置 Intel GPU 的最小 / 最大 / Turbo 频率。\n"
+"可用的值取决于实际使用的硬件。请参见\n"
+"命令 tlp-stat -g 的输出获取可用的频率数值。"
+
+#: configschema.json.h:60
+msgid "INTEL_GPU_MIN_FREQ_ON_AC__ID_TITLE"
+msgstr "INTEL_GPU_MIN_FREQ_ON_AC"
+
+#: configschema.json.h:61
+msgid "INTEL_GPU_MIN_FREQ_ON_BAT__ID_TITLE"
+msgstr "INTEL_GPU_MIN_FREQ_ON_BAT"
+
+#: configschema.json.h:62
+msgid "INTEL_GPU_MAX_FREQ_ON_AC__ID_TITLE"
+msgstr "INTEL_GPU_MAX_FREQ_ON_AC"
+
+#: configschema.json.h:63
+msgid "INTEL_GPU_MAX_FREQ_ON_BAT__ID_TITLE"
+msgstr "INTEL_GPU_MAX_FREQ_ON_BAT"
+
+#: configschema.json.h:64
+msgid "INTEL_GPU_BOOST_FREQ_ON_AC__ID_TITLE"
+msgstr "INTEL_GPU_BOOST_FREQ_ON_AC"
+
+#: configschema.json.h:65
+msgid "INTEL_GPU_BOOST_FREQ_ON_BAT__ID_TITLE"
+msgstr "INTEL_GPU_BOOST_FREQ_ON_BAT"
+
+#: configschema.json.h:66
+msgid "RADEON_POWER_PROFILE__GROUP_TITLE"
+msgstr "RADEON_POWER_PROFILE"
+
+#: configschema.json.h:67
+msgid "RADEON_POWER_PROFILE__GROUP_DESCRIPTION"
+msgstr ""
+"Radeon 显卡时钟速度（配置文件方法）： low, mid, high, auto, "
+"default；\n"
+"auto = BAT 模式时用 mid，AC 模式时用 high，default = 使用硬件默"
+"认值。\n"
+"需要使用开源驱动程序 'radeon'。"
+
+#: configschema.json.h:68
+msgid "RADEON_POWER_PROFILE_ON_AC__ID_TITLE"
+msgstr "RADEON_POWER_PROFILE_ON_AC"
+
+#: configschema.json.h:69
+msgid "RADEON_POWER_PROFILE_ON_BAT__ID_TITLE"
+msgstr "RADEON_POWER_PROFILE_ON_BAT"
+
+#: configschema.json.h:70
+msgid "RADEON_DPM_STATE__GROUP_TITLE"
+msgstr "RADEON_DPM_STATE"
+
+#: configschema.json.h:71
+msgid "RADEON_DPM_STATE__GROUP_DESCRIPTION"
+msgstr ""
+"Radeon 动态电源管理方法（DPM）：battery，performance\n"
+"仅适用于开源驱动程序 'radeon'，\n"
+"要求内核版本 >= 3.11 并引导时使用 'option radeon.dpm = 1'。"
+
+#: configschema.json.h:72
+msgid "RADEON_DPM_STATE_ON_AC__ID_TITLE"
+msgstr "RADEON_DPM_STATE_ON_AC"
+
+#: configschema.json.h:73
+msgid "RADEON_DPM_STATE_ON_BAT__ID_TITLE"
+msgstr "RADEON_DPM_STATE_ON_BAT"
+
+#: configschema.json.h:74
+msgid "RADEON_DPM_PERF_LEVEL__GROUP_TITLE"
+msgstr "RADEON_DPM_PERF_LEVEL"
+
+#: configschema.json.h:75
+msgid "RADEON_DPM_PERF_LEVEL__GROUP_DESCRIPTION"
+msgstr "Radeon DPM 性能等级：auto, low, high；推荐使用 auto。"
+
+#: configschema.json.h:76
+msgid "RADEON_DPM_PERF_LEVEL_ON_AC__ID_TITLE"
+msgstr "RADEON_DPM_PERF_LEVEL_ON_AC"
+
+#: configschema.json.h:77
+msgid "RADEON_DPM_PERF_LEVEL_ON_BAT__ID_TITLE"
+msgstr "RADEON_DPM_PERF_LEVEL_ON_BAT"
+
+#: configschema.json.h:78
+msgid "Network__CATEGORY_TITLE"
+msgstr "网络"
+
+#: configschema.json.h:79
+msgid "WIFI_PWR__GROUP_TITLE"
+msgstr "WIFI_PWR"
+
+#: configschema.json.h:80
+msgid "WIFI_PWR__GROUP_DESCRIPTION"
+msgstr "WiFi 省电模式。并非所有无线网络适配器都支持。"
+
+#: configschema.json.h:81
+msgid "WIFI_PWR_ON_AC__ID_TITLE"
+msgstr "WIFI_PWR_ON_AC"
+
+#: configschema.json.h:82
+msgid "WIFI_PWR_ON_BAT__ID_TITLE"
+msgstr "WIFI_PWR_ON_BAT"
+
+#: configschema.json.h:83
+msgid "WOL_DISABLE__ID_TITLE"
+msgstr "WOL_DISABLE"
+
+#: configschema.json.h:84
+msgid "WOL_DISABLE__ID_DESCRIPTION"
+msgstr "禁用局域网唤醒。"
+
+#: configschema.json.h:85
+msgid "PCIe__CATEGORY_TITLE"
+msgstr "PCIe"
+
+#: configschema.json.h:86
+msgid "PCIE_ASPM__GROUP_TITLE"
+msgstr "PCIE_ASPM"
+
+#: configschema.json.h:87
+msgid "PCIE_ASPM__GROUP_DESCRIPTION"
+msgstr "PCI Express 主动状态电源管理（PCIe ASPM）。"
+
+#: configschema.json.h:88
+msgid "PCIE_ASPM_ON_AC__ID_TITLE"
+msgstr "PCIE_ASPM_ON_AC"
+
+#: configschema.json.h:89
+msgid "PCIE_ASPM_ON_BAT__ID_TITLE"
+msgstr "PCIE_ASPM_ON_BAT"
+
+#: configschema.json.h:90
+msgid "RUNTIME_PM__GROUP_TITLE"
+msgstr "RUNTIME_PM"
+
+#: configschema.json.h:91
+msgid "RUNTIME_PM__GROUP_DESCRIPTION"
+msgstr "PCI(e) 总线设备的运行时电源管理。"
+
+#: configschema.json.h:92
+msgid "RUNTIME_PM_ON_AC__ID_TITLE"
+msgstr "RUNTIME_PM_ON_AC"
+
+#: configschema.json.h:93
+msgid "RUNTIME_PM_ON_BAT__ID_TITLE"
+msgstr "RUNTIME_PM_ON_BAT"
+
+#: configschema.json.h:94
+msgid "RUNTIME_PM_ALL__ID_TITLE"
+msgstr "RUNTIME_PM_ALL"
+
+#: configschema.json.h:95
+msgid "RUNTIME_PM_ALL__ID_DESCRIPTION"
+msgstr ""
+"*所有* PCI(e) 总线设备的运行时电源管理，黑名单中的设备除外。"
+
+#: configschema.json.h:96
+msgid "RUNTIME_PM_BLACKLIST__ID_TITLE"
+msgstr "RUNTIME_PM_BLACKLIST"
+
+#: configschema.json.h:97
+msgid "RUNTIME_PM_BLACKLIST__ID_DESCRIPTION"
+msgstr ""
+"从运行时电源管理中排除以下列表中的 PCI(e) 设备（用空格分隔）。\n"
+"请使用 lspci 获取地址（在第一列）。"
+
+#: configschema.json.h:98
+msgid "RUNTIME_PM_DRIVER_BLACKLIST__ID_TITLE"
+msgstr "RUNTIME_PM_DRIVER_BLACKLIST"
+
+#: configschema.json.h:99
+msgid "RUNTIME_PM_DRIVER_BLACKLIST__ID_DESCRIPTION"
+msgstr ""
+"从运行时电源管理中排除分配给列出的驱动程序的 PCI(e) 设备\n"
+"（应防止意外打开混合图形的离散部分的电源）。\n"
+"默认值为 \"radeon nouveau\"；请使用 \"\" 完全禁用该功能。\n"
+"请使用空格分隔多个驱动程序。"
+
+#: configschema.json.h:100
+msgid "Processor__CATEGORY_TITLE"
+msgstr "处理器"
+
+#: configschema.json.h:101
+msgid "CPU_SCALING_GOVERNOR__GROUP_TITLE"
+msgstr "CPU_SCALING_GOVERNOR"
+
+#: configschema.json.h:102
+msgid "CPU_SCALING_GOVERNOR__GROUP_DESCRIPTION"
+msgstr ""
+"选择一个 CPU 频率缩放调节器：ondemand / powersave / "
+"performance / conservative\n"
+"使用 intel_pstate 驱动程序的 Intel Core i 系列处理器可用值："
+"powersave / performance\n"
+"重要提示：\n"
+"- *必须* 禁用发行版的调节器（governor）设置，否则会发生冲突\n"
+"- ondemand 可以满足*几乎所有*的工作负载，你应该知道自己现在在做"
+"什么再操作！"
+
+#: configschema.json.h:103
+msgid "CPU_SCALING_GOVERNOR_ON_AC__ID_TITLE"
+msgstr "CPU_SCALING_GOVERNOR_ON_AC"
+
+#: configschema.json.h:104
+msgid "CPU_SCALING_GOVERNOR_ON_BAT__ID_TITLE"
+msgstr "CPU_SCALING_GOVERNOR_ON_BAT"
+
+#: configschema.json.h:105
+msgid "CPU_SCALING_FREQ__GROUP_TITLE"
+msgstr "CPU_SCALING_FREQ"
+
+#: configschema.json.h:106
+msgid "CPU_SCALING_FREQ__GROUP_DESCRIPTION"
+msgstr ""
+"设置缩放调节器可用的最小 / 最大频率。\n"
+"可用的值在很大程度上取决于使用的 CPU。\n"
+"请参见 tlp-stat 输出的 \"Processor（处理器）\" 部分。"
+
+#: configschema.json.h:107
+msgid "CPU_SCALING_MIN_FREQ_ON_AC__ID_TITLE"
+msgstr "CPU_SCALING_MIN_FREQ_ON_AC"
+
+#: configschema.json.h:108
+msgid "CPU_SCALING_MAX_FREQ_ON_AC__ID_TITLE"
+msgstr "CPU_SCALING_MAX_FREQ_ON_AC"
+
+#: configschema.json.h:109
+msgid "CPU_SCALING_MIN_FREQ_ON_BAT__ID_TITLE"
+msgstr "CPU_SCALING_MIN_FREQ_ON_BAT"
+
+#: configschema.json.h:110
+msgid "CPU_SCALING_MAX_FREQ_ON_BAT__ID_TITLE"
+msgstr "CPU_SCALING_MAX_FREQ_ON_BAT"
+
+#: configschema.json.h:111
+msgid "CPU_HWP__GROUP_TITLE"
+msgstr "CPU_HWP"
+
+#: configschema.json.h:112
+msgid "CPU_HWP__GROUP_DESCRIPTION"
+msgstr ""
+"设置 Intel P-state 调节器（governor）的能源性能提示（HWP）：\n"
+"default，performance，balance_performance，balance_power，"
+"power\n"
+"上述值按“逐渐提高节电效果”的顺序给出。\n"
+"注意：需要 Intel Skylake 或更新的 CPU 并且内核版本 >= 4.10。"
+
+#: configschema.json.h:113
+msgid "CPU_HWP_ON_AC__ID_TITLE"
+msgstr "CPU_HWP_ON_AC"
+
+#: configschema.json.h:114
+msgid "CPU_HWP_ON_BAT__ID_TITLE"
+msgstr "CPU_HWP_ON_BAT"
+
+#: configschema.json.h:115
+msgid "CPU_ENERGY_PERF_POLICY__GROUP_TITLE"
+msgstr "CPU_ENERGY_PERF_POLICY"
+
+#: configschema.json.h:116
+msgid "CPU_ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
+msgstr ""
+"设置 Intel CPU 能源/性能策略 HWP.EPP 和 EPB：\n"
+"performance，balance_performance，default，balance_power，"
+"power\n"
+"上述值以“逐渐提高节电效果”的顺序给出。\n"
+"注意：\n"
+"- 需要 Intel Core i 系列处理器\n"
+"- HWP.EPP 需要内核 4.10 版本和 intel_pstate 驱动程序\n"
+"- EPB 需要内核 5.2 版本或 linux-tools 中的 msr 和\n"
+"x86_energy_perf_policy 内核模块\n"
+"- 当 HWP.EPP 可用时，不会设定 EPB"
+
+#: configschema.json.h:117
+msgid "CPU_ENERGY_PERF_POLICY_ON_AC__ID_TITLE"
+msgstr "CPU_ENERGY_PERF_POLICY_ON_AC"
+
+#: configschema.json.h:118
+msgid "CPU_ENERGY_PERF_POLICY_ON_BAT__ID_TITLE"
+msgstr "CPU_ENERGY_PERF_POLICY_ON_BAT"
+
+#: configschema.json.h:119
+msgid "CPU_PERF__GROUP_TITLE"
+msgstr "CPU_PERF"
+
+#: configschema.json.h:120
+msgid "CPU_PERF__GROUP_DESCRIPTION"
+msgstr ""
+"设置 Intel P-state 性能：0..100（％）\n"
+"限制最大/最小 P-state 以控制 CPU 的功耗。\n"
+"上述值表示为可用性能的百分比。\n"
+"需要使用 intel_pstate 驱动程序的 Intel Core i 系列处理器。"
+
+#: configschema.json.h:121
+msgid "CPU_MIN_PERF_ON_AC__ID_TITLE"
+msgstr "CPU_MIN_PERF_ON_AC"
+
+#: configschema.json.h:122
+msgid "CPU_MAX_PERF_ON_AC__ID_TITLE"
+msgstr "CPU_MAX_PERF_ON_AC"
+
+#: configschema.json.h:123
+msgid "CPU_MIN_PERF_ON_BAT__ID_TITLE"
+msgstr "CPU_MIN_PERF_ON_BAT"
+
+#: configschema.json.h:124
+msgid "CPU_MAX_PERF_ON_BAT__ID_TITLE"
+msgstr "CPU_MAX_PERF_ON_BAT"
+
+#: configschema.json.h:125
+msgid "CPU_BOOST__GROUP_TITLE"
+msgstr "CPU_BOOST"
+
+#: configschema.json.h:126
+msgid "CPU_BOOST__GROUP_DESCRIPTION"
+msgstr ""
+"设置 CPU 的 \"turbo boost\" 功能。\n"
+"需要 Intel Core i 系列处理器。\n"
+"重要提示：\n"
+"- 这可能与所使用 Linux 发行版的调节器（governor）设置冲突\n"
+"-值为 1 时不会激活增强（boosting），而只是允许使用它"
+
+#: configschema.json.h:127
+msgid "CPU_BOOST_ON_AC__ID_TITLE"
+msgstr "CPU_BOOST_ON_AC"
+
+#: configschema.json.h:128
+msgid "CPU_BOOST_ON_BAT__ID_TITLE"
+msgstr "CPU_BOOST_ON_BAT"
+
+#: configschema.json.h:129
+msgid "SCHED_POWERSAVE__GROUP_TITLE"
+msgstr "SCHED_POWERSAVE"
+
+#: configschema.json.h:130
+msgid "SCHED_POWERSAVE__GROUP_DESCRIPTION"
+msgstr "在轻负载条件下，尽量减少使用的 CPU 核心/超线程数"
+
+#: configschema.json.h:131
+msgid "SCHED_POWERSAVE_ON_AC__ID_TITLE"
+msgstr "SCHED_POWERSAVE_ON_AC"
+
+#: configschema.json.h:132
+msgid "SCHED_POWERSAVE_ON_BAT__ID_TITLE"
+msgstr "SCHED_POWERSAVE_ON_BAT"
+
+#: configschema.json.h:133
+msgid "NMI_WATCHDOG__ID_TITLE"
+msgstr "NMI_WATCHDOG"
+
+#: configschema.json.h:134
+msgid "NMI_WATCHDOG__ID_DESCRIPTION"
+msgstr ""
+"内核 NMI 看门狗\n"
+"off: 节约电量，on: 仅适用于内核调试"
+
+#: configschema.json.h:135
+msgid "PHC_CONTROLS__ID_TITLE"
+msgstr "PHC_CONTROLS"
+
+#: configschema.json.h:136
+msgid "PHC_CONTROLS__ID_DESCRIPTION"
+msgstr ""
+"更改 CPU 电压（也称为“欠电压”）\n"
+"需要带有 PHC 补丁的内核\n"
+"频率电压比配对子已写在了 /sys/devices/system/cpu/cpu0/cpufreq/"
+"phc_controls 文件中\n"
+"注意：仅当完全了解自己在做什么时，才可以使用此选项！"
+
+#: configschema.json.h:137
+msgid "ENERGY_PERF_POLICY__GROUP_TITLE"
+msgstr "ENERGY_PERF_POLICY"
+
+#: configschema.json.h:138
+msgid "ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
+msgstr ""
+"设置 CPU 性能与节能策略。\n"
+"需要 linux-tools 中的 msr 和 x86_energy_perf_policy 内核模块"
+
+#: configschema.json.h:139
+msgid "ENERGY_PERF_POLICY_ON_AC__ID_TITLE"
+msgstr "ENERGY_PERF_POLICY_ON_AC"
+
+#: configschema.json.h:140
+msgid "ENERGY_PERF_POLICY_ON_BAT__ID_TITLE"
+msgstr "ENERGY_PERF_POLICY_ON_BAT"
+
+#: configschema.json.h:141
+msgid "Radio__CATEGORY_TITLE"
+msgstr "无线电"
+
+#: configschema.json.h:142
+msgid "RESTORE_DEVICE_STATE_ON_STARTUP__ID_TITLE"
+msgstr "RESTORE_DEVICE_STATE_ON_STARTUP"
+
+#: configschema.json.h:143
+msgid "RESTORE_DEVICE_STATE_ON_STARTUP__ID_DESCRIPTION"
+msgstr ""
+"在系统启动时恢复从上次关机时无线电设备的状态（蓝牙，WiFi，"
+"WWAN）。\n"
+"提示：启用此选项后，以下参数 DEVICES_TO_DISABLE / "
+"ENABLE_ON_STARTUP / SHUTDOWN 将被忽略！"
+
+#: configschema.json.h:144
+msgid "DEVICES_TO_DISABLE_ON_STARTUP__ID_TITLE"
+msgstr "DEVICES_TO_DISABLE_ON_STARTUP"
+
+#: configschema.json.h:145
+msgid "DEVICES_TO_DISABLE_ON_STARTUP__ID_DESCRIPTION"
+msgstr "系统启动时要禁用的无线电设备：bluetooth wifi wwan"
+
+#: configschema.json.h:146
+msgid "DEVICES_TO_ENABLE_ON_STARTUP__ID_TITLE"
+msgstr "DEVICES_TO_ENABLE_ON_STARTUP"
+
+#: configschema.json.h:147
+msgid "DEVICES_TO_ENABLE_ON_STARTUP__ID_DESCRIPTION"
+msgstr "系统启动时要启用的无线电设备：bluetooth wifi wwan"
+
+#: configschema.json.h:148
+msgid "DEVICES_TO_DISABLE_ON_SHUTDOWN__ID_TITLE"
+msgstr "DEVICES_TO_DISABLE_ON_SHUTDOWN"
+
+#: configschema.json.h:149
+msgid "DEVICES_TO_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
+msgstr ""
+"系统关机时要禁用的无线电设备：bluetooth wifi wwan\n"
+"（针对一些设备阻止关机的解决方法）"
+
+#: configschema.json.h:150
+msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN__ID_TITLE"
+msgstr "DEVICES_TO_ENABLE_ON_SHUTDOWN"
+
+#: configschema.json.h:151
+msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN__ID_DESCRIPTION"
+msgstr ""
+"关机时要启用的无线电设备：bluetooth wifi wwan\n"
+"（防止其他操作系统找不到无线电设备）"
+
+#: configschema.json.h:152
+msgid "DEVICES_TO_ENABLE_ON_AC__ID_TITLE"
+msgstr "DEVICES_TO_ENABLE_ON_AC"
+
+#: configschema.json.h:153
+msgid "DEVICES_TO_ENABLE_ON_AC__ID_DESCRIPTION"
+msgstr "交流供电下，要启用的无线电设备：bluetooth, wifi, wwan"
+
+#: configschema.json.h:154
+msgid "DEVICES_TO_DISABLE_ON_BAT__ID_TITLE"
+msgstr "DEVICES_TO_DISABLE_ON_BAT"
+
+#: configschema.json.h:155
+msgid "DEVICES_TO_DISABLE_ON_BAT__ID_DESCRIPTION"
+msgstr "电池供电下要禁用的无线电设备：bluetooth, wifi, wwan"
+
+#: configschema.json.h:156
+msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE__ID_TITLE"
+msgstr "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE"
+
+#: configschema.json.h:157
+msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE__ID_DESCRIPTION"
+msgstr ""
+"电池供电下，当不在使用时（未连接状态），要禁用的无线电设备：\n"
+"bluetooth, wifi, wwan"
+
+#: configschema.json.h:158
+msgid "Radio Device Wizard__CATEGORY_TITLE"
+msgstr "无线电设备向导"
+
+#: configschema.json.h:159
+msgid "DEVICES_TO_DISABLE_ON_CONNECT__GROUP_TITLE"
+msgstr "DEVICES_TO_DISABLE_ON_CONNECT"
+
+#: configschema.json.h:160
+msgid "DEVICES_TO_DISABLE_ON_CONNECT__GROUP_DESCRIPTION"
+msgstr "连接时要禁用的无线电设备"
+
+#: configschema.json.h:161
+msgid "DEVICES_TO_DISABLE_ON_LAN_CONNECT__ID_TITLE"
+msgstr "DEVICES_TO_DISABLE_ON_LAN_CONNECT"
+
+#: configschema.json.h:162
+msgid "DEVICES_TO_DISABLE_ON_WIFI_CONNECT__ID_TITLE"
+msgstr "DEVICES_TO_DISABLE_ON_WIFI_CONNECT"
+
+#: configschema.json.h:163
+msgid "DEVICES_TO_DISABLE_ON_WWAN_CONNECT__ID_TITLE"
+msgstr "DEVICES_TO_DISABLE_ON_WWAN_CONNECT"
+
+#: configschema.json.h:164
+msgid "DEVICES_TO_ENABLE_ON_DISCONNECT__GROUP_TITLE"
+msgstr "DEVICES_TO_ENABLE_ON_DISCONNECT"
+
+#: configschema.json.h:165
+msgid "DEVICES_TO_ENABLE_ON_DISCONNECT__GROUP_DESCRIPTION"
+msgstr "在断开连接时启用的无线电设备"
+
+#: configschema.json.h:166
+msgid "DEVICES_TO_ENABLE_ON_LAN_DISCONNECT__ID_TITLE"
+msgstr "DEVICES_TO_ENABLE_ON_LAN_DISCONNECT"
+
+#: configschema.json.h:167
+msgid "DEVICES_TO_ENABLE_ON_WIFI_DISCONNECT__ID_TITLE"
+msgstr "DEVICES_TO_ENABLE_ON_WIFI_DISCONNECT"
+
+#: configschema.json.h:168
+msgid "DEVICES_TO_ENABLE_ON_WWAN_DISCONNECT__ID_TITLE"
+msgstr "DEVICES_TO_ENABLE_ON_WWAN_DISCONNECT"
+
+#: configschema.json.h:169
+msgid "DEVICES_ON_DOCK__GROUP_TITLE"
+msgstr "DEVICES_ON_DOCK"
+
+#: configschema.json.h:170
+msgid "DEVICES_ON_DOCK__GROUP_DESCRIPTION"
+msgstr "伫停时要启用/禁用的无线电设备"
+
+#: configschema.json.h:171
+msgid "DEVICES_TO_ENABLE_ON_DOCK__ID_TITLE"
+msgstr "DEVICES_TO_ENABLE_ON_DOCK"
+
+#: configschema.json.h:172
+msgid "DEVICES_TO_DISABLE_ON_DOCK__ID_TITLE"
+msgstr "DEVICES_TO_DISABLE_ON_DOCK"
+
+#: configschema.json.h:173
+msgid "DEVICES_ON_UNDOCK__GROUP_TITLE"
+msgstr "DEVICES_ON_UNDOCK"
+
+#: configschema.json.h:174
+msgid "DEVICES_ON_UNDOCK__GROUP_DESCRIPTION"
+msgstr "取消伫停时要启用/禁用的无线电设备"
+
+#: configschema.json.h:175
+msgid "DEVICES_TO_ENABLE_ON_UNDOCK__ID_TITLE"
+msgstr "DEVICES_TO_ENABLE_ON_UNDOCK"
+
+#: configschema.json.h:176
+msgid "DEVICES_TO_DISABLE_ON_UNDOCK__ID_TITLE"
+msgstr "DEVICES_TO_DISABLE_ON_UNDOCK"
+
+#: configschema.json.h:177
+msgid "USB__CATEGORY_TITLE"
+msgstr "USB"
+
+#: configschema.json.h:178
+msgid "USB_AUTOSUSPEND__ID_TITLE"
+msgstr "USB_AUTOSUSPEND"
+
+#: configschema.json.h:179
+msgid "USB_AUTOSUSPEND__ID_DESCRIPTION"
+msgstr "USB 自动挂起功能。"
+
+#: configschema.json.h:180
+msgid "USB_BLACKLIST__ID_TITLE"
+msgstr "USB_BLACKLIST"
+
+#: configschema.json.h:181
+msgid "USB_BLACKLIST__ID_DESCRIPTION"
+msgstr ""
+"以下列表中的设备将不包括在自动挂起名单中\n"
+"（用空格分隔）。请使用 lsusb 获取设备 ID。\n"
+"注意：输入设备（usbhid）会被自动排除。"
+
+#: configschema.json.h:182
+msgid "USB_BLACKLIST_BTUSB__ID_TITLE"
+msgstr "USB_BLACKLIST_BTUSB"
+
+#: configschema.json.h:183
+msgid "USB_BLACKLIST_BTUSB__ID_DESCRIPTION"
+msgstr "要排除在 USB 自动挂起名单之外的蓝牙设备"
+
+#: configschema.json.h:184
+msgid "USB_BLACKLIST_PHONE__ID_TITLE"
+msgstr "USB_BLACKLIST_PHONE"
+
+#: configschema.json.h:185
+msgid "USB_BLACKLIST_PHONE__ID_DESCRIPTION"
+msgstr "要排除在 USB 自动挂起名单之外的电话设备"
+
+#: configschema.json.h:186
+msgid "USB_BLACKLIST_PRINTER__ID_TITLE"
+msgstr "USB_BLACKLIST_PRINTER"
+
+#: configschema.json.h:187
+msgid "USB_BLACKLIST_PRINTER__ID_DESCRIPTION"
+msgstr "要排除在 USB 自动挂起名单之外的打印机"
+
+#: configschema.json.h:188
+msgid "USB_BLACKLIST_WWAN__ID_TITLE"
+msgstr "USB_BLACKLIST_WWAN"
+
+#: configschema.json.h:189
+msgid "USB_BLACKLIST_WWAN__ID_DESCRIPTION"
+msgstr ""
+"要排除在自动挂起名单之外的 WWAN 设备。\n"
+"注意：仅适用于 ID 在 05c6:* 0bdb:* 1199:* 范围的设备。"
+
+#: configschema.json.h:190
+msgid "USB_WHITELIST__ID_TITLE"
+msgstr "USB_WHITELIST"
+
+#: configschema.json.h:191
+msgid "USB_WHITELIST__ID_DESCRIPTION"
+msgstr ""
+"将列出的设备包括在自动挂起名单中，\n"
+"即使驱动程序或上面的 WWAN 黑名单已将其排除/列出（用空格分"
+"隔）。\n"
+"请使用 lsusb 获取设备 ID。"
+
+#: configschema.json.h:192
+msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_TITLE"
+msgstr "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN"
+
+#: configschema.json.h:193
+msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
+msgstr ""
+"设置为在关机前禁用自动挂起或者不执行任何操作\n"
+"（USB 设备导致出现关机问题的的解决方法）"
+
+#: configschema.json.h:194
+msgid "ThinkPad Battery__CATEGORY_TITLE"
+msgstr "ThinkPad 电池"
+
+#: configschema.json.h:195
+msgid "CHARGE_THRESH_BAT0__GROUP_TITLE"
+msgstr "CHARGE_THRESH_BAT0"
+
+#: configschema.json.h:196
+msgid "CHARGE_THRESH_BAT0__GROUP_DESCRIPTION"
+msgstr ""
+"电池充电阈值（仅适用于 ThinkPad，需要 tp-smapi 或 acpi-call 内核"
+"模块）\n"
+"当剩余电量低于 START_CHARGE_TRESH 值时开始充电，\n"
+"高于 STOP_CHARGE_TRESH 值时停止充电。\n"
+"主 / 内置电池（以 % 表示的值）"
+
+#: configschema.json.h:197
+msgid "START_CHARGE_THRESH_BAT0__ID_TITLE"
+msgstr "START_CHARGE_THRESH_BAT0"
+
+#: configschema.json.h:198
+msgid "STOP_CHARGE_THRESH_BAT0__ID_TITLE"
+msgstr "STOP_CHARGE_THRESH_BAT0"
+
+#: configschema.json.h:199
+msgid "CHARGE_THRESH_BAT1__GROUP_TITLE"
+msgstr "CHARGE_THRESH_BAT1"
+
+#: configschema.json.h:200
+msgid "CHARGE_THRESH_BAT1__GROUP_DESCRIPTION"
+msgstr "Ultrabay / Slice / 可更换电池（以 % 表示的值）"
+
+#: configschema.json.h:201
+msgid "START_CHARGE_THRESH_BAT1__ID_TITLE"
+msgstr "START_CHARGE_THRESH_BAT1"
+
+#: configschema.json.h:202
+msgid "STOP_CHARGE_THRESH_BAT1__ID_TITLE"
+msgstr "STOP_CHARGE_THRESH_BAT1"
+
+#: configschema.json.h:203
+msgid "RESTORE_THRESHOLDS_ON_BAT__ID_TITLE"
+msgstr "RESTORE_THRESHOLDS_ON_BAT"
+
+#: configschema.json.h:204
+msgid "RESTORE_THRESHOLDS_ON_BAT__ID_DESCRIPTION"
+msgstr "拔下交流电后恢复充电阈值"
+
+#: configschema.json.h:205
+msgid "NATACPI_ENABLE__ID_TITLE"
+msgstr "NATACPI_ENABLE"
+
+#: configschema.json.h:206
+msgid "NATACPI_ENABLE__ID_DESCRIPTION"
+msgstr "电池功能驱动程序：0=禁用, 1=启用"
+
+#: configschema.json.h:207
+msgid "TPACPI_ENABLE__ID_TITLE"
+msgstr "TPACPI_ENABLE"
+
+#: configschema.json.h:208
+msgid "TPACPI_ENABLE__ID_DESCRIPTION"
+msgstr "电池功能驱动程序：0=禁用, 1=启用"
+
+#: configschema.json.h:209
+msgid "TPSMAPI_ENABLE__ID_TITLE"
+msgstr "TPSMAPI_ENABLE"
+
+#: configschema.json.h:210
+msgid "TPSMAPI_ENABLE__ID_DESCRIPTION"
+msgstr "电池功能驱动程序：0=禁用, 1=启用"

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=TLP UI
+Exec=tlpui
+Type=Application
+Categories=Utility;Settings;HardwareSettings;GTK;
+Icon=/usr/lib/python3/dist-packages/tlpui/icons/OnAC
