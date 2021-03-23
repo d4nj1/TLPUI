@@ -1,0 +1,32 @@
+#configNotebook header {
+    background-color: @theme_focused_bg_color;
+}
+
+#configNotebook tab {
+    border-radius: 0px;
+    background-color: @theme_focused_bg_color;
+}
+
+#configNotebook tab:checked {
+    color: @theme_fg_color;
+    background-color: @theme_bg_color;
+}
+
+#categoryViewport {
+    color: @theme_fg_color;
+    background-color: @theme_bg_color;
+}
+
+#validEntry {
+    color: white;
+    background: green;
+}
+
+#invalidEntry {
+    color: white;
+    background: red;
+}
+
+#missingConfigLabel {
+    background: lightyellow;
+}

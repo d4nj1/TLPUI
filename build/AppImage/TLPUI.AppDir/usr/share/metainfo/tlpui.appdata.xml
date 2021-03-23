@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+	<id>tlpui</id>
+	<metadata_license>CC0-1.0</metadata_license>
+	<project_license>GPL-2.0+</project_license>
+	<name>TLPUI</name>
+	<summary>GTK-UI to change TLP configuration files easily.</summary>
+	<description>
+		<p>The Python scripts in this project generate a GTK-UI to change TLP configuration files easily. It has the aim to protect users from setting bad configuration and to deliver a basic overview of all the valid configuration values.</p>
+	</description>
+	<launchable type="desktop-id">tlpui.desktop</launchable>
+	<url type="homepage">https://github.com/d4nj1/TLPUI</url>
+	<screenshots>
+		<screenshot type="default">
+			<image>https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshot.png</image>
+		</screenshot>
+	</screenshots>
+	<provides>
+		<id>tlpui.desktop</id>
+	</provides>
+</component>
