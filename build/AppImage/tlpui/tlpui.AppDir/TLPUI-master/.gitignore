@@ -1,5 +1,0 @@
-__pycache__
-.idea
-.tox
-test/settings
-tlpui/lang/configschema*.json.h
