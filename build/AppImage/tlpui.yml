@@ -1,33 +1,37 @@
 app: tlpui
 ingredients:
-  dist: xenial
+  dist: groovy
   sources:
-    - deb http://us.archive.ubuntu.com/ubuntu/ xenial xenial-updates xenial-security main universe
-    - deb http://us.archive.ubuntu.com/ubuntu/ xenial-updates main universe
-    - deb http://us.archive.ubuntu.com/ubuntu/ xenial-security main universe
+    - deb http://us.archive.ubuntu.com/ubuntu/ groovy groovy-updates groovy-security main universe
+    - deb http://us.archive.ubuntu.com/ubuntu/ groovy-updates main universe
+    - deb http://us.archive.ubuntu.com/ubuntu/ groovy-security main universe
   packages:
-    - python3.4-venv
-  script:
-    - wget -c https://raw.githubusercontent.com/blipk/TLPUI/master/build/AppImage/OnAC.svg
+    - python3-venv
+    - python3-gi
+  exclude:
+    - libssl
 script:
-  - wget -c https://codeload.github.com/d4nj1/TLPUI/zip/refs/heads/master && unzip master
-  - ls
-  - ls TLPUI-master
-  - cp TLPUI-master/tlpui/icons/OnAC.svg ./usr/share/icons/hicolor/256x256/
+  - wget -c https://codeload.github.com/blipk/TLPUI/zip/refs/heads/master && unzip master
+  - mkdir -p ./usr/share/icons/hicolor/scalable/apps/
   - cp TLPUI-master/tlpui/icons/OnAC.svg .
+  - cp TLPUI-master/tlpui/icons/OnAC.svg ./usr/share/icons/hicolor/scalable/apps/
   - mkdir -p usr/share/metainfo/ ; cp TLPUI-master/build/AppImage/tlpui.appdata.xml usr/share/metainfo/
   - virtualenv --python=python3 usr
-  - ./usr/bin/pip3 install -e TLPUI
-  - cat > usr/share/applications/tlpui.desktop <<\EOF
+  - cat > usr/bin/tlpui <<\EOF
+  - cd ../TLPUI-master && python3.8 -m tlpui
+  - EOF
+  - chmod +x usr/bin/tlpui
+  - mkdir -p usr/share/applications
+  - cat > tlpui.desktop <<\EOF
   - [Desktop Entry]
   - Type=Application
   - Name=TLP UI
   - Comment=Tlp UI with gtk
-  - Icon=OnAc
-  - Exec=python3 -m tlpui
+  - Icon=OnAC
+  - Exec=tlpui
   - Terminal=false
   - Categories=Utility;Settings;HardwareSettings;GTK;
   - Keywords=Python;tlp;
   - StartupWMClass=tlpui
   - EOF
-  - cp usr/share/applications/tlpui.desktop .
+  - cp tlpui.desktop usr/share/applications/

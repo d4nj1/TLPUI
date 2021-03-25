@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-HERE="$(dirname "$(readlink -f "${0}")")"
-echo $HERE
-cd "$HERE/usr/lib/python3/dist-packages/tlpui/"
-python3 -m tlpui
