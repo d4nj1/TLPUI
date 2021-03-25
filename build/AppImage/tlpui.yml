@@ -1,0 +1,33 @@
+app: tlpui
+ingredients:
+  dist: xenial
+  sources:
+    - deb http://us.archive.ubuntu.com/ubuntu/ xenial xenial-updates xenial-security main universe
+    - deb http://us.archive.ubuntu.com/ubuntu/ xenial-updates main universe
+    - deb http://us.archive.ubuntu.com/ubuntu/ xenial-security main universe
+  packages:
+    - python3.4-venv
+  script:
+    - wget -c https://raw.githubusercontent.com/blipk/TLPUI/master/build/AppImage/OnAC.svg
+script:
+  - wget -c https://codeload.github.com/d4nj1/TLPUI/zip/refs/heads/master && unzip master
+  - ls
+  - ls TLPUI-master
+  - cp TLPUI-master/tlpui/icons/OnAC.svg ./usr/share/icons/hicolor/256x256/
+  - cp TLPUI-master/tlpui/icons/OnAC.svg .
+  - mkdir -p usr/share/metainfo/ ; cp TLPUI-master/build/AppImage/tlpui.appdata.xml usr/share/metainfo/
+  - virtualenv --python=python3 usr
+  - ./usr/bin/pip3 install -e TLPUI
+  - cat > usr/share/applications/tlpui.desktop <<\EOF
+  - [Desktop Entry]
+  - Type=Application
+  - Name=TLP UI
+  - Comment=Tlp UI with gtk
+  - Icon=OnAc
+  - Exec=python3 -m tlpui
+  - Terminal=false
+  - Categories=Utility;Settings;HardwareSettings;GTK;
+  - Keywords=Python;tlp;
+  - StartupWMClass=tlpui
+  - EOF
+  - cp usr/share/applications/tlpui.desktop .

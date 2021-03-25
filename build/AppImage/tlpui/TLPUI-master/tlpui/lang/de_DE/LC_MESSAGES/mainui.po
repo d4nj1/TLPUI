@@ -1,0 +1,61 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TLPUI\n"
+"POT-Creation-Date: 2020-12-23 19:37+0100\n"
+"PO-Revision-Date: 2020-12-23 19:37+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: MT_\n"
+"X-Poedit-SearchPath-0: mainui.py\n"
+
+#: mainui.py:68
+msgid "Review settings"
+msgstr "Überprüfe Einstellungen"
+
+#: mainui.py:69
+msgid "Save these changes?"
+msgstr "Änderungen speichern?"
+
+#: mainui.py:100
+msgid "Unsaved settings"
+msgstr "Nicht gespeicherte Einstellungen"
+
+#: mainui.py:101
+msgid "Do you really want to quit? No changes will be saved."
+msgstr "Wollen Sie das Programm wirklich beenden? Änderungen werden nicht gesichert."
+
+#: mainui.py:186
+msgid "Reload"
+msgstr "Neu laden"
+
+#: mainui.py:189 mainui.py:205
+msgid "Save"
+msgstr "Speichern"
+
+#: mainui.py:203
+msgid "File"
+msgstr "Datei"
+
+#: mainui.py:208
+msgid "Quit"
+msgstr "Beenden"
+
+#: mainui.py:212
+msgid "Language"
+msgstr "Sprache"
+
+#: mainui.py:263
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#: mainui.py:266
+msgid "Statistics"
+msgstr "Statistiken"

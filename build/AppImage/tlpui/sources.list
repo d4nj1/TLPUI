@@ -1,0 +1,5 @@
+deb http://us.archive.ubuntu.com/ubuntu/ xenial xenial-updates xenial-security main universe
+deb http://us.archive.ubuntu.com/ubuntu/ xenial-updates main universe
+deb http://us.archive.ubuntu.com/ubuntu/ xenial-security main universe
+deb http://ppa.launchpad.net/djcj/libcurl-slim/ubuntu xenial main
+deb file:/home/kronosol/dev/tlp/TLPUI/build/AppImage/tlpui ./

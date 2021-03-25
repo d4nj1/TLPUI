@@ -1,0 +1,62 @@
+# micrococo, 2018.
+msgid ""
+msgstr ""
+"Project-Id-Version: TLPUI\n"
+"POT-Creation-Date: 2020-12-23 19:40+0100\n"
+"PO-Revision-Date: 2020-12-23 19:40+0100\n"
+"Last-Translator: micrococo\n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: MT_\n"
+"X-Poedit-SearchPath-0: mainui.py\n"
+
+#: mainui.py:68
+msgid "Review settings"
+msgstr "Ver la configuración"
+
+#: mainui.py:69
+msgid "Save these changes?"
+msgstr "¿Quiere guardar los cambios?"
+
+#: mainui.py:100
+msgid "Unsaved settings"
+msgstr "Ajustes sin guardar"
+
+#: mainui.py:101
+msgid "Do you really want to quit? No changes will be saved."
+msgstr "¿Seguro que quiere salir? No se guardará ningún cambio."
+
+#: mainui.py:186
+msgid "Reload"
+msgstr "Recargar"
+
+#: mainui.py:189 mainui.py:205
+msgid "Save"
+msgstr "Guardar"
+
+#: mainui.py:203
+msgid "File"
+msgstr "Archivo"
+
+#: mainui.py:208
+msgid "Quit"
+msgstr "Salir"
+
+#: mainui.py:212
+msgid "Language"
+msgstr "Idioma"
+
+#: mainui.py:263
+msgid "Configuration"
+msgstr "Configuración"
+
+#: mainui.py:266
+msgid "Statistics"
+msgstr "Estadísticas"
