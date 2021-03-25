@@ -8,17 +8,18 @@ ingredients:
   packages:
     - python3-venv
     - python3-gi
-  exclude:
-    - libssl
 script:
   - wget -c https://codeload.github.com/blipk/TLPUI/zip/refs/heads/master && unzip master
-  - mkdir -p ./usr/share/icons/hicolor/scalable/apps/
-  - cp TLPUI-master/tlpui/icons/OnAC.svg .
-  - cp TLPUI-master/tlpui/icons/OnAC.svg ./usr/share/icons/hicolor/scalable/apps/
+  - rm master
+  - mv TLPUI-master/tlpui .
   - mkdir -p usr/share/metainfo/ ; cp TLPUI-master/build/AppImage/tlpui.appdata.xml usr/share/metainfo/
+  - rm -rf TLPUI-master
+  - mkdir -p ./usr/share/icons/hicolor/scalable/apps/
+  - cp tlpui/icons/OnAC.svg .
+  - cp tlpui/icons/OnAC.svg ./usr/share/icons/hicolor/scalable/apps/
   - virtualenv --python=python3 usr
   - cat > usr/bin/tlpui <<\EOF
-  - cd ../TLPUI-master && python3.8 -m tlpui
+  - cd ../ && python3.8 -m tlpui
   - EOF
   - chmod +x usr/bin/tlpui
   - mkdir -p usr/share/applications
