@@ -2,9 +2,9 @@ app: tlpui
 ingredients:
   dist: groovy
   sources:
-    - deb http://us.archive.ubuntu.com/ubuntu/ groovy groovy-updates groovy-security main universe
-    - deb http://us.archive.ubuntu.com/ubuntu/ groovy-updates main universe
-    - deb http://us.archive.ubuntu.com/ubuntu/ groovy-security main universe
+    - deb http://archive.ubuntu.com/ubuntu/ groovy main universe
+    - deb http://archive.ubuntu.com/ubuntu/ groovy-updates main universe
+    - deb http://archive.ubuntu.com/ubuntu/ groovy-security main universe
   packages:
     - python3-venv
     - python3-gi
@@ -18,7 +18,7 @@ script:
   - cp tlpui/icons/OnAC.svg .
   - cp OnAC.svg ./usr/share/icons/hicolor/scalable/apps/
   - cat > usr/bin/tlpui <<\EOF
-  - cd ../ && python3.8 -m tlpui
+  - cd ../ && python3 -m tlpui
   - EOF
   - chmod +x usr/bin/tlpui
   - mkdir -p usr/share/applications
