@@ -160,6 +160,7 @@ def create_menu_box(window) -> Gtk.Box:
                 <menuitem name="es_ES" action='es_ES' />
                 <menuitem name="pt_BR" action='pt_BR' />
                 <menuitem name="ru_RU" action='ru_RU' />
+                <menuitem name="tr_TR" action='tr_TR' />
                 <menuitem name="id_ID" action='id_ID' />
                 <menu name="zh_CN" action='zhSubMenu'>
                     <menuitem name="zh_CN" action='zh_CN' />
@@ -187,6 +188,7 @@ def create_menu_box(window) -> Gtk.Box:
     repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/es_ES"))
     repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/pt_BR"))
     repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/ru_RU"))
+    repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/tr_TR"))
     repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/id_ID"))
     repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/zh_CN"))
 
@@ -277,6 +279,7 @@ def show_about_dialog(self):
     aboutdialog.set_website("https://github.com/d4nj1/TLPUI")
     aboutdialog.set_website_label("TLPUI on GitHub")
     aboutdialog.set_authors(["Daniel Christophis"])
+    aboutdialog.set_translator_credits("Muhammet Emin AKALAN (05akalan57@gmail.com)")
     aboutdialog.set_license_type(Gtk.License.GPL_2_0)
     aboutdialog.set_logo(GdkPixbuf.Pixbuf.new_from_file_at_size(f"{settings.icondir}tlpui.svg", width=128, height=128))
     aboutdialog.connect('response', lambda dialog, fata: dialog.destroy())

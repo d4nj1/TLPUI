@@ -1,0 +1,64 @@
+#
+# Muhammet Emin AKALAN <05akalan57@gmail.com>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TLPUI\n"
+"POT-Creation-Date: 2020-12-23 18:33+0100\n"
+"PO-Revision-Date: 2021-05-06 02:31+0300\n"
+"Last-Translator: Muhammet Emin AKALAN <05akalan57@gmail.com>\n"
+"Language-Team: Turkish <05akalan57@gmail.com>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Gtranslator 40.0\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: MT_\n"
+"X-Poedit-SearchPath-0: mainui.py\n"
+
+#: mainui.py:68
+msgid "Review settings"
+msgstr "Ayarları inceleyin"
+
+#: mainui.py:69
+msgid "Save these changes?"
+msgstr "Bu değişiklikler kaydedilsin mi?"
+
+#: mainui.py:100
+msgid "Unsaved settings"
+msgstr "Kaydedilmemiş ayarlar"
+
+#: mainui.py:101
+msgid "Do you really want to quit? No changes will be saved."
+msgstr "Gerçekten çıkmak istiyor musun? Hiçbir değişiklik kaydedilmeyecek."
+
+#: mainui.py:186
+msgid "Reload"
+msgstr "Yenile"
+
+#: mainui.py:189 mainui.py:205
+msgid "Save"
+msgstr "Kaydet"
+
+#: mainui.py:203
+msgid "File"
+msgstr "Dosya"
+
+#: mainui.py:208
+msgid "Quit"
+msgstr "Çıkış"
+
+#: mainui.py:212
+msgid "Language"
+msgstr "Dil"
+
+#: mainui.py:263
+msgid "Configuration"
+msgstr "Ayarlar"
+
+#: mainui.py:266
+msgid "Statistics"
+msgstr "İstatistik"
