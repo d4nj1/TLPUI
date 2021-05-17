@@ -79,6 +79,16 @@ class MyTestCase(unittest.TestCase):
         assert len(tlpconfig_defaults) == 99
         assert len(tlpconfig_defaults) == jsonconfigcount
 
+    def test_tlp_version_1_4(self):
+        version = "1_4"
+        tlpconfig_defaults = extract_default_tlp_configs(f'{tlpuipath}/defaults/tlp-{version}.conf')
+        jsoncategories = get_json_schema_object_from_file('categories', f'{tlpuipath}/configschema/{version}.json')
+        jsonconfigcount = get_config_count(jsoncategories)
+
+        assert len(jsoncategories) == 11
+        assert len(tlpconfig_defaults) == 107
+        assert len(tlpconfig_defaults) == jsonconfigcount
+
 
 if __name__ == '__main__':
     unittest.main()
