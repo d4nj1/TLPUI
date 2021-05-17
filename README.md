@@ -1,4 +1,4 @@
-TLPUI - 2021.03.14
+TLPUI - 2021.05.17
 
 The Python scripts in this project generate a GTK-UI to change TLP configuration files easily.
 It has the aim to protect users from setting bad configuration and to deliver a basic overview of all the valid configuration values.
@@ -9,7 +9,7 @@ Install and run instructions:
 
 Current status:
 
-* Supports TLP versions 0.8-1.3
+* Supports TLP versions 0.8-1.4
 * Configuration can be read and displayed
 * Shows information about configuration changes (defaults/unsaved and dropin/user config)
 * Changes can be saved with user and sudo permissions (e.g. /etc/default/tlp or /etc/tlp.conf)
