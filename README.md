@@ -9,7 +9,7 @@ Install and run instructions:
 
 Current status:
 
-* Supports TLP versions 0.8-1.4
+* Supports TLP versions 0.8-1.4(alpha)
 * Configuration can be read and displayed
 * Shows information about configuration changes (defaults/unsaved and dropin/user config)
 * Changes can be saved with user and sudo permissions (e.g. /etc/default/tlp or /etc/tlp.conf)
