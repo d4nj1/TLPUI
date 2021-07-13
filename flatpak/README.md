@@ -1,13 +1,15 @@
-Flatpak documentation
+## Flatpak documentation
 
-To build and install the Flatpak in user environment you can call:
+Until TLPUI flatpak will be released on https://flathub.org you have to build it yourself. Please follow the steps below:
 
-`flatpak-builder --force-clean --user --install build-dir com.github.d4nj1.tlpui.json`
+1. Make sure you have runtime and SDK installed like this:
 
-To run the Flatpak execute:
+  `flatpak install flathub org.gnome.Platform//3.38 org.gnome.Sdk//3.38`
 
-`flatpak run com.github.d4nj1.tlpui`
+2. To build and install the Flatpak in user environment you can call from inside the **flatpak** folder:
 
-To be done:
+  `flatpak-builder --force-clean --user --install build-dir com.github.d4nj1.tlpui.json`
 
-* Upload package to Flathub.org
+3. To run the Flatpak execute:
+
+  `flatpak run com.github.d4nj1.tlpui`
