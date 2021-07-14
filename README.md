@@ -1,9 +1,10 @@
-# TLP UI
 2021-07-14
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/d4nj1/TLPUI/master/tlpui/icons/themeable/hicolor/scalable/apps/tlpui.svg" alt="TLP UI" width="256">
 </p>
+
+# TLP UI
 
 The Python scripts in this project generate a GTK-UI to change [TLP](https://github.com/linrunner/TLP) configuration files easily.
 It has the aim to protect users from setting bad configuration and to deliver a basic overview of all the valid configuration values.
