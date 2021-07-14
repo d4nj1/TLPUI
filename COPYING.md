@@ -4,13 +4,16 @@ Author:
 
 Copyrights:
 
-    Copyright (c) 2015 Daniel Christophis
+    Copyright (c) 2021 Daniel Christophis
 
-    Descriptions were adapted from:
-    - TLP
-         Copyright (c) 2015 by Thomas Koch
+    Descriptions were adapted from
+    - TLP (https://github.com/linrunner/TLP)
+         Copyright (c) 2021 by Thomas Koch
 
 License:
 
     This software is licensed under the GPL v2 or later,
     see '/usr/share/common-licenses/GPL-2'
+
+    TLPUI logo icon is licensed under
+    https://creativecommons.org/licenses/by-sa/4.0/

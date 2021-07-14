@@ -1,13 +1,19 @@
-TLPUI - 2021.05.17
+#TLP UI
 
-The Python scripts in this project generate a GTK-UI to change TLP configuration files easily.
+<div style="text-align: center;">
+
+![TLP UI](./tlpui/icons/themeable/hicolor/256x256/apps/tlpui.png)
+
+</div>
+
+The Python scripts in this project generate a GTK-UI to change [TLP](https://github.com/linrunner/TLP) configuration files easily.
 It has the aim to protect users from setting bad configuration and to deliver a basic overview of all the valid configuration values.
 
-Install and run instructions:
+##Install and run instructions:
 * [Python 3](https://github.com/d4nj1/TLPUI/wiki/Install-instructions#python-3)
 * [Ubuntu/Debian family](https://github.com/d4nj1/TLPUI/wiki/Install-instructions#ubuntudebian-family)
 
-Current status:
+##Current status:
 
 * Supports TLP versions 0.8-1.4(alpha)
 * Configuration can be read and displayed
@@ -15,7 +21,7 @@ Current status:
 * Changes can be saved with user and sudo permissions (e.g. /etc/default/tlp or /etc/tlp.conf)
 * tlp-stat can be load in ui (simple and complete)
 
-To be done:
+##To be done:
 
 * Translation optimizations - [#79](https://github.com/d4nj1/TLPUI/issues/79)
 * PPA - [#88](https://github.com/d4nj1/TLPUI/issues/88)
@@ -23,4 +29,4 @@ To be done:
 * Implement package build pipeline - [#90](https://github.com/d4nj1/TLPUI/issues/90)
 
 
-![Screenshot 24.04.2020](https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshot.png)
+![Screenshot 2021.02.03](https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshot.png)

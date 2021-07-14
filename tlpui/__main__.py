@@ -33,7 +33,7 @@ def main() -> None:
     # init application window
     window = Gtk.Window()
     window.set_title('Tlp-UI')
-    window.set_icon_name(get_default_icon_name())
+    window.set_icon_name('tlpui')
     window.set_default_size(settings.userconfig.windowxsize, settings.userconfig.windowysize)
     window.add(create_main_box(window))
     window.connect('check-resize', store_window_size)
@@ -41,13 +41,6 @@ def main() -> None:
     window.connect('key-press-event', window_key_events)
     window.show_all()
     Gtk.main()
-
-
-def get_default_icon_name() -> str:
-    """Fetch default application icon name."""
-    if Gtk.IconTheme.get_default().has_icon('preferences-system-power-management'):
-        return 'preferences-system-power-management'
-    return 'preferences-system-power'
 
 
 if __name__ == '__main__':
