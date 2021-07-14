@@ -7,6 +7,8 @@
 The Python scripts in this project generate a GTK-UI to change [TLP](https://github.com/linrunner/TLP) configuration files easily.
 It has the aim to protect users from setting bad configuration and to deliver a basic overview of all the valid configuration values.
 
+![Screenshot 2021.02.03](https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshot.png)
+
 ## Install and run instructions
 
 * [Python 3](https://github.com/d4nj1/TLPUI/wiki/Install-instructions#python-3)
@@ -26,6 +28,3 @@ It has the aim to protect users from setting bad configuration and to deliver a 
 * PPA - [#88](https://github.com/d4nj1/TLPUI/issues/88)
 * Flatpak - [#89](https://github.com/d4nj1/TLPUI/issues/89)
 * Implement package build pipeline - [#90](https://github.com/d4nj1/TLPUI/issues/90)
-
-
-![Screenshot 2021.02.03](https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshot.png)
