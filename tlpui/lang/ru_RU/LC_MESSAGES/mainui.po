@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
 "POT-Creation-Date: 2020-12-23 19:48+0100\n"
-"PO-Revision-Date: 2020-12-23 19:48+0100\n"
+"PO-Revision-Date: 2021-09-27 22:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: Nitro138@mail.ru\n"
 "Language: ru_RU\n"
@@ -34,7 +34,7 @@ msgstr "Вы действительно хотите выйти? Никакие 
 
 #: mainui.py:186
 msgid "Reload"
-msgstr "Перезагрузить настройки"
+msgstr "Восстаносить настройки"
 
 #: mainui.py:189 mainui.py:205
 msgid "Save"
