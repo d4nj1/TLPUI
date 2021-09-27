@@ -17,6 +17,7 @@ setup(
         'icons/*.svg',
         'icons/flags/*.png',
         'icons/themeable/hicolor/scalable/actions/*.svg',
+        'icons/themeable/hicolor/scalable/apps/*.svg',
         'lang/*/LC_MESSAGES/*.mo'
     ]},
     entry_points={

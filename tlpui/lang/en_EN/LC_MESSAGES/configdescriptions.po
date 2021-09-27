@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
 "POT-Creation-Date: 2021-05-17 14:41+0200\n"
-"PO-Revision-Date: 2021-05-18 10:24+0200\n"
+"PO-Revision-Date: 2021-09-27 22:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -35,10 +35,10 @@ msgstr "TLP_WARN_LEVEL"
 #: configschema.json.h:5
 msgid "TLP_WARN_LEVEL__ID_DESCRIPTION"
 msgstr ""
-"Control warnings about invalid settings:\n"
+"Control how warnings about invalid settings are issued:\n"
 "0=disabled,\n"
-"1=background tasks (boot, resume, change of power source etc.) to syslog,\n"
-"2=command line to terminal (stderr),\n"
+"1=background tasks (boot, resume, change of power source) report to syslog,\n"
+"2=shell commands report to the terminal (stderr),\n"
 "3=combination of 1 and 2"
 
 #: configschema.json.h:6
@@ -154,8 +154,10 @@ msgstr "DISK_DEVICES_ID"
 #: configschema.json.h:29
 msgid "DISK_DEVICES__ID_DESCRIPTION"
 msgstr ""
-"Hard disk devices, separate multiple devices with spaces (default: sda).\n"
-"Devices can be specified by disk id too (lookup with: tlp diskid)"
+"Define disk devices on which the following DISK/AHCI_RUNTIME parameters "
+"act.\n"
+"Separate multiple devices with spaces.\n"
+"Devices can be specified by disk ID also (lookup with: tlp diskid)"
 
 #: configschema.json.h:30
 msgid "DISK_APM_LEVEL__GROUP_TITLE"
@@ -190,8 +192,9 @@ msgstr ""
 "- sata, ata, usb, ieee1394.\n"
 "Separate multiple classes with spaces.\n"
 "CAUTION: USB and IEEE1394 disks may fail to mount or data may get corrupted "
-"with APM enabled. Make sure you know what you're doing when removing 'usb' "
-"or 'ieee1394' from the denylist(!)"
+"with APM enabled.\n"
+"Be careful and make sure you have backups of all affected media before "
+"removing 'usb' or 'ieee1394' from the denylist(!)"
 
 #: configschema.json.h:36
 msgid "DISK_SPINDOWN_TIMEOUT__GROUP_TITLE"
@@ -273,11 +276,11 @@ msgstr "AHCI_RUNTIME_PM"
 #: configschema.json.h:51
 msgid "AHCI_RUNTIME_PM__GROUP_DESCRIPTION"
 msgstr ""
-"Runtime Power Management for NVMe/SATA/ATA/USB disks and SATA ports:\n"
+"Runtime Power Management for NVMe, SATA, ATA and USB disks as well as SATA "
+"ports:\n"
 "- on=disable, auto=enable.\n"
-"Notes:\n"
-"- Does not work on USB/IEEE1394 disks\n"
-"- SATA controllers are PCIe bus devices and handled by RUNTIME_PM"
+"Note: SATA controllers are PCIe bus devices and handled by RUNTIME_PM "
+"further down"
 
 #: configschema.json.h:52
 msgid "AHCI_RUNTIME_PM_ON_AC__ID_TITLE"
@@ -382,7 +385,7 @@ msgid "RADEON_POWER_PROFILE__GROUP_DESCRIPTION"
 msgstr ""
 "Graphics clock speed (profile method): low, mid, high, auto, default;\n"
 "auto = mid on BAT, high on AC.\n"
-"Note: radeon driver on legacy ATI hardware only"
+"Note: radeon driver on legacy ATI hardware only (where DPM is not available)"
 
 #: configschema.json.h:74
 msgid "RADEON_POWER_PROFILE_ON_AC__ID_TITLE"
@@ -417,7 +420,7 @@ msgstr "RADEON_DPM_PERF_LEVEL"
 #: configschema.json.h:81
 msgid "RADEON_DPM_PERF_LEVEL__GROUP_DESCRIPTION"
 msgstr ""
-"AMD Radeon GPU power management.\n"
+"AMD GPU power management.\n"
 "Performance level (DPM): auto, low, high; auto is recommended.\n"
 "Note: requires amdgpu or radeon driver"
 
@@ -439,7 +442,7 @@ msgstr "WIFI_PWR"
 
 #: configschema.json.h:86
 msgid "WIFI_PWR__GROUP_DESCRIPTION"
-msgstr "WiFi power saving mode. Not supported by all adapters"
+msgstr "Wi-Fi power saving mode"
 
 #: configschema.json.h:87
 msgid "WIFI_PWR_ON_AC__ID_TITLE"
@@ -468,7 +471,7 @@ msgstr "PCIE_ASPM"
 #: configschema.json.h:93
 msgid "PCIE_ASPM__GROUP_DESCRIPTION"
 msgstr ""
-"PCI Express Active State Power Management (PCIe ASPM):\n"
+"PCIe Active State Power Management (ASPM):\n"
 "- default(*), performance, powersave, powersupersave.\n"
 "(*) keeps BIOS ASPM defaults (recommended)"
 
@@ -486,7 +489,7 @@ msgstr "RUNTIME_PM"
 
 #: configschema.json.h:97
 msgid "RUNTIME_PM__GROUP_DESCRIPTION"
-msgstr "Runtime Power Management for PCI(e) bus devices"
+msgstr "Runtime Power Management for PCIe bus devices"
 
 #: configschema.json.h:98
 msgid "RUNTIME_PM_ON_AC__ID_TITLE"
@@ -511,7 +514,7 @@ msgstr "RUNTIME_PM_DENYLIST"
 #: configschema.json.h:103
 msgid "RUNTIME_PM_DENYLIST__ID_DESCRIPTION"
 msgstr ""
-"Exclude PCI(e) device adresses in the following list from Runtime PM.\n"
+"Exclude listed PCIe device adresses from Runtime PM.\n"
 "Note: this preserves the kernel driver default, to force a certain state\n"
 "- use RUNTIME_PM_ENABLE/DISABLE instead.\n"
 "Separate multiple addresses with spaces.\n"
@@ -524,7 +527,7 @@ msgstr "RUNTIME_PM_DRIVER_DENYLIST"
 #: configschema.json.h:105
 msgid "RUNTIME_PM_DRIVER_DENYLIST__ID_DESCRIPTION"
 msgstr ""
-"Exclude PCI(e) devices assigned to the listed drivers from Runtime PM.\n"
+"Exclude PCIe devices assigned to the listed drivers from Runtime PM.\n"
 "Note: this preserves the kernel driver default, to force a certain state\n"
 "- use RUNTIME_PM_ENABLE/DISABLE instead.\n"
 "Separate multiple drivers with spaces.\n"
@@ -537,10 +540,10 @@ msgstr "RUNTIME_PM_DEVICE"
 #: configschema.json.h:107
 msgid "RUNTIME_PM_DEVICE__GROUP_DESCRIPTION"
 msgstr ""
-"Permanently enable/disable Runtime PM for PCI(e) device addresses in the\n"
-"following lists (independent of the power source). This has priority over "
-"all\n"
-"preceding Runtime PM settings. Separate multiple addresses with spaces.\n"
+"Permanently enable/disable Runtime PM for listed PCIe device addresses "
+"(independent of the power source).\n"
+"This has priority over all preceding Runtime PM settings. Separate multiple "
+"addresses with spaces.\n"
 "Use lspci to get the adresses (1st column)"
 
 #: configschema.json.h:108
@@ -596,7 +599,8 @@ msgstr ""
 "Important:\n"
 "- Governors marked (*) above are power efficient for *almost all* workloads\n"
 "- and therefore kernel and most distributions have chosen them as defaults.\n"
-"- If you still want to change, you should know what you're doing(!)"
+"- You should have done your research about advantages/disadvantages *before* "
+"changing the governor"
 
 #: configschema.json.h:117
 msgid "CPU_SCALING_GOVERNOR_ON_AC__ID_TITLE"
@@ -721,7 +725,7 @@ msgid "CPU_BOOST__GROUP_DESCRIPTION"
 msgstr ""
 "Set the CPU \"turbo boost\" (Intel) or \"turbo core\" (AMD) feature:\n"
 "- 0=disable, 1=allow.\n"
-"Important: a value of 1 does *not* activate boosting, it just allows it"
+"Note: a value of 1 does *not* activate boosting, it just allows it"
 
 #: configschema.json.h:141
 msgid "CPU_BOOST_ON_AC__ID_TITLE"
@@ -845,8 +849,8 @@ msgid "RESTORE_DEVICE_STATE_ON_STARTUP__ID_DESCRIPTION"
 msgstr ""
 "Restore radio device state (Bluetooth, WiFi, WWAN) from previous shutdown on "
 "system startup.\n"
-"Hint: the parameters DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN below are "
-"ignored when this is enabled(!)"
+"Note: The parameters DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN are "
+"ignored when this is enabled"
 
 #: configschema.json.h:166
 msgid "DEVICES_TO_DISABLE_ON_STARTUP__ID_TITLE"
@@ -1007,7 +1011,8 @@ msgid "USB_DENYLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclude listed devices from USB autosuspend (separate with spaces).\n"
 "Use lsusb to get the ids.\n"
-"Note: input devices (usbhid) are excluded automatically"
+"Note: input devices (usbhid) and libsane-supported scanners are excluded "
+"automatically"
 
 #: configschema.json.h:204
 msgid "USB_EXCLUDE_AUDIO__ID_TITLE"
@@ -1016,7 +1021,7 @@ msgstr "USB_EXCLUDE_AUDIO"
 #: configschema.json.h:205
 msgid "USB_EXCLUDE_AUDIO__ID_DESCRIPTION"
 msgstr ""
-"Audio devices are excluded from USB autosuspend:\n"
+"Exclude audio devices from USB autosuspend:\n"
 "- 0=do not exclude, 1=exclude"
 
 #: configschema.json.h:206
@@ -1026,7 +1031,7 @@ msgstr "USB_EXCLUDE_BTUSB"
 #: configschema.json.h:207
 msgid "USB_EXCLUDE_BTUSB__ID_DESCRIPTION"
 msgstr ""
-"Bluetooth devices are excluded from USB autosuspend:\n"
+"Exclude bluetooth devices from USB autosuspend:\n"
 "- 0=do not exclude, 1=exclude"
 
 #: configschema.json.h:208
@@ -1036,7 +1041,7 @@ msgstr "USB_EXCLUDE_PHONE"
 #: configschema.json.h:209
 msgid "USB_EXCLUDE_PHONE__ID_DESCRIPTION"
 msgstr ""
-"Phone devices are excluded from USB autosuspend:\n"
+"Exclude phone devices from USB autosuspend:\n"
 "- 0=do not exclude, 1=exclude (enable charging)"
 
 #: configschema.json.h:210
@@ -1046,7 +1051,7 @@ msgstr "USB_EXCLUDE_PRINTER"
 #: configschema.json.h:211
 msgid "USB_EXCLUDE_PRINTER__ID_DESCRIPTION"
 msgstr ""
-"Printers are excluded from USB autosuspend:\n"
+"Exclude printers from USB autosuspend:\n"
 "- 0=do not exclude, 1=exclude"
 
 #: configschema.json.h:212
@@ -1056,7 +1061,7 @@ msgstr "USB_EXCLUDE_WWAN"
 #: configschema.json.h:213
 msgid "USB_EXCLUDE_WWAN__ID_DESCRIPTION"
 msgstr ""
-"WWAN devices are excluded from USB autosuspend:\n"
+"Exclude WWAN devices from USB autosuspend:\n"
 "- 0=do not exclude, 1=exclude"
 
 #: configschema.json.h:214
@@ -1146,10 +1151,10 @@ msgstr "CHARGE_THRESH_BAT0"
 #: configschema.json.h:232
 msgid "CHARGE_THRESH_BAT0__GROUP_DESCRIPTION"
 msgstr ""
-"Battery charge thresholds (wear control)\n"
-"Charging starts when the remaining capacity falls below the\n"
-"START_CHARGE_THRESH value and stops when exceeding the STOP_CHARGE_THRESH "
-"value.\n"
+"Battery Care -- Charge thresholds\n"
+"Charging starts when the charge level is below the START_CHARGE_THRESH value "
+"when the charger is connected. It stops when the STOP_CHARGE_THRESH value is "
+"reached.\n"
 "Required hardware: Lenovo ThinkPads and select other laptop brands are "
 "driven via specific plugins, the actual support status is shown by tlp-stat -"
 "b.\n"
@@ -1160,12 +1165,11 @@ msgstr ""
 "tlp-stat -b\n"
 "- Vendor specific parameter value ranges are shown by tlp-stat -b\n"
 "- If your hardware supports a start *and* a stop threshold, you must specify "
-"both, otherwise TLP will ignore them completely\n"
-"- To use the start threshold only, set STOP_CHARGE_THESH_BATx=100\n"
-"- To use the stop threshold only, set START_CHARGE_THESH_BATx=0\n"
+"both, otherwise TLP will refuse to apply the single threshold\n"
+"- If your hardware supports only a stop threshold, set the start value to 0\n"
 "\n"
 "BAT0: Primary / Main / Internal battery (values in %)\n"
-"Note: also use for batteries BATC and BATT"
+"Note: also use for batteries BATC, BATT and CMB0"
 
 #: configschema.json.h:233
 msgid "START_CHARGE_THRESH_BAT0__ID_TITLE"
@@ -1205,7 +1209,7 @@ msgstr "NATACPI_ENABLE"
 
 #: configschema.json.h:242
 msgid "NATACPI_ENABLE__ID_DESCRIPTION"
-msgstr "ThinkPad battery drivers: 0=disable, 1=enable"
+msgstr "Control battery care drivers: 0=disable, 1=enable"
 
 #: configschema.json.h:243
 msgid "TPACPI_ENABLE__ID_TITLE"
