@@ -89,7 +89,7 @@ def create_config_widget(configname: str, objecttype: str, objectvalues: str, wi
     return configwidget
 
 
-def get_state_image(configname: str):
+def init_state_image(configname: str):
     """Create and store state image."""
     image = Gtk.Image()
     defaultvalue = settings.tlpconfig_defaults[configname].get_value()
@@ -130,6 +130,7 @@ def create_item_box(configobjects: list, doc: str, grouptitle: str, window) -> G
 
     for configobject in configobjects:      # type: ConfigObject
         configname = configobject.name
+        stateimage = init_state_image(configname)
         tlpuiobject = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=18)
         tlpuiobject.set_margin_start(18)
         tlpuiobject.set_margin_end(18)
@@ -189,7 +190,7 @@ def create_item_box(configobjects: list, doc: str, grouptitle: str, window) -> G
 
         tlpuiobject.pack_start(statetogglebox, False, False, 0)
         tlpuiobject.pack_start(tlpconfigbox, False, False, 0)
-        tlpuiobject.pack_start(get_state_image(configname), False, False, 0)
+        tlpuiobject.pack_start(stateimage, False, False, 0)
         tlpuiobject.pack_end(get_type_image(configname), False, False, 0)
 
         configuibox.pack_start(tlpuiobject, True, True, 0)
