@@ -17,7 +17,7 @@ It has the aim to protect users from setting bad configuration and to deliver a 
 
 ## Current status
 
-* Supports TLP versions 0.8-1.4
+* Supports TLP versions 0.8-1.5(beta)
 * Configuration can be read and displayed
 * Shows information about configuration changes (defaults/unsaved and dropin/user config)
 * Changes can be saved with user and sudo permissions (e.g. /etc/default/tlp or /etc/tlp.conf)
