@@ -1,0 +1,68 @@
+name: Setup TLPUI
+
+on:
+  push:
+    branches: [ master ]
+    tags:
+     - '*'
+  pull_request:
+    branches: [ master ]
+
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        sudo apt install python3-gi git python3-setuptools python3-stdeb python-all dh-python
+    - name: Setup
+      run: |
+        python ./setup.py build
+    - name: Test
+      run: |
+        python -m unittest test/test_tlp_configs.py
+        python -m unittest test/test_tlp_settings.py
+
+  flatpak:
+    name: "Flatpak"
+    runs-on: ubuntu-latest
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:gnome-40
+      options: --privileged
+    steps:
+    - uses: actions/checkout@v3
+    - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
+      with:
+        bundle: com.github.d4nj1.tlpui
+        manifest-path: flatpak/com.github.d4nj1.tlpui.json
+        cache-key: flatpak-builder-${{ github.sha }}
+
+  deb:
+    permissions:
+      contents: write
+    name: "deb package"
+    runs-on: ubuntu-latest
+    container:  ubuntu
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install dependencies
+      run: |
+        apt-get -y update
+        apt-get -y install python3-gi git python3-setuptools python3-stdeb dh-python debhelper
+    - name: Setup
+      run: |
+        python3 setup.py --command-packages=stdeb.command bdist_deb
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: deb_dist/python3-tlpui_*all.deb
