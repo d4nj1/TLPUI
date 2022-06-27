@@ -25,26 +25,19 @@ def create_config_box(window) -> Gtk.Box:
     notebook.set_tab_pos(Gtk.PositionType.LEFT)
 
     tlp_categories = get_tlp_categories(window)
-    for name, categorydata in tlp_categories.items():
-        categorylabel = Gtk.Label(categorydata[0])
-        categorylabel.set_alignment(1, 0.5)
-        categorylabel.set_margin_top(6)
-        categorylabel.set_margin_bottom(6)
-        categorylabel.set_margin_left(6)
-        categorylabel.set_margin_right(6)
-
+    for name, category_data in tlp_categories.items():
         viewport = Gtk.Viewport()
         viewport.set_name('categoryViewport')
-        viewport.add(categorydata[1])
+        viewport.add(category_data[1])
 
         scroll = Gtk.ScrolledWindow()
         scroll.add(viewport)
 
-        categoryimage = get_theme_image('tlpui-{}-symbolic'.format(name), Gtk.IconSize.MENU)
+        category_image = get_theme_image(f'tlpui-{name.replace(" ", "-")}-symbolic', Gtk.IconSize.MENU)
 
         labelbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
-        labelbox.pack_start(categoryimage, False, False, 0)
-        labelbox.pack_start(categorylabel, True, True, 0)
+        labelbox.pack_start(category_image, False, False, 0)
+        labelbox.pack_start(category_data[0], True, True, 0)
         labelbox.show_all()
 
         notebook.append_page(scroll, labelbox)
@@ -218,6 +211,17 @@ def get_tlp_categories(window) -> OrderedDict:
 
     categories = get_json_schema_object('categories')
     for category in categories:
+        categoryname = category['name']
+
+        # Create category label
+        categorylabel = Gtk.Label(language.CDT_(f"{categoryname}__CATEGORY_TITLE"))
+        categorylabel.set_alignment(1, 0.5)
+        categorylabel.set_margin_top(6)
+        categorylabel.set_margin_bottom(6)
+        categorylabel.set_margin_left(6)
+        categorylabel.set_margin_right(6)
+
+        # Create category box
         categorybox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
 
         configs = category['configs']
@@ -242,8 +246,7 @@ def get_tlp_categories(window) -> OrderedDict:
             configbox.set_margin_top(12)
             categorybox.pack_start(configbox, False, False, 0)
 
-        categoryname = category['name']
-        propertyobjects[categoryname] = [language.CDT_(f"{categoryname}__CATEGORY_TITLE"), categorybox]
+        propertyobjects[categoryname] = [categorylabel, categorybox]
 
     return propertyobjects
 
