@@ -14,8 +14,15 @@ from .uihelper import get_theme_image, StateImage, EXPECTED_ITEM_MISSING_TEXT
 
 
 def store_category_num(self, cat, cat_num: int):
-    """Set selected config category."""
+    """Store selected config category."""
     settings.userconfig.activecategory = cat_num
+    #settings.userconfig.activeposition = self.get_children()[cat_num].get_vadjustment().get_value()
+    settings.active_scroll = self.get_children()[cat_num]
+
+
+def store_scroll_position(self, event):
+    """Store current scrolled position."""
+    settings.userconfig.activeposition = self.get_vadjustment().get_value()
 
 
 def create_config_box(window) -> Gtk.Box:
@@ -27,11 +34,12 @@ def create_config_box(window) -> Gtk.Box:
     tlp_categories = get_tlp_categories(window)
     for name, category_data in tlp_categories.items():
         viewport = Gtk.Viewport()
-        viewport.set_name('categoryViewport')
+        viewport.set_name(f'categoryViewport_{name}')
         viewport.add(category_data[1])
 
         scroll = Gtk.ScrolledWindow()
         scroll.add(viewport)
+        scroll.connect("scroll-event", store_scroll_position)
 
         category_image = get_theme_image(f'tlpui-{name.replace(" ", "-")}-symbolic', Gtk.IconSize.MENU)
 
@@ -149,17 +157,17 @@ def create_item_box(configobjects: list, doc: str, grouptitle: str, window) -> G
         statetogglebox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
         tlpconfigbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=0)
 
-        # on/off state
-        toggle = gtktoggle.create_toggle_button(configname, tlpconfigbox)
-        statetogglebox.pack_start(toggle, False, False, 0)
-        statetogglebox.set_halign(Gtk.Align.CENTER)
-        statetogglebox.set_valign(Gtk.Align.CENTER)
-
         # specific config gtk object
         configwidget = create_config_widget(configname, configobject.datatype, configobject.values, window)
         configwidget.set_margin_top(6)
         configwidget.set_margin_bottom(6)
         configwidget.set_margin_left(6)
+
+        # on/off state
+        toggle = gtktoggle.create_toggle_button(configname, configwidget, window)
+        statetogglebox.pack_start(toggle, False, False, 0)
+        statetogglebox.set_halign(Gtk.Align.CENTER)
+        statetogglebox.set_valign(Gtk.Align.CENTER)
 
         # object label
         configlabel = Gtk.Label(xalign=0)

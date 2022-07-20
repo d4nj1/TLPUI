@@ -6,6 +6,7 @@ from gi.repository import Gtk, GdkPixbuf
 from shutil import which
 from . import language
 from . import settings
+from . import constants
 
 
 EXPECTED_ITEM_MISSING_TEXT = language.UH_('Expected item missing in config file')  # type: str
@@ -54,7 +55,7 @@ class StateImage:
 
     def warn_unknown_config_value(self, configvalue: str) -> None:
         """Add image and tooltip for unknown values."""
-        self.stateimage.set_from_icon_name(Gtk.STOCK_DIALOG_WARNING, Gtk.IconSize.BUTTON)
+        self.stateimage.set_from_icon_name(constants.ICON_NAME_WARNING, Gtk.IconSize.BUTTON)
         self.stateimage.set_tooltip_text('{}: {}'.format(UNKNOWN_CONFIG_VALUE_TEXT, configvalue))
 
     def refresh(self, value: str, store: str, enabled: bool, enabledstore: bool) -> None:
@@ -71,25 +72,25 @@ class StateImage:
             if not changed and enabledtext == '':
                 self.stateimage.clear()
             elif not changed and enabledtext != '':
-                self.stateimage.set_from_icon_name(Gtk.STOCK_INFO, Gtk.IconSize.BUTTON)
+                self.stateimage.set_from_icon_name(constants.ICON_NAME_INFO, Gtk.IconSize.BUTTON)
                 self.stateimage.set_tooltip_text('{}'.format(enabledtext))
             elif changed and enabledtext == '':
-                self.stateimage.set_from_icon_name(Gtk.STOCK_UNDO, Gtk.IconSize.BUTTON)
+                self.stateimage.set_from_icon_name(constants.ICON_NAME_UNDO, Gtk.IconSize.BUTTON)
                 self.stateimage.set_tooltip_text('{}'.format(CHANGED_STATE_TEXT))
             elif changed and enabledtext != '':
-                self.stateimage.set_from_icon_name(Gtk.STOCK_UNDO, Gtk.IconSize.BUTTON)
+                self.stateimage.set_from_icon_name(constants.ICON_NAME_UNDO, Gtk.IconSize.BUTTON)
                 self.stateimage.set_tooltip_text('{}\n{}'.format(CHANGED_STATE_TEXT, enabledtext))
         else:
             defaulttext = '{} {}'.format(DEFAULT_VALUE_TEXT, self.defaultvalue)
             if not changed and enabledtext == '':
-                self.stateimage.set_from_icon_name(Gtk.STOCK_INFO, Gtk.IconSize.BUTTON)
+                self.stateimage.set_from_icon_name(constants.ICON_NAME_INFO, Gtk.IconSize.BUTTON)
                 self.stateimage.set_tooltip_text(defaulttext)
             elif not changed and enabledtext != '':
-                self.stateimage.set_from_icon_name(Gtk.STOCK_INFO, Gtk.IconSize.BUTTON)
+                self.stateimage.set_from_icon_name(constants.ICON_NAME_INFO, Gtk.IconSize.BUTTON)
                 self.stateimage.set_tooltip_text('{}\n{}'.format(enabledtext, defaulttext))
             elif changed and enabledtext == '':
-                self.stateimage.set_from_icon_name(Gtk.STOCK_UNDO, Gtk.IconSize.BUTTON)
+                self.stateimage.set_from_icon_name(constants.ICON_NAME_UNDO, Gtk.IconSize.BUTTON)
                 self.stateimage.set_tooltip_text('{}\n{}'.format(CHANGED_STATE_TEXT, defaulttext))
             elif changed and enabledtext != '':
-                self.stateimage.set_from_icon_name(Gtk.STOCK_UNDO, Gtk.IconSize.BUTTON)
+                self.stateimage.set_from_icon_name(constants.ICON_NAME_UNDO, Gtk.IconSize.BUTTON)
                 self.stateimage.set_tooltip_text('{}\n{}\n{}'.format(CHANGED_STATE_TEXT, enabledtext, defaulttext))

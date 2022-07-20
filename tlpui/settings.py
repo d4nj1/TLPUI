@@ -24,3 +24,4 @@ tlpconfigfile = settingshelper.get_tlp_config_file(tlpbaseversion, FOLDER_PREFIX
 tlpconfig = dict()
 tlpconfig_original = dict()
 tlpconfig_defaults = dict()
+active_scroll = None

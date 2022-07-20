@@ -107,7 +107,9 @@ def extract_tlp_settings(lines: list) -> None:
             if configvalue.startswith('\"') and configvalue.endswith('\"'):
                 configvalue = configvalue.lstrip('\"').rstrip('\"')
 
-            settings.tlpconfig[configname] = TlpConfig(True, configname, configvalue, conftype, configfile)
+            enabled = configvalue != ""
+
+            settings.tlpconfig[configname] = TlpConfig(enabled, configname, configvalue, conftype, configfile)
 
 
 def get_changed_properties() -> dict:
@@ -126,16 +128,17 @@ def get_changed_properties() -> dict:
 
         if statechange or configchange:
             configname = config.get_name()
+            value = config.get_value()
 
             if not config.is_enabled() and settings.tlpconfig_defaults[configname].is_enabled():
                 enabled = ""
-                value = "* empty"
             else:
                 enabled = "" if config.is_enabled() else "#"
-                value = config.get_value()
 
-            value = '\"' + value + '\"'
-            changedproperties[configname] = "{}{}={}".format(enabled, configname, value)
+            if settings.tlpconfig_defaults[configname].is_quoted():
+                value = f"\"{value}\""
+
+            changedproperties[configname] = f"{enabled}{configname}={value}"
 
     return changedproperties
 

@@ -16,11 +16,12 @@ def get_json_schema_object_from_file(objectname: str, filename: str) -> dict:
 class TlpDefaults:
     """TLP defaults class."""
 
-    def __init__(self, name: str, value: str, enabled: bool):
+    def __init__(self, name: str, value: str, enabled: bool, quoted: bool):
         """Init TLP defaults class parameters."""
         self.name = name
         self.value = value
         self.enabled = enabled
+        self.quoted = quoted
 
     def get_name(self) -> str:
         """Get defaults name."""
@@ -33,6 +34,10 @@ class TlpDefaults:
     def is_enabled(self) -> bool:
         """Get defaults enabled."""
         return self.enabled
+
+    def is_quoted(self) -> bool:
+        """Get defaults quoted."""
+        return self.quoted
 
 
 def extract_default_tlp_configs(filename: str) -> dict:
@@ -56,9 +61,11 @@ def extract_default_tlp_configs(filename: str) -> dict:
             configproperty = cleanline.split('=', maxsplit=1)
             configname = configproperty[0]
             configvalue = configproperty[1]
+            quoted = False
 
             if configvalue.startswith('\"') and configvalue.endswith('\"'):
                 configvalue = configvalue.lstrip('\"').rstrip('\"')
+                quoted = True
 
-            tlpconfig_defaults[configname] = TlpDefaults(configname, configvalue, enabled)
+            tlpconfig_defaults[configname] = TlpDefaults(configname, configvalue, enabled, quoted)
     return tlpconfig_defaults

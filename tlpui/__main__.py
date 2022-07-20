@@ -8,7 +8,7 @@ from gi.repository import Gtk, Gdk, GLib
 from . import settings
 from .css import get_css_provider
 from .file import init_tlp_file_config
-from .mainui import create_main_box, store_window_size, window_key_events, close_main_window
+from .mainui import create_main_box, store_window_size, window_key_events, close_main_window, reset_scroll_position
 
 Gtk.init()
 Gtk.StyleContext.add_provider_for_screen(
@@ -40,6 +40,7 @@ def main() -> None:
     window.connect('delete-event', close_main_window)
     window.connect('key-press-event', window_key_events)
     window.show_all()
+    reset_scroll_position()
     Gtk.main()
 
 

@@ -13,7 +13,8 @@ def create_numeric_spinbutton(configname: str, values: str) -> Gtk.SpinButton:
     spinbutton = Gtk.SpinButton()
     spinbutton.set_numeric(True)
     spinbutton.set_adjustment(adjustment)
-    spinbutton.set_value(float(configvalue))
+    if configvalue != "":
+        spinbutton.set_value(float(configvalue))
     spinbutton.connect('value-changed', change_numeric_spin_value, configname)
     return spinbutton
 

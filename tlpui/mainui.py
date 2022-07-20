@@ -14,6 +14,11 @@ from .uihelper import get_flag_image, get_theme_image
 from . import __version__
 
 
+def reset_scroll_position() -> None:
+    """Reset the scroll position """
+    settings.active_scroll.get_vadjustment().set_value(settings.userconfig.activeposition)
+
+
 def store_window_size(self) -> None:
     """Store current window size in settings."""
     settings.userconfig.windowxsize = self.get_size()[0]
@@ -45,12 +50,15 @@ def load_tlp_config(_, window: Gtk.Window, reloadtlpconfig: bool) -> None:
     if reloadtlpconfig:
         init_tlp_file_config()
 
-    newmainbox = create_main_box(window)
+    new_mainbox = create_main_box(window)
     children = window.get_children()
     for child in children:
         window.remove(child)
-    window.add(newmainbox)
+    window.add(new_mainbox)
     window.show_all()
+    while Gtk.events_pending():
+        Gtk.main_iteration()
+    reset_scroll_position()
 
 
 def save_tlp_config(self, window) -> None:

@@ -47,6 +47,7 @@ class UserConfig:
         self.language = "en_EN"
         self.activeoption = 0
         self.activecategory = 0
+        self.activeposition = 0
         self.windowxsize = 900
         self.windowysize = 600
         self.userconfigfile = get_user_config_file()
@@ -62,6 +63,7 @@ class UserConfig:
                 self.language = config['default']['language']
                 self.activeoption = int(config['default']['activeoption'])
                 self.activecategory = int(config['default']['activecategory'])
+                self.activeposition = float(config['default']['activeposition'])
                 self.windowxsize = int(config['default']['windowxsize'])
                 self.windowysize = int(config['default']['windowysize'])
             except KeyError:
@@ -78,6 +80,7 @@ class UserConfig:
         config['default']['language'] = self.language
         config['default']['activeoption'] = str(self.activeoption)
         config['default']['activecategory'] = str(self.activecategory)
+        config['default']['activeposition'] = str(self.activeposition)
         config['default']['windowxsize'] = str(self.windowxsize)
         config['default']['windowysize'] = str(self.windowysize)
         with open(str(self.userconfigfile), 'w') as configfile:
