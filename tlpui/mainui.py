@@ -289,7 +289,7 @@ def show_about_dialog(self):
     aboutdialog.set_authors(["Daniel Christophis"])
     aboutdialog.set_translator_credits("Muhammet Emin AKALAN (05akalan57@gmail.com)")
     aboutdialog.set_license_type(Gtk.License.GPL_2_0)
-    aboutdialog.set_logo(GdkPixbuf.Pixbuf.new_from_file_at_size(f"{settings.icondir}themeable/hicolor/scalable/apps/tlpui.svg", width=128, height=128))
+    aboutdialog.set_logo(GdkPixbuf.Pixbuf.new_from_file_at_size(f"{settings.icondir}themeable/hicolor/scalable/apps/com.github.d4nj1.tlpui.svg", width=128, height=128))
     aboutdialog.connect('response', lambda dialog, fata: dialog.destroy())
     aboutdialog.show_all()
 

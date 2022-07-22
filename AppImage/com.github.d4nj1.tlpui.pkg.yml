@@ -1,4 +1,4 @@
-app: tlpui
+app: com.github.d4nj1.tlpui
 ingredients:
   dist: groovy
   sources:
@@ -12,26 +12,15 @@ ingredients:
 
 script:
   - wget -c https://codeload.github.com/d4nj1/TLPUI/zip/refs/heads/master && unzip master && rm master
-  - mkdir -p usr/share/metainfo/ ; cp TLPUI-master/build/AppImage/tlpui.appdata.xml usr/share/metainfo/
-  - mv TLPUI-master/tlpui . && rm -rf TLPUI-master
+  - mkdir -p usr/share/metainfo/
+  - cp TLPUI-master/AppImage/com.github.d4nj1.tlpui.appdata.xml usr/share/metainfo/
+  - mv TLPUI-master/tlpui .
   - mkdir -p ./usr/share/icons/hicolor/scalable/apps/
-  - cp tlpui/icons/OnAC.svg .
-  - cp OnAC.svg ./usr/share/icons/hicolor/scalable/apps/
+  - cp tlpui/icons/themeable/hicolor/scalable/apps/com.github.d4nj1.tlpui.svg ./usr/share/icons/hicolor/scalable/apps/
   - cat > usr/bin/tlpui <<\EOF
   - cd ../ && python3 -m tlpui
   - EOF
   - chmod +x usr/bin/tlpui
   - mkdir -p usr/share/applications
-  - cat > tlpui.desktop <<\EOF
-  - [Desktop Entry]
-  - Type=Application
-  - Name=TLP UI
-  - Comment=Tlp UI with gtk
-  - Icon=OnAC
-  - Exec=tlpui
-  - Terminal=false
-  - Categories=Utility;Settings;HardwareSettings;GTK;
-  - Keywords=Python;tlp;
-  - StartupWMClass=tlpui
-  - EOF
-  - cp tlpui.desktop usr/share/applications/
+  - cp TLPUI-master/tlpui.desktop usr/share/applications/
+  - rm -rf TLPUI-master
