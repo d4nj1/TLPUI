@@ -11,16 +11,24 @@ ingredients:
   exclude:
 
 script:
+  # Get master branch
   - wget -c https://codeload.github.com/d4nj1/TLPUI/zip/refs/heads/master && unzip master && rm master
+  # Add appdata
   - mkdir -p usr/share/metainfo/
   - cp TLPUI-master/AppImage/com.github.d4nj1.tlpui.appdata.xml usr/share/metainfo/
+  # Move Python scripts to proper location
   - mv TLPUI-master/tlpui .
-  - mkdir -p ./usr/share/icons/hicolor/scalable/apps/
-  - cp tlpui/icons/themeable/hicolor/scalable/apps/com.github.d4nj1.tlpui.svg ./usr/share/icons/hicolor/scalable/apps/
+  # Add tlpui starter script with execute permission
   - cat > usr/bin/tlpui <<\EOF
   - cd ../ && python3 -m tlpui
   - EOF
   - chmod +x usr/bin/tlpui
+  # Add tlpui icon
+  - mkdir -p ./usr/share/icons/hicolor/scalable/apps/
+  - cp tlpui/icons/themeable/hicolor/scalable/apps/tlpui.svg ./usr/share/icons/hicolor/scalable/apps/com.github.d4nj1.tlpui.svg
+  # Add .desktop file and change icon name
   - mkdir -p usr/share/applications
-  - cp TLPUI-master/tlpui.desktop usr/share/applications/
+  - cp TLPUI-master/tlpui.desktop usr/share/applications/tlpui.desktop
+  - sed -i 's/Icon=tlpui/Icon=com.github.d4nj1.tlpui' usr/share/applications/tlpui.desktop
+  # Clean unused data
   - rm -rf TLPUI-master
