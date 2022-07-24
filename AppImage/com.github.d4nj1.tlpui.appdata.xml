@@ -8,7 +8,7 @@
 	<description>
 		<p>The Python scripts in this project generate a GTK-UI to change TLP configuration files easily. It has the aim to protect users from setting bad configuration and to deliver a basic overview of all the valid configuration values.</p>
 	</description>
-	<launchable type="desktop-id">tlpui.desktop</launchable>
+	<launchable type="desktop-id">com.github.d4nj1.tlpui.desktop</launchable>
 	<url type="homepage">https://github.com/d4nj1/TLPUI</url>
 	<screenshots>
 		<screenshot type="default">
@@ -16,7 +16,7 @@
 		</screenshot>
 	</screenshots>
 	<provides>
-		<id>tlpui.desktop</id>
+		<id>com.github.d4nj1.tlpui.desktop</id>
 	</provides>
 	<content_rating type="oars-1.1" />
 	<releases>
