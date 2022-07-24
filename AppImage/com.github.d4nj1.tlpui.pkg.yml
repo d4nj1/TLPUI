@@ -22,13 +22,16 @@ script:
   - cp com.github.d4nj1.tlpui.svg ./usr/share/icons/hicolor/scalable/apps/com.github.d4nj1.tlpui.svg
   # Add .desktop file and change icon name
   - cp TLPUI-master/tlpui.desktop com.github.d4nj1.tlpui.desktop
-  - sed -i 's/Icon=tlpui/Icon=com.github.d4nj1.tlpui/g' com.github.d4nj1.tlpui.desktop
+  - desktop-file-edit --set-icon=com.github.d4nj1.tlpui com.github.d4nj1.tlpui.desktop
   - mkdir -p usr/share/applications
   - cp com.github.d4nj1.tlpui.desktop usr/share/applications/com.github.d4nj1.tlpui.desktop
   # Move Python scripts to proper location
   - mv TLPUI-master/tlpui .
   # Add tlpui starter script with execute permission
   - cat > usr/bin/tlpui <<\EOF
+  # Remove PYTHONPATH and PYTHONHOME to avoid Python encoding error bug
+  - unset PYTHONPATH
+  - unset PYTHONHOME
   - cd ../ && python3 -m tlpui
   - EOF
   - chmod +x usr/bin/tlpui

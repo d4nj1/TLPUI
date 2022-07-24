@@ -33,7 +33,7 @@ def main() -> None:
     # init application window
     window = Gtk.Window()
     window.set_title('Tlp-UI')
-    window.set_icon_name('com.github.d4nj1.tlpui')
+    window.set_icon_name('tlpui')
     window.set_default_size(settings.userconfig.windowxsize, settings.userconfig.windowysize)
     window.add(create_main_box(window))
     window.connect('check-resize', store_window_size)
