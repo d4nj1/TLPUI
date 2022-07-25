@@ -7,6 +7,7 @@ from os import getenv
 from shutil import which
 from subprocess import check_output
 from pathlib import Path
+from . import errorui
 
 
 def get_tlp_config_file(version: str, prefix: str) -> str:
@@ -20,7 +21,7 @@ def check_tlp_installed() -> None:
     """Check if tlp and tlp-stat is installed on system."""
     for expected_command in ["tlp", "tlp-stat"]:
         if which(expected_command) is None:
-            print(f"{expected_command} not found on system. Please install first.")
+            errorui.show_dialog(f"{expected_command} not found on system. Please install first.")
             sys.exit(1)
 
 
