@@ -9,6 +9,9 @@ workdir = path.dirname(path.abspath(__file__))
 langdir = f'{workdir}/lang/'
 icondir = f'{workdir}/icons/'
 
+# check for tlp commands to exist
+settingshelper.check_tlp_installed()
+
 # user config
 userconfig = settingshelper.UserConfig()
 

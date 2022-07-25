@@ -4,6 +4,7 @@ import configparser
 import re
 import sys
 from os import getenv
+from shutil import which
 from subprocess import check_output
 from pathlib import Path
 
@@ -13,6 +14,14 @@ def get_tlp_config_file(version: str, prefix: str) -> str:
     if version in ["0_8", "0_9", "1_0", "1_1", "1_2"]:
         return f"{prefix}/etc/default/tlp"
     return f"{prefix}/etc/tlp.conf"
+
+
+def check_tlp_installed() -> None:
+    """Check if tlp and tlp-stat is installed on system."""
+    for expected_command in ["tlp", "tlp-stat"]:
+        if which(expected_command) is None:
+            print(f"{expected_command} not found on system. Please install first.")
+            sys.exit(1)
 
 
 def get_installed_tlp_version() -> str:
