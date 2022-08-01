@@ -76,15 +76,7 @@ def save_tlp_config(self, window) -> None:
         language.MT_('Save these changes?'))
 
     if saveresponse == Gtk.ResponseType.OK:
-
-        output = write_tlp_config(tmpfilename)
-        if output != '':
-            dialog = Gtk.MessageDialog(window)
-            dialog.set_default_size(150, 100)
-            dialog.format_secondary_markup(output)
-            dialog.run()
-            dialog.destroy()
-            return
+        write_tlp_config(tmpfilename)
 
         # reload config after file save
         load_tlp_config(self, window, True)

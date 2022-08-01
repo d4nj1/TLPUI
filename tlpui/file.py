@@ -2,15 +2,14 @@
 
 import copy
 import re
-from sys import stdout
-from subprocess import check_output, STDOUT, CalledProcessError
 from io import open
 from os import access, W_OK, close, path
 from tempfile import mkstemp
 from .config import TlpConfig, ConfType
 from . import settings
+from . import settingshelper
 from .filehelper import get_json_schema_object_from_file, extract_default_tlp_configs, TlpDefaults
-from .uihelper import get_graphical_sudo, SUDO_MISSING_TEXT
+from .uihelper import get_graphical_sudo
 
 
 def get_json_schema_object(objectname) -> dict:
@@ -41,8 +40,7 @@ def init_tlp_file_config() -> None:
     settings.tlpconfig_defaults = get_tlp_config_defaults(tlpversion)
 
     # get current settings from tlp itself
-    simple_stat_command = ["tlp-stat", "-c"]
-    tlpstat = check_output(simple_stat_command, stderr=STDOUT).decode(stdout.encoding)
+    tlpstat = settingshelper.exec_command(["tlp-stat", "-c"])
     tlpsettinglines = tlpstat.split('\n')
 
     if tlpversion in ["0_8", "0_9", "1_0", "1_1", "1_2"]:
@@ -174,7 +172,7 @@ def create_tmp_tlp_config_file(changedproperties: dict) -> str:
     return tmpfilename
 
 
-def write_tlp_config(tmpconfigfile: str) -> str:
+def write_tlp_config(tmpconfigfile: str):
     """Write changes to config file."""
     sedtlpconfigfile = "w" + settings.tlpbaseconfigfile
     sedcommand = ["sed", "-n", sedtlpconfigfile, tmpconfigfile]
@@ -183,11 +181,6 @@ def write_tlp_config(tmpconfigfile: str) -> str:
     if not access(settings.tlpconfigfile, W_OK):
         sudo_cmd = get_graphical_sudo()
         if sudo_cmd is None:
-            return SUDO_MISSING_TEXT
+            return
         sedcommand.insert(0, sudo_cmd)
-
-    try:
-        check_output(sedcommand)
-    except CalledProcessError as error:
-        print(error)
-    return ""
+    settingshelper.exec_command(sedcommand)

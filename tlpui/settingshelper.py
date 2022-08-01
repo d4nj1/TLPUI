@@ -5,9 +5,16 @@ import re
 import sys
 from os import getenv
 from shutil import which
-from subprocess import check_output
+from subprocess import check_output, CalledProcessError
 from pathlib import Path
 from . import errorui
+
+
+def exec_command(commands: [str]):
+    try:
+        return check_output(commands).decode(sys.stdout.encoding)
+    except CalledProcessError as error:
+        errorui.show_dialog(error)
 
 
 def get_tlp_config_file(version: str, prefix: str) -> str:
@@ -17,10 +24,15 @@ def get_tlp_config_file(version: str, prefix: str) -> str:
     return f"{prefix}/etc/tlp.conf"
 
 
-def check_tlp_installed() -> None:
-    """Check if tlp and tlp-stat is installed on system."""
-    for expected_command in ["tlp", "tlp-stat"]:
-        if which(expected_command) is None:
+def check_binaries_exist(flatpak_folder_prefix: str) -> None:
+    """Check if required binaries are installed on system."""
+    for expected_command in ["tlp", "tlp-stat", "lspci", "lsusb"]:
+        if flatpak_folder_prefix != "":
+            command_exists = Path(f"{flatpak_folder_prefix}/usr/bin/{expected_command}").exists()
+        else:
+            command_exists = which(expected_command) is not None
+
+        if not command_exists:
             errorui.show_dialog(f"{expected_command} not found on system. Please install first.")
             sys.exit(1)
 
@@ -28,7 +40,7 @@ def check_tlp_installed() -> None:
 def get_installed_tlp_version() -> str:
     """Fetch tlp version from command."""
     pattern = re.compile(r"TLP ([^\s]+)")
-    currentconfig = check_output(["tlp-stat", "-c"]).decode(sys.stdout.encoding)
+    currentconfig = exec_command(["tlp-stat", "-c"])
     matcher = pattern.search(currentconfig)
     version = matcher.group(1).replace(".", "_")
     return version

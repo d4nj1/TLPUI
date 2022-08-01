@@ -1,14 +1,13 @@
 """Disk settings UI widget."""
 
-import sys
 from gi.repository import Gtk
 
-from subprocess import check_output
 from collections import OrderedDict
 from ..uihelper import get_theme_image
 from .. import mainui
 from .. import file
 from .. import settings
+from .. import settingshelper
 
 
 def create_list(configname: str, window: Gtk.Window) -> Gtk.Box:
@@ -37,7 +36,7 @@ def edit_list(self: Gtk.Button, window: Gtk.Window):
 
     disks = OrderedDict()
     keeps = OrderedDict()
-    disklist = check_output(["tlp", "diskid"]).decode(sys.stdout.encoding)
+    disklist = settingshelper.exec_command(["tlp", "diskid"])
     for line in disklist.splitlines():
         diskid = line.split(':')[0].lstrip().rstrip()
 

@@ -20,6 +20,15 @@
 	</provides>
 	<content_rating type="oars-1.1" />
 	<releases>
+		<release version="1.5.0-4" date="2022-08-01" urgency="low">
+			<description>
+				<p>Fix Flatpak host execution issues</p>
+			</description>
+			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.5.0-4</url>
+			<issues>
+				<issue url="https://github.com/d4nj1/TLPUI/issues/89">#89</issue>
+			</issues>
+		</release>
 		<release version="1.5.0-3" date="2022-07-22" urgency="low">
 			<description>
 				<p>Apply changes to match Flathub deployment requirements</p>

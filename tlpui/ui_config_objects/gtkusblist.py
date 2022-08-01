@@ -1,12 +1,11 @@
 """Usb settings UI widget."""
 
-import sys
 import re
 from gi.repository import Gtk
 
 from collections import OrderedDict
-from subprocess import check_output
 from .. import settings
+from .. import settingshelper
 from ..uihelper import get_theme_image
 
 global indexstore
@@ -35,7 +34,7 @@ def edit_list(self, configname: str, usblistlabel: Gtk.Label, window: Gtk.Window
         for item in tlpobject.get_value().split(' '):
             currentitems[item] = ["", True]
 
-    tlpusblist = check_output(["lsusb"]).decode(sys.stdout.encoding)
+    tlpusblist = settingshelper.exec_command(["lsusb"])
 
     usbitems = OrderedDict()
     for line in tlpusblist.splitlines():

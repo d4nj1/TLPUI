@@ -1,51 +1,30 @@
 """This module provides general tlp-stat functions for the UI."""
 
-import sys
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
-from shutil import which
-from subprocess import check_output, STDOUT
+
 from . import language
-from .uihelper import get_theme_image, get_graphical_sudo, SUDO_MISSING_TEXT
-
-
-TLP_STAT_MISSING = language.ST_('tlp-stat executable not found.')  # type: str
+from . import settingshelper
+from .uihelper import get_theme_image, get_graphical_sudo
 
 
 def fetch_simple_stats(_, textbuffer: Gtk.TextBuffer) -> None:
     """Fetch simple tlp-stat information."""
-    tlp_stat_cmd = which("tlp-stat")
-
-    if tlp_stat_cmd is None:
-        textbuffer.set_text(TLP_STAT_MISSING)
-        return
-
     simple_stat_command = ["tlp-stat", "-r", "-t", "-c", "-s", "-u"]
-    tlp_stat_output = call_tlp_stat(simple_stat_command)
+    tlp_stat_output = settingshelper.exec_command(simple_stat_command)
     textbuffer.set_text(tlp_stat_output)
 
 
 def fetch_complete_stats(_, textbuffer: Gtk.TextBuffer) -> None:
     """Fetch complete tlp-stat information."""
     sudo_cmd = get_graphical_sudo()
-    tlp_stat_cmd = which("tlp-stat")
 
     if sudo_cmd is None:
-        textbuffer.set_text(SUDO_MISSING_TEXT)
         return
 
-    if tlp_stat_cmd is None:
-        textbuffer.set_text(TLP_STAT_MISSING)
-        return
-
-    tlp_stat_output = call_tlp_stat([sudo_cmd, "tlp-stat"])
+    tlp_stat_output = settingshelper.exec_command([sudo_cmd, "tlp-stat"])
     textbuffer.set_text(tlp_stat_output)
-
-
-def call_tlp_stat(command) -> str:
-    """Call tlp-stat command."""
-    return check_output(command, stderr=STDOUT).decode(sys.stdout.encoding)
 
 
 def create_stat_box() -> Gtk.Box:

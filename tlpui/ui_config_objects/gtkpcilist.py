@@ -1,14 +1,12 @@
 """PCI UI widget."""
 
-import sys
 import re
 from gi.repository import Gtk
 
 from collections import OrderedDict
-from subprocess import check_output
-
 from ..uihelper import get_theme_image
 from .. import settings
+from .. import settingshelper
 
 
 def create_list(configname: str, window: Gtk.Window) -> Gtk.Box:
@@ -31,10 +29,10 @@ def edit_list(self, configname: str, usblistlabel: Gtk.Label, window: Gtk.Window
     pcilistpattern = re.compile(r'^([a-f\d]{2}:[a-f\d]{2}\.[a-f\d])(.+?)$')
     currentitems = tlpobject.get_value().split(' ')
 
-    tlpusblist = check_output(["lspci"]).decode(sys.stdout.encoding)
+    tlppcilist = settingshelper.exec_command(["lspci"])
 
     pciitems = OrderedDict()
-    for line in tlpusblist.splitlines():
+    for line in tlppcilist.splitlines():
         matcher = pcilistpattern.match(line)
         pciid = matcher.group(1)
         description = matcher.group(2).lstrip()
