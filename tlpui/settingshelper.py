@@ -29,6 +29,8 @@ def check_binaries_exist(flatpak_folder_prefix: str) -> None:
     for expected_command in ["tlp", "tlp-stat", "lspci", "lsusb"]:
         if flatpak_folder_prefix != "":
             command_exists = Path(f"{flatpak_folder_prefix}/usr/bin/{expected_command}").exists()
+            if not command_exists:
+                command_exists = Path(f"{flatpak_folder_prefix}/usr/sbin/{expected_command}").exists()
         else:
             command_exists = which(expected_command) is not None
 
