@@ -28,7 +28,8 @@ def get_tlp_config_defaults(tlpversion: str):
     if tlpversion not in ["0_8", "0_9", "1_0", "1_1", "1_2"]:
         # update default values with intrinsic ones
         intrinsic_defaults_path = f"{settings.FOLDER_PREFIX}/usr/share/tlp/defaults.conf"
-        tlpconfig_defaults.update(extract_default_tlp_configs(intrinsic_defaults_path))
+        if path.exists(intrinsic_defaults_path):
+            tlpconfig_defaults.update(extract_default_tlp_configs(intrinsic_defaults_path))
 
     return tlpconfig_defaults
 
