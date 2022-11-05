@@ -10,6 +10,7 @@ setup(
     url="https://github.com/d4nj1/TLPUI",
     license="GPLv2",
     packages=["tlpui", "tlpui.ui_config_objects"],
+    long_description="The Python scripts in this project generate a GTK-UI to change TLP configuration files easily"
     package_data={'tlpui': [
         'styles.css',
         'configschema/*.json',
