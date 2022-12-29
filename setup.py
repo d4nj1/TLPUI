@@ -7,6 +7,8 @@ setup(
     author="Daniel Christophis",
     author_email="code@devmind.org",
     description="GTK UI for tlp (Python 3)",
+    long_description="The Python scripts in this project generate a GTK-UI to change TLP configuration files easily",
+    long_description_content_type="text/plain",
     url="https://github.com/d4nj1/TLPUI",
     license="GPLv2",
     packages=["tlpui", "tlpui.ui_config_objects"],
