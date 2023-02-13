@@ -25,7 +25,6 @@ It has the aim to protect users from setting bad configuration and to deliver a 
 
 ## To be done
 
-* Translation optimizations - [#79](https://github.com/d4nj1/TLPUI/issues/79)
-* PPA - [#88](https://github.com/d4nj1/TLPUI/issues/88)
-* Flatpak - [#89](https://github.com/d4nj1/TLPUI/issues/89)
+* Weblate translations - [#121](https://github.com/d4nj1/TLPUI/issues/121)
+* Mobile UI - [#111](https://github.com/d4nj1/TLPUI/issues/111)
 * Implement package build pipeline - [#90](https://github.com/d4nj1/TLPUI/issues/90)
