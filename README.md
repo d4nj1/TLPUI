@@ -14,6 +14,7 @@ It has the aim to protect users from setting bad configuration and to deliver a 
 * [Python 3](https://github.com/d4nj1/TLPUI/wiki/Install-instructions#python-3)
 * [Ubuntu/Debian family](https://github.com/d4nj1/TLPUI/wiki/Install-instructions#ubuntudebian-family)
 * [Arch Linux](https://github.com/d4nj1/TLPUI/wiki/Install-instructions#arch-linux)
+* [Flatpak](https://flathub.org/apps/details/com.github.d4nj1.tlpui)
 
 ## Current status
 
