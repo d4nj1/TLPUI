@@ -33,6 +33,8 @@ def check_binaries_exist(flatpak_folder_prefix: str) -> None:
                 command_exists = Path(f"{flatpak_folder_prefix}/usr/sbin/{expected_command}").exists()
         else:
             command_exists = which(expected_command) is not None
+            if not command_exists:
+                command_exists = Path(f"/usr/sbin/{expected_command}").exists()
 
         if not command_exists:
             errorui.show_dialog(f"{expected_command} not found on system. Please install first.")
