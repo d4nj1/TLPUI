@@ -1,3 +1,3 @@
 """Init module for TLPUI."""
 
-__version__ = "1.5.0-6"
+__version__ = "1.5.0-7"
