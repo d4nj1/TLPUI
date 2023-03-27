@@ -34,7 +34,7 @@ msgstr "Вы действительно хотите выйти? Никакие 
 
 #: mainui.py:186
 msgid "Reload"
-msgstr "Восстаносить настройки"
+msgstr "Восстановить настройки"
 
 #: mainui.py:189 mainui.py:205
 msgid "Save"
