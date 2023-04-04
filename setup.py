@@ -28,6 +28,6 @@ setup(
         ]
     },
     data_files=[
-        ('/usr/share/applications', ["tlpui.desktop"])
+        ('share/applications', ["tlpui.desktop"])
     ]
 )
