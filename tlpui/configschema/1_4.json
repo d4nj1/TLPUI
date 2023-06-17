@@ -699,7 +699,7 @@
             {
               "id": "STOP_CHARGE_THRESH_BAT0",
               "type": "numeric",
-              "values": "5-100"
+              "values": "1-100"
             }
           ]
         },
@@ -714,7 +714,7 @@
             {
               "id": "STOP_CHARGE_THRESH_BAT1",
               "type": "numeric",
-              "values": "5-100"
+              "values": "0-100"
             }
           ]
         },
