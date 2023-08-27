@@ -80,6 +80,12 @@ class MyTestCase(unittest.TestCase):
         assert config_test.tlpconfig_count == 107
         assert config_test.tlpconfig_count == config_test.jsonconfig_count
 
+    def test_tlp_version_1_6(self):
+        config_test = TlpConfigTest('1_6')
+        assert config_test.jsoncategories_count == 11
+        assert config_test.tlpconfig_count == 109
+        assert config_test.tlpconfig_count == config_test.jsonconfig_count
+
 
 if __name__ == '__main__':
     unittest.main()

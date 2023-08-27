@@ -18,8 +18,9 @@ class MyTestCase(unittest.TestCase):
         assert linecache.getline(str(userconfig.userconfigfile), 2) == "language = en_EN\n"
         assert linecache.getline(str(userconfig.userconfigfile), 3) == "activeoption = 0\n"
         assert linecache.getline(str(userconfig.userconfigfile), 4) == "activecategory = 0\n"
-        assert linecache.getline(str(userconfig.userconfigfile), 5) == "windowxsize = 900\n"
-        assert linecache.getline(str(userconfig.userconfigfile), 6) == "windowysize = 600\n"
+        assert linecache.getline(str(userconfig.userconfigfile), 5) == "activeposition = 0.0\n"
+        assert linecache.getline(str(userconfig.userconfigfile), 6) == "windowxsize = 900\n"
+        assert linecache.getline(str(userconfig.userconfigfile), 7) == "windowysize = 600\n"
 
     def test_tlp_settings_creation(self):
         newsettingspath = os.path.dirname(os.path.abspath(__file__)) + '/settings/creation'
@@ -31,8 +32,9 @@ class MyTestCase(unittest.TestCase):
         assert linecache.getline(str(userconfig.userconfigfile), 2) == "language = en_EN\n"
         assert linecache.getline(str(userconfig.userconfigfile), 3) == "activeoption = 0\n"
         assert linecache.getline(str(userconfig.userconfigfile), 4) == "activecategory = 0\n"
-        assert linecache.getline(str(userconfig.userconfigfile), 5) == "windowxsize = 900\n"
-        assert linecache.getline(str(userconfig.userconfigfile), 6) == "windowysize = 600\n"
+        assert linecache.getline(str(userconfig.userconfigfile), 5) == "activeposition = 0\n"
+        assert linecache.getline(str(userconfig.userconfigfile), 6) == "windowxsize = 900\n"
+        assert linecache.getline(str(userconfig.userconfigfile), 7) == "windowysize = 600\n"
 
 
 if __name__ == '__main__':

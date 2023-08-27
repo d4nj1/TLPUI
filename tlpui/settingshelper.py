@@ -11,6 +11,7 @@ from . import errorui
 
 
 def exec_command(commands: [str]):
+    """Execute commands locally."""
     try:
         return check_output(commands).decode(sys.stdout.encoding)
     except CalledProcessError as error:

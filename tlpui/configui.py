@@ -7,7 +7,7 @@ from gi.repository import Gtk
 from collections import OrderedDict
 from . import settings
 from . import language
-from .ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton,\
+from .ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton, \
     gtktoggle, gtkusblist, gtkpcilist, gtkdisklist, gtkdisklistview
 from .file import ConfType, TlpConfig, get_json_schema_object
 from .uihelper import get_theme_image, StateImage, EXPECTED_ITEM_MISSING_TEXT
@@ -16,7 +16,7 @@ from .uihelper import get_theme_image, StateImage, EXPECTED_ITEM_MISSING_TEXT
 def store_category_num(self, cat, cat_num: int):
     """Store selected config category."""
     settings.userconfig.activecategory = cat_num
-    #settings.userconfig.activeposition = self.get_children()[cat_num].get_vadjustment().get_value()
+    # settings.userconfig.activeposition = self.get_children()[cat_num].get_vadjustment().get_value()
     settings.active_scroll = self.get_children()[cat_num]
 
 
