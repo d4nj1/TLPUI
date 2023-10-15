@@ -20,6 +20,15 @@
 	</provides>
 	<content_rating type="oars-1.1" />
 	<releases>
+		<release version="1.6.1" date="2023-10-15" urgency="low">
+			<description>
+				<p>Update Russian translation</p>
+			</description>
+			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.6.1</url>
+			<issues>
+				<issue url="https://github.com/d4nj1/TLPUI/issues/130">#130</issue>
+			</issues>
+		</release>
 		<release version="1.6.0" date="2023-08-27" urgency="medium">
 			<description>
 				<p>Compatibility with TLP 1.6 and French translation added</p>
