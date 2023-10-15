@@ -511,7 +511,7 @@ msgstr ""
 "Note: this preserves the kernel driver default, to force a certain state\n"
 "- use RUNTIME_PM_ENABLE/DISABLE instead.\n"
 "Separate multiple addresses with spaces.\n"
-"Use lspci to get the adresses (1st column)"
+"Use lspci to get the addresses (1st column)"
 
 #: configschema.json.h:102
 msgid "RUNTIME_PM_DRIVER_DENYLIST__ID_TITLE"
@@ -562,7 +562,7 @@ msgstr "RUNTIME_PM_BLACKLIST"
 #: configschema.json.h:111
 msgid "RUNTIME_PM_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
-"Exclude PCI(e) device adresses the following list from Runtime PM\n"
+"Exclude PCI(e) device addresses the following list from Runtime PM\n"
 "(separate with spaces). Use lspci to get the adresses (1st column)"
 
 #: configschema.json.h:112
