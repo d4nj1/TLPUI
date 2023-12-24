@@ -48,13 +48,13 @@ def create_translateable_strings_header_file():
             configs = category['configs']
             for config in configs:
                 if 'group' in config:
-                    add_to_list(translateobjects, config['group'] + '__GROUP_TITLE')
+                    # add_to_list(translateobjects, config['group'] + '__GROUP_TITLE')
                     add_to_list(translateobjects, config['group'] + '__GROUP_DESCRIPTION')
-                    configitems = config['ids']
-                    for configitem in configitems:
-                        add_to_list(translateobjects, configitem['id'] + '__ID_TITLE')
+                    # configitems = config['ids']
+                    # for configitem in configitems:
+                    #    add_to_list(translateobjects, configitem['id'] + '__ID_TITLE')
                 else:
-                    add_to_list(translateobjects, config['id'] + '__ID_TITLE')
+                    # add_to_list(translateobjects, config['id'] + '__ID_TITLE')
                     add_to_list(translateobjects, config['id'] + '__ID_DESCRIPTION')
 
     newfile = open('configschema.json.h', 'w+')

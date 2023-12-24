@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2023-08-26 16:33+0200\n"
-"PO-Revision-Date: 2023-08-26 16:35+0200\n"
+"POT-Creation-Date: 2023-12-24 14:07+0100\n"
+"PO-Revision-Date: 2023-12-24 14:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: Hellzevir\n"
 "Language: fr\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.1\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _\n"
@@ -21,18 +21,10 @@ msgid "General__CATEGORY_TITLE"
 msgstr "Général"
 
 #: configschema.json.h:2
-msgid "TLP_ENABLE__ID_TITLE"
-msgstr "TLP_ENABLE"
-
-#: configschema.json.h:3
 msgid "TLP_ENABLE__ID_DESCRIPTION"
 msgstr "Activer/désactiver TLP"
 
-#: configschema.json.h:4
-msgid "TLP_WARN_LEVEL__ID_TITLE"
-msgstr "TLP_WARN_LEVEL"
-
-#: configschema.json.h:5
+#: configschema.json.h:3
 msgid "TLP_WARN_LEVEL__ID_DESCRIPTION"
 msgstr ""
 "Définit la façon dont sont délivrés les avertissements relatifs à des "
@@ -44,22 +36,14 @@ msgstr ""
 "'stderr'),\n"
 "3 = combinaison de 1 et de 2"
 
-#: configschema.json.h:6
-msgid "TLP_DEFAULT_MODE__ID_TITLE"
-msgstr "TLP_DEFAULT_MODE"
-
-#: configschema.json.h:7
+#: configschema.json.h:4
 msgid "TLP_DEFAULT_MODE__ID_DESCRIPTION"
 msgstr ""
 "Mode appliqué lorsqu'aucune source d'alimentation ne peut être définie : AC, "
 "BAT.\n"
 "Ne concerne que certains postes de travail et matériels embarqués"
 
-#: configschema.json.h:8
-msgid "TLP_PERSISTENT_DEFAULT__ID_TITLE"
-msgstr "TLP_PERSISTENT_DEFAULT"
-
-#: configschema.json.h:9
+#: configschema.json.h:5
 msgid "TLP_PERSISTENT_DEFAULT__ID_DESCRIPTION"
 msgstr ""
 "Sélection du mode :\n"
@@ -68,11 +52,7 @@ msgstr ""
 "Suggestion : à utiliser conjointement avec le paramètre TLP_DEFAULT_MODE = "
 "BAT pour que les réglages du mode BAT soient appliqués en mode AC"
 
-#: configschema.json.h:10
-msgid "TLP_PS_IGNORE__ID_TITLE"
-msgstr "TLP_PS_IGNORE"
-
-#: configschema.json.h:11
+#: configschema.json.h:6
 msgid "TLP_PS_IGNORE__ID_DESCRIPTION"
 msgstr ""
 "Sources d'alimentation à ignorer lors de la détermination du mode : AC, USB, "
@@ -82,15 +62,11 @@ msgstr ""
 "Note : à essayer sur les ordinateurs portables dont le mode d'alimentation "
 "AC/BAT n'est pas correctement détecté"
 
-#: configschema.json.h:12
+#: configschema.json.h:7
 msgid "Audio__CATEGORY_TITLE"
 msgstr "Audio"
 
-#: configschema.json.h:13
-msgid "SOUND_POWER_SAVE__GROUP_TITLE"
-msgstr "SOUND_POWER_SAVE"
-
-#: configschema.json.h:14
+#: configschema.json.h:8
 msgid "SOUND_POWER_SAVE__GROUP_DESCRIPTION"
 msgstr ""
 "Active l'économie d'énergie de l'audio pour les matériels Intel HDA et AC97 "
@@ -100,34 +76,18 @@ msgstr ""
 "PulseAudio ;\n"
 "les systèmes sans PulseAudio peuvent requérir une valeur de 10"
 
-#: configschema.json.h:15
-msgid "SOUND_POWER_SAVE_ON_AC__ID_TITLE"
-msgstr "SOUND_POWER_SAVE_ON_AC"
-
-#: configschema.json.h:16
-msgid "SOUND_POWER_SAVE_ON_BAT__ID_TITLE"
-msgstr "SOUND_POWER_SAVE_ON_BAT"
-
-#: configschema.json.h:17
-msgid "SOUND_POWER_SAVE_CONTROLLER__ID_TITLE"
-msgstr "SOUND_POWER_SAVE_CONTROLLER"
-
-#: configschema.json.h:18
+#: configschema.json.h:9
 msgid "SOUND_POWER_SAVE_CONTROLLER__ID_DESCRIPTION"
 msgstr ""
 "Désactiver aussi le contrôleur (pour HDA uniquement) : O/N.\n"
 "Remarque : n'a d'effet que lorsque le paramètre SOUND_POWER_SAVE_ON_AC/BAT "
 "est activé"
 
-#: configschema.json.h:19
+#: configschema.json.h:10
 msgid "Disks__CATEGORY_TITLE"
 msgstr "Disques"
 
-#: configschema.json.h:20
-msgid "DISK_IDLE_SECS__GROUP_TITLE"
-msgstr "DISK_IDLE_SECS"
-
-#: configschema.json.h:21
+#: configschema.json.h:11
 msgid "DISK_IDLE_SECS__GROUP_DESCRIPTION"
 msgstr ""
 "Nombre de secondes que le mode 'ordinateur portable' doit respecter avant "
@@ -135,35 +95,11 @@ msgstr ""
 "Une valeur non nulle active le paramètre, zéro désactive le mode 'ordinateur "
 "portable'"
 
-#: configschema.json.h:22
-msgid "DISK_IDLE_SECS_ON_AC__ID_TITLE"
-msgstr "DISK_IDLE_SECS_ON_AC"
-
-#: configschema.json.h:23
-msgid "DISK_IDLE_SECS_ON_BAT__ID_TITLE"
-msgstr "DISK_IDLE_SECS_ON_BAT"
-
-#: configschema.json.h:24
-msgid "MAX_LOST_WORK_SECS__GROUP_TITLE"
-msgstr "MAX_LOST_WORK_SECS"
-
-#: configschema.json.h:25
+#: configschema.json.h:12
 msgid "MAX_LOST_WORK_SECS__GROUP_DESCRIPTION"
 msgstr "Valeurs de pages écrites (délai d'inactivité en secondes)"
 
-#: configschema.json.h:26
-msgid "MAX_LOST_WORK_SECS_ON_AC__ID_TITLE"
-msgstr "MAX_LOST_WORK_SECS_ON_AC"
-
-#: configschema.json.h:27
-msgid "MAX_LOST_WORK_SECS_ON_BAT__ID_TITLE"
-msgstr "MAX_LOST_WORK_SECS_ON_BAT"
-
-#: configschema.json.h:28
-msgid "DISK_DEVICES__ID_TITLE"
-msgstr "DISK_DEVICES_ID"
-
-#: configschema.json.h:29
+#: configschema.json.h:13
 msgid "DISK_DEVICES__ID_DESCRIPTION"
 msgstr ""
 "Définit les périphériques disques sur lesquels les paramètres DISK/"
@@ -172,11 +108,7 @@ msgstr ""
 "Les périphériques peuvent aussi être spécifiés par leur ID de disque (à "
 "rechercher avec : tlp diskid)"
 
-#: configschema.json.h:30
-msgid "DISK_APM_LEVEL__GROUP_TITLE"
-msgstr "DISK_APM_LEVEL"
-
-#: configschema.json.h:31
+#: configschema.json.h:14
 msgid "DISK_APM_LEVEL__GROUP_DESCRIPTION"
 msgstr ""
 "Niveau de gestion avancée de l'énergie (APM) du disque dur : 1..254, 255 "
@@ -187,19 +119,7 @@ msgstr ""
 "Utiliser la valeur spéciale 'keep'\n"
 "pour maintenir la valeur par défaut du matériel pour un disque particulier"
 
-#: configschema.json.h:32
-msgid "DISK_APM_LEVEL_ON_AC__ID_TITLE"
-msgstr "DISK_APM_LEVEL_ON_AC"
-
-#: configschema.json.h:33
-msgid "DISK_APM_LEVEL_ON_BAT__ID_TITLE"
-msgstr "DISK_APM_LEVEL_ON_BAT"
-
-#: configschema.json.h:34
-msgid "DISK_APM_CLASS_DENYLIST__ID_TITLE"
-msgstr "DISK_APM_CLASS_DENYLIST"
-
-#: configschema.json.h:35
+#: configschema.json.h:15
 msgid "DISK_APM_CLASS_DENYLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclure des catégories de disque de la gestion avancée de l'énergie (APM) :\n"
@@ -211,11 +131,7 @@ msgstr ""
 "Soyez prudent et assurez-vous d'avoir des sauvegardes de tous les médias "
 "concernés avant de retirer 'usb' ou 'ieee1394' de cette liste noire (!)"
 
-#: configschema.json.h:36
-msgid "DISK_SPINDOWN_TIMEOUT__GROUP_TITLE"
-msgstr "DISK_SPINDOWN_TIMEOUT"
-
-#: configschema.json.h:37
+#: configschema.json.h:16
 msgid "DISK_SPINDOWN_TIMEOUT__GROUP_DESCRIPTION"
 msgstr ""
 "Délai avant ralentissement du disque dur :\n"
@@ -224,19 +140,7 @@ msgstr ""
 "241..251 :\tdélais de 30 min. à 5,5 heures (par unités de 30 min.)\n"
 "(voir 'man hdparm' pour plus de détails)"
 
-#: configschema.json.h:38
-msgid "DISK_SPINDOWN_TIMEOUT_ON_AC__ID_TITLE"
-msgstr "DISK_SPINDOWN_TIMEOUT_ON_AC"
-
-#: configschema.json.h:39
-msgid "DISK_SPINDOWN_TIMEOUT_ON_BAT__ID_TITLE"
-msgstr "DISK_SPINDOWN_TIMEOUT_ON_BAT"
-
-#: configschema.json.h:40
-msgid "DISK_IOSCHED__ID_TITLE"
-msgstr "DISK_IOSCHED"
-
-#: configschema.json.h:41
+#: configschema.json.h:17
 msgid "DISK_IOSCHED__ID_DESCRIPTION"
 msgstr ""
 "Sélection de l'ordonnanceur E/S pour les disques : noop/deadline/cfq (par "
@@ -244,11 +148,7 @@ msgstr ""
 "Séparer les valeurs affectées aux différents périphériques de stockage avec "
 "des espaces"
 
-#: configschema.json.h:42
-msgid "SATA_LINKPWR__GROUP_TITLE"
-msgstr "SATA_LINKPWR"
-
-#: configschema.json.h:43
+#: configschema.json.h:18
 msgid "SATA_LINKPWR__GROUP_DESCRIPTION"
 msgstr ""
 "Gestion de l'agressivité du lien de puissance (ALPM) pour les disques SATA à "
@@ -258,19 +158,7 @@ msgstr ""
 "Les valeurs multiples séparées par des espaces [dans /etc/tlp.conf] sont "
 "essayées successivement jusqu'au bon fonctionnement"
 
-#: configschema.json.h:44
-msgid "SATA_LINKPWR_ON_AC__ID_TITLE"
-msgstr "SATA_LINKPWR_ON_AC"
-
-#: configschema.json.h:45
-msgid "SATA_LINKPWR_ON_BAT__ID_TITLE"
-msgstr "SATA_LINKPWR_ON_BAT"
-
-#: configschema.json.h:46
-msgid "SATA_LINKPWR_DENYLIST__ID_TITLE"
-msgstr "SATA_LINKPWR_DENYLIST"
-
-#: configschema.json.h:47
+#: configschema.json.h:19
 msgid "SATA_LINKPWR_DENYLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclure des liens SATA de la gestion de l'agressivité du lien de puissance "
@@ -279,21 +167,13 @@ msgstr ""
 "'tlp-stat -d' pour déterminer l'hôte ; le format est \"hostX\".\n"
 "Séparer les différents hôtes avec des espaces"
 
-#: configschema.json.h:48
-msgid "SATA_LINKPWR_BLACKLIST__ID_TITLE"
-msgstr "SATA_LINKPWR_BLACKLIST"
-
-#: configschema.json.h:49
+#: configschema.json.h:20
 msgid "SATA_LINKPWR_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclure des périphériques hôtes SATA de la gestion du lien de puissance.\n"
 "Séparer les hôtes multiples avec des espaces"
 
-#: configschema.json.h:50
-msgid "AHCI_RUNTIME_PM__GROUP_TITLE"
-msgstr "AHCI_RUNTIME_PM"
-
-#: configschema.json.h:51
+#: configschema.json.h:21
 msgid "AHCI_RUNTIME_PM__GROUP_DESCRIPTION"
 msgstr ""
 "Gestion de l'alimentation du moteur d'exécution (Runtime Power Management) "
@@ -302,27 +182,11 @@ msgstr ""
 "Remarque : les contrôleurs SATA sont des périphériques bus PCIe et sont "
 "traités plus loin dans la catégorie PCIe avec le paramètre RUNTIME_PM"
 
-#: configschema.json.h:52
-msgid "AHCI_RUNTIME_PM_ON_AC__ID_TITLE"
-msgstr "AHCI_RUNTIME_PM_ON_AC"
-
-#: configschema.json.h:53
-msgid "AHCI_RUNTIME_PM_ON_BAT__ID_TITLE"
-msgstr "AHCI_RUNTIME_PM_ON_BAT"
-
-#: configschema.json.h:54
-msgid "AHCI_RUNTIME_PM_TIMEOUT__ID_TITLE"
-msgstr "AHCI_RUNTIME_PM_TIMEOUT"
-
-#: configschema.json.h:55
+#: configschema.json.h:22
 msgid "AHCI_RUNTIME_PM_TIMEOUT__ID_DESCRIPTION"
 msgstr "Délai d'inactivité en secondes avant que le disque soit suspendu"
 
-#: configschema.json.h:56
-msgid "BAY_POWEROFF__GROUP_TITLE"
-msgstr "BAY_POWEROFF"
-
-#: configschema.json.h:57
+#: configschema.json.h:23
 msgid "BAY_POWEROFF__GROUP_DESCRIPTION"
 msgstr ""
 "Extinction du lecteur de disque optique pour les périphériques UltraBay/"
@@ -332,15 +196,7 @@ msgstr ""
 "ou en pressant le bouton d'éjection du disque sur les modèles plus récents.\n"
 "Remarque : un disque dur UltraBay/MediaBay n'est jamais éteint"
 
-#: configschema.json.h:58
-msgid "BAY_POWEROFF_ON_AC__ID_TITLE"
-msgstr "BAY_POWEROFF_ON_AC"
-
-#: configschema.json.h:59
-msgid "BAY_POWEROFF_ON_BAT__ID_TITLE"
-msgstr "BAY_POWEROFF_ON_BAT"
-
-#: configschema.json.h:60
+#: configschema.json.h:24
 msgid "BAY_POWEROFF_ON_BAT__ID_DESCRIPTION"
 msgstr ""
 "Déterminer si le lecteur de disque optique des périphériques UltraBay/"
@@ -352,23 +208,15 @@ msgstr ""
 "modèles plus récents.\n"
 "Remarque : un disque dur UltraBay/MediaBay n'est jamais éteint"
 
-#: configschema.json.h:61
-msgid "BAY_DEVICE__ID_TITLE"
-msgstr "BAY_DEVICE"
-
-#: configschema.json.h:62
+#: configschema.json.h:25
 msgid "BAY_DEVICE__ID_DESCRIPTION"
 msgstr "Lecteur de disque optique à éteindre (sr0 par défaut)"
 
-#: configschema.json.h:63
+#: configschema.json.h:26
 msgid "Graphics__CATEGORY_TITLE"
 msgstr "Graphisme"
 
-#: configschema.json.h:64
-msgid "INTEL_GPU_FREQ__GROUP_TITLE"
-msgstr "INTEL_GPU_FREQ"
-
-#: configschema.json.h:65
+#: configschema.json.h:27
 msgid "INTEL_GPU_FREQ__GROUP_DESCRIPTION"
 msgstr ""
 "Régler la fréquence min/max/turbo pour les puces graphiques Intel.\n"
@@ -376,35 +224,7 @@ msgstr ""
 "fréquences disponibles, voir\n"
 "la sortie de 'tlp-stat -g'"
 
-#: configschema.json.h:66
-msgid "INTEL_GPU_MIN_FREQ_ON_AC__ID_TITLE"
-msgstr "INTEL_GPU_MIN_FREQ_ON_AC"
-
-#: configschema.json.h:67
-msgid "INTEL_GPU_MIN_FREQ_ON_BAT__ID_TITLE"
-msgstr "INTEL_GPU_MIN_FREQ_ON_BAT"
-
-#: configschema.json.h:68
-msgid "INTEL_GPU_MAX_FREQ_ON_AC__ID_TITLE"
-msgstr "INTEL_GPU_MAX_FREQ_ON_AC"
-
-#: configschema.json.h:69
-msgid "INTEL_GPU_MAX_FREQ_ON_BAT__ID_TITLE"
-msgstr "INTEL_GPU_MAX_FREQ_ON_BAT"
-
-#: configschema.json.h:70
-msgid "INTEL_GPU_BOOST_FREQ_ON_AC__ID_TITLE"
-msgstr "INTEL_GPU_BOOST_FREQ_ON_AC"
-
-#: configschema.json.h:71
-msgid "INTEL_GPU_BOOST_FREQ_ON_BAT__ID_TITLE"
-msgstr "INTEL_GPU_BOOST_FREQ_ON_BAT"
-
-#: configschema.json.h:72
-msgid "RADEON_POWER_PROFILE__GROUP_TITLE"
-msgstr "RADEON_POWER_PROFILE"
-
-#: configschema.json.h:73
+#: configschema.json.h:28
 msgid "RADEON_POWER_PROFILE__GROUP_DESCRIPTION"
 msgstr ""
 "Vitesse d'horloge de la carte graphique (méthode du profil) : low, mid, "
@@ -413,126 +233,50 @@ msgstr ""
 "Remarque : seul le pilote radeon est utilisable sur du matériel ATI ancien "
 "(où la gestion dynamique de la puissance – DPM – n'est pas disponible)"
 
-#: configschema.json.h:74
-msgid "RADEON_POWER_PROFILE_ON_AC__ID_TITLE"
-msgstr "RADEON_POWER_PROFILE_ON_AC"
-
-#: configschema.json.h:75
-msgid "RADEON_POWER_PROFILE_ON_BAT__ID_TITLE"
-msgstr "RADEON_POWER_PROFILE_ON_BAT"
-
-#: configschema.json.h:76
-msgid "RADEON_DPM_STATE__GROUP_TITLE"
-msgstr "RADEON_DPM_STATE"
-
-#: configschema.json.h:77
+#: configschema.json.h:29
 msgid "RADEON_DPM_STATE__GROUP_DESCRIPTION"
 msgstr ""
 "Méthode de gestion dynamique de la puissance (DPM) : balanced, battery, "
 "performance.\n"
 "Remarque : uniquement pour le pilote radeon"
 
-#: configschema.json.h:78
-msgid "RADEON_DPM_STATE_ON_AC__ID_TITLE"
-msgstr "RADEON_DPM_STATE_ON_AC"
-
-#: configschema.json.h:79
-msgid "RADEON_DPM_STATE_ON_BAT__ID_TITLE"
-msgstr "RADEON_DPM_STATE_ON_BAT"
-
-#: configschema.json.h:80
-msgid "RADEON_DPM_PERF_LEVEL__GROUP_TITLE"
-msgstr "RADEON_DPM_PERF_LEVEL"
-
-#: configschema.json.h:81
+#: configschema.json.h:30
 msgid "RADEON_DPM_PERF_LEVEL__GROUP_DESCRIPTION"
 msgstr ""
 "Gestion de la puissance du processeur graphique AMD.\n"
 "Niveau de performance du DPM : auto, low, high ; 'auto' est recommandé.\n"
 "Remarque : requiert le pilote amdgpu ou radeon"
 
-#: configschema.json.h:82
-msgid "RADEON_DPM_PERF_LEVEL_ON_AC__ID_TITLE"
-msgstr "RADEON_DPM_PERF_LEVEL_ON_AC"
-
-#: configschema.json.h:83
-msgid "RADEON_DPM_PERF_LEVEL_ON_BAT__ID_TITLE"
-msgstr "RADEON_DPM_PERF_LEVEL_ON_BAT"
-
-#: configschema.json.h:84
+#: configschema.json.h:31
 msgid "Network__CATEGORY_TITLE"
 msgstr "Réseau"
 
-#: configschema.json.h:85
-msgid "WIFI_PWR__GROUP_TITLE"
-msgstr "WIFI_PWR"
-
-#: configschema.json.h:86
+#: configschema.json.h:32
 msgid "WIFI_PWR__GROUP_DESCRIPTION"
 msgstr "Mode d'économie d'énergie du Wi-Fi"
 
-#: configschema.json.h:87
-msgid "WIFI_PWR_ON_AC__ID_TITLE"
-msgstr "WIFI_PWR_ON_AC"
-
-#: configschema.json.h:88
-msgid "WIFI_PWR_ON_BAT__ID_TITLE"
-msgstr "WIFI_PWR_ON_BAT"
-
-#: configschema.json.h:89
-msgid "WOL_DISABLE__ID_TITLE"
-msgstr "WOL_DISABLE"
-
-#: configschema.json.h:90
+#: configschema.json.h:33
 msgid "WOL_DISABLE__ID_DESCRIPTION"
 msgstr "Désactiver le démarrage à distance par réseau (Wake-on-LAN)"
 
-#: configschema.json.h:91
+#: configschema.json.h:34
 msgid "PCIe__CATEGORY_TITLE"
 msgstr "PCIe"
 
-#: configschema.json.h:92
-msgid "PCIE_ASPM__GROUP_TITLE"
-msgstr "PCIE_ASPM"
-
-#: configschema.json.h:93
+#: configschema.json.h:35
 msgid "PCIE_ASPM__GROUP_DESCRIPTION"
 msgstr ""
 "Gestion de l'alimentation en état actif (ASPM) du bus d'extension PCIe :\n"
 "- default(*), performance, powersave, powersupersave.\n"
 "(*) maintient les réglages ASPM par défaut du BIOS (recommandé)"
 
-#: configschema.json.h:94
-msgid "PCIE_ASPM_ON_AC__ID_TITLE"
-msgstr "PCIE_ASPM_ON_AC"
-
-#: configschema.json.h:95
-msgid "PCIE_ASPM_ON_BAT__ID_TITLE"
-msgstr "PCIE_ASPM_ON_BAT"
-
-#: configschema.json.h:96
-msgid "RUNTIME_PM__GROUP_TITLE"
-msgstr "RUNTIME_PM"
-
-#: configschema.json.h:97
+#: configschema.json.h:36
 msgid "RUNTIME_PM__GROUP_DESCRIPTION"
 msgstr ""
 "Gestion de l'alimentation du moteur d'exécution (Runtime Power Management) "
 "pour les périphériques bus PCIe"
 
-#: configschema.json.h:98
-msgid "RUNTIME_PM_ON_AC__ID_TITLE"
-msgstr "RUNTIME_PM_ON_AC"
-
-#: configschema.json.h:99
-msgid "RUNTIME_PM_ON_BAT__ID_TITLE"
-msgstr "RUNTIME_PM_ON_BAT"
-
-#: configschema.json.h:100
-msgid "RUNTIME_PM_DENYLIST__ID_TITLE"
-msgstr "RUNTIME_PM_DENYLIST"
-
-#: configschema.json.h:101
+#: configschema.json.h:37
 msgid "RUNTIME_PM_DENYLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclure de la gestion de l'alimentation du moteur d'exécution les "
@@ -543,11 +287,7 @@ msgstr ""
 "Séparer les adresses multiples avec des espaces [dans /etc/tlp.conf].\n"
 "Utiliser lspci pour obtenir les adresses (première colonne)"
 
-#: configschema.json.h:102
-msgid "RUNTIME_PM_DRIVER_DENYLIST__ID_TITLE"
-msgstr "RUNTIME_PM_DRIVER_DENYLIST"
-
-#: configschema.json.h:103
+#: configschema.json.h:38
 msgid "RUNTIME_PM_DRIVER_DENYLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclure de la gestion de l'alimentation du moteur d'exécution les "
@@ -558,11 +298,7 @@ msgstr ""
 "Séparer les différents pilotes avec des espaces.\n"
 "Laisser vide pour complètement désactiver la fonction"
 
-#: configschema.json.h:104
-msgid "RUNTIME_PM_DEVICE__GROUP_TITLE"
-msgstr "RUNTIME_PM_DEVICE"
-
-#: configschema.json.h:105
+#: configschema.json.h:39
 msgid "RUNTIME_PM_DEVICE__GROUP_DESCRIPTION"
 msgstr ""
 "Activer/désactiver de façon permanente la gestion de l'alimentation du "
@@ -572,29 +308,13 @@ msgstr ""
 "d'exécution. Séparer les différentes adresses avec des espaces.\n"
 "Utiliser lspci pour obtenir les adresses (première colonne)"
 
-#: configschema.json.h:106
-msgid "RUNTIME_PM_ENABLE__ID_TITLE"
-msgstr "RUNTIME_PM_ENABLE"
-
-#: configschema.json.h:107
-msgid "RUNTIME_PM_DISABLE__ID_TITLE"
-msgstr "RUNTIME_PM_DISABLE"
-
-#: configschema.json.h:108
-msgid "RUNTIME_PM_ALL__ID_TITLE"
-msgstr "RUNTIME_PM_ALL"
-
-#: configschema.json.h:109
+#: configschema.json.h:40
 msgid "RUNTIME_PM_ALL__ID_DESCRIPTION"
 msgstr ""
 "Gestion de l'alimentation du moteur d'exécution pour *tous* les "
 "périphériques bus PCI(e), à l'exception de ceux sur liste noire"
 
-#: configschema.json.h:110
-msgid "RUNTIME_PM_BLACKLIST__ID_TITLE"
-msgstr "RUNTIME_PM_BLACKLIST"
-
-#: configschema.json.h:111
+#: configschema.json.h:41
 msgid "RUNTIME_PM_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclure les adresses des périphériques PCI(e) de la liste suivante de la "
@@ -602,11 +322,7 @@ msgstr ""
 "(séparer avec des espaces). Utiliser lspci pour obtenir les adresses "
 "(première colonne)"
 
-#: configschema.json.h:112
-msgid "RUNTIME_PM_DRIVER_BLACKLIST__ID_TITLE"
-msgstr "RUNTIME_PM_DRIVER_BLACKLIST"
-
-#: configschema.json.h:113
+#: configschema.json.h:42
 msgid "RUNTIME_PM_DRIVER_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclure les périphériques PCIe attribués aux pilotes énumérés de la gestion "
@@ -617,15 +333,11 @@ msgstr ""
 "la fonction.\n"
 "Séparer les différents pilotes avec des espaces"
 
-#: configschema.json.h:114
+#: configschema.json.h:43
 msgid "Processor__CATEGORY_TITLE"
 msgstr "Processeur"
 
-#: configschema.json.h:115
-msgid "CPU_DRIVER_OPMODE__GROUP_TITLE"
-msgstr "CPU_DRIVER_OPMODE"
-
-#: configschema.json.h:116
+#: configschema.json.h:44
 msgid "CPU_DRIVER_OPMODE__GROUP_DESCRIPTION"
 msgstr ""
 "Select a CPU scaling driver operation mode.\n"
@@ -633,19 +345,7 @@ msgstr ""
 "AMD Zen 2 or newer CPU with amd-pstate_driver as of kernel 6.3/6.4:\n"
 "active, passive, guided"
 
-#: configschema.json.h:117
-msgid "CPU_DRIVER_OPMODE_ON_AC__ID_TITLE"
-msgstr "CPU_DRIVER_OPMODE_ON_AC"
-
-#: configschema.json.h:118
-msgid "CPU_DRIVER_OPMODE_ON_BAT__ID_TITLE"
-msgstr "CPU_DRIVER_OPMODE_ON_BAT"
-
-#: configschema.json.h:119
-msgid "CPU_SCALING_GOVERNOR__GROUP_TITLE"
-msgstr "CPU_SCALING_GOVERNOR"
-
-#: configschema.json.h:120
+#: configschema.json.h:45
 msgid "CPU_SCALING_GOVERNOR__GROUP_DESCRIPTION"
 msgstr ""
 "Sélectionne un gouverneur de mise à l'échelle de la fréquence du CPU.\n"
@@ -667,19 +367,7 @@ msgstr ""
 "- *Avant* de changer de gouverneur, vous devriez déterminer les avantages et "
 "inconvénients de cette manipulation"
 
-#: configschema.json.h:121
-msgid "CPU_SCALING_GOVERNOR_ON_AC__ID_TITLE"
-msgstr "CPU_SCALING_GOVERNOR_ON_AC"
-
-#: configschema.json.h:122
-msgid "CPU_SCALING_GOVERNOR_ON_BAT__ID_TITLE"
-msgstr "CPU_SCALING_GOVERNOR_ON_BAT"
-
-#: configschema.json.h:123
-msgid "CPU_SCALING_FREQ__GROUP_TITLE"
-msgstr "CPU_SCALING_FREQ"
-
-#: configschema.json.h:124
+#: configschema.json.h:46
 msgid "CPU_SCALING_FREQ__GROUP_DESCRIPTION"
 msgstr ""
 "Définit la fréquence min/max disponible pour le gouverneur de mise à "
@@ -693,27 +381,7 @@ msgstr ""
 "- Usage non recommandé avec le pilote de mise à l'échelle intel_pstate ; "
 "utiliser CPU_MIN/MAX_PERF_ON_AC/BAT à la place"
 
-#: configschema.json.h:125
-msgid "CPU_SCALING_MIN_FREQ_ON_AC__ID_TITLE"
-msgstr "CPU_SCALING_MIN_FREQ_ON_AC"
-
-#: configschema.json.h:126
-msgid "CPU_SCALING_MAX_FREQ_ON_AC__ID_TITLE"
-msgstr "CPU_SCALING_MAX_FREQ_ON_AC"
-
-#: configschema.json.h:127
-msgid "CPU_SCALING_MIN_FREQ_ON_BAT__ID_TITLE"
-msgstr "CPU_SCALING_MIN_FREQ_ON_BAT"
-
-#: configschema.json.h:128
-msgid "CPU_SCALING_MAX_FREQ_ON_BAT__ID_TITLE"
-msgstr "CPU_SCALING_MAX_FREQ_ON_BAT"
-
-#: configschema.json.h:129
-msgid "CPU_ENERGY_PERF_POLICY__GROUP_TITLE"
-msgstr "CPU_ENERGY_PERF_POLICY"
-
-#: configschema.json.h:130
+#: configschema.json.h:47
 msgid "CPU_ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
 msgstr ""
 "Définit les règles du rapport puissance/performance du CPU Intel pour les "
@@ -733,19 +401,7 @@ msgstr ""
 "(EPP) et\n"
 "biais de performance énergétique (EPB)"
 
-#: configschema.json.h:131
-msgid "CPU_ENERGY_PERF_POLICY_ON_AC__ID_TITLE"
-msgstr "CPU_ENERGY_PERF_POLICY_ON_AC"
-
-#: configschema.json.h:132
-msgid "CPU_ENERGY_PERF_POLICY_ON_BAT__ID_TITLE"
-msgstr "CPU_ENERGY_PERF_POLICY_ON_BAT"
-
-#: configschema.json.h:133
-msgid "CPU_HWP__GROUP_TITLE"
-msgstr "CPU_HWP"
-
-#: configschema.json.h:134
+#: configschema.json.h:48
 msgid "CPU_HWP__GROUP_DESCRIPTION"
 msgstr ""
 "Définit les algorithmes de performance énergétique du gouverneur Intel P-"
@@ -757,19 +413,7 @@ msgstr ""
 "Remarque : requiert un processeur Intel Skylake ou plus récent et un noyau "
 ">= 4.10"
 
-#: configschema.json.h:135
-msgid "CPU_HWP_ON_AC__ID_TITLE"
-msgstr "CPU_HWP_ON_AC"
-
-#: configschema.json.h:136
-msgid "CPU_HWP_ON_BAT__ID_TITLE"
-msgstr "CPU_HWP_ON_BAT"
-
-#: configschema.json.h:137
-msgid "CPU_PERF__GROUP_TITLE"
-msgstr "CPU_PERF"
-
-#: configschema.json.h:138
+#: configschema.json.h:49
 msgid "CPU_PERF__GROUP_DESCRIPTION"
 msgstr ""
 "Définit le niveau de performance P-State du processeur Intel : 0..100 (%).\n"
@@ -781,27 +425,7 @@ msgstr ""
 "Intel Core i de 2de génération ou\n"
 "plus récent"
 
-#: configschema.json.h:139
-msgid "CPU_MIN_PERF_ON_AC__ID_TITLE"
-msgstr "CPU_MIN_PERF_ON_AC"
-
-#: configschema.json.h:140
-msgid "CPU_MAX_PERF_ON_AC__ID_TITLE"
-msgstr "CPU_MAX_PERF_ON_AC"
-
-#: configschema.json.h:141
-msgid "CPU_MIN_PERF_ON_BAT__ID_TITLE"
-msgstr "CPU_MIN_PERF_ON_BAT"
-
-#: configschema.json.h:142
-msgid "CPU_MAX_PERF_ON_BAT__ID_TITLE"
-msgstr "CPU_MAX_PERF_ON_BAT"
-
-#: configschema.json.h:143
-msgid "CPU_BOOST__GROUP_TITLE"
-msgstr "CPU_BOOST"
-
-#: configschema.json.h:144
+#: configschema.json.h:50
 msgid "CPU_BOOST__GROUP_DESCRIPTION"
 msgstr ""
 "Régler la fonctionnalité \"turbo boost\" (Intel) ou \"turbo core\" (AMD) du "
@@ -810,19 +434,7 @@ msgstr ""
 "Remarque : une valeur de 1 n'active *pas* la fonctionnalité d'accélération, "
 "il se contente juste de l'autoriser"
 
-#: configschema.json.h:145
-msgid "CPU_BOOST_ON_AC__ID_TITLE"
-msgstr "CPU_BOOST_ON_AC"
-
-#: configschema.json.h:146
-msgid "CPU_BOOST_ON_BAT__ID_TITLE"
-msgstr "CPU_BOOST_ON_BAT"
-
-#: configschema.json.h:147
-msgid "CPU_HWP_DYN_BOOST__GROUP_TITLE"
-msgstr "CPU_HWP_DYN_BOOST"
-
-#: configschema.json.h:148
+#: configschema.json.h:51
 msgid "CPU_HWP_DYN_BOOST__GROUP_DESCRIPTION"
 msgstr ""
 "Règle la fonctionnalité 'HWP dynamic boost' du processeur Intel :\n"
@@ -830,48 +442,20 @@ msgstr ""
 "Requiert le pilote intel_pstate en mode 'active' et un processeur Intel Core "
 "i de 6e génération ou plus récent"
 
-#: configschema.json.h:149
-msgid "CPU_HWP_DYN_BOOST_ON_AC__ID_TITLE"
-msgstr "CPU_HWP_DYN_BOOST_ON_AC"
-
-#: configschema.json.h:150
-msgid "CPU_HWP_DYN_BOOST_ON_BAT__ID_TITLE"
-msgstr "CPU_HWP_DYN_BOOST_ON_BAT"
-
-#: configschema.json.h:151
-msgid "SCHED_POWERSAVE__GROUP_TITLE"
-msgstr "SCHED_POWERSAVE"
-
-#: configschema.json.h:152
+#: configschema.json.h:52
 msgid "SCHED_POWERSAVE__GROUP_DESCRIPTION"
 msgstr ""
 "Réduit, dans des conditions de charge de travail légères, le nombre de cœurs "
 "du processeurs utilisés/les processus d'hyper-threading"
 
-#: configschema.json.h:153
-msgid "SCHED_POWERSAVE_ON_AC__ID_TITLE"
-msgstr "SCHED_POWERSAVE_ON_AC"
-
-#: configschema.json.h:154
-msgid "SCHED_POWERSAVE_ON_BAT__ID_TITLE"
-msgstr "SCHED_POWERSAVE_ON_BAT"
-
-#: configschema.json.h:155
-msgid "NMI_WATCHDOG__ID_TITLE"
-msgstr "NMI_WATCHDOG"
-
-#: configschema.json.h:156
+#: configschema.json.h:53
 msgid "NMI_WATCHDOG__ID_DESCRIPTION"
 msgstr ""
 "Kernel NMI Watchdog (Surveillance de l'interruption non masquable : "
 "interruption matérielle émise en cas d'erreur critique)\n"
 "off : économise de l'énergie, on : uniquement pour le débogage du noyau"
 
-#: configschema.json.h:157
-msgid "PLATFORM_PROFILE__GROUP_TITLE"
-msgstr "PLATFORM_PROFILE"
-
-#: configschema.json.h:158
+#: configschema.json.h:54
 msgid "PLATFORM_PROFILE__GROUP_DESCRIPTION"
 msgstr ""
 "Sélectionne le profil de la plate-forme :\n"
@@ -884,19 +468,7 @@ msgstr ""
 "disponibilité pour votre matériel et les profils additionnels tels que : "
 "balanced-performance, quiet, cool"
 
-#: configschema.json.h:159
-msgid "PLATFORM_PROFILE_ON_AC__ID_TITLE"
-msgstr "PLATFORM_PROFILE_ON_AC"
-
-#: configschema.json.h:160
-msgid "PLATFORM_PROFILE_ON_BAT__ID_TITLE"
-msgstr "PLATFORM_PROFILE_ON_BAT"
-
-#: configschema.json.h:161
-msgid "MEM_SLEEP__GROUP_TITLE"
-msgstr "MEM_SLEEP"
-
-#: configschema.json.h:162
+#: configschema.json.h:55
 msgid "MEM_SLEEP__GROUP_DESCRIPTION"
 msgstr ""
 "System suspend mode:\n"
@@ -908,19 +480,7 @@ msgstr ""
 "output of tlp-stat -s. If unsure, stick with the system default by not "
 "enabling this"
 
-#: configschema.json.h:163
-msgid "MEM_SLEEP_ON_AC__ID_TITLE"
-msgstr "MEM_SLEEP_ON_AC"
-
-#: configschema.json.h:164
-msgid "MEM_SLEEP_ON_BAT__ID_TITLE"
-msgstr "MEM_SLEEP_ON_BAT"
-
-#: configschema.json.h:165
-msgid "PHC_CONTROLS__ID_TITLE"
-msgstr "PHC_CONTROLS"
-
-#: configschema.json.h:166
+#: configschema.json.h:56
 msgid "PHC_CONTROLS__ID_DESCRIPTION"
 msgstr ""
 "Changement des tensions du CPU, alias \"sous-voltage\" (\"undervolting\")\n"
@@ -930,34 +490,18 @@ msgstr ""
 "ATTENTION : n'utilisez cette fonction que si vous saisissez pleinement ce "
 "que vous faites (!)"
 
-#: configschema.json.h:167
-msgid "ENERGY_PERF_POLICY__GROUP_TITLE"
-msgstr "ENERGY_PERF_POLICY"
-
-#: configschema.json.h:168
+#: configschema.json.h:57
 msgid "ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
 msgstr ""
 "Règle le niveau de performance du CPU par rapport aux règles d'économie "
 "d'énergie.\n"
 "Requiert le module msr du noyau et x86_energy_perf_policy issu de linux-tools"
 
-#: configschema.json.h:169
-msgid "ENERGY_PERF_POLICY_ON_AC__ID_TITLE"
-msgstr "ENERGY_PERF_POLICY_ON_AC"
-
-#: configschema.json.h:170
-msgid "ENERGY_PERF_POLICY_ON_BAT__ID_TITLE"
-msgstr "ENERGY_PERF_POLICY_ON_BAT"
-
-#: configschema.json.h:171
+#: configschema.json.h:58
 msgid "Radio__CATEGORY_TITLE"
 msgstr "Radio"
 
-#: configschema.json.h:172
-msgid "RESTORE_DEVICE_STATE_ON_STARTUP__ID_TITLE"
-msgstr "RESTORE_DEVICE_STATE_ON_STARTUP"
-
-#: configschema.json.h:173
+#: configschema.json.h:59
 msgid "RESTORE_DEVICE_STATE_ON_STARTUP__ID_DESCRIPTION"
 msgstr ""
 "Rétablir au démarrage du système l'état des périphériques radio tel qu'à sa "
@@ -965,170 +509,78 @@ msgstr ""
 "Remarque : les paramètres DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN ne "
 "sont pas pris en compte lorsque cette fonction est activée"
 
-#: configschema.json.h:174
-msgid "DEVICES_TO_DISABLE_ON_STARTUP__ID_TITLE"
-msgstr "DEVICES_TO_DISABLE_ON_STARTUP"
-
-#: configschema.json.h:175
+#: configschema.json.h:60
 msgid "DEVICES_TO_DISABLE_ON_STARTUP__ID_DESCRIPTION"
 msgstr "Périphériques radio à désactiver au démarrage : bluetooth wifi wwan"
 
-#: configschema.json.h:176
-msgid "DEVICES_TO_ENABLE_ON_STARTUP__ID_TITLE"
-msgstr "DEVICES_TO_ENABLE_ON_STARTUP"
-
-#: configschema.json.h:177
+#: configschema.json.h:61
 msgid "DEVICES_TO_ENABLE_ON_STARTUP__ID_DESCRIPTION"
 msgstr "Périphériques radio à activer au démarrage : bluetooth wifi wwan"
 
-#: configschema.json.h:178
-msgid "DEVICES_TO_DISABLE_ON_SHUTDOWN__ID_TITLE"
-msgstr "DEVICES_TO_DISABLE_ON_SHUTDOWN"
-
-#: configschema.json.h:179
+#: configschema.json.h:62
 msgid "DEVICES_TO_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
 "Périphériques radio à désactiver lors de l'extinction : bluetooth wifi wwan\n"
 "(solution de contournement pour les périphériques qui empêchent l'extinction)"
 
-#: configschema.json.h:180
-msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN__ID_TITLE"
-msgstr "DEVICES_TO_ENABLE_ON_SHUTDOWN"
-
-#: configschema.json.h:181
+#: configschema.json.h:63
 msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
 "Périphériques radio à activer lors de l'extinction : bluetooth wifi wwan\n"
 "(pour éviter que d'autres systèmes d'exploitation ne perdent les signaux "
 "radio)"
 
-#: configschema.json.h:182
-msgid "DEVICES_TO_ENABLE_ON_AC__ID_TITLE"
-msgstr "DEVICES_TO_ENABLE_ON_AC"
-
-#: configschema.json.h:183
+#: configschema.json.h:64
 msgid "DEVICES_TO_ENABLE_ON_AC__ID_DESCRIPTION"
 msgstr "Périphériques radio à activer en mode AC : bluetooth, wifi, wwan"
 
-#: configschema.json.h:184
-msgid "DEVICES_TO_DISABLE_ON_BAT__ID_TITLE"
-msgstr "DEVICES_TO_DISABLE_ON_BAT"
-
-#: configschema.json.h:185
+#: configschema.json.h:65
 msgid "DEVICES_TO_DISABLE_ON_BAT__ID_DESCRIPTION"
 msgstr ""
 "Périphériques radio à désactiver en mode batterie : bluetooth, wifi, wwan"
 
-#: configschema.json.h:186
-msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE__ID_TITLE"
-msgstr "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE"
-
-#: configschema.json.h:187
+#: configschema.json.h:66
 msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE__ID_DESCRIPTION"
 msgstr ""
 "Périphériques radio à désactiver en mode batterie quand ils ne sont pas "
 "utilisés (pas de connexion active) :\n"
 "bluetooth, wifi, wwan"
 
-#: configschema.json.h:188
+#: configschema.json.h:67
 msgid "Radio Device Wizard__CATEGORY_TITLE"
 msgstr "Périphériques radio"
 
-#: configschema.json.h:189
-msgid "DEVICES_TO_DISABLE_ON_CONNECT__GROUP_TITLE"
-msgstr "DEVICES_TO_DISABLE_ON_CONNECT"
-
-#: configschema.json.h:190
+#: configschema.json.h:68
 msgid "DEVICES_TO_DISABLE_ON_CONNECT__GROUP_DESCRIPTION"
 msgstr ""
 "Périphériques radio à désactiver lors d'une connexion LAN / Wi-Fi / WWAN"
 
-#: configschema.json.h:191
-msgid "DEVICES_TO_DISABLE_ON_LAN_CONNECT__ID_TITLE"
-msgstr "DEVICES_TO_DISABLE_ON_LAN_CONNECT"
-
-#: configschema.json.h:192
-msgid "DEVICES_TO_DISABLE_ON_WIFI_CONNECT__ID_TITLE"
-msgstr "DEVICES_TO_DISABLE_ON_WIFI_CONNECT"
-
-#: configschema.json.h:193
-msgid "DEVICES_TO_DISABLE_ON_WWAN_CONNECT__ID_TITLE"
-msgstr "DEVICES_TO_DISABLE_ON_WWAN_CONNECT"
-
-#: configschema.json.h:194
-msgid "DEVICES_TO_ENABLE_ON_DISCONNECT__GROUP_TITLE"
-msgstr "DEVICES_TO_ENABLE_ON_DISCONNECT"
-
-#: configschema.json.h:195
+#: configschema.json.h:69
 msgid "DEVICES_TO_ENABLE_ON_DISCONNECT__GROUP_DESCRIPTION"
 msgstr ""
 "Périphériques radio à activer lors d'une déconnexion LAN / Wi-Fi / WWAN"
 
-#: configschema.json.h:196
-msgid "DEVICES_TO_ENABLE_ON_LAN_DISCONNECT__ID_TITLE"
-msgstr "DEVICES_TO_ENABLE_ON_LAN_DISCONNECT"
-
-#: configschema.json.h:197
-msgid "DEVICES_TO_ENABLE_ON_WIFI_DISCONNECT__ID_TITLE"
-msgstr "DEVICES_TO_ENABLE_ON_WIFI_DISCONNECT"
-
-#: configschema.json.h:198
-msgid "DEVICES_TO_ENABLE_ON_WWAN_DISCONNECT__ID_TITLE"
-msgstr "DEVICES_TO_ENABLE_ON_WWAN_DISCONNECT"
-
-#: configschema.json.h:199
-msgid "DEVICES_ON_DOCK__GROUP_TITLE"
-msgstr "DEVICES_ON_DOCK"
-
-#: configschema.json.h:200
+#: configschema.json.h:70
 msgid "DEVICES_ON_DOCK__GROUP_DESCRIPTION"
 msgstr ""
 "Périphériques radio à activer/désactiver lors du branchement à une station "
 "d'accueil"
 
-#: configschema.json.h:201
-msgid "DEVICES_TO_ENABLE_ON_DOCK__ID_TITLE"
-msgstr "DEVICES_TO_ENABLE_ON_DOCK"
-
-#: configschema.json.h:202
-msgid "DEVICES_TO_DISABLE_ON_DOCK__ID_TITLE"
-msgstr "DEVICES_TO_DISABLE_ON_DOCK"
-
-#: configschema.json.h:203
-msgid "DEVICES_ON_UNDOCK__GROUP_TITLE"
-msgstr "DEVICES_ON_UNDOCK"
-
-#: configschema.json.h:204
+#: configschema.json.h:71
 msgid "DEVICES_ON_UNDOCK__GROUP_DESCRIPTION"
 msgstr ""
 "Périphériques radio à activer/désactiver lors du débranchement d'une station "
 "d'accueil"
 
-#: configschema.json.h:205
-msgid "DEVICES_TO_ENABLE_ON_UNDOCK__ID_TITLE"
-msgstr "DEVICES_TO_ENABLE_ON_UNDOCK"
-
-#: configschema.json.h:206
-msgid "DEVICES_TO_DISABLE_ON_UNDOCK__ID_TITLE"
-msgstr "DEVICES_TO_DISABLE_ON_UNDOCK"
-
-#: configschema.json.h:207
+#: configschema.json.h:72
 msgid "USB__CATEGORY_TITLE"
 msgstr "USB"
 
-#: configschema.json.h:208
-msgid "USB_AUTOSUSPEND__ID_TITLE"
-msgstr "USB_AUTOSUSPEND"
-
-#: configschema.json.h:209
+#: configschema.json.h:73
 msgid "USB_AUTOSUSPEND__ID_DESCRIPTION"
 msgstr "Fonction de veille automatique des périphériques USB"
 
-#: configschema.json.h:210
-msgid "USB_DENYLIST__ID_TITLE"
-msgstr "USB_DENYLIST"
-
-#: configschema.json.h:211
+#: configschema.json.h:74
 msgid "USB_DENYLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclure de la veille automatique USB les périphériques énumérés (séparer "
@@ -1137,61 +589,37 @@ msgstr ""
 "Remarque : les périphériques d'entrée (usbhid) et les scanners supportés par "
 "libsane sont exclus automatiquement"
 
-#: configschema.json.h:212
-msgid "USB_EXCLUDE_AUDIO__ID_TITLE"
-msgstr "USB_EXCLUDE_AUDIO"
-
-#: configschema.json.h:213
+#: configschema.json.h:75
 msgid "USB_EXCLUDE_AUDIO__ID_DESCRIPTION"
 msgstr ""
 "Exclure de la veille automatique USB les périphériques audio :\n"
 "- 0 = ne pas exclure, 1 = exclure"
 
-#: configschema.json.h:214
-msgid "USB_EXCLUDE_BTUSB__ID_TITLE"
-msgstr "USB_EXCLUDE_BTUSB"
-
-#: configschema.json.h:215
+#: configschema.json.h:76
 msgid "USB_EXCLUDE_BTUSB__ID_DESCRIPTION"
 msgstr ""
 "Exclure de la veille automatique USB les périphériques bluetooth :\n"
 "- 0 = ne pas exclure, 1 = exclure"
 
-#: configschema.json.h:216
-msgid "USB_EXCLUDE_PHONE__ID_TITLE"
-msgstr "USB_EXCLUDE_PHONE"
-
-#: configschema.json.h:217
+#: configschema.json.h:77
 msgid "USB_EXCLUDE_PHONE__ID_DESCRIPTION"
 msgstr ""
 "Exclure de la veille automatique USB les téléphones :\n"
 "- 0 = ne pas exclure, 1 = exclure (active la charge)"
 
-#: configschema.json.h:218
-msgid "USB_EXCLUDE_PRINTER__ID_TITLE"
-msgstr "USB_EXCLUDE_PRINTER"
-
-#: configschema.json.h:219
+#: configschema.json.h:78
 msgid "USB_EXCLUDE_PRINTER__ID_DESCRIPTION"
 msgstr ""
 "Exclure de la veille automatique USB les imprimantes :\n"
 "- 0 = ne pas exclure, 1 = exclure"
 
-#: configschema.json.h:220
-msgid "USB_EXCLUDE_WWAN__ID_TITLE"
-msgstr "USB_EXCLUDE_WWAN"
-
-#: configschema.json.h:221
+#: configschema.json.h:79
 msgid "USB_EXCLUDE_WWAN__ID_DESCRIPTION"
 msgstr ""
 "Exclure de la veille automatique USB les périphériques WWAN :\n"
 "- 0 = ne pas exclure, 1 = exclure"
 
-#: configschema.json.h:222
-msgid "USB_ALLOWLIST__ID_TITLE"
-msgstr "USB_ALLOWLIST"
-
-#: configschema.json.h:223
+#: configschema.json.h:80
 msgid "USB_ALLOWLIST__ID_DESCRIPTION"
 msgstr ""
 "Autoriser la veille automatique USB pour les périphériques énumérés, même "
@@ -1199,11 +627,7 @@ msgstr ""
 "exclus plus haut (séparer avec des espaces [dans /etc/tlp.conf]). Utiliser "
 "'lsusb' pour obtenir les identifiants"
 
-#: configschema.json.h:224
-msgid "USB_BLACKLIST__ID_TITLE"
-msgstr "USB_BLACKLIST"
-
-#: configschema.json.h:225
+#: configschema.json.h:81
 msgid "USB_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
 "Les périphériques provenant de la liste suivante sont exclus de la veille "
@@ -1211,45 +635,25 @@ msgstr ""
 "(séparer avec des espaces). Utiliser 'lsusb' pour obtenir les identifiants.\n"
 "Remarque : les périphériques d'entrée (usbhid) sont automatiquement exclus"
 
-#: configschema.json.h:226
-msgid "USB_BLACKLIST_BTUSB__ID_TITLE"
-msgstr "USB_BLACKLIST_BTUSB"
-
-#: configschema.json.h:227
+#: configschema.json.h:82
 msgid "USB_BLACKLIST_BTUSB__ID_DESCRIPTION"
 msgstr "Les périphériques Bluetooth sont exclus de la veille automatique USB"
 
-#: configschema.json.h:228
-msgid "USB_BLACKLIST_PHONE__ID_TITLE"
-msgstr "USB_BLACKLIST_PHONE"
-
-#: configschema.json.h:229
+#: configschema.json.h:83
 msgid "USB_BLACKLIST_PHONE__ID_DESCRIPTION"
 msgstr "Les téléphones sont exclus de la veille automatique USB"
 
-#: configschema.json.h:230
-msgid "USB_BLACKLIST_PRINTER__ID_TITLE"
-msgstr "USB_BLACKLIST_PRINTER"
-
-#: configschema.json.h:231
+#: configschema.json.h:84
 msgid "USB_BLACKLIST_PRINTER__ID_DESCRIPTION"
 msgstr "Les imprimantes sont exclues de la veille automatique USB"
 
-#: configschema.json.h:232
-msgid "USB_BLACKLIST_WWAN__ID_TITLE"
-msgstr "USB_BLACKLIST_WWAN"
-
-#: configschema.json.h:233
+#: configschema.json.h:85
 msgid "USB_BLACKLIST_WWAN__ID_DESCRIPTION"
 msgstr ""
 "Les périphériques WWAN sont exclus de la veille automatique.\n"
 "Remarque : fonctionne uniquement pour les ids 05c6:* 0bdb:* 1199:*"
 
-#: configschema.json.h:234
-msgid "USB_WHITELIST__ID_TITLE"
-msgstr "USB_WHITELIST"
-
-#: configschema.json.h:235
+#: configschema.json.h:86
 msgid "USB_WHITELIST__ID_DESCRIPTION"
 msgstr ""
 "Inclure les périphériques énumérés dans la fonction de veille automatique "
@@ -1258,11 +662,7 @@ msgstr ""
 "espaces).\n"
 "Utiliser 'lsusb' pour obtenir les identifiants"
 
-#: configschema.json.h:236
-msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_TITLE"
-msgstr "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN"
-
-#: configschema.json.h:237
+#: configschema.json.h:87
 msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
 "Si activé, empêche la veille automatique avant l'extinction / sinon ne fait "
@@ -1270,15 +670,11 @@ msgstr ""
 "(solution de contournement pour les périphériques USB qui provoquent des "
 "problèmes d'extinction)"
 
-#: configschema.json.h:238
+#: configschema.json.h:88
 msgid "ThinkPad Battery__CATEGORY_TITLE"
 msgstr "Batterie de ThinkPad"
 
-#: configschema.json.h:239
-msgid "CHARGE_THRESH_BAT0__GROUP_TITLE"
-msgstr "CHARGE_THRESH_BAT0"
-
-#: configschema.json.h:240
+#: configschema.json.h:89
 msgid "CHARGE_THRESH_BAT0__GROUP_DESCRIPTION"
 msgstr ""
 "Protection de la batterie -- Seuils de charge\n"
@@ -1304,62 +700,26 @@ msgstr ""
 "BAT0: Batterie primaire/principale/interne (valeurs en %)\n"
 "Remarque : à utiliser aussi pour les batteries BATC, BATT et CMB0"
 
-#: configschema.json.h:241
-msgid "START_CHARGE_THRESH_BAT0__ID_TITLE"
-msgstr "START_CHARGE_THRESH_BAT0"
-
-#: configschema.json.h:242
-msgid "STOP_CHARGE_THRESH_BAT0__ID_TITLE"
-msgstr "STOP_CHARGE_THRESH_BAT0"
-
-#: configschema.json.h:243
-msgid "CHARGE_THRESH_BAT1__GROUP_TITLE"
-msgstr "CHARGE_THRESH_BAT1"
-
-#: configschema.json.h:244
+#: configschema.json.h:90
 msgid "CHARGE_THRESH_BAT1__GROUP_DESCRIPTION"
 msgstr ""
 "BAT1: Batterie secondaire / Ultrabay / Slice/ interchangeable (valeurs en %)"
 
-#: configschema.json.h:245
-msgid "START_CHARGE_THRESH_BAT1__ID_TITLE"
-msgstr "START_CHARGE_THRESH_BAT1"
-
-#: configschema.json.h:246
-msgid "STOP_CHARGE_THRESH_BAT1__ID_TITLE"
-msgstr "STOP_CHARGE_THRESH_BAT1"
-
-#: configschema.json.h:247
-msgid "RESTORE_THRESHOLDS_ON_BAT__ID_TITLE"
-msgstr "RESTORE_THRESHOLDS_ON_BAT"
-
-#: configschema.json.h:248
+#: configschema.json.h:91
 msgid "RESTORE_THRESHOLDS_ON_BAT__ID_DESCRIPTION"
 msgstr ""
 "Rétablit les seuils de chargement quand le câble d'alimentation est débranché"
 
-#: configschema.json.h:249
-msgid "NATACPI_ENABLE__ID_TITLE"
-msgstr "NATACPI_ENABLE"
-
-#: configschema.json.h:250
+#: configschema.json.h:92
 msgid "NATACPI_ENABLE__ID_DESCRIPTION"
 msgstr ""
 "Pilotes de contrôle de la protection de la batterie : 0 = désactiver, 1 = "
 "activer"
 
-#: configschema.json.h:251
-msgid "TPACPI_ENABLE__ID_TITLE"
-msgstr "TPACPI_ENABLE"
-
-#: configschema.json.h:252
+#: configschema.json.h:93
 msgid "TPACPI_ENABLE__ID_DESCRIPTION"
 msgstr "Pilotes de batterie de ThinkPad : 0 = désactiver, 1 = activer"
 
-#: configschema.json.h:253
-msgid "TPSMAPI_ENABLE__ID_TITLE"
-msgstr "TPSMAPI_ENABLE"
-
-#: configschema.json.h:254
+#: configschema.json.h:94
 msgid "TPSMAPI_ENABLE__ID_DESCRIPTION"
 msgstr "Pilotes de batterie de ThinkPad : 0 = désactiver, 1 = activer"
