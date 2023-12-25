@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2020-12-23 18:33+0100\n"
-"PO-Revision-Date: 2023-08-07 21:34+0200\n"
+"POT-Creation-Date: 2023-12-25 16:38+0100\n"
+"PO-Revision-Date: 2023-12-25 16:46+0100\n"
 "Last-Translator: \n"
 "Language-Team: Hellzevir\n"
 "Language: fr\n"
@@ -10,24 +10,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.1\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-KeywordsList: ST_\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: statui.py\n"
 
-#: statui.py:9
-msgid "tlp-stat executable not found."
-msgstr "Exécutable 'tlp-stat' non trouvé."
-
-#: statui.py:46
+#: statui.py:37
 msgid "Click fetch button to receive results"
 msgstr "Cliquer sur le bouton de compte-rendu pour obtenir les résultats"
 
-#: statui.py:56
+#: statui.py:47
 msgid "Simple"
 msgstr "Simple"
 
-#: statui.py:60
+#: statui.py:52
 msgid "Complete"
 msgstr "Complet"

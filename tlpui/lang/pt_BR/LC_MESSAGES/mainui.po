@@ -1,61 +1,69 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2018-05-06 09:44+0200\n"
-"PO-Revision-Date: 2020-12-24 20:41+0100\n"
+"POT-Creation-Date: 2023-12-25 16:40+0100\n"
+"PO-Revision-Date: 2023-12-25 16:40+0100\n"
 "Last-Translator: tioguda <guda.flavio@gmail.com>\n"
 "Language-Team: Manjariando (manjariando@gmail.com)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
-"X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.1\n"
+"X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: MT_\n"
 "X-Poedit-SearchPath-0: mainui.py\n"
 
-#: mainui.py:68
+#: mainui.py:75
 msgid "Review settings"
 msgstr "Rever configurações"
 
-#: mainui.py:69
+#: mainui.py:76
 msgid "Save these changes?"
 msgstr "Salvar essas alterações?"
 
-#: mainui.py:100
+#: mainui.py:99
 msgid "Unsaved settings"
 msgstr "Configurações não salvas"
 
-#: mainui.py:101
-msgid "Do you really want to quit? No changes will be saved."
-msgstr "Você realmente quer sair? Nenhuma alteração será salva."
+#: mainui.py:100
+msgid "Do you really want to quit? No changes will be saved"
+msgstr "Você realmente quer sair? Nenhuma alteração será salva"
 
-#: mainui.py:186
+#: mainui.py:219
 msgid "Reload"
 msgstr "Recarregar"
 
-#: mainui.py:189 mainui.py:205
+#: mainui.py:223 mainui.py:240
 msgid "Save"
 msgstr "Salvar"
 
-#: mainui.py:203
+#: mainui.py:238
 msgid "File"
 msgstr "Arquivo"
 
-#: mainui.py:208
+#: mainui.py:243
 msgid "Quit"
 msgstr "Sair"
 
-#: mainui.py:212
+#: mainui.py:247
 msgid "Language"
 msgstr "Idioma"
 
-#: mainui.py:263
+#: mainui.py:253
+msgid "Help"
+msgstr "Help"
+
+#: mainui.py:256
+msgid "About"
+msgstr "About"
+
+#: mainui.py:325
 msgid "Configuration"
 msgstr "Configuração"
 
-#: mainui.py:266
+#: mainui.py:328
 msgid "Statistics"
 msgstr "Estatisticas"

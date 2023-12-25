@@ -13,7 +13,7 @@ from . import errorui
 
 EXPECTED_ITEM_MISSING_TEXT = language.UH_('Expected item missing in config file')  # type: str
 UNKNOWN_CONFIG_VALUE_TEXT = language.UH_('Unknown config value detected')  # type: str
-SUDO_MISSING_TEXT = language.UH_('Install pkexec, gksu, gksudo, kdesu or kdesudo first.')  # type: str
+SUDO_MISSING_TEXT = language.UH_('Install pkexec, gksu, gksudo, kdesu or kdesudo first')  # type: str
 DEFAULT_STATE_TEXT = language.UH_('Default state:')  # type: str
 DEFAULT_VALUE_TEXT = language.UH_('Default value:')  # type: str
 CHANGED_STATE_TEXT = language.UH_('CHANGED')  # type: str

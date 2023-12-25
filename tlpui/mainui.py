@@ -97,7 +97,7 @@ def quit_tlp_config(_, window) -> None:
         window,
         tmpfilename,
         language.MT_('Unsaved settings'),
-        language.MT_('Do you really want to quit? No changes will be saved.'))
+        language.MT_('Do you really want to quit? No changes will be saved'))
 
     if quitresponse == Gtk.ResponseType.OK:
         Gtk.main_quit()

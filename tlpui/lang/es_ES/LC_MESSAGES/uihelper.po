@@ -2,40 +2,40 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2020-12-23 12:39+0100\n"
-"PO-Revision-Date: 2020-12-23 12:39+0100\n"
+"POT-Creation-Date: 2023-12-25 16:38+0100\n"
+"PO-Revision-Date: 2023-12-25 16:38+0100\n"
 "Last-Translator: micrococo\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
-"X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.1\n"
+"X-Poedit-Basepath: ../../..\n"
 "X-Poedit-KeywordsList: UH_\n"
 "X-Poedit-SearchPath-0: uihelper.py\n"
 
-#: uihelper.py:11
+#: uihelper.py:14
 msgid "Expected item missing in config file"
 msgstr "Un elemento esperado falta en el archivo de configuración"
 
-#: uihelper.py:12
+#: uihelper.py:15
 msgid "Unknown config value detected"
 msgstr "Unknown config value detected"
 
-#: uihelper.py:13
-msgid "Install pkexec, gksu, gksudo, kdesu or kdesudo first."
-msgstr "Instale primero pkexec, gksu, gksudo, kdesu o kdesudo."
+#: uihelper.py:16
+msgid "Install pkexec, gksu, gksudo, kdesu or kdesudo first"
+msgstr "Instale primero pkexec, gksu, gksudo, kdesu o kdesudo"
 
-#: uihelper.py:14
+#: uihelper.py:17
 msgid "Default state:"
 msgstr "Estado por defecto:"
 
-#: uihelper.py:15
+#: uihelper.py:18
 msgid "Default value:"
 msgstr "Valor por defecto:"
 
-#: uihelper.py:16
+#: uihelper.py:19
 msgid "CHANGED"
 msgstr "MODIFICADO"

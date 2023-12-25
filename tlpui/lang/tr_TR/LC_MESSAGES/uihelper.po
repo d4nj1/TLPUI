@@ -4,40 +4,40 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2020-12-23 18:34+0100\n"
-"PO-Revision-Date: 2021-07-13 22:18+0200\n"
+"POT-Creation-Date: 2023-12-25 16:41+0100\n"
+"PO-Revision-Date: 2023-12-25 16:42+0100\n"
 "Last-Translator: Muhammet Emin AKALAN <05akalan57@gmail.com>\n"
 "Language-Team: Turkish <05akalan57@gmail.com>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
-"X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.4.1\n"
+"X-Poedit-Basepath: ../../..\n"
 "X-Poedit-KeywordsList: UH_\n"
 "X-Poedit-SearchPath-0: uihelper.py\n"
 
-#: uihelper.py:11
+#: uihelper.py:14
 msgid "Expected item missing in config file"
 msgstr "Yapılandırma dosyasında beklenen öğe eksik"
 
-#: uihelper.py:12
+#: uihelper.py:15
 msgid "Unknown config value detected"
 msgstr "Bilinmeyen yapılandırma değeri algılandı"
 
-#: uihelper.py:13
-msgid "Install pkexec, gksu, gksudo, kdesu or kdesudo first."
-msgstr "Önce pkexec, gksu, gksudo, kdesu veya kdesudo'yu kurun."
+#: uihelper.py:16
+msgid "Install pkexec, gksu, gksudo, kdesu or kdesudo first"
+msgstr "Önce pkexec, gksu, gksudo, kdesu veya kdesudo'yu kurun"
 
-#: uihelper.py:14
+#: uihelper.py:17
 msgid "Default state:"
 msgstr "Varsayılan durum:"
 
-#: uihelper.py:15
+#: uihelper.py:18
 msgid "Default value:"
 msgstr "Varsayılan değer:"
 
-#: uihelper.py:16
+#: uihelper.py:19
 msgid "CHANGED"
 msgstr "DEĞİŞTİRİLDİ"
