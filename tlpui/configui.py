@@ -9,7 +9,7 @@ from . import settings
 from . import language
 from .ui_config_objects import gtkswitch, gtkentry, gtkselection, gtkmultiselection, gtkcheckbutton, gtkspinbutton, \
     gtktoggle, gtkusblist, gtkpcilist, gtkdisklist, gtkdisklistview
-from .file import ConfType, TlpConfig, get_json_schema_object
+from .file import ConfType, TlpConfig, get_yaml_schema_object
 from .uihelper import get_theme_image, StateImage, EXPECTED_ITEM_MISSING_TEXT
 
 
@@ -217,7 +217,7 @@ def get_tlp_categories(window) -> OrderedDict:
     """Get categories from TLP schema."""
     propertyobjects = OrderedDict()
 
-    categories = get_json_schema_object('categories')
+    categories = get_yaml_schema_object('categories')
     for category in categories:
         categoryname = category['name']
 

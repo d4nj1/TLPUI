@@ -18,10 +18,11 @@ It has the aim to protect users from setting bad configuration and to deliver a 
 
 ### Current status :sunrise_over_mountains:
 
-* Supports TLP versions 0.8-1.6
+* Supports TLP versions 1.3-1.7
+* Requires Python 3.8.1 or greater
 * Configuration can be read and displayed
 * Shows information about configuration changes (defaults/unsaved and dropin/user config)
-* Changes can be saved with user and sudo permissions (e.g. /etc/default/tlp or /etc/tlp.conf)
+* Changes can be saved with user and sudo permissions (/etc/tlp.conf)
 * tlp-stat can be load in ui (simple and complete)
 
 ### To be done :building_construction:

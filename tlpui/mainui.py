@@ -1,7 +1,9 @@
 """Provide main window parts for TLPUI."""
 
 import importlib
+import importlib.metadata
 import difflib
+import toml
 
 from pathlib import Path
 from gi.repository import Gtk, Gdk, GdkPixbuf
@@ -11,7 +13,17 @@ from .configui import create_config_box
 from .file import init_tlp_file_config, create_tmp_tlp_config_file, write_tlp_config, get_changed_properties
 from .statui import create_stat_box
 from .uihelper import get_flag_image, get_theme_image
-from . import __version__
+
+
+def get_app_version() -> str:
+    try:
+        return importlib.metadata.version("tlpui")
+    except importlib.metadata.PackageNotFoundError:
+        try:
+            pyproject = toml.load(Path(__file__).parent.parent / "pyproject.toml")
+            return pyproject["tool"]["poetry"]["version"]
+        except FileNotFoundError:
+            return ""
 
 
 def reset_scroll_position() -> None:
@@ -214,7 +226,7 @@ def repack_language_menuitem(menuitem: Gtk.MenuItem):
 
 def create_settings_box(window) -> Gtk.Box:
     """Buttons for direct access in UI."""
-    fileentrylabel = Gtk.Label(settings.tlpbaseconfigfile)
+    fileentrylabel = Gtk.Label(f"TLP {settings.tlpversion} - {settings.tlpbaseconfigfile}")
     fileentrylabel.set_alignment(0, 0.5)
     reloadbutton = Gtk.Button(label=' ' + language.MT_('Reload'),
                               image=get_theme_image('view-refresh-symbolic', Gtk.IconSize.BUTTON))
@@ -276,7 +288,7 @@ def show_about_dialog(self):
     aboutdialog = Gtk.AboutDialog()
     aboutdialog.set_title("TLPUI")
     aboutdialog.set_name("name")
-    aboutdialog.set_version(__version__)
+    aboutdialog.set_version(get_app_version())
     aboutdialog.set_comments("UI for TLP written in Python/GTK")
     aboutdialog.set_website("https://github.com/d4nj1/TLPUI")
     aboutdialog.set_website_label("TLPUI on GitHub")

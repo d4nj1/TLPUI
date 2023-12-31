@@ -8,27 +8,26 @@ from tempfile import mkstemp
 from .config import TlpConfig, ConfType
 from . import settings
 from . import settingshelper
-from .filehelper import get_json_schema_object_from_file, extract_default_tlp_configs, TlpDefaults
+from .filehelper import get_yaml_schema_object_from_file, extract_default_tlp_configs, TlpDefaults
 from .uihelper import get_graphical_sudo
 
 
-def get_json_schema_object(objectname) -> dict:
+def get_yaml_schema_object(objectname) -> dict:
     """Get Json schema for installed TLP version."""
-    tlpprovidedschema = '/usr/share/tlp-pm/configschema.json'
+    tlpprovidedschema = '/usr/share/tlp-pm/configschema.yaml'
     if path.exists(tlpprovidedschema):
-        return get_json_schema_object_from_file(objectname, tlpprovidedschema)
+        return get_yaml_schema_object_from_file(objectname, tlpprovidedschema)
     majorminor = settings.tlpbaseversion
-    return get_json_schema_object_from_file(objectname, f"{settings.workdir}/configschema/{majorminor}.json")
+    return get_yaml_schema_object_from_file(objectname, f"{settings.workdir}/configschema/{majorminor}.yaml")
 
 
 def get_tlp_config_defaults(tlpversion: str):
     """Fetch TLP default configs."""
     tlpconfig_defaults = extract_default_tlp_configs(f"{settings.workdir}/defaults/tlp-{tlpversion}.conf")
 
-    if tlpversion not in ["0_8", "0_9", "1_0", "1_1", "1_2"]:
-        # update default values with intrinsic ones
-        intrinsic_defaults_path = f"{settings.FOLDER_PREFIX}/usr/share/tlp/defaults.conf"
-        tlpconfig_defaults.update(extract_default_tlp_configs(intrinsic_defaults_path))
+    # update default values with intrinsic ones
+    intrinsic_defaults_path = f"{settings.FOLDER_PREFIX}/usr/share/tlp/defaults.conf"
+    tlpconfig_defaults.update(extract_default_tlp_configs(intrinsic_defaults_path))
 
     return tlpconfig_defaults
 
@@ -43,10 +42,7 @@ def init_tlp_file_config() -> None:
     tlpstat = settingshelper.exec_command(["tlp-stat", "-c"])
     tlpsettinglines = tlpstat.split('\n')
 
-    if tlpversion in ["0_8", "0_9", "1_0", "1_1", "1_2"]:
-        extract_tlp_settings_obsolete(tlpsettinglines)
-    else:
-        extract_tlp_settings(tlpsettinglines)
+    extract_tlp_settings(tlpsettinglines)
 
     # Add default tlp configs not set in current settings
     for key, default in settings.tlpconfig_defaults.items():     # type: TlpDefaults
@@ -58,25 +54,6 @@ def init_tlp_file_config() -> None:
 
     # finally store copy for comparing changes
     settings.tlpconfig_original = copy.deepcopy(settings.tlpconfig)
-
-
-def extract_tlp_settings_obsolete(lines: list) -> None:
-    """Load current TLP config settings for TLP version < 1.3."""
-    propertypattern = re.compile(r'^[A-Z_\d]+=')
-
-    for line in lines:
-        if propertypattern.match(line):
-            cleanline = line.lstrip().rstrip()
-
-            configproperty = cleanline.split('=', maxsplit=1)
-            configname = configproperty[0]
-            configvalue = configproperty[1]
-
-            if configvalue.startswith('\"') and configvalue.endswith('\"'):
-                configvalue = configvalue.lstrip('\"').rstrip('\"')
-
-            settings.tlpconfig[configname] = TlpConfig(True, configname, configvalue,
-                                                       ConfType.USER, settings.tlpconfigfile)
 
 
 def extract_tlp_settings(lines: list) -> None:

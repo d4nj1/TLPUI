@@ -2,15 +2,15 @@
 
 import re
 from io import open
-from json import load
+from yaml import safe_load
 
 
-def get_json_schema_object_from_file(objectname: str, filename: str) -> dict:
-    """Read Json file."""
-    jsonfile = open(filename)
-    jsonobject = load(jsonfile)
-    jsonfile.close()
-    return jsonobject[objectname]
+def get_yaml_schema_object_from_file(objectname: str, filename: str) -> dict:
+    """Read Yaml file."""
+    yaml_file = open(filename)
+    yaml_object = safe_load(yaml_file)
+    yaml_file.close()
+    return yaml_object[objectname]
 
 
 class TlpDefaults:

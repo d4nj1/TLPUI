@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "tlpui"
+version = "1.7.0"
+description = "GTK UI for tlp (Python 3)"
+license = "GPL-2.0-or-later"
+authors = ["Daniel Christophis <code@devmind.org>"]
+readme = "README.md"
+homepage = "https://github.com/d4nj1/TLPUI"
+repository = "https://github.com/d4nj1/TLPUI"
+documentation = "https://github.com/d4nj1/TLPUI/docs"
+keywords = ["battery", "power", "config"]
+exclude = [
+    "tlpui/lang/extractLocaleStringsFromSchema.py"
+]
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+PyGObject = "*"
+PyYAML = "*"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+pylint = "^3.0.3"
+pycodestyle = "^2.11.1"
+pydocstyle = "^6.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

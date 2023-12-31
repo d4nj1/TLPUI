@@ -18,10 +18,8 @@ def exec_command(commands: [str]):
         errorui.show_dialog(error)
 
 
-def get_tlp_config_file(version: str, prefix: str) -> str:
-    """Select tlp config file path by version."""
-    if version in ["0_8", "0_9", "1_0", "1_1", "1_2"]:
-        return f"{prefix}/etc/default/tlp"
+def get_tlp_config_file(prefix: str) -> str:
+    """Select tlp config file by prefix."""
     return f"{prefix}/etc/tlp.conf"
 
 
@@ -47,13 +45,7 @@ def get_installed_tlp_version() -> str:
     pattern = re.compile(r"TLP ([^\s]+)")
     currentconfig = exec_command(["tlp-stat", "-c"])
     matcher = pattern.search(currentconfig)
-    version = matcher.group(1).replace(".", "_")
-    return version
-
-
-def get_installed_major_minor_version() -> str:
-    """Fetch tlp major and minor version."""
-    return get_installed_tlp_version()[0:3]
+    return matcher.group(1)
 
 
 def get_user_config_file() -> Path:

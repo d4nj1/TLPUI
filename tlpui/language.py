@@ -8,7 +8,7 @@ def load_lang(langfile):
     """Load language from file."""
     translation = gettext.translation(langfile, settings.langdir, [settings.userconfig.language])
 
-    versionlangfile = "{}{}".format(langfile, settings.tlpbaseversion)
+    versionlangfile = f"{langfile}{settings.tlpbaseversion}"
     if gettext.find(versionlangfile, settings.langdir, [settings.userconfig.language]) is None:
         return translation.gettext
 
