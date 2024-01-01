@@ -9,9 +9,6 @@ homepage = "https://github.com/d4nj1/TLPUI"
 repository = "https://github.com/d4nj1/TLPUI"
 documentation = "https://github.com/d4nj1/TLPUI/docs"
 keywords = ["battery", "power", "config"]
-exclude = [
-    "tlpui/lang/extractLocaleStringsFromSchema.py"
-]
 
 [tool.poetry.dependencies]
 python = "^3.8.1"
