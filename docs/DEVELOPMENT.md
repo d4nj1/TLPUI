@@ -1,20 +1,20 @@
 This documentation has the aim to enable future development of features and improvements for the TLP-UI project.
 It consists the idea behind the UI and a description of the internal structure.
 
-# Idea:
+# Idea
 
 The idea of this projects was and is to build a graphical application which has the ability to be created on runtime for
 any supported version of the TLP configuration file. Many UIs contain the weakness that they have to be rebuild 
 whenever there haven been changes to the main application even though the base configuration has not changed much.
 
-# Solution:
+# Solution
 
 TLP-UI tries to solve this with a different approach. It supports an easy way to enable version updates to the UI
 without touching the code itself. By creating the config objects on-the-fly, the UI has the ability to be created
 for updated TLP configuration files only by providing an updated schema file. This file describes the configuration
 items and it's supported values.
 
-# Configuration schema:
+# Configuration schema
 
 The schema file contains multiple nested items. Categories contain groups of configs or configs directly. Categories are
 visualized as Gtk.Viewport within a Gtk.Notebook that contains a Gtk.Box with all related config group and items.
