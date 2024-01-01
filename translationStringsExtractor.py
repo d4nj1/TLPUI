@@ -21,11 +21,12 @@ def add_to_list(listobject: list, value: str):
 
 
 def create_translateable_strings_header_file():
-    """Extract items for translation from configschema.yaml and puts them in new file with header extension.
+    """Extract translation items from configschema/*.yaml and put them into a new file with header extension.
 
-    Poedit and other po-tools do not support JSON files right now.
-    It should be called any time configschema.yaml changes and translation needs to be updated.
-    Change configschema.yaml -> run this script -> update po files from source with utility (e.g. poedit).
+    Poedit and other po-tools do not support YAML files right now.
+    It should be called any time yaml files get added or updated.
+
+    Update or add VERSION.yaml -> run this script -> update po files from header source with utility (e.g. poedit).
     """
     translateobjects = list()
 
