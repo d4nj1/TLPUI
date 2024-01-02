@@ -2,11 +2,11 @@ In this place you will find all documentation in regards to installing, developi
 
 # Install
 
-This can currently be found in the [Wiki](https://github.com/d4nj1/TLPUI/wiki)
+This can be found in [install docs](INSTALL.md).
 
 # Development
 
-Please see [Development](DEVELOPMENT.md) for implementation and technical details.
+Please see [development docs](DEVELOPMENT.md) for implementation and technical details.
 
 # Contributions
 
