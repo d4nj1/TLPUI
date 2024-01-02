@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2023-12-25 16:33+0100\n"
-"PO-Revision-Date: 2023-12-25 16:33+0100\n"
+"POT-Creation-Date: 2024-01-02 19:12+0100\n"
+"PO-Revision-Date: 2024-01-02 19:12+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -16,54 +16,58 @@ msgstr ""
 "X-Poedit-KeywordsList: MT_\n"
 "X-Poedit-SearchPath-0: mainui.py\n"
 
-#: mainui.py:75
+#: mainui.py:87
 msgid "Review settings"
 msgstr "Review settings"
 
-#: mainui.py:76
+#: mainui.py:88
 msgid "Save these changes?"
 msgstr "Save these changes?"
 
-#: mainui.py:99
+#: mainui.py:111
 msgid "Unsaved settings"
 msgstr "Unsaved settings"
 
-#: mainui.py:100
+#: mainui.py:112
 msgid "Do you really want to quit? No changes will be saved"
 msgstr "Do you really want to quit? No changes will be saved"
 
-#: mainui.py:219
+#: mainui.py:231
 msgid "Reload"
 msgstr "Reload"
 
-#: mainui.py:223 mainui.py:240
+#: mainui.py:235 mainui.py:252
 msgid "Save"
 msgstr "Save"
 
-#: mainui.py:238
+#: mainui.py:250
 msgid "File"
 msgstr "File"
 
-#: mainui.py:243
+#: mainui.py:255
 msgid "Quit"
 msgstr "Quit"
 
-#: mainui.py:247
+#: mainui.py:259
 msgid "Language"
 msgstr "Language"
 
-#: mainui.py:253
+#: mainui.py:265
 msgid "Help"
 msgstr "Help"
 
-#: mainui.py:256
+#: mainui.py:268
 msgid "About"
 msgstr "About"
 
-#: mainui.py:325
+#: mainui.py:292
+msgid "UI for TLP written in Python/Gtk"
+msgstr "UI for TLP written in Python/Gtk"
+
+#: mainui.py:337
 msgid "Configuration"
 msgstr "Configuration"
 
-#: mainui.py:328
+#: mainui.py:340
 msgid "Statistics"
 msgstr "Statistics"

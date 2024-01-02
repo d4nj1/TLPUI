@@ -286,12 +286,12 @@ def add_menu_actions(window, actiongroup) -> None:
 def show_about_dialog(self):
     """Applications about dialog."""
     aboutdialog = Gtk.AboutDialog()
-    aboutdialog.set_title("TLPUI")
+    aboutdialog.set_title("TLP-UI")
     aboutdialog.set_name("name")
     aboutdialog.set_version(get_app_version())
-    aboutdialog.set_comments("UI for TLP written in Python/GTK")
+    aboutdialog.set_comments(language.MT_("UI for TLP written in Python/Gtk"))
     aboutdialog.set_website("https://github.com/d4nj1/TLPUI")
-    aboutdialog.set_website_label("TLPUI on GitHub")
+    aboutdialog.set_website_label("TLP-UI @ GitHub")
     aboutdialog.set_authors(["Daniel Christophis"])
     aboutdialog.set_translator_credits("Muhammet Emin AKALAN (05akalan57@gmail.com)")
     aboutdialog.set_license_type(Gtk.License.GPL_2_0)
