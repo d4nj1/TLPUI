@@ -12,6 +12,15 @@ In order to use TLPUI, make sure TLP is installed first
   sudo pacman -S tlp tlp-rdw
   ```
 
+# Poetry
+
+To install and run TLP-UI with it's dependencies locally just execute:
+
+  ```
+  poetry install
+  poetry run tlpui
+  ```
+
 # Python 3
 
 * Download and extract ZIP or pull repository

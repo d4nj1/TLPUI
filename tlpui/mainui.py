@@ -16,6 +16,7 @@ from .uihelper import get_flag_image, get_theme_image
 
 
 def get_app_version() -> str:
+    """Get TLP-UI version."""
     try:
         return importlib.metadata.version("tlpui")
     except importlib.metadata.PackageNotFoundError:
