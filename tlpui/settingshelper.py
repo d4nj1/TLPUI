@@ -76,7 +76,7 @@ class UserConfig:
         """Read ui config parameters from user home."""
         if self.userconfigfile.exists():
             config = configparser.ConfigParser()
-            with open(str(self.userconfigfile)) as configfile:
+            with open(str(self.userconfigfile), encoding='utf-8') as configfile:
                 config.read_file(configfile)
             try:
                 self.language = config['default']['language']
@@ -102,5 +102,5 @@ class UserConfig:
         config['default']['activeposition'] = str(self.activeposition)
         config['default']['windowxsize'] = str(self.windowxsize)
         config['default']['windowysize'] = str(self.windowysize)
-        with open(str(self.userconfigfile), 'w') as configfile:
+        with open(str(self.userconfigfile), mode='w', encoding='utf-8') as configfile:
             config.write(configfile)

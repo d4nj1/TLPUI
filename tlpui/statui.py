@@ -44,12 +44,12 @@ def create_stat_box() -> Gtk.Box:
 
     emptylabel = Gtk.Label()
 
-    fetchsimplebutton = Gtk.Button(label=' {}'.format(language.ST_('Simple')),
+    fetchsimplebutton = Gtk.Button(label=f" {language.ST_('Simple')}",
                                    image=get_theme_image('dialog-information-symbolic', Gtk.IconSize.BUTTON))
     fetchsimplebutton.connect('clicked', fetch_simple_stats, textbuffer)
     fetchsimplebutton.set_always_show_image(True)
 
-    fetchcompletebutton = Gtk.Button(label=' {}'.format(language.ST_('Complete')),
+    fetchcompletebutton = Gtk.Button(label=f" {language.ST_('Complete')}",
                                      image=get_theme_image('format-indent-more-symbolic', Gtk.IconSize.BUTTON))
     fetchcompletebutton.connect('clicked', fetch_complete_stats, textbuffer)
     fetchcompletebutton.set_always_show_image(True)

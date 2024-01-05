@@ -235,7 +235,7 @@ def get_tlp_categories(window) -> OrderedDict:
         configs = category['configs']
         for config in configs:
             grouptitle = ""
-            configobjects = list()
+            configobjects = []
 
             if 'group' in config:
                 grouptitle = config['group']

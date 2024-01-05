@@ -17,7 +17,7 @@ It has the aim to protect users from setting bad configuration and to deliver a 
 
 ### Current status :sunrise_over_mountains:
 
-* Supports TLP versions 1.3-1.7 (older TLP versions are supported by [TLP-UI 1.6.1](https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.6.1))
+* Supports TLP versions 1.3-1.7 - _older TLP versions are supported by [1.6.1](https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.6.1)_
 * Requires Python 3.8 or greater
 * Configuration can be read and displayed
 * Shows information about configuration changes (defaults/unsaved and drop-in/user config)

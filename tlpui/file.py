@@ -34,7 +34,7 @@ def get_tlp_config_defaults(tlpversion: str):
 
 def init_tlp_file_config() -> None:
     """Load current TLP config settings."""
-    settings.tlpconfig = dict()
+    settings.tlpconfig = {}
     tlpversion = settings.tlpbaseversion
     settings.tlpconfig_defaults = get_tlp_config_defaults(tlpversion)
 
@@ -72,7 +72,7 @@ def extract_tlp_settings(lines: list) -> None:
             elif configfile == "/etc/tlp.conf":
                 conftype = ConfType.USER
             else:
-                print('Config type not found for file: {}'.format(configfile))
+                print(f'Config type not found for file: {configfile}')
                 conftype = ConfType.ERR
 
             configproperty = settingsparts[2].split('=', maxsplit=1)
@@ -89,7 +89,7 @@ def extract_tlp_settings(lines: list) -> None:
 
 def get_changed_properties() -> dict:
     """Evaluate changed settings from UI."""
-    changedproperties = dict()
+    changedproperties = {}
 
     changed = settings.tlpconfig
     original = settings.tlpconfig_original
@@ -122,9 +122,9 @@ def create_tmp_tlp_config_file(changedproperties: dict) -> str:
     """Create tmp file to prepare writing new config."""
     propertypattern = re.compile(r'^#?[A-Z_\d]+=')
     filehandler, tmpfilename = mkstemp(dir=settings.TMP_FOLDER)
-    newfile = open(tmpfilename, 'w')
+    newfile = open(tmpfilename, mode='w', encoding='utf-8')
 
-    oldfile = open(settings.tlpconfigfile)
+    oldfile = open(settings.tlpconfigfile, encoding='utf-8')
     lines = oldfile.readlines()
     oldfile.close()
 

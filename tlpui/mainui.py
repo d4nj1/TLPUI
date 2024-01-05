@@ -42,7 +42,7 @@ def window_key_events(self, event) -> None:
     """Add window key events like crtl+(q|w|s)."""
     if event.state & Gdk.ModifierType.CONTROL_MASK:
         # close window with ctrl+q or ctrl+w
-        if event.keyval == 113 or event.keyval == 119:
+        if event.keyval in (113, 119):
             quit_tlp_config(None, self)
         # save config with ctrl+s
         if event.keyval == 115:
@@ -128,8 +128,10 @@ def changed_items_dialog(window, tmpfilename: str, dialogtitle: str, message: st
     scrolledwindow.set_hexpand(True)
     scrolledwindow.set_vexpand(True)
 
-    fromfilecontent = open(settings.tlpconfigfile, 'r').readlines()
-    tofilecontent = open(tmpfilename, 'r').readlines()
+    with open(settings.tlpconfigfile, encoding='utf-8') as fromfile:
+        fromfilecontent = fromfile.readlines()
+    with open(tmpfilename, encoding='utf-8') as tofile:
+        tofilecontent = tofile.readlines()
     diff = settings.tlpbaseconfigfile + '\n\n'
     for line in difflib.unified_diff(fromfilecontent, tofilecontent, n=0, lineterm=''):
         if line.startswith('---') or line.startswith('+++'):
@@ -149,7 +151,7 @@ def changed_items_dialog(window, tmpfilename: str, dialogtitle: str, message: st
 
     box = dialog.get_content_area()
     box.pack_start(scrolledwindow, True, True, 0)
-    box.pack_start(Gtk.Label('\n{}\n'.format(message)), False, False, 0)
+    box.pack_start(Gtk.Label(f'\n{message}\n'), False, False, 0)
 
     dialog.show_all()
     response = dialog.run()

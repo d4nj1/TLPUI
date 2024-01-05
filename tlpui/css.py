@@ -6,9 +6,8 @@ from . import settings
 
 def get_css_provider() -> Gtk.CssProvider:
     """Create css provider from stylesheet file and return it."""
-    cssfile = open(settings.workdir + '/styles.css', 'rb')
-    cssdata = cssfile.read()
-    cssfile.close()
+    with open(f'{settings.workdir}/styles.css', encoding='utf-8') as cssfile:
+        cssdata = cssfile.read()
 
     cssprovider = Gtk.CssProvider()
     cssprovider.load_from_data(cssdata)
