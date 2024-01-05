@@ -10,6 +10,7 @@ It has the aim to protect users from setting bad configuration and to deliver a 
 
 ### Install and run instructions :ledger:
 
+* [Poetry](docs/INSTALL.md#poetry)
 * [Python 3](docs/INSTALL.md#python-3)
 * [Arch Linux](docs/INSTALL.md#arch-linux)
 
