@@ -11,7 +11,6 @@ It has the aim to protect users from setting bad configuration and to deliver a 
 ### Install and run instructions :ledger:
 
 * [Python 3](docs/INSTALL.md#python-3)
-* [Ubuntu/Debian family](docs/INSTALL.md#ubuntudebian-family)
 * [Arch Linux](docs/INSTALL.md#arch-linux)
 
 <a href='https://flathub.org/apps/details/com.github.d4nj1.tlpui'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
@@ -19,6 +18,7 @@ It has the aim to protect users from setting bad configuration and to deliver a 
 ### Current status :sunrise_over_mountains:
 
 * Supports TLP versions 1.3-1.7
+* For older TLP versions please use [TLP-UI 1.6.1](https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.6.1)
 * Requires Python 3.8.1 or greater
 * Configuration can be read and displayed
 * Shows information about configuration changes (defaults/unsaved and dropin/user config)

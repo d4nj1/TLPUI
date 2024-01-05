@@ -5,7 +5,11 @@ In order to use TLPUI, make sure TLP is installed first
 *Debian*
   ```
   sudo apt install tlp tlp-rdw
-  sudo tlp start
+  ```
+
+*Arch / Manjaro*
+  ```
+  sudo pacman -S tlp tlp-rdw
   ```
 
 # Python 3
@@ -26,49 +30,6 @@ If you run in to issues when calling TLPUI with `python -m tlpui`, please try to
   ```
   sudo pacman -S cairo gobject-introspection gtk3
   pip3 install pycairo PyGObject
-  ```
-
-# Ubuntu/Debian family
-
-## Ubuntu PPA with prebuild packages (third party)
-
-These packages are not created by TLPUI author himself, but linuxuprising is a known organisation/website who is also providing many other PPAs.
-
-  ```
-  sudo add-apt-repository -y ppa:linuxuprising/apps
-  sudo apt update
-  sudo apt install tlpui
-  ```
-
-## Build and install TLPUI deb package from sources
-  
-### Install dependencies
-
-  - Ubuntu until 20.10
-
-  ```
-  sudo apt install python3-gi git python3-setuptools python3-stdeb python-all dh-python
-  ```
-
-  - Ubuntu since 21.04 and Debian bullseye
-
-  ```
-  sudo apt install python3-gi git python3-setuptools python3-stdeb dh-python
-  ```
-  
-### Clone TLPUI and build a .deb package
-  
-  ```
-  git clone https://github.com/d4nj1/TLPUI
-  cd TLPUI
-  python3 setup.py --command-packages=stdeb.command bdist_deb
-  sudo dpkg -i deb_dist/python3-tlpui_*all.deb
-  ```
-  
-  - Run TLPUI from the terminal
-  
-  ```
-  tlpui
   ```
 
 # Arch Linux
