@@ -1,6 +1,6 @@
 # Prerequisites
 
-## Tlp
+**Tlp**
 
 In order to use Tlp-ui, make sure Tlp is installed first.
 
@@ -33,7 +33,7 @@ In order to use Tlp-ui, make sure Tlp is installed first.
 
 # Run from sources
 
-## Requirements
+**Requirements**
 
 If you want to run Tlp-ui from sources you have to install Gtk libraries first.
 
