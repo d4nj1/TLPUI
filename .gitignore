@@ -1,6 +1,7 @@
 __pycache__
 .idea
 .tox
+.coverage
 dist/
 venv/
 tlpui/lang/configschema.yaml.h

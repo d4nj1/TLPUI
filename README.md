@@ -10,9 +10,10 @@ It has the aim to protect users from setting bad configuration and to deliver a 
 
 ### Install and run instructions :ledger:
 
-* [Poetry](docs/INSTALL.md#poetry)
-* [Python 3](docs/INSTALL.md#python-3)
-* [Arch Linux](docs/INSTALL.md#arch-linux)
+* [PyPI](https://github.com/d4nj1/TLPUI/blob/master/docs/INSTALL.md#pypi)
+* [Poetry](https://github.com/d4nj1/TLPUI/blob/master/docs/INSTALL.md#poetry)
+* [Python 3](https://github.com/d4nj1/TLPUI/blob/master/docs/INSTALL.md#python-3)
+* [Arch Linux](https://github.com/d4nj1/TLPUI/blob/master/docs/INSTALL.md#arch-linux)
 
 <a href='https://flathub.org/apps/details/com.github.d4nj1.tlpui'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
 

@@ -22,7 +22,7 @@
 	<releases>
 		<release version="1.7.0" date="2024-01-02" urgency="low">
 			<description>
-				<p>Add TLP 1.7 compatibility</p>
+				<p>Add initial TLP 1.7 compatibility</p>
 				<p>Refactor code base and set Python 3.8.1 as minimal supported version</p>
 				<p>Remove obsolete setuptools and switch to poetry as a build system</p>
 				<p>Use YAML instead of JSON for config schema</p>

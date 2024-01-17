@@ -1,10 +1,10 @@
 app: com.github.d4nj1.tlpui
 ingredients:
-  dist: groovy
+  dist: mantic
   sources:
-    - deb http://archive.ubuntu.com/ubuntu/ groovy main universe
-    - deb http://archive.ubuntu.com/ubuntu/ groovy-updates main universe
-    - deb http://archive.ubuntu.com/ubuntu/ groovy-security main universe
+    - deb http://archive.ubuntu.com/ubuntu/ mantic main universe
+    - deb http://archive.ubuntu.com/ubuntu/ mantic-updates main universe
+    - deb http://archive.ubuntu.com/ubuntu/ mantic-security main universe
   packages:
     - python3-venv
     - python3-gi
@@ -37,3 +37,5 @@ script:
   - chmod +x usr/bin/tlpui
   # Clean unused data
   - rm -rf TLPUI-master
+  # Fix undefined symbol: g_string_free_and_steal
+  - rm -rf usr/share/glib-2.0/schemas/
