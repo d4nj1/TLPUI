@@ -1,0 +1,412 @@
+categories:
+  - name: General
+    configs:
+      - id: TLP_ENABLE
+        type: bselect
+        values: 0,1
+      - id: TLP_WARN_LEVEL
+        type: select
+        values: 0,1,2,3
+      - id: TLP_DEFAULT_MODE
+        type: select
+        values: AC,BAT
+      - id: TLP_PERSISTENT_DEFAULT
+        type: select
+        values: 0,1
+      - id: TLP_PS_IGNORE
+        type: check
+        values: AC,USB,BAT
+  - name: Audio
+    configs:
+      - group: SOUND_POWER_SAVE
+        ids:
+          - id: SOUND_POWER_SAVE_ON_AC
+            type: numeric
+            values: 0-3600
+          - id: SOUND_POWER_SAVE_ON_BAT
+            type: numeric
+            values: 0-3600
+      - id: SOUND_POWER_SAVE_CONTROLLER
+        type: bselect
+        values: N,Y
+  - name: Disks
+    configs:
+      - group: DISK_IDLE_SECS
+        ids:
+          - id: DISK_IDLE_SECS_ON_AC
+            type: numeric
+            values: 0-1000
+          - id: DISK_IDLE_SECS_ON_BAT
+            type: numeric
+            values: 0-1000
+      - group: MAX_LOST_WORK_SECS
+        ids:
+          - id: MAX_LOST_WORK_SECS_ON_AC
+            type: numeric
+            values: 0-10000
+          - id: MAX_LOST_WORK_SECS_ON_BAT
+            type: numeric
+            values: 0-10000
+      - id: DISK_DEVICES
+        type: disklist
+        values: ''
+      - group: DISK_APM_LEVEL
+        ids:
+          - id: DISK_APM_LEVEL_ON_AC
+            type: disklistview
+            values: 1-255
+          - id: DISK_APM_LEVEL_ON_BAT
+            type: disklistview
+            values: 1-255
+      - id: DISK_APM_CLASS_DENYLIST
+        type: check
+        values: sata,ata,usb,ieee1394
+      - group: DISK_SPINDOWN_TIMEOUT
+        ids:
+          - id: DISK_SPINDOWN_TIMEOUT_ON_AC
+            type: disklistview
+            values: 0-251
+          - id: DISK_SPINDOWN_TIMEOUT_ON_BAT
+            type: disklistview
+            values: 0-251
+      - id: DISK_IOSCHED
+        type: disklistview
+        values: mq-deadline,none,kyber,bfq,deadline,cfq,noop
+      - group: SATA_LINKPWR
+        ids:
+          - id: SATA_LINKPWR_ON_AC
+            type: multiselect
+            values: min_power,med_power_with_dipm,medium_power,max_performance
+          - id: SATA_LINKPWR_ON_BAT
+            type: multiselect
+            values: min_power,med_power_with_dipm,medium_power,max_performance
+      - id: SATA_LINKPWR_DENYLIST
+        type: entry
+        values: ''
+      - group: AHCI_RUNTIME_PM
+        ids:
+          - id: AHCI_RUNTIME_PM_ON_AC
+            type: bselect
+            values: on,auto
+          - id: AHCI_RUNTIME_PM_ON_BAT
+            type: bselect
+            values: on,auto
+      - id: AHCI_RUNTIME_PM_TIMEOUT
+        type: numeric
+        values: 0-10000
+      - group: BAY_POWEROFF
+        ids:
+          - id: BAY_POWEROFF_ON_AC
+            type: bselect
+            values: 0,1
+          - id: BAY_POWEROFF_ON_BAT
+            type: bselect
+            values: 0,1
+      - id: BAY_DEVICE
+        type: entry
+        values: ''
+  - name: Graphics
+    configs:
+      - group: INTEL_GPU_FREQ
+        ids:
+          - id: INTEL_GPU_MIN_FREQ_ON_AC
+            type: numeric
+            values: 0-5000
+          - id: INTEL_GPU_MIN_FREQ_ON_BAT
+            type: numeric
+            values: 0-5000
+          - id: INTEL_GPU_MAX_FREQ_ON_AC
+            type: numeric
+            values: 0-5000
+          - id: INTEL_GPU_MAX_FREQ_ON_BAT
+            type: numeric
+            values: 0-5000
+          - id: INTEL_GPU_BOOST_FREQ_ON_AC
+            type: numeric
+            values: 0-5000
+          - id: INTEL_GPU_BOOST_FREQ_ON_BAT
+            type: numeric
+            values: 0-5000
+      - group: RADEON_POWER_PROFILE
+        ids:
+          - id: RADEON_POWER_PROFILE_ON_AC
+            type: select
+            values: low,mid,high,auto,default
+          - id: RADEON_POWER_PROFILE_ON_BAT
+            type: select
+            values: low,mid,high,auto,default
+      - group: RADEON_DPM_STATE
+        ids:
+          - id: RADEON_DPM_STATE_ON_AC
+            type: select
+            values: battery,performance
+          - id: RADEON_DPM_STATE_ON_BAT
+            type: select
+            values: battery,performance
+      - group: RADEON_DPM_PERF_LEVEL
+        ids:
+          - id: RADEON_DPM_PERF_LEVEL_ON_AC
+            type: select
+            values: auto,low,high
+          - id: RADEON_DPM_PERF_LEVEL_ON_BAT
+            type: select
+            values: auto,low,high
+  - name: Network
+    configs:
+      - group: WIFI_PWR
+        ids:
+          - id: WIFI_PWR_ON_AC
+            type: bselect
+            values: off,on
+          - id: WIFI_PWR_ON_BAT
+            type: bselect
+            values: off,on
+      - id: WOL_DISABLE
+        type: bselect
+        values: N,Y
+  - name: PCIe
+    configs:
+      - group: PCIE_ASPM
+        ids:
+          - id: PCIE_ASPM_ON_AC
+            type: select
+            values: default,performance,powersave,powersupersave
+          - id: PCIE_ASPM_ON_BAT
+            type: select
+            values: default,performance,powersave,powersupersave
+      - group: RUNTIME_PM
+        ids:
+          - id: RUNTIME_PM_ON_AC
+            type: bselect
+            values: on,auto
+          - id: RUNTIME_PM_ON_BAT
+            type: bselect
+            values: on,auto
+      - id: RUNTIME_PM_DENYLIST
+        type: pcilist
+        values: ''
+      - id: RUNTIME_PM_DRIVER_DENYLIST
+        type: entry
+        values: ''
+      - group: RUNTIME_PM_DEVICE
+        ids:
+          - id: RUNTIME_PM_ENABLE
+            type: entry
+            values: ''
+          - id: RUNTIME_PM_DISABLE
+            type: entry
+            values: ''
+  - name: Processor
+    configs:
+      - group: CPU_DRIVER_OPMODE
+        ids:
+          - id: CPU_DRIVER_OPMODE_ON_AC
+            type: select
+            values: active,passive,guided
+          - id: CPU_DRIVER_OPMODE_ON_BAT
+            type: select
+            values: active,passive,guided
+      - group: CPU_SCALING_GOVERNOR
+        ids:
+          - id: CPU_SCALING_GOVERNOR_ON_AC
+            type: select
+            values: ondemand,powersave,performance,conservative,schedutil
+          - id: CPU_SCALING_GOVERNOR_ON_BAT
+            type: select
+            values: ondemand,powersave,performance,conservative,schedutil
+      - group: CPU_SCALING_FREQ
+        ids:
+          - id: CPU_SCALING_MIN_FREQ_ON_AC
+            type: entry
+            values: ''
+          - id: CPU_SCALING_MAX_FREQ_ON_AC
+            type: entry
+            values: ''
+          - id: CPU_SCALING_MIN_FREQ_ON_BAT
+            type: entry
+            values: ''
+          - id: CPU_SCALING_MAX_FREQ_ON_BAT
+            type: entry
+            values: ''
+      - group: CPU_ENERGY_PERF_POLICY
+        ids:
+          - id: CPU_ENERGY_PERF_POLICY_ON_AC
+            type: select
+            values: default,performance,balance_performance,balance_power,power
+          - id: CPU_ENERGY_PERF_POLICY_ON_BAT
+            type: select
+            values: default,performance,balance_performance,balance_power,power
+      - group: CPU_PERF
+        ids:
+          - id: CPU_MIN_PERF_ON_AC
+            type: numeric
+            values: 0-100
+          - id: CPU_MAX_PERF_ON_AC
+            type: numeric
+            values: 0-100
+          - id: CPU_MIN_PERF_ON_BAT
+            type: numeric
+            values: 0-100
+          - id: CPU_MAX_PERF_ON_BAT
+            type: numeric
+            values: 0-100
+      - group: CPU_BOOST
+        ids:
+          - id: CPU_BOOST_ON_AC
+            type: bselect
+            values: 0,1
+          - id: CPU_BOOST_ON_BAT
+            type: bselect
+            values: 0,1
+      - group: CPU_HWP_DYN_BOOST
+        ids:
+          - id: CPU_HWP_DYN_BOOST_ON_AC
+            type: bselect
+            values: 0,1
+          - id: CPU_HWP_DYN_BOOST_ON_BAT
+            type: bselect
+            values: 0,1
+      - id: NMI_WATCHDOG
+        type: bselect
+        values: 0,1
+      - group: PLATFORM_PROFILE
+        ids:
+          - id: PLATFORM_PROFILE_ON_AC
+            type: select
+            values: performance,balanced,low-power
+          - id: PLATFORM_PROFILE_ON_BAT
+            type: select
+            values: performance,balanced,low-power
+      - group: MEM_SLEEP
+        ids:
+          - id: MEM_SLEEP_ON_AC
+            type: select
+            values: s2idle,deep
+          - id: MEM_SLEEP_ON_BAT
+            type: select
+            values: s2idle,deep
+  - name: Radio
+    configs:
+      - id: RESTORE_DEVICE_STATE_ON_STARTUP
+        type: bselect
+        values: 0,1
+      - id: DEVICES_TO_DISABLE_ON_STARTUP
+        type: check
+        values: bluetooth,nfc,wifi,wwan
+      - id: DEVICES_TO_ENABLE_ON_STARTUP
+        type: check
+        values: bluetooth,nfc,wifi,wwan
+      - id: DEVICES_TO_DISABLE_ON_SHUTDOWN
+        type: check
+        values: bluetooth,nfc,wifi,wwan
+      - id: DEVICES_TO_ENABLE_ON_SHUTDOWN
+        type: check
+        values: bluetooth,nfc,wifi,wwan
+      - id: DEVICES_TO_ENABLE_ON_AC
+        type: check
+        values: bluetooth,nfc,wifi,wwan
+      - id: DEVICES_TO_DISABLE_ON_BAT
+        type: check
+        values: bluetooth,nfc,wifi,wwan
+      - id: DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE
+        type: check
+        values: bluetooth,nfc,wifi,wwan
+  - name: Radio Device Wizard
+    configs:
+      - group: DEVICES_TO_DISABLE_ON_CONNECT
+        ids:
+          - id: DEVICES_TO_DISABLE_ON_LAN_CONNECT
+            type: check
+            values: bluetooth,wifi,wwan
+          - id: DEVICES_TO_DISABLE_ON_WIFI_CONNECT
+            type: check
+            values: bluetooth,wifi,wwan
+          - id: DEVICES_TO_DISABLE_ON_WWAN_CONNECT
+            type: check
+            values: bluetooth,wifi,wwan
+      - group: DEVICES_TO_ENABLE_ON_DISCONNECT
+        ids:
+          - id: DEVICES_TO_ENABLE_ON_LAN_DISCONNECT
+            type: check
+            values: bluetooth,wifi,wwan
+          - id: DEVICES_TO_ENABLE_ON_WIFI_DISCONNECT
+            type: check
+            values: bluetooth,wifi,wwan
+          - id: DEVICES_TO_ENABLE_ON_WWAN_DISCONNECT
+            type: check
+            values: bluetooth,wifi,wwan
+      - group: DEVICES_ON_DOCK
+        ids:
+          - id: DEVICES_TO_ENABLE_ON_DOCK
+            type: check
+            values: bluetooth,wifi,wwan
+          - id: DEVICES_TO_DISABLE_ON_DOCK
+            type: check
+            values: bluetooth,wifi,wwan
+      - group: DEVICES_ON_UNDOCK
+        ids:
+          - id: DEVICES_TO_ENABLE_ON_UNDOCK
+            type: check
+            values: bluetooth,wifi,wwan
+          - id: DEVICES_TO_DISABLE_ON_UNDOCK
+            type: check
+            values: bluetooth,wifi,wwan
+  - name: USB
+    configs:
+      - id: USB_AUTOSUSPEND
+        type: bselect
+        values: 0,1
+      - id: USB_DENYLIST
+        type: usblist
+        values: ''
+      - id: USB_EXCLUDE_AUDIO
+        type: bselect
+        values: 0,1
+      - id: USB_EXCLUDE_BTUSB
+        type: bselect
+        values: 0,1
+      - id: USB_EXCLUDE_PHONE
+        type: bselect
+        values: 0,1
+      - id: USB_EXCLUDE_PRINTER
+        type: bselect
+        values: 0,1
+      - id: USB_EXCLUDE_WWAN
+        type: bselect
+        values: 0,1
+      - id: USB_ALLOWLIST
+        type: usblist
+        values: ''
+      - id: USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN
+        type: bselect
+        values: 0,1
+  - name: ThinkPad Battery
+    configs:
+      - group: CHARGE_THRESH_BAT0
+        ids:
+          - id: START_CHARGE_THRESH_BAT0
+            type: numeric
+            values: 0-96
+          - id: STOP_CHARGE_THRESH_BAT0
+            type: numeric
+            values: 5-100
+      - group: CHARGE_THRESH_BAT1
+        ids:
+          - id: START_CHARGE_THRESH_BAT1
+            type: numeric
+            values: 0-96
+          - id: STOP_CHARGE_THRESH_BAT1
+            type: numeric
+            values: 5-100
+      - id: RESTORE_THRESHOLDS_ON_BAT
+        type: bselect
+        values: 0,1
+      - id: NATACPI_ENABLE
+        type: bselect
+        values: 0,1
+      - id: TPACPI_ENABLE
+        type: bselect
+        values: 0,1
+      - id: TPSMAPI_ENABLE
+        type: bselect
+        values: 0,1

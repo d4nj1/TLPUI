@@ -1,7 +1,9 @@
 """Provide main window parts for TLPUI."""
 
 import importlib
+import importlib.metadata
 import difflib
+import toml
 
 from pathlib import Path
 from gi.repository import Gtk, Gdk, GdkPixbuf
@@ -11,7 +13,18 @@ from .configui import create_config_box
 from .file import init_tlp_file_config, create_tmp_tlp_config_file, write_tlp_config, get_changed_properties
 from .statui import create_stat_box
 from .uihelper import get_flag_image, get_theme_image
-from . import __version__
+
+
+def get_app_version() -> str:
+    """Get TLP-UI version."""
+    try:
+        return importlib.metadata.version("tlpui")
+    except importlib.metadata.PackageNotFoundError:
+        try:
+            pyproject = toml.load(Path(__file__).parent.parent / "pyproject.toml")
+            return pyproject["tool"]["poetry"]["version"]
+        except FileNotFoundError:
+            return ""
 
 
 def reset_scroll_position() -> None:
@@ -29,7 +42,7 @@ def window_key_events(self, event) -> None:
     """Add window key events like crtl+(q|w|s)."""
     if event.state & Gdk.ModifierType.CONTROL_MASK:
         # close window with ctrl+q or ctrl+w
-        if event.keyval == 113 or event.keyval == 119:
+        if event.keyval in (113, 119):
             quit_tlp_config(None, self)
         # save config with ctrl+s
         if event.keyval == 115:
@@ -115,8 +128,10 @@ def changed_items_dialog(window, tmpfilename: str, dialogtitle: str, message: st
     scrolledwindow.set_hexpand(True)
     scrolledwindow.set_vexpand(True)
 
-    fromfilecontent = open(settings.tlpconfigfile, 'r').readlines()
-    tofilecontent = open(tmpfilename, 'r').readlines()
+    with open(settings.tlpconfigfile, encoding='utf-8') as fromfile:
+        fromfilecontent = fromfile.readlines()
+    with open(tmpfilename, encoding='utf-8') as tofile:
+        tofilecontent = tofile.readlines()
     diff = settings.tlpbaseconfigfile + '\n\n'
     for line in difflib.unified_diff(fromfilecontent, tofilecontent, n=0, lineterm=''):
         if line.startswith('---') or line.startswith('+++'):
@@ -136,7 +151,7 @@ def changed_items_dialog(window, tmpfilename: str, dialogtitle: str, message: st
 
     box = dialog.get_content_area()
     box.pack_start(scrolledwindow, True, True, 0)
-    box.pack_start(Gtk.Label('\n{}\n'.format(message)), False, False, 0)
+    box.pack_start(Gtk.Label(f'\n{message}\n'), False, False, 0)
 
     dialog.show_all()
     response = dialog.run()
@@ -214,7 +229,7 @@ def repack_language_menuitem(menuitem: Gtk.MenuItem):
 
 def create_settings_box(window) -> Gtk.Box:
     """Buttons for direct access in UI."""
-    fileentrylabel = Gtk.Label(settings.tlpbaseconfigfile)
+    fileentrylabel = Gtk.Label(f"TLP {settings.tlpversion} - {settings.tlpbaseconfigfile}")
     fileentrylabel.set_alignment(0, 0.5)
     reloadbutton = Gtk.Button(label=' ' + language.MT_('Reload'),
                               image=get_theme_image('view-refresh-symbolic', Gtk.IconSize.BUTTON))
@@ -274,12 +289,12 @@ def add_menu_actions(window, actiongroup) -> None:
 def show_about_dialog(self):
     """Applications about dialog."""
     aboutdialog = Gtk.AboutDialog()
-    aboutdialog.set_title("TLPUI")
+    aboutdialog.set_title("TLP-UI")
     aboutdialog.set_name("name")
-    aboutdialog.set_version(__version__)
-    aboutdialog.set_comments("UI for TLP written in Python/GTK")
+    aboutdialog.set_version(get_app_version())
+    aboutdialog.set_comments(language.MT_("UI for TLP written in Python/Gtk"))
     aboutdialog.set_website("https://github.com/d4nj1/TLPUI")
-    aboutdialog.set_website_label("TLPUI on GitHub")
+    aboutdialog.set_website_label("TLP-UI @ GitHub")
     aboutdialog.set_authors(["Daniel Christophis"])
     aboutdialog.set_translator_credits("Muhammet Emin AKALAN (05akalan57@gmail.com)")
     aboutdialog.set_license_type(Gtk.License.GPL_2_0)

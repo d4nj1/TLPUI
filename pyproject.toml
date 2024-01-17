@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "tlpui"
+version = "1.7.0"
+description = "GTK UI for tlp"
+license = "GPL-2.0-or-later"
+authors = ["Daniel Christophis <code@devmind.org>"]
+readme = "README.md"
+homepage = "https://github.com/d4nj1/TLPUI"
+repository = "https://github.com/d4nj1/TLPUI"
+documentation = "https://github.com/d4nj1/TLPUI/docs"
+keywords = ["battery", "power", "config"]
+classifiers = ["Topic :: Utilities"]
+
+[tool.poetry.scripts]
+tlpui = "tlpui.__main__:main"
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+pygobject = "^3.46.0"
+pyyaml = "^6.0.1"
+toml = "^0.10.2"
+
+[tool.poetry.group.dev.dependencies]
+tox = "^4.12.1"
+pytest = "^7.4.4"
+pytest-cov = "^4.1.0"
+pylint = "^3.0.3"
+pycodestyle = "^2.11.1"
+pydocstyle = "^6.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -21,10 +21,11 @@ settingshelper.check_binaries_exist(FOLDER_PREFIX)
 userconfig = settingshelper.UserConfig()
 
 # runtime params
-tlpbaseversion = settingshelper.get_installed_major_minor_version()
-tlpbaseconfigfile = settingshelper.get_tlp_config_file(tlpbaseversion, "")
-tlpconfigfile = settingshelper.get_tlp_config_file(tlpbaseversion, FOLDER_PREFIX)
-tlpconfig = dict()
-tlpconfig_original = dict()
-tlpconfig_defaults = dict()
+tlpversion = settingshelper.get_installed_tlp_version()
+tlpbaseversion = tlpversion.replace(".", "_")[0:3]
+tlpbaseconfigfile = settingshelper.get_tlp_config_file("")
+tlpconfigfile = settingshelper.get_tlp_config_file(FOLDER_PREFIX)
+tlpconfig = {}
+tlpconfig_original = {}
+tlpconfig_defaults = {}
 active_scroll = None

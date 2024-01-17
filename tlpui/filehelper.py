@@ -2,15 +2,14 @@
 
 import re
 from io import open
-from json import load
+from yaml import safe_load
 
 
-def get_json_schema_object_from_file(objectname: str, filename: str) -> dict:
-    """Read Json file."""
-    jsonfile = open(filename)
-    jsonobject = load(jsonfile)
-    jsonfile.close()
-    return jsonobject[objectname]
+def get_yaml_schema_object_from_file(objectname: str, filename: str) -> dict:
+    """Read Yaml file."""
+    with open(filename, encoding='utf-8') as yaml_file:
+        yaml_object = safe_load(yaml_file)
+    return yaml_object[objectname]
 
 
 class TlpDefaults:
@@ -43,11 +42,10 @@ class TlpDefaults:
 def extract_default_tlp_configs(filename: str) -> dict:
     """Fetch TLP defaults from file."""
     propertypattern = re.compile(r'^#?[A-Z_\d]+=')
-    fileopener = open(filename)
-    lines = fileopener.readlines()
-    fileopener.close()
+    with open(filename, encoding='utf-8') as defaultsfile:
+        lines = defaultsfile.readlines()
 
-    tlpconfig_defaults = dict()
+    tlpconfig_defaults = {}
     for line in lines:
         if propertypattern.match(line):
             cleanline = line.lstrip().rstrip()

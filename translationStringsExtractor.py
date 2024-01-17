@@ -1,18 +1,10 @@
 """This module provides helper functions for refreshing config PO files."""
 
-from io import open
-from json import load
 import os
+from io import open
+from tlpui.filehelper import get_yaml_schema_object_from_file
 
 lastvalue = ''
-
-
-def get_json_schema_object_from_file(objectname: str, filename: str) -> dict:
-    """Fetch json objects from schema file."""
-    jsonfile = open(filename)
-    jsonobject = load(jsonfile)
-    jsonfile.close()
-    return jsonobject[objectname]
 
 
 def add_to_list(listobject: list, value: str):
@@ -29,19 +21,20 @@ def add_to_list(listobject: list, value: str):
 
 
 def create_translateable_strings_header_file():
-    """Extract items for translation from configschema.json and puts them in new file with header extension.
+    """Extract translation items from configschema/*.yaml and put them into a new file with header extension.
 
-    Poedit and other po-tools do not support JSON files right now.
-    It should be called any time configschema.json changes and translation needs to be updated.
-    Change configschema.json -> run this script -> update po files from source with utility (e.g. poedit).
+    Poedit and other po-tools do not support YAML files right now.
+    It should be called any time yaml files get added or updated.
+
+    Update or add VERSION.yaml -> run this script -> update po files from header source with utility (e.g. poedit).
     """
     translateobjects = list()
 
-    for file in os.listdir('../configschema'):
-        if not file.endswith('.json'):
+    for file in os.listdir('tlpui/configschema'):
+        if not file.endswith('.yaml'):
             continue
 
-        categories = get_json_schema_object_from_file('categories', '../configschema/' + file)
+        categories = get_yaml_schema_object_from_file('categories', 'tlpui/configschema/' + file)
 
         for category in categories:
             add_to_list(translateobjects, category['name'] + '__CATEGORY_TITLE')
@@ -57,7 +50,7 @@ def create_translateable_strings_header_file():
                     # add_to_list(translateobjects, config['id'] + '__ID_TITLE')
                     add_to_list(translateobjects, config['id'] + '__ID_DESCRIPTION')
 
-    newfile = open('configschema.json.h', 'w+')
+    newfile = open('tlpui/lang/configschema.yaml.h', 'w+')
     for item in translateobjects:
         newfile.write('_(\"' + item + '\");\n')
     newfile.close()

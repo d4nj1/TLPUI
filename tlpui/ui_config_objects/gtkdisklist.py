@@ -256,7 +256,7 @@ def get_disk_config_ranges():
     spindownrangetimeoutbat = ''
     ioschedvalues = ''
 
-    categories = file.get_json_schema_object('categories')
+    categories = file.get_yaml_schema_object('categories')
     for category in categories:
         if category['name'] != 'Disks':
             continue
