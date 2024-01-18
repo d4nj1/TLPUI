@@ -20,7 +20,7 @@
 	</provides>
 	<content_rating type="oars-1.1" />
 	<releases>
-		<release version="1.7.0" date="2024-01-02" urgency="low">
+		<release version="1.6.2" date="2024-01-18" urgency="low">
 			<description>
 				<p>Add initial TLP 1.7 compatibility</p>
 				<p>Refactor code base and set Python 3.8.1 as minimal supported version</p>
