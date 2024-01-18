@@ -3,7 +3,7 @@
 	<id>com.github.d4nj1.tlpui</id>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-2.0+</project_license>
-	<name>TLPUI</name>
+	<name>TLP-UI</name>
 	<summary>GTK-UI to change TLP configuration files easily.</summary>
 	<description>
 		<p>The Python scripts in this project generate a GTK-UI to change TLP configuration files easily. It has the aim to protect users from setting bad configuration and to deliver a basic overview of all the valid configuration values.</p>

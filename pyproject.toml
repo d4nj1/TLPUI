@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "tlpui"
-version = "1.7.0"
+name = "tlp-ui"
+version = "1.6.2"
 description = "GTK UI for tlp"
 license = "GPL-2.0-or-later"
 authors = ["Daniel Christophis <code@devmind.org>"]
@@ -10,6 +10,10 @@ repository = "https://github.com/d4nj1/TLPUI"
 documentation = "https://github.com/d4nj1/TLPUI/docs"
 keywords = ["battery", "power", "config"]
 classifiers = ["Topic :: Utilities"]
+packages = [{include = "tlpui"}]
+
+[tool.poetry.build]
+generate-setup-file = true
 
 [tool.poetry.scripts]
 tlpui = "tlpui.__main__:main"
