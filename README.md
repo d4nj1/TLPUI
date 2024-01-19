@@ -10,7 +10,7 @@ It has the aim to protect users from setting bad configuration and to deliver a 
 
 ### Install and run instructions :ledger:
 
-<!---* [PyPI](https://github.com/d4nj1/TLPUI/blob/master/docs/INSTALL.md#pypi)-->
+* [PyPI](https://github.com/d4nj1/TLPUI/blob/master/docs/INSTALL.md#pypi)
 * [Poetry](https://github.com/d4nj1/TLPUI/blob/master/docs/INSTALL.md#poetry)
 * [Python 3](https://github.com/d4nj1/TLPUI/blob/master/docs/INSTALL.md#python-3)
 * [Arch Linux](https://github.com/d4nj1/TLPUI/blob/master/docs/INSTALL.md#arch-linux)

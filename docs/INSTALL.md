@@ -15,14 +15,14 @@ In order to use Tlp-ui, make sure Tlp is installed first.
 
 # Prepacked runtimes
 
-<!---## PyPI
+## PyPI
 
-Tlp-ui is available on [pypi.org](https://pypi.org/project/tlpui/) and can simple be installed via.
+Tlp-ui is available on [pypi.org](https://pypi.org/project/tlp-ui/) and can simple be installed via.
 
   ```shell
-  pip3 install tlpui
+  pip3 install tlp-ui
   ```
--->
+
 ## Flatpak
 
 Instructions on how to install Flatpak version of Tlp-ui can be found [here](https://flathub.org/apps/com.github.d4nj1.tlpui).
