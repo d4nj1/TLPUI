@@ -386,18 +386,18 @@ categories:
         ids:
           - id: START_CHARGE_THRESH_BAT0
             type: numeric
-            values: 0-96
+            values: 0-99
           - id: STOP_CHARGE_THRESH_BAT0
             type: numeric
-            values: 5-100
+            values: 0-100
       - group: CHARGE_THRESH_BAT1
         ids:
           - id: START_CHARGE_THRESH_BAT1
             type: numeric
-            values: 0-96
+            values: 0-99
           - id: STOP_CHARGE_THRESH_BAT1
             type: numeric
-            values: 5-100
+            values: 0-100
       - id: RESTORE_THRESHOLDS_ON_BAT
         type: bselect
         values: 0,1
