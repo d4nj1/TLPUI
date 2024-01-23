@@ -1,30 +1,17 @@
 """Provide main window parts for TLPUI."""
 
 import importlib
-import importlib.metadata
 import difflib
-import toml
 
 from pathlib import Path
 from gi.repository import Gtk, Gdk, GdkPixbuf
 from . import settings
 from . import language
+from . import __version__
 from .configui import create_config_box
 from .file import init_tlp_file_config, create_tmp_tlp_config_file, write_tlp_config, get_changed_properties
 from .statui import create_stat_box
 from .uihelper import get_flag_image, get_theme_image
-
-
-def get_app_version() -> str:
-    """Get TLP-UI version."""
-    try:
-        return importlib.metadata.version("tlpui")
-    except importlib.metadata.PackageNotFoundError:
-        try:
-            pyproject = toml.load(Path(__file__).parent.parent / "pyproject.toml")
-            return pyproject["tool"]["poetry"]["version"]
-        except FileNotFoundError:
-            return ""
 
 
 def reset_scroll_position() -> None:
@@ -291,7 +278,7 @@ def show_about_dialog(self):
     aboutdialog = Gtk.AboutDialog()
     aboutdialog.set_title("TLP-UI")
     aboutdialog.set_name("name")
-    aboutdialog.set_version(get_app_version())
+    aboutdialog.set_version(__version__)
     aboutdialog.set_comments(language.MT_("UI for TLP written in Python/Gtk"))
     aboutdialog.set_website("https://github.com/d4nj1/TLPUI")
     aboutdialog.set_website_label("TLP-UI @ GitHub")
