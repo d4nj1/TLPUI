@@ -6,18 +6,21 @@
 	<name>TLP-UI</name>
 	<summary>TLP configuration utility</summary>
 	<description>
-		<p>Change TLP settings easily. This app has the aim to protect users from defining bad configuration and to deliver a basic overview of all the valid configuration values.</p>
+		<p>Change TLP settings easily and provide a basic overview of all the valid configuration values</p>
 	</description>
 	<launchable type="desktop-id">com.github.d4nj1.tlpui.desktop</launchable>
 	<url type="homepage">https://github.com/d4nj1/TLPUI</url>
 	<screenshots>
 		<screenshot type="default">
+			<caption>Main window with light theme</caption>
 			<image>https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshots/tlpui-01.png</image>
 		</screenshot>
 		<screenshot>
+			<caption>Main window with dark theme</caption>
 			<image>https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshots/tlpui-02.png</image>
 		</screenshot>
 		<screenshot>
+			<caption>Current setting with about dialog</caption>
 			<image>https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshots/tlpui-03.png</image>
 		</screenshot>
 	</screenshots>
@@ -26,6 +29,17 @@
 	</provides>
 	<content_rating type="oars-1.1" />
 	<releases>
+		<release version="1.6.5" date="2024-04-04" urgency="low">
+			<description>
+				<p>Fix loading css for GTK greater 4.12</p>
+				<p>Improve appdata to fix Flathub issues</p>
+				<p>Update Python dependencies</p>
+			</description>
+			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.6.5</url>
+			<issues>
+				<issue url="https://github.com/d4nj1/TLPUI/issues/147">#147</issue>
+			</issues>
+		</release>
 		<release version="1.6.4" date="2024-01-21" urgency="low">
 			<description>
 				<p>Battery conservation fixes to support all vendor plugins</p>
