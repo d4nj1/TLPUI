@@ -5,6 +5,9 @@
 	<project_license>GPL-2.0+</project_license>
 	<name>TLP-UI</name>
 	<summary>TLP configuration utility</summary>
+	<developer id="com.github.d4nj1.tlpui">
+		<name>Daniel Christophis</name>
+	</developer>
 	<description>
 		<p>Change TLP settings easily and provide a basic overview of all the valid configuration values</p>
 	</description>
