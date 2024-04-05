@@ -9,6 +9,6 @@ Type=Application
 Icon=tlpui
 Comment=Configuration interface
 Comment[de_DE]=Konfigurationsoberfläche
-Comment[pt_BR]=Tlp UI com gtk
+Comment[pt_BR]=Interface de configuração
 Comment[zh_CN]=TLP 的 Gtk 设置界面
 Categories=Settings;HardwareSettings;GTK;
