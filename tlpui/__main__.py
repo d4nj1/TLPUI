@@ -18,7 +18,7 @@ Gtk.StyleContext.add_provider_for_screen(
 )
 
 # Set window properties
-GLib.set_prgname('tlp-ui')
+GLib.set_prgname('tlpui')
 Gdk.set_program_class('Tlp-UI')
 
 # Apply custom scalable icons to icon theme
