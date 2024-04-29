@@ -1,0 +1,40 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TLPUI\n"
+"POT-Creation-Date: 2023-12-25 16:35+0100\n"
+"PO-Revision-Date: 2024-04-28 07:46+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-KeywordsList: UH_\n"
+"X-Poedit-SearchPath-0: uihelper.py\n"
+
+#: uihelper.py:14
+msgid "Expected item missing in config file"
+msgstr "A várt elem hiányzik a konfigurációs fájlból"
+
+#: uihelper.py:15
+msgid "Unknown config value detected"
+msgstr "Ismeretlen konfigurációs érték észlelve"
+
+#: uihelper.py:16
+msgid "Install pkexec, gksu, gksudo, kdesu or kdesudo first"
+msgstr "Először telepítse a pkexec, gksu, gksudo, kdesu vagy kdesudo-t"
+
+#: uihelper.py:17
+msgid "Default state:"
+msgstr "Alapértelmezett állapot:"
+
+#: uihelper.py:18
+msgid "Default value:"
+msgstr "Alapértelmezett érték:"
+
+#: uihelper.py:19
+msgid "CHANGED"
+msgstr "MEGVÁLTOZTATVA"
