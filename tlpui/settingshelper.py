@@ -2,6 +2,7 @@
 
 import configparser
 import re
+import subprocess
 import sys
 from os import getenv
 from shutil import which
@@ -13,7 +14,7 @@ from . import errorui
 def exec_command(commands: [str]):
     """Execute commands locally."""
     try:
-        return check_output(commands).decode(sys.stdout.encoding)
+        return check_output(commands, stderr=subprocess.STDOUT,).decode(sys.stdout.encoding)
     except CalledProcessError as error:
         errorui.show_dialog(error)
 
