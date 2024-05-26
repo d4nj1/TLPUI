@@ -5,11 +5,15 @@ import difflib
 
 from pathlib import Path
 from gi.repository import Gtk, Gdk, GdkPixbuf
+from tlpui.uihelper import get_graphical_sudo
+
 from . import settings
 from . import language
 from . import __version__
 from .configui import create_config_box
+from .errorui import show_dialog
 from .file import init_tlp_file_config, create_tmp_tlp_config_file, write_tlp_config, get_changed_properties
+from .settingshelper import exec_command
 from .statui import create_stat_box
 from .uihelper import get_flag_image, get_theme_image
 
@@ -80,6 +84,16 @@ def save_tlp_config(self, window) -> None:
 
         # reload config after file save
         load_tlp_config(self, window, True)
+
+def run_tlp(self, window) -> None:
+    """Run TLP service."""
+    changedproperties = get_changed_properties()
+    if len(changedproperties) != 0:
+        save_tlp_config(self, window)
+    sudo_cmd=get_graphical_sudo()
+    output = exec_command([sudo_cmd, "tlp", "start"])
+    if output:
+        show_dialog(output)
 
 
 def quit_tlp_config(_, window) -> None:
@@ -218,19 +232,27 @@ def create_settings_box(window) -> Gtk.Box:
     """Buttons for direct access in UI."""
     fileentrylabel = Gtk.Label(f"TLP {settings.tlpversion} - {settings.tlpbaseconfigfile}")
     fileentrylabel.set_alignment(0, 0.5)
+
     reloadbutton = Gtk.Button(label=' ' + language.MT_('Reload'),
                               image=get_theme_image('view-refresh-symbolic', Gtk.IconSize.BUTTON))
     reloadbutton.connect('clicked', load_tlp_config, window, True)
     reloadbutton.set_always_show_image(True)
+
     savebutton = Gtk.Button(label=' ' + language.MT_('Save'),
                             image=get_theme_image('document-save-symbolic', Gtk.IconSize.BUTTON))
     savebutton.connect('clicked', save_tlp_config, window)
     savebutton.set_always_show_image(True)
 
+    startbutton = Gtk.Button(label=' ' + language.MT_('Start'),
+                            image=get_theme_image('start-symbolic', Gtk.IconSize.BUTTON))
+    startbutton.connect('clicked', run_tlp, window)
+    startbutton.set_always_show_image(True)
+
     settingsbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
     settingsbox.pack_start(fileentrylabel, True, True, 0)
     settingsbox.pack_start(reloadbutton, False, False, 0)
     settingsbox.pack_start(savebutton, False, False, 0)
+    settingsbox.pack_start(startbutton, False, False, 0)
 
     return settingsbox
 
