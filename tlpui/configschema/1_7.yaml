@@ -7,6 +7,9 @@ categories:
       - id: TLP_WARN_LEVEL
         type: select
         values: 0,1,2,3
+      - id: TLP_MSG_COLORS
+        type: entry
+        values: ''
       - id: TLP_DEFAULT_MODE
         type: select
         values: AC,BAT
@@ -151,6 +154,14 @@ categories:
           - id: RADEON_DPM_PERF_LEVEL_ON_BAT
             type: select
             values: auto,low,high
+      - group: AMDGPU_ABM_LEVEL
+        ids:
+          - id: AMDGPU_ABM_LEVEL_ON_AC
+            type: numeric
+            values: 0-4
+          - id: AMDGPU_ABM_LEVEL_ON_BAT
+            type: numeric
+            values: 0-4
   - name: Network
     configs:
       - group: WIFI_PWR
@@ -390,14 +401,5 @@ categories:
             type: numeric
             values: 0-100
       - id: RESTORE_THRESHOLDS_ON_BAT
-        type: bselect
-        values: 0,1
-      - id: NATACPI_ENABLE
-        type: bselect
-        values: 0,1
-      - id: TPACPI_ENABLE
-        type: bselect
-        values: 0,1
-      - id: TPSMAPI_ENABLE
         type: bselect
         values: 0,1
