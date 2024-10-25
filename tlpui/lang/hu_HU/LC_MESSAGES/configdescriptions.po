@@ -1,0 +1,682 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TLPUI\n"
+"POT-Creation-Date: 2023-12-24 13:45+0100\n"
+"PO-Revision-Date: 2024-04-29 08:15+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _\n"
+"X-Poedit-SearchPath-0: configschema.json.h\n"
+
+#: configschema.json.h:1
+msgid "General__CATEGORY_TITLE"
+msgstr "Átalános"
+
+#: configschema.json.h:2
+msgid "TLP_ENABLE__ID_DESCRIPTION"
+msgstr "TLP engedélyezése/letiltása"
+
+#: configschema.json.h:3
+msgid "TLP_WARN_LEVEL__ID_DESCRIPTION"
+msgstr ""
+"Az érvénytelen beállításokkal kapcsolatos figyelmeztetővisszajelzések "
+"szabályozása:\n"
+"0 = letiltva,\n"
+"1=háttérfeladatok (indítás, folytatás, áramforrás váltás) jelentés a "
+"rendszernaplóba,\n"
+"2=shell parancsok jelentést küldenek a terminálnak (stderr),\n"
+"3 = 1 és 2 kombinációja"
+
+#: configschema.json.h:4
+msgid "TLP_DEFAULT_MODE__ID_DESCRIPTION"
+msgstr ""
+"Üzemmód, amikor nem észlelhető tápellátás: AC, BAT.\n"
+"Csak néhány asztali és beágyazott hardverre vonatkozik"
+
+#: configschema.json.h:5
+msgid "TLP_PERSISTENT_DEFAULT__ID_DESCRIPTION"
+msgstr ""
+"Üzemmód kiválasztása:\n"
+"0 = az áramforrástól függ\n"
+"1=mindig ezt használja: TLP_DEFAULT_MODE\n"
+"Tipp: használja a TLP_DEFAULT_MODE=BAT paraméterrel együtt a BAT "
+"beállításokhoz AC-n"
+
+#: configschema.json.h:6
+msgid "TLP_PS_IGNORE__ID_DESCRIPTION"
+msgstr ""
+"Az üzemmód meghatározásakor figyelmen kívül hagyandó tápegységosztályok: AC, "
+"USB, BAT.\n"
+"Válasszon el több osztályt szóközökkel.\n"
+"Megjegyzés: próbálja ki olyan laptopokon, ahol az AC/BAT működési módot a "
+"rendszer hibásan érzékeli"
+
+#: configschema.json.h:7
+msgid "Audio__CATEGORY_TITLE"
+msgstr "Audio"
+
+#: configschema.json.h:8
+msgid "SOUND_POWER_SAVE__GROUP_DESCRIPTION"
+msgstr ""
+"Hang energiatakarékosságának engedélyezése Intel HDA, AC97 eszközökön "
+"(időtúllépés másodpercben).\n"
+"A 0 érték letiltja, a >= 1 engedélyezi az energiatakarékosságot.\n"
+"Megjegyzés: Az 1-es a PulseAudio-val rendelkező Linux asztali környezetekhez "
+"ajánlott,\n"
+"A PulseAudio nélküli rendszerek 10-et igényelhetnek"
+
+#: configschema.json.h:9
+msgid "SOUND_POWER_SAVE_CONTROLLER__ID_DESCRIPTION"
+msgstr ""
+"Vezérlő letiltása is (csak HDA): I/N.\n"
+"Megjegyzés: csak akkor érvényes, ha a SOUND_POWER_SAVE_ON_AC/BAT aktiválva "
+"van"
+
+#: configschema.json.h:10
+msgid "Disks__CATEGORY_TITLE"
+msgstr "Lemezek"
+
+#: configschema.json.h:11
+msgid "DISK_IDLE_SECS__GROUP_DESCRIPTION"
+msgstr ""
+"A másodperces laptop módnak várnia kell, miután a lemez tétlen lesz, mielőtt "
+"szinkronizálna.\n"
+"A nullától eltérő érték engedélyezi, a nulla letiltja a laptop módot"
+
+#: configschema.json.h:12
+msgid "MAX_LOST_WORK_SECS__GROUP_DESCRIPTION"
+msgstr "Piszkos oldalértékek (időtúllépések másodpercben)"
+
+#: configschema.json.h:13
+msgid "DISK_DEVICES__ID_DESCRIPTION"
+msgstr ""
+"Határozza meg azokat a lemezeszközöket, amelyeken a következő DISK/"
+"AHCI_RUNTIME paraméterek működnek.\n"
+"Válasszon el több eszközt szóközökkel.\n"
+"Az eszközök lemezazonosítóval is megadhatók (keresés: tlp diskid)"
+
+#: configschema.json.h:14
+msgid "DISK_APM_LEVEL__GROUP_DESCRIPTION"
+msgstr ""
+"Merevlemez fejlett energiagazdálkodási szint: 1...254, 255 (maximális "
+"megtakarítás, min, kikapcsolva)\n"
+"Az 1...127 szintek lefelé pörgethetik a lemezt; 255 megengedett a legtöbb "
+"meghajtón.\n"
+"Több lemez esetén különítse el az értékeket szóközökkel. Használja a „keep” "
+"speciális értéket\n"
+"hogy az adott lemezhez tartozó hardver alapértelmezett legyen"
+
+#: configschema.json.h:15
+msgid "DISK_APM_CLASS_DENYLIST__ID_DESCRIPTION"
+msgstr ""
+"Lemezosztályok kizárása a fejlett energiagazdálkodásból (APM):\n"
+"- sata, ata, usb, ieee1394.\n"
+"Válasszon el több osztályt szóközökkel.\n"
+"VIGYÁZAT: Előfordulhat, hogy az USB és IEEE1394 lemezek csatlakoztatása "
+"sikertelen, vagy az adatok megsérülhetnek, ha az APM engedélyezve van.\n"
+"Legyen óvatos, és győződjön meg róla, hogy minden érintett adathordozóról "
+"van biztonsági másolat, mielőtt eltávolítja az „usb” vagy „ieee1394” fájlt a "
+"tiltólistáról (!)"
+
+#: configschema.json.h:16
+msgid "DISK_SPINDOWN_TIMEOUT__GROUP_DESCRIPTION"
+msgstr ""
+"Merevlemez spin down időtúllépése:\n"
+"0: spin down letiltva\n"
+"1...240: időtúllépések 5 másodperctől 20 percig (5 másodperces egységekben)\n"
+"241..251: időtúllépések 30 perctől 5,5 óráig (30 perces egységekben)\n"
+"(a részletekért lásd a „man hdparm” részt)"
+
+#: configschema.json.h:17
+msgid "DISK_IOSCHED__ID_DESCRIPTION"
+msgstr ""
+"Válassza ki az io ütemezőt a lemezeszközökhöz: noop/deadline/cfq "
+"(alapértelmezett: cfq)\n"
+"Több eszköz esetén különítse el az értékeket szóközökkel"
+
+#: configschema.json.h:18
+msgid "SATA_LINKPWR__GROUP_DESCRIPTION"
+msgstr ""
+"AHCI link energiagazdálkodás (ALPM) SATA lemezekhez:\n"
+"- min_power, med_power_with_dipm(*), medium_power, max_performance.\n"
+"(*) Kernel 4.15 (vagy újabb) szükséges, akkor ajánlott.\n"
+"A szóközökkel elválasztott több értéket egymás után próbáljuk meg a sikerig"
+
+#: configschema.json.h:19
+msgid "SATA_LINKPWR_DENYLIST__ID_DESCRIPTION"
+msgstr ""
+"A SATA-hivatkozások kizárása az AHCI-kapcsolati energiagazdálkodásból "
+"(ALPM).\n"
+"A SATA hivatkozásokat a gazdagép határozza meg. Lásd a kimenetet\n"
+"tlp-stat -d a gazdagép meghatározásához; a formátum \"hostX\".\n"
+"Válasszon el több gazdagépet szóközökkel"
+
+#: configschema.json.h:20
+msgid "SATA_LINKPWR_BLACKLIST__ID_DESCRIPTION"
+msgstr ""
+"A SATA-gazdaeszközök kizárása a link energiagazdálkodásából.\n"
+"Válasszon el több gazdagépet szóközökkel"
+
+#: configschema.json.h:21
+msgid "AHCI_RUNTIME_PM__GROUP_DESCRIPTION"
+msgstr ""
+"Futásidejű energiagazdálkodás NVMe, SATA, ATA és USB lemezekhez, valamint "
+"SATA portokhoz:\n"
+"- be=letiltás, auto=engedélyezés.\n"
+"Megjegyzés: A SATA-vezérlők PCIe-busz-eszközök, és lejjebb a RUNTIME_PM "
+"kezeli őket"
+
+#: configschema.json.h:22
+msgid "AHCI_RUNTIME_PM_TIMEOUT__ID_DESCRIPTION"
+msgstr "Másodpercnyi inaktivitás a lemez felfüggesztése előtt"
+
+#: configschema.json.h:23
+msgid "BAY_POWEROFF__GROUP_DESCRIPTION"
+msgstr ""
+"Az UltraBay/MediaBay optikai meghajtó kikapcsolása: 0=letilt, "
+"1=engedélyezés.\n"
+"A hajtás a kilökőkar elengedésével (és visszahelyezésével) újra "
+"bekapcsolható\n"
+"vagy újabb modelleken a lemezkiadó gomb megnyomásával.\n"
+"Megjegyzés: Az UltraBay/MediaBay merevlemezt soha nem kapcsolják ki"
+
+#: configschema.json.h:24
+msgid "BAY_POWEROFF_ON_BAT__ID_DESCRIPTION"
+msgstr ""
+"Állítsa be az optikai meghajtó kikapcsolását az UltraBay/MediaBay-ben, "
+"amikor akkumulátorról működik.\n"
+"Ellenkező esetben ez a funkció le van tiltva (alapértelmezett).\n"
+"A meghajtó újra bekapcsolható a gomb elengedésével (és visszahelyezésével).\n"
+"a kilökőkart vagy az újabb modelleken a lemezkiadó gomb megnyomásával.\n"
+"Megjegyzés: Az UltraBay/MediaBay merevlemezt soha nem kapcsolják ki"
+
+#: configschema.json.h:25
+msgid "BAY_DEVICE__ID_DESCRIPTION"
+msgstr "Optikai meghajtó eszköz a kikapcsoláshoz (alapértelmezett sr0)"
+
+#: configschema.json.h:26
+msgid "Graphics__CATEGORY_TITLE"
+msgstr "Videokártya"
+
+#: configschema.json.h:27
+msgid "INTEL_GPU_FREQ__GROUP_DESCRIPTION"
+msgstr ""
+"Állítsa be az Intel GPU min/max/turbó frekvenciáját.\n"
+"A lehetséges értékek a hardvertől függenek. Az elérhető frekvenciákat lásd\n"
+"a tlp-stat -g kimenete"
+
+#: configschema.json.h:28
+msgid "RADEON_POWER_PROFILE__GROUP_DESCRIPTION"
+msgstr ""
+"Grafikus órajel (profil módszer): alacsony, közepes, magas, automatikus, "
+"alapértelmezett;\n"
+"auto = közepes a BAT-on, magas az AC-n.\n"
+"Megjegyzés: radeon illesztőprogram csak régi ATI hardveren (ahol a DPM nem "
+"érhető el)"
+
+#: configschema.json.h:29
+msgid "RADEON_DPM_STATE__GROUP_DESCRIPTION"
+msgstr ""
+"Dinamikus energiagazdálkodási módszer (DPM): kiegyensúlyozott, "
+"akkumulátoros, teljesítmény.\n"
+"Megjegyzés: csak radeon illesztőprogram"
+
+#: configschema.json.h:30
+msgid "RADEON_DPM_PERF_LEVEL__GROUP_DESCRIPTION"
+msgstr ""
+"AMD GPU energiagazdálkodás.\n"
+"Teljesítményszint (DPM): automatikus, alacsony, magas; automata ajánlott.\n"
+"Megjegyzés: amdgpu vagy radeon illesztőprogram szükséges"
+
+#: configschema.json.h:31
+msgid "Network__CATEGORY_TITLE"
+msgstr "Hálózat"
+
+#: configschema.json.h:32
+msgid "WIFI_PWR__GROUP_DESCRIPTION"
+msgstr "Wi-Fi energiatakarékos mód"
+
+#: configschema.json.h:33
+msgid "WOL_DISABLE__ID_DESCRIPTION"
+msgstr "Ébresztés letiltása LAN-on"
+
+#: configschema.json.h:34
+msgid "PCIe__CATEGORY_TITLE"
+msgstr "PCIe"
+
+#: configschema.json.h:35
+msgid "PCIE_ASPM__GROUP_DESCRIPTION"
+msgstr ""
+"PCIe Active State Power Management (ASPM):\n"
+"- alapértelmezett(*), teljesítmény, energiatakarékos, energiatakarékos.\n"
+"(*) megtartja a BIOS ASPM alapértelmezett beállításait (ajánlott)"
+
+#: configschema.json.h:36
+msgid "RUNTIME_PM__GROUP_DESCRIPTION"
+msgstr "Futásidejű energiagazdálkodás PCIe busz eszközökhöz"
+
+#: configschema.json.h:37
+msgid "RUNTIME_PM_DENYLIST__ID_DESCRIPTION"
+msgstr ""
+"A felsorolt ​​PCIe-eszközcímek kizárása a Runtime PM-ből.\n"
+"Megjegyzés: ez megőrzi a kernel-illesztőprogram alapértelmezett beállítását, "
+"egy bizonyos állapot kikényszerítéséhez\n"
+"- használja helyette a RUNTIME_PM_ENABLE/DISABLE parancsot.\n"
+"A több címet szóközzel válassza el.\n"
+"Használja az lspci-t a címek lekéréséhez (1. oszlop)"
+
+#: configschema.json.h:38
+msgid "RUNTIME_PM_DRIVER_DENYLIST__ID_DESCRIPTION"
+msgstr ""
+"A felsorolt ​​illesztőprogramokhoz rendelt PCIe-eszközök kizárása a Runtime PM-"
+"ből.\n"
+"Megjegyzés: ez megőrzi a kernel-illesztőprogram alapértelmezett beállítását, "
+"egy bizonyos állapot kikényszerítéséhez\n"
+"- használja helyette a RUNTIME_PM_ENABLE/DISABLE parancsot.\n"
+"Válasszon el több illesztőprogramot szóközökkel.\n"
+"Hagyja üresen a teljes letiltáshoz"
+
+#: configschema.json.h:39
+msgid "RUNTIME_PM_DEVICE__GROUP_DESCRIPTION"
+msgstr ""
+"A Runtime PM végleges engedélyezése/letiltása a felsorolt ​​PCIe-"
+"eszközcímeknél (az áramforrástól függetlenül).\n"
+"Ez elsőbbséget élvez az összes korábbi futásidejű PM beállítással szemben. A "
+"több címet szóközzel válassza el.\n"
+"Használja az lspci-t a címek lekéréséhez (1. oszlop)"
+
+#: configschema.json.h:40
+msgid "RUNTIME_PM_ALL__ID_DESCRIPTION"
+msgstr ""
+"Futásidejű PM *minden* PCI(e) busz eszközhöz, kivéve a tiltólistán "
+"szereplőket"
+
+#: configschema.json.h:41
+msgid "RUNTIME_PM_BLACKLIST__ID_DESCRIPTION"
+msgstr ""
+"A következő listában szereplő PCI(e) eszközcímek kizárása a Runtime PM-ből\n"
+"(szóközökkel elválasztva). Használja az lspci-t a címek lekéréséhez (1. "
+"oszlop)"
+
+#: configschema.json.h:42
+msgid "RUNTIME_PM_DRIVER_BLACKLIST__ID_DESCRIPTION"
+msgstr ""
+"A felsorolt ​​illesztőprogramokhoz rendelt PCI(e) eszközök kizárása a Runtime "
+"PM-ből\n"
+"(meg kell akadályoznia a hibrid grafika különálló részének véletlen "
+"bekapcsolását).\n"
+"Az alapértelmezett \"radeon nouveau\"; használja a \"\" gombot a funkció "
+"teljes letiltásához.\n"
+"Válasszon el több illesztőprogramot szóközökkel"
+
+#: configschema.json.h:43
+msgid "Processor__CATEGORY_TITLE"
+msgstr "Processzor"
+
+#: configschema.json.h:44
+msgid "CPU_DRIVER_OPMODE__GROUP_DESCRIPTION"
+msgstr ""
+"Válassza ki a CPU skálázási illesztőprogram működési módját.\n"
+"Intel CPU intel_pstate driverrel: aktív, passzív\n"
+"AMD Zen 2 vagy újabb CPU amd-pstate_driverrel a 6.3/6.4 kerneltől:\n"
+"aktív, passzív, irányított"
+
+#: configschema.json.h:45
+msgid "CPU_SCALING_GOVERNOR__GROUP_DESCRIPTION"
+msgstr ""
+"Válasszon ki egy CPU-frekvencia-skálázási szabályozót.\n"
+"Intel processzor intel_pstate meghajtóval:\n"
+"- teljesítmény, energiatakarékosság(*).\n"
+"Intel processzor intel_cpufreq meghajtóval (más néven intel_pstate passzív "
+"mód):\n"
+"- konzervatív, ondemand, userspace, powersave, teljesítmény, schedutil(*).\n"
+"Intel és más processzormárkák acpi-cpufreq illesztőprogrammal:\n"
+"- konzervatív, ondemand(*), userspace, powersave, teljesítmény, "
+"schedutil(*).\n"
+"Használja a tlp-stat -p parancsot az aktív illesztőprogram és az elérhető "
+"kormányzók megjelenítéséhez.\n"
+"Fontos:\n"
+"- A fent (*) jelölt vezérlők *szinte minden* munkaterheléshez "
+"energiahatékonyak\n"
+"- és ezért a kernel és a legtöbb disztribúció ezeket választotta "
+"alapértelmezettnek.\n"
+"- Kutatást kellett volna végeznie az előnyökről/hátrányokról *mielőtt* "
+"megváltoztatja a szabályozót"
+
+#: configschema.json.h:46
+msgid "CPU_SCALING_FREQ__GROUP_DESCRIPTION"
+msgstr ""
+"Állítsa be a skálázási szabályozóhoz elérhető min/max frekvenciát.\n"
+"A lehetséges értékek a CPU-tól függenek. Az elérhető frekvenciákat lásd\n"
+"a tlp-stat -p kimenete.\n"
+"Megjegyzések:\n"
+"- A min/max frekvenciákat mindig meg kell adni mind az AC *és* BAT esetében\n"
+"- Nem ajánlott az intel_pstate skálázási illesztőprogramhoz használni, "
+"helyette használja a CPU_MIN/MAX_PERF_ON_AC/BAT értéket"
+
+#: configschema.json.h:47
+msgid "CPU_ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
+msgstr ""
+"Állítsa be az Intel CPU energia/teljesítmény házirendjét HWP.EPP és EPB:\n"
+"- teljesítmény, balance_performance, default, balance_power, power.\n"
+"Az értékeket a növekvő energiamegtakarítási sorrendben adjuk meg.\n"
+"Megjegyzések:\n"
+"- HWP.EPP: 4.10-es kernel, intel_pstate skálázási illesztőprogram és Intel "
+"Core i 6. generáció szükséges. vagy újabb CPU\n"
+"- EPB: kernel 5.2 vagy msr modul és x86_energy_perf_policy szükséges a linux-"
+"tools-tól, intel_pstate vagy intel_cpufreq skálázási illesztőprogram és "
+"Intel Core i 2nd gen. vagy újabb CPU\n"
+"- Ha elérhető a HWP.EPP, az EPB nincs beállítva"
+
+#: configschema.json.h:48
+msgid "CPU_HWP__GROUP_DESCRIPTION"
+msgstr ""
+"Energiateljesítményre vonatkozó tippek (HWP) beállítása az Intel P-állapot "
+"kormányzójához:\n"
+"default, performance, balance_performance, balance_power, power\n"
+"Az értékeket a növekvő energiamegtakarítási sorrendben adjuk meg.\n"
+"Megjegyzés: Intel Skylake vagy újabb CPU és kernel >= 4.10 szükséges"
+
+#: configschema.json.h:49
+msgid "CPU_PERF__GROUP_DESCRIPTION"
+msgstr ""
+"Intel CPU P-állapot teljesítményének beállítása: 0..100 (%).\n"
+"Korlátozza a max/min P-állapotot a CPU teljesítménydisszipációjának "
+"szabályozásához.\n"
+"Az értékek az elérhető teljesítmény százalékában vannak megadva.\n"
+"Intel_pstate vagy intel_cpufreq illesztőprogram és Intel Core i 2nd gen "
+"szükséges. vagy\n"
+"újabb CPU"
+
+#: configschema.json.h:50
+msgid "CPU_BOOST__GROUP_DESCRIPTION"
+msgstr ""
+"Állítsa be a CPU „turbo boost” (Intel) vagy „turbo core” (AMD) funkciót:\n"
+"- 0=letiltás, 1=engedélyezés.\n"
+"Megjegyzés: az 1-es érték *nem* aktiválja a fokozást, csak engedélyezi"
+
+#: configschema.json.h:51
+msgid "CPU_HWP_DYN_BOOST__GROUP_DESCRIPTION"
+msgstr ""
+"Állítsa be az Intel CPU HWP dinamikus boost funkcióját:\n"
+"- 0=letiltás, 1=engedélyezés.\n"
+"Intel_pstate skálázási illesztőprogramot igényel „aktív” módban és Intel "
+"Core i 6th gen. vagy újabb CPU"
+
+#: configschema.json.h:52
+msgid "SCHED_POWERSAVE__GROUP_DESCRIPTION"
+msgstr ""
+"Minimalizálja a használt CPU magok/hiperszálak számát kis terhelés mellett"
+
+#: configschema.json.h:53
+msgid "NMI_WATCHDOG__ID_DESCRIPTION"
+msgstr ""
+"Kernel NMI Watchdog\n"
+"off: energiát takarít meg, be: csak kernel hibakereséshez"
+
+#: configschema.json.h:54
+msgid "PLATFORM_PROFILE__GROUP_DESCRIPTION"
+msgstr ""
+"Platformprofil kiválasztása:\n"
+"- teljesítmény, kiegyensúlyozott, alacsony fogyasztású.\n"
+"Szabályozza a rendszer működési jellemzőit a teljesítmény/teljesítmény szint "
+"körül,\n"
+"hő- és ventilátorsebesség. Az értékeket a növekvő energiamegtakarítási "
+"sorrendben adjuk meg.\n"
+"Megjegyzés: ellenőrizze a tlp-stat -p kimenetét a hardver és a további "
+"profilok elérhetőségének meghatározásához, például: kiegyensúlyozott "
+"teljesítmény, csendes, hűvös"
+
+#: configschema.json.h:55
+msgid "MEM_SLEEP__GROUP_DESCRIPTION"
+msgstr ""
+"Rendszer felfüggesztési mód:\n"
+"s2idle: Idle standby – tiszta szoftver, könnyű, alvó rendszer\n"
+"mély: Felfüggesztés a RAM-ra – az egész rendszer alacsony fogyasztású "
+"állapotba kerül, kivéve a memóriát, ami általában nagyobb megtakarítást "
+"eredményez, mint az s2idle\n"
+"VIGYÁZAT: A felfüggesztési mód megváltoztatása a rendszer instabilitásához "
+"és akár adatvesztéshez is vezethet. Ami a különböző módok elérhetőségét "
+"illeti a rendszeren, ellenőrizze a tlp-stat -s kimenetét. Ha nem biztos "
+"benne, maradjon a rendszer alapértelmezésénél, és ne engedélyezze ezt"
+
+#: configschema.json.h:56
+msgid "PHC_CONTROLS__ID_DESCRIPTION"
+msgstr ""
+"CPU feszültség módosítása, más néven \"alulfeszültség\"\n"
+"Kernel PHC javítás szükséges\n"
+"Freq:feszültség párok a /sys/devices/system/cpu/cpu0/cpufreq/phc_controls "
+"mappába íródnak\n"
+"VIGYÁZAT: csak akkor használja, ha teljesen érti, mit csinál(!)"
+
+#: configschema.json.h:57
+msgid "ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
+msgstr ""
+"Állítsa be a CPU teljesítményét az energiatakarékossági irányelvekkel "
+"szemben.\n"
+"Szükséges az msr kernelmodul és az x86_energy_perf_policy a linux-toolstól"
+
+#: configschema.json.h:58
+msgid "Radio__CATEGORY_TITLE"
+msgstr "Radió"
+
+#: configschema.json.h:59
+msgid "RESTORE_DEVICE_STATE_ON_STARTUP__ID_DESCRIPTION"
+msgstr ""
+"A rádióeszköz (Bluetooth, WiFi, WWAN) állapotának visszaállítása az előző "
+"leállításból a rendszer indításakor.\n"
+"Megjegyzés: A DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN paraméterek "
+"figyelmen kívül maradnak, ha ez engedélyezve van"
+
+#: configschema.json.h:60
+msgid "DEVICES_TO_DISABLE_ON_STARTUP__ID_DESCRIPTION"
+msgstr "Indításkor letiltandó rádióeszközök: bluetooth wifi wwan"
+
+#: configschema.json.h:61
+msgid "DEVICES_TO_ENABLE_ON_STARTUP__ID_DESCRIPTION"
+msgstr "Indításkor engedélyezhető rádióeszközök: bluetooth wifi wwan"
+
+#: configschema.json.h:62
+msgid "DEVICES_TO_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
+msgstr ""
+"Leállításkor letiltandó rádióeszközök: bluetooth wifi wwan\n"
+"(megkerülő megoldás azokra az eszközökre, amelyek blokkolják a leállást)"
+
+#: configschema.json.h:63
+msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN__ID_DESCRIPTION"
+msgstr ""
+"Leállításkor engedélyezhető rádióeszközök: bluetooth wifi wwan\n"
+"(hogy más operációs rendszerek ne hagyják ki a rádiókat)"
+
+#: configschema.json.h:64
+msgid "DEVICES_TO_ENABLE_ON_AC__ID_DESCRIPTION"
+msgstr "AC-on engedélyezhető rádióeszközök: bluetooth, wifi, wwan"
+
+#: configschema.json.h:65
+msgid "DEVICES_TO_DISABLE_ON_BAT__ID_DESCRIPTION"
+msgstr "Akkumulátorról letiltható rádióeszközök: bluetooth, wifi, wwan"
+
+#: configschema.json.h:66
+msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE__ID_DESCRIPTION"
+msgstr ""
+"Akkumulátorról letiltandó rádiókészülékek használaton kívül (nincs "
+"csatlakoztatva):\n"
+"bluetooth, wifi, wwan"
+
+#: configschema.json.h:67
+msgid "Radio Device Wizard__CATEGORY_TITLE"
+msgstr "Rádióeszköz varázsló"
+
+#: configschema.json.h:68
+msgid "DEVICES_TO_DISABLE_ON_CONNECT__GROUP_DESCRIPTION"
+msgstr "Csatlakozáskor letiltandó rádióeszközök"
+
+#: configschema.json.h:69
+msgid "DEVICES_TO_ENABLE_ON_DISCONNECT__GROUP_DESCRIPTION"
+msgstr "Leválasztáskor engedélyezendő rádióeszközök"
+
+#: configschema.json.h:70
+msgid "DEVICES_ON_DOCK__GROUP_DESCRIPTION"
+msgstr "Dokkolt állapotban engedélyezhető/letiltható rádióeszközök"
+
+#: configschema.json.h:71
+msgid "DEVICES_ON_UNDOCK__GROUP_DESCRIPTION"
+msgstr "Leválasztott rádiós eszközök engedélyezése/letiltása"
+
+#: configschema.json.h:72
+msgid "USB__CATEGORY_TITLE"
+msgstr "USB"
+
+#: configschema.json.h:73
+msgid "USB_AUTOSUSPEND__ID_DESCRIPTION"
+msgstr "USB automatikus felfüggesztés funkció"
+
+#: configschema.json.h:74
+msgid "USB_DENYLIST__ID_DESCRIPTION"
+msgstr ""
+"A felsorolt ​​eszközök kizárása az USB automatikus felfüggesztésből "
+"(szóközökkel válassza el).\n"
+"Használja az lsusb-t az azonosítók lekéréséhez.\n"
+"Megjegyzés: a beviteli eszközök (usbhid) és a libsane által támogatott "
+"szkennerek automatikusan kizárásra kerülnek"
+
+#: configschema.json.h:75
+msgid "USB_EXCLUDE_AUDIO__ID_DESCRIPTION"
+msgstr ""
+"Hangeszközök kizárása az USB automatikus felfüggesztésből:\n"
+"- 0=nem zár ki, 1=kizár"
+
+#: configschema.json.h:76
+msgid "USB_EXCLUDE_BTUSB__ID_DESCRIPTION"
+msgstr ""
+"Bluetooth-eszközök kizárása az USB automatikus felfüggesztésből:\n"
+"- 0=nem zár ki, 1=kizár"
+
+#: configschema.json.h:77
+msgid "USB_EXCLUDE_PHONE__ID_DESCRIPTION"
+msgstr ""
+"Telefoneszközök kizárása az USB automatikus felfüggesztésből:\n"
+"- 0=nem zár ki, 1=kizár (a töltés engedélyezése)"
+
+#: configschema.json.h:78
+msgid "USB_EXCLUDE_PRINTER__ID_DESCRIPTION"
+msgstr ""
+"Nyomtatók kizárása az USB automatikus felfüggesztésből:\n"
+"- 0=nem zár ki, 1=kizár"
+
+#: configschema.json.h:79
+msgid "USB_EXCLUDE_WWAN__ID_DESCRIPTION"
+msgstr ""
+"WWAN-eszközök kizárása az USB automatikus felfüggesztésből:\n"
+"- 0=nem zár ki, 1=kizár"
+
+#: configschema.json.h:80
+msgid "USB_ALLOWLIST__ID_DESCRIPTION"
+msgstr ""
+"Engedélyezze az USB automatikus felfüggesztést a listán szereplő eszközök "
+"számára, még akkor is, ha már letiltották vagy\n"
+"fent kizárva (szóközökkel elválasztva). Használja az lsusb-t az azonosítók "
+"lekéréséhez"
+
+#: configschema.json.h:81
+msgid "USB_BLACKLIST__ID_DESCRIPTION"
+msgstr ""
+"A következő listán szereplő eszközök nem tartoznak az automatikus "
+"felfüggesztésbe\n"
+"(szóközökkel elválasztva). Használja az lsusb-t az azonosítók lekéréséhez.\n"
+"Megjegyzés: A beviteli eszközök (usbhid) automatikusan kizárásra kerülnek"
+
+#: configschema.json.h:82
+msgid "USB_BLACKLIST_BTUSB__ID_DESCRIPTION"
+msgstr ""
+"A Bluetooth-eszközök ki vannak zárva az USB automatikus felfüggesztésből"
+
+#: configschema.json.h:83
+msgid "USB_BLACKLIST_PHONE__ID_DESCRIPTION"
+msgstr ""
+"A telefonkészülékek ki vannak zárva az USB automatikus felfüggesztésből"
+
+#: configschema.json.h:84
+msgid "USB_BLACKLIST_PRINTER__ID_DESCRIPTION"
+msgstr "A nyomtatók nem tartoznak az USB automatikus felfüggesztésbe"
+
+#: configschema.json.h:85
+msgid "USB_BLACKLIST_WWAN__ID_DESCRIPTION"
+msgstr ""
+"A WWAN-eszközök ki vannak zárva az automatikus felfüggesztésből.\n"
+"Megjegyzés: csak a 05c6:* 0bdb:* 1199:* azonosítókhoz működik"
+
+#: configschema.json.h:86
+msgid "USB_WHITELIST__ID_DESCRIPTION"
+msgstr ""
+"A felsorolt ​​eszközök felvétele az automatikus felfüggesztésbe, még akkor is, "
+"ha már kizárták\n"
+"az illesztőprogram vagy a fenti WWAN feketelisták által (szóközökkel "
+"elválasztva).\n"
+"Használja az lsusb-t az azonosítók lekéréséhez"
+
+#: configschema.json.h:87
+msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
+msgstr ""
+"Állítsa be az automatikus felfüggesztés letiltását a leállítás előtt, "
+"ellenkező esetben pedig úgy, hogy ne tegyen semmit\n"
+"(megkerülő megoldás leállási problémákat okozó USB-eszközök esetén)"
+
+#: configschema.json.h:88
+msgid "ThinkPad Battery__CATEGORY_TITLE"
+msgstr "ThinkPad Akkumulátor"
+
+#: configschema.json.h:89
+msgid "CHARGE_THRESH_BAT0__GROUP_DESCRIPTION"
+msgstr ""
+"Az akkumulátor gondozása -- Töltési küszöbök\n"
+"A töltés akkor kezdődik, amikor a töltési szint a START_CHARGE_THRESH érték "
+"alá csökken, amikor a töltő csatlakoztatva van. A STOP_CHARGE_THRESH érték "
+"elérésekor leáll.\n"
+"Szükséges hardver: A Lenovo ThinkPads és bizonyos más laptopmárkák "
+"meghatározott beépülő modulokon keresztül működnek, a tényleges támogatási "
+"állapotot a tlp-stat -b mutatja.\n"
+"További magyarázatokért és a szállítóspecifikus részletekért lásd: https://"
+"linrunner.de/tlp/settings/battery.html\n"
+"Megjegyzések:\n"
+"- A ThinkPad-ekhez külső kernelmodul(ok)ra lehet szükség, lásd a tlp-stat -b "
+"kimenetét.\n"
+"- A szállítóspecifikus paraméterérték-tartományokat a tlp-stat -b mutatja\n"
+"- Ha a hardver támogatja az indítási * és * leállítási küszöböt, mindkettőt "
+"meg kell adnia, különben a TLP megtagadja az egyetlen küszöb alkalmazását\n"
+"- Ha a hardver csak a leállítási küszöböt támogatja, állítsa a kezdőértéket "
+"0-ra\n"
+"\n"
+"BAT0: Elsődleges / Fő / Belső akkumulátor (értékek százalékban)\n"
+"Megjegyzés: használja a BATC, BATT és CMB0 akkumulátorokhoz is"
+
+#: configschema.json.h:90
+msgid "CHARGE_THRESH_BAT1__GROUP_DESCRIPTION"
+msgstr ""
+"BAT1: Másodlagos / Ultrabay / Slice / Cserélhető akkumulátor (értékek "
+"százalékban)"
+
+#: configschema.json.h:91
+msgid "RESTORE_THRESHOLDS_ON_BAT__ID_DESCRIPTION"
+msgstr "Állítsa vissza a töltési küszöbértékeket, ha az AC ki van húzva"
+
+#: configschema.json.h:92
+msgid "NATACPI_ENABLE__ID_DESCRIPTION"
+msgstr ""
+"Az akkumulátor-ápoló illesztőprogramok vezérlése: 0=letilt, 1=engedélyezés"
+
+#: configschema.json.h:93
+msgid "TPACPI_ENABLE__ID_DESCRIPTION"
+msgstr "ThinkPad akkumulátor-illesztőprogramok: 0=letilt, 1=engedélyezés"
+
+#: configschema.json.h:94
+msgid "TPSMAPI_ENABLE__ID_DESCRIPTION"
+msgstr "ThinkPad akkumulátor-illesztőprogramok: 0=letilt, 1=engedélyezés"
