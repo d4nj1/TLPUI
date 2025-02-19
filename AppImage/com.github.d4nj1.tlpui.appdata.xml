@@ -32,6 +32,18 @@
 	</provides>
 	<content_rating type="oars-1.1" />
 	<releases>
+		<release version="1.8.0" date="2025-02-19" urgency="low">
+			<description>
+				<p>Add TLP 1.8 release support</p>
+				<p>Add Python 3.13 test support</p>
+				<p>Update Python dependencies</p>
+				<p>Fix markup error in config description</p>
+			</description>
+			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.8.0</url>
+			<issues>
+				<issue url="https://github.com/d4nj1/TLPUI/issues/163">#163</issue>
+			</issues>
+		</release>
 		<release version="1.7.1" date="2024-10-29" urgency="low">
 			<description>
 				<p>Increase version to match Python release</p>
