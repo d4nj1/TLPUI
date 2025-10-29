@@ -20,7 +20,7 @@ It has the aim to protect users from setting bad configuration and to deliver a 
 ### Current status :sunrise_over_mountains:
 
 * Supports TLP versions 1.3-1.8 - _older TLP versions are supported by [1.6.1](https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.6.1)_
-* Requires Python 3.9 or greater
+* Requires Python 3.10 or greater
 * Configuration can be read and displayed
 * Shows information about configuration changes (defaults/unsaved and drop-in/user config)
 * Changes can be saved with user and sudo permissions (/etc/tlp.conf)
