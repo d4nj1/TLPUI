@@ -162,6 +162,7 @@ def create_menu_box(window) -> Gtk.Box:
                 <menuitem name="es_ES" action='es_ES' />
                 <menuitem name="fr_FR" action='fr_FR' />
                 <menuitem name="pt_BR" action='pt_BR' />
+                <menuitem name="hu_HU" action='hu_HU' />
                 <menuitem name="ru_RU" action='ru_RU' />
                 <menuitem name="tr_TR" action='tr_TR' />
                 <menuitem name="id_ID" action='id_ID' />
@@ -191,6 +192,7 @@ def create_menu_box(window) -> Gtk.Box:
     repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/es_ES"))
     repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/fr_FR"))
     repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/pt_BR"))
+    repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/hu_HU"))
     repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/ru_RU"))
     repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/tr_TR"))
     repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/id_ID"))
