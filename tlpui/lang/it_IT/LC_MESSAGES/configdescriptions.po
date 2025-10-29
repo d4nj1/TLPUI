@@ -64,10 +64,10 @@ msgstr ""
 #: configschema.yaml.h:7
 msgid "TLP_PS_IGNORE__ID_DESCRIPTION"
 msgstr ""
-“Classi di alimentazione da ignorare quando si determina la modalità di funzionamento: AC, USB, ”
-“BAT.\n”
-“Separare più classi con spazi.\n”
-“Nota: provare su computer portatili in cui la modalità di funzionamento AC/BAT viene rilevata in modo errato”.
+"Classi di alimentazione da ignorare quando si determina la modalità di funzionamento: AC, USB, ”
+"BAT.\n”
+"Separare più classi con spazi.\n”
+"Nota: provare su computer portatili in cui la modalità di funzionamento AC/BAT viene rilevata in modo errato”.
 
 #: configschema.yaml.h:8
 msgid "Audio__CATEGORY_TITLE"
@@ -76,16 +76,16 @@ msgstr "Audio"
 #: configschema.yaml.h:9
 msgid "SOUND_POWER_SAVE__GROUP_DESCRIPTION"
 msgstr ""
-“Abilita il risparmio energetico audio per i dispositivi Intel HDA, AC97 (timeout in secondi).\n”
-“Un valore di 0 disabilita, >= 1 abilita il risparmio energetico.\n”
-“Nota: 1 è consigliato per gli ambienti desktop Linux con PulseAudio,\n”
-“I sistemi senza PulseAudio possono richiedere 10”
+"Abilita il risparmio energetico audio per i dispositivi Intel HDA, AC97 (timeout in secondi).\n”
+"Un valore di 0 disabilita, >= 1 abilita il risparmio energetico.\n”
+"Nota: 1 è consigliato per gli ambienti desktop Linux con PulseAudio,\n”
+"I sistemi senza PulseAudio possono richiedere 10”
 
 #: configschema.yaml.h:10
 msgid "SOUND_POWER_SAVE_CONTROLLER__ID_DESCRIPTION"
 msgstr ""
-“Disabilita anche il controller (solo HDA): S/N.\n”
-“Nota: efficace solo quando SOUND_POWER_SAVE_ON_AC/BAT è attivato”
+"Disabilita anche il controller (solo HDA): S/N.\n”
+"Nota: efficace solo quando SOUND_POWER_SAVE_ON_AC/BAT è attivato”
 
 #: configschema.yaml.h:11
 msgid "Disks__CATEGORY_TITLE"
@@ -94,9 +94,9 @@ msgstr "Dischi"
 #: configschema.yaml.h:12
 msgid "DISK_IDLE_SECS__GROUP_DESCRIPTION"
 msgstr ""
-“I secondi che la modalità laptop deve attendere dopo che il disco è inattivo prima di eseguire una ”
-“sync.\n”
-“Un valore diverso da zero attiva, zero disattiva la modalità laptop”
+"I secondi che la modalità laptop deve attendere dopo che il disco è inattivo prima di eseguire una ”
+"sync.\n”
+"Un valore diverso da zero attiva, zero disattiva la modalità laptop”
 
 #: configschema.yaml.h:13
 msgid "MAX_LOST_WORK_SECS__GROUP_DESCRIPTION"
