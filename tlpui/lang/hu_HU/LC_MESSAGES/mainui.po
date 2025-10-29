@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2024-01-02 19:12+0100\n"
-"PO-Revision-Date: 2024-04-28 07:41+0200\n"
+"POT-Creation-Date: 2025-10-29 12:07+0100\n"
+"PO-Revision-Date: 2025-10-29 12:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu\n"
@@ -10,64 +10,64 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: MT_\n"
 "X-Poedit-SearchPath-0: mainui.py\n"
 
-#: mainui.py:87
+#: mainui.py:75
 msgid "Review settings"
 msgstr "Beállítások áttekintése"
 
-#: mainui.py:88
+#: mainui.py:76
 msgid "Save these changes?"
 msgstr "Mentse el a változtatásokat?"
 
-#: mainui.py:111
+#: mainui.py:99
 msgid "Unsaved settings"
 msgstr "Nem mentett beállítások"
 
-#: mainui.py:112
+#: mainui.py:100
 msgid "Do you really want to quit? No changes will be saved"
 msgstr "Tényleg ki akar lépni? A változtatások nem lesznek elmentve"
 
-#: mainui.py:231
+#: mainui.py:224
 msgid "Reload"
 msgstr "Újratöltés"
 
-#: mainui.py:235 mainui.py:252
+#: mainui.py:228 mainui.py:246
 msgid "Save"
 msgstr "Mentés"
 
-#: mainui.py:250
+#: mainui.py:243
 msgid "File"
 msgstr "Fájl"
 
-#: mainui.py:255
+#: mainui.py:250
 msgid "Quit"
 msgstr "Kilépés"
 
-#: mainui.py:259
+#: mainui.py:254
 msgid "Language"
 msgstr "Nyelv"
 
-#: mainui.py:265
+#: mainui.py:260
 msgid "Help"
 msgstr "Súgó"
 
-#: mainui.py:268
+#: mainui.py:263
 msgid "About"
 msgstr "Névjegy"
 
-#: mainui.py:292
+#: mainui.py:287
 msgid "UI for TLP written in Python/Gtk"
 msgstr "Python/Gtk nyelven írt TLP felhasználói felület"
 
-#: mainui.py:337
+#: mainui.py:332
 msgid "Configuration"
 msgstr "Konfiguráció"
 
-#: mainui.py:340
+#: mainui.py:335
 msgid "Statistics"
 msgstr "Statisztika"

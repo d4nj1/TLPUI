@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2023-12-25 16:34+0100\n"
-"PO-Revision-Date: 2024-04-28 07:43+0200\n"
+"POT-Creation-Date: 2025-10-29 12:07+0100\n"
+"PO-Revision-Date: 2025-10-29 12:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu\n"
@@ -10,19 +10,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-KeywordsList: ST_\n"
 "X-Poedit-SearchPath-0: statui.py\n"
 
-#: statui.py:37
+#: statui.py:39
 msgid "Click fetch button to receive results"
 msgstr "Az eredmények megtekintéséhez kattintson a lekérés gombra"
 
-#: statui.py:47
+#: statui.py:49
 msgid "Simple"
 msgstr "Egyszerű"
 
-#: statui.py:52
+#: statui.py:54
 msgid "Complete"
 msgstr "Teljes"
