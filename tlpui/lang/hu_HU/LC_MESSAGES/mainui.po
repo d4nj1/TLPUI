@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2024-01-02 19:15+0100\n"
-"PO-Revision-Date: 2024-04-05 07:39-0300\n"
-"Last-Translator: tioguda <guda.flavio@gmail.com>\n"
+"POT-Creation-Date: 2024-01-02 19:12+0100\n"
+"PO-Revision-Date: 2024-04-28 07:41+0200\n"
+"Last-Translator: \n"
 "Language-Team: \n"
-"Language: pt_BR\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: MT_\n"
@@ -18,56 +18,56 @@ msgstr ""
 
 #: mainui.py:87
 msgid "Review settings"
-msgstr "Rever configurações"
+msgstr "Beállítások áttekintése"
 
 #: mainui.py:88
 msgid "Save these changes?"
-msgstr "Salvar essas alterações?"
+msgstr "Mentse el a változtatásokat?"
 
 #: mainui.py:111
 msgid "Unsaved settings"
-msgstr "Configurações não salvas"
+msgstr "Nem mentett beállítások"
 
 #: mainui.py:112
 msgid "Do you really want to quit? No changes will be saved"
-msgstr "Você realmente quer sair? Nenhuma alteração será salva"
+msgstr "Tényleg ki akar lépni? A változtatások nem lesznek elmentve"
 
 #: mainui.py:231
 msgid "Reload"
-msgstr "Recarregar"
+msgstr "Újratöltés"
 
 #: mainui.py:235 mainui.py:252
 msgid "Save"
-msgstr "Salvar"
+msgstr "Mentés"
 
 #: mainui.py:250
 msgid "File"
-msgstr "Arquivo"
+msgstr "Fájl"
 
 #: mainui.py:255
 msgid "Quit"
-msgstr "Sair"
+msgstr "Kilépés"
 
 #: mainui.py:259
 msgid "Language"
-msgstr "Idioma"
+msgstr "Nyelv"
 
 #: mainui.py:265
 msgid "Help"
-msgstr "Ajuda"
+msgstr "Súgó"
 
 #: mainui.py:268
 msgid "About"
-msgstr "Sobre"
+msgstr "Névjegy"
 
 #: mainui.py:292
 msgid "UI for TLP written in Python/Gtk"
-msgstr "UI para TLP escrita em Python/Gtk"
+msgstr "Python/Gtk nyelven írt TLP felhasználói felület"
 
 #: mainui.py:337
 msgid "Configuration"
-msgstr "Configuração"
+msgstr "Konfiguráció"
 
 #: mainui.py:340
 msgid "Statistics"
-msgstr "Estatisticas"
+msgstr "Statisztika"
