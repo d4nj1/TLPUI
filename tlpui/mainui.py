@@ -165,7 +165,7 @@ def create_menu_box(window) -> Gtk.Box:
                 <menuitem name="ru_RU" action='ru_RU' />
                 <menuitem name="tr_TR" action='tr_TR' />
                 <menuitem name="id_ID" action='id_ID' />
-                <menu name="zh_CN" action='zhSubMenu'>
+                <menu name="zh" action='zhSubMenu'>
                     <menuitem name="zh_CN" action='zh_CN' />
                     <menuitem name="zh_TW" action='zh_TW' />
                 </menu>
@@ -194,7 +194,9 @@ def create_menu_box(window) -> Gtk.Box:
     repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/ru_RU"))
     repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/tr_TR"))
     repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/id_ID"))
-    repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/zh_CN"))
+    repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/zh"))
+    repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/zh/zh_CN"), True)
+    repack_language_menuitem(uimanager.get_widget("/menubar/language_menu/zh/zh_TW"), True)
 
     menubox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
     menubox.pack_start(menubar, False, False, 0)
@@ -202,11 +204,12 @@ def create_menu_box(window) -> Gtk.Box:
     return menubox
 
 
-def repack_language_menuitem(menuitem: Gtk.MenuItem):
+def repack_language_menuitem(menuitem: Gtk.MenuItem, submenu=False):
     """Repack language menu items for better visibility."""
     menuitemname = menuitem.get_name()
     langimage = get_flag_image(menuitemname)
-    langlabel = Gtk.Label(menuitemname.split("_")[0])
+    lang_index = 1 if submenu else 0
+    langlabel = Gtk.Label(menuitemname.split("_")[lang_index].lower())
     langbox = Gtk.Box()
     langbox.pack_start(langimage, False, False, 12)
     langbox.pack_start(langlabel, False, False, 0)
@@ -239,9 +242,11 @@ def add_menu_actions(window, actiongroup) -> None:
     """Add actions to application menu."""
     actionfilemenu = Gtk.Action("FileMenu", language.MT_("File"), None, None)
     actiongroup.add_action(actionfilemenu)
+
     actionfilemenusave = Gtk.Action("save", language.MT_('Save'), None, Gtk.STOCK_SAVE)
     actionfilemenusave.connect("activate", save_tlp_config, window)
     actiongroup.add_action(actionfilemenusave)
+
     actionfilemenuquit = Gtk.Action("quit", language.MT_('Quit'), None, Gtk.STOCK_QUIT)
     actionfilemenuquit.connect("activate", quit_tlp_config, window)
     actiongroup.add_action(actionfilemenuquit)

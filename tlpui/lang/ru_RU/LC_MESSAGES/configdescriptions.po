@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2023-12-24 14:13+0100\n"
-"PO-Revision-Date: 2023-12-24 15:04+0100\n"
+"POT-Creation-Date: 2025-02-19 15:06+0100\n"
+"PO-Revision-Date: 2025-02-19 15:06+0100\n"
 "Last-Translator: NitroOxid && daniiiil112 <nitro138@mail.ru>\n"
 "Language-Team: nitro138@mail.ru\n"
 "Language: ru_RU\n"
@@ -10,21 +10,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _\n"
-"X-Poedit-SearchPath-0: configschema.json.h\n"
+"X-Poedit-SearchPath-0: configschema.yaml.h\n"
 
-#: configschema.json.h:1
+#: configschema.yaml.h:1
 msgid "General__CATEGORY_TITLE"
 msgstr "Главная"
 
-#: configschema.json.h:2
+#: configschema.yaml.h:2
 msgid "TLP_ENABLE__ID_DESCRIPTION"
 msgstr "Включить/выключить TLP"
 
-#: configschema.json.h:3
+#: configschema.yaml.h:3
 msgid "TLP_WARN_LEVEL__ID_DESCRIPTION"
 msgstr ""
 "Control how warnings about invalid settings are issued:\n"
@@ -33,13 +33,26 @@ msgstr ""
 "2=shell commands report to the terminal (stderr),\n"
 "3=combination of 1 and 2"
 
-#: configschema.json.h:4
+#: configschema.yaml.h:4
+msgid "TLP_MSG_COLORS__ID_DESCRIPTION"
+msgstr ""
+"Colorize error, warning, notice and success messages.\n"
+"Colors are specified with ANSI codes:\n"
+"1=bold black, 90=grey, 91=red, 92=green, 93=yellow, 94=blue, 95=magenta, "
+"96=cyan, 97=white.\n"
+"Other colors are possible, refer to:\n"
+"https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit\n"
+"Colors must be specified in the order \"error, warning, notice, success\".\n"
+"By default, errors are shown in red, warnings in yellow, notices in bold and "
+"success in green"
+
+#: configschema.yaml.h:5
 msgid "TLP_DEFAULT_MODE__ID_DESCRIPTION"
 msgstr ""
 "Режим работы, когда источник питания не может быть обнаружен: AC, BAT.\n"
 "Касается только настольных ПК и встраиваемых систем"
 
-#: configschema.json.h:5
+#: configschema.yaml.h:6
 msgid "TLP_PERSISTENT_DEFAULT__ID_DESCRIPTION"
 msgstr ""
 "Выбор режима работы: 0=зависит от источника питания 1=всегда использовать "
@@ -47,7 +60,7 @@ msgstr ""
 "Подсказка: используйте совместно с TLP_DEFAULT_MODE=BAT для использования "
 "настроек работы от БАТАРЕИ при работе от СЕТИ"
 
-#: configschema.json.h:6
+#: configschema.yaml.h:7
 msgid "TLP_PS_IGNORE__ID_DESCRIPTION"
 msgstr ""
 "Классы питания, которые следует игнорировать при определении режима работы: "
@@ -55,11 +68,11 @@ msgstr ""
 "Примечание: включите на ноутбуках, где неправильно определяется режим работы "
 "AC/BAT"
 
-#: configschema.json.h:7
+#: configschema.yaml.h:8
 msgid "Audio__CATEGORY_TITLE"
 msgstr "Аудио"
 
-#: configschema.json.h:8
+#: configschema.yaml.h:9
 msgid "SOUND_POWER_SAVE__GROUP_DESCRIPTION"
 msgstr ""
 "Включить энергосбережение аудио для Intel HDA и AC97 устройств.\n"
@@ -67,35 +80,35 @@ msgstr ""
 "Примечание. Значение 1 рекомендуется для Linux Desktop с PulseAudio,\n"
 "для систем без PulseAudio может потребоваться установить значение 10"
 
-#: configschema.json.h:9
+#: configschema.yaml.h:10
 msgid "SOUND_POWER_SAVE_CONTROLLER__ID_DESCRIPTION"
 msgstr ""
 "Отключить контроллер Intel HDA.\n"
 "Примечание: действует только при активации режимов SOUND_POWER_SAVE_ON_AC/BAT"
 
-#: configschema.json.h:10
+#: configschema.yaml.h:11
 msgid "Disks__CATEGORY_TITLE"
 msgstr "Дисковые устройства"
 
-#: configschema.json.h:11
+#: configschema.yaml.h:12
 msgid "DISK_IDLE_SECS__GROUP_DESCRIPTION"
 msgstr ""
 "Время ожидания в секундах перед синхронизацией, после ухода в режим "
 "ожидания.\n"
 "Нулевое значение выключает задержку перед синхронизацией"
 
-#: configschema.json.h:12
+#: configschema.yaml.h:13
 msgid "MAX_LOST_WORK_SECS__GROUP_DESCRIPTION"
 msgstr "Время хранения страниц кэша в оперативной памяти (таймауты в секундах)"
 
-#: configschema.json.h:13
+#: configschema.yaml.h:14
 msgid "DISK_DEVICES__ID_DESCRIPTION"
 msgstr ""
 "Дисковые устройства, разделенные пробелом (По умолчанию: sda).\n"
 "Дисковые устройства так же могут быть заданы с помощью ID (Узнать ID можно с "
 "помощью команды: tlp diskid)"
 
-#: configschema.json.h:14
+#: configschema.yaml.h:15
 msgid "DISK_APM_LEVEL__GROUP_DESCRIPTION"
 msgstr ""
 "Уровень управления питанием жесткого диска: 1..254\n"
@@ -105,7 +118,7 @@ msgstr ""
 "128-191 - Пониженное энергопотребление\n"
 "192-254 - Обычный режим, максимальное энергопотребление"
 
-#: configschema.json.h:15
+#: configschema.yaml.h:16
 msgid "DISK_APM_CLASS_DENYLIST__ID_DESCRIPTION"
 msgstr ""
 "Исключение типов дисков из advanced power management (APM):\n"
@@ -115,7 +128,7 @@ msgstr ""
 "Будьте осторожны и убедитесь, что у вас есть резервные копии всех носителей, "
 "прежде чем удалять 'usb' или 'ieee1394' из списка исключений(!)"
 
-#: configschema.json.h:16
+#: configschema.yaml.h:17
 msgid "DISK_SPINDOWN_TIMEOUT__GROUP_DESCRIPTION"
 msgstr ""
 "Таймаут уменьшения оборотов жесткого диска:\n"
@@ -124,21 +137,27 @@ msgstr ""
 "241..251:\tтаймаут от 30 мин до 5.5 часов (шаг в 30 мин)\n"
 "(смотри 'man hdparm' для деталей)"
 
-#: configschema.json.h:17
+#: configschema.yaml.h:18
 msgid "DISK_IOSCHED__ID_DESCRIPTION"
 msgstr ""
 "Выбрать планировщик ввода/вывода для дисковых устройств: noop/deadline/cfq "
 "(По умолчанию: cfq)\n"
 "Отдельные значения для нескольких устройств с пробелами"
 
-#: configschema.json.h:18
+#: configschema.yaml.h:19
 msgid "SATA_LINKPWR__GROUP_DESCRIPTION"
 msgstr ""
 "AHCI link power management (ALPM) для SATA дисков:\n"
 "- min_power, med_power_with_dipm(*), medium_power, max_performance.\n"
 "(*) Требуется ядро Linux 4.15 (или более новое)"
 
-#: configschema.json.h:19
+#: configschema.yaml.h:20
+msgid "SATA_LINKPWR_BLACKLIST__ID_DESCRIPTION"
+msgstr ""
+"Список хост-устройств SATA для исключения из ALPM.\n"
+"При внесении нескольких хостов, разделять пробелами"
+
+#: configschema.yaml.h:21
 msgid "SATA_LINKPWR_DENYLIST__ID_DESCRIPTION"
 msgstr ""
 "Исключение SATA ссылок из AHCI link power management (ALPM).\n"
@@ -146,13 +165,7 @@ msgstr ""
 "tlp-stat -d, чтобы определить хост; формат \"hostX\".\n"
 "При внесении нескольких хостов, разделять пробелами"
 
-#: configschema.json.h:20
-msgid "SATA_LINKPWR_BLACKLIST__ID_DESCRIPTION"
-msgstr ""
-"Список хост-устройств SATA для исключения из ALPM.\n"
-"При внесении нескольких хостов, разделять пробелами"
-
-#: configschema.json.h:21
+#: configschema.yaml.h:22
 msgid "AHCI_RUNTIME_PM__GROUP_DESCRIPTION"
 msgstr ""
 "Runtime Power Management для NVMe, SATA, ATA и USB дисков, а также SATA "
@@ -161,44 +174,35 @@ msgstr ""
 "Примечание. Контроллеры SATA являются устройствами шины PCIe и управляются "
 "параметрами RUNTIME_PM, приведенными ниже"
 
-#: configschema.json.h:22
+#: configschema.yaml.h:23
 msgid "AHCI_RUNTIME_PM_TIMEOUT__ID_DESCRIPTION"
 msgstr ""
 "Время бездействия в секундах, после которого работа диска будет "
 "приостановлена"
 
-#: configschema.json.h:23
+#: configschema.yaml.h:24
 msgid "BAY_POWEROFF__GROUP_DESCRIPTION"
 msgstr ""
 "Выключение UltraBay/MediaBay оптического привода: 0=выключить, 1=включить.\n"
 "Привод можно включить снова, нажав на кнопку извлечения диска\n"
 "Примечание: жесткий диск UltraBay/MediaBay не отключается"
 
-#: configschema.json.h:24
-msgid "BAY_POWEROFF_ON_BAT__ID_DESCRIPTION"
-msgstr ""
-"Установите для выключения оптического привода UltraBay/MediaBay при работе "
-"от батареи\n"
-"В противном случае эта функция отключена (по умолчанию).\n"
-"Привод можно включить снова, нажав на кнопку извлечения диска\n"
-"Примечание: жесткий диск UltraBay/MediaBay не отключается"
-
-#: configschema.json.h:25
+#: configschema.yaml.h:25
 msgid "BAY_DEVICE__ID_DESCRIPTION"
 msgstr "Оптический дисковод для выключения (по умолчанию sr0)"
 
-#: configschema.json.h:26
+#: configschema.yaml.h:26
 msgid "Graphics__CATEGORY_TITLE"
 msgstr "Графика"
 
-#: configschema.json.h:27
+#: configschema.yaml.h:27
 msgid "INTEL_GPU_FREQ__GROUP_DESCRIPTION"
 msgstr ""
 "Устанавливает min/max/turbo частоту для Intel GPU.\n"
 "Возможные значения зависят от вашего оборудования.\n"
 "Для доступных частот смотри вывод команды tlp-stat -g"
 
-#: configschema.json.h:28
+#: configschema.yaml.h:28
 msgid "RADEON_POWER_PROFILE__GROUP_DESCRIPTION"
 msgstr ""
 "Тактовая частота графического адаптера Radeon: low, mid, high, auto, "
@@ -207,88 +211,62 @@ msgstr ""
 "значения по умолчанию.\n"
 "Требуется open-source драйвер 'radeon'"
 
-#: configschema.json.h:29
+#: configschema.yaml.h:29
 msgid "RADEON_DPM_STATE__GROUP_DESCRIPTION"
 msgstr ""
 "Radeon dynamic power management method (DPM): battery, performance\n"
 "Работает с только open-source драйвером 'radeon',\n"
 "Требуется ядро >= 3.11 и опция загрузки 'option radeon.dpm=1'"
 
-#: configschema.json.h:30
+#: configschema.yaml.h:30
 msgid "RADEON_DPM_PERF_LEVEL__GROUP_DESCRIPTION"
 msgstr ""
 "Уровень производительности Radeon DPM: auto, low, high; рекомендуется auto"
 
-#: configschema.json.h:31
+#: configschema.yaml.h:31
+msgid "AMDGPU_ABM_LEVEL__GROUP_DESCRIPTION"
+msgstr ""
+"Display panel adaptive backlight modulation (ABM) level: 0(off), 1..4.\n"
+"Values 1..4 control the maximum brightness reduction allowed by the ABM "
+"algorithm, where 1 represents the least and 4 the most power saving.\n"
+"Notes:\n"
+"- Requires AMD Vega or newer GPU with amdgpu driver as of kernel 6.9\n"
+"- Savings are made at the expense of color balance"
+
+#: configschema.yaml.h:32
 msgid "Network__CATEGORY_TITLE"
 msgstr "Сеть"
 
-#: configschema.json.h:32
+#: configschema.yaml.h:33
 msgid "WIFI_PWR__GROUP_DESCRIPTION"
 msgstr "Режим энергосбережения WiFi. Поддерживается не всеми адаптерами"
 
-#: configschema.json.h:33
+#: configschema.yaml.h:34
 msgid "WOL_DISABLE__ID_DESCRIPTION"
 msgstr "Выключить пробуждение по LAN (Wake On LAN)"
 
-#: configschema.json.h:34
+#: configschema.yaml.h:35
 msgid "PCIe__CATEGORY_TITLE"
 msgstr "PCIe"
 
-#: configschema.json.h:35
+#: configschema.yaml.h:36
 msgid "PCIE_ASPM__GROUP_DESCRIPTION"
 msgstr ""
 "PCIe Active State Power Management (ASPM):\n"
 "- default(*), performance, powersave, powersupersave.\n"
 "(*) сохраняет настройки ASPM по-умолчанию из BIOS (рекомендуется)"
 
-#: configschema.json.h:36
+#: configschema.yaml.h:37
 msgid "RUNTIME_PM__GROUP_DESCRIPTION"
 msgstr "Runtime Power Management для устройств шины PCI(e)"
 
-#: configschema.json.h:37
-msgid "RUNTIME_PM_DENYLIST__ID_DESCRIPTION"
-msgstr ""
-"Исключает перечисленные адреса устройств PCIe из Runtime PM.\n"
-"Примечание: это сохраняет параметры по-умолчанию для драйвер ядра, чтобы "
-"установить определенное состояние.\n"
-"- вместо этого используйте RUNTIME_PM_ENABLE/DISABLE.\n"
-"При внесении нескольких адресов, разделять пробеламиИспользуйте lspci для "
-"получения адреса (первая колонка)"
-
-#: configschema.json.h:38
-msgid "RUNTIME_PM_DRIVER_DENYLIST__ID_DESCRIPTION"
-msgstr ""
-"Исключает устройства PCIe, назначенные перечисленным драйверам, из Runtime "
-"PM.\n"
-"Примечание: это сохраняет параметры по-умолчанию для драйвер ядра, чтобы "
-"установить определенное состояние.\n"
-"- вместо этого используйте RUNTIME_PM_ENABLE/DISABLE.\n"
-"При внесении нескольких драйверов, разделять пробеламиОставьте пустым, чтобы "
-"отключить полностью"
-
-#: configschema.json.h:39
-msgid "RUNTIME_PM_DEVICE__GROUP_DESCRIPTION"
-msgstr ""
-"Постоянно включать/отключать Runtime PM для перечисленных адресов устройств "
-"PCIe (не зависит от источника питания).\n"
-"Этот параметр имеет приоритет над всеми предыдущими настройками Runtime PM.\n"
-"При внесении нескольких адресов, разделять пробелами.\n"
-"Используйте lspci для получения адреса (первая колонка)"
-
-#: configschema.json.h:40
-msgid "RUNTIME_PM_ALL__ID_DESCRIPTION"
-msgstr ""
-"Включение PCI(e) RPM для *ВСЕХ* PCI(e) устройств, кроме занесенных в список "
-"исключений"
-
-#: configschema.json.h:41
+#: configschema.yaml.h:38
 msgid "RUNTIME_PM_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
 "Список адресов PCI(e) устройств для внесения в список исключений PCI(e) RPM\n"
 "(разделять пробелами). Используйте lspci, чтобы узнать адреса устройств"
 
-#: configschema.json.h:42
+#: configschema.yaml.h:39
 msgid "RUNTIME_PM_DRIVER_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
 "Список драйверов PCI(e) устройств для внесения в список исключений PCI(e) "
@@ -299,11 +277,41 @@ msgstr ""
 "функцию.\n"
 "(разделять пробелами)"
 
-#: configschema.json.h:43
+#: configschema.yaml.h:40
+msgid "RUNTIME_PM_DENYLIST__ID_DESCRIPTION"
+msgstr ""
+"Исключает перечисленные адреса устройств PCIe из Runtime PM.\n"
+"Примечание: это сохраняет параметры по-умолчанию для драйвер ядра, чтобы "
+"установить определенное состояние.\n"
+"- вместо этого используйте RUNTIME_PM_ENABLE/DISABLE.\n"
+"При внесении нескольких адресов, разделять пробеламиИспользуйте lspci для "
+"получения адреса (первая колонка)"
+
+#: configschema.yaml.h:41
+msgid "RUNTIME_PM_DRIVER_DENYLIST__ID_DESCRIPTION"
+msgstr ""
+"Исключает устройства PCIe, назначенные перечисленным драйверам, из Runtime "
+"PM.\n"
+"Примечание: это сохраняет параметры по-умолчанию для драйвер ядра, чтобы "
+"установить определенное состояние.\n"
+"- вместо этого используйте RUNTIME_PM_ENABLE/DISABLE.\n"
+"При внесении нескольких драйверов, разделять пробеламиОставьте пустым, чтобы "
+"отключить полностью"
+
+#: configschema.yaml.h:42
+msgid "RUNTIME_PM_DEVICE__GROUP_DESCRIPTION"
+msgstr ""
+"Постоянно включать/отключать Runtime PM для перечисленных адресов устройств "
+"PCIe (не зависит от источника питания).\n"
+"Этот параметр имеет приоритет над всеми предыдущими настройками Runtime PM.\n"
+"При внесении нескольких адресов, разделять пробелами.\n"
+"Используйте lspci для получения адреса (первая колонка)"
+
+#: configschema.yaml.h:43
 msgid "Processor__CATEGORY_TITLE"
 msgstr "Процессор"
 
-#: configschema.json.h:44
+#: configschema.yaml.h:44
 msgid "CPU_DRIVER_OPMODE__GROUP_DESCRIPTION"
 msgstr ""
 "Select a CPU scaling driver operation mode.\n"
@@ -311,7 +319,7 @@ msgstr ""
 "AMD Zen 2 or newer CPU with amd-pstate_driver as of kernel 6.3/6.4:\n"
 "active, passive, guided"
 
-#: configschema.json.h:45
+#: configschema.yaml.h:45
 msgid "CPU_SCALING_GOVERNOR__GROUP_DESCRIPTION"
 msgstr ""
 "Выберите процессорный регулятор частоты: ondemand/powersave/performance/ "
@@ -323,14 +331,14 @@ msgstr ""
 "- ondemand достаточно для *почти всех* рабочих нагрузок, Вы должны знать, "
 "что Вы делаете"
 
-#: configschema.json.h:46
+#: configschema.yaml.h:46
 msgid "CPU_SCALING_FREQ__GROUP_DESCRIPTION"
 msgstr ""
 "Установить мин/макс частоту доступную для процессорного регулятора.\n"
 "Возможные значения строго зависят от вашего CPU.\n"
 "Для доступных частот смотри tlp-stat вывод, раздела \"Процессор\""
 
-#: configschema.json.h:47
+#: configschema.yaml.h:47
 msgid "CPU_ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
 msgstr ""
 "Установка политик энергопотребления/производительности CPU Intel HWP.EPP и "
@@ -345,16 +353,7 @@ msgstr ""
 "Core i 2-го поколения или старше\n"
 "- Когда доступен HWP.EPP, EPB не устанавливается"
 
-#: configschema.json.h:48
-msgid "CPU_HWP__GROUP_DESCRIPTION"
-msgstr ""
-"Установка рекомендаций энергоэффективности (HWP) для Intel P-state "
-"говернера:\n"
-"default, performance, balance_performance, balance_power, power\n"
-"Значения даны в порядке увеличения экономии электроэнергии.\n"
-"Примечание: Intel Skylake или новый CPU и Ядро >= 4.10 рекомендуется"
-
-#: configschema.json.h:49
+#: configschema.yaml.h:48
 msgid "CPU_PERF__GROUP_DESCRIPTION"
 msgstr ""
 "Установка производительность Intel P-state: 0..100 (%)\n"
@@ -363,14 +362,14 @@ msgstr ""
 "Требуется процессор Intel Core i 2-го поколения или старше с драйвером "
 "intel_pstate"
 
-#: configschema.json.h:50
+#: configschema.yaml.h:49
 msgid "CPU_BOOST__GROUP_DESCRIPTION"
 msgstr ""
 "Устанавливает опции \"turbo boost\" (Intel) или \"turbo core\" (AMD):\n"
 "- 0=включение, 1=отключение.\n"
 "Примечание: значение 1 *НЕ* активирует усиление, оно просто разрешает его"
 
-#: configschema.json.h:51
+#: configschema.yaml.h:50
 msgid "CPU_HWP_DYN_BOOST__GROUP_DESCRIPTION"
 msgstr ""
 "Устанавливает функцию динамического повышения процессора Intel HWP:\n"
@@ -378,19 +377,29 @@ msgstr ""
 "Требуется драйвер intel_pstate в режиме 'active' и процессор Intel Core i 6-"
 "го поколения или старше"
 
-#: configschema.json.h:52
+#: configschema.yaml.h:51
 msgid "SCHED_POWERSAVE__GROUP_DESCRIPTION"
 msgstr ""
 "Минимизировать количество используемых ядер процессора/гиперпотоков в "
 "условиях легкой нагрузки"
 
-#: configschema.json.h:53
+#: configschema.yaml.h:52
 msgid "NMI_WATCHDOG__ID_DESCRIPTION"
 msgstr ""
 "Kernel NMI Watchdog\n"
 "off: saves power, on: for kernel debugging only"
 
-#: configschema.json.h:54
+#: configschema.yaml.h:53
+msgid "PHC_CONTROLS__ID_DESCRIPTION"
+msgstr ""
+"Изменение напряжения ЦПУ. \"undervolting\"\n"
+"Требуется ядро с патчем PHC\n"
+"Freq:voltage пары записываются в /sys/devices/system/cpu/cpu0/cpufreq/ "
+"phc_controls\n"
+"Внимание: используйте это только в том случае, если вы полностью понимаете, "
+"что делаете"
+
+#: configschema.yaml.h:54
 msgid "PLATFORM_PROFILE__GROUP_DESCRIPTION"
 msgstr ""
 "Выбор профиля платформы:\n"
@@ -403,7 +412,7 @@ msgstr ""
 "доступность опции на вашем оборудовании и наличие дополнительных профилей, "
 "таких как: balanced-performance, quiet, cool"
 
-#: configschema.json.h:55
+#: configschema.yaml.h:55
 msgid "MEM_SLEEP__GROUP_DESCRIPTION"
 msgstr ""
 "System suspend mode:\n"
@@ -415,27 +424,11 @@ msgstr ""
 "output of tlp-stat -s. If unsure, stick with the system default by not "
 "enabling this"
 
-#: configschema.json.h:56
-msgid "PHC_CONTROLS__ID_DESCRIPTION"
-msgstr ""
-"Изменение напряжения ЦПУ. \"undervolting\"\n"
-"Требуется ядро с патчем PHC\n"
-"Freq:voltage пары записываются в /sys/devices/system/cpu/cpu0/cpufreq/ "
-"phc_controls\n"
-"Внимание: используйте это только в том случае, если вы полностью понимаете, "
-"что делаете"
-
-#: configschema.json.h:57
-msgid "ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
-msgstr ""
-"Настройка соотношения производительности ЦПУ и энергосбережения.\n"
-"Требуется модуль ядра msr и x86_energy_perf_policy из linux-tools"
-
-#: configschema.json.h:58
+#: configschema.yaml.h:56
 msgid "Radio__CATEGORY_TITLE"
 msgstr "Radio"
 
-#: configschema.json.h:59
+#: configschema.yaml.h:57
 msgid "RESTORE_DEVICE_STATE_ON_STARTUP__ID_DESCRIPTION"
 msgstr ""
 "Восстановление состояния беспроводных устройств (Bluetooth, WiFi, WWAN) от "
@@ -443,76 +436,108 @@ msgstr ""
 "Подсказка: параметры DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN ниже "
 "игнорируются, когда это включено"
 
-#: configschema.json.h:60
+#: configschema.yaml.h:58
 msgid "DEVICES_TO_DISABLE_ON_STARTUP__ID_DESCRIPTION"
 msgstr "Отключение беспроводных устройств при запуске: bluetooth wifi wwan"
 
-#: configschema.json.h:61
+#: configschema.yaml.h:59
 msgid "DEVICES_TO_ENABLE_ON_STARTUP__ID_DESCRIPTION"
 msgstr "Включение беспроводных устройств при запуске: bluetooth wifi wwan"
 
-#: configschema.json.h:62
+#: configschema.yaml.h:60
 msgid "DEVICES_TO_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
 "Отключение беспроводных устройств при завершении работы: bluetooth wifi "
 "wwan\n"
 "(обходной путь для устройств, блокирующих выключение)"
 
-#: configschema.json.h:63
+#: configschema.yaml.h:61
 msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
 "Включение беспроводных устройств при завершении работы: bluetooth wifi wwan\n"
 "(Для предотвращения потери беспроводных устройств в других ОС)"
 
-#: configschema.json.h:64
+#: configschema.yaml.h:62
 msgid "DEVICES_TO_ENABLE_ON_AC__ID_DESCRIPTION"
 msgstr ""
 "Включение беспроводных устройств при работе от СЕТИ: bluetooth, wifi, wwan"
 
-#: configschema.json.h:65
+#: configschema.yaml.h:63
 msgid "DEVICES_TO_DISABLE_ON_BAT__ID_DESCRIPTION"
 msgstr ""
 "Отключение беспроводных устройств при работе от БАТАРЕИ: bluetooth, wifi, "
 "wwan"
 
-#: configschema.json.h:66
+#: configschema.yaml.h:64
 msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE__ID_DESCRIPTION"
 msgstr ""
 "Отключение беспроводных устройств при работе от БАТАРЕИ, если они не "
 "используются:\n"
 "bluetooth, wifi, wwan"
 
-#: configschema.json.h:67
+#: configschema.yaml.h:65
 msgid "Radio Device Wizard__CATEGORY_TITLE"
 msgstr "Мастер радиоустройств"
 
-#: configschema.json.h:68
+#: configschema.yaml.h:66
 msgid "DEVICES_TO_DISABLE_ON_CONNECT__GROUP_DESCRIPTION"
 msgstr "Выключение беспроводных устройств при активных соединениях"
 
-#: configschema.json.h:69
+#: configschema.yaml.h:67
 msgid "DEVICES_TO_ENABLE_ON_DISCONNECT__GROUP_DESCRIPTION"
 msgstr "Включение беспроводных устройств при потере соединения"
 
-#: configschema.json.h:70
+#: configschema.yaml.h:68
 msgid "DEVICES_ON_DOCK__GROUP_DESCRIPTION"
 msgstr ""
 "Включение/выключение беспроводных устройств при подключении к док-станции"
 
-#: configschema.json.h:71
+#: configschema.yaml.h:69
 msgid "DEVICES_ON_UNDOCK__GROUP_DESCRIPTION"
 msgstr ""
 "Включение/выключение беспроводных устройств при отключении от док-станции"
 
-#: configschema.json.h:72
+#: configschema.yaml.h:70
 msgid "USB__CATEGORY_TITLE"
 msgstr "USB"
 
-#: configschema.json.h:73
+#: configschema.yaml.h:71
 msgid "USB_AUTOSUSPEND__ID_DESCRIPTION"
 msgstr "USB autosuspend feature"
 
-#: configschema.json.h:74
+#: configschema.yaml.h:72
+msgid "USB_BLACKLIST__ID_DESCRIPTION"
+msgstr ""
+"Устройства из следующего списка исключаются из автоматической приостановки\n"
+"(через пробел). Используйте команду lsusb чтобы узнать id девайсов.\n"
+"Примечание: устройства ввода (usbhid) исключаются автоматически"
+
+#: configschema.yaml.h:73
+msgid "USB_BLACKLIST_BTUSB__ID_DESCRIPTION"
+msgstr "Bluetooth устройства, исключаемые из автоматической приостановки USB"
+
+#: configschema.yaml.h:74
+msgid "USB_BLACKLIST_PHONE__ID_DESCRIPTION"
+msgstr "Телефонные устройства, исключаемые из автоматической приостановки USB"
+
+#: configschema.yaml.h:75
+msgid "USB_BLACKLIST_PRINTER__ID_DESCRIPTION"
+msgstr "Принтеры, исключаемые из автоматической приостановки USB"
+
+#: configschema.yaml.h:76
+msgid "USB_BLACKLIST_WWAN__ID_DESCRIPTION"
+msgstr ""
+"Устройства WWAN, исключаемые из автоматической приостановки USB.\n"
+"Примечание: работает только с идентификаторами 05c6: * 0bdb: * 1199: *"
+
+#: configschema.yaml.h:77
+msgid "USB_WHITELIST__ID_DESCRIPTION"
+msgstr ""
+"Включите перечисленные устройства в autosuspend, даже если они уже\n"
+"исключены черными списками драйверов или WWAN выше (разделяются пробелами).\n"
+"Используйте lsusb чтобы узнать id девайсов"
+
+#: configschema.yaml.h:78
 msgid "USB_DENYLIST__ID_DESCRIPTION"
 msgstr ""
 "Исключение списка USB устройств из автоматической приостановки (разделенный "
@@ -521,37 +546,37 @@ msgstr ""
 "Примечание: устройства ввода (usbhid) и сканеры, поддерживаемые libsane, "
 "исключаются . автоматически"
 
-#: configschema.json.h:75
+#: configschema.yaml.h:79
 msgid "USB_EXCLUDE_AUDIO__ID_DESCRIPTION"
 msgstr ""
 "Исключение аудио устройств из автоматической приостановки USB:\n"
 "- 0=не исключать, 1=исключить"
 
-#: configschema.json.h:76
+#: configschema.yaml.h:80
 msgid "USB_EXCLUDE_BTUSB__ID_DESCRIPTION"
 msgstr ""
 "Исключение bluetooth устройств из автоматической приостановки USB:\n"
 "- 0=не исключать, 1=исключить"
 
-#: configschema.json.h:77
+#: configschema.yaml.h:81
 msgid "USB_EXCLUDE_PHONE__ID_DESCRIPTION"
 msgstr ""
 "Исключение телефонных устройств из автоматической приостановки USB:\n"
 "- 0=не исключать, 1=исключить (разрешить зарядку)"
 
-#: configschema.json.h:78
+#: configschema.yaml.h:82
 msgid "USB_EXCLUDE_PRINTER__ID_DESCRIPTION"
 msgstr ""
 "Исключение принтеров из автоматической приостановки USB:\n"
 "- 0=не исключать, 1=исключить"
 
-#: configschema.json.h:79
+#: configschema.yaml.h:83
 msgid "USB_EXCLUDE_WWAN__ID_DESCRIPTION"
 msgstr ""
 "Исключение WWAN устройств из автоматической приостановки USB:\n"
 "- 0=не исключать, 1=исключить"
 
-#: configschema.json.h:80
+#: configschema.yaml.h:84
 msgid "USB_ALLOWLIST__ID_DESCRIPTION"
 msgstr ""
 "Разрешить автоматическую приостановку USB для перечисленных устройств, даже "
@@ -559,50 +584,18 @@ msgstr ""
 "они уже занесены в запрещенный список или исключены выше (через пробел).\n"
 "Используйте команду lsusb для получения идентификаторов"
 
-#: configschema.json.h:81
-msgid "USB_BLACKLIST__ID_DESCRIPTION"
-msgstr ""
-"Устройства из следующего списка исключаются из автоматической приостановки\n"
-"(через пробел). Используйте команду lsusb чтобы узнать id девайсов.\n"
-"Примечание: устройства ввода (usbhid) исключаются автоматически"
-
-#: configschema.json.h:82
-msgid "USB_BLACKLIST_BTUSB__ID_DESCRIPTION"
-msgstr "Bluetooth устройства, исключаемые из автоматической приостановки USB"
-
-#: configschema.json.h:83
-msgid "USB_BLACKLIST_PHONE__ID_DESCRIPTION"
-msgstr "Телефонные устройства, исключаемые из автоматической приостановки USB"
-
-#: configschema.json.h:84
-msgid "USB_BLACKLIST_PRINTER__ID_DESCRIPTION"
-msgstr "Принтеры, исключаемые из автоматической приостановки USB"
-
-#: configschema.json.h:85
-msgid "USB_BLACKLIST_WWAN__ID_DESCRIPTION"
-msgstr ""
-"Устройства WWAN, исключаемые из автоматической приостановки USB.\n"
-"Примечание: работает только с идентификаторами 05c6: * 0bdb: * 1199: *"
-
-#: configschema.json.h:86
-msgid "USB_WHITELIST__ID_DESCRIPTION"
-msgstr ""
-"Включите перечисленные устройства в autosuspend, даже если они уже\n"
-"исключены черными списками драйверов или WWAN выше (разделяются пробелами).\n"
-"Используйте lsusb чтобы узнать id девайсов"
-
-#: configschema.json.h:87
+#: configschema.yaml.h:85
 msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
 "Установите disable autosuspend перед выключением, в противном случае ничего "
 "не делать\n"
 "(обходной путь для USB-устройств, которые вызывают проблемы с выключением)"
 
-#: configschema.json.h:88
+#: configschema.yaml.h:86
 msgid "ThinkPad Battery__CATEGORY_TITLE"
 msgstr "Батарея ThinkPad"
 
-#: configschema.json.h:89
+#: configschema.yaml.h:87
 msgid "CHARGE_THRESH_BAT0__GROUP_DESCRIPTION"
 msgstr ""
 "Уход за аккумулятором — пороги заряда\n"
@@ -626,22 +619,48 @@ msgstr ""
 "BAT0: Первичная / Основная / Внутренняя батарея (значения в %)\n"
 "Примечание: также используйте для батарей BATC, BATT и CMB0"
 
-#: configschema.json.h:90
+#: configschema.yaml.h:88
 msgid "CHARGE_THRESH_BAT1__GROUP_DESCRIPTION"
 msgstr "BAT1: Вторичная / Ultrabay / Slice / Сменная батарея (значения в %)"
 
-#: configschema.json.h:91
+#: configschema.yaml.h:89
 msgid "RESTORE_THRESHOLDS_ON_BAT__ID_DESCRIPTION"
 msgstr "Восстановить пороговые значения заряда при отключении от СЕТИ"
 
-#: configschema.json.h:92
+#: configschema.yaml.h:90
 msgid "NATACPI_ENABLE__ID_DESCRIPTION"
 msgstr "Управление драйверами ухода за батареей: 0=отключить, 1=включить"
 
-#: configschema.json.h:93
+#: configschema.yaml.h:91
 msgid "TPACPI_ENABLE__ID_DESCRIPTION"
 msgstr "Драйверы батареи ThinkPad: 0=отключить, 1=включить"
 
-#: configschema.json.h:94
+#: configschema.yaml.h:92
 msgid "TPSMAPI_ENABLE__ID_DESCRIPTION"
 msgstr "Драйверы батареи ThinkPad: 0=отключить, 1=включить"
+
+#~ msgid "BAY_POWEROFF_ON_BAT__ID_DESCRIPTION"
+#~ msgstr ""
+#~ "Установите для выключения оптического привода UltraBay/MediaBay при "
+#~ "работе от батареи\n"
+#~ "В противном случае эта функция отключена (по умолчанию).\n"
+#~ "Привод можно включить снова, нажав на кнопку извлечения диска\n"
+#~ "Примечание: жесткий диск UltraBay/MediaBay не отключается"
+
+#~ msgid "RUNTIME_PM_ALL__ID_DESCRIPTION"
+#~ msgstr ""
+#~ "Включение PCI(e) RPM для *ВСЕХ* PCI(e) устройств, кроме занесенных в "
+#~ "список исключений"
+
+#~ msgid "CPU_HWP__GROUP_DESCRIPTION"
+#~ msgstr ""
+#~ "Установка рекомендаций энергоэффективности (HWP) для Intel P-state "
+#~ "говернера:\n"
+#~ "default, performance, balance_performance, balance_power, power\n"
+#~ "Значения даны в порядке увеличения экономии электроэнергии.\n"
+#~ "Примечание: Intel Skylake или новый CPU и Ядро >= 4.10 рекомендуется"
+
+#~ msgid "ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
+#~ msgstr ""
+#~ "Настройка соотношения производительности ЦПУ и энергосбережения.\n"
+#~ "Требуется модуль ядра msr и x86_energy_perf_policy из linux-tools"

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tlp-ui"
-version = "1.6.5"
+version = "1.8.0"
 description = "GTK UI for tlp"
 license = "GPL-2.0-or-later"
 authors = ["Daniel Christophis <code@devmind.org>"]
@@ -19,7 +19,7 @@ generate-setup-file = true
 tlpui = "tlpui.__main__:main"
 
 [tool.poetry.dependencies]
-python = "^3.8.1"
+python = "^3.9.0"
 pygobject = "^3.46.0"
 pyyaml = "^6.0.1"
 

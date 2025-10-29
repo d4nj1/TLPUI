@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2023-12-24 15:17+0100\n"
-"PO-Revision-Date: 2023-12-24 15:24+0100\n"
+"POT-Creation-Date: 2025-02-19 15:07+0100\n"
+"PO-Revision-Date: 2025-02-19 15:08+0100\n"
 "Last-Translator: WhiredPlanck <fungdaat31@outlook.com>\n"
 "Language-Team: \n"
 "Language: zh_TW\n"
@@ -10,82 +10,93 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _\n"
-"X-Poedit-SearchPath-0: configschema.json.h\n"
+"X-Poedit-SearchPath-0: configschema.yaml.h\n"
 
-#: configschema.json.h:1
+#: configschema.yaml.h:1
 msgid "General__CATEGORY_TITLE"
 msgstr "一般設定"
 
-#: configschema.json.h:2
+#: configschema.yaml.h:2
 msgid "TLP_ENABLE__ID_DESCRIPTION"
 msgstr "啟用/禁用 TLP"
 
-#: configschema.json.h:3
+#: configschema.yaml.h:3
 msgid "TLP_WARN_LEVEL__ID_DESCRIPTION"
 msgstr ""
 "Control how warnings about invalid settings are issued:\n"
 "0=disabled,\n"
-"1=background tasks (boot, resume, change of power source) "
-"report to syslog,\n"
+"1=background tasks (boot, resume, change of power source) report to syslog,\n"
 "2=shell commands report to the terminal (stderr),\n"
 "3=combination of 1 and 2"
 
-#: configschema.json.h:4
+#: configschema.yaml.h:4
+msgid "TLP_MSG_COLORS__ID_DESCRIPTION"
+msgstr ""
+"Colorize error, warning, notice and success messages.\n"
+"Colors are specified with ANSI codes:\n"
+"1=bold black, 90=grey, 91=red, 92=green, 93=yellow, 94=blue, 95=magenta, "
+"96=cyan, 97=white.\n"
+"Other colors are possible, refer to:\n"
+"https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit\n"
+"Colors must be specified in the order \"error, warning, notice, success\".\n"
+"By default, errors are shown in red, warnings in yellow, notices in bold and "
+"success in green"
+
+#: configschema.yaml.h:5
 msgid "TLP_DEFAULT_MODE__ID_DESCRIPTION"
 msgstr ""
 "無法檢測到電源時的操作模式：AC（交流供電），BAT（電池供電）。\n"
 "僅部分筆記本和嵌入式硬體需要考慮"
 
-#: configschema.json.h:5
+#: configschema.yaml.h:6
 msgid "TLP_PERSISTENT_DEFAULT__ID_DESCRIPTION"
 msgstr ""
 "操作模式選擇：0=取決於電源來源, 1=總是使用 TLP_DEFAULT_MODE \n"
 "提示：配合使用 TLP_DEFAULT_MODE=BAT 在交流供電時使用 BAT 設定"
 
-#: configschema.json.h:6
+#: configschema.yaml.h:7
 msgid "TLP_PS_IGNORE__ID_DESCRIPTION"
 msgstr ""
-"確定操作模式時要忽略的電源類別：AC（交流供電），BAT（電池供"
-"電）。\n"
+"確定操作模式時要忽略的電源類別：AC（交流供電），BAT（電池供電）。\n"
 "注意：請在 AC /BAT 操作模式檢測錯誤的筆記型電腦上嘗試"
 
-#: configschema.json.h:7
+#: configschema.yaml.h:8
 msgid "Audio__CATEGORY_TITLE"
 msgstr "音訊"
 
-#: configschema.json.h:8
+#: configschema.yaml.h:9
 msgid "SOUND_POWER_SAVE__GROUP_DESCRIPTION"
 msgstr "為 Intel HDA、AC97 裝置啟用音訊節能"
 
-#: configschema.json.h:9
+#: configschema.yaml.h:10
 msgid "SOUND_POWER_SAVE_CONTROLLER__ID_DESCRIPTION"
 msgstr "同時禁用控制器 (僅 HDA)"
 
-#: configschema.json.h:10
+#: configschema.yaml.h:11
 msgid "Disks__CATEGORY_TITLE"
 msgstr "磁碟"
 
-#: configschema.json.h:11
+#: configschema.yaml.h:12
 msgid "DISK_IDLE_SECS__GROUP_DESCRIPTION"
 msgstr ""
 "筆記本模式在同步前、必須等待磁碟空閒後多久的秒數。\n"
 "非零值表示啟用，零則代表禁用筆記本模式"
 
-#: configschema.json.h:12
+#: configschema.yaml.h:13
 msgid "MAX_LOST_WORK_SECS__GROUP_DESCRIPTION"
 msgstr "Dirty page 值 (超時秒數)"
 
-#: configschema.json.h:13
+#: configschema.yaml.h:14
 msgid "DISK_DEVICES__ID_DESCRIPTION"
 msgstr ""
 "硬碟裝置，請用空格分隔多個裝置（預設值：sda）。\n"
 "裝置也可以透過磁碟 ID 來指定（尋找時使用指令：tlp diskid）"
 
-#: configschema.json.h:14
+#: configschema.yaml.h:15
 msgid "DISK_APM_LEVEL__GROUP_DESCRIPTION"
 msgstr ""
 "硬碟進階電源管理等級：1..254, 255（最大節能 — 最小節能，關閉）\n"
@@ -93,18 +104,18 @@ msgstr ""
 "請使用空格分隔多個裝置。請使用特殊值'keep'\n"
 "來為特定磁碟保持硬體預設值"
 
-#: configschema.json.h:15
+#: configschema.yaml.h:16
 msgid "DISK_APM_CLASS_DENYLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclude disk classes from advanced power management (APM):\n"
 "- sata, ata, usb, ieee1394.\n"
 "Separate multiple classes with spaces.\n"
-"CAUTION: USB and IEEE1394 disks may fail to mount or data may "
-"get corrupted with APM enabled.\n"
-"Be careful and make sure you have backups of all affected media "
-"before removing 'usb' or 'ieee1394' from the denylist(!)"
+"CAUTION: USB and IEEE1394 disks may fail to mount or data may get corrupted "
+"with APM enabled.\n"
+"Be careful and make sure you have backups of all affected media before "
+"removing 'usb' or 'ieee1394' from the denylist(!)"
 
-#: configschema.json.h:16
+#: configschema.yaml.h:17
 msgid "DISK_SPINDOWN_TIMEOUT__GROUP_DESCRIPTION"
 msgstr ""
 "硬碟降速超時時間：\n"
@@ -113,19 +124,24 @@ msgstr ""
 "241..251:\t超時從 30 分鐘到 5.5 個小時（以 30 分鐘為最小單位）\n"
 "（詳情參見 'man hdparm'）"
 
-#: configschema.json.h:17
+#: configschema.yaml.h:18
 msgid "DISK_IOSCHED__ID_DESCRIPTION"
 msgstr ""
 "為磁碟裝置選擇 I/O 調度器：noop/deadline/cfq（預設值：cfq）\n"
 "請使用空格分隔多個裝置"
 
-#: configschema.json.h:18
+#: configschema.yaml.h:19
 msgid "SATA_LINKPWR__GROUP_DESCRIPTION"
 msgstr ""
-"SATA 主動鏈路電源管理（ALPM）：min_power, medium_power, "
-"max_performance"
+"SATA 主動鏈路電源管理（ALPM）：min_power, medium_power, max_performance"
 
-#: configschema.json.h:19
+#: configschema.yaml.h:20
+msgid "SATA_LINKPWR_BLACKLIST__ID_DESCRIPTION"
+msgstr ""
+"從連結電源管理中排除 SATA 主機裝置。\n"
+"請使用空格分隔多個主機裝置"
+
+#: configschema.yaml.h:21
 msgid "SATA_LINKPWR_DENYLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclude SATA links from AHCI link power management (ALPM).\n"
@@ -133,24 +149,18 @@ msgstr ""
 "tlp-stat -d to determine the host; the format is \"hostX\".\n"
 "Separate multiple hosts with spaces"
 
-#: configschema.json.h:20
-msgid "SATA_LINKPWR_BLACKLIST__ID_DESCRIPTION"
-msgstr ""
-"從連結電源管理中排除 SATA 主機裝置。\n"
-"請使用空格分隔多個主機裝置"
-
-#: configschema.json.h:21
+#: configschema.yaml.h:22
 msgid "AHCI_RUNTIME_PM__GROUP_DESCRIPTION"
 msgstr ""
 "AHCI 控制器和磁碟執行時電源管理：on=禁用，auto=啟用。\n"
 "\n"
 "** 實驗性 ** 警告：使用 auto 選項很有可能導致系統鎖定/資料遺失"
 
-#: configschema.json.h:22
+#: configschema.yaml.h:23
 msgid "AHCI_RUNTIME_PM_TIMEOUT__ID_DESCRIPTION"
 msgstr "磁碟掛斷之前不活動的秒數"
 
-#: configschema.json.h:23
+#: configschema.yaml.h:24
 msgid "BAY_POWEROFF__GROUP_DESCRIPTION"
 msgstr ""
 "關閉 UltraBay/MediaBay 中的光碟機電源：0=禁用，1=啟用。\n"
@@ -158,116 +168,80 @@ msgstr ""
 "或按較新型號的彈出按鈕來再次打開驅動器電源。\n"
 "注意：UltraBay/MediaBay 硬碟不會被斷電"
 
-#: configschema.json.h:24
-msgid "BAY_POWEROFF_ON_BAT__ID_DESCRIPTION"
-msgstr ""
-"設定為在電池供電時，關閉 UltraBay / MediaBay 中的光碟機電源。\n"
-"否則，此功能將被禁用（預設）。\n"
-"可以透過釋放（並重新插入）彈出杆\n"
-"或按下較新型號上的彈出按鈕來再次打開驅動器電源。\n"
-"注意：UltraBay/MediaBay 中的硬碟不會被斷電"
-
-#: configschema.json.h:25
+#: configschema.yaml.h:25
 msgid "BAY_DEVICE__ID_DESCRIPTION"
 msgstr "要關閉電源的光碟機裝置（預設為 sr0）"
 
-#: configschema.json.h:26
+#: configschema.yaml.h:26
 msgid "Graphics__CATEGORY_TITLE"
 msgstr "顯示卡"
 
-#: configschema.json.h:27
+#: configschema.yaml.h:27
 msgid "INTEL_GPU_FREQ__GROUP_DESCRIPTION"
 msgstr ""
 "設定 Intel GPU 的最小 / 最大 / Turbo 頻率。\n"
 "可用的值取決於實際使用的硬體。請參見\n"
 "指令 tlp-stat -g 的輸出獲取可用的頻率數值"
 
-#: configschema.json.h:28
+#: configschema.yaml.h:28
 msgid "RADEON_POWER_PROFILE__GROUP_DESCRIPTION"
 msgstr ""
-"Radeon 顯示卡時鐘速度（配置檔案方法）： low, mid, high, auto, "
-"default；\n"
-"auto = BAT 模式時用 mid，AC 模式時用 high，default = 使用硬體默"
-"認值。\n"
+"Radeon 顯示卡時鐘速度（配置檔案方法）： low, mid, high, auto, default；\n"
+"auto = BAT 模式時用 mid，AC 模式時用 high，default = 使用硬體默認值。\n"
 "需要使用開源驅動程式 'radeon'"
 
-#: configschema.json.h:29
+#: configschema.yaml.h:29
 msgid "RADEON_DPM_STATE__GROUP_DESCRIPTION"
 msgstr ""
 "Radeon 動態電源管理方法（DPM）：battery，performance\n"
 "僅適用於開源驅動程式 'radeon'，\n"
 "要求核心版本 >= 3.11 並引導時使用 'option radeon.dpm = 1'"
 
-#: configschema.json.h:30
+#: configschema.yaml.h:30
 msgid "RADEON_DPM_PERF_LEVEL__GROUP_DESCRIPTION"
 msgstr "Radeon DPM 性能等級：auto, low, high；推薦使用 auto"
 
-#: configschema.json.h:31
+#: configschema.yaml.h:31
+msgid "AMDGPU_ABM_LEVEL__GROUP_DESCRIPTION"
+msgstr ""
+"Display panel adaptive backlight modulation (ABM) level: 0(off), 1..4.\n"
+"Values 1..4 control the maximum brightness reduction allowed by the ABM "
+"algorithm, where 1 represents the least and 4 the most power saving.\n"
+"Notes:\n"
+"- Requires AMD Vega or newer GPU with amdgpu driver as of kernel 6.9\n"
+"- Savings are made at the expense of color balance"
+
+#: configschema.yaml.h:32
 msgid "Network__CATEGORY_TITLE"
 msgstr "網路"
 
-#: configschema.json.h:32
+#: configschema.yaml.h:33
 msgid "WIFI_PWR__GROUP_DESCRIPTION"
 msgstr "WiFi 省電模式。並非所有無線網路適配器都支援"
 
-#: configschema.json.h:33
+#: configschema.yaml.h:34
 msgid "WOL_DISABLE__ID_DESCRIPTION"
 msgstr "禁用區域網路喚醒"
 
-#: configschema.json.h:34
+#: configschema.yaml.h:35
 msgid "PCIe__CATEGORY_TITLE"
 msgstr "PCIe"
 
-#: configschema.json.h:35
+#: configschema.yaml.h:36
 msgid "PCIE_ASPM__GROUP_DESCRIPTION"
 msgstr "PCI Express 主動狀態電源管理（PCIe ASPM）"
 
-#: configschema.json.h:36
+#: configschema.yaml.h:37
 msgid "RUNTIME_PM__GROUP_DESCRIPTION"
 msgstr "PCI(e) 匯流排裝置的執行時電源管理"
 
-#: configschema.json.h:37
-msgid "RUNTIME_PM_DENYLIST__ID_DESCRIPTION"
-msgstr ""
-"Exclude listed PCIe device adresses from Runtime PM.\n"
-"Note: this preserves the kernel driver default, to force a "
-"certain state\n"
-"- use RUNTIME_PM_ENABLE/DISABLE instead.\n"
-"Separate multiple addresses with spaces.\n"
-"Use lspci to get the addresses (1st column)"
-
-#: configschema.json.h:38
-msgid "RUNTIME_PM_DRIVER_DENYLIST__ID_DESCRIPTION"
-msgstr ""
-"Exclude PCIe devices assigned to the listed drivers from "
-"Runtime PM.\n"
-"Note: this preserves the kernel driver default, to force a "
-"certain state\n"
-"- use RUNTIME_PM_ENABLE/DISABLE instead.\n"
-"Separate multiple drivers with spaces.\n"
-"Leave empty to disable completely"
-
-#: configschema.json.h:39
-msgid "RUNTIME_PM_DEVICE__GROUP_DESCRIPTION"
-msgstr ""
-"Permanently enable/disable Runtime PM for listed PCIe device "
-"addresses (independent of the power source).\n"
-"This has priority over all preceding Runtime PM settings. "
-"Separate multiple addresses with spaces.\n"
-"Use lspci to get the adresses (1st column)"
-
-#: configschema.json.h:40
-msgid "RUNTIME_PM_ALL__ID_DESCRIPTION"
-msgstr ""
-"*所有* PCI(e) 匯流排裝置的執行時電源管理，黑名單中的裝置除外"
-
-#: configschema.json.h:41
+#: configschema.yaml.h:38
 msgid "RUNTIME_PM_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
 "從執行時電源管理中排除以下列表中的 PCI(e) 裝置（用空格分隔）。\n"
 "請使用 lspci 獲取地址（在第一列）"
 
-#: configschema.json.h:42
+#: configschema.yaml.h:39
 msgid "RUNTIME_PM_DRIVER_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
 "從執行時電源管理中排除分配給列出的驅動程式的 PCI(e) 裝置\n"
@@ -275,44 +249,68 @@ msgstr ""
 "預設值為 \"radeon nouveau\"；請使用 \"\" 完全禁用該功能。\n"
 "請使用空格分隔多個驅動程式"
 
-#: configschema.json.h:43
+#: configschema.yaml.h:40
+msgid "RUNTIME_PM_DENYLIST__ID_DESCRIPTION"
+msgstr ""
+"Exclude listed PCIe device adresses from Runtime PM.\n"
+"Note: this preserves the kernel driver default, to force a certain state\n"
+"- use RUNTIME_PM_ENABLE/DISABLE instead.\n"
+"Separate multiple addresses with spaces.\n"
+"Use lspci to get the addresses (1st column)"
+
+#: configschema.yaml.h:41
+msgid "RUNTIME_PM_DRIVER_DENYLIST__ID_DESCRIPTION"
+msgstr ""
+"Exclude PCIe devices assigned to the listed drivers from Runtime PM.\n"
+"Note: this preserves the kernel driver default, to force a certain state\n"
+"- use RUNTIME_PM_ENABLE/DISABLE instead.\n"
+"Separate multiple drivers with spaces.\n"
+"Leave empty to disable completely"
+
+#: configschema.yaml.h:42
+msgid "RUNTIME_PM_DEVICE__GROUP_DESCRIPTION"
+msgstr ""
+"Permanently enable/disable Runtime PM for listed PCIe device addresses "
+"(independent of the power source).\n"
+"This has priority over all preceding Runtime PM settings. Separate multiple "
+"addresses with spaces.\n"
+"Use lspci to get the adresses (1st column)"
+
+#: configschema.yaml.h:43
 msgid "Processor__CATEGORY_TITLE"
 msgstr "處理器"
 
-#: configschema.json.h:44
+#: configschema.yaml.h:44
 msgid "CPU_DRIVER_OPMODE__GROUP_DESCRIPTION"
 msgstr ""
 "Select a CPU scaling driver operation mode.\n"
 "Intel CPU with intel_pstate driver: active, passive\n"
-"AMD Zen 2 or newer CPU with amd-pstate_driver as of kernel "
-"6.3/6.4:\n"
+"AMD Zen 2 or newer CPU with amd-pstate_driver as of kernel 6.3/6.4:\n"
 "active, passive, guided"
 
-#: configschema.json.h:45
+#: configschema.yaml.h:45
 msgid "CPU_SCALING_GOVERNOR__GROUP_DESCRIPTION"
 msgstr ""
-"選擇一個 CPU 頻率縮放調節器：ondemand / powersave / "
-"performance / conservative\n"
-"使用 intel_pstate 驅動程式的 Intel Core i 系列處理器可用值："
-"powersave / performance\n"
+"選擇一個 CPU 頻率縮放調節器：ondemand / powersave / performance / "
+"conservative\n"
+"使用 intel_pstate 驅動程式的 Intel Core i 系列處理器可用值：powersave / "
+"performance\n"
 "重要提示：\n"
 "- *必須* 禁用發行版的調節器（governor）設定，否則會發生衝突\n"
-"- ondemand 可以滿足*幾乎所有*的工作負載，你應該知道自己現在在做"
-"什麼再操作"
+"- ondemand 可以滿足*幾乎所有*的工作負載，你應該知道自己現在在做什麼再操作"
 
-#: configschema.json.h:46
+#: configschema.yaml.h:46
 msgid "CPU_SCALING_FREQ__GROUP_DESCRIPTION"
 msgstr ""
 "設定縮放調節器可用的最小 / 最大頻率。\n"
 "可用的值在很大程度上取決於使用的 CPU。\n"
 "請參見 tlp-stat 輸出的 \"Processor（處理器）\" 部分"
 
-#: configschema.json.h:47
+#: configschema.yaml.h:47
 msgid "CPU_ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
 msgstr ""
 "設定 Intel CPU 能源/性能策略 HWP.EPP 和 EPB：\n"
-"performance，balance_performance，default，balance_power，"
-"power\n"
+"performance，balance_performance，default，balance_power，power\n"
 "上述值以「逐漸提高節電效果」的順序給出。\n"
 "注意：\n"
 "- 需要 Intel Core i 系列處理器\n"
@@ -321,16 +319,7 @@ msgstr ""
 "x86_energy_perf_policy 核心模組\n"
 "- 當 HWP.EPP 可用時，不會設定 EPB"
 
-#: configschema.json.h:48
-msgid "CPU_HWP__GROUP_DESCRIPTION"
-msgstr ""
-"設定 Intel P-state 調節器（governor）的能源性能提示（HWP）：\n"
-"default，performance，balance_performance，balance_power，"
-"power\n"
-"上述值按「逐漸提高節電效果」的順序給出。\n"
-"注意：需要 Intel Skylake 或更新的 CPU 並且核心版本 >= 4.10"
-
-#: configschema.json.h:49
+#: configschema.yaml.h:48
 msgid "CPU_PERF__GROUP_DESCRIPTION"
 msgstr ""
 "設定 Intel P-state 性能：0..100（％）\n"
@@ -338,7 +327,7 @@ msgstr ""
 "上述值表示為可用性能的百分比。\n"
 "需要一個使用 intel_pstate 驅動程式的 Intel Core i 系列處理器"
 
-#: configschema.json.h:50
+#: configschema.yaml.h:49
 msgid "CPU_BOOST__GROUP_DESCRIPTION"
 msgstr ""
 "設定 CPU 的 \"turbo boost\" 功能。\n"
@@ -347,254 +336,262 @@ msgstr ""
 "- 這可能與所使用 Linux 發行版的調節器（governor）設定衝突\n"
 "-值為 1 時不會啟動增強（boosting），而只是允許使用它"
 
-#: configschema.json.h:51
+#: configschema.yaml.h:50
 msgid "CPU_HWP_DYN_BOOST__GROUP_DESCRIPTION"
 msgstr ""
 "Set the Intel CPU HWP dynamic boost feature:\n"
 "- 0=disable, 1=enable.\n"
-"Requires intel_pstate scaling driver in 'active' mode and Intel "
-"Core i 6th gen. or newer CPU"
+"Requires intel_pstate scaling driver in 'active' mode and Intel Core i 6th "
+"gen. or newer CPU"
 
-#: configschema.json.h:52
+#: configschema.yaml.h:51
 msgid "SCHED_POWERSAVE__GROUP_DESCRIPTION"
 msgstr "在輕負載條件下，儘量減少使用的 CPU 核心/超執行緒數"
 
-#: configschema.json.h:53
+#: configschema.yaml.h:52
 msgid "NMI_WATCHDOG__ID_DESCRIPTION"
 msgstr ""
 "核心 NMI 看門狗\n"
 "off: 節約電量，on: 僅適用於核心除錯"
 
-#: configschema.json.h:54
-msgid "PLATFORM_PROFILE__GROUP_DESCRIPTION"
-msgstr ""
-"Select platform profile:\n"
-"- performance, balanced, low-power.\n"
-"Controls system operating characteristics around power/"
-"performance levels,\n"
-"thermal and fan speed. Values are given in order of increasing "
-"power saving.\n"
-"Note: check the output of tlp-stat -p to determine availability "
-"on your hardware and additional profiles such as: balanced-"
-"performance, quiet, cool"
-
-#: configschema.json.h:55
-msgid "MEM_SLEEP__GROUP_DESCRIPTION"
-msgstr ""
-"System suspend mode:\n"
-"s2idle: Idle standby - a pure software, light-weight, system "
-"sleep state\n"
-"deep: Suspend to RAM - the whole system is put into a low-power "
-"state, except for memory, usually resulting in higher savings "
-"than s2idle\n"
-"CAUTION: changing suspend mode may lead to system instability "
-"and even data loss. As for the availability of different modes "
-"on your system, check the output of tlp-stat -s. If unsure, "
-"stick with the system default by not enabling this"
-
-#: configschema.json.h:56
+#: configschema.yaml.h:53
 msgid "PHC_CONTROLS__ID_DESCRIPTION"
 msgstr ""
 "更改 CPU 電壓（也稱為「欠電壓」）\n"
 "需要帶有 PHC 補丁的核心\n"
-"頻率電壓比配對子已寫在了 /sys/devices/system/cpu/cpu0/cpufreq/"
-"phc_controls 文件中\n"
+"頻率電壓比配對子已寫在了 /sys/devices/system/cpu/cpu0/cpufreq/phc_controls 文"
+"件中\n"
 "注意：僅當完全了解自己在做什麼時，才可以使用此選項"
 
-#: configschema.json.h:57
-msgid "ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
+#: configschema.yaml.h:54
+msgid "PLATFORM_PROFILE__GROUP_DESCRIPTION"
 msgstr ""
-"設定 CPU 性能與節能策略。\n"
-"需要 linux-tools 中的 msr 和 x86_energy_perf_policy 核心模組"
+"Select platform profile:\n"
+"- performance, balanced, low-power.\n"
+"Controls system operating characteristics around power/performance levels,\n"
+"thermal and fan speed. Values are given in order of increasing power "
+"saving.\n"
+"Note: check the output of tlp-stat -p to determine availability on your "
+"hardware and additional profiles such as: balanced-performance, quiet, cool"
 
-#: configschema.json.h:58
+#: configschema.yaml.h:55
+msgid "MEM_SLEEP__GROUP_DESCRIPTION"
+msgstr ""
+"System suspend mode:\n"
+"s2idle: Idle standby - a pure software, light-weight, system sleep state\n"
+"deep: Suspend to RAM - the whole system is put into a low-power state, "
+"except for memory, usually resulting in higher savings than s2idle\n"
+"CAUTION: changing suspend mode may lead to system instability and even data "
+"loss. As for the availability of different modes on your system, check the "
+"output of tlp-stat -s. If unsure, stick with the system default by not "
+"enabling this"
+
+#: configschema.yaml.h:56
 msgid "Radio__CATEGORY_TITLE"
 msgstr "無線電"
 
-#: configschema.json.h:59
+#: configschema.yaml.h:57
 msgid "RESTORE_DEVICE_STATE_ON_STARTUP__ID_DESCRIPTION"
 msgstr ""
-"在系統啟動時復原從上次關機時無線電裝置的狀態（藍牙，WiFi，"
-"WWAN）。\n"
-"提示：啟用此選項後，以下參數 DEVICES_TO_DISABLE / "
-"ENABLE_ON_STARTUP / SHUTDOWN 將被忽略"
+"在系統啟動時復原從上次關機時無線電裝置的狀態（藍牙，WiFi，WWAN）。\n"
+"提示：啟用此選項後，以下參數 DEVICES_TO_DISABLE / ENABLE_ON_STARTUP / "
+"SHUTDOWN 將被忽略"
 
-#: configschema.json.h:60
+#: configschema.yaml.h:58
 msgid "DEVICES_TO_DISABLE_ON_STARTUP__ID_DESCRIPTION"
 msgstr "系統啟動時要禁用的無線電裝置：bluetooth wifi wwan"
 
-#: configschema.json.h:61
+#: configschema.yaml.h:59
 msgid "DEVICES_TO_ENABLE_ON_STARTUP__ID_DESCRIPTION"
 msgstr "系統啟動時要啟用的無線電裝置：bluetooth wifi wwan"
 
-#: configschema.json.h:62
+#: configschema.yaml.h:60
 msgid "DEVICES_TO_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
 "系統關機時要禁用的無線電裝置：bluetooth wifi wwan\n"
 "（針對一些裝置阻止關機的解決方法）"
 
-#: configschema.json.h:63
+#: configschema.yaml.h:61
 msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
 "關機時要啟用的無線電裝置：bluetooth wifi wwan\n"
 "（防止其他作業系統找不到無線電裝置）"
 
-#: configschema.json.h:64
+#: configschema.yaml.h:62
 msgid "DEVICES_TO_ENABLE_ON_AC__ID_DESCRIPTION"
 msgstr "交流供電下，要啟用的無線電裝置：bluetooth, wifi, wwan"
 
-#: configschema.json.h:65
+#: configschema.yaml.h:63
 msgid "DEVICES_TO_DISABLE_ON_BAT__ID_DESCRIPTION"
 msgstr "電池供電下要禁用的無線電裝置：bluetooth, wifi, wwan"
 
-#: configschema.json.h:66
+#: configschema.yaml.h:64
 msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE__ID_DESCRIPTION"
 msgstr ""
 "電池供電下，當不在使用時（未連接狀態），要禁用的無線電裝置：\n"
 "bluetooth, wifi, wwan"
 
-#: configschema.json.h:67
+#: configschema.yaml.h:65
 msgid "Radio Device Wizard__CATEGORY_TITLE"
 msgstr "無線電裝置嚮導"
 
-#: configschema.json.h:68
+#: configschema.yaml.h:66
 msgid "DEVICES_TO_DISABLE_ON_CONNECT__GROUP_DESCRIPTION"
 msgstr "連接時要禁用的無線電裝置"
 
-#: configschema.json.h:69
+#: configschema.yaml.h:67
 msgid "DEVICES_TO_ENABLE_ON_DISCONNECT__GROUP_DESCRIPTION"
 msgstr "在斷開連接時啟用的無線電裝置"
 
-#: configschema.json.h:70
+#: configschema.yaml.h:68
 msgid "DEVICES_ON_DOCK__GROUP_DESCRIPTION"
 msgstr "佇停時要啟用/禁用的無線電裝置"
 
-#: configschema.json.h:71
+#: configschema.yaml.h:69
 msgid "DEVICES_ON_UNDOCK__GROUP_DESCRIPTION"
 msgstr "取消佇停時要啟用/禁用的無線電裝置"
 
-#: configschema.json.h:72
+#: configschema.yaml.h:70
 msgid "USB__CATEGORY_TITLE"
 msgstr "USB"
 
-#: configschema.json.h:73
+#: configschema.yaml.h:71
 msgid "USB_AUTOSUSPEND__ID_DESCRIPTION"
 msgstr "USB 自動掛斷功能"
 
-#: configschema.json.h:74
-msgid "USB_DENYLIST__ID_DESCRIPTION"
-msgstr ""
-"Exclude listed devices from USB autosuspend (separate with "
-"spaces).\n"
-"Use lsusb to get the ids.\n"
-"Note: input devices (usbhid) and libsane-supported scanners are "
-"excluded automatically"
-
-#: configschema.json.h:75
-msgid "USB_EXCLUDE_AUDIO__ID_DESCRIPTION"
-msgstr ""
-"Exclude audio devices from USB autosuspend:\n"
-"- 0=do not exclude, 1=exclude"
-
-#: configschema.json.h:76
-msgid "USB_EXCLUDE_BTUSB__ID_DESCRIPTION"
-msgstr ""
-"Exclude bluetooth devices from USB autosuspend:\n"
-"- 0=do not exclude, 1=exclude"
-
-#: configschema.json.h:77
-msgid "USB_EXCLUDE_PHONE__ID_DESCRIPTION"
-msgstr ""
-"Exclude phone devices from USB autosuspend:\n"
-"- 0=do not exclude, 1=exclude (enable charging)"
-
-#: configschema.json.h:78
-msgid "USB_EXCLUDE_PRINTER__ID_DESCRIPTION"
-msgstr ""
-"Exclude printers from USB autosuspend:\n"
-"- 0=do not exclude, 1=exclude"
-
-#: configschema.json.h:79
-msgid "USB_EXCLUDE_WWAN__ID_DESCRIPTION"
-msgstr ""
-"Exclude WWAN devices from USB autosuspend:\n"
-"- 0=do not exclude, 1=exclude"
-
-#: configschema.json.h:80
-msgid "USB_ALLOWLIST__ID_DESCRIPTION"
-msgstr ""
-"Allow USB autosuspend for listed devices even if already "
-"denylisted or\n"
-"excluded above (separate with spaces). Use lsusb to get the ids"
-
-#: configschema.json.h:81
+#: configschema.yaml.h:72
 msgid "USB_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
 "以下列表中的裝置將不包括在自動掛斷名單中\n"
 "（用空格分隔）。請使用 lsusb 獲取裝置 ID。\n"
 "注意：輸入裝置（usbhid）會被自動排除"
 
-#: configschema.json.h:82
+#: configschema.yaml.h:73
 msgid "USB_BLACKLIST_BTUSB__ID_DESCRIPTION"
 msgstr "要排除在 USB 自動掛斷名單之外的藍牙裝置"
 
-#: configschema.json.h:83
+#: configschema.yaml.h:74
 msgid "USB_BLACKLIST_PHONE__ID_DESCRIPTION"
 msgstr "要排除在 USB 自動掛斷名單之外的電話裝置"
 
-#: configschema.json.h:84
+#: configschema.yaml.h:75
 msgid "USB_BLACKLIST_PRINTER__ID_DESCRIPTION"
 msgstr "要排除在 USB 自動掛斷名單之外的印表機"
 
-#: configschema.json.h:85
+#: configschema.yaml.h:76
 msgid "USB_BLACKLIST_WWAN__ID_DESCRIPTION"
 msgstr ""
 "要排除在自動掛斷名單之外的 WWAN 裝置。\n"
 "注意：僅適用於 ID 在 05c6:* 0bdb:* 1199:* 範圍的裝置"
 
-#: configschema.json.h:86
+#: configschema.yaml.h:77
 msgid "USB_WHITELIST__ID_DESCRIPTION"
 msgstr ""
 "將列出的裝置包括在自動掛斷名單中，\n"
-"即使驅動程式或上面的 WWAN 黑名單已將其排除/列出（用空格分"
-"隔）。\n"
+"即使驅動程式或上面的 WWAN 黑名單已將其排除/列出（用空格分隔）。\n"
 "請使用 lsusb 獲取裝置 ID"
 
-#: configschema.json.h:87
+#: configschema.yaml.h:78
+msgid "USB_DENYLIST__ID_DESCRIPTION"
+msgstr ""
+"Exclude listed devices from USB autosuspend (separate with spaces).\n"
+"Use lsusb to get the ids.\n"
+"Note: input devices (usbhid) and libsane-supported scanners are excluded "
+"automatically"
+
+#: configschema.yaml.h:79
+msgid "USB_EXCLUDE_AUDIO__ID_DESCRIPTION"
+msgstr ""
+"Exclude audio devices from USB autosuspend:\n"
+"- 0=do not exclude, 1=exclude"
+
+#: configschema.yaml.h:80
+msgid "USB_EXCLUDE_BTUSB__ID_DESCRIPTION"
+msgstr ""
+"Exclude bluetooth devices from USB autosuspend:\n"
+"- 0=do not exclude, 1=exclude"
+
+#: configschema.yaml.h:81
+msgid "USB_EXCLUDE_PHONE__ID_DESCRIPTION"
+msgstr ""
+"Exclude phone devices from USB autosuspend:\n"
+"- 0=do not exclude, 1=exclude (enable charging)"
+
+#: configschema.yaml.h:82
+msgid "USB_EXCLUDE_PRINTER__ID_DESCRIPTION"
+msgstr ""
+"Exclude printers from USB autosuspend:\n"
+"- 0=do not exclude, 1=exclude"
+
+#: configschema.yaml.h:83
+msgid "USB_EXCLUDE_WWAN__ID_DESCRIPTION"
+msgstr ""
+"Exclude WWAN devices from USB autosuspend:\n"
+"- 0=do not exclude, 1=exclude"
+
+#: configschema.yaml.h:84
+msgid "USB_ALLOWLIST__ID_DESCRIPTION"
+msgstr ""
+"Allow USB autosuspend for listed devices even if already denylisted or\n"
+"excluded above (separate with spaces). Use lsusb to get the ids"
+
+#: configschema.yaml.h:85
 msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
 "設定為在關機前禁用自動掛斷或者不執行任何操作\n"
 "（USB 裝置導致出現關機問題的的解決方法）"
 
-#: configschema.json.h:88
+#: configschema.yaml.h:86
 msgid "ThinkPad Battery__CATEGORY_TITLE"
 msgstr "ThinkPad 電池"
 
-#: configschema.json.h:89
+#: configschema.yaml.h:87
 msgid "CHARGE_THRESH_BAT0__GROUP_DESCRIPTION"
 msgstr ""
-"電池充電閾值（僅適用於 ThinkPad，需要 tp-smapi 或 acpi-call 核心"
-"模組）\n"
+"電池充電閾值（僅適用於 ThinkPad，需要 tp-smapi 或 acpi-call 核心模組）\n"
 "當剩餘電量低於 START_CHARGE_TRESH 值時開始充電，\n"
 "高於 STOP_CHARGE_TRESH 值時停止充電。\n"
 "主 / 內建電池（以 % 表示的值）"
 
-#: configschema.json.h:90
+#: configschema.yaml.h:88
 msgid "CHARGE_THRESH_BAT1__GROUP_DESCRIPTION"
 msgstr "Ultrabay / Slice / 可更換電池（以 % 表示的值）"
 
-#: configschema.json.h:91
+#: configschema.yaml.h:89
 msgid "RESTORE_THRESHOLDS_ON_BAT__ID_DESCRIPTION"
 msgstr "拔下交流電後復原充電閾值"
 
-#: configschema.json.h:92
+#: configschema.yaml.h:90
 msgid "NATACPI_ENABLE__ID_DESCRIPTION"
 msgstr "電池功能驅動程式：0=禁用, 1=啟用"
 
-#: configschema.json.h:93
+#: configschema.yaml.h:91
 msgid "TPACPI_ENABLE__ID_DESCRIPTION"
 msgstr "電池功能驅動程式：0=禁用, 1=啟用"
 
-#: configschema.json.h:94
+#: configschema.yaml.h:92
 msgid "TPSMAPI_ENABLE__ID_DESCRIPTION"
 msgstr "電池功能驅動程式：0=禁用, 1=啟用"
+
+#~ msgid "BAY_POWEROFF_ON_BAT__ID_DESCRIPTION"
+#~ msgstr ""
+#~ "設定為在電池供電時，關閉 UltraBay / MediaBay 中的光碟機電源。\n"
+#~ "否則，此功能將被禁用（預設）。\n"
+#~ "可以透過釋放（並重新插入）彈出杆\n"
+#~ "或按下較新型號上的彈出按鈕來再次打開驅動器電源。\n"
+#~ "注意：UltraBay/MediaBay 中的硬碟不會被斷電"
+
+#~ msgid "RUNTIME_PM_ALL__ID_DESCRIPTION"
+#~ msgstr "*所有* PCI(e) 匯流排裝置的執行時電源管理，黑名單中的裝置除外"
+
+#~ msgid "CPU_HWP__GROUP_DESCRIPTION"
+#~ msgstr ""
+#~ "設定 Intel P-state 調節器（governor）的能源性能提示（HWP）：\n"
+#~ "default，performance，balance_performance，balance_power，power\n"
+#~ "上述值按「逐漸提高節電效果」的順序給出。\n"
+#~ "注意：需要 Intel Skylake 或更新的 CPU 並且核心版本 >= 4.10"
+
+#~ msgid "ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
+#~ msgstr ""
+#~ "設定 CPU 性能與節能策略。\n"
+#~ "需要 linux-tools 中的 msr 和 x86_energy_perf_policy 核心模組"

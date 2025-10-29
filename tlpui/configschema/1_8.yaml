@@ -130,14 +130,6 @@ categories:
           - id: INTEL_GPU_BOOST_FREQ_ON_BAT
             type: numeric
             values: 0-5000
-      - group: RADEON_POWER_PROFILE
-        ids:
-          - id: RADEON_POWER_PROFILE_ON_AC
-            type: select
-            values: low,mid,high,auto,default
-          - id: RADEON_POWER_PROFILE_ON_BAT
-            type: select
-            values: low,mid,high,auto,default
       - group: RADEON_DPM_STATE
         ids:
           - id: RADEON_DPM_STATE_ON_AC
