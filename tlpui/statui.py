@@ -7,6 +7,7 @@ from gi.repository import Gtk
 from . import language
 from . import settingshelper
 from .uihelper import get_theme_image, get_graphical_sudo
+from .cmdhelper import create_sudo_command
 
 
 def fetch_simple_stats(_, textbuffer: Gtk.TextBuffer) -> None:
@@ -18,12 +19,13 @@ def fetch_simple_stats(_, textbuffer: Gtk.TextBuffer) -> None:
 
 def fetch_complete_stats(_, textbuffer: Gtk.TextBuffer) -> None:
     """Fetch complete tlp-stat information."""
-    sudo_cmd = get_graphical_sudo()
+    sudo = get_graphical_sudo()
 
-    if sudo_cmd is None:
+    if sudo is None:
         return
 
-    tlp_stat_output = settingshelper.exec_command([sudo_cmd, "tlp-stat"])
+    sudo_cmd = create_sudo_command(sudo, ["tlp-stat"])
+    tlp_stat_output = settingshelper.exec_command(sudo_cmd)
     textbuffer.set_text(tlp_stat_output)
 
 

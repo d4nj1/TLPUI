@@ -10,7 +10,7 @@ from pathlib import Path
 from . import errorui
 
 
-def exec_command(commands: [str]):
+def exec_command(commands: list[str]):
     """Execute commands locally."""
     try:
         return check_output(commands).decode(sys.stdout.encoding)

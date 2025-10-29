@@ -10,6 +10,7 @@ from . import settings
 from . import settingshelper
 from .filehelper import get_yaml_schema_object_from_file, extract_default_tlp_configs, TlpDefaults
 from .uihelper import get_graphical_sudo
+from .cmdhelper import create_sudo_command
 
 
 def get_yaml_schema_object(objectname) -> dict:
@@ -149,15 +150,15 @@ def create_tmp_tlp_config_file(changedproperties: dict) -> str:
     return tmpfilename
 
 
-def write_tlp_config(tmpconfigfile: str):
+def write_tlp_config(tmpconfigfile: str) -> None:
     """Write changes to config file."""
-    sedtlpconfigfile = "w" + settings.tlpbaseconfigfile
-    sedcommand = ["sed", "-n", sedtlpconfigfile, tmpconfigfile]
+    sed_tlp_config_file = "w" + settings.tlpbaseconfigfile
+    sed_command = ["sed", "-n", sed_tlp_config_file, tmpconfigfile]
 
     # check permission and apply sudo if needed
     if not access(settings.tlpconfigfile, W_OK):
-        sudo_cmd = get_graphical_sudo()
-        if sudo_cmd is None:
+        sudo = get_graphical_sudo()
+        if sudo is None:
             return
-        sedcommand.insert(0, sudo_cmd)
-    settingshelper.exec_command(sedcommand)
+        sed_command = create_sudo_command(sudo, sed_command)
+    settingshelper.exec_command(sed_command)
