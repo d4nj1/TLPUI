@@ -39,6 +39,21 @@
 	</provides>
 	<content_rating type="oars-1.1" />
 	<releases>
+        <release version="1.8.1" date="2025-11-02" urgency="low">
+			<description xml:lang="en">
+                <p>Add Italian and Hungarian translation</p>
+                <p>Update German and Brazilian translation</p>
+				<p>Set Python 3.10 as minimal supported version</p>
+				<p>Add Python 3.14 test support</p>
+				<p>Update Python dependencies</p>
+                <p>Update to Gnome 49</p>
+                <p>Fix pkexec admin selection via UI</p>
+			</description>
+			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.8.1</url>
+			<issues>
+				<issue url="https://github.com/d4nj1/TLPUI/issues/167">#167</issue>
+			</issues>
+		</release>
 		<release version="1.8.0" date="2025-02-19" urgency="low">
 			<description xml:lang="en">
 				<p>Add TLP 1.8 release support</p>
