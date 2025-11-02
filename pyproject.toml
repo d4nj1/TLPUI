@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tlp-ui"
-version = "1.8.0"
+version = "1.8.1"
 description = "GTK UI for tlp"
 license = "GPL-2.0-or-later"
 authors = ["Daniel Christophis <code@devmind.org>"]
