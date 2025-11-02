@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
 "POT-Creation-Date: 2025-02-19 14:59+0100\n"
-"PO-Revision-Date: 2025-10-16 22:29+0100\n"
+"PO-Revision-Date: 2025-11-02 12:28+0100\n"
 "Last-Translator: GitHub Copilot\n"
 "Language-Team: de\n"
 "Language: de\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _\n"
@@ -312,7 +312,7 @@ msgstr ""
 "Wichtig:\n"
 "- Mit (*) gekennzeichnete Governors sind für fast alle Workloads energieeffizient\n"
 "- und werden daher vom Kernel und den meisten Distributionen als Standard gesetzt.\n"
-"- Informieren Sie sich vor der Änderung des Governors über Vor- und Nachteile!"
+"- Informieren Sie sich vor der Änderung des Governors über Vor- und Nachteile"
 
 #: configschema.yaml.h:46
 msgid "CPU_SCALING_FREQ__GROUP_DESCRIPTION"
@@ -341,7 +341,7 @@ msgstr ""
 "Intel-CPU P-State-Leistung festlegen: 0..100 (%).\n"
 "Max-/Min-P-State begrenzen, um Leistungsaufnahme der CPU zu steuern.\n"
 "Werte beziehen sich auf Prozent der verfügbaren Leistung.\n"
-"Erfordert intel_pstate oder intel_cpufreq und Intel Core i ab 2. Gen."
+"Erfordert intel_pstate oder intel_cpufreq und Intel Core i ab 2. Gen"
 
 #: configschema.yaml.h:49
 msgid "CPU_BOOST__GROUP_DESCRIPTION"
@@ -359,8 +359,7 @@ msgstr ""
 
 #: configschema.yaml.h:51
 msgid "SCHED_POWERSAVE__GROUP_DESCRIPTION"
-msgstr ""
-"Anzahl der verwendeten CPU-Kerne/Hyper-Threads bei geringer Last minimieren"
+msgstr "Anzahl der verwendeten CPU-Kerne/Hyper-Threads bei geringer Last minimieren"
 
 #: configschema.yaml.h:52
 msgid "NMI_WATCHDOG__ID_DESCRIPTION"
@@ -391,7 +390,7 @@ msgstr ""
 "System-Schlafmodus:\n"
 "s2idle: Standby – reiner Software-, leichter Schlafzustand\n"
 "deep: Suspend to RAM – Gesamtsystem im Energiesparmodus, außer Speicher; spart meist mehr als s2idle\n"
-"ACHTUNG: Änderung des Modus kann Systeminstabilität und Datenverlust bewirken. Prüfen Sie mit tlp-stat -s die verfügbaren Modi. Bei Unsicherheit Standard belassen."
+"ACHTUNG: Änderung des Modus kann Systeminstabilität und Datenverlust bewirken. Prüfen Sie mit tlp-stat -s die verfügbaren Modi. Bei Unsicherheit Standard belassen"
 
 #: configschema.yaml.h:56
 msgid "Radio__CATEGORY_TITLE"
@@ -400,62 +399,62 @@ msgstr "Funk"
 #: configschema.yaml.h:57
 msgid "RESTORE_DEVICE_STATE_ON_STARTUP__ID_DESCRIPTION"
 msgstr ""
-"Funkgeräte-Status (Bluetooth, WLAN, WWAN) beim Systemstart aus dem vorherigen Shutdown wiederherstellen.\n"
+"Funkschnittstellen-Status (Bluetooth, WLAN, WWAN) beim Systemstart aus dem vorherigen Shutdown wiederherstellen.\n"
 "Hinweis: Die Parameter DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN werden ignoriert, wenn dies aktiviert ist"
 
 #: configschema.yaml.h:58
 msgid "DEVICES_TO_DISABLE_ON_STARTUP__ID_DESCRIPTION"
-msgstr "Funkgeräte beim Systemstart deaktivieren: bluetooth, wlan, wwan"
+msgstr "Funkschnittstellen beim Systemstart deaktivieren: bluetooth, wlan, wwan"
 
 #: configschema.yaml.h:59
 msgid "DEVICES_TO_ENABLE_ON_STARTUP__ID_DESCRIPTION"
-msgstr "Funkgeräte beim Systemstart aktivieren: bluetooth, wlan, wwan"
+msgstr "Funkschnittstellen beim Systemstart aktivieren: bluetooth, wlan, wwan"
 
 #: configschema.yaml.h:60
 msgid "DEVICES_TO_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
-"Funkgeräte beim Herunterfahren deaktivieren: bluetooth, wlan, wwan\n"
+"Funkschnittstellen beim Herunterfahren deaktivieren: bluetooth, wlan, wwan\n"
 "(Workaround für Geräte, die das Herunterfahren blockieren)"
 
 #: configschema.yaml.h:61
 msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
-"Funkgeräte beim Herunterfahren aktivieren: bluetooth, wlan, wwan\n"
-"(damit andere Betriebssysteme Funkgeräte erkennen)"
+"Funkschnittstellen beim Herunterfahren aktivieren: bluetooth, wlan, wwan\n"
+"(damit andere Betriebssysteme Funkschnittstellen erkennen)"
 
 #: configschema.yaml.h:62
 msgid "DEVICES_TO_ENABLE_ON_AC__ID_DESCRIPTION"
-msgstr "Funkgeräte bei Netzbetrieb aktivieren: bluetooth, wlan, wwan"
+msgstr "Funkschnittstellen bei Netzbetrieb aktivieren: bluetooth, wlan, wwan"
 
 #: configschema.yaml.h:63
 msgid "DEVICES_TO_DISABLE_ON_BAT__ID_DESCRIPTION"
-msgstr "Funkgeräte bei Batteriebetrieb deaktivieren: bluetooth, wlan, wwan"
+msgstr "Funkschnittstellen bei Batteriebetrieb deaktivieren: bluetooth, wlan, wwan"
 
 #: configschema.yaml.h:64
 msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE__ID_DESCRIPTION"
 msgstr ""
-"Funkgeräte bei Batterie deaktivieren, wenn nicht genutzt (nicht verbunden):\n"
+"Funkschnittstellen bei Batterie deaktivieren, wenn nicht genutzt (nicht verbunden):\n"
 "bluetooth, wlan, wwan"
 
 #: configschema.yaml.h:65
 msgid "Radio Device Wizard__CATEGORY_TITLE"
-msgstr "Funkgeräte-Assistent"
+msgstr "Funkschnittstellen-Assistent"
 
 #: configschema.yaml.h:66
 msgid "DEVICES_TO_DISABLE_ON_CONNECT__GROUP_DESCRIPTION"
-msgstr "Funkgeräte beim Verbinden deaktivieren"
+msgstr "Funkschnittstellen beim Verbinden deaktivieren"
 
 #: configschema.yaml.h:67
 msgid "DEVICES_TO_ENABLE_ON_DISCONNECT__GROUP_DESCRIPTION"
-msgstr "Funkgeräte beim Trennen aktivieren"
+msgstr "Funkschnittstellen beim Trennen aktivieren"
 
 #: configschema.yaml.h:68
 msgid "DEVICES_ON_DOCK__GROUP_DESCRIPTION"
-msgstr "Funkgeräte beim Andocken aktivieren/deaktivieren"
+msgstr "Funkschnittstellen beim Andocken aktivieren/deaktivieren"
 
 #: configschema.yaml.h:69
 msgid "DEVICES_ON_UNDOCK__GROUP_DESCRIPTION"
-msgstr "Funkgeräte beim Abdocken aktivieren/deaktivieren"
+msgstr "Funkschnittstellen beim Abdocken aktivieren/deaktivieren"
 
 #: configschema.yaml.h:70
 msgid "USB__CATEGORY_TITLE"
@@ -535,8 +534,7 @@ msgstr ""
 
 #: configschema.yaml.h:84
 msgid "USB_ALLOWLIST__ID_DESCRIPTION"
-msgstr ""
-"USB-Autosuspend für aufgelistete Geräte erlauben, auch wenn sie bereits denylistet oder oben ausgeschlossen sind (mit Leerzeichen trennen). Mit lsusb die IDs ermitteln"
+msgstr "USB-Autosuspend für aufgelistete Geräte erlauben, auch wenn sie bereits denylistet oder oben ausgeschlossen sind (mit Leerzeichen trennen). Mit lsusb die IDs ermitteln"
 
 #: configschema.yaml.h:85
 msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
