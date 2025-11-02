@@ -1,35 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
 	<id>com.github.d4nj1.tlpui</id>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-2.0+</project_license>
 	<name>TLP-UI</name>
-	<summary xml:lang="en">TLP configuration utility</summary>
+	<summary>TLP configuration utility</summary>
 	<summary xml:lang="pt_BR">Utilitário de configuração TLP</summary>
 	<developer id="com.github.d4nj1.tlpui">
 		<name>Daniel Christophis</name>
 	</developer>
-	<description xml:lang="en">
+	<description>
 		<p>Change TLP settings easily and provide a basic overview of all the valid configuration values</p>
-	</description>
-	<description xml:lang="pt_BR">
-		<p>Altere as configurações de TLP facilmente e forneça uma visão geral básica de todos os valores de configuração válidos</p>
+		<p xml:lang="pt_BR">Altere as configurações de TLP facilmente e forneça uma visão geral básica de todos os valores de configuração válidos</p>
 	</description>
 	<launchable type="desktop-id">com.github.d4nj1.tlpui.desktop</launchable>
 	<url type="homepage">https://github.com/d4nj1/TLPUI</url>
 	<screenshots>
 		<screenshot type="default">
-			<caption xml:lang="en">Main window with light theme</caption>
+			<caption>Main window with light theme</caption>
 			<caption xml:lang="pt_BR">Janela principal com tema claro</caption>
 			<image>https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshots/tlpui-01.png</image>
 		</screenshot>
 		<screenshot>
-			<caption xml:lang="en">Main window with dark theme</caption>
+			<caption>Main window with dark theme</caption>
 			<caption xml:lang="pt_BR">Janela principal com tema escuro</caption>
 			<image>https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshots/tlpui-02.png</image>
 		</screenshot>
 		<screenshot>
-			<caption xml:lang="en">Current setting with about dialog</caption>
+			<caption>Current setting with about dialog</caption>
 			<caption xml:lang="pt_BR">Configuração atual com diálogo sobre</caption>
 			<image>https://raw.githubusercontent.com/d4nj1/TLPUI/master/screenshots/tlpui-03.png</image>
 		</screenshot>
@@ -40,7 +38,7 @@
 	<content_rating type="oars-1.1" />
 	<releases>
         <release version="1.8.1" date="2025-11-02" urgency="low">
-			<description xml:lang="en">
+			<description>
                 <p>Add Italian and Hungarian translation</p>
                 <p>Update German and Brazilian translation</p>
 				<p>Set Python 3.10 as minimal supported version</p>
@@ -55,7 +53,7 @@
 			</issues>
 		</release>
 		<release version="1.8.0" date="2025-02-19" urgency="low">
-			<description xml:lang="en">
+			<description>
 				<p>Add TLP 1.8 release support</p>
 				<p>Add Python 3.13 test support</p>
 				<p>Update Python dependencies</p>
@@ -67,7 +65,7 @@
 			</issues>
 		</release>
 		<release version="1.7.1" date="2024-10-29" urgency="low">
-			<description xml:lang="en">
+			<description>
 				<p>Increase version to match Python release</p>
 			</description>
 			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.7.1</url>
@@ -76,7 +74,7 @@
 			</issues>
 		</release>
 		<release version="1.7.0" date="2024-10-29" urgency="low">
-			<description xml:lang="en">
+			<description>
 				<p>Add TLP 1.7 release support</p>
 				<p>Set Python 3.9 as minimal supported version</p>
 				<p>Minor UI changes</p>
@@ -89,15 +87,13 @@
 			</issues>
 		</release>
 		<release version="1.6.5" date="2024-04-04" urgency="low">
-			<description xml:lang="en">
+			<description>
 				<p>Fix loading css for GTK greater 4.12</p>
+				<p xml:lang="pt_BR">Corrigido o carregamento de CSS para GTK superior 4.12</p>
 				<p>Improve appdata to fix Flathub issues</p>
+				<p xml:lang="pt_BR">Melhore o appdata para corrigir problemas do Flathub</p>
 				<p>Update Python dependencies</p>
-			</description>
-			<description xml:lang="pt_BR">
-				<p>Corrigido o carregamento de CSS para GTK superior 4.12</p>
-				<p>Melhore o appdata para corrigir problemas do Flathub</p>
-				<p>Atualizar dependências do Python</p>
+				<p xml:lang="pt_BR">Atualizar dependências do Python</p>
 			</description>
 			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.6.5</url>
 			<issues>
@@ -105,11 +101,9 @@
 			</issues>
 		</release>
 		<release version="1.6.4" date="2024-01-21" urgency="low">
-			<description xml:lang="en">
+			<description>
 				<p>Battery conservation fixes to support all vendor plugins</p>
-			</description>
-			<description xml:lang="pt_BR">
-				<p>Correções de conservação de bateria para oferecer suporte a todos os plug-ins de fornecedores</p>
+				<p xml:lang="pt_BR">Correções de conservação de bateria para oferecer suporte a todos os plug-ins de fornecedores</p>
 			</description>
 			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.6.4</url>
 			<issues>
@@ -117,11 +111,9 @@
 			</issues>
 		</release>
 		<release version="1.6.3" date="2024-01-19" urgency="low">
-			<description xml:lang="en">
+			<description>
 				<p>Minor PyPI related changes</p>
-			</description>
-			<description xml:lang="pt_BR">
-				<p>Pequenas alterações relacionadas ao PyPI</p>
+				<p xml:lang="pt_BR">Pequenas alterações relacionadas ao PyPI</p>
 			</description>
 			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.6.3</url>
 			<issues>
@@ -129,21 +121,19 @@
 			</issues>
 		</release>
 		<release version="1.6.2" date="2024-01-18" urgency="low">
-			<description xml:lang="en">
+			<description>
 				<p>Add initial TLP 1.7 compatibility</p>
+				<p xml:lang="pt_BR">Adicionar compatibilidade inicial com TLP 1.7</p>
 				<p>Refactor code base and set Python 3.8.1 as minimal supported version</p>
+				<p xml:lang="pt_BR">Refatore a base do código e defina Python 3.8.1 como versão mínima suportada</p>
 				<p>Remove obsolete setuptools and switch to poetry as a build system</p>
+				<p xml:lang="pt_BR">Remova ferramentas de configuração obsoletas e mude para poetry como sistema de construção</p>
 				<p>Use YAML instead of JSON for config schema</p>
+				<p xml:lang="pt_BR">Use YAML em vez de JSON para esquema de configuração</p>
 				<p>Remove support for TLP versions prior 1.3</p>
+				<p xml:lang="pt_BR">Remover suporte para versões TLP anteriores a 1.3</p>
 				<p>Switch from unittest to pytest</p>
-			</description>
-			<description xml:lang="pt_BR">
-				<p>Adicionar compatibilidade inicial com TLP 1.7</p>
-				<p>Refatore a base do código e defina Python 3.8.1 como versão mínima suportada</p>
-				<p>Remova ferramentas de configuração obsoletas e mude para poetry como sistema de construção</p>
-				<p>Use YAML em vez de JSON para esquema de configuração</p>
-				<p>Remover suporte para versões TLP anteriores a 1.3</p>
-				<p>Mudar de unittest para pytest</p>
+				<p xml:lang="pt_BR">Mudar de unittest para pytest</p>
 			</description>
 			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.6.2</url>
 			<issues>
@@ -151,11 +141,9 @@
 			</issues>
 		</release>
 		<release version="1.6.1" date="2023-10-15" urgency="low">
-			<description xml:lang="en">
+			<description>
 				<p>Update Russian translation</p>
-			</description>
-			<description xml:lang="pt_BR">
-				<p>Atualizar tradução Russa</p>
+				<p xml:lang="pt_BR">Atualizar tradução Russa</p>
 			</description>
 			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.6.1</url>
 			<issues>
@@ -163,11 +151,9 @@
 			</issues>
 		</release>
 		<release version="1.6.0" date="2023-08-27" urgency="medium">
-			<description xml:lang="en">
+			<description>
 				<p>Compatibility with TLP 1.6 and French translation added</p>
-			</description>
-			<description xml:lang="pt_BR">
-				<p>Compatibilidade com TLP 1.6 e tradução em francês adicionada</p>
+				<p xml:lang="pt_BR">Compatibilidade com TLP 1.6 e tradução em francês adicionada</p>
 			</description>
 			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.6.0</url>
 			<issues>
@@ -176,11 +162,9 @@
 			</issues>
 		</release>
 		<release version="1.5.0-7" date="2023-03-25" urgency="low">
-			<description xml:lang="en">
+			<description>
 				<p>Description updates</p>
-			</description>
-			<description xml:lang="pt_BR">
-				<p>Atualizações de descrição</p>
+				<p xml:lang="pt_BR">Atualizações de descrição</p>
 			</description>
 			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.5.0-7</url>
 			<issues>
@@ -188,11 +172,9 @@
 			</issues>
 		</release>
 		<release version="1.5.0-6" date="2023-02-13" urgency="low">
-			<description xml:lang="en">
+			<description>
 				<p>Also look into sbin for tlp and tlp-stat binaries</p>
-			</description>
-			<description xml:lang="pt_BR">
-				<p>Procure também no sbin os binários tlp e tlp-stat</p>
+				<p xml:lang="pt_BR">Procure também no sbin os binários tlp e tlp-stat</p>
 			</description>
 			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.5.0-6</url>
 			<issues>
@@ -201,11 +183,9 @@
 			</issues>
 		</release>
 		<release version="1.5.0-5" date="2022-08-03" urgency="low">
-			<description xml:lang="en">
+			<description>
 				<p>Also look into sbin for required Flatpak binaries</p>
-			</description>
-			<description xml:lang="pt_BR">
-				<p>Procure também no sbin os binários Flatpak necessários</p>
+				<p xml:lang="pt_BR">Procure também no sbin os binários Flatpak necessários</p>
 			</description>
 			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.5.0-5</url>
 			<issues>
@@ -213,11 +193,9 @@
 			</issues>
 		</release>
 		<release version="1.5.0-4" date="2022-08-01" urgency="low">
-			<description xml:lang="en">
+			<description>
 				<p>Fix Flatpak host execution issues</p>
-			</description>
-			<description xml:lang="pt_BR">
-				<p>Corrigir problemas de execução do host Flatpak</p>
+				<p xml:lang="pt_BR">Corrigir problemas de execução do host Flatpak</p>
 			</description>
 			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.5.0-4</url>
 			<issues>
@@ -225,11 +203,9 @@
 			</issues>
 		</release>
 		<release version="1.5.0-3" date="2022-07-22" urgency="low">
-			<description xml:lang="en">
+			<description>
 				<p>Apply changes to match Flathub deployment requirements</p>
-			</description>
-			<description xml:lang="pt_BR">
-				<p>Aplicar alterações para atender aos requisitos de implantação do Flathub</p>
+				<p xml:lang="pt_BR">Aplicar alterações para atender aos requisitos de implantação do Flathub</p>
 			</description>
 			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.5.0-3</url>
 			<issues>
@@ -237,11 +213,9 @@
 			</issues>
 		</release>
 		<release version="1.5.0-2" date="2022-07-21" urgency="medium">
-			<description xml:lang="en">
+			<description>
 				<p>Fix UI issues for intrinsic defaults.</p>
-			</description>
-			<description xml:lang="pt_BR">
-				<p>Corrija problemas de UI para padrões intrínsecos.</p>
+				<p xml:lang="pt_BR">Corrija problemas de UI para padrões intrínsecos.</p>
 			</description>
 			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.5.0-2</url>
 			<issues>
