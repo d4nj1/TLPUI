@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2025-02-19 15:03+0100\n"
-"PO-Revision-Date: 2025-02-19 15:04+0100\n"
+"POT-Creation-Date: 2025-11-09 14:15+0100\n"
+"PO-Revision-Date: 2025-11-09 14:24+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _\n"
@@ -25,6 +25,16 @@ msgid "TLP_ENABLE__ID_DESCRIPTION"
 msgstr "Enable/disable TLP"
 
 #: configschema.yaml.h:3
+msgid "TLP_DISABLE_DEFAULTS__ID_DESCRIPTION"
+msgstr ""
+"Set to 1 to deactivate all intrinsic defaults of TLP. This means that\n"
+"TLP only applies settings that have been explicitly activated i.e.\n"
+"parameters without a leading '#'.\n"
+"Notes:\n"
+"- Helpful if one wants to use only selected features of TLP\n"
+"- After activation, use tlp-stat -c to display your effective configuration"
+
+#: configschema.yaml.h:4
 msgid "TLP_WARN_LEVEL__ID_DESCRIPTION"
 msgstr ""
 "Control how warnings about invalid settings are issued:\n"
@@ -33,7 +43,7 @@ msgstr ""
 "2=shell commands report to the terminal (stderr),\n"
 "3=combination of 1 and 2"
 
-#: configschema.yaml.h:4
+#: configschema.yaml.h:5
 msgid "TLP_MSG_COLORS__ID_DESCRIPTION"
 msgstr ""
 "Colorize error, warning, notice and success messages.\n"
@@ -46,13 +56,27 @@ msgstr ""
 "By default, errors are shown in red, warnings in yellow, notices in bold and "
 "success in green"
 
-#: configschema.yaml.h:5
+#: configschema.yaml.h:6
+msgid "TLP_AUTO_SWITCH__ID_DESCRIPTION"
+msgstr ""
+"Control automatic switching of the power profile when connecting or "
+"removing\n"
+"the charger, when booting the system or when executing 'tlp start':\n"
+"0=disabled - never switch, use TLP_DEFAULT_MODE if configured\n"
+"1=auto - always switch, select performance on AC and\n"
+"balanced on battery power.\n"
+"2=smart - do not switch if the following profiles were active previously:\n"
+"power-saver or balanced on AC resp.\n"
+"power-saver or performance on battery power.\n"
+"Note: the same applies if the charger was connected/removed during suspend"
+
+#: configschema.yaml.h:7
 msgid "TLP_DEFAULT_MODE__ID_DESCRIPTION"
 msgstr ""
 "Operation mode when no power supply can be detected: AC, BAT.\n"
 "Concerns some desktop and embedded hardware only"
 
-#: configschema.yaml.h:6
+#: configschema.yaml.h:8
 msgid "TLP_PERSISTENT_DEFAULT__ID_DESCRIPTION"
 msgstr ""
 "Operation mode select:\n"
@@ -60,7 +84,7 @@ msgstr ""
 "1=always use TLP_DEFAULT_MODE\n"
 "Hint: use in conjunction with TLP_DEFAULT_MODE=BAT for BAT settings on AC"
 
-#: configschema.yaml.h:7
+#: configschema.yaml.h:9
 msgid "TLP_PS_IGNORE__ID_DESCRIPTION"
 msgstr ""
 "Power supply classes to ignore when determining operation mode: AC, USB, "
@@ -68,11 +92,11 @@ msgstr ""
 "Separate multiple classes with spaces.\n"
 "Note: try on laptops where operation mode AC/BAT is incorrectly detected"
 
-#: configschema.yaml.h:8
+#: configschema.yaml.h:10
 msgid "Audio__CATEGORY_TITLE"
 msgstr "Audio"
 
-#: configschema.yaml.h:9
+#: configschema.yaml.h:11
 msgid "SOUND_POWER_SAVE__GROUP_DESCRIPTION"
 msgstr ""
 "Enable audio power saving for Intel HDA, AC97 devices (timeout in secs).\n"
@@ -80,28 +104,28 @@ msgstr ""
 "Note: 1 is recommended for Linux desktop environments with PulseAudio,\n"
 "systems without PulseAudio may require 10"
 
-#: configschema.yaml.h:10
+#: configschema.yaml.h:12
 msgid "SOUND_POWER_SAVE_CONTROLLER__ID_DESCRIPTION"
 msgstr ""
 "Disable controller too (HDA only): Y/N.\n"
 "Note: effective only when SOUND_POWER_SAVE_ON_AC/BAT is activated"
 
-#: configschema.yaml.h:11
+#: configschema.yaml.h:13
 msgid "Disks__CATEGORY_TITLE"
 msgstr "Disks"
 
-#: configschema.yaml.h:12
+#: configschema.yaml.h:14
 msgid "DISK_IDLE_SECS__GROUP_DESCRIPTION"
 msgstr ""
 "Seconds laptop mode has to wait after the disk goes idle before doing a "
 "sync.\n"
 "Non-zero value enables, zero disables laptop mode"
 
-#: configschema.yaml.h:13
+#: configschema.yaml.h:15
 msgid "MAX_LOST_WORK_SECS__GROUP_DESCRIPTION"
 msgstr "Dirty page values (timeouts in secs)"
 
-#: configschema.yaml.h:14
+#: configschema.yaml.h:16
 msgid "DISK_DEVICES__ID_DESCRIPTION"
 msgstr ""
 "Define disk devices on which the following DISK/AHCI_RUNTIME parameters "
@@ -109,7 +133,7 @@ msgstr ""
 "Separate multiple devices with spaces.\n"
 "Devices can be specified by disk ID also (lookup with: tlp diskid)"
 
-#: configschema.yaml.h:15
+#: configschema.yaml.h:17
 msgid "DISK_APM_LEVEL__GROUP_DESCRIPTION"
 msgstr ""
 "Hard disk advanced power management level: 1..254, 255 (max saving, min, "
@@ -119,7 +143,7 @@ msgstr ""
 "'keep'\n"
 "to keep the hardware default for the particular disk"
 
-#: configschema.yaml.h:16
+#: configschema.yaml.h:18
 msgid "DISK_APM_CLASS_DENYLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclude disk classes from advanced power management (APM):\n"
@@ -130,7 +154,7 @@ msgstr ""
 "Be careful and make sure you have backups of all affected media before "
 "removing 'usb' or 'ieee1394' from the denylist(!)"
 
-#: configschema.yaml.h:17
+#: configschema.yaml.h:19
 msgid "DISK_SPINDOWN_TIMEOUT__GROUP_DESCRIPTION"
 msgstr ""
 "Hard disk spin down timeout:\n"
@@ -139,13 +163,13 @@ msgstr ""
 "241..251:\ttimeouts from 30min to 5.5 hours (in units of 30min)\n"
 "(see 'man hdparm' for details)"
 
-#: configschema.yaml.h:18
+#: configschema.yaml.h:20
 msgid "DISK_IOSCHED__ID_DESCRIPTION"
 msgstr ""
 "Select io scheduler for the disk devices: noop/deadline/cfq (Default: cfq)\n"
 "Separate values for multiple devices with spaces"
 
-#: configschema.yaml.h:19
+#: configschema.yaml.h:21
 msgid "SATA_LINKPWR__GROUP_DESCRIPTION"
 msgstr ""
 "AHCI link power management (ALPM) for SATA disks:\n"
@@ -153,13 +177,13 @@ msgstr ""
 "(*) Kernel 4.15 (or newer) required, then recommended.\n"
 "Multiple values separated with spaces are tried sequentially until success"
 
-#: configschema.yaml.h:20
+#: configschema.yaml.h:22
 msgid "SATA_LINKPWR_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclude SATA host devices from link power management.\n"
 "Separate multiple hosts with spaces"
 
-#: configschema.yaml.h:21
+#: configschema.yaml.h:23
 msgid "SATA_LINKPWR_DENYLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclude SATA links from AHCI link power management (ALPM).\n"
@@ -167,7 +191,7 @@ msgstr ""
 "tlp-stat -d to determine the host; the format is \"hostX\".\n"
 "Separate multiple hosts with spaces"
 
-#: configschema.yaml.h:22
+#: configschema.yaml.h:24
 msgid "AHCI_RUNTIME_PM__GROUP_DESCRIPTION"
 msgstr ""
 "Runtime Power Management for NVMe, SATA, ATA and USB disks as well as SATA "
@@ -176,11 +200,11 @@ msgstr ""
 "Note: SATA controllers are PCIe bus devices and handled by RUNTIME_PM "
 "further down"
 
-#: configschema.yaml.h:23
+#: configschema.yaml.h:25
 msgid "AHCI_RUNTIME_PM_TIMEOUT__ID_DESCRIPTION"
 msgstr "Seconds of inactivity before disk is suspended"
 
-#: configschema.yaml.h:24
+#: configschema.yaml.h:26
 msgid "BAY_POWEROFF__GROUP_DESCRIPTION"
 msgstr ""
 "Power off optical drive in UltraBay/MediaBay: 0=disable, 1=enable.\n"
@@ -189,42 +213,42 @@ msgstr ""
 "or by pressing the disc eject button on newer models.\n"
 "Note: an UltraBay/MediaBay hard disk is never powered off"
 
-#: configschema.yaml.h:25
+#: configschema.yaml.h:27
 msgid "BAY_DEVICE__ID_DESCRIPTION"
 msgstr "Optical drive device to power off (default sr0)"
 
-#: configschema.yaml.h:26
+#: configschema.yaml.h:28
 msgid "Graphics__CATEGORY_TITLE"
 msgstr "Graphics"
 
-#: configschema.yaml.h:27
+#: configschema.yaml.h:29
 msgid "INTEL_GPU_FREQ__GROUP_DESCRIPTION"
 msgstr ""
 "Set the min/max/turbo frequency for the Intel GPU.\n"
 "Possible values depend on your hardware. For available frequencies see\n"
 "the output of tlp-stat -g"
 
-#: configschema.yaml.h:28
+#: configschema.yaml.h:30
 msgid "RADEON_POWER_PROFILE__GROUP_DESCRIPTION"
 msgstr ""
 "Graphics clock speed (profile method): low, mid, high, auto, default;\n"
 "auto = mid on BAT, high on AC.\n"
 "Note: radeon driver on legacy ATI hardware only (where DPM is not available)"
 
-#: configschema.yaml.h:29
+#: configschema.yaml.h:31
 msgid "RADEON_DPM_STATE__GROUP_DESCRIPTION"
 msgstr ""
 "Dynamic power management method (DPM): balanced, battery, performance.\n"
 "Note: radeon driver only"
 
-#: configschema.yaml.h:30
+#: configschema.yaml.h:32
 msgid "RADEON_DPM_PERF_LEVEL__GROUP_DESCRIPTION"
 msgstr ""
 "AMD GPU power management.\n"
 "Performance level (DPM): auto, low, high; auto is recommended.\n"
 "Note: requires amdgpu or radeon driver"
 
-#: configschema.yaml.h:31
+#: configschema.yaml.h:33
 msgid "AMDGPU_ABM_LEVEL__GROUP_DESCRIPTION"
 msgstr ""
 "Display panel adaptive backlight modulation (ABM) level: 0(off), 1..4.\n"
@@ -234,40 +258,40 @@ msgstr ""
 "- Requires AMD Vega or newer GPU with amdgpu driver as of kernel 6.9\n"
 "- Savings are made at the expense of color balance"
 
-#: configschema.yaml.h:32
+#: configschema.yaml.h:34
 msgid "Network__CATEGORY_TITLE"
 msgstr "Network"
 
-#: configschema.yaml.h:33
+#: configschema.yaml.h:35
 msgid "WIFI_PWR__GROUP_DESCRIPTION"
 msgstr "Wi-Fi power saving mode"
 
-#: configschema.yaml.h:34
+#: configschema.yaml.h:36
 msgid "WOL_DISABLE__ID_DESCRIPTION"
 msgstr "Disable wake on LAN"
 
-#: configschema.yaml.h:35
+#: configschema.yaml.h:37
 msgid "PCIe__CATEGORY_TITLE"
 msgstr "PCIe"
 
-#: configschema.yaml.h:36
+#: configschema.yaml.h:38
 msgid "PCIE_ASPM__GROUP_DESCRIPTION"
 msgstr ""
 "PCIe Active State Power Management (ASPM):\n"
 "- default(*), performance, powersave, powersupersave.\n"
 "(*) keeps BIOS ASPM defaults (recommended)"
 
-#: configschema.yaml.h:37
+#: configschema.yaml.h:39
 msgid "RUNTIME_PM__GROUP_DESCRIPTION"
 msgstr "Runtime Power Management for PCIe bus devices"
 
-#: configschema.yaml.h:38
+#: configschema.yaml.h:40
 msgid "RUNTIME_PM_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclude PCI(e) device addresses the following list from Runtime PM\n"
 "(separate with spaces). Use lspci to get the adresses (1st column)"
 
-#: configschema.yaml.h:39
+#: configschema.yaml.h:41
 msgid "RUNTIME_PM_DRIVER_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclude PCI(e) devices assigned to the listed drivers from Runtime PM\n"
@@ -275,7 +299,7 @@ msgstr ""
 "Default is \"radeon nouveau\"; use \"\" to disable the feature completely.\n"
 "Separate multiple drivers with spaces"
 
-#: configschema.yaml.h:40
+#: configschema.yaml.h:42
 msgid "RUNTIME_PM_DENYLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclude listed PCIe device adresses from Runtime PM.\n"
@@ -284,7 +308,7 @@ msgstr ""
 "Separate multiple addresses with spaces.\n"
 "Use lspci to get the addresses (1st column)"
 
-#: configschema.yaml.h:41
+#: configschema.yaml.h:43
 msgid "RUNTIME_PM_DRIVER_DENYLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclude PCIe devices assigned to the listed drivers from Runtime PM.\n"
@@ -293,7 +317,7 @@ msgstr ""
 "Separate multiple drivers with spaces.\n"
 "Leave empty to disable completely"
 
-#: configschema.yaml.h:42
+#: configschema.yaml.h:44
 msgid "RUNTIME_PM_DEVICE__GROUP_DESCRIPTION"
 msgstr ""
 "Permanently enable/disable Runtime PM for listed PCIe device addresses "
@@ -302,11 +326,11 @@ msgstr ""
 "addresses with spaces.\n"
 "Use lspci to get the adresses (1st column)"
 
-#: configschema.yaml.h:43
+#: configschema.yaml.h:45
 msgid "Processor__CATEGORY_TITLE"
 msgstr "Processor"
 
-#: configschema.yaml.h:44
+#: configschema.yaml.h:46
 msgid "CPU_DRIVER_OPMODE__GROUP_DESCRIPTION"
 msgstr ""
 "Select a CPU scaling driver operation mode.\n"
@@ -314,7 +338,7 @@ msgstr ""
 "AMD Zen 2 or newer CPU with amd-pstate driver as of kernel 6.3/6.4:\n"
 "active, passive, guided"
 
-#: configschema.yaml.h:45
+#: configschema.yaml.h:47
 msgid "CPU_SCALING_GOVERNOR__GROUP_DESCRIPTION"
 msgstr ""
 "Select a CPU frequency scaling governor.\n"
@@ -332,7 +356,7 @@ msgstr ""
 "- You should have done your research about advantages/disadvantages *before* "
 "changing the governor"
 
-#: configschema.yaml.h:46
+#: configschema.yaml.h:48
 msgid "CPU_SCALING_FREQ__GROUP_DESCRIPTION"
 msgstr ""
 "Set the min/max frequency available for the scaling governor.\n"
@@ -343,7 +367,7 @@ msgstr ""
 "- Not recommended for use with the intel_pstate scaling driver, use CPU_MIN/"
 "MAX_PERF_ON_AC/BAT instead"
 
-#: configschema.yaml.h:47
+#: configschema.yaml.h:49
 msgid "CPU_ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
 msgstr ""
 "Set Intel CPU energy/performance policies HWP.EPP and EPB:\n"
@@ -357,7 +381,7 @@ msgstr ""
 "2nd gen. or newer CPU\n"
 "- When HWP.EPP is available, EPB is not set"
 
-#: configschema.yaml.h:48
+#: configschema.yaml.h:50
 msgid "CPU_PERF__GROUP_DESCRIPTION"
 msgstr ""
 "Set Intel CPU P-state performance: 0..100 (%).\n"
@@ -366,14 +390,14 @@ msgstr ""
 "Requires intel_pstate or intel_cpufreq driver and Intel Core i 2nd gen. or\n"
 "newer CPU"
 
-#: configschema.yaml.h:49
+#: configschema.yaml.h:51
 msgid "CPU_BOOST__GROUP_DESCRIPTION"
 msgstr ""
 "Set the CPU \"turbo boost\" (Intel) or \"turbo core\" (AMD) feature:\n"
 "- 0=disable, 1=allow.\n"
 "Note: a value of 1 does *not* activate boosting, it just allows it"
 
-#: configschema.yaml.h:50
+#: configschema.yaml.h:52
 msgid "CPU_HWP_DYN_BOOST__GROUP_DESCRIPTION"
 msgstr ""
 "Set the Intel CPU HWP dynamic boost feature:\n"
@@ -381,18 +405,18 @@ msgstr ""
 "Requires intel_pstate scaling driver in 'active' mode and Intel Core i 6th "
 "gen. or newer CPU"
 
-#: configschema.yaml.h:51
+#: configschema.yaml.h:53
 msgid "SCHED_POWERSAVE__GROUP_DESCRIPTION"
 msgstr ""
 "Minimize number of used cpu cores/hyper-threads under light load conditions"
 
-#: configschema.yaml.h:52
+#: configschema.yaml.h:54
 msgid "NMI_WATCHDOG__ID_DESCRIPTION"
 msgstr ""
 "Kernel NMI Watchdog\n"
 "off: saves power, on: for kernel debugging only"
 
-#: configschema.yaml.h:53
+#: configschema.yaml.h:55
 msgid "PHC_CONTROLS__ID_DESCRIPTION"
 msgstr ""
 "Change CPU voltages aka \"undervolting\"\n"
@@ -401,7 +425,7 @@ msgstr ""
 "phc_controls\n"
 "CAUTION: only use this, if you thoroughly understand what you are doing(!)"
 
-#: configschema.yaml.h:54
+#: configschema.yaml.h:56
 msgid "PLATFORM_PROFILE__GROUP_DESCRIPTION"
 msgstr ""
 "Select platform profile:\n"
@@ -412,7 +436,7 @@ msgstr ""
 "Note: check the output of tlp-stat -p to determine availability on your "
 "hardware and additional profiles such as: balanced-performance, quiet, cool"
 
-#: configschema.yaml.h:55
+#: configschema.yaml.h:57
 msgid "MEM_SLEEP__GROUP_DESCRIPTION"
 msgstr ""
 "System suspend mode:\n"
@@ -424,11 +448,11 @@ msgstr ""
 "output of tlp-stat -s. If unsure, stick with the system default by not "
 "enabling this"
 
-#: configschema.yaml.h:56
+#: configschema.yaml.h:58
 msgid "Radio__CATEGORY_TITLE"
 msgstr "Radio"
 
-#: configschema.yaml.h:57
+#: configschema.yaml.h:59
 msgid "RESTORE_DEVICE_STATE_ON_STARTUP__ID_DESCRIPTION"
 msgstr ""
 "Restore radio device state (Bluetooth, WiFi, WWAN) from previous shutdown on "
@@ -436,101 +460,101 @@ msgstr ""
 "Note: The parameters DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN are "
 "ignored when this is enabled"
 
-#: configschema.yaml.h:58
+#: configschema.yaml.h:60
 msgid "DEVICES_TO_DISABLE_ON_STARTUP__ID_DESCRIPTION"
 msgstr "Radio devices to disable on startup: bluetooth wifi wwan"
 
-#: configschema.yaml.h:59
+#: configschema.yaml.h:61
 msgid "DEVICES_TO_ENABLE_ON_STARTUP__ID_DESCRIPTION"
 msgstr "Radio devices to enable on startup: bluetooth wifi wwan"
 
-#: configschema.yaml.h:60
+#: configschema.yaml.h:62
 msgid "DEVICES_TO_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
 "Radio devices to disable on shutdown: bluetooth wifi wwan\n"
 "(workaround for devices that are blocking shutdown)"
 
-#: configschema.yaml.h:61
+#: configschema.yaml.h:63
 msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
 "Radio devices to enable on shutdown: bluetooth wifi wwan\n"
 "(to prevent other operating systems from missing radios)"
 
-#: configschema.yaml.h:62
+#: configschema.yaml.h:64
 msgid "DEVICES_TO_ENABLE_ON_AC__ID_DESCRIPTION"
 msgstr "Radio devices to enable on AC: bluetooth, wifi, wwan"
 
-#: configschema.yaml.h:63
+#: configschema.yaml.h:65
 msgid "DEVICES_TO_DISABLE_ON_BAT__ID_DESCRIPTION"
 msgstr "Radio devices to disable on battery: bluetooth, wifi, wwan"
 
-#: configschema.yaml.h:64
+#: configschema.yaml.h:66
 msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE__ID_DESCRIPTION"
 msgstr ""
 "Radio devices to disable on battery when not in use (not connected):\n"
 "bluetooth, wifi, wwan"
 
-#: configschema.yaml.h:65
+#: configschema.yaml.h:67
 msgid "Radio Device Wizard__CATEGORY_TITLE"
 msgstr "Radio Device Wizard"
 
-#: configschema.yaml.h:66
+#: configschema.yaml.h:68
 msgid "DEVICES_TO_DISABLE_ON_CONNECT__GROUP_DESCRIPTION"
 msgstr "Radio devices to disable on connect"
 
-#: configschema.yaml.h:67
+#: configschema.yaml.h:69
 msgid "DEVICES_TO_ENABLE_ON_DISCONNECT__GROUP_DESCRIPTION"
 msgstr "Radio devices to enable on disconnect"
 
-#: configschema.yaml.h:68
+#: configschema.yaml.h:70
 msgid "DEVICES_ON_DOCK__GROUP_DESCRIPTION"
 msgstr "Radio devices to enable/disable when docked"
 
-#: configschema.yaml.h:69
+#: configschema.yaml.h:71
 msgid "DEVICES_ON_UNDOCK__GROUP_DESCRIPTION"
 msgstr "Radio devices to enable/disable when undocked"
 
-#: configschema.yaml.h:70
+#: configschema.yaml.h:72
 msgid "USB__CATEGORY_TITLE"
 msgstr "USB"
 
-#: configschema.yaml.h:71
+#: configschema.yaml.h:73
 msgid "USB_AUTOSUSPEND__ID_DESCRIPTION"
 msgstr "USB autosuspend feature"
 
-#: configschema.yaml.h:72
+#: configschema.yaml.h:74
 msgid "USB_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
 "Devices from the following list are excluded from autosuspend\n"
 "(separate with spaces). Use lsusb to get the ids.\n"
 "Note: input devices (usbhid) are excluded automatically"
 
-#: configschema.yaml.h:73
+#: configschema.yaml.h:75
 msgid "USB_BLACKLIST_BTUSB__ID_DESCRIPTION"
 msgstr "Bluetooth devices are excluded from USB autosuspend"
 
-#: configschema.yaml.h:74
+#: configschema.yaml.h:76
 msgid "USB_BLACKLIST_PHONE__ID_DESCRIPTION"
 msgstr "Phone devices are excluded from USB autosuspend"
 
-#: configschema.yaml.h:75
+#: configschema.yaml.h:77
 msgid "USB_BLACKLIST_PRINTER__ID_DESCRIPTION"
 msgstr "Printers are excluded from USB autosuspend"
 
-#: configschema.yaml.h:76
+#: configschema.yaml.h:78
 msgid "USB_BLACKLIST_WWAN__ID_DESCRIPTION"
 msgstr ""
 "WWAN devices are excluded from autosuspend.\n"
 "Note: works for ids 05c6:* 0bdb:* 1199:* only"
 
-#: configschema.yaml.h:77
+#: configschema.yaml.h:79
 msgid "USB_WHITELIST__ID_DESCRIPTION"
 msgstr ""
 "Include listed devices into autosuspend even if already excluded\n"
 "by the driver or WWAN blacklists above (separate with spaces).\n"
 "Use lsusb to get the ids"
 
-#: configschema.yaml.h:78
+#: configschema.yaml.h:80
 msgid "USB_DENYLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclude listed devices from USB autosuspend (separate with spaces).\n"
@@ -538,53 +562,53 @@ msgstr ""
 "Note: input devices (usbhid) and libsane-supported scanners are excluded "
 "automatically"
 
-#: configschema.yaml.h:79
+#: configschema.yaml.h:81
 msgid "USB_EXCLUDE_AUDIO__ID_DESCRIPTION"
 msgstr ""
 "Exclude audio devices from USB autosuspend:\n"
 "- 0=do not exclude, 1=exclude"
 
-#: configschema.yaml.h:80
+#: configschema.yaml.h:82
 msgid "USB_EXCLUDE_BTUSB__ID_DESCRIPTION"
 msgstr ""
 "Exclude bluetooth devices from USB autosuspend:\n"
 "- 0=do not exclude, 1=exclude"
 
-#: configschema.yaml.h:81
+#: configschema.yaml.h:83
 msgid "USB_EXCLUDE_PHONE__ID_DESCRIPTION"
 msgstr ""
 "Exclude phone devices from USB autosuspend:\n"
 "- 0=do not exclude, 1=exclude (enable charging)"
 
-#: configschema.yaml.h:82
+#: configschema.yaml.h:84
 msgid "USB_EXCLUDE_PRINTER__ID_DESCRIPTION"
 msgstr ""
 "Exclude printers from USB autosuspend:\n"
 "- 0=do not exclude, 1=exclude"
 
-#: configschema.yaml.h:83
+#: configschema.yaml.h:85
 msgid "USB_EXCLUDE_WWAN__ID_DESCRIPTION"
 msgstr ""
 "Exclude WWAN devices from USB autosuspend:\n"
 "- 0=do not exclude, 1=exclude"
 
-#: configschema.yaml.h:84
+#: configschema.yaml.h:86
 msgid "USB_ALLOWLIST__ID_DESCRIPTION"
 msgstr ""
 "Allow USB autosuspend for listed devices even if already denylisted or\n"
 "excluded above (separate with spaces). Use lsusb to get the ids"
 
-#: configschema.yaml.h:85
+#: configschema.yaml.h:87
 msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
 "Set to disable autosuspend before shutdown / otherwise to do nothing\n"
 "(workaround for USB devices that cause shutdown problems)"
 
-#: configschema.yaml.h:86
+#: configschema.yaml.h:88
 msgid "ThinkPad Battery__CATEGORY_TITLE"
 msgstr "ThinkPad Battery"
 
-#: configschema.yaml.h:87
+#: configschema.yaml.h:89
 msgid "CHARGE_THRESH_BAT0__GROUP_DESCRIPTION"
 msgstr ""
 "Battery Care -- Charge thresholds\n"
@@ -607,23 +631,23 @@ msgstr ""
 "BAT0: Primary / Main / Internal battery (values in %)\n"
 "Note: also use for batteries BATC, BATT and CMB0"
 
-#: configschema.yaml.h:88
+#: configschema.yaml.h:90
 msgid "CHARGE_THRESH_BAT1__GROUP_DESCRIPTION"
 msgstr "BAT1: Secondary / Ultrabay / Slice / Replaceable battery (values in %)"
 
-#: configschema.yaml.h:89
+#: configschema.yaml.h:91
 msgid "RESTORE_THRESHOLDS_ON_BAT__ID_DESCRIPTION"
 msgstr "Restore charge thresholds when AC is unplugged"
 
-#: configschema.yaml.h:90
+#: configschema.yaml.h:92
 msgid "NATACPI_ENABLE__ID_DESCRIPTION"
 msgstr "Control battery care drivers: 0=disable, 1=enable"
 
-#: configschema.yaml.h:91
+#: configschema.yaml.h:93
 msgid "TPACPI_ENABLE__ID_DESCRIPTION"
 msgstr "ThinkPad battery drivers: 0=disable, 1=enable"
 
-#: configschema.yaml.h:92
+#: configschema.yaml.h:94
 msgid "TPSMAPI_ENABLE__ID_DESCRIPTION"
 msgstr "ThinkPad battery drivers: 0=disable, 1=enable"
 
