@@ -29,7 +29,7 @@ Instructions on how to install Flatpak version of Tlp-ui can be found [here](htt
 
 ## Arch Linux
 
-[tlpui](https://aur.archlinux.org/packages/tlpui/) - Stable release.
+[tlpui](https://archlinux.org/packages/extra/any/tlpui/) - Stable release.
 
 [tlpui-git](https://aur.archlinux.org/packages/tlpui-git) - If you always want to use the latest and greatest master branch version from Tlp-ui repository.
 
