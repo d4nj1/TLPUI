@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """Entrypoint for UI."""
+import os
+from .backend import detect_display
+os.environ["GDK_BACKEND"] = detect_display()
 
 import gi
 gi.require_version('Gtk', '3.0')
