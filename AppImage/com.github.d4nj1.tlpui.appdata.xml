@@ -223,4 +223,11 @@
 			</issues>
 		</release>
 	</releases>
+	<keywords>
+		<keyword>tlp configuration</keyword>
+		<keyword>tlp settings</keyword>
+		<keyword>linux hardware manager</keyword>
+		<keyword>tlp ui tool</keyword>
+		<keyword>fan control software</keyword>
+	</keywords>
 </component>

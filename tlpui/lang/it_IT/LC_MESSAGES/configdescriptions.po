@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: TLPUI\n"
 "POT-Creation-Date: 2024-11-12 22:07+0100\n"
 "PO-Revision-Date: 2025-11-02 12:37+0100\n"
-"Last-Translator: \n"
+"Last-Translator: Mario Stabile\n"
 "Language-Team: \n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -22,32 +22,32 @@ msgstr "Generale"
 
 #: configschema.yaml.h:2
 msgid "TLP_ENABLE__ID_DESCRIPTION"
-msgstr "Attivato/disattivato TLP"
+msgstr "TLP attivato/disattivato"
 
 #: configschema.yaml.h:3
 msgid "TLP_WARN_LEVEL__ID_DESCRIPTION"
 msgstr ""
-"Controlla come vengono emessi gli avvisi sulle impostazioni non valide:\n"
-"0=disattivato,\n"
-"1=attività in background (avvio, ripresa, cambio di alimentazione) segnalate a syslog,\n"
+"Controllo su come vengono emessi gli avvisi delle impostazioni non valide:\n"
+"0=avvisi disattivati,\n"
+"1=attività in background (avvio, ripresa, cambio di alimentazione) riportate sul syslog,\n"
 "2=i comandi di shell vengono riportati nel terminale (stderr),\n"
 "3=combinazione di 1 e 2"
 
 #: configschema.yaml.h:4
 msgid "TLP_MSG_COLORS__ID_DESCRIPTION"
 msgstr ""
-"Colorare i messaggi di errore, avvertimento, avviso e successo\n"
+"Colorazione dei messaggi di errore, avvertimento, avviso e successo.\n"
 "I colori sono specificati con i codici ANSI:\n"
 "1=grassetto nero, 90=grigio, 91=rosso, 92=verde, 93=giallo, 94=blu, 95=magenta, 96=ciano, 97=bianco.\n"
 "Altri colori sono disponibili, fai riferimento a:\n"
 "https://it.wikipedia.org/wiki/Codici_di_escape_ANSI\n"
-"I colori devono essere specificati in ordine \"errore, avvertimento, avviso, successo\".\n"
-"Per default, gli errori sono mostrati in rosso, gli avvertimenti in giallo, gli avvisi in grassetto e i successi in verde"
+"I colori devono essere specificati in questo ordine: \"errore, avvertimento, avviso, successo\".\n"
+"Di default, gli errori sono mostrati in rosso, gli avvertimenti in giallo, gli avvisi in grassetto nero e i successi in verde"
 
 #: configschema.yaml.h:5
 msgid "TLP_DEFAULT_MODE__ID_DESCRIPTION"
 msgstr ""
-"Modalità di funzionamento quando non è possibile rilevare alcuna alimentazione: AC, BAT.\n"
+"Modalità di funzionamento quando non si rilevare alcuna alimentazione: AC, BAT.\n"
 "Riguarda solamente l'hardware di qualche desktop e dispositivo embedded"
 
 #: configschema.yaml.h:6
@@ -56,14 +56,14 @@ msgstr ""
 "Selezione della modalità di funzionamento:\n"
 "0=dipende dalla fonte di alimentazione\n"
 "1=utilizza sempre TLP_DEFAULT_MODE\n"
-"Suggerimento: utilizzare insieme a TLP_DEFAULT_MODE=BAT per le impostazioni BAT su AC"
+"Suggerimento: usa in unione a TLP_DEFAULT_MODE=BAT per le impostazioni BAT su AC"
 
 #: configschema.yaml.h:7
 msgid "TLP_PS_IGNORE__ID_DESCRIPTION"
 msgstr ""
 "Classi di alimentazione da ignorare quando si determina la modalità di funzionamento: AC, USB, BAT.\n"
-"Separare più classi con spazi.\n"
-"Nota: provare su computer portatili in cui la modalità di funzionamento AC/BAT viene rilevata in modo errato"
+"Classi multiple vanno separate con degli spazi.\n"
+"Nota: da testare su computer portatili in cui la modalità di funzionamento AC/BAT viene rilevata in modo errato"
 
 #: configschema.yaml.h:8
 msgid "Audio__CATEGORY_TITLE"
@@ -75,13 +75,13 @@ msgstr ""
 "Abilita il risparmio energetico audio per i dispositivi Intel HDA, AC97 (timeout in secondi).\n"
 "Un valore di 0 disabilita, >= 1 abilita il risparmio energetico.\n"
 "Nota: 1 è consigliato per gli ambienti desktop Linux con PulseAudio,\n"
-"I sistemi senza PulseAudio possono richiedere 10"
+"I sistemi senza PulseAudio possono richiedere fino a 10"
 
 #: configschema.yaml.h:10
 msgid "SOUND_POWER_SAVE_CONTROLLER__ID_DESCRIPTION"
 msgstr ""
 "Disabilita anche il controller (solo HDA): S/N.\n"
-"Nota: efficace solo quando SOUND_POWER_SAVE_ON_AC/BAT è attivato"
+"Nota: efficace solo quando SOUND_POWER_SAVE_ON_AC/BAT è attivo"
 
 #: configschema.yaml.h:11
 msgid "Disks__CATEGORY_TITLE"
@@ -90,91 +90,93 @@ msgstr "Dischi"
 #: configschema.yaml.h:12
 msgid "DISK_IDLE_SECS__GROUP_DESCRIPTION"
 msgstr ""
-"I secondi che la modalità laptop deve attendere dopo che il disco è inattivo prima di eseguire una sync.\n"
+"Il tempo in secondi che la modalità laptop deve attendere per eseguire una Sync dopo che il disco è in idle prima.\n"
 "Un valore diverso da zero attiva, zero disattiva la modalità laptop"
 
 #: configschema.yaml.h:13
 msgid "MAX_LOST_WORK_SECS__GROUP_DESCRIPTION"
-msgstr "Valori di dirty page (timeout in seccondi)"
+msgstr "Valori di dirty page (timeout in secondi)"
 
 #: configschema.yaml.h:14
 msgid "DISK_DEVICES__ID_DESCRIPTION"
 msgstr ""
-"Definire i dispositivi disco su cui agiscono i seguenti parametri DISK/AHCI_RUNTIME \n"
-"Separare più dispositivi con spazi.\n"
+"Definsce i dischi su cui agiscono i seguenti parametri DISK/AHCI_RUNTIME \n"
+"Separare più dispositivi con degli spazi.\n"
 "I dispositivi possono essere specificati anche in base all'ID del disco (cercare con: tlp diskid)"
 
 #: configschema.yaml.h:15
 msgid "DISK_APM_LEVEL__GROUP_DESCRIPTION"
 msgstr ""
-"Livello di gestione avanzata dell'energia del disco rigido: 1..254, 255 (risparmio massimo, min, off)\n"
-"I livelli 1...127 possono ridurre il disco; 255 è consentito sulla maggior parte delle unità.\n"
-"Separare i valori per più dischi con degli spazi. Utilizzare il valore speciale \"keep\" per mantenere l'hardware predefinito per quel particolare disco"
+"Gestione energentica avanzata per i dischi rigidi: \n1..254, 255 (risparmio massimo, min, off)\n"
+"I livelli da 1...127 potrebbero ridurre i giri del disco; 255 dovrebbe andare ben sulla maggior parte delle unità.\n"
+"Separare i valori per più dischi con degli spazi. Utilizzare il valore speciale \"keep\" per mantenere l'hardware predefinito su uno specifico disco"
 
 #: configschema.yaml.h:16
 msgid "DISK_APM_CLASS_DENYLIST__ID_DESCRIPTION"
 msgstr ""
-"Escludere le classi di dischi dalla gestione avanzata dell 'alimentazione (APM):\n"
+"Esclude le classi di dischi dalla gestione energetica avanzata (APM):\n"
 "- sata, ata, usb, ieee1394.\n"
-"Separare più classi con spazi.\n"
-"ATTENZIONE: i dischi USB e IEEE1394 potrebbero non essere montati o i dati potrebbero essere danneggiati con APM abilitato.\n"
-"Fate attenzione e assicuratevi di avere dei backup di tutti i supporti interessati prima di rimuovere \"usb\" o \"ieee1394\" dalla denylist(!)"
+"Separare più classi con degli spazi.\n"
+"ATTENZIONE: i dischi USB e IEEE1394, con l'APM abilitato potrebbe fallire il montaggio o i dati potrebbero corrompersi.\n"
+"Fare attenzione e assicurasi di avere dei backup di tutti i supporti interessati prima di rimuovere \"usb\" o \"ieee1394\" dalla denylist(!)"
 
 #: configschema.yaml.h:17
 msgid "DISK_SPINDOWN_TIMEOUT__GROUP_DESCRIPTION"
 msgstr ""
 "Timeout di rotazione del disco rigido:\n"
-"0:\tˮ Disabilita la rotazione del disco rigido 1..240:´tutti i tempi da 5s a 20min (in unità di 5s)´\n"
-"241..251:´tutti i tempi da 30min a 5,5 ore (in unità di 30min)´n\" \"(vedere \"man hdparm\" per i dettagli)"
+"0: Disabilita la rotazione del disco rigido\n" 
+"1..240: Timeout da 5s a 20min (in unità di 5s)\n"
+"241..251: Timeout da 30min a 5.5 ore (in unità di 30min)\n"
+"(vedi \"man hdparm\" per i dettagli)"
 
 #: configschema.yaml.h:18
 msgid "DISK_IOSCHED__ID_DESCRIPTION"
 msgstr ""
-"Selezionare lo scheduler io per i dispositivi disco: noop/deadline/cfq (predefinito: cfq)\n"
-"Separare i valori per più dispositivi con spazi"
+"Seleziona lo scheduler IO per i dischi: noop/deadline/cfq (predefinito: cfq)\n"
+"Separare i valori per più dispositivi con degli spazi"
 
 #: configschema.yaml.h:19
 msgid "SATA_LINKPWR__GROUP_DESCRIPTION"
 msgstr ""
-"Gestione dell'alimentazione dei collegamenti AHCI (ALPM) per i dischi SATA:\n"
+"AHCI Link Power Management (ALPM) per i dischi SATA:\n"
 "- min_power, med_power_with_dipm(*), medium_power, max_performance.\n"
-"(*) Kernel 4.15 (o più recente) richiesto, quindi consigliato.\n"
-"I valori multipli separati da spazi vengono provati in sequenza fino al successo"
+"(*)Richiede il Kernel 4.15 (o più recente), consigliato.\n"
+"I valori multipli separati da spazi vengono provati in sequenza fino a esito positivo"
 
 #: configschema.yaml.h:20
 msgid "SATA_LINKPWR_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
-"Escludere i dispositivi host SATA dalla gestione dell'alimentazione del collegamento.\n"
-"Separare più host con spazi"
+"Esclude i link SATA dall'AHCI Link Power Management (ALPM).\n"
+"Separare più host con degli spazi"
 
 #: configschema.yaml.h:21
 msgid "SATA_LINKPWR_DENYLIST__ID_DESCRIPTION"
 msgstr ""
-"Escludere i collegamenti SATA dalla gestione dell'alimentazione dei collegamenti AHCI (ALPM).\n"
+"Esclude i link SATA dall'AHCI Link Power Management (ALPM).\n"
 "I collegamenti SATA sono specificati dal loro host. Per determinare l'host, fare riferimento all'output di \"tlp-stat -d\"; il formato è \"hostX\".\n"
 "Separare più host con degli spazi"
 
 #: configschema.yaml.h:22
 msgid "AHCI_RUNTIME_PM__GROUP_DESCRIPTION"
 msgstr ""
-"Gestione dell'alimentazione in tempo reale per i dischi NVMe, SATA, ATA e USB e per le porte SATA\n"
+"Gestione dell'alimentazione in tempo reale per dichi NVMe, SATA, ATA e USB oltre che per le porte SATA:\n"
 "- on=disabilita, auto=abilita.\n"
-"Nota: i controller SATA sono dispositivi del bus PCIe e sono gestiti da RUNTIME_PM \" \"più avanti"
+"Nota: i controller SATA sono dispositivi del bus PCIe e sono gestiti da RUNTIME_PM, più giu"
 
 #: configschema.yaml.h:23
 msgid "AHCI_RUNTIME_PM_TIMEOUT__ID_DESCRIPTION"
-msgstr "Secondi di inattività prima che il disco venga sospeso"
+msgstr "Secondi di inattività prima che il disco vada in sospensione"
 
 #: configschema.yaml.h:24
 msgid "BAY_POWEROFF__GROUP_DESCRIPTION"
 msgstr ""
-"Spegnere l'unità ottica nell'UltraBay/MediaBay: 0=disabilita, 1=abilita.\n"
+"Spegnimento unità ottiche nell'UltraBay/MediaBay:\n0=disabilita, 1=abilita.\n"
 "L'unità può essere riaccesa rilasciando (e reinserendo) la leva di espulsione o premendo il pulsante di espulsione del disco sui modelli più recenti.\n"
 "Nota: un disco rigido UltraBay/MediaBay non viene mai spento"
 
 #: configschema.yaml.h:25
 msgid "BAY_DEVICE__ID_DESCRIPTION"
-msgstr "Dispositivo unità ottica da spegnere (default sr0)"
+msgstr "Unità ottica da spegnere (default sr0)"
 
 #: configschema.yaml.h:26
 msgid "Graphics__CATEGORY_TITLE"
@@ -183,7 +185,7 @@ msgstr "Grafica"
 #: configschema.yaml.h:27
 msgid "INTEL_GPU_FREQ__GROUP_DESCRIPTION"
 msgstr ""
-"Impostare la frequenza min/max/turbo per la GPU Intel.\n"
+"Imposta la frequenza min/max/turbo per le GPU Intel.\n"
 "I valori possibili dipendono dall'hardware in uso. Per le frequenze disponibili vedere l'output di tlp-stat -g"
 
 #: configschema.yaml.h:28
@@ -196,23 +198,23 @@ msgstr ""
 #: configschema.yaml.h:29
 msgid "RADEON_DPM_STATE__GROUP_DESCRIPTION"
 msgstr ""
-"Metodo di gestione dinamica dell'energia (DPM): bilanciato, batteria, prestazioni.\n"
+"Dynamic Power Management (DPM): bilanciato, batteria, prestazioni.\n"
 "Nota: solo driver radeon"
 
 #: configschema.yaml.h:30
 msgid "RADEON_DPM_PERF_LEVEL__GROUP_DESCRIPTION"
 msgstr ""
-"Gestione dell'alimentazione della GPU AMD.\n"
-"Livello di prestazioni (DPM): auto, basso, alto; auto è consigliato.\n"
+"Gestione dell'alimentazione per GPU AMD.\n"
+"Livelli di prestazione (DPM): auto, basso, alto; auto è consigliato.\n"
 "Nota: richiede il driver amdgpu o radeon"
 
 #: configschema.yaml.h:31
 msgid "AMDGPU_ABM_LEVEL__GROUP_DESCRIPTION"
 msgstr ""
-"Livello di modulazione adattiva della retroilluminazione (ABM) del pannello del display: 0(off), 1..4.\n"
-"I valori 1..4 controllano la riduzione massima della luminosità consentita dall'algoritmo ABM dove 1 rappresenta il minimo e 4 il massimo risparmio energetico.\n"
+"Livelli dell'Adaptive Backlight Modulation (ABM) del pannello del display:\n0(off), 1..4.\n"
+"I valori 1..4 controllano la riduzione massima della luminosità consentita dall'algoritmo ABM, dove 1 rappresenta il minimo e 4 il massimo risparmio energetico.\n"
 "Note:\n"
-"- Richiede una GPU AMD Vega o più recente con driver amdgpu a partire dal kernel 6.9\n"
+"- Richiede delle GPU AMD Vega o più recenti con driver amdgpu a partire dal kernel 6.9\n"
 "- I risparmi sono ottenuti a spese del bilanciamento del colore"
 
 #: configschema.yaml.h:32
@@ -225,7 +227,7 @@ msgstr "Modalità di risparmio energetico Wi-Fi"
 
 #: configschema.yaml.h:34
 msgid "WOL_DISABLE__ID_DESCRIPTION"
-msgstr "Disabilita wake on LAN"
+msgstr "Disabilita il wake on LAN"
 
 #: configschema.yaml.h:35
 msgid "PCIe__CATEGORY_TITLE"
@@ -245,13 +247,13 @@ msgstr "Gestione dell'alimentazione in tempo reale per i dispositivi del bus PCI
 #: configschema.yaml.h:38
 msgid "RUNTIME_PM_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
-"Escludere gli indirizzi dei dispositivi PCI(e) del seguente elenco da Runtime PM\n"
-"(separati da spazi). Utilizzare lspci per ottenere gli indirizzi (1a colonna)"
+"Esclude dal Runtime PM gli indirizzi dei dispositivi PCIe del seguente elenco\n"
+"(separati da spazi). Utilizzare lspci per ottenere gli indirizzi (prima colonna)"
 
 #: configschema.yaml.h:39
 msgid "RUNTIME_PM_DRIVER_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
-"Escludi i dispositivi PCI(e) assegnati ai driver elencati dal Runtime PM\n"
+"Esclude dal Runtime PM i dispositivi PCIe assegnati ai driver elencati\n"
 "(dovrebbe prevenire l'accensione accidentale della parte discreta della grafica ibrida).\n"
 "L'impostazione predefinita è \"radeon nouveau\"; usa \"\" per disabilitare completamente la funzione.\n"
 "Separa più driver con degli spazi"
@@ -259,17 +261,16 @@ msgstr ""
 #: configschema.yaml.h:40
 msgid "RUNTIME_PM_DENYLIST__ID_DESCRIPTION"
 msgstr ""
-"Escludi gli indirizzi dei dispositivi PCIe elencati da Runtime PM.\n"
-"Nota: questo preserva l'impostazione predefinita del driver del kernel, per forzare un certo stato utilizzare invece RUNTIME_PM_ENABLE/DISABLE.\n"
-"Separare gli indirizzi multipli con spazi.\n"
-"Usare lspci per ottenere gli indirizzi (1a colonna)"
+"Esclude da Runtime PM gli indirizzi dei dispositivi PCIe elencati.\n"
+"Nota: questo preserva l'impostazione predefinita del driver del kernel, per forzare un certo stato utilizzare, invece, RUNTIME_PM_ENABLE/DISABLE.\n"
+"Separa gli indirizzi multipli con degli spazi.\n"
+"Usa lspci per ottenere gli indirizzi (1a colonna)"
 
 #: configschema.yaml.h:41
 msgid "RUNTIME_PM_DRIVER_DENYLIST__ID_DESCRIPTION"
 msgstr ""
-"Escludere i dispositivi PCIe assegnati ai driver elencati da Runtime PM.\n"
-"Nota: questo preserva il default del driver del kernel, per forzare un determinato stato.\n"
-"- utilizzare invece RUNTIME_PM_ENABLE/DISABLE.\n"
+"Esclude da Runtime PM i dispositivi PCIe assegnati ai driver elencati\n"
+"Nota: questo preserva il default del driver del kernel, per forzare un determinato stato utilizzare, invece, RUNTIME_PM_ENABLE/DISABLE.\n"
 "Separare più driver con degli spazi.\n"
 "Lasciare vuoto per disabilitare completamente"
 
@@ -277,7 +278,8 @@ msgstr ""
 msgid "RUNTIME_PM_DEVICE__GROUP_DESCRIPTION"
 msgstr ""
 "Abilita/disabilita permanentemente il Runtime PM per gli indirizzi dei dispositivi PCIe elencati (indipendentemente dalla fonte di alimentazione).\n"
-"Questo ha la priorità su tutte le precedenti impostazioni di Runtime PM. Separare più indirizzi con spazi.\n"
+"Questo ha la priorità su tutte le precedenti impostazioni di Runtime PM.\n
+"Separare più indirizzi con degli spazi.\n"
 "Utilizzare lspci per ottenere gli indirizzi (1a colonna)"
 
 #: configschema.yaml.h:43
@@ -287,74 +289,73 @@ msgstr "Processore"
 #: configschema.yaml.h:44
 msgid "CPU_DRIVER_OPMODE__GROUP_DESCRIPTION"
 msgstr ""
-"Selezionare una modalità di funzionamento del driver di scalatura della CPU\n"
+"Seleziona una modalità di funzionamento del driver di scalabilità della CPU\n"
 "CPU Intel con driver intel_pstate: attivo, passivo\n"
-"CPU AMD Zen 2 o più recente con driver amd-pstate a partire dal kernel 6.3/6.4:\n"
+"CPU AMD Zen 2 o più recenti con driver amd-pstate a partire dal kernel 6.3/6.4:\n"
 "attivo, passivo, guidato"
 
 #: configschema.yaml.h:45
 msgid "CPU_SCALING_GOVERNOR__GROUP_DESCRIPTION"
 msgstr ""
-"Selezionare un regolatore di scala della frequenza della CPU.\n"
+"Seleziona un governor per scalare la frequenza della CPU.\n"
 "Processore Intel con driver intel_pstate:\n"
 "- prestazioni, risparmio energetico(*).\n"
 "Processore Intel con driver intel_cpufreq (alias intel_pstate passive mode):\n"
-"-conservative, ondemand, userspace, powersave, performance, schedutil(*).\n"
+"- conservative, ondemand, userspace, powersave, performance, schedutil(*).\n"
 "Intel e altre marche di processori con driver acpi-cpufreq:\n"
-"- conservativo, ondemand(*), userspace, powersave, performance, \" \"schedutil(*).\n"
-"Usare tlp-stat -p per mostrare il driver attivo e i regolatori disponibili.\n"
+"- conservative, ondemand(*), userspace, powersave, performance, schedutil(*).\n"
+"Usare tlp-stat -p per mostrare il driver attivo e le reogolazioni disponibili.\n"
 "Importante:\n"
 "- I governor contrassegnati con (*) sopra sono efficienti dal punto di vista energetico per *quasi tutti* i carichi di lavoro\n"
-"- e quindi il kernel e la maggior parte delle distribuzioni li hanno scelti come predefiniti.\n"
-"- Avreste dovuto fare le vostre ricerche sui vantaggi/svantaggi *prima* di cambiare il governor"
+"- quindi il kernel e la maggior parte delle distribuzioni li scelgono come predefiniti.\n"
+"- Si consiglia di fare le dovute ricerche sui vantaggi/svantaggi *prima* di cambiare il governor"
 
 #: configschema.yaml.h:46
 msgid "CPU_SCALING_FREQ__GROUP_DESCRIPTION"
 msgstr ""
-"Impostare la frequenza minima/massima disponibile per il regolatore di scala.\n"
-"I valori possibili dipendono dalla CPU. Per le frequenze disponibili, vedere \n"
+"Impostare la frequenza minima/massima disponibile per il governor della frequenza.\n"
+"I valori possibili dipendono dalla CPU. Per le frequenze disponibili, vedere\n"
 "l'output di tlp-stat -p.\n"
-"\" \"Note:\n"
-"- Le frequenze minime e massime devono sempre essere specificate sia per la CA che per la BAT\n"
-"- Non è consigliato l'uso con il driver di scalatura intel_pstate, utilizzare invece CPU_MIN/MAX_PERF_ON_AC/BAT"
+"Note:\n"
+"- Le frequenze minime e massime devono sempre essere specificate sia per la AC che per BAT\n"
+"- Non è consigliato l'uso con il driver intel_pstate, utilizzare invece CPU_MIN/MAX_PERF_ON_AC/BAT"
 
 #: configschema.yaml.h:47
 msgid "CPU_ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
 msgstr ""
-"Impostare i criteri di consumo energetico/prestazioni della CPU Intel HWP.EPP e EPB:\n"
+"Imposta i criteri di consumo energetico/prestazioni della CPU Intel HWP.EPP e EPB:\n"
 "- performance, balance_performance, default, balance_power, power.\n"
 "I valori sono indicati in ordine crescente di risparmio energetico.\n"
 "Note:\n"
-"- HWP.EPP: richiede il kernel 4.10, il driver di ridimensionamento intel_pstate e la CPU Intel Core i 6th gen. o più recente\n"
-"- EPB: richiede il kernel 5.2 o il modulo msr e x86_energy_perf_policy da linux-tools, intel_pstate o intel_cpufreq scaling driver e Intel Core i 2nd gen. o CPU più recente\n"
+"- HWP.EPP: richiede il kernel 4.10, il driver intel_pstate e una CPU Intel Core di 6th generazione o più recente\n"
+"- EPB: richiede il kernel 5.2 o il modulo msr, x86_energy_perf_policy da linux-tools, intel_pstate o intel_cpufreq scaling driver e Intel Core i 2nd generazione o CPU più recente\n"
 "- Quando HWP.EPP è disponibile, EPB non è impostato"
 
 #: configschema.yaml.h:48
 msgid "CPU_PERF__GROUP_DESCRIPTION"
 msgstr ""
-"Impostare le prestazioni dello stato P della CPU Intel: 0..100 (%).\n"
-"Limitare lo stato P max/min per controllare la dissipazione di potenza della CPU.\n"
+"Imposta le prestazioni dello P-state della CPU Intel: 0..100 (%).\n"
+"Limita il max/min del P-state per controllare la dissipazione di potenza della CPU.\n"
 "I valori sono indicati come percentuale delle prestazioni disponibili.\n"
-"Richiede il driver intel_pstate o intel_cpufreq e una CPU Intel Core i 2nd gen. or\n"
-"più recente"
+"Richiede il driver intel_pstate o intel_cpufreq e una CPU Intel Core i 2nd generazione or più recente\n"
 
 #: configschema.yaml.h:49
 msgid "CPU_BOOST__GROUP_DESCRIPTION"
 msgstr ""
-"Impostare la funzione \"turbo boost\" (Intel) o \"turbo core\" (AMD) della CPU:\n"
+"Imposta la funzione \"turbo boost\" (Intel) o \"turbo core\" (AMD) della CPU:\n"
 "- 0=disabilita, 1=consente.\n"
-"Nota: un valore di 1 non attiva il potenziamento, ma lo consente"
+"Nota: un valore di 1 non attiva la funzione, ma la consente"
 
 #: configschema.yaml.h:50
 msgid "CPU_HWP_DYN_BOOST__GROUP_DESCRIPTION"
 msgstr ""
-"Impostare la funzione Intel CPU HWP dynamic boost:\n"
+"Imposta la funzione Intel CPU HWP dynamic boost:\n"
 "- 0=disabilita, 1=abilita.\n"
-"Richiede il driver di scalatura intel_pstate in modalità \"attiva\" e una CPU Intel Core i di 6a generazione o più recente"
+"Richiede il driver di intel_pstate in modalità \"attiva\" e una CPU Intel Core i di 6th generazione o più recente"
 
 #: configschema.yaml.h:51
 msgid "SCHED_POWERSAVE__GROUP_DESCRIPTION"
-msgstr "Ridurre al minimo il numero di core/hyper-thread utilizzati dalla CPU in condizioni di carico leggero"
+msgstr "Riduce al minimo il numero di core/hyper-thread utilizzati dalla CPU in condizioni di carico leggero"
 
 #: configschema.yaml.h:52
 msgid "NMI_WATCHDOG__ID_DESCRIPTION"
@@ -366,24 +367,27 @@ msgstr ""
 msgid "PHC_CONTROLS__ID_DESCRIPTION"
 msgstr ""
 "Modifica delle tensioni della CPU, alias \"undervolting\", \"undervolting\", \"undervolting\", \"undervolting\", \"undervolting\", \"undervolting\n"
-"Kernel con patch PHC richiesto\n"
+"Rischiesto Kernel con patch PHC\n"
 "Le coppie freq:tensione sono scritte in /sys/devices/system/cpu/cpu0/cpufreq/phc_controls\n"
 "ATTENZIONE: utilizzare questa funzione solo se si è ben consapevoli di ciò che si sta facendo"
 
 #: configschema.yaml.h:54
 msgid "PLATFORM_PROFILE__GROUP_DESCRIPTION"
 msgstr ""
-"Selezionare il profilo della piattaforma:\n"
+"Seleziona il profilo della piattaforma:\n"
 "- prestazioni, equilibrato, a basso consumo\n"
-"Controlla le caratteristiche di funzionamento del sistema in base ai livelli di potenza e prestazioni, alla velocità termica e della ventola. I valori sono indicati in ordine crescente di risparmio energetico\n"
-"Nota: controllare l'output di tlp-stat -p per determinare la disponibilità sul proprio hardware e profili aggiuntivi come: balanced-performance, quiet, cool"
+"Controlla le caratteristiche di funzionamento del sistema in base ai livelli di potenza/prestazioni, velocità della ventola e livelli termici. I valori sono indicati in ordine crescente di risparmio energetico\n"
+"Nota: controllare l'output di tlp-stat -p per verificare la disponibilità sul proprio hardware di profili aggiuntivi come: balanced-performance, quiet, cool"
 
 #: configschema.yaml.h:55
 msgid "MEM_SLEEP__GROUP_DESCRIPTION"
 msgstr ""
 "Modalità di sospensione del sistema:\n"
-"s2idle: standby inattivo - uno stato di sospensione del sistema puramente software e leggero deep: Suspend to RAM - l'intero sistema viene messo in uno stato di basso consumo, tranne la memoria, di solito con un risparmio maggiore rispetto a s2idle\n"
-"ATTENZIONE: cambiare la modalità di sospensione può portare all'instabilità del sistema e persino alla perdita di dati. Per quanto riguarda la disponibilità di diverse modalità sul vostro sistema, controllate il risultato di tlp-stat -s. Se non si è sicuri, attenersi alla modalità predefinita del sistema, non abilitando questa"
+"s2idle: standby inattivo - uno stato di sospensione del sistema puramente software e leggero \n" 
+"deep: Suspend to RAM - l'intero sistema viene messo in uno stato di basso consumo, tranne la memoria, di solito ha un risparmio maggiore rispetto a s2idle\n"
+"ATTENZIONE: cambiare la modalità di sospensione può portare a instabilità del sistema e persino a perdite di dati.\n"
+"Per quanto riguarda la disponibilità di diverse modalità sul vostro sistema, controllate il risultato di tlp-stat -s.\n"
+"Se non si è sicuri, attenersi alla modalità predefinita del sistema, non abilitando questa"
 
 #: configschema.yaml.h:56
 msgid "Radio__CATEGORY_TITLE"
@@ -392,8 +396,8 @@ msgstr "Radio"
 #: configschema.yaml.h:57
 msgid "RESTORE_DEVICE_STATE_ON_STARTUP__ID_DESCRIPTION"
 msgstr ""
-"Ripristinare lo stato del dispositivo radio (Bluetooth, WiFi, WWAN) dallo spegnimento precedente all' avvio del sistema.\n"
-"Nota: i parametri DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN sono ignorati quando è abilitato"
+"Ripristina lo stato dei dispositivi radio (Bluetooth, WiFi, WWAN) dallo spegnimento precedente all' avvio del sistema.\n"
+"Nota: i parametri DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN vengono ignorati quando è abilitato"
 
 #: configschema.yaml.h:58
 msgid "DEVICES_TO_DISABLE_ON_STARTUP__ID_DESCRIPTION"
@@ -417,16 +421,16 @@ msgstr ""
 
 #: configschema.yaml.h:62
 msgid "DEVICES_TO_ENABLE_ON_AC__ID_DESCRIPTION"
-msgstr "Dispositivi radio da abilitare su AC: bluetooth, wifi, wwan"
+msgstr "Dispositivi radio da abilitare quando connessi con AC: bluetooth, wifi, wwan"
 
 #: configschema.yaml.h:63
 msgid "DEVICES_TO_DISABLE_ON_BAT__ID_DESCRIPTION"
-msgstr "Dispositivi radio da disabilitare sulla batteria: bluetooth, wifi, wwan"
+msgstr "Dispositivi radio da disabilitare quando si è con la batteria: bluetooth, wifi, wwan"
 
 #: configschema.yaml.h:64
 msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE__ID_DESCRIPTION"
 msgstr ""
-"Dispositivi radio da disabilitare sulla batteria quando non sono in uso (non collegati):\n"
+"Dispositivi radio da disabilitare quando si è con la batteria, senza che siano in uso (non collegati):\n"
 "bluetooth, wifi, wwan"
 
 #: configschema.yaml.h:65
@@ -443,11 +447,11 @@ msgstr "Dispositivi radio da abilitare al momento della disconnessione"
 
 #: configschema.yaml.h:68
 msgid "DEVICES_ON_DOCK__GROUP_DESCRIPTION"
-msgstr "Dispositivi radio da abilitare/disabilitare quando si è agganciati"
+msgstr "Dispositivi radio da abilitare/disabilitare quando si è su docking station"
 
 #: configschema.yaml.h:69
 msgid "DEVICES_ON_UNDOCK__GROUP_DESCRIPTION"
-msgstr "Dispositivi radio da abilitare/disabilitare quando si è sbloccati"
+msgstr "Dispositivi radio da abilitare/disabilitare quando non si è su docking station"
 
 #: configschema.yaml.h:70
 msgid "USB__CATEGORY_TITLE"
@@ -460,7 +464,8 @@ msgstr "Funzione di autosospensione USB"
 #: configschema.yaml.h:72
 msgid "USB_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
-"I dispositivi del seguente elenco sono esclusi dall'autosospensione (separati da spazi). Usare lsusb per ottenere gli ids.\n"
+"I dispositivi del seguente elenco sono esclusi dall'autosospensione (separati da spazi).\n"
+"Usare lsusb per ottenere gli ids.\n"
 "Nota: i dispositivi di input (usbhid) sono esclusi automaticamente"
 
 #: configschema.yaml.h:73
@@ -469,11 +474,11 @@ msgstr "I dispositivi Bluetooth sono esclusi dall'autosospensione USB"
 
 #: configschema.yaml.h:74
 msgid "USB_BLACKLIST_PHONE__ID_DESCRIPTION"
-msgstr "I dispositivi telefonici sono esclusi dall'autosospensione USB"
+msgstr "I telefoni sono esclusi dall'autosospensione USB"
 
 #: configschema.yaml.h:75
 msgid "USB_BLACKLIST_PRINTER__ID_DESCRIPTION"
-msgstr "Le stampanti sono escluse dalla sospensione automatica USB"
+msgstr "Le stampanti sono escluse dall'autosospensione USB"
 
 #: configschema.yaml.h:76
 msgid "USB_BLACKLIST_WWAN__ID_DESCRIPTION"
@@ -484,67 +489,69 @@ msgstr ""
 #: configschema.yaml.h:77
 msgid "USB_WHITELIST__ID_DESCRIPTION"
 msgstr ""
-"Includi i dispositivi elencati nell'autosospensione anche se già esclusi dalle liste nere dei driver o della WWAN di cui sopra (separate con spazi).\n"
+"Include i dispositivi elencati nell'autosospensione anche se già esclusi dalle liste nere dei driver o della WWAN di cui sopra (separate con spazi).\n"
 "Usa lsusb per ottenere gli id"
 
 #: configschema.yaml.h:78
 msgid "USB_DENYLIST__ID_DESCRIPTION"
 msgstr ""
-"Escludere i dispositivi elencati dall'autosospensione USB (separati con spazi).\n"
+"Esclude i dispositivi elencati dall'autosospensione USB (separati con spazi).\n"
 "Usare lsusb per ottenere gli id.\n"
 "Nota: i dispositivi di input (usbhid) e gli scanner supportati da libsane sono esclusi automaticamente"
 
 #: configschema.yaml.h:79
 msgid "USB_EXCLUDE_AUDIO__ID_DESCRIPTION"
 msgstr ""
-"Escludere i dispositivi audio dall'autosospensione USB:\n"
+"Esclude i dispositivi audio dall'autosospensione USB:\n"
 "- 0=non escludere, 1=escludere"
 
 #: configschema.yaml.h:80
 msgid "USB_EXCLUDE_BTUSB__ID_DESCRIPTION"
 msgstr ""
-"Escludere i dispositivi bluetooth dall'autosospensione USB:\n"
+"Esclude i dispositivi bluetooth dall'autosospensione USB:\n"
 "- 0=non escludere, 1=escludere"
 
 #: configschema.yaml.h:81
 msgid "USB_EXCLUDE_PHONE__ID_DESCRIPTION"
 msgstr ""
-"Escludi i dispositivi telefonici dalla sospensione automatica USB:\n"
-"- 0=non escludere, 1=escludere (abilitare la ricarica)"
+"Esclude i telefoni dall'autosospensione USB:\n"
+"- 0=non escludere, 1=escludere (abilita la ricarica)"
 
 #: configschema.yaml.h:82
 msgid "USB_EXCLUDE_PRINTER__ID_DESCRIPTION"
 msgstr ""
-"Escludi stampanti da autosospensione USB:\n"
+"Esclude le stampanti dall'autosospensione USB:\n"
 "- 0=non escludere, 1=escludere"
 
 #: configschema.yaml.h:83
 msgid "USB_EXCLUDE_WWAN__ID_DESCRIPTION"
 msgstr ""
-"Escludere i dispositivi WWAN dall'autosospensione USB:\n"
+"Esclude i dispositivi WWAN dall'autosospensione USB:\n"
 "- 0=non escludere, 1=escludere"
 
 #: configschema.yaml.h:84
 msgid "USB_ALLOWLIST__ID_DESCRIPTION"
-msgstr "Consentire l'autosospensione USB per i dispositivi elencati anche se già negletti o esclusi sopra (separati da spazi). Utilizzare lsusb per ottenere gli ID"
+msgstr "Consente l'autosospensione USB per i dispositivi elencati anche se già sono stati negati o esclusi sopra (separati da spazi).\n"
+"Utilizzare lsusb per ottenere gli ID"
 
 #: configschema.yaml.h:85
 msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
-msgstr "Impostare per disabilitare l'autosospensione prima dello spegnimento / altrimenti per non fare nulla (soluzione per i dispositivi USB che causano problemi di spegnimento)"
+msgstr "Imposta per disabilitare l'autosospensione prima dello spegnimento / altrimenti non fare nulla (soluzione per i dispositivi USB che causano problemi di spegnimento)"
 
 #: configschema.yaml.h:86
 msgid "ThinkPad Battery__CATEGORY_TITLE"
-msgstr "ThinkPad Battery"
+msgstr "Batteria ThinkPad"
 
 #: configschema.yaml.h:87
 msgid "CHARGE_THRESH_BAT0__GROUP_DESCRIPTION"
 msgstr ""
-"Cura della batteria - Soglie di caricaLa carica inizia quando il livello di carica è inferiore al valore START_CHARGE_THRESH quando il caricabatterie è collegato. Si arresta quando viene raggiunto il valore STOP_CHARGE_THRESH.\n"
+"Cura della batteria - Soglie di ricarica\n"
+"La carica inizia quando il livello della batteria è inferiore al valore START_CHARGE_THRESH con il caricabatterie collegato. Si ferma quando viene raggiunto il valore STOP_CHARGE_THRESH.\n"
 "Hardware richiesto: I ThinkPad Lenovo e alcune altre marche di laptop sono gestiti tramite plugin specifici, lo stato di supporto effettivo è mostrato da tlp-stat -b.\n"
 "Per ulteriori spiegazioni e dettagli specifici del fornitore, consultare il sito https://linrunner.de/tlp/settings/battery.html\n"
 "Note:\n"
-"- I ThinkPad potrebbero richiedere uno o più moduli kernel esterni, fare riferimento all'output di \" \"tlp-stat -b\n"
-"- Gli intervalli di valori dei parametri specifici del fornitore sono mostrati da tlp-stat -b\n"
+"- I ThinkPad potrebbero richiedere uno o più moduli kernel esterni, fare riferimento all'output di tlp-stat -b\n"
+"- Gli intervalli dei parametri specifici del fornitore sono mostrati da tlp-stat -b\n"
 "- Se l'hardware in uso supporta una soglia di avvio *e* una di arresto, è necessario specificarle entrambe, altrimenti TLP rifiuterà di applicare la singola soglia\n"
 "- Se l'hardware in uso supporta solo una soglia di arresto, impostare il valore di avvio su 0\n"
 "\n"
@@ -557,7 +564,7 @@ msgstr "BAT1: Batteria secondaria / Ultrabay / Slice / Sostituibile (valori in %
 
 #: configschema.yaml.h:89
 msgid "RESTORE_THRESHOLDS_ON_BAT__ID_DESCRIPTION"
-msgstr "Ripristino delle soglie di carica quando la CA è scollegata"
+msgstr "Ripristino delle soglie di carica quando non si è connessi in AC"
 
 #: configschema.yaml.h:90
 msgid "NATACPI_ENABLE__ID_DESCRIPTION"
