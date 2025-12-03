@@ -37,6 +37,19 @@
 	</provides>
 	<content_rating type="oars-1.1" />
 	<releases>
+        <release version="1.9.0" date="2025-12-03" urgency="medium">
+			<description>
+                <p>Compatibility with TLP 1.9</p>
+                <p>Detect and set display backend</p>
+                <p>Add metadata keywords</p>
+			</description>
+			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.9.0</url>
+			<issues>
+				<issue url="https://github.com/d4nj1/TLPUI/issues/169">#169</issue>
+				<issue url="https://github.com/d4nj1/TLPUI/issues/171">#171</issue>
+				<issue url="https://github.com/d4nj1/TLPUI/issues/173">#173</issue>
+			</issues>
+		</release>
         <release version="1.8.1" date="2025-11-02" urgency="low">
 			<description>
                 <p>Add Italian and Hungarian translation</p>
