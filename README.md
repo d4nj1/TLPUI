@@ -135,5 +135,5 @@ assistée par IA ?
 ## Liens
 
 - 🔗 [Projet officiel TLPUI](https://github.com/d4nj1/TLPUI)
-- 🔗 [Pull Request de la traduction](https://github.com/d4nj1/TLPUI/pull/XXXX)
-- 💼 [Mon profil LinkedIn](https://linkedin.com/in/XXXX)
+- 🔗 [Pull Request de la traduction](https://github.com/d4nj1/TLPUI/pull/#179)
+- 💼 [Mon profil LinkedIn](https://linkedin.com/in/fr%C3%A9d%C3%A9ric-ginoux-749086b1)
