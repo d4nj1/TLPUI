@@ -31,3 +31,74 @@ It has the aim to protect users from setting bad configuration and to deliver a 
 * Weblate translations - [#121](https://github.com/d4nj1/TLPUI/issues/121)
 * Mobile UI - [#111](https://github.com/d4nj1/TLPUI/issues/111)
 * Implement package build pipeline - [#90](https://github.com/d4nj1/TLPUI/issues/90)
+
+## Histoire de cette traduction
+
+Cette traduction a été réalisée en une journée avec l'aide de 
+**Claude (Anthropic)**, une IA conversationnelle.
+
+Je suis Frédéric, utilisateur GNU/Linux, curieux et technolophile, 
+non développeur professionnel. Ma démarche est toujours la même :
+**partir d'un besoin concret personnel**, développer une solution,
+et une fois celle-ci suffisamment fonctionnelle, **la partager 
+sous licence libre à la communauté**.
+
+En parallèle de cette contribution, je développe **Dictée** — 
+une application Python de dictée vocale en français, compatible 
+RGPD, destinée aux personnes dyslexiques, dyspraxiques, aux 
+étudiants et à tous ceux qui ont besoin de produire du texte 
+rapidement sans clavier.
+
+**Dictée** est aujourd'hui parfaitement fonctionnel et opérationnel 
+pour produire du texte. Il est encore en développement actif pour :
+- corriger quelques bugs et limitations liés aux ressources 
+  externes sur lesquelles il s'appuie, avec des stratégies de 
+  contournement en cours de finalisation
+- compléter sa documentation
+- créer un script d'installation
+
+Ce projet m'a permis, sans le planifier, de développer de vraies 
+compétences en architecture logicielle — la meilleure preuve que 
+l'apprentissage par la pratique fonctionne.
+
+### Mon message à ceux qui hésitent à se lancer
+
+> *"L'IA est un outil dont vous devez apprendre à vous servir — 
+> non pour penser et faire à votre place, mais pour étendre et 
+> développer vos capacités. C'est un accélérateur de projet 
+> et d'imagination."*
+> — Frédéric, mars 2026
+
+En une journée, assisté de Claude, j'ai pu :
+
+- 🔧 Configurer un HP Spectre x360 2016 sous Ubuntu 22.04
+- 📝 Traduire complètement TLPUI (793 lignes)
+- 🐙 Créer mon premier compte GitHub
+- 🔀 Soumettre ma première Pull Request
+- 🇫🇷 Proposer la première traduction française de TLPUI après 10 ans !
+
+Avec des notions de Python acquises progressivement, et surtout 
+beaucoup de curiosité.
+
+C'est une activité stimulante, créative et très ludique. 
+Il n'y a rien de plus motivant que de voir ses propres idées 
+prendre vie ligne après ligne !
+
+Chaque petit succès donne envie d'aller plus loin. Alors
+ lancez-vous — vous serez surpris de ce que vous êtes capable de créer ! 🚀
+
+---
+
+## Pour aller plus loin
+
+Vous souhaitez vous lancer dans la contribution open source 
+assistée par IA ?
+
+- Créez un compte sur [claude.ai](https://claude.ai)
+- Décrivez votre problème, posez vos questions
+- Apprenez en faisant — chaque erreur est une leçon !
+
+> 💡 Bientôt disponible : **Dictée** — application de dictée vocale 
+> en français, compatible RGPD, pour les personnes dyslexiques, 
+> dyspraxiques et tous ceux qui souhaitent produire du texte 
+> sans clavier.
