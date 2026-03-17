@@ -5,7 +5,7 @@
 ## À propos de cette traduction
 
 Ce dépôt est un fork de [TLPUI](https://github.com/d4nj1/TLPUI), 
-l'interface graphique pour TLP (gestionnaire d'énergie Linux).
+l'interface graphique pour TLP (gestionnaire d'énergie GNU/Linux).
 
 Une Pull Request a été soumise au projet officiel pour intégrer 
 cette traduction. En attendant, vous pouvez l'installer manuellement 
