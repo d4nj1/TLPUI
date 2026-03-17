@@ -1,38 +1,31 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2024-01-02 19:14+0100\n"
-"PO-Revision-Date: 2024-01-02 19:14+0100\n"
-"Last-Translator: \n"
-"Language-Team: Hellzevir\n"
+"POT-Creation-Date: 2024-01-02 19:12+0100\n"
+"PO-Revision-Date: 2026-03-14 00:00+0100\n"
+"Last-Translator: Frédéric\n"
+"Language-Team: French\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.4.1\n"
-"X-Poedit-Basepath: ../../..\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: MT_\n"
-"X-Poedit-SearchPath-0: mainui.py\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: mainui.py:87
 msgid "Review settings"
-msgstr "Voir la configuration"
+msgstr "Vérifier les paramètres"
 
 #: mainui.py:88
 msgid "Save these changes?"
-msgstr "Enregistrer les modifications ?"
+msgstr "Enregistrer ces modifications ?"
 
 #: mainui.py:111
 msgid "Unsaved settings"
-msgstr "Réglages non enregistrés"
+msgstr "Paramètres non enregistrés"
 
 #: mainui.py:112
 msgid "Do you really want to quit? No changes will be saved"
-msgstr ""
-"Voulez-vous vraiment quitter l'application ? Aucune modification ne sera "
-"enregistrée"
+msgstr "Voulez-vous vraiment quitter ? Les modifications ne seront pas enregistrées"
 
 #: mainui.py:231
 msgid "Reload"
@@ -56,15 +49,15 @@ msgstr "Langue"
 
 #: mainui.py:265
 msgid "Help"
-msgstr "Help"
+msgstr "Aide"
 
 #: mainui.py:268
 msgid "About"
-msgstr "About"
+msgstr "À propos"
 
 #: mainui.py:292
 msgid "UI for TLP written in Python/Gtk"
-msgstr "UI for TLP written in Python/Gtk"
+msgstr "Interface pour TLP écrite en Python/Gtk"
 
 #: mainui.py:337
 msgid "Configuration"
