@@ -43,9 +43,26 @@ def check_binaries_exist(flatpak_folder_prefix: str) -> None:
 def get_installed_tlp_version() -> str:
     """Fetch tlp version from command."""
     pattern = re.compile(r"TLP ([^\s]+)")
-    currentconfig = exec_command(["tlp-stat", "-c"])
-    matcher = pattern.search(currentconfig)
+    current_config = exec_command(["tlp-stat", "-c"])
+    matcher = pattern.search(current_config)
     return matcher.group(1)
+
+
+def get_platform_profile_choices() -> str | None:
+    """Fetch platform config choices from command."""
+    allowed_choices = ['cool', 'quiet', 'low-power', 'balanced', 'balanced-performance', 'performance', 'custom', 'max-power']
+    pattern = re.compile(r"/sys/firmware/acpi/platform_profile_choices\s+=\s+(.*)")
+    current_platform_config = exec_command(["tlp-stat", "-p"])
+    matcher = pattern.search(current_platform_config)
+    if matcher:
+        choices = matcher.group(1).strip().split(" ")
+        if all(choice in allowed_choices for choice in choices):
+            return ",".join(choices)
+        else:
+            print(f"Some platform profile choices are unknown.\n"
+                  f"Discovered items {choices} not all in allowed {allowed_choices}.\n"
+                  f"Please report at https://github.com/d4nj1/TLPUI/")
+    return None
 
 
 def get_user_config_file() -> Path:

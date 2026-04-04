@@ -28,4 +28,5 @@ tlpconfigfile = settingshelper.get_tlp_config_file(FOLDER_PREFIX)
 tlpconfig = {}
 tlpconfig_original = {}
 tlpconfig_defaults = {}
+platform_profile_choices = settingshelper.get_platform_profile_choices()
 active_scroll = None

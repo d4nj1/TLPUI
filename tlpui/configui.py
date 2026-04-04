@@ -241,7 +241,11 @@ def get_tlp_categories(window) -> OrderedDict:
                 grouptitle = config['group']
                 transdescription = f"{grouptitle}__GROUP_DESCRIPTION"
                 groupitems = config['ids']
+
                 for groupitem in groupitems:
+                    # check available items from config
+                    if groupitem['id'].startswith('PLATFORM_PROFILE_ON_') and settings.platform_profile_choices:
+                        groupitem['values'] = settings.platform_profile_choices
                     configobjects.append(ConfigObject(groupitem['id'], groupitem['type'], groupitem['values']))
             else:
                 itemid = config['id']
