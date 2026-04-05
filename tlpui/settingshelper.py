@@ -50,7 +50,9 @@ def get_installed_tlp_version() -> str:
 
 def get_platform_profile_choices() -> str | None:
     """Fetch platform config choices from command."""
-    allowed_choices = ['cool', 'quiet', 'low-power', 'balanced', 'balanced-performance', 'performance', 'custom', 'max-power']
+    allowed_choices = [
+        'cool', 'quiet', 'low-power', 'balanced', 'balanced-performance', 'performance', 'custom', 'max-power'
+    ]
     pattern = re.compile(r"/sys/firmware/acpi/platform_profile_choices\s+=\s+(.*)")
     current_platform_config = exec_command(["tlp-stat", "-p"])
     matcher = pattern.search(current_platform_config)
