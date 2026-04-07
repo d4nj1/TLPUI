@@ -22,7 +22,7 @@ userconfig = settingshelper.UserConfig()
 
 # runtime params
 tlpversion = settingshelper.get_installed_tlp_version()
-tlpbaseversion = tlpversion.replace(".", "_")[0:3]
+tlpbaseversion = settingshelper.extract_tlp_base_version(tlpversion)
 tlpbaseconfigfile = settingshelper.get_tlp_config_file("")
 tlpconfigfile = settingshelper.get_tlp_config_file(FOLDER_PREFIX)
 tlpconfig = {}

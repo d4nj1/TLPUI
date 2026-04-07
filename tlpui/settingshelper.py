@@ -48,6 +48,13 @@ def get_installed_tlp_version() -> str:
     return matcher.group(1)
 
 
+def extract_tlp_base_version(raw_version: str) -> str:
+    """Extract tlp base version from raw version."""
+    pattern = re.compile(r"(\d\.\d+)")
+    matcher = pattern.search(raw_version)
+    return matcher.group(1).replace(".", "_")
+
+
 def get_platform_profile_choices() -> str | None:
     """Fetch platform config choices from command."""
     allowed_choices = [

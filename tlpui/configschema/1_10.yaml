@@ -125,13 +125,13 @@ categories:
         ids:
           - id: INTEL_GPU_POWER_PROFILE_ON_AC
             type: select
-            values: base,power_saving,power_saving
+            values: base,power_saving
           - id: INTEL_GPU_POWER_PROFILE_ON_BAT
             type: select
-            values: base,power_saving,power_saving
+            values: base,power_saving
           - id: INTEL_GPU_POWER_PROFILE_ON_SAV
             type: select
-            values: base,power_saving,power_saving
+            values: base,power_saving
       - group: INTEL_GPU_FREQ
         ids:
           - id: INTEL_GPU_MIN_FREQ_ON_AC
