@@ -14,7 +14,8 @@ def fetch_simple_stats(_, textbuffer: Gtk.TextBuffer) -> None:
     """Fetch simple tlp-stat information."""
     simple_stat_command = ["tlp-stat", "-r", "-t", "-c", "-s", "-u"]
     tlp_stat_output = settingshelper.exec_command(simple_stat_command)
-    textbuffer.set_text(tlp_stat_output)
+    if tlp_stat_output:
+        textbuffer.set_text(tlp_stat_output)
 
 
 def fetch_complete_stats(_, textbuffer: Gtk.TextBuffer) -> None:
@@ -26,7 +27,8 @@ def fetch_complete_stats(_, textbuffer: Gtk.TextBuffer) -> None:
 
     sudo_cmd = create_sudo_command(sudo, ["tlp-stat"])
     tlp_stat_output = settingshelper.exec_command(sudo_cmd)
-    textbuffer.set_text(tlp_stat_output)
+    if tlp_stat_output:
+        textbuffer.set_text(tlp_stat_output)
 
 
 def create_stat_box() -> Gtk.Box:

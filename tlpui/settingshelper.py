@@ -5,17 +5,20 @@ import re
 import sys
 from os import getenv
 from shutil import which
-from subprocess import check_output, CalledProcessError
+from subprocess import check_output, CalledProcessError, STDOUT
 from pathlib import Path
 from . import errorui
 
 
-def exec_command(commands: list[str]):
+def exec_command(commands: list[str], capture_error_messages: bool = False):
     """Execute commands locally."""
     try:
-        return check_output(commands).decode(sys.stdout.encoding)
+        return check_output(commands, stderr=STDOUT).decode(sys.stdout.encoding)
     except CalledProcessError as error:
-        errorui.show_dialog(error)
+        error_message = error.output.decode(sys.stdout.encoding).strip()
+        if capture_error_messages:
+            return error_message
+        errorui.show_dialog(error_message)
 
 
 def get_tlp_config_file(prefix: str) -> str:
@@ -61,7 +64,10 @@ def get_platform_profile_choices() -> str | None:
         'cool', 'quiet', 'low-power', 'balanced', 'balanced-performance', 'performance', 'custom', 'max-power'
     ]
     pattern = re.compile(r"/sys/firmware/acpi/platform_profile_choices\s+=\s+(.*)")
-    current_platform_config = exec_command(["tlp-stat", "-p"])
+    current_platform_config = exec_command(["tlp-stat", "-p"], capture_error_messages=True)
+    if current_platform_config == "Error: missing root privilege.":
+        print("Cannot evaluate platform_profile_choices. Requires root privileges. Using defaults.")
+        return None
     matcher = pattern.search(current_platform_config)
     if matcher:
         choices = matcher.group(1).strip().split(" ")
