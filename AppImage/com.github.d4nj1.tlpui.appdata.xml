@@ -15,6 +15,7 @@
 	</description>
 	<launchable type="desktop-id">com.github.d4nj1.tlpui.desktop</launchable>
 	<url type="homepage">https://github.com/d4nj1/TLPUI</url>
+    <url type="vcs-browser">https://github.com/d4nj1/TLPUI</url>
 	<screenshots>
 		<screenshot type="default">
 			<caption>Main window with light theme</caption>
@@ -37,6 +38,17 @@
 	</provides>
 	<content_rating type="oars-1.1" />
 	<releases>
+        <release version="1.10.1" date="2026-04-21" urgency="medium">
+			<description>
+                <p>Fix error decoding and display proper messages</p>
+                <p>Fallback to defaults if platform_profile_choices requires root permissions</p>
+			</description>
+			<url>https://github.com/d4nj1/TLPUI/releases/tag/tlpui-1.10.1</url>
+			<issues>
+				<issue url="https://github.com/d4nj1/TLPUI/issues/180">#180</issue>
+				<issue url="https://github.com/d4nj1/TLPUI/issues/183">#183</issue>
+			</issues>
+		</release>
         <release version="1.10.0" date="2026-04-20" urgency="medium">
 			<description>
                 <p>Compatibility with TLP 1.10</p>
