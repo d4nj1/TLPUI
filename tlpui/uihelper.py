@@ -11,15 +11,15 @@ from . import constants
 from . import errorui
 
 
-EXPECTED_ITEM_MISSING_TEXT = language.UH_('Expected item missing in config file')  # type: str
-UNKNOWN_CONFIG_VALUE_TEXT = language.UH_('Unknown config value detected')  # type: str
-SUDO_MISSING_TEXT = language.UH_('Install pkexec, gksu, gksudo, kdesu or kdesudo first')  # type: str
-DEFAULT_STATE_TEXT = language.UH_('Default state:')  # type: str
-DEFAULT_VALUE_TEXT = language.UH_('Default value:')  # type: str
-CHANGED_STATE_TEXT = language.UH_('CHANGED')  # type: str
+EXPECTED_ITEM_MISSING_TEXT = language.UH_('Expected item missing in config file')
+UNKNOWN_CONFIG_VALUE_TEXT = language.UH_('Unknown config value detected')
+SUDO_MISSING_TEXT = language.UH_('Install pkexec, gksu, gksudo, kdesu or kdesudo first')
+DEFAULT_STATE_TEXT = language.UH_('Default state:')
+DEFAULT_VALUE_TEXT = language.UH_('Default value:')
+CHANGED_STATE_TEXT = language.UH_('CHANGED')
 
 
-def get_graphical_sudo() -> str:
+def get_graphical_sudo() -> str | None:
     """Fetch available graphical sudo command."""
     sudo_list = ["pkexec", "gksu", "gksudo", "kdesu", "kdesudo"]
     for sudo in sudo_list:

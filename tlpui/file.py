@@ -22,7 +22,7 @@ def get_yaml_schema_object(objectname) -> dict:
     return get_yaml_schema_object_from_file(objectname, f"{settings.workdir}/configschema/{majorminor}.yaml")
 
 
-def get_tlp_config_defaults(tlpversion: str):
+def get_tlp_config_defaults(tlpversion: str) -> dict[str, TlpDefaults]:
     """Fetch TLP default configs."""
     tlpconfig_defaults = extract_default_tlp_configs(f"{settings.workdir}/defaults/tlp-{tlpversion}.conf")
 
@@ -40,13 +40,13 @@ def init_tlp_file_config() -> None:
     settings.tlpconfig_defaults = get_tlp_config_defaults(tlpversion)
 
     # get current settings from tlp itself
-    tlpstat = settingshelper.exec_command(["tlp-stat", "-c"])
+    tlpstat: str = settingshelper.exec_command(["tlp-stat", "-c"])
     tlpsettinglines = tlpstat.split('\n')
 
     extract_tlp_settings(tlpsettinglines)
 
     # Add default tlp configs not set in current settings
-    for key, default in settings.tlpconfig_defaults.items():     # type: TlpDefaults
+    for key, default in settings.tlpconfig_defaults.items():
         configname = default.get_name()
         if configname not in settings.tlpconfig.keys():
             enabled = default.is_enabled()
@@ -57,7 +57,7 @@ def init_tlp_file_config() -> None:
     settings.tlpconfig_original = copy.deepcopy(settings.tlpconfig)
 
 
-def extract_tlp_settings(lines: list) -> None:
+def extract_tlp_settings(lines: list[str]) -> None:
     """Extract TLP config locations and values."""
     propertypattern = re.compile(r'^.+?\.conf\sL\d+\:\s[A-Z_\d]+=')
 
@@ -65,7 +65,7 @@ def extract_tlp_settings(lines: list) -> None:
         if propertypattern.match(line):
             cleanline = line.lstrip().rstrip()
             settingsparts = cleanline.split(' ', maxsplit=2)
-            configfile = settingsparts[0]       # type: str
+            configfile = settingsparts[0]
             if configfile == 'defaults.conf':
                 conftype = ConfType.DEFAULT
             elif configfile.startswith('/etc/tlp.d/'):
@@ -96,8 +96,8 @@ def get_changed_properties() -> dict:
     original = settings.tlpconfig_original
 
     for configid in changed:
-        config = changed[configid]              # type: TlpConfig
-        config_original = original[configid]    # type: TlpConfig
+        config = changed[configid]
+        config_original = original[configid]
 
         statechange = config.is_enabled() != config_original.is_enabled()
         configchange = config.get_value() != config_original.get_value()
