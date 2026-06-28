@@ -2,9 +2,10 @@
 
 from . import settings
 import gettext
+from typing import Callable
 
 
-def load_lang(langfile):
+def load_lang(langfile) -> Callable[[str], str]:
     """Load language from file."""
     translation = gettext.translation(langfile, settings.langdir, [settings.userconfig.language])
 

@@ -2,6 +2,8 @@
 
 from os import path, getenv
 from pathlib import Path
+from tlpui.config import TlpConfig
+from tlpui.filehelper import TlpDefaults
 from . import settingshelper
 
 # application folder settings
@@ -25,8 +27,8 @@ tlpversion = settingshelper.get_installed_tlp_version()
 tlpbaseversion = settingshelper.extract_tlp_base_version(tlpversion)
 tlpbaseconfigfile = settingshelper.get_tlp_config_file("")
 tlpconfigfile = settingshelper.get_tlp_config_file(FOLDER_PREFIX)
-tlpconfig = {}
-tlpconfig_original = {}
-tlpconfig_defaults = {}
+tlpconfig: dict[str, TlpConfig] = {}
+tlpconfig_original: dict[str, TlpConfig] = {}
+tlpconfig_defaults: dict[str, TlpDefaults] = {}
 platform_profile_choices = settingshelper.get_platform_profile_choices()
 active_scroll = None

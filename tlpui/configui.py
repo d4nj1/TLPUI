@@ -13,6 +13,15 @@ from .file import ConfType, TlpConfig, get_yaml_schema_object
 from .uihelper import get_theme_image, StateImage, EXPECTED_ITEM_MISSING_TEXT
 
 
+class ConfigObject:
+    """Config object helper class."""
+
+    def __init__(self, name: str, datatype: str, values: str):
+        """Init config object helper class parameters."""
+        self.name = name
+        self.datatype = datatype
+        self.values = values
+
 def store_category_num(self, cat, cat_num: int):
     """Store selected config category."""
     settings.userconfig.activecategory = cat_num
@@ -101,7 +110,7 @@ def init_state_image(configname: str):
 
 def get_type_image(configname: str) -> Gtk.Image:
     """Create config location image."""
-    tlpconfig = settings.tlpconfig[configname]      # type: TlpConfig
+    tlpconfig = settings.tlpconfig[configname]
     conftype = tlpconfig.get_conf_type()
     conftypeimage = Gtk.Image()
 
@@ -115,7 +124,7 @@ def get_type_image(configname: str) -> Gtk.Image:
     return conftypeimage
 
 
-def create_item_box(configobjects: list, doc: str, grouptitle: str, window) -> Gtk.Box:
+def create_item_box(configobjects: list[ConfigObject], doc: str, grouptitle: str, window) -> Gtk.Box:
     """Create box with config item widgets."""
     configuibox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
 
@@ -129,7 +138,7 @@ def create_item_box(configobjects: list, doc: str, grouptitle: str, window) -> G
 
         configuibox.pack_start(grouplabel, False, False, 0)
 
-    for configobject in configobjects:      # type: ConfigObject
+    for configobject in configobjects:
         configname = configobject.name
         stateimage = init_state_image(configname)
         tlpuiobject = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=18)
@@ -235,7 +244,7 @@ def get_tlp_categories(window) -> OrderedDict:
         configs = category['configs']
         for config in configs:
             grouptitle = ""
-            configobjects = []
+            configobjects: list[ConfigObject] = []
 
             if 'group' in config:
                 grouptitle = config['group']
@@ -261,13 +270,3 @@ def get_tlp_categories(window) -> OrderedDict:
         propertyobjects[categoryname] = [categorylabel, categorybox]
 
     return propertyobjects
-
-
-class ConfigObject:
-    """Config object helper class."""
-
-    def __init__(self, name: str, datatype: str, values: str):
-        """Init config object helper class parameters."""
-        self.name = name
-        self.datatype = datatype
-        self.values = values

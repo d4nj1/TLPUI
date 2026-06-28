@@ -25,7 +25,7 @@ class TlpConfig:
         self.valuestore = value
         self.conftype = conftype
         self.confpath = confpath
-        self.stateimage = None      # type: StateImage
+        self.stateimage: None | StateImage = None
 
     def get_name(self) -> str:
         """Get config name."""
@@ -64,4 +64,5 @@ class TlpConfig:
 
     def refresh_state_image(self):
         """Refresh state image."""
-        self.stateimage.refresh(self.value, self.valuestore, self.enabled, self.enabledstore)
+        if self.stateimage is not None:
+            self.stateimage.refresh(self.value, self.valuestore, self.enabled, self.enabledstore)

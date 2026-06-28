@@ -1,8 +1,9 @@
 """Backend helper methods."""
 import os
+from typing import Literal
 
 
-def detect_display():
+def detect_display() -> Literal["wayland", "x11"]:
     """
     Detect the appropriate GDK backend (wayland or x11).
 
