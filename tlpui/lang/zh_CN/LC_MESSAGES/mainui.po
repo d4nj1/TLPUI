@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2024-01-02 19:15+0100\n"
-"PO-Revision-Date: 2024-01-02 19:16+0100\n"
+"POT-Creation-Date: 2026-07-10 11:09+0800\n"
+"PO-Revision-Date: 2026-07-14 21:40+0800\n"
 "Last-Translator: WhiredPlanck <fungdaat31@outlook.com>\n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -10,64 +10,66 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: MT_\n"
 "X-Poedit-SearchPath-0: mainui.py\n"
 
-#: mainui.py:87
+#: mainui.py:75
 msgid "Review settings"
-msgstr "检查设定"
+msgstr "确认更改"
 
-#: mainui.py:88
+#: mainui.py:76
 msgid "Save these changes?"
 msgstr "要保存这些更改吗？"
 
-#: mainui.py:111
+# 与原文语序不同。
+#: mainui.py:99
 msgid "Unsaved settings"
-msgstr "未保存的设定"
+msgstr "设定未保存"
 
-#: mainui.py:112
+#: mainui.py:100
 msgid "Do you really want to quit? No changes will be saved"
-msgstr "确定要退出吗？不会保存任何更改"
+msgstr "确定要退出吗？程序将不会保存任何更改"
 
-#: mainui.py:231
+#: mainui.py:228
 msgid "Reload"
 msgstr "重新加载"
 
-#: mainui.py:235 mainui.py:252
+#: mainui.py:232 mainui.py:250
 msgid "Save"
 msgstr "保存"
 
-#: mainui.py:250
+#: mainui.py:247
 msgid "File"
 msgstr "文件"
 
-#: mainui.py:255
+#: mainui.py:254
 msgid "Quit"
 msgstr "退出"
 
-#: mainui.py:259
+#: mainui.py:258
 msgid "Language"
 msgstr "语言"
 
-#: mainui.py:265
+#: mainui.py:264
 msgid "Help"
-msgstr "Help"
+msgstr "帮助"
 
-#: mainui.py:268
+#: mainui.py:267
 msgid "About"
-msgstr "About"
+msgstr "关于"
 
-#: mainui.py:292
+#: mainui.py:291
 msgid "UI for TLP written in Python/Gtk"
-msgstr "UI for TLP written in Python/Gtk"
+msgstr "使用 Python/Gtk 编写的 TLP 图形化配置工具"
 
-#: mainui.py:337
+#: mainui.py:336
 msgid "Configuration"
 msgstr "配置"
 
-#: mainui.py:340
+# 这里的“Statistics”貌似跟tlp原本的意图不一致，TLP官方对tlp-stat的解释是“View power saving status”（参照 tlp-stat(8) ），而非“statistics”。这里改回原本TLP官方意图。
+#: mainui.py:339
 msgid "Statistics"
-msgstr "情况统计"
+msgstr "状态信息"

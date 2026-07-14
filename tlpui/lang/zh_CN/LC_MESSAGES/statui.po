@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
 "POT-Creation-Date: 2023-12-25 16:42+0100\n"
-"PO-Revision-Date: 2023-12-25 16:46+0100\n"
+"PO-Revision-Date: 2026-07-10 11:25+0800\n"
 "Last-Translator: WhiredPlanck <fungdaat31@outlook.com>\n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -10,19 +10,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-KeywordsList: ST_\n"
 "X-Poedit-SearchPath-0: statui.py\n"
 
+# “上方”两字为了润色而加，如软件布局发生变化麻烦更改
 #: statui.py:37
 msgid "Click fetch button to receive results"
-msgstr "按下按钮以加载统计信息"
+msgstr "点击上方按钮以加载统计信息"
 
 #: statui.py:47
 msgid "Simple"
-msgstr "简单"
+msgstr "简要信息"
 
 #: statui.py:52
 msgid "Complete"
-msgstr "完整"
+msgstr "完整信息"

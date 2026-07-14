@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2025-02-19 15:07+0100\n"
-"PO-Revision-Date: 2025-02-19 15:07+0100\n"
+"POT-Creation-Date: 2026-07-10 22:20+0800\n"
+"PO-Revision-Date: 2026-07-14 21:44+0800\n"
 "Last-Translator: WhiredPlanck <fungdaat31@outlook.com>\n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _\n"
@@ -24,554 +24,627 @@ msgstr "一般设置"
 msgid "TLP_ENABLE__ID_DESCRIPTION"
 msgstr "启用/禁用 TLP"
 
+# “选项名称左侧的”对某些从右到左书写的用户不太友好
 #: configschema.yaml.h:3
-msgid "TLP_WARN_LEVEL__ID_DESCRIPTION"
+msgid "TLP_DISABLE_DEFAULTS__ID_DESCRIPTION"
 msgstr ""
-"Control how warnings about invalid settings are issued:\n"
-"0=disabled,\n"
-"1=background tasks (boot, resume, change of power source) report to syslog,\n"
-"2=shell commands report to the terminal (stderr),\n"
-"3=combination of 1 and 2"
+"打开以禁用所有 TLP 默认隐藏设置。这意味着 TLP 只应用您明确勾选"
+"（即选项名称左侧的单选框被选中了的）的值。\n"
+"注意：\n"
+"- 对于一些只希望使用 TLP 部分功能的用户友好。\n"
+"- 如启用该选项，使用 tlp-stat -c 来显示已生效的配置。"
 
 #: configschema.yaml.h:4
-msgid "TLP_MSG_COLORS__ID_DESCRIPTION"
+msgid "TLP_WARN_LEVEL__ID_DESCRIPTION"
 msgstr ""
-"Colorize error, warning, notice and success messages.\n"
-"Colors are specified with ANSI codes:\n"
-"1=bold black, 90=grey, 91=red, 92=green, 93=yellow, 94=blue, 95=magenta, "
-"96=cyan, 97=white.\n"
-"Other colors are possible, refer to:\n"
-"https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit\n"
-"Colors must be specified in the order \"error, warning, notice, success\".\n"
-"By default, errors are shown in red, warnings in yellow, notices in bold and "
-"success in green"
+"控制警告和每一项不正确的设置如何被提示：\n"
+"0: 禁用，\n"
+"1: 将后台任务（启动，恢复，电源更改）报告给 syslog，\n"
+"2: shell指令报告给终端（stderr），\n"
+"3: 1与2结合。"
 
 #: configschema.yaml.h:5
+msgid "TLP_MSG_COLORS__ID_DESCRIPTION"
+msgstr ""
+"五彩斑斓的错误/提示/成功信息。\n"
+"1=加粗黑色，90=灰色，91=红色，92=绿色，93=黄色，94=蓝色，95=品红"
+"色，96=青色，97=白色\n"
+"也支持其他颜色，请参考：\n"
+"https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit\n"
+"颜色必须按“错误, 警告, 提示, 成功”的顺序指定。默认情况下，错误显"
+"示为红色，警告显示为黄色，提示显示为加粗，成功显示为绿色。"
+
+#: configschema.yaml.h:6
+msgid "TLP_AUTO_SWITCH__ID_DESCRIPTION"
+msgstr ""
+"控制当连接或移除充电器时，启动系统时或执行 tlp start 时自动切换"
+"电源预设：\n"
+"0: 禁用。永不自动切换，仅使用 TLP_DEFAULT_MODE 的值（如配置了的"
+"话）\n"
+"1: 自动。永远自动切换。在 AC（交流供电）下选择性能模式，在 BAT"
+"（电池供电）下选择均衡模式。\n"
+"2: 智能。触发以下条件时不切换：\n"
+"在 AC（交流供电）下触发省电/均衡模式；\n"
+"在 BAT（电池供电）下触发省电/性能模式。\n"
+"注意：同等判定在休眠下插拔充电器时依然生效。"
+
+#: configschema.yaml.h:7
+msgid "TLP_PROFILE__GROUP_DESCRIPTION"
+msgstr ""
+"当自动切换禁用（TLP_AUTO_SWITCH设为0）或没有检测到电源时使用的 "
+"TLP 预设：\n"
+"PRF：性能，BAL：均衡，SAV：省电\n"
+"注意：传统的 AC 和 BAT 会持续工作，他们会被分别分配到 PRF 和 "
+"BAL 模式。"
+
+#: configschema.yaml.h:8
 msgid "TLP_DEFAULT_MODE__ID_DESCRIPTION"
 msgstr ""
 "无法检测到电源时的操作模式：AC（交流供电），BAT（电池供电）。\n"
-"仅部分笔记本和嵌入式硬件需要考虑"
+"仅部分笔记本和嵌入式硬件需要考虑。"
 
-#: configschema.yaml.h:6
+#: configschema.yaml.h:9
 msgid "TLP_PERSISTENT_DEFAULT__ID_DESCRIPTION"
 msgstr ""
 "操作模式选择：0=取决于电源来源, 1=总是使用 TLP_DEFAULT_MODE \n"
-"提示：配合使用 TLP_DEFAULT_MODE=BAT 在交流供电时使用 BAT 设定"
+"提示：配合使用 TLP_DEFAULT_MODE=BAT 在 AC（交流供电）时使用 BAT"
+"（电池供电） 设定"
 
-#: configschema.yaml.h:7
+#: configschema.yaml.h:10
 msgid "TLP_PS_IGNORE__ID_DESCRIPTION"
 msgstr ""
-"确定操作模式时要忽略的电源类别：AC（交流供电），BAT（电池供电）。\n"
-"注意：请在 AC /BAT 操作模式检测错误的笔记本电脑上尝试"
+"确定操作模式时要忽略的电源类别：AC（交流供电），BAT（电池供"
+"电）。\n"
+"注意：请在 AC /BAT 操作模式检测错误的笔记本电脑上尝试。"
 
-#: configschema.yaml.h:8
+#: configschema.yaml.h:11
 msgid "Audio__CATEGORY_TITLE"
 msgstr "音频"
 
-#: configschema.yaml.h:9
+#: configschema.yaml.h:12
 msgid "SOUND_POWER_SAVE__GROUP_DESCRIPTION"
-msgstr "为 Intel HDA、AC97 设备启用音频节能"
+msgstr ""
+"为 Intel HDA、AC97 设备启用音频节能（休眠时间按秒计算）。\n"
+"取0为禁用，≥1启用节能。\n"
+"注意：对于使用 PulseAudio 的 Linux 桌面用户推荐设置为1，无 "
+"PulseAudio 的系统可能需要设置为10。"
 
-#: configschema.yaml.h:10
+#: configschema.yaml.h:13
 msgid "SOUND_POWER_SAVE_CONTROLLER__ID_DESCRIPTION"
-msgstr "同时禁用控制器 (仅 HDA)"
+msgstr ""
+"同时禁用控制器 (仅 HDA)。\n"
+"注意：仅在 SOUND_POWER_SAVE_ON_AC/BAT 启用时才有效。"
 
-#: configschema.yaml.h:11
+#: configschema.yaml.h:14
 msgid "Disks__CATEGORY_TITLE"
 msgstr "磁盘"
 
-#: configschema.yaml.h:12
+#: configschema.yaml.h:15
 msgid "DISK_IDLE_SECS__GROUP_DESCRIPTION"
 msgstr ""
-"笔记本模式在同步前、必须等待磁盘空闲后多久的秒数。\n"
-"非零值表示启用，零则代表禁用笔记本模式"
+"笔记本模式在写盘前、必须等待磁盘空闲后多久的秒数。\n"
+"非零值表示启用，零则代表禁用笔记本模式。"
 
-#: configschema.yaml.h:13
+#: configschema.yaml.h:16
 msgid "MAX_LOST_WORK_SECS__GROUP_DESCRIPTION"
-msgstr "Dirty page 值 (超时秒数)"
+msgstr "脏页（dirty page）值（超时秒数）。"
 
-#: configschema.yaml.h:14
+#: configschema.yaml.h:17
 msgid "DISK_DEVICES__ID_DESCRIPTION"
 msgstr ""
-"硬盘设备，请用空格分隔多个设备（默认值：sda）。\n"
+"定义DISK/AHCI_RUNTIME所使用的磁盘设备列表。\n"
+"请用空格分隔多个设备。\n"
 "设备也可以通过磁盘 ID 来指定（查找时使用命令：tlp diskid）"
 
-#: configschema.yaml.h:15
+#: configschema.yaml.h:18
 msgid "DISK_APM_LEVEL__GROUP_DESCRIPTION"
 msgstr ""
 "硬盘高级电源管理等级：1..254, 255（最大节能 — 最小节能，关闭）\n"
 "等级 1..127 会降低磁盘转速；255 可允许用于大多数磁盘。\n"
-"请使用空格分隔多个设备。请使用特殊值'keep'\n"
-"来为特定磁盘保持硬件默认值"
+"请使用空格分隔多个设备。请使用特殊值'keep'来为特定磁盘保持硬件默"
+"认值。"
 
-#: configschema.yaml.h:16
+#: configschema.yaml.h:19
 msgid "DISK_APM_CLASS_DENYLIST__ID_DESCRIPTION"
 msgstr ""
-"Exclude disk classes from advanced power management (APM):\n"
-"- sata, ata, usb, ieee1394.\n"
-"Separate multiple classes with spaces.\n"
-"CAUTION: USB and IEEE1394 disks may fail to mount or data may get corrupted "
-"with APM enabled.\n"
-"Be careful and make sure you have backups of all affected media before "
-"removing 'usb' or 'ieee1394' from the denylist(!)"
+"从高级电源管理（APM）中排除磁盘类别。\n"
+"警告：USB 和 IEEE1394 磁盘设备启用APM后可能会无法挂载，或数据损"
+"坏。\n"
+"请谨慎行事，且确保您存好受影响的所有设备的数据备份之后再"
+"将“usb”或“ieee1394”从黑名单中移除。"
 
-#: configschema.yaml.h:17
+#: configschema.yaml.h:20
 msgid "DISK_SPINDOWN_TIMEOUT__GROUP_DESCRIPTION"
 msgstr ""
 "硬盘降速超时时间：\n"
-"0:\t\t\t禁用降速\n"
-"1..240:\t\t超时从 5 秒到 20 分钟（以 5 秒为最小单位）\n"
-"241..251:\t超时从 30 分钟到 5.5 个小时（以 30 分钟为最小单位）\n"
+"0:\t\t\t禁用降速。\n"
+"1..240:\t\t超时从 5 秒到 20 分钟（以 5 秒为最小单位）。\n"
+"241..251:\t超时从 30 分钟到 5.5 个小时（以 30 分钟为最小单"
+"位）。\n"
 "（详情参见 'man hdparm'）"
 
-#: configschema.yaml.h:18
+#: configschema.yaml.h:21
 msgid "DISK_IOSCHED__ID_DESCRIPTION"
 msgstr ""
 "为磁盘设备选择 I/O 调度器：noop/deadline/cfq（默认值：cfq）\n"
-"请使用空格分隔多个设备"
-
-#: configschema.yaml.h:19
-msgid "SATA_LINKPWR__GROUP_DESCRIPTION"
-msgstr ""
-"SATA 主动链路电源管理（ALPM）：min_power, medium_power, max_performance"
-
-#: configschema.yaml.h:20
-msgid "SATA_LINKPWR_BLACKLIST__ID_DESCRIPTION"
-msgstr ""
-"从链接电源管理中排除 SATA 主机设备。\n"
-"请使用空格分隔多个主机设备"
-
-#: configschema.yaml.h:21
-msgid "SATA_LINKPWR_DENYLIST__ID_DESCRIPTION"
-msgstr ""
-"Exclude SATA links from AHCI link power management (ALPM).\n"
-"SATA links are specified by their host. Refer to the output of\n"
-"tlp-stat -d to determine the host; the format is \"hostX\".\n"
-"Separate multiple hosts with spaces"
+"请使用空格分隔多个设备。"
 
 #: configschema.yaml.h:22
-msgid "AHCI_RUNTIME_PM__GROUP_DESCRIPTION"
+msgid "SATA_LINKPWR__GROUP_DESCRIPTION"
 msgstr ""
-"AHCI 控制器和磁盘运行时电源管理：on=禁用，auto=启用。\n"
-"\n"
-"** 实验性 ** 警告：使用 auto 选项很有可能导致系统锁定/数据丢失"
+"SATA磁盘的AHCI 链接电源管理（ALPM）级别：\n"
+"- min_power（最大省电等级）, med_power_with_dipm(*)（中等省电，"
+"设备主动请求低功耗状态），medium_power（中等省电）, "
+"max_performance（最大性能）\n"
+"(*) 需要内核版本 4.15 或以上，如满足这一点它即为推荐项。\n"
+"允许设置多个值，会依次尝试直到成功。"
 
 #: configschema.yaml.h:23
-msgid "AHCI_RUNTIME_PM_TIMEOUT__ID_DESCRIPTION"
-msgstr "磁盘挂起之前不活动的秒数"
+msgid "SATA_LINKPWR_BLACKLIST__ID_DESCRIPTION"
+msgstr ""
+"将指定的 SATA 链接从 AHCI 链接电源管理（ALPM）中排除。\n"
+"SATA 链接通过其所属的 host 来指定。请参考 tlp-stat -d 的输出以确"
+"定对应的 host；其格式为 ”hostX“。\n"
+"多个 host 请用空格分隔。"
 
 #: configschema.yaml.h:24
-msgid "BAY_POWEROFF__GROUP_DESCRIPTION"
+msgid "SATA_LINKPWR_DENYLIST__ID_DESCRIPTION"
 msgstr ""
-"关闭 UltraBay/MediaBay 中的光驱电源：0=禁用，1=启用。\n"
-"可以通过释放（并重新插入）弹出杆\n"
-"或按较新型号的弹出按钮来再次打开驱动器电源。\n"
-"注意：UltraBay/MediaBay 硬盘不会被断电"
+"将指定的 SATA 链接从 AHCI 链接电源管理（ALPM）中排除。\n"
+"SATA 链接通过其所属的 host 来指定。请参考 tlp-stat -d 的输出以确"
+"定对应的 host；其格式为 ”hostX“。\n"
+"多个 host 请用空格分隔。"
 
+# 这里的原文照抄了/etc/tlp.conf的内容，**跟实际的软件界面对不上**
 #: configschema.yaml.h:25
-msgid "BAY_DEVICE__ID_DESCRIPTION"
-msgstr "要关闭电源的光驱设备（默认为 sr0）"
+msgid "AHCI_RUNTIME_PM__GROUP_DESCRIPTION"
+msgstr ""
+"用于 NVMe, SATA, ATA, U盘以及SATA端口的运行时电源管理：\n"
+"- 开关打开：启用运行时电源管理；开关关闭：禁用此功能。\n"
+"注意：SATA控制器为PCIe设备，由PCIe类下的RUNTIME_PM进行管理。"
 
 #: configschema.yaml.h:26
+msgid "AHCI_RUNTIME_PM_TIMEOUT__ID_DESCRIPTION"
+msgstr "磁盘挂起之前不活动的秒数。"
+
+#: configschema.yaml.h:27
+msgid "BAY_POWEROFF__GROUP_DESCRIPTION"
+msgstr ""
+"关闭 UltraBay/MediaBay 中的光驱电源：开关即为禁用，开关开即为启"
+"用。\n"
+"可通过解锁并重新锁止释放杆或（对于更新型号的设备来说）按下弹出按"
+"钮来再次打开驱动器电源。\n"
+"注意：UltraBay/MediaBay 硬盘不会被断电。"
+
+#: configschema.yaml.h:28
+msgid "BAY_DEVICE__ID_DESCRIPTION"
+msgstr "要关闭电源的光驱设备（默认为 sr0）。"
+
+#: configschema.yaml.h:29
 msgid "Graphics__CATEGORY_TITLE"
 msgstr "显卡"
 
-#: configschema.yaml.h:27
-msgid "INTEL_GPU_FREQ__GROUP_DESCRIPTION"
-msgstr ""
-"设置 Intel GPU 的最小 / 最大 / Turbo 频率。\n"
-"可用的值取决于实际使用的硬件。请参见\n"
-"命令 tlp-stat -g 的输出获取可用的频率数值"
-
-#: configschema.yaml.h:28
-msgid "RADEON_POWER_PROFILE__GROUP_DESCRIPTION"
-msgstr ""
-"Radeon 显卡时钟速度（配置文件方法）： low, mid, high, auto, default；\n"
-"auto = BAT 模式时用 mid，AC 模式时用 high，default = 使用硬件默认值。\n"
-"需要使用开源驱动程序 'radeon'"
-
-#: configschema.yaml.h:29
-msgid "RADEON_DPM_STATE__GROUP_DESCRIPTION"
-msgstr ""
-"Radeon 动态电源管理方法（DPM）：battery，performance\n"
-"仅适用于开源驱动程序 'radeon'，\n"
-"要求内核版本 >= 3.11 并引导时使用 'option radeon.dpm = 1'"
-
 #: configschema.yaml.h:30
-msgid "RADEON_DPM_PERF_LEVEL__GROUP_DESCRIPTION"
-msgstr "Radeon DPM 性能等级：auto, low, high；推荐使用 auto"
+msgid "INTEL_GPU_POWER_PROFILE__GROUP_DESCRIPTION"
+msgstr ""
+"Intel GPU 电源管理。\n"
+"选择 Intel Xe GPU 的电源配置文件：base（基础）, power_saving（节"
+"能模式）\n"
+"注意：需要 xe 内核驱动。"
 
 #: configschema.yaml.h:31
-msgid "AMDGPU_ABM_LEVEL__GROUP_DESCRIPTION"
+msgid "INTEL_GPU_FREQ__GROUP_DESCRIPTION"
 msgstr ""
-"Display panel adaptive backlight modulation (ABM) level: 0(off), 1..4.\n"
-"Values 1..4 control the maximum brightness reduction allowed by the ABM "
-"algorithm, where 1 represents the least and 4 the most power saving.\n"
-"Notes:\n"
-"- Requires AMD Vega or newer GPU with amdgpu driver as of kernel 6.9\n"
-"- Savings are made at the expense of color balance"
+"设置 Intel GPU 的最小 / 最大 / 睿频 频率。\n"
+"可用的值取决于实际使用的硬件。请参见命令 tlp-stat -g 的输出获取"
+"可用的频率数值。"
 
 #: configschema.yaml.h:32
+msgid "RADEON_POWER_PROFILE__GROUP_DESCRIPTION"
+msgstr ""
+"显卡时钟速度（配置文件）： low（低）, mid（中）, high（高）, "
+"auto（自动）, default（默认）；\n"
+"auto = BAT（电池供电）时用 mid，AC（交流供电）时用 high。\n"
+"注意： 仅在老旧 ATI 硬件上的 radeon 驱动上可使用（只有在这些设备"
+"上没有 DPM 一说）。"
+
+#: configschema.yaml.h:33
+msgid "RADEON_DPM_STATE__GROUP_DESCRIPTION"
+msgstr ""
+"动态电源管理（DPM）：balanced（平衡）, battery（节能）, "
+"performance（性能）\n"
+"注意：仅限 radeon 内核驱动。"
+
+#: configschema.yaml.h:34
+msgid "RADEON_DPM_PERF_LEVEL__GROUP_DESCRIPTION"
+msgstr ""
+"AMD GPU 能源管理。\n"
+"性能等级（DPM）：auto（推荐）（自动）, low（低）, high（高）\n"
+"注意：需要 amdgpu 或 radeon 内核驱动。"
+
+#: configschema.yaml.h:35
+msgid "AMDGPU_ABM_LEVEL__GROUP_DESCRIPTION"
+msgstr ""
+"显示面板自适应背光强度（ABM）：0（关闭），1~4\n"
+"1~4的值控制着ABM算法最大能减小的屏幕亮度，1对亮度影响最小，4最为"
+"省电。\n"
+"注意：\n"
+"- 需要 AMD Vega 或更新架构的 GPU，且需要 Linux 内核版本6.9以上"
+"的 amdgpu 内核模块。\n"
+"- 省电效果以牺牲色彩平衡为代价。"
+
+#: configschema.yaml.h:36
 msgid "Network__CATEGORY_TITLE"
 msgstr "网络"
 
-#: configschema.yaml.h:33
+#: configschema.yaml.h:37
 msgid "WIFI_PWR__GROUP_DESCRIPTION"
-msgstr "WiFi 省电模式。并非所有无线网络适配器都支持"
+msgstr "WiFi 省电模式。"
 
-#: configschema.yaml.h:34
+#: configschema.yaml.h:38
 msgid "WOL_DISABLE__ID_DESCRIPTION"
-msgstr "禁用局域网唤醒"
+msgstr "禁用局域网唤醒。"
 
-#: configschema.yaml.h:35
+#: configschema.yaml.h:39
 msgid "PCIe__CATEGORY_TITLE"
 msgstr "PCIe"
 
-#: configschema.yaml.h:36
+#: configschema.yaml.h:40
 msgid "PCIE_ASPM__GROUP_DESCRIPTION"
-msgstr "PCI Express 主动状态电源管理（PCIe ASPM）"
+msgstr "PCIe 主动状态电源管理（PCIe ASPM）"
 
-#: configschema.yaml.h:37
+#: configschema.yaml.h:41
 msgid "RUNTIME_PM__GROUP_DESCRIPTION"
 msgstr "PCI(e) 总线设备的运行时电源管理"
 
-#: configschema.yaml.h:38
+#: configschema.yaml.h:42
 msgid "RUNTIME_PM_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
 "从运行时电源管理中排除以下列表中的 PCI(e) 设备（用空格分隔）。\n"
-"请使用 lspci 获取地址（在第一列）"
-
-#: configschema.yaml.h:39
-msgid "RUNTIME_PM_DRIVER_BLACKLIST__ID_DESCRIPTION"
-msgstr ""
-"从运行时电源管理中排除分配给列出的驱动程序的 PCI(e) 设备\n"
-"（应防止意外打开混合图形的离散部分的电源）。\n"
-"默认值为 \"radeon nouveau\"；请使用 \"\" 完全禁用该功能。\n"
-"请使用空格分隔多个驱动程序"
-
-#: configschema.yaml.h:40
-msgid "RUNTIME_PM_DENYLIST__ID_DESCRIPTION"
-msgstr ""
-"Exclude listed PCIe device adresses from Runtime PM.\n"
-"Note: this preserves the kernel driver default, to force a certain state\n"
-"- use RUNTIME_PM_ENABLE/DISABLE instead.\n"
-"Separate multiple addresses with spaces.\n"
-"Use lspci to get the addresses (1st column)"
-
-#: configschema.yaml.h:41
-msgid "RUNTIME_PM_DRIVER_DENYLIST__ID_DESCRIPTION"
-msgstr ""
-"Exclude PCIe devices assigned to the listed drivers from Runtime PM.\n"
-"Note: this preserves the kernel driver default, to force a certain state\n"
-"- use RUNTIME_PM_ENABLE/DISABLE instead.\n"
-"Separate multiple drivers with spaces.\n"
-"Leave empty to disable completely"
-
-#: configschema.yaml.h:42
-msgid "RUNTIME_PM_DEVICE__GROUP_DESCRIPTION"
-msgstr ""
-"Permanently enable/disable Runtime PM for listed PCIe device addresses "
-"(independent of the power source).\n"
-"This has priority over all preceding Runtime PM settings. Separate multiple "
-"addresses with spaces.\n"
-"Use lspci to get the adresses (1st column)"
+"请使用 lspci 指令获取地址（第一列）。"
 
 #: configschema.yaml.h:43
+msgid "RUNTIME_PM_DRIVER_BLACKLIST__ID_DESCRIPTION"
+msgstr ""
+"从运行时电源管理中排除列表中内核驱动所驱动的设备。\n"
+"注意：这操作保留了内核驱动的默认选项，如需强制保持在某一特定值，"
+"请使用 RUNTIME_PM_ENABLE/DISABLE。\n"
+"用空格分割不同内核驱动。\n"
+"留空以完全禁用。"
+
+#: configschema.yaml.h:44
+msgid "RUNTIME_PM_DENYLIST__ID_DESCRIPTION"
+msgstr ""
+"将指定的 PCI(e) 设备地址从运行时电源管理中排除。\n"
+"注意：此设置保留内核驱动默认状态。如需强制设定特定状态，请改用 "
+"RUNTIME_PM_ENABLE/DISABLE。\n"
+"使用 lspci 命令获取地址（第一列）."
+
+#: configschema.yaml.h:45
+msgid "RUNTIME_PM_DRIVER_DENYLIST__ID_DESCRIPTION"
+msgstr ""
+"从运行时电源管理中排除列表中内核驱动所驱动的设备。\n"
+"注意：这操作保留了内核驱动的默认选项，如需强制保持在某一特定值，"
+"请使用 RUNTIME_PM_ENABLE/DISABLE。\n"
+"用空格分割不同内核驱动。\n"
+"留空以完全禁用。"
+
+#: configschema.yaml.h:46
+msgid "RUNTIME_PM_DEVICE__GROUP_DESCRIPTION"
+msgstr ""
+"为列出的 PCIe 设备地址永久启用/禁用运行时电源管理（无视电源状"
+"态）。\n"
+"这个选项的优先级比所有运行时电源管理都高。 用空格分割不同项。\n"
+"使用 lspci 来获得设备地址（第一列）。"
+
+#: configschema.yaml.h:47
 msgid "Processor__CATEGORY_TITLE"
 msgstr "处理器"
 
-#: configschema.yaml.h:44
+#: configschema.yaml.h:48
 msgid "CPU_DRIVER_OPMODE__GROUP_DESCRIPTION"
 msgstr ""
-"Select a CPU scaling driver operation mode.\n"
-"Intel CPU with intel_pstate driver: active, passive\n"
-"AMD Zen 2 or newer CPU with amd-pstate_driver as of kernel 6.3/6.4:\n"
-"active, passive, guided"
+"选择 CPU 频率调节驱动的运行模式：\n"
+"使用 intel_pstate 驱动的英特尔 CPU：active、passive\n"
+"使用 amd-pstate 驱动的 AMD Zen 2 架构或更新款 CPU（需 Linux 内核"
+"版本 6.3/6.4 或更新）：active、passive、guided"
 
-#: configschema.yaml.h:45
+#: configschema.yaml.h:49
 msgid "CPU_SCALING_GOVERNOR__GROUP_DESCRIPTION"
 msgstr ""
-"选择一个 CPU 频率缩放调节器：ondemand / powersave / performance / "
-"conservative\n"
-"使用 intel_pstate 驱动程序的 Intel Core i 系列处理器可用值：powersave / "
-"performance\n"
-"重要提示：\n"
-"- *必须* 禁用发行版的调节器（governor）设置，否则会发生冲突\n"
-"- ondemand 可以满足*几乎所有*的工作负载，你应该知道自己现在在做什么再操作"
+"选择一个 CPU 频率调节驱动策略（governor）。\n"
+"使用 intel_pstate 驱动的 Intel 处理器可用值：\n"
+"- powersave(*)（节能） / performance（性能）\n"
+"使用 intel_cpufreq 驱动（又称 intel_pstate 的passive模式）的 "
+"Intel 处理器可用值：\n"
+"- conservative（保守）, ondemand（按需）, userspace（用户空"
+"间）, powersave（节能）, performance（性能）, schedutil(*)\n"
+"使用 acpi-cpufreq 驱动的 Intel或其他品牌处理器可用值：\n"
+"- conservative, ondemand(*), userspace, powersave, performance, "
+"schedutil(*)\n"
+"使用 tlp-stat -p 显示当前启用的驱动以及可用的策略。\n"
+"重要提醒：\n"
+"- 上方标记为 (*) 的策略在几乎所有工作负载下都更省电，因此内核和"
+"大多数发行版都将其设为默认值。\n"
+"- 您应该在更改策略之前充分了解其优缺点。"
 
-#: configschema.yaml.h:46
+#: configschema.yaml.h:50
 msgid "CPU_SCALING_FREQ__GROUP_DESCRIPTION"
 msgstr ""
-"设置缩放调节器可用的最小 / 最大频率。\n"
+"设置频率调节驱动可用的最小 / 最大频率。\n"
 "可用的值在很大程度上取决于使用的 CPU。\n"
-"请参见 tlp-stat 输出的 \"Processor（处理器）\" 部分"
+"如欲知道具体可用频率，请参照 tlp-stat -p 的输出。\n"
+"注意：\n"
+"- 最低/最高频率应永远为 AC（交流供电）和 BAT（电池供电）同时指"
+"定。\n"
+"- 不推荐与 intel_pstate 频率调节驱动同时使用，请用 CPU_MIN/"
+"MAX_PERF_ON_AC/BAT 替代。"
 
-#: configschema.yaml.h:47
+#: configschema.yaml.h:51
 msgid "CPU_ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
 msgstr ""
 "设置 Intel CPU 能源/性能策略 HWP.EPP 和 EPB：\n"
-"performance，balance_performance，default，balance_power，power\n"
+"performance，balance_performance，default，balance_power，"
+"power\n"
 "上述值以“逐渐提高节电效果”的顺序给出。\n"
 "注意：\n"
-"- 需要 Intel Core i 系列处理器\n"
-"- HWP.EPP 需要内核 4.10 版本和 intel_pstate 驱动程序\n"
-"- EPB 需要内核 5.2 版本或 linux-tools 中的 msr 和\n"
-"x86_energy_perf_policy 内核模块\n"
-"- 当 HWP.EPP 可用时，不会设定 EPB"
+"- HWP.EPP 需要 Linux 内核 4.10 版本， intel_pstate 驱动程序以及"
+"第六代 Intel 酷睿 i 系列或更新。\n"
+"- EPB 需要内核 5.2 版本或 linux-tools 中的 msr 和 "
+"x86_energy_perf_policy 内核模块，以及 intel_pstate或 "
+"intel_cpufreq 频率调节模块，还需要第二代 Intel 酷睿 i 系列或更新"
+"的CPU。\n"
+"- 当 HWP.EPP 可用时，将不会设定 EPB。"
 
-#: configschema.yaml.h:48
+#: configschema.yaml.h:52
 msgid "CPU_PERF__GROUP_DESCRIPTION"
 msgstr ""
 "设置 Intel P-state 性能：0..100（％）\n"
 "限制最大/最小 P-state 以控制 CPU 的功耗。\n"
 "上述值表示为可用性能的百分比。\n"
-"需要使用 intel_pstate 驱动程序的 Intel Core i 系列处理器"
+"需要使用受 intel_pstate 或 intel_cpufreq 频率调节驱动支持的第二"
+"代或更新的 Intel 酷睿 i 系列处理器。"
 
-#: configschema.yaml.h:49
+#: configschema.yaml.h:53
 msgid "CPU_BOOST__GROUP_DESCRIPTION"
 msgstr ""
-"设置 CPU 的 \"turbo boost\" 功能。\n"
-"需要 Intel Core i 系列处理器。\n"
-"重要提示：\n"
-"- 这可能与所使用 Linux 发行版的调节器（governor）设置冲突\n"
-"-值为 1 时不会激活增强（boosting），而只是允许使用它"
+"设置 CPU 的“睿频”（英特尔）或”Turbo Core“（AMD）功能：\n"
+"开关关：禁用；开关开：启用。\n"
+"注意：开关打开仅表示允许 CPU 在需要时自动提升频率，而非强制其始"
+"终处于加速状态。"
 
-#: configschema.yaml.h:50
+#: configschema.yaml.h:54
 msgid "CPU_HWP_DYN_BOOST__GROUP_DESCRIPTION"
 msgstr ""
-"Set the Intel CPU HWP dynamic boost feature:\n"
-"- 0=disable, 1=enable.\n"
-"Requires intel_pstate scaling driver in 'active' mode and Intel Core i 6th "
-"gen. or newer CPU"
+"设置 Intel CPU的 HWP 自动睿频功能：\n"
+"- 开关关即为禁用，反之亦然。\n"
+"需要 intel_pstate 频率调节驱动处在“active”状态，且需要第六代 "
+"Intel 酷睿 i 系列CPU或更新。"
 
-#: configschema.yaml.h:51
+#: configschema.yaml.h:55
 msgid "SCHED_POWERSAVE__GROUP_DESCRIPTION"
-msgstr "在轻负载条件下，尽量减少使用的 CPU 核心/超线程数"
+msgstr "在轻负载条件下，尽量减少使用的 CPU 核心/超线程数。"
 
-#: configschema.yaml.h:52
+#: configschema.yaml.h:56
 msgid "NMI_WATCHDOG__ID_DESCRIPTION"
 msgstr ""
 "内核 NMI 看门狗\n"
-"off: 节约电量，on: 仅适用于内核调试"
+"关闭: 节约电量，打开: 仅适用于内核调试"
 
-#: configschema.yaml.h:53
+#: configschema.yaml.h:57
 msgid "PHC_CONTROLS__ID_DESCRIPTION"
 msgstr ""
-"更改 CPU 电压（也称为“欠电压”）\n"
-"需要带有 PHC 补丁的内核\n"
-"频率电压比配对子已写在了 /sys/devices/system/cpu/cpu0/cpufreq/phc_controls 文"
-"件中\n"
-"注意：仅当完全了解自己在做什么时，才可以使用此选项"
+"更改 CPU 电压（也称为“降压”）。\n"
+"需要带有 PHC 补丁的内核。\n"
+"频率电压比配对子已写在了 /sys/devices/system/cpu/cpu0/cpufreq/"
+"phc_controls 文件中。\n"
+"注意：仅当完全了解自己在做什么时，才可以使用此选项。"
 
-#: configschema.yaml.h:54
+#: configschema.yaml.h:58
 msgid "PLATFORM_PROFILE__GROUP_DESCRIPTION"
 msgstr ""
-"Select platform profile:\n"
-"- performance, balanced, low-power.\n"
-"Controls system operating characteristics around power/performance levels,\n"
-"thermal and fan speed. Values are given in order of increasing power "
-"saving.\n"
-"Note: check the output of tlp-stat -p to determine availability on your "
-"hardware and additional profiles such as: balanced-performance, quiet, cool"
+"选择平台配置方案：\n"
+"- performance（性能）, balanced（平衡）, low-power（低功耗）\n"
+"控制设备在功耗/性能的平衡。以及温度和风扇速度的平衡。给出的值从"
+"最小省电效果到最大省电效果排列。\n"
+"注意：参照 tlp-stat -p 以确定你的硬件支持的配置方案或别的自定义"
+"方案，例如： balanced-performance（均衡性能）, quiet（最小噪"
+"音）, cool（最低温度）"
 
-#: configschema.yaml.h:55
+#: configschema.yaml.h:59
 msgid "MEM_SLEEP__GROUP_DESCRIPTION"
 msgstr ""
-"System suspend mode:\n"
-"s2idle: Idle standby - a pure software, light-weight, system sleep state\n"
-"deep: Suspend to RAM - the whole system is put into a low-power state, "
-"except for memory, usually resulting in higher savings than s2idle\n"
-"CAUTION: changing suspend mode may lead to system instability and even data "
-"loss. As for the availability of different modes on your system, check the "
-"output of tlp-stat -s. If unsure, stick with the system default by not "
-"enabling this"
+"系统挂起模式：\n"
+"s2idle: 空闲待机 ——一个纯粹由软件实现的，轻量化的系统级睡眠状"
+"态。\n"
+"deep: 挂起到内存——整个系统除了内存外被设置在一个低功耗模式，通常"
+"能比 s2idle 更省电。\n"
+"注意：改变挂起模式可能使系统不稳定，甚至丢失数据。对于您的系统支"
+"持不同模式与否，请查看 tlp-stat -s 指令的输出。如不确定，请不要"
+"启用这个选项并使用系统默认值。"
 
-#: configschema.yaml.h:56
+#: configschema.yaml.h:60
 msgid "Radio__CATEGORY_TITLE"
 msgstr "无线电"
 
-#: configschema.yaml.h:57
+#: configschema.yaml.h:61
 msgid "RESTORE_DEVICE_STATE_ON_STARTUP__ID_DESCRIPTION"
 msgstr ""
-"在系统启动时恢复从上次关机时无线电设备的状态（蓝牙，WiFi，WWAN）。\n"
-"提示：启用此选项后，以下参数 DEVICES_TO_DISABLE / ENABLE_ON_STARTUP / "
-"SHUTDOWN 将被忽略"
-
-#: configschema.yaml.h:58
-msgid "DEVICES_TO_DISABLE_ON_STARTUP__ID_DESCRIPTION"
-msgstr "系统启动时要禁用的无线电设备：bluetooth wifi wwan"
-
-#: configschema.yaml.h:59
-msgid "DEVICES_TO_ENABLE_ON_STARTUP__ID_DESCRIPTION"
-msgstr "系统启动时要启用的无线电设备：bluetooth wifi wwan"
-
-#: configschema.yaml.h:60
-msgid "DEVICES_TO_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
-msgstr ""
-"系统关机时要禁用的无线电设备：bluetooth wifi wwan\n"
-"（针对一些设备阻止关机的解决方法）"
-
-#: configschema.yaml.h:61
-msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN__ID_DESCRIPTION"
-msgstr ""
-"关机时要启用的无线电设备：bluetooth wifi wwan\n"
-"（防止其他操作系统找不到无线电设备）"
+"在系统启动时恢复从上次关机时无线电设备的状态（蓝牙，WiFi，"
+"WWAN）。\n"
+"提示：启用此选项后，以下参数 DEVICES_TO_DISABLE / "
+"ENABLE_ON_STARTUP / SHUTDOWN 将被忽略。"
 
 #: configschema.yaml.h:62
-msgid "DEVICES_TO_ENABLE_ON_AC__ID_DESCRIPTION"
-msgstr "交流供电下，要启用的无线电设备：bluetooth, wifi, wwan"
+msgid "DEVICES_TO_DISABLE_ON_STARTUP__ID_DESCRIPTION"
+msgstr "系统启动时要禁用的无线电设备。"
 
 #: configschema.yaml.h:63
-msgid "DEVICES_TO_DISABLE_ON_BAT__ID_DESCRIPTION"
-msgstr "电池供电下要禁用的无线电设备：bluetooth, wifi, wwan"
+msgid "DEVICES_TO_ENABLE_ON_STARTUP__ID_DESCRIPTION"
+msgstr "系统启动时要启用的无线电设备。"
 
 #: configschema.yaml.h:64
-msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE__ID_DESCRIPTION"
+msgid "DEVICES_TO_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
-"电池供电下，当不在使用时（未连接状态），要禁用的无线电设备：\n"
-"bluetooth, wifi, wwan"
+"系统关机时要禁用的无线电设备（针对一些设备阻止关机的解决方法）。"
 
 #: configschema.yaml.h:65
-msgid "Radio Device Wizard__CATEGORY_TITLE"
-msgstr "无线电设备向导"
+msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN__ID_DESCRIPTION"
+msgstr ""
+"关机时要启用的无线电设备（防止其他操作系统找不到无线电设备）。"
 
 #: configschema.yaml.h:66
-msgid "DEVICES_TO_DISABLE_ON_CONNECT__GROUP_DESCRIPTION"
-msgstr "连接时要禁用的无线电设备"
+msgid "DEVICES_TO_ENABLE_ON_AC__ID_DESCRIPTION"
+msgstr "交流供电（AC状态）下，要启用的无线电设备。"
 
 #: configschema.yaml.h:67
-msgid "DEVICES_TO_ENABLE_ON_DISCONNECT__GROUP_DESCRIPTION"
-msgstr "在断开连接时启用的无线电设备"
+msgid "DEVICES_TO_DISABLE_ON_BAT__ID_DESCRIPTION"
+msgstr "电池供电下要禁用的无线电设备。"
 
 #: configschema.yaml.h:68
-msgid "DEVICES_ON_DOCK__GROUP_DESCRIPTION"
-msgstr "伫停时要启用/禁用的无线电设备"
+msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE__ID_DESCRIPTION"
+msgstr "电池供电下要关闭的，未处在连接状态的无线电设备。"
 
 #: configschema.yaml.h:69
-msgid "DEVICES_ON_UNDOCK__GROUP_DESCRIPTION"
-msgstr "取消伫停时要启用/禁用的无线电设备"
+msgid "Radio Device Wizard__CATEGORY_TITLE"
+msgstr "无线电设备管理向导"
 
 #: configschema.yaml.h:70
+msgid "DEVICES_TO_DISABLE_ON_CONNECT__GROUP_DESCRIPTION"
+msgstr "连接时要禁用的无线电设备。"
+
+#: configschema.yaml.h:71
+msgid "DEVICES_TO_ENABLE_ON_DISCONNECT__GROUP_DESCRIPTION"
+msgstr "在断开连接时启用的无线电设备。"
+
+#: configschema.yaml.h:72
+msgid "DEVICES_ON_DOCK__GROUP_DESCRIPTION"
+msgstr "连接dock时要启用/禁用的无线电设备。"
+
+#: configschema.yaml.h:73
+msgid "DEVICES_ON_UNDOCK__GROUP_DESCRIPTION"
+msgstr "断开dock时要启用/禁用的无线电设备。"
+
+#: configschema.yaml.h:74
 msgid "USB__CATEGORY_TITLE"
 msgstr "USB"
 
-#: configschema.yaml.h:71
+#: configschema.yaml.h:75
 msgid "USB_AUTOSUSPEND__ID_DESCRIPTION"
 msgstr "USB 自动挂起功能"
 
-#: configschema.yaml.h:72
+#: configschema.yaml.h:76
 msgid "USB_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
-"以下列表中的设备将不包括在自动挂起名单中\n"
+"以下列表中的设备将不包括在自动挂起名单中。\n"
 "（用空格分隔）。请使用 lsusb 获取设备 ID。\n"
-"注意：输入设备（usbhid）会被自动排除"
+"注意：输入设备（usbhid）会被自动排除。"
 
-#: configschema.yaml.h:73
+#: configschema.yaml.h:77
 msgid "USB_BLACKLIST_BTUSB__ID_DESCRIPTION"
 msgstr "要排除在 USB 自动挂起名单之外的蓝牙设备"
 
-#: configschema.yaml.h:74
+#: configschema.yaml.h:78
 msgid "USB_BLACKLIST_PHONE__ID_DESCRIPTION"
-msgstr "要排除在 USB 自动挂起名单之外的电话设备"
+msgstr "要排除在 USB 自动挂起名单之外的电话设备。"
 
-#: configschema.yaml.h:75
+#: configschema.yaml.h:79
 msgid "USB_BLACKLIST_PRINTER__ID_DESCRIPTION"
-msgstr "要排除在 USB 自动挂起名单之外的打印机"
+msgstr "要排除在 USB 自动挂起名单之外的打印机。"
 
-#: configschema.yaml.h:76
+#: configschema.yaml.h:80
 msgid "USB_BLACKLIST_WWAN__ID_DESCRIPTION"
 msgstr ""
 "要排除在自动挂起名单之外的 WWAN 设备。\n"
-"注意：仅适用于 ID 在 05c6:* 0bdb:* 1199:* 范围的设备"
+"注意：仅适用于 ID 在 05c6:* 0bdb:* 1199:* 范围的设备。"
 
-#: configschema.yaml.h:77
+#: configschema.yaml.h:81
 msgid "USB_WHITELIST__ID_DESCRIPTION"
 msgstr ""
 "将列出的设备包括在自动挂起名单中，\n"
-"即使驱动程序或上面的 WWAN 黑名单已将其排除/列出（用空格分隔）。\n"
-"请使用 lsusb 获取设备 ID"
-
-#: configschema.yaml.h:78
-msgid "USB_DENYLIST__ID_DESCRIPTION"
-msgstr ""
-"Exclude listed devices from USB autosuspend (separate with spaces).\n"
-"Use lsusb to get the ids.\n"
-"Note: input devices (usbhid) and libsane-supported scanners are excluded "
-"automatically"
-
-#: configschema.yaml.h:79
-msgid "USB_EXCLUDE_AUDIO__ID_DESCRIPTION"
-msgstr ""
-"Exclude audio devices from USB autosuspend:\n"
-"- 0=do not exclude, 1=exclude"
-
-#: configschema.yaml.h:80
-msgid "USB_EXCLUDE_BTUSB__ID_DESCRIPTION"
-msgstr ""
-"Exclude bluetooth devices from USB autosuspend:\n"
-"- 0=do not exclude, 1=exclude"
-
-#: configschema.yaml.h:81
-msgid "USB_EXCLUDE_PHONE__ID_DESCRIPTION"
-msgstr ""
-"Exclude phone devices from USB autosuspend:\n"
-"- 0=do not exclude, 1=exclude (enable charging)"
+"即使驱动程序或上面的 WWAN 黑名单已将其排除/列出（用空格分"
+"隔）。\n"
+"请使用 lsusb 获取设备 ID。"
 
 #: configschema.yaml.h:82
-msgid "USB_EXCLUDE_PRINTER__ID_DESCRIPTION"
+msgid "USB_DENYLIST__ID_DESCRIPTION"
 msgstr ""
-"Exclude printers from USB autosuspend:\n"
-"- 0=do not exclude, 1=exclude"
+"将指定的设备从 USB 自动挂起中排除。使用 lsusb 命令获取设备 "
+"ID。\n"
+"注意：输入设备（usbhid）和 libsane 支持的扫描仪会自动排除。"
 
 #: configschema.yaml.h:83
-msgid "USB_EXCLUDE_WWAN__ID_DESCRIPTION"
-msgstr ""
-"Exclude WWAN devices from USB autosuspend:\n"
-"- 0=do not exclude, 1=exclude"
+msgid "USB_EXCLUDE_AUDIO__ID_DESCRIPTION"
+msgstr "禁止音频设备尝试 USB 自动挂起。"
 
 #: configschema.yaml.h:84
-msgid "USB_ALLOWLIST__ID_DESCRIPTION"
-msgstr ""
-"Allow USB autosuspend for listed devices even if already denylisted or\n"
-"excluded above (separate with spaces). Use lsusb to get the ids"
+msgid "USB_EXCLUDE_BTUSB__ID_DESCRIPTION"
+msgstr "禁止蓝牙设备尝试 USB 自动挂起。"
 
 #: configschema.yaml.h:85
-msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
-msgstr ""
-"设置为在关机前禁用自动挂起或者不执行任何操作\n"
-"（USB 设备导致出现关机问题的的解决方法）"
+msgid "USB_EXCLUDE_PHONE__ID_DESCRIPTION"
+msgstr "禁止电话设备尝试 USB 自动挂起。"
 
 #: configschema.yaml.h:86
+msgid "USB_EXCLUDE_PRINTER__ID_DESCRIPTION"
+msgstr "禁止打印机设备尝试 USB 自动挂起。"
+
+#: configschema.yaml.h:87
+msgid "USB_EXCLUDE_WWAN__ID_DESCRIPTION"
+msgstr "禁止蜂窝网络设备尝试 USB 自动挂起。"
+
+#: configschema.yaml.h:88
+msgid "USB_ALLOWLIST__ID_DESCRIPTION"
+msgstr ""
+"允许列表中的 USB 设备即使在排除列表内或在上面列表中的情况下自动"
+"休眠。使用 lsusb 获取对应ID。"
+
+#: configschema.yaml.h:89
+msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
+msgstr ""
+"设置为在关机前禁用自动挂起或者不执行任何操作。\n"
+"（USB 设备导致出现关机问题的的解决方法）"
+
+#: configschema.yaml.h:90
 msgid "ThinkPad Battery__CATEGORY_TITLE"
 msgstr "ThinkPad 电池"
 
-#: configschema.yaml.h:87
+#: configschema.yaml.h:91
 msgid "CHARGE_THRESH_BAT0__GROUP_DESCRIPTION"
 msgstr ""
-"电池充电阈值（仅适用于 ThinkPad，需要 tp-smapi 或 acpi-call 内核模块）\n"
-"当剩余电量低于 START_CHARGE_TRESH 值时开始充电，\n"
-"高于 STOP_CHARGE_TRESH 值时停止充电。\n"
-"主 / 内置电池（以 % 表示的值）"
-
-#: configschema.yaml.h:88
-msgid "CHARGE_THRESH_BAT1__GROUP_DESCRIPTION"
-msgstr "Ultrabay / Slice / 可更换电池（以 % 表示的值）"
-
-#: configschema.yaml.h:89
-msgid "RESTORE_THRESHOLDS_ON_BAT__ID_DESCRIPTION"
-msgstr "拔下交流电后恢复充电阈值"
-
-#: configschema.yaml.h:90
-msgid "NATACPI_ENABLE__ID_DESCRIPTION"
-msgstr "电池功能驱动程序：0=禁用, 1=启用"
-
-#: configschema.yaml.h:91
-msgid "TPACPI_ENABLE__ID_DESCRIPTION"
-msgstr "电池功能驱动程序：0=禁用, 1=启用"
+"电池保护/充电阀值。\n"
+"当电池电量小于 START_CHAGE_THRESH 值，且充电器已连接时开始充电。"
+"当电池电量达到STOP_CHARGE_THRESH 值时停止。\n"
+"硬件需求：联想 ThinkPad以及其他需要特定软件支持的笔记本电脑品"
+"牌。具体的支持状态可使用 tlp-stat -b 指令查找。\n"
+"如需更多信息和厂商特有细节请参考 https://linrunner.de/tlp/"
+"settings/battery.html\n"
+"注意：\n"
+"- ThinkPad设备可能需要额外的内核模块，详情参照 tlp-stat -b 指令"
+"的输出。\n"
+"- 厂商特有的参数会在 tlp-stat -b 指令输出中给出。\n"
+"- 如果您的硬件同时支持充电开始和结束值，您必须同时指定，否则 "
+"TLP 将拒绝仅应用单个值。"
 
 #: configschema.yaml.h:92
+msgid "CHARGE_THRESH_BAT1__GROUP_DESCRIPTION"
+msgstr "BAT1：第二块电池（UltraBay / Slice / 可更换电池）。"
+
+#: configschema.yaml.h:93
+msgid "RESTORE_THRESHOLDS_ON_BAT__ID_DESCRIPTION"
+msgstr "拔下交流电后恢复充电阈值。"
+
+#: configschema.yaml.h:94
+msgid "NATACPI_ENABLE__ID_DESCRIPTION"
+msgstr "电池保护驱动程序。"
+
+#: configschema.yaml.h:95
+msgid "TPACPI_ENABLE__ID_DESCRIPTION"
+msgstr "ThinkPad 电池驱动程序：0=禁用, 1=启用"
+
+#: configschema.yaml.h:96
 msgid "TPSMAPI_ENABLE__ID_DESCRIPTION"
-msgstr "电池功能驱动程序：0=禁用, 1=启用"
+msgstr "ThinkPad 电池驱动程序：0=禁用, 1=启用"
 
 #~ msgid "BAY_POWEROFF_ON_BAT__ID_DESCRIPTION"
 #~ msgstr ""
@@ -582,12 +655,15 @@ msgstr "电池功能驱动程序：0=禁用, 1=启用"
 #~ "注意：UltraBay/MediaBay 中的硬盘不会被断电"
 
 #~ msgid "RUNTIME_PM_ALL__ID_DESCRIPTION"
-#~ msgstr "*所有* PCI(e) 总线设备的运行时电源管理，黑名单中的设备除外"
+#~ msgstr ""
+#~ "*所有* PCI(e) 总线设备的运行时电源管理，黑名单中的设备除外"
 
 #~ msgid "CPU_HWP__GROUP_DESCRIPTION"
 #~ msgstr ""
-#~ "设置 Intel P-state 调节器（governor）的能源性能提示（HWP）：\n"
-#~ "default，performance，balance_performance，balance_power，power\n"
+#~ "设置 Intel P-state 调节器（governor）的能源性能提示"
+#~ "（HWP）：\n"
+#~ "default，performance，balance_performance，balance_power，"
+#~ "power\n"
 #~ "上述值按“逐渐提高节电效果”的顺序给出。\n"
 #~ "注意：需要 Intel Skylake 或更新的 CPU 并且内核版本 >= 4.10"
 

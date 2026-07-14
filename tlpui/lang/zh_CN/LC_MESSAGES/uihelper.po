@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
 "POT-Creation-Date: 2023-12-25 16:42+0100\n"
-"PO-Revision-Date: 2023-12-25 16:42+0100\n"
+"PO-Revision-Date: 2026-07-10 11:26+0800\n"
 "Last-Translator: WhiredPlanck <fungdaat31@outlook.com>\n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-KeywordsList: UH_\n"
 "X-Poedit-SearchPath-0: uihelper.py\n"
@@ -21,11 +21,11 @@ msgstr "预期条目不在配置文件中"
 
 #: uihelper.py:15
 msgid "Unknown config value detected"
-msgstr "Unknown config value detected"
+msgstr "检测到未知的配置条目"
 
 #: uihelper.py:16
 msgid "Install pkexec, gksu, gksudo, kdesu or kdesudo first"
-msgstr "请先安装 pkexec、gksu、gksudo、kdesu 或 kdesudo"
+msgstr "请先安装以下软件中的任意一个：pkexec、gksu、gksudo、kdesu 或 kdesudo"
 
 #: uihelper.py:17
 msgid "Default state:"
