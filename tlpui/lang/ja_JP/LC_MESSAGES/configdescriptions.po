@@ -1,0 +1,695 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TLPUI\n"
+"POT-Creation-Date: 2026-04-05 18:10+0200\n"
+"PO-Revision-Date: 2026-08-04 23:11+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _\n"
+"X-Poedit-SearchPath-0: configschema.yaml.h\n"
+
+#: configschema.yaml.h:1
+msgid "General__CATEGORY_TITLE"
+msgstr "一般設定"
+
+#: configschema.yaml.h:2
+msgid "TLP_ENABLE__ID_DESCRIPTION"
+msgstr "TLP を有効/無効にする"
+
+#: configschema.yaml.h:3
+msgid "TLP_DISABLE_DEFAULTS__ID_DESCRIPTION"
+msgstr ""
+"TLPの全組込デフォルト設定を無効にするため「1」に設定します。\n"
+"これにより、TLP は明示的に有効化された設定（先頭に「#」が付いていないパラメー"
+"タ）\n"
+"のみを適用します。\n"
+"注記:\n"
+"- TLP 内の特定機能のみを使用したい場合に便利です。\n"
+"- 有効化後、`tlp-stat -c` を実行すると、実際に適用されている設定を確認できま"
+"す"
+
+#: configschema.yaml.h:4
+msgid "TLP_WARN_LEVEL__ID_DESCRIPTION"
+msgstr ""
+"無効な設定に関する警告出力方法の制御：\n"
+"0 = 警告を無効化\n"
+"1 = バックグラウンドタスク（起動, レジューム, 電源ソースの変更時）に syslog "
+"に報告\n"
+"2 = シェルコマンドがターミナル（stderr）に報告\n"
+"3 = 1 と 2 の双方有効"
+
+#: configschema.yaml.h:5
+msgid "TLP_MSG_COLORS__ID_DESCRIPTION"
+msgstr ""
+"エラー、警告、通知、成功時のメッセージに色を付けます。\n"
+"色はANSIコードで指定：\n"
+"1=太字（黒）, 90=グレー, 91=赤, 92=緑, 93=黄, 94=青, 95=マゼンタ, 96=シアン, "
+"97=白。\n"
+"その他の色も使用可能です。詳細は以下を参照してください：\n"
+"https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit\n"
+"色は「エラー, 警告, 通知, 成功」の順で指定する必要があります。\n"
+"デフォルトでは、エラーは赤、警告は黄、通知は太字、成功は緑で表示されます"
+
+#: configschema.yaml.h:6
+msgid "TLP_AUTO_SWITCH__ID_DESCRIPTION"
+msgstr ""
+"充電器の接続・取外し時、システム起動時、または「tlp start」実行時の電源プロ"
+"ファイルの自動切替制御:\n"
+"0=無効 - 切替しない（設定されている場合は TLP_DEFAULT_MODE を使用）\n"
+"1=自動 - 常に切替する（AC接続時は「performance」、バッテリー駆動時は"
+"「balanced」を選択）\n"
+"2=スマート - 以下のプロファイルが以前から有効な場合は切替しない：\n"
+"AC接続時：power-saver または balanced\n"
+"バッテリー駆動時：power-saver または performance\n"
+"注記：サスペンド中に充電器を接続または取外した場合も同様です"
+
+#: configschema.yaml.h:7
+msgid "TLP_PROFILE__GROUP_DESCRIPTION"
+msgstr ""
+"自動切替が無効な場合（TLP_AUTO_SWITCH=0）\n"
+"または電源が検出されない場合に使用するTLPプロファイル：\n"
+"PRF=performance（パフォーマンス）, BAL=balanced（バランス）, SAV=power-saver"
+"（省電力）\n"
+"注記：従来の「AC」および「BAT」という値も引き続き使用可能です。これらはそれぞ"
+"れPRFおよびBALに変換されます"
+
+#: configschema.yaml.h:8
+msgid "TLP_DEFAULT_MODE__ID_DESCRIPTION"
+msgstr ""
+"電源未検出時に適用される動作モード：AC, BAT\n"
+"一部のデスクトップおよび組込ハードウェアのみ対象"
+
+#: configschema.yaml.h:9
+msgid "TLP_PERSISTENT_DEFAULT__ID_DESCRIPTION"
+msgstr ""
+"動作モードの選択:\n"
+"0 = 電源供給源に基づく\n"
+"1 = 常に TLP_DEFAULT_MODE を使用\n"
+"ヒント: AC接続時にバッテリー用設定（BAT設定）を適用するには、"
+"TLP_DEFAULT_MODE=BAT と共に使用​​のこと"
+
+#: configschema.yaml.h:10
+msgid "TLP_PS_IGNORE__ID_DESCRIPTION"
+msgstr ""
+"動作モードを判定する際に無視する電源クラス：AC, USB, BAT\n"
+"複数クラス指定時、値を半角スペースで区切ること。\n"
+"注記：AC/BATの動作モードが誤検出されるノートPCでのみ設定すること"
+
+#: configschema.yaml.h:11
+msgid "Audio__CATEGORY_TITLE"
+msgstr "オーディオ"
+
+#: configschema.yaml.h:12
+msgid "SOUND_POWER_SAVE__GROUP_DESCRIPTION"
+msgstr ""
+"Intel HDA, AC97デバイスのオーディオ省電力機能を有効にします（タイムアウト時"
+"間：秒で指定）\n"
+"0を指定すると無効になり、1以上を指定すると有効になります\n"
+"注記：PulseAudioを搭載したLinuxデスクトップ環境では 1 を推奨します。\n"
+"PulseAudioを未搭載のシステムでは 10 にする必要がある場合があります"
+
+#: configschema.yaml.h:13
+msgid "SOUND_POWER_SAVE_CONTROLLER__ID_DESCRIPTION"
+msgstr ""
+"コントローラーも無効化(HDAのみ): Y/N\n"
+"注記: SOUND_POWER_SAVE_ON_AC/BAT が有効な場合のみ機能します"
+
+#: configschema.yaml.h:14
+msgid "Disks__CATEGORY_TITLE"
+msgstr "ディスク"
+
+#: configschema.yaml.h:15
+msgid "DISK_IDLE_SECS__GROUP_DESCRIPTION"
+msgstr ""
+"ディスクがアイドル状態に遷移してから同期（sync）を行うまでに待機する時間（秒"
+"数）を指定します。\n"
+"0以外の値を設定するとラップトップモードが有効になり、0を設定すると無効になり"
+"ます"
+
+#: configschema.yaml.h:16
+msgid "MAX_LOST_WORK_SECS__GROUP_DESCRIPTION"
+msgstr "ダーティページの値（タイムアウト秒値）"
+
+#: configschema.yaml.h:17
+msgid "DISK_DEVICES__ID_DESCRIPTION"
+msgstr ""
+"以下の DISK/AHCI_RUNTIME パラメータを適用するディスクデバイスを定義します\n"
+"複数デバイス指定時、値を半角スペースで区切ること。\n"
+"デバイスはディスク ID でも指定可能です（確認方法: `tlp diskid`コマンド）"
+
+#: configschema.yaml.h:18
+msgid "DISK_APM_LEVEL__GROUP_DESCRIPTION"
+msgstr ""
+"ハードディスクの高度な電源管理（APM）レベル: 1～254, 255（最大節電、 最小, オ"
+"フ）\n"
+"レベル1～127ではディスクの回転が停止する可能性があります。255は大半のドライブ"
+"で設定可能です。\n"
+"複数ディスク指定時、値を半角スペースで区切ること。\n"
+"特定のディスクでハードウェアのデフォルト設定を維持するには、特殊値「keep」を"
+"使用してください"
+
+#: configschema.yaml.h:19
+msgid "DISK_APM_CLASS_DENYLIST__ID_DESCRIPTION"
+msgstr ""
+"高度な電源管理 (APM) の適用除外するディスククラス:\n"
+"- sata, ata, usb, ieee1394\n"
+"複数クラス指定時、値を半角スペースで区切ること。\n"
+"注意: APM を有効にすると、USB や IEEE1394 ディスクのマウントに失敗したり、"
+"データが破損したりする可能性があります。\n"
+"除外リスト (denylist) から 'usb' や 'ieee1394' を削除する際は十分注意し、対象"
+"となるすべてのメディアのバックアップを必ず作成してください"
+
+#: configschema.yaml.h:20
+msgid "DISK_SPINDOWN_TIMEOUT__GROUP_DESCRIPTION"
+msgstr ""
+"ハードディスクのスピンダウンタイムアウト時間:\n"
+"0:\t\t\tスピンドル停止を無効化\n"
+"1～240:\t\t5秒～20分（数値×5秒で指定）\n"
+"241～251:\t30分～5.5時間（241の場合30分、その後１増加で30分加算）\n"
+"(詳細は 'man hdparm' を参照)"
+
+#: configschema.yaml.h:21
+msgid "DISK_IOSCHED__ID_DESCRIPTION"
+msgstr ""
+"ディスクデバイス用 I/O スケジューラの選択: noop/deadline/cfq (デフォルト: "
+"cfq)\n"
+"複数デバイス指定時、値を半角スペースで区切ること"
+
+#: configschema.yaml.h:22
+msgid "SATA_LINKPWR__GROUP_DESCRIPTION"
+msgstr ""
+"SATA ディスク向け AHCI リンク電源管理 (ALPM):\n"
+"- min_power, med_power_with_dipm(*), medium_power, max_performance.\n"
+"(*) カーネル4.15（以降）が必要かつ、本設定値推奨です。\n"
+"複数の値を選択した場合、成功するまで順に試行します"
+
+#: configschema.yaml.h:23
+msgid "SATA_LINKPWR_BLACKLIST__ID_DESCRIPTION"
+msgstr ""
+"SATAホストデバイスをリンク電源管理の対象から除外します。\n"
+"複数ホスト指定時、値を半角スペースで区切ること"
+
+#: configschema.yaml.h:24
+msgid "SATA_LINKPWR_DENYLIST__ID_DESCRIPTION"
+msgstr ""
+"AHCIリンク電源管理（ALPM）の対象からSATAリンクを除外します。\n"
+"SATAリンクはホストによって指定されます。ホストを特定するには `tlp-stat -d` の"
+"出力を参照してください（形式は「hostX」です）。\n"
+"複数ホスト指定時、値を半角スペースで区切ること"
+
+#: configschema.yaml.h:25
+msgid "AHCI_RUNTIME_PM__GROUP_DESCRIPTION"
+msgstr ""
+"NVMe, SATA, ATA, USBディスクおよび SATA ポートのランタイム電源管理:\n"
+"- on=無効, auto=有効。\n"
+"注: SATA コントローラーは PCIe バスデバイスであり、後続の処理で RUNTIME_PM に"
+"よって管理されます"
+
+#: configschema.yaml.h:26
+msgid "AHCI_RUNTIME_PM_TIMEOUT__ID_DESCRIPTION"
+msgstr "ディスクがサスペンドされるまでの無操作時間（秒）"
+
+#: configschema.yaml.h:27
+msgid "BAY_POWEROFF__GROUP_DESCRIPTION"
+msgstr ""
+"UltraBay/MediaBay内の光学ドライブの電源オフ設定：0 = 無効, 1 = 有効。\n"
+"ドライブの電源を再度オンにするには、イジェクトレバーを解除（および再挿入）す"
+"るか、\n"
+"新しいモデルの場合はディスク取り出しボタンを押します。\n"
+"注：UltraBay/MediaBayのハードディスクの電源がオフになることはありません"
+
+#: configschema.yaml.h:28
+msgid "BAY_DEVICE__ID_DESCRIPTION"
+msgstr "電源断にする光学ドライブデバイス（デフォルトは sr0）"
+
+#: configschema.yaml.h:29
+msgid "Graphics__CATEGORY_TITLE"
+msgstr "グラフィック"
+
+#: configschema.yaml.h:30
+msgid "INTEL_GPU_POWER_PROFILE__GROUP_DESCRIPTION"
+msgstr ""
+"Intel GPU の電力管理設定です。\n"
+"Intel Xe GPU の電力プロファイル（base,power_saving）を選択します。\n"
+"注: xeドライバーが必要です"
+
+#: configschema.yaml.h:31
+msgid "INTEL_GPU_FREQ__GROUP_DESCRIPTION"
+msgstr ""
+"Intel GPUの最小/最大/ターボ周波数を設定します。\n"
+"設定可能な値はハードウェアによって異なります。利用可能な周波数については、\n"
+"`tlp-stat -g` の出力を確認してください"
+
+#: configschema.yaml.h:32
+msgid "RADEON_POWER_PROFILE__GROUP_DESCRIPTION"
+msgstr ""
+"グラフィックス・クロック速度（プロファイル方式）：low, mid, high, auto, "
+"default；\n"
+"auto = バッテリー駆動時はmid, AC電源接続時はhigh。\n"
+"注：DPM が利用不可能な旧型 ATI ハードウェア上の radeon ドライバーでのみ適用さ"
+"れます"
+
+#: configschema.yaml.h:33
+msgid "RADEON_DPM_STATE__GROUP_DESCRIPTION"
+msgstr ""
+"動的電力管理（DPM）方式：balanced, battery, performance\n"
+"注：Radeonドライバのみ使用可能です"
+
+#: configschema.yaml.h:34
+msgid "RADEON_DPM_PERF_LEVEL__GROUP_DESCRIPTION"
+msgstr ""
+"AMD GPU の電力管理です。\n"
+"パフォーマンスレベル (DPM): auto, low, high（autoを推奨）。\n"
+"注: amdgpuまたはradeonドライバーが必要です"
+
+#: configschema.yaml.h:35
+msgid "AMDGPU_ABM_LEVEL__GROUP_DESCRIPTION"
+msgstr ""
+"ディスプレイパネルの適応型バックライト変調（ABM）レベル：0（オフ）, 1～4。\n"
+"値1～4は、ABMアルゴリズムによる最大輝度低減量を制御します。1は省電力効果が最"
+"小、4は最大となります。\n"
+"注記：\n"
+"- カーネル6.9以降において、amdgpuドライバを使用するAMD Vega以降のGPUが必要で"
+"す。\n"
+"- 省電力化に伴い、色バランスが変化します"
+
+#: configschema.yaml.h:36
+msgid "Network__CATEGORY_TITLE"
+msgstr "ネットワーク"
+
+#: configschema.yaml.h:37
+msgid "WIFI_PWR__GROUP_DESCRIPTION"
+msgstr "Wi-Fi省電力モード"
+
+#: configschema.yaml.h:38
+msgid "WOL_DISABLE__ID_DESCRIPTION"
+msgstr "Wake on LANを無効化する"
+
+#: configschema.yaml.h:39
+msgid "PCIe__CATEGORY_TITLE"
+msgstr "PCIe"
+
+#: configschema.yaml.h:40
+msgid "PCIE_ASPM__GROUP_DESCRIPTION"
+msgstr ""
+"PCIe アクティブステート電源管理 (ASPM):\n"
+"- default(*), performance, powersave, powersupersave.\n"
+"(*) BIOSのASPMデフォルト設定を維持します（推奨）"
+
+#: configschema.yaml.h:41
+msgid "RUNTIME_PM__GROUP_DESCRIPTION"
+msgstr "PCIeバスデバイスのランタイム電源管理"
+
+#: configschema.yaml.h:42
+msgid "RUNTIME_PM_BLACKLIST__ID_DESCRIPTION"
+msgstr ""
+"以下のリストにあるPCI(e)デバイスのアドレスをRuntime PMの対象から除外してくだ"
+"さい\n"
+"（複数デバイス指定時、値を半角スペースで区切ること）。アドレス（1列目）の取得"
+"には lspci を使用してください"
+
+#: configschema.yaml.h:43
+msgid "RUNTIME_PM_DRIVER_BLACKLIST__ID_DESCRIPTION"
+msgstr ""
+"リストされたドライバーに割り当てられたPCI(e)デバイスをRuntime PMの対象から除"
+"外します\n"
+"（ハイブリッドグラフィックスのディスクリートGPUが意図せず電源オンになるのを防"
+"止するため）。\n"
+"デフォルトは \"radeon nouveau\" です。この機能を完全に無効にするには \"\" を"
+"指定してください。\n"
+"複数ドライバー指定時、値を半角スペースで区切ること"
+
+#: configschema.yaml.h:44
+msgid "RUNTIME_PM_DENYLIST__ID_DESCRIPTION"
+msgstr ""
+"リストに記載されたPCIeデバイスのアドレスをRuntime PMの対象から除外します。\n"
+"注記：これはカーネルドライバのデフォルト動作を維持するものです。特定の状態を"
+"強制\n"
+"するには、代わりに RUNTIME_PM_ENABLE/DISABLE を使用してください。\n"
+"複数アドレス指定時、値を半角スペースで区切ること\n"
+"アドレス（1列目）の取得には lspci を使用してください"
+
+#: configschema.yaml.h:45
+msgid "RUNTIME_PM_DRIVER_DENYLIST__ID_DESCRIPTION"
+msgstr ""
+"リストされたドライバーに割り当てられた PCIe デバイスを、Runtime PM の対象から"
+"除外します。\n"
+"注記: これはカーネルドライバーのデフォルト動作を維持するものです。特定の状態"
+"を強制するには、\n"
+"代わりに RUNTIME_PM_ENABLE/DISABLE を使用してください。\n"
+"複数ドライバー指定時、値を半角スペースで区切ること。\n"
+"完全に無効化する場合は、空欄のままにしてください"
+
+#: configschema.yaml.h:46
+msgid "RUNTIME_PM_DEVICE__GROUP_DESCRIPTION"
+msgstr ""
+"リストに記載された PCIe デバイスアドレスに対し、Runtime PM を（電源種類に関わ"
+"らず）永続的に有効または無効にします。\n"
+"この設定は、それ以前の全ての Runtime PM 設定よりも優先されます。複数アドレス"
+"指定時、値を半角スペースで区切ること。\n"
+"アドレス（1列目）の確認には `lspci` を使用してください"
+
+#: configschema.yaml.h:47
+msgid "Processor__CATEGORY_TITLE"
+msgstr "プロセッサ"
+
+#: configschema.yaml.h:48
+msgid "CPU_DRIVER_OPMODE__GROUP_DESCRIPTION"
+msgstr ""
+"CPUスケーリングドライバーの動作モードを選択します。\n"
+"intel_pstateドライバーを使用するIntel製CPU：active、passive\n"
+"カーネル6.3/6.4以降でamd-pstateドライバーを使用するAMD Zen 2以降のCPU：\n"
+"active, passive, guided"
+
+#: configschema.yaml.h:49
+msgid "CPU_SCALING_GOVERNOR__GROUP_DESCRIPTION"
+msgstr ""
+"CPU周波数スケーリングガバナーを選択してください。\n"
+"intel_pstateドライバを使用するIntel製プロセッサ:\n"
+"- performance, powersave(*)。\n"
+"intel_cpufreqドライバ（別名：intel_pstateパッシブモード）を使用するIntel製プ"
+"ロセッサ:\n"
+"- conservative, ondemand, userspace, powersave, performance, schedutil(*)。\n"
+"acpi-cpufreqドライバを使用するIntel製およびその他のプロセッサ:\n"
+"- conservative, ondemand(*), userspace, powersave, performance, "
+"schedutil(*)。\n"
+"現在有効なドライバと利用可能なガバナーを確認するには、`tlp-stat -p` を使用し"
+"てください。\n"
+"重要:\n"
+"- 上記で (*) が付いているガバナーは、*ほぼすべて*のワークロードにおいて電力効"
+"率に優れています。\n"
+"- そのため、カーネルやほとんどのディストリビューションでは、これらがデフォル"
+"トとして採用されています。\n"
+"- ガバナーを変更する*前*に、その利点と欠点について十分に調べておく必要があり"
+"ます"
+
+#: configschema.yaml.h:50
+msgid "CPU_SCALING_FREQ__GROUP_DESCRIPTION"
+msgstr ""
+"スケーリングガバナーで使用する最小/最大周波数を設定します。\n"
+"設定可能な値はCPUによって異なります。利用可能な周波数については、`tlp-stat -"
+"p` の出力結果を確認してください。\n"
+"注意:\n"
+"- 最小・最大周波数は、AC接続時とバッテリー駆動時の両方について必ず指定する必"
+"要があります。\n"
+"- `intel_pstate` スケーリングドライバーとの併用は推奨されません。代わりに "
+"`CPU_MIN/MAX_PERF_ON_AC/BAT` を使用してください"
+
+#: configschema.yaml.h:51
+msgid "CPU_ENERGY_PERF_POLICY__GROUP_DESCRIPTION"
+msgstr ""
+"Intel CPUの省電力/パフォーマンス・ポリシー（HWP.EPPおよびEPB）設定：\n"
+"- performance, balance_performance, default, balance_power, power\n"
+"設定値は、電力使用量の高い順に並んでいます。\n"
+"注記：\n"
+"- HWP.EPP: カーネル 4.10、intel_pstate スケーリングドライバ、および Intel "
+"Core i 第6世代以降の CPU が必要です。\n"
+"- EPB: カーネル 5.2（または msr モジュールと linux-tools パッケージの "
+"x86_energy_perf_policy）、intel_pstate または intel_cpufreq スケーリングドラ"
+"イバ、および Intel Core i 第2世代以降の CPU が必要です。\n"
+"- HWP.EPP が利用可能な場合、EPB は設定されません"
+
+#: configschema.yaml.h:52
+msgid "CPU_PERF__GROUP_DESCRIPTION"
+msgstr ""
+"Intel CPUのP-stateパフォーマンス（0～100%）を設定します。\n"
+"P-stateの最大値/最小値を制限することで、CPUの消費電力を制御します。\n"
+"値は、利用可能なパフォーマンスに対するパーセンテージで指定します。\n"
+"intel_pstateまたはintel_cpufreqドライバ、Intel Core i 第2世代以降のCPUが必要"
+"です"
+
+#: configschema.yaml.h:53
+msgid "CPU_BOOST__GROUP_DESCRIPTION"
+msgstr ""
+"CPUの「Turbo Boost」（Intel）または「Turbo Core」（AMD）機能設定：\n"
+"- 0 = 無効, 1 = 許可。\n"
+"注：値が1の場合、ブースト機能が直ちに有効になるわけではなく、単に許可されるだ"
+"けです"
+
+#: configschema.yaml.h:54
+msgid "CPU_HWP_DYN_BOOST__GROUP_DESCRIPTION"
+msgstr ""
+"Intel CPU の HWP 動的ブースト機能設定：\n"
+"- 0 = 無効, 1 = 有効。\n"
+"intel_pstate スケーリングドライバが「active」モードであること、および第6世代"
+"以降の Intel Core i プロセッサが必要です"
+
+#: configschema.yaml.h:55
+msgid "SCHED_POWERSAVE__GROUP_DESCRIPTION"
+msgstr "軽負荷時に使用するCPUコア数/ハイパースレッド数を最小限に抑える"
+
+#: configschema.yaml.h:56
+msgid "NMI_WATCHDOG__ID_DESCRIPTION"
+msgstr ""
+"カーネル NMI ウォッチドッグ\n"
+"off: 省電力, on: カーネルデバッグ用のみ"
+
+#: configschema.yaml.h:57
+msgid "PHC_CONTROLS__ID_DESCRIPTION"
+msgstr ""
+"CPU電圧の変更（いわゆる「アンダーボルティング」）\n"
+"PHCパッチを適用したカーネルが必要です。\n"
+"周波数と電圧の組み合わせを /sys/devices/system/cpu/cpu0/cpufreq/phc_controls "
+"に書込します。\n"
+"注意：仕組みを十分に理解している場合のみ使用してください（！）"
+
+#: configschema.yaml.h:58
+msgid "PLATFORM_PROFILE__GROUP_DESCRIPTION"
+msgstr ""
+"プラットフォームプロファイルの選択:\n"
+"- performance（高性能）, balanced（バランス）, low-power（省電力）。\n"
+"電力・性能レベル、熱、ファン速度といったシステムの動作特性を制御します。設定"
+"値は、電力消費量の高い順に並んでいます。\n"
+"注: お使いのハードウェアでの利用可否や、balanced-performance, quiet, cool と"
+"いった追加プロファイルの有無については、`tlp-stat -p` の出力を確認してくださ"
+"い"
+
+#: configschema.yaml.h:59
+msgid "MEM_SLEEP__GROUP_DESCRIPTION"
+msgstr ""
+"システムサスペンドモード:\n"
+"s2idle: アイドルスタンバイ - 純粋なソフトウェア制御による軽量なシステムスリー"
+"プ状態\n"
+"deep: Suspend to RAM (メモリへのサスペンド) - メモリ以外のシステム全体を低電"
+"力状態にします。通常、s2idleよりも高い省電力効果が得られます。\n"
+"注意: サスペンドモードを変更すると、システムの不安定化やデータ損失を招く恐れ"
+"があります。お使いのシステムで利用可能なモードについては、`tlp-stat -s` の出"
+"力を確認してください。不明な場合は、この設定を有効にせず、システムのデフォル"
+"ト設定のままにしてください"
+
+#: configschema.yaml.h:60
+msgid "Radio__CATEGORY_TITLE"
+msgstr "無線デバイス"
+
+#: configschema.yaml.h:61
+msgid "RESTORE_DEVICE_STATE_ON_STARTUP__ID_DESCRIPTION"
+msgstr ""
+"システム起動時に、前回シャットダウン時の無線デバイス（Bluetooth, Wi-Fi, "
+"WWAN）の状態を復元します。\n"
+"注: 本機能が有効な場合、DEVICES_TO_DISABLE/ENABLE_ON_STARTUP/SHUTDOWN パラ"
+"メータは無視されます"
+
+#: configschema.yaml.h:62
+msgid "DEVICES_TO_DISABLE_ON_STARTUP__ID_DESCRIPTION"
+msgstr "起動時に無効化する無線デバイス: Bluetooth Wi-Fi WWAN"
+
+#: configschema.yaml.h:63
+msgid "DEVICES_TO_ENABLE_ON_STARTUP__ID_DESCRIPTION"
+msgstr "起動時に有効化する無線デバイス: Bluetooth Wi-Fi WWAN"
+
+#: configschema.yaml.h:64
+msgid "DEVICES_TO_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
+msgstr ""
+"シャットダウン時に無効にする無線デバイス：Bluetooth Wi-Fi WWAN\n"
+"（シャットダウン動作を妨げる機器への回避策）"
+
+#: configschema.yaml.h:65
+msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN__ID_DESCRIPTION"
+msgstr ""
+"シャットダウン時に有効にする無線デバイス：Bluetooth Wi-Fi WWAN\n"
+"（他のオペレーティングシステムで無線デバイスが認識されない問題の防止）"
+
+#: configschema.yaml.h:66
+msgid "DEVICES_TO_ENABLE_ON_AC__ID_DESCRIPTION"
+msgstr "AC接続時に有効にする無線デバイス：Bluetooth Wi-Fi WWAN"
+
+#: configschema.yaml.h:67
+msgid "DEVICES_TO_DISABLE_ON_BAT__ID_DESCRIPTION"
+msgstr "バッテリー駆動時に無効にする無線デバイス：Bluetooth Wi-Fi WWAN"
+
+#: configschema.yaml.h:68
+msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE__ID_DESCRIPTION"
+msgstr ""
+"未使用時（未接続時）にバッテリー節約のために無効化する無線機能：\n"
+"Bluetooth Wi-Fi WWAN"
+
+#: configschema.yaml.h:69
+msgid "Radio Device Wizard__CATEGORY_TITLE"
+msgstr "無線デバイスウィザード"
+
+#: configschema.yaml.h:70
+msgid "DEVICES_TO_DISABLE_ON_CONNECT__GROUP_DESCRIPTION"
+msgstr "接続時に無効にする無線デバイス"
+
+#: configschema.yaml.h:71
+msgid "DEVICES_TO_ENABLE_ON_DISCONNECT__GROUP_DESCRIPTION"
+msgstr "切断時に有効にする無線デバイス"
+
+#: configschema.yaml.h:72
+msgid "DEVICES_ON_DOCK__GROUP_DESCRIPTION"
+msgstr "ドッキング時に有効/無効にする無線デバイス"
+
+#: configschema.yaml.h:73
+msgid "DEVICES_ON_UNDOCK__GROUP_DESCRIPTION"
+msgstr "ドッキング解除時に有効/無効にする無線デバイス"
+
+#: configschema.yaml.h:74
+msgid "USB__CATEGORY_TITLE"
+msgstr "USB"
+
+#: configschema.yaml.h:75
+msgid "USB_AUTOSUSPEND__ID_DESCRIPTION"
+msgstr "USB オートサスペンド機能"
+
+#: configschema.yaml.h:76
+msgid "USB_BLACKLIST__ID_DESCRIPTION"
+msgstr ""
+"以下のリストにあるデバイスは、自動サスペンドの対象から除外されます\n"
+"（複数デバイス指定時、値を半角スペースで区切ること）。ID の確認には `lsusb` "
+"を使用してください。\n"
+"注: 入力デバイス（usbhid）は自動的に除外されます"
+
+#: configschema.yaml.h:77
+msgid "USB_BLACKLIST_BTUSB__ID_DESCRIPTION"
+msgstr "Bluetooth デバイスは USB 自動サスペンドの対象外です"
+
+#: configschema.yaml.h:78
+msgid "USB_BLACKLIST_PHONE__ID_DESCRIPTION"
+msgstr "電話端末は USB 自動サスペンドの対象外です"
+
+#: configschema.yaml.h:79
+msgid "USB_BLACKLIST_PRINTER__ID_DESCRIPTION"
+msgstr "プリンタは USB 自動サスペンドの対象外です"
+
+#: configschema.yaml.h:80
+msgid "USB_BLACKLIST_WWAN__ID_DESCRIPTION"
+msgstr ""
+"WWAN デバイスは自動サスペンドの対象外です。\n"
+"注: ID が 05c6:*, 0bdb:*, 1199:* のデバイスのみ有効です"
+
+#: configschema.yaml.h:81
+msgid "USB_WHITELIST__ID_DESCRIPTION"
+msgstr ""
+"ドライバーや上記の WWAN ブラックリストによって除外されている場合でも、\n"
+"指定したデバイスをオートサスペンドの対象に含めます（複数デバイス指定時、各 "
+"ID を半角スペースで区切ること）。\n"
+"ID の確認には `lsusb` を使用してください"
+
+#: configschema.yaml.h:82
+msgid "USB_DENYLIST__ID_DESCRIPTION"
+msgstr ""
+"指定したデバイスを USB 自動サスペンドの対象から除外します（複数デバイス指定"
+"時、値を半角スペースで区切ること）。\n"
+"IDの取得には `lsusb` を使用してください。\n"
+"注: 入力デバイス（usbhid）およびlibsane対応スキャナーは、自動的に除外されます"
+
+#: configschema.yaml.h:83
+msgid "USB_EXCLUDE_AUDIO__ID_DESCRIPTION"
+msgstr ""
+"USB 自動サスペンド対象からオーディオデバイスを除外:\n"
+"- 0=除外しない, 1=除外する"
+
+#: configschema.yaml.h:84
+msgid "USB_EXCLUDE_BTUSB__ID_DESCRIPTION"
+msgstr ""
+"USB 自動サスペンド対象から Bluetooth デバイスを除外:\n"
+"- 0=除外しない, 1=除外する"
+
+#: configschema.yaml.h:85
+msgid "USB_EXCLUDE_PHONE__ID_DESCRIPTION"
+msgstr ""
+"USB 自動サスペンド対象から電話デバイスを除外:\n"
+"- 0=除外しない, 1=除外する（充電は可能）"
+
+#: configschema.yaml.h:86
+msgid "USB_EXCLUDE_PRINTER__ID_DESCRIPTION"
+msgstr ""
+"USB 自動サスペンド対象から プリンタを除外:\n"
+"- 0=除外しない, 1=除外する"
+
+#: configschema.yaml.h:87
+msgid "USB_EXCLUDE_WWAN__ID_DESCRIPTION"
+msgstr ""
+"USB 自動サスペンド対象から WWAN デバイスを除外:\n"
+"- 0=除外しない, 1=除外する"
+
+#: configschema.yaml.h:88
+msgid "USB_ALLOWLIST__ID_DESCRIPTION"
+msgstr ""
+"リストに記載されたデバイスについて、たとえ上記で拒否リスト（denylist）や除外"
+"対象に\n"
+"指定されていても、USB オートサスペンドを許可します（複数デバイス指定時、値を"
+"半角スペースで区切ること）。IDの確認には `lsusb` を使用してください"
+
+#: configschema.yaml.h:89
+msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
+msgstr ""
+"シャットダウン前に自動サスペンドを無効にする設定にするか、何も実行しない設定"
+"にするかを選択してください。\n"
+"（シャットダウン時に問題を引き起こす USB デバイス向け回避策）"
+
+#: configschema.yaml.h:90
+msgid "ThinkPad Battery__CATEGORY_TITLE"
+msgstr "ThinkPad バッテリ"
+
+#: configschema.yaml.h:91
+msgid "CHARGE_THRESH_BAT0__GROUP_DESCRIPTION"
+msgstr ""
+"バッテリーの管理 -- 充電しきい値\n"
+"充電器を接続した際、充電レベルが `START_CHARGE_THRESH` の値を下回っていると充"
+"電が開始され、`STOP_CHARGE_THRESH` の値に達すると停止します。\n"
+"必要なハードウェア: Lenovo ThinkPad および一部の他社製ノートPCは、専用のプラ"
+"グインによって制御されます。実際のサポート状況は `tlp-stat -b` で確認できま"
+"す。\n"
+"詳細やベンダーごとの仕様については、 https://linrunner.de/tlp/settings/"
+"battery.html を参照してください。\n"
+"注意点:\n"
+"- ThinkPad では、外部カーネルモジュールが必要になる場合があります。`tlp-stat "
+"-b` の出力を確認してください。\n"
+"- ベンダー固有のパラメータ値の範囲は `tlp-stat -b` で確認できます。\n"
+"- ハードウェアが開始しきい値と停止しきい値の両方をサポートしている場合、両方"
+"を指定する必要があります。片方だけを指定しても、TLP はその設定を適用しませ"
+"ん。\n"
+"- ハードウェアが停止しきい値のみをサポートしている場合は、開始しきい値の値を "
+"0 に設定してください。\n"
+"\n"
+"BAT0: プライマリ / メイン / 内蔵バッテリー (値は %)\n"
+"注: BATC、BATT、CMB0 といったバッテリーにも同様に適用されます"
+
+#: configschema.yaml.h:92
+msgid "CHARGE_THRESH_BAT1__GROUP_DESCRIPTION"
+msgstr "BAT1：セカンダリ / Ultrabay / スライス / 交換可能バッテリー（%値）"
+
+#: configschema.yaml.h:93
+msgid "RESTORE_THRESHOLDS_ON_BAT__ID_DESCRIPTION"
+msgstr "AC 電源接続断時のしきい値変更を復元する"
+
+#: configschema.yaml.h:94
+msgid "NATACPI_ENABLE__ID_DESCRIPTION"
+msgstr "バッテリー管理ドライバーの制御: 0=無効, 1=有効"
+
+#: configschema.yaml.h:95
+msgid "TPACPI_ENABLE__ID_DESCRIPTION"
+msgstr "ThinkPad バッテリドライバ: 0=無効, 1=有効"
+
+#: configschema.yaml.h:96
+msgid "TPSMAPI_ENABLE__ID_DESCRIPTION"
+msgstr "ThinkPad バッテリドライバ: 0=無効, 1=有効"
