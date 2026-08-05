@@ -1,0 +1,40 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TLPUI\n"
+"POT-Creation-Date: 2023-12-25 16:35+0100\n"
+"PO-Revision-Date: 2026-08-03 22:41+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-KeywordsList: UH_\n"
+"X-Poedit-SearchPath-0: uihelper.py\n"
+
+#: uihelper.py:14
+msgid "Expected item missing in config file"
+msgstr "設定ファイルに必要な項目が不足しています"
+
+#: uihelper.py:15
+msgid "Unknown config value detected"
+msgstr "不明なコンフィグ値が検知されました"
+
+#: uihelper.py:16
+msgid "Install pkexec, gksu, gksudo, kdesu or kdesudo first"
+msgstr "まず pkexec, gksu, gksudo, kdesu or kdesudo をインストールしてください"
+
+#: uihelper.py:17
+msgid "Default state:"
+msgstr "デフォルト状態:"
+
+#: uihelper.py:18
+msgid "Default value:"
+msgstr "デフォルト値:"
+
+#: uihelper.py:19
+msgid "CHANGED"
+msgstr "変更済"
