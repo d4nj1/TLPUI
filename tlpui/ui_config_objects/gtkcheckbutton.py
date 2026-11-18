@@ -13,7 +13,7 @@ def create_checkbutton_box(configname: str, values: str) -> Gtk.Box:
     checkbuttonitem = 0
     for checkitem in checkitems:
         checkbutton = Gtk.CheckButton(checkitem)
-        if checkitem in configvalue:
+        if checkitem in configvalue.split(' ' ):
             checkbutton.set_active(True)
         checkbutton.connect('toggled', change_check_state, configname, checkitems)
 
@@ -36,7 +36,7 @@ def change_check_state(self: Gtk.CheckButton, configname: str, checkitems: []):
     for checkitem in checkitems:
         if checkitem == currentitem and currentstate is False:
             continue
-        elif checkitem in currentvalue or checkitem == currentitem:
+        elif checkitem in currentvalue.split(' ') or checkitem == currentitem:
             newvalue = newvalue + " " + checkitem
 
     settings.tlpconfig[configname].set_value(newvalue.lstrip())

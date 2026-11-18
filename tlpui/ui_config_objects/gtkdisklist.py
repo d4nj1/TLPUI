@@ -10,6 +10,36 @@ from .. import settings
 from .. import settingshelper
 
 
+def get_profile_suffixes() -> list:
+    """Determine profile suffixes of disk parameters from the loaded TLP config.
+    TLP 1.11 renamed _AC/_BAT to _PRF/_BAL and added _SAV variants."""
+    if 'DISK_APM_LEVEL_ON_PRF' in settings.tlpconfig:
+        suffixes = ['PRF', 'BAL']
+        if 'DISK_APM_LEVEL_ON_SAV' in settings.tlpconfig:
+            suffixes.append('SAV')
+    else:
+        suffixes = ['AC', 'BAT']
+    return suffixes
+
+
+def get_disk_config_names() -> list:
+    """Disk config names in dialog row order."""
+    suffixes = get_profile_suffixes()
+    confignames = [f'DISK_APM_LEVEL_ON_{suffix}' for suffix in suffixes]
+    confignames += [f'DISK_SPINDOWN_TIMEOUT_ON_{suffix}' for suffix in suffixes]
+    confignames.append('DISK_IOSCHED')
+    return confignames
+
+
+def get_default_value(configname: str) -> str:
+    """Fallback value for yet unconfigured disks."""
+    if configname.startswith('DISK_APM_LEVEL'):
+        return '254' if configname.endswith(('_AC', '_PRF')) else '128'
+    if configname.startswith('DISK_SPINDOWN_TIMEOUT'):
+        return '0'
+    return 'cfq'
+
+
 def create_list(configname: str, window: Gtk.Window) -> Gtk.Box:
     """Create disk list button."""
     tlpobject = settings.tlpconfig[configname]
@@ -31,8 +61,9 @@ def edit_list(self: Gtk.Button, window: Gtk.Window):
     notebook = Gtk.Notebook()
     notebook.set_tab_pos(Gtk.PositionType.TOP)
 
-    configranges = get_disk_config_ranges()
-    existingdisks = read_existing_disk_config()
+    confignames = get_disk_config_names()
+    configranges = get_disk_config_ranges(confignames)
+    existingdisks = read_existing_disk_config(confignames)
 
     disks = OrderedDict()
     keeps = OrderedDict()
@@ -40,7 +71,7 @@ def edit_list(self: Gtk.Button, window: Gtk.Window):
     for line in disklist.splitlines():
         diskid = line.split(':')[0].lstrip().rstrip()
 
-        diskvalues = get_disk_values(diskid, existingdisks)
+        diskvalues = get_disk_values(diskid, confignames, existingdisks)
         defaultvalues = diskvalues[0]
         keepvalues = diskvalues[1]
 
@@ -48,69 +79,33 @@ def edit_list(self: Gtk.Button, window: Gtk.Window):
         notebookgrid.set_row_homogeneous(True)
         notebookgrid.set_column_spacing(12)
 
-        configlabel = Gtk.Label(label='Config', halign=Gtk.Align.START)
-        valuelabel = Gtk.Label(label='Value', halign=Gtk.Align.START)
-        keeplabel = Gtk.Label(label='Hardware default', halign=Gtk.Align.START)
-
-        apmlevelonaclabel = Gtk.Label(label='DISK_APM_LEVEL_ON_AC', halign=Gtk.Align.START)
-        apmlevelonacspiner = create_spinbutton(configranges[0], int(defaultvalues[0]))
-        apmlevelonackeep = create_keep(apmlevelonacspiner, keepvalues[0])
-
-        apmlevelonbatlabel = Gtk.Label(label='DISK_APM_LEVEL_ON_BAT', halign=Gtk.Align.START)
-        apmlevelonbatspiner = create_spinbutton(configranges[1], int(defaultvalues[1]))
-        apmlevelonbatkeep = create_keep(apmlevelonbatspiner, keepvalues[1])
-
-        spindowntimeoutonaclabel = Gtk.Label(label='DISK_SPINDOWN_TIMEOUT_ON_AC', halign=Gtk.Align.START)
-        spindowntimeoutonacspiner = create_spinbutton(configranges[2], int(defaultvalues[2]))
-        spindowntimeoutonackeep = create_keep(spindowntimeoutonacspiner, keepvalues[2])
-
-        spindowntimeoutonbatlabel = Gtk.Label(label='DISK_SPINDOWN_TIMEOUT_ON_BAT', halign=Gtk.Align.START)
-        spindowntimeoutonbatspiner = create_spinbutton(configranges[3], int(defaultvalues[3]))
-        spindowntimeoutonbatkeep = create_keep(spindowntimeoutonbatspiner, keepvalues[3])
-
-        ioschedlabel = Gtk.Label(label='DISK_IOSCHED', halign=Gtk.Align.START)
-        ioschedselect = create_selectbox(configranges[4], defaultvalues[4])
-        ioschedkeep = create_keep(ioschedselect, keepvalues[4])
-
         notebookgrid.attach(Gtk.Label(' '), 0, 0, 1, 1)
-        notebookgrid.attach(configlabel, 1, 0, 1, 1)
-        notebookgrid.attach(valuelabel, 2, 0, 1, 1)
-        notebookgrid.attach(keeplabel, 3, 0, 1, 1)
+        notebookgrid.attach(Gtk.Label(label='Config', halign=Gtk.Align.START), 1, 0, 1, 1)
+        notebookgrid.attach(Gtk.Label(label='Value', halign=Gtk.Align.START), 2, 0, 1, 1)
+        notebookgrid.attach(Gtk.Label(label='Hardware default', halign=Gtk.Align.START), 3, 0, 1, 1)
         notebookgrid.attach(Gtk.Label(' '), 4, 0, 1, 1)
 
-        notebookgrid.attach(apmlevelonaclabel, 1, 1, 1, 1)
-        notebookgrid.attach(apmlevelonacspiner, 2, 1, 1, 1)
-        notebookgrid.attach(apmlevelonackeep, 3, 1, 1, 1)
+        widgets = []
+        keepwidgets = []
+        for index, configname in enumerate(confignames):
+            configlabel = Gtk.Label(label=configname, halign=Gtk.Align.START)
+            if configname == 'DISK_IOSCHED':
+                widget = create_selectbox(configranges[index], defaultvalues[index])
+            else:
+                widget = create_spinbutton(configranges[index], int(defaultvalues[index]))
+            keep = create_keep(widget, keepvalues[index])
 
-        notebookgrid.attach(apmlevelonbatlabel, 1, 2, 1, 1)
-        notebookgrid.attach(apmlevelonbatspiner, 2, 2, 1, 1)
-        notebookgrid.attach(apmlevelonbatkeep, 3, 2, 1, 1)
+            notebookgrid.attach(configlabel, 1, index + 1, 1, 1)
+            notebookgrid.attach(widget, 2, index + 1, 1, 1)
+            notebookgrid.attach(keep, 3, index + 1, 1, 1)
 
-        notebookgrid.attach(spindowntimeoutonaclabel, 1, 3, 1, 1)
-        notebookgrid.attach(spindowntimeoutonacspiner, 2, 3, 1, 1)
-        notebookgrid.attach(spindowntimeoutonackeep, 3, 3, 1, 1)
+            widgets.append(widget)
+            keepwidgets.append(keep)
 
-        notebookgrid.attach(spindowntimeoutonbatlabel, 1, 4, 1, 1)
-        notebookgrid.attach(spindowntimeoutonbatspiner, 2, 4, 1, 1)
-        notebookgrid.attach(spindowntimeoutonbatkeep, 3, 4, 1, 1)
+        notebook.append_page(notebookgrid, Gtk.Label(diskid))
 
-        notebookgrid.attach(ioschedlabel, 1, 5, 1, 1)
-        notebookgrid.attach(ioschedselect, 2, 5, 1, 1)
-        notebookgrid.attach(ioschedkeep, 3, 5, 1, 1)
-
-        notebooklabel = Gtk.Label(diskid)
-        notebook.append_page(notebookgrid, notebooklabel)
-
-        disks[diskid] = [apmlevelonacspiner,
-                         apmlevelonbatspiner,
-                         spindowntimeoutonacspiner,
-                         spindowntimeoutonbatspiner,
-                         ioschedselect]
-        keeps[diskid] = [apmlevelonackeep,
-                         apmlevelonbatkeep,
-                         spindowntimeoutonackeep,
-                         spindowntimeoutonbatkeep,
-                         ioschedkeep]
+        disks[diskid] = widgets
+        keeps[diskid] = keepwidgets
 
     dialog = Gtk.Dialog('Disk devices', window, 0, (
         Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
@@ -125,32 +120,32 @@ def edit_list(self: Gtk.Button, window: Gtk.Window):
 
     response = dialog.run()
     if response == Gtk.ResponseType.OK:
-        diskdevices = ''
-        apmlevelonac = ''
-        apmlevelonbat = ''
-        spindowntimeoutonac = ''
-        spindowntimeoutonbat = ''
-        iosched = ''
-
-        for key, value in disks.items():
-            diskdevices = diskdevices + ' ' + key
-            keep = keeps[key]
-            apmlevelonac = f'{apmlevelonac} {get_keep_value(keep[0], str(value[0].get_value_as_int()))}'
-            apmlevelonbat = f'{apmlevelonbat} {get_keep_value(keep[1], str(value[1].get_value_as_int()))}'
-            spindowntimeoutonac = f'{spindowntimeoutonac} {get_keep_value(keep[2], str(value[2].get_value_as_int()))}'
-            spindowntimeoutonbat = f'{spindowntimeoutonbat} {get_keep_value(keep[3], str(value[3].get_value_as_int()))}'
-            iosched = f'{iosched} {get_keep_value(keep[4], value[4].get_active_text())}'
-
-        set_tlp_value('DISK_DEVICES', diskdevices.lstrip())
-        set_tlp_value('DISK_APM_LEVEL_ON_AC', apmlevelonac.lstrip())
-        set_tlp_value('DISK_APM_LEVEL_ON_BAT', apmlevelonbat.lstrip())
-        set_tlp_value('DISK_SPINDOWN_TIMEOUT_ON_AC', spindowntimeoutonac.lstrip())
-        set_tlp_value('DISK_SPINDOWN_TIMEOUT_ON_BAT', spindowntimeoutonbat.lstrip())
-        set_tlp_value('DISK_IOSCHED', iosched.lstrip())
+        diskdevices, newvalues = assemble_config_values(disks, keeps, confignames)
+        set_tlp_value('DISK_DEVICES', diskdevices)
+        for configname in confignames:
+            set_tlp_value(configname, newvalues[configname])
 
         mainui.load_tlp_config(self, window, False)
 
     dialog.destroy()
+
+
+def assemble_config_values(disks: OrderedDict, keeps: OrderedDict, confignames: list):
+    """Collect dialog values per disk config item."""
+    diskdevices = ''
+    newvalues = {configname: '' for configname in confignames}
+
+    for diskid, widgets in disks.items():
+        diskdevices = diskdevices + ' ' + diskid
+        keep = keeps[diskid]
+        for index, configname in enumerate(confignames):
+            if configname == 'DISK_IOSCHED':
+                value = widgets[index].get_active_text()
+            else:
+                value = str(widgets[index].get_value_as_int())
+            newvalues[configname] = f'{newvalues[configname]} {get_keep_value(keep[index], value)}'
+
+    return diskdevices.lstrip(), {name: value.lstrip() for name, value in newvalues.items()}
 
 
 def get_keep_value(keep: Gtk.CheckButton, value: str):
@@ -163,13 +158,13 @@ def set_tlp_value(configname: str, value: str):
     settings.tlpconfig[configname].set_value(value)
 
 
-def get_disk_values(diskid: str, existingdisks: OrderedDict):
+def get_disk_values(diskid: str, confignames: list, existingdisks: OrderedDict):
     """Read disk value config."""
-    defaultvalues = ['254', '128', '0', '0', 'cfq']
-    keepvalues = [False, False, False, False, False]
+    defaultvalues = [get_default_value(configname) for configname in confignames]
+    keepvalues = [False] * len(confignames)
     if diskid in existingdisks.keys():
         existingvalues = existingdisks[diskid]
-        for index in range(0, 5):
+        for index in range(len(confignames)):
             if existingvalues[index] == 'keep':
                 keepvalues[index] = True
             else:
@@ -226,35 +221,21 @@ def create_selectbox(values: str, configvalue: str):
     return combobox
 
 
-def read_existing_disk_config() -> OrderedDict:
+def read_existing_disk_config(confignames: list) -> OrderedDict:
     """Fetch disk config from TLP."""
     devices = settings.tlpconfig['DISK_DEVICES'].get_value().split(' ')
-    apmlevelonac = settings.tlpconfig['DISK_APM_LEVEL_ON_AC'].get_value().split(' ')
-    apmlevelonbat = settings.tlpconfig['DISK_APM_LEVEL_ON_BAT'].get_value().split(' ')
-    spindowntimeoutonac = settings.tlpconfig['DISK_SPINDOWN_TIMEOUT_ON_AC'].get_value().split(' ')
-    spindowntimeoutonbat = settings.tlpconfig['DISK_SPINDOWN_TIMEOUT_ON_BAT'].get_value().split(' ')
-    iosched = settings.tlpconfig['DISK_IOSCHED'].get_value().split(' ')
+    configvalues = [settings.tlpconfig[configname].get_value().split(' ') for configname in confignames]
 
     existingdiskconfig = OrderedDict()
-    index = 0
-    for device in devices:
-        existingdiskconfig[device] = [apmlevelonac[index],
-                                      apmlevelonbat[index],
-                                      spindowntimeoutonac[index],
-                                      spindowntimeoutonbat[index],
-                                      iosched[index]]
-        index += 1
+    for index, device in enumerate(devices):
+        existingdiskconfig[device] = [values[index] for values in configvalues]
 
     return existingdiskconfig
 
 
-def get_disk_config_ranges():
-    """Get setting ranges for disk configs."""
-    apmlevelrangeac = ''
-    apmlevelrangebat = ''
-    spindownrangetimeoutac = ''
-    spindownrangetimeoutbat = ''
-    ioschedvalues = ''
+def get_disk_config_ranges(confignames: list) -> list:
+    """Get setting ranges for disk configs from the schema."""
+    ranges = {configname: '' for configname in confignames}
 
     categories = file.get_yaml_schema_object('categories')
     for category in categories:
@@ -263,20 +244,10 @@ def get_disk_config_ranges():
 
         for config in category['configs']:
             if 'group' in config:
-                if config['group'] == 'DISK_APM_LEVEL':
-                    for item in config['ids']:
-                        if item['id'] == 'DISK_APM_LEVEL_ON_AC':
-                            apmlevelrangeac = item['values']
-                        elif item['id'] == 'DISK_APM_LEVEL_ON_BAT':
-                            apmlevelrangebat = item['values']
-                elif config['group'] == 'DISK_SPINDOWN_TIMEOUT':
-                    for item in config['ids']:
-                        if item['id'] == 'DISK_SPINDOWN_TIMEOUT_ON_AC':
-                            spindownrangetimeoutac = item['values']
-                        elif item['id'] == 'DISK_SPINDOWN_TIMEOUT_ON_BAT':
-                            spindownrangetimeoutbat = item['values']
-            else:
-                if config['id'] == 'DISK_IOSCHED':
-                    ioschedvalues = config['values']
+                for item in config['ids']:
+                    if item['id'] in ranges:
+                        ranges[item['id']] = item['values']
+            elif config['id'] in ranges:
+                ranges[config['id']] = config['values']
 
-    return [apmlevelrangeac, apmlevelrangebat, spindownrangetimeoutac, spindownrangetimeoutbat, ioschedvalues]
+    return [ranges[configname] for configname in confignames]

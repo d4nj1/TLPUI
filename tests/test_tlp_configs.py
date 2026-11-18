@@ -61,3 +61,10 @@ def test_tlp_version_1_7():
     assert config_test.jsoncategories_count == 11
     assert config_test.tlpconfig_count == 106
     assert config_test.tlpconfig_count == config_test.yamlconfig_count
+
+
+def test_tlp_version_1_11():
+    config_test = TlpConfigTest('1_11')
+    assert config_test.jsoncategories_count == 11
+    assert config_test.tlpconfig_count == 138
+    assert config_test.tlpconfig_count == config_test.yamlconfig_count

@@ -31,7 +31,7 @@ def change_selection_state(self: Gtk.ToggleButton, configname: str, checkitems: 
     for checkitem in checkitems:
         if checkitem == currentitem and currentstate is False:
             continue
-        elif checkitem in currentvalue or checkitem == currentitem:
+        elif checkitem in currentvalue.split(' ') or checkitem == currentitem:
             newvalue = newvalue + " " + checkitem
 
     settings.tlpconfig[configname].set_value(newvalue.lstrip())
