@@ -184,9 +184,9 @@ def create_item_box(configobjects: list, doc: str, grouptitle: str, window) -> G
             khzlabel.set_markup('<small>kHz</small>')
             tlpconfigbox.pack_start(khzlabel, False, False, 12)
 
-        if configname.endswith('_BAT'):
+        if configname.endswith(('_BAT', '_BAL')):
             tlpconfigbox.pack_start(Gtk.Image.new_from_file(f'{settings.icondir}OnBAT.svg'), False, False, 12)
-        elif configname.endswith('_AC'):
+        elif configname.endswith(('_AC', '_PRF')):
             tlpconfigbox.pack_start(Gtk.Image.new_from_file(f'{settings.icondir}OnAC.svg'), False, False, 12)
 
         tlpuiobject.pack_start(statetogglebox, False, False, 0)

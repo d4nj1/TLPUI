@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TLPUI\n"
-"POT-Creation-Date: 2026-04-05 18:10+0200\n"
-"PO-Revision-Date: 2026-04-05 18:18+0200\n"
+"POT-Creation-Date: 2026-11-18 16:12+0600\n"
+"PO-Revision-Date: 2026-11-18 16:12+0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.10\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _\n"
@@ -414,17 +414,17 @@ msgstr ""
 "Note: a value of 1 does *not* activate boosting, it just allows it"
 
 #: configschema.yaml.h:54
+msgid "SCHED_POWERSAVE__GROUP_DESCRIPTION"
+msgstr ""
+"Minimize number of used cpu cores/hyper-threads under light load conditions"
+
+#: configschema.yaml.h:55
 msgid "CPU_HWP_DYN_BOOST__GROUP_DESCRIPTION"
 msgstr ""
 "Set the Intel CPU HWP dynamic boost feature:\n"
 "- 0=disable, 1=enable.\n"
 "Requires intel_pstate scaling driver in 'active' mode and Intel Core i 6th "
 "gen. or newer CPU"
-
-#: configschema.yaml.h:55
-msgid "SCHED_POWERSAVE__GROUP_DESCRIPTION"
-msgstr ""
-"Minimize number of used cpu cores/hyper-threads under light load conditions"
 
 #: configschema.yaml.h:56
 msgid "NMI_WATCHDOG__ID_DESCRIPTION"
@@ -485,92 +485,116 @@ msgid "DEVICES_TO_ENABLE_ON_STARTUP__ID_DESCRIPTION"
 msgstr "Radio devices to enable on startup: bluetooth wifi wwan"
 
 #: configschema.yaml.h:64
+#, fuzzy
+#| msgid "DEVICES_ON_DOCK__GROUP_DESCRIPTION"
+msgid "DEVICES_ON_PRF__GROUP_DESCRIPTION"
+msgstr "Radio devices to enable/disable when docked"
+
+#: configschema.yaml.h:65
+#, fuzzy
+#| msgid "DEVICES_ON_DOCK__GROUP_DESCRIPTION"
+msgid "DEVICES_ON_BAL__GROUP_DESCRIPTION"
+msgstr "Radio devices to enable/disable when docked"
+
+#: configschema.yaml.h:66
+#, fuzzy
+#| msgid "DEVICES_ON_DOCK__GROUP_DESCRIPTION"
+msgid "DEVICES_ON_SAV__GROUP_DESCRIPTION"
+msgstr "Radio devices to enable/disable when docked"
+
+#: configschema.yaml.h:67
 msgid "DEVICES_TO_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
 "Radio devices to disable on shutdown: bluetooth wifi wwan\n"
 "(workaround for devices that are blocking shutdown)"
 
-#: configschema.yaml.h:65
+#: configschema.yaml.h:68
 msgid "DEVICES_TO_ENABLE_ON_SHUTDOWN__ID_DESCRIPTION"
 msgstr ""
 "Radio devices to enable on shutdown: bluetooth wifi wwan\n"
 "(to prevent other operating systems from missing radios)"
 
-#: configschema.yaml.h:66
+#: configschema.yaml.h:69
 msgid "DEVICES_TO_ENABLE_ON_AC__ID_DESCRIPTION"
 msgstr "Radio devices to enable on AC: bluetooth, wifi, wwan"
 
-#: configschema.yaml.h:67
+#: configschema.yaml.h:70
 msgid "DEVICES_TO_DISABLE_ON_BAT__ID_DESCRIPTION"
 msgstr "Radio devices to disable on battery: bluetooth, wifi, wwan"
 
-#: configschema.yaml.h:68
+#: configschema.yaml.h:71
 msgid "DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE__ID_DESCRIPTION"
 msgstr ""
 "Radio devices to disable on battery when not in use (not connected):\n"
 "bluetooth, wifi, wwan"
 
-#: configschema.yaml.h:69
+#: configschema.yaml.h:72
 msgid "Radio Device Wizard__CATEGORY_TITLE"
 msgstr "Radio Device Wizard"
 
-#: configschema.yaml.h:70
+#: configschema.yaml.h:73
 msgid "DEVICES_TO_DISABLE_ON_CONNECT__GROUP_DESCRIPTION"
 msgstr "Radio devices to disable on connect"
 
-#: configschema.yaml.h:71
+#: configschema.yaml.h:74
 msgid "DEVICES_TO_ENABLE_ON_DISCONNECT__GROUP_DESCRIPTION"
 msgstr "Radio devices to enable on disconnect"
 
-#: configschema.yaml.h:72
+#: configschema.yaml.h:75
 msgid "DEVICES_ON_DOCK__GROUP_DESCRIPTION"
 msgstr "Radio devices to enable/disable when docked"
 
-#: configschema.yaml.h:73
+#: configschema.yaml.h:76
 msgid "DEVICES_ON_UNDOCK__GROUP_DESCRIPTION"
 msgstr "Radio devices to enable/disable when undocked"
 
-#: configschema.yaml.h:74
+#: configschema.yaml.h:77
 msgid "USB__CATEGORY_TITLE"
 msgstr "USB"
 
-#: configschema.yaml.h:75
+#: configschema.yaml.h:78
 msgid "USB_AUTOSUSPEND__ID_DESCRIPTION"
 msgstr "USB autosuspend feature"
 
-#: configschema.yaml.h:76
+#: configschema.yaml.h:79
 msgid "USB_BLACKLIST__ID_DESCRIPTION"
 msgstr ""
 "Devices from the following list are excluded from autosuspend\n"
 "(separate with spaces). Use lsusb to get the ids.\n"
 "Note: input devices (usbhid) are excluded automatically"
 
-#: configschema.yaml.h:77
+#: configschema.yaml.h:80
 msgid "USB_BLACKLIST_BTUSB__ID_DESCRIPTION"
 msgstr "Bluetooth devices are excluded from USB autosuspend"
 
-#: configschema.yaml.h:78
+#: configschema.yaml.h:81
 msgid "USB_BLACKLIST_PHONE__ID_DESCRIPTION"
 msgstr "Phone devices are excluded from USB autosuspend"
 
-#: configschema.yaml.h:79
+#: configschema.yaml.h:82
 msgid "USB_BLACKLIST_PRINTER__ID_DESCRIPTION"
 msgstr "Printers are excluded from USB autosuspend"
 
-#: configschema.yaml.h:80
+#: configschema.yaml.h:83
 msgid "USB_BLACKLIST_WWAN__ID_DESCRIPTION"
 msgstr ""
 "WWAN devices are excluded from autosuspend.\n"
 "Note: works for ids 05c6:* 0bdb:* 1199:* only"
 
-#: configschema.yaml.h:81
+#: configschema.yaml.h:84
 msgid "USB_WHITELIST__ID_DESCRIPTION"
 msgstr ""
 "Include listed devices into autosuspend even if already excluded\n"
 "by the driver or WWAN blacklists above (separate with spaces).\n"
 "Use lsusb to get the ids"
 
-#: configschema.yaml.h:82
+#: configschema.yaml.h:85
+msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
+msgstr ""
+"Set to disable autosuspend before shutdown / otherwise to do nothing\n"
+"(workaround for USB devices that cause shutdown problems)"
+
+#: configschema.yaml.h:86
 msgid "USB_DENYLIST__ID_DESCRIPTION"
 msgstr ""
 "Exclude listed devices from USB autosuspend (separate with spaces).\n"
@@ -578,53 +602,47 @@ msgstr ""
 "Note: input devices (usbhid) and libsane-supported scanners are excluded "
 "automatically"
 
-#: configschema.yaml.h:83
+#: configschema.yaml.h:87
 msgid "USB_EXCLUDE_AUDIO__ID_DESCRIPTION"
 msgstr ""
 "Exclude audio devices from USB autosuspend:\n"
 "- 0=do not exclude, 1=exclude"
 
-#: configschema.yaml.h:84
+#: configschema.yaml.h:88
 msgid "USB_EXCLUDE_BTUSB__ID_DESCRIPTION"
 msgstr ""
 "Exclude bluetooth devices from USB autosuspend:\n"
 "- 0=do not exclude, 1=exclude"
 
-#: configschema.yaml.h:85
+#: configschema.yaml.h:89
 msgid "USB_EXCLUDE_PHONE__ID_DESCRIPTION"
 msgstr ""
 "Exclude phone devices from USB autosuspend:\n"
 "- 0=do not exclude, 1=exclude (enable charging)"
 
-#: configschema.yaml.h:86
+#: configschema.yaml.h:90
 msgid "USB_EXCLUDE_PRINTER__ID_DESCRIPTION"
 msgstr ""
 "Exclude printers from USB autosuspend:\n"
 "- 0=do not exclude, 1=exclude"
 
-#: configschema.yaml.h:87
+#: configschema.yaml.h:91
 msgid "USB_EXCLUDE_WWAN__ID_DESCRIPTION"
 msgstr ""
 "Exclude WWAN devices from USB autosuspend:\n"
 "- 0=do not exclude, 1=exclude"
 
-#: configschema.yaml.h:88
+#: configschema.yaml.h:92
 msgid "USB_ALLOWLIST__ID_DESCRIPTION"
 msgstr ""
 "Allow USB autosuspend for listed devices even if already denylisted or\n"
 "excluded above (separate with spaces). Use lsusb to get the ids"
 
-#: configschema.yaml.h:89
-msgid "USB_AUTOSUSPEND_DISABLE_ON_SHUTDOWN__ID_DESCRIPTION"
-msgstr ""
-"Set to disable autosuspend before shutdown / otherwise to do nothing\n"
-"(workaround for USB devices that cause shutdown problems)"
-
-#: configschema.yaml.h:90
+#: configschema.yaml.h:93
 msgid "ThinkPad Battery__CATEGORY_TITLE"
 msgstr "ThinkPad Battery"
 
-#: configschema.yaml.h:91
+#: configschema.yaml.h:94
 msgid "CHARGE_THRESH_BAT0__GROUP_DESCRIPTION"
 msgstr ""
 "Battery Care -- Charge thresholds\n"
@@ -647,22 +665,22 @@ msgstr ""
 "BAT0: Primary / Main / Internal battery (values in %)\n"
 "Note: also use for batteries BATC, BATT and CMB0"
 
-#: configschema.yaml.h:92
+#: configschema.yaml.h:95
 msgid "CHARGE_THRESH_BAT1__GROUP_DESCRIPTION"
 msgstr "BAT1: Secondary / Ultrabay / Slice / Replaceable battery (values in %)"
 
-#: configschema.yaml.h:93
+#: configschema.yaml.h:96
 msgid "RESTORE_THRESHOLDS_ON_BAT__ID_DESCRIPTION"
 msgstr "Restore charge thresholds when AC is unplugged"
 
-#: configschema.yaml.h:94
+#: configschema.yaml.h:97
 msgid "NATACPI_ENABLE__ID_DESCRIPTION"
 msgstr "Control battery care drivers: 0=disable, 1=enable"
 
-#: configschema.yaml.h:95
+#: configschema.yaml.h:98
 msgid "TPACPI_ENABLE__ID_DESCRIPTION"
 msgstr "ThinkPad battery drivers: 0=disable, 1=enable"
 
-#: configschema.yaml.h:96
+#: configschema.yaml.h:99
 msgid "TPSMAPI_ENABLE__ID_DESCRIPTION"
 msgstr "ThinkPad battery drivers: 0=disable, 1=enable"
